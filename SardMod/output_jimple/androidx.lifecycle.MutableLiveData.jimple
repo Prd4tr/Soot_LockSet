@@ -1,0 +1,42 @@
+public class androidx.lifecycle.MutableLiveData extends androidx.lifecycle.LiveData
+{
+
+    public void <init>()
+    {
+        androidx.lifecycle.MutableLiveData this;
+
+        this := @this: androidx.lifecycle.MutableLiveData;
+
+        specialinvoke this.<androidx.lifecycle.LiveData: void <init>()>();
+
+        return;
+    }
+
+    public void postValue(java.lang.Object)
+    {
+        androidx.lifecycle.MutableLiveData this;
+        java.lang.Object value;
+
+        this := @this: androidx.lifecycle.MutableLiveData;
+
+        value := @parameter0: java.lang.Object;
+
+        specialinvoke this.<androidx.lifecycle.LiveData: void postValue(java.lang.Object)>(value);
+
+        return;
+    }
+
+    public void setValue(java.lang.Object)
+    {
+        androidx.lifecycle.MutableLiveData this;
+        java.lang.Object value;
+
+        this := @this: androidx.lifecycle.MutableLiveData;
+
+        value := @parameter0: java.lang.Object;
+
+        specialinvoke this.<androidx.lifecycle.LiveData: void setValue(java.lang.Object)>(value);
+
+        return;
+    }
+}

@@ -1,0 +1,585 @@
+public class androidx.core.content.res.FontResourcesParserCompat extends java.lang.Object
+{
+    private static final int DEFAULT_TIMEOUT_MILLIS;
+    public static final int FETCH_STRATEGY_ASYNC;
+    public static final int FETCH_STRATEGY_BLOCKING;
+    public static final int INFINITE_TIMEOUT_VALUE;
+    private static final int ITALIC;
+    private static final int NORMAL_WEIGHT;
+
+    private void <init>()
+    {
+        androidx.core.content.res.FontResourcesParserCompat this;
+
+        this := @this: androidx.core.content.res.FontResourcesParserCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static int getType(android.content.res.TypedArray, int)
+    {
+        android.content.res.TypedArray $u2;
+        int $u3, tv;
+        android.util.TypedValue tv#4;
+
+        $u2 := @parameter0: android.content.res.TypedArray;
+
+        $u3 := @parameter1: int;
+
+        tv = <android.os.Build$VERSION: int SDK_INT>;
+
+        if tv < 21 goto label1;
+
+        $u3 = virtualinvoke $u2.<android.content.res.TypedArray: int getType(int)>($u3);
+
+        return $u3;
+
+     label1:
+        tv#4 = new android.util.TypedValue;
+
+        specialinvoke tv#4.<android.util.TypedValue: void <init>()>();
+
+        virtualinvoke $u2.<android.content.res.TypedArray: boolean getValue(int,android.util.TypedValue)>($u3, tv#4);
+
+        $u3 = tv#4.<android.util.TypedValue: int type>;
+
+        return $u3;
+    }
+
+    public static androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry parse(org.xmlpull.v1.XmlPullParser, android.content.res.Resources) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        org.xmlpull.v1.XmlPullParser $u3;
+        android.content.res.Resources $u4;
+        int $u-1;
+        androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry $u-1#5;
+        org.xmlpull.v1.XmlPullParserException $u0;
+
+        $u3 := @parameter0: org.xmlpull.v1.XmlPullParser;
+
+        $u4 := @parameter1: android.content.res.Resources;
+
+     label1:
+        $u-1 = interfaceinvoke $u3.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        if $u-1 == 2 goto label2;
+
+        if $u-1 == 1 goto label2;
+
+        goto label1;
+
+     label2:
+        if $u-1 != 2 goto label3;
+
+        $u-1#5 = staticinvoke <androidx.core.content.res.FontResourcesParserCompat: androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry readFamilies(org.xmlpull.v1.XmlPullParser,android.content.res.Resources)>($u3, $u4);
+
+        return $u-1#5;
+
+     label3:
+        $u0 = new org.xmlpull.v1.XmlPullParserException;
+
+        specialinvoke $u0.<org.xmlpull.v1.XmlPullParserException: void <init>(java.lang.String)>("No start tag found");
+
+        goto label4;
+
+     label4:
+        throw $u0;
+    }
+
+    public static java.util.List readCerts(android.content.res.Resources, int)
+    {
+        android.content.res.Resources $u6;
+        int $u7, $u-1#5;
+        java.util.List $u-1;
+        android.content.res.TypedArray $u-1#3;
+        java.util.ArrayList result;
+        java.lang.String[] $u-1#19;
+        java.lang.Throwable result#27;
+
+        $u6 := @parameter0: android.content.res.Resources;
+
+        $u7 := @parameter1: int;
+
+        if $u7 != 0 goto label01;
+
+        $u-1 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        return $u-1;
+
+     label01:
+        $u-1#3 = virtualinvoke $u6.<android.content.res.Resources: android.content.res.TypedArray obtainTypedArray(int)>($u7);
+
+     label02:
+        $u-1#5 = virtualinvoke $u-1#3.<android.content.res.TypedArray: int length()>();
+
+     label03:
+        if $u-1#5 != 0 goto label06;
+
+     label04:
+        $u-1 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+     label05:
+        virtualinvoke $u-1#3.<android.content.res.TypedArray: void recycle()>();
+
+        return $u-1;
+
+     label06:
+        result = new java.util.ArrayList;
+
+        specialinvoke result.<java.util.ArrayList: void <init>()>();
+
+        $u-1#5 = staticinvoke <androidx.core.content.res.FontResourcesParserCompat: int getType(android.content.res.TypedArray,int)>($u-1#3, 0);
+
+     label07:
+        if $u-1#5 != 1 goto label15;
+
+        $u7 = 0;
+
+     label08:
+        $u-1#5 = virtualinvoke $u-1#3.<android.content.res.TypedArray: int length()>();
+
+     label09:
+        if $u7 >= $u-1#5 goto label14;
+
+     label10:
+        $u-1#5 = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getResourceId(int,int)>($u7, 0);
+
+     label11:
+        if $u-1#5 == 0 goto label13;
+
+     label12:
+        $u-1#19 = virtualinvoke $u6.<android.content.res.Resources: java.lang.String[] getStringArray(int)>($u-1#5);
+
+        $u-1 = staticinvoke <androidx.core.content.res.FontResourcesParserCompat: java.util.List toByteArrayList(java.lang.String[])>($u-1#19);
+
+        interfaceinvoke result.<java.util.List: boolean add(java.lang.Object)>($u-1);
+
+     label13:
+        $u7 = $u7 + 1;
+
+        goto label08;
+
+     label14:
+        goto label16;
+
+     label15:
+        $u-1#19 = virtualinvoke $u6.<android.content.res.Resources: java.lang.String[] getStringArray(int)>($u7);
+
+        $u-1 = staticinvoke <androidx.core.content.res.FontResourcesParserCompat: java.util.List toByteArrayList(java.lang.String[])>($u-1#19);
+
+        interfaceinvoke result.<java.util.List: boolean add(java.lang.Object)>($u-1);
+
+     label16:
+        virtualinvoke $u-1#3.<android.content.res.TypedArray: void recycle()>();
+
+        return result;
+
+     label17:
+        result#27 := @caughtexception;
+
+        virtualinvoke $u-1#3.<android.content.res.TypedArray: void recycle()>();
+
+        goto label18;
+
+     label18:
+        throw result#27;
+
+        catch java.lang.Throwable from label02 to label03 with label17;
+        catch java.lang.Throwable from label04 to label05 with label17;
+        catch java.lang.Throwable from label06 to label07 with label17;
+        catch java.lang.Throwable from label08 to label09 with label17;
+        catch java.lang.Throwable from label10 to label11 with label17;
+        catch java.lang.Throwable from label12 to label13 with label17;
+        catch java.lang.Throwable from label15 to label16 with label17;
+    }
+
+    private static androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry readFamilies(org.xmlpull.v1.XmlPullParser, android.content.res.Resources) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        org.xmlpull.v1.XmlPullParser $u3;
+        android.content.res.Resources $u4;
+        java.lang.String $u-1;
+        boolean $u-1#6;
+        androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry $u-1#8;
+
+        $u3 := @parameter0: org.xmlpull.v1.XmlPullParser;
+
+        $u4 := @parameter1: android.content.res.Resources;
+
+        interfaceinvoke $u3.<org.xmlpull.v1.XmlPullParser: void require(int,java.lang.String,java.lang.String)>(2, null, "font-family");
+
+        $u-1 = interfaceinvoke $u3.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+        $u-1#6 = virtualinvoke $u-1.<java.lang.String: boolean equals(java.lang.Object)>("font-family");
+
+        if $u-1#6 == 0 goto label1;
+
+        $u-1#8 = staticinvoke <androidx.core.content.res.FontResourcesParserCompat: androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry readFamily(org.xmlpull.v1.XmlPullParser,android.content.res.Resources)>($u3, $u4);
+
+        return $u-1#8;
+
+     label1:
+        staticinvoke <androidx.core.content.res.FontResourcesParserCompat: void skip(org.xmlpull.v1.XmlPullParser)>($u3);
+
+        return null;
+    }
+
+    private static androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry readFamily(org.xmlpull.v1.XmlPullParser, android.content.res.Resources) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        org.xmlpull.v1.XmlPullParser $u12;
+        android.content.res.Resources $u13;
+        android.util.AttributeSet $u-1;
+        int[] array;
+        android.content.res.TypedArray $u-1#3;
+        int authority, strategy, timeoutMs, $u-1#27;
+        java.lang.String $u-1#6, $u-1#9, $u-1#12;
+        java.util.List $u-1#29;
+        androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry fonts;
+        androidx.core.provider.FontRequest tag;
+        java.util.ArrayList fonts#33;
+        boolean $u-1#42;
+        androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry $u-1#44;
+        androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry certs;
+        androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry[] tag#52;
+        java.lang.Object[] $u-1#53;
+
+        $u12 := @parameter0: org.xmlpull.v1.XmlPullParser;
+
+        $u13 := @parameter1: android.content.res.Resources;
+
+        $u-1 = staticinvoke <android.util.Xml: android.util.AttributeSet asAttributeSet(org.xmlpull.v1.XmlPullParser)>($u12);
+
+        array = <androidx.core.R$styleable: int[] FontFamily>;
+
+        $u-1#3 = virtualinvoke $u13.<android.content.res.Resources: android.content.res.TypedArray obtainAttributes(android.util.AttributeSet,int[])>($u-1, array);
+
+        authority = <androidx.core.R$styleable: int FontFamily_fontProviderAuthority>;
+
+        $u-1#6 = virtualinvoke $u-1#3.<android.content.res.TypedArray: java.lang.String getString(int)>(authority);
+
+        authority = <androidx.core.R$styleable: int FontFamily_fontProviderPackage>;
+
+        $u-1#9 = virtualinvoke $u-1#3.<android.content.res.TypedArray: java.lang.String getString(int)>(authority);
+
+        authority = <androidx.core.R$styleable: int FontFamily_fontProviderQuery>;
+
+        $u-1#12 = virtualinvoke $u-1#3.<android.content.res.TypedArray: java.lang.String getString(int)>(authority);
+
+        authority = <androidx.core.R$styleable: int FontFamily_fontProviderCerts>;
+
+        authority = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getResourceId(int,int)>(authority, 0);
+
+        strategy = <androidx.core.R$styleable: int FontFamily_fontProviderFetchStrategy>;
+
+        strategy = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getInteger(int,int)>(strategy, 1);
+
+        timeoutMs = <androidx.core.R$styleable: int FontFamily_fontProviderFetchTimeout>;
+
+        timeoutMs = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getInteger(int,int)>(timeoutMs, 500);
+
+        virtualinvoke $u-1#3.<android.content.res.TypedArray: void recycle()>();
+
+        if $u-1#6 == null goto label3;
+
+        if $u-1#9 == null goto label3;
+
+        if $u-1#12 == null goto label3;
+
+     label1:
+        $u-1#27 = interfaceinvoke $u12.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        if $u-1#27 == 3 goto label2;
+
+        staticinvoke <androidx.core.content.res.FontResourcesParserCompat: void skip(org.xmlpull.v1.XmlPullParser)>($u12);
+
+        goto label1;
+
+     label2:
+        $u-1#29 = staticinvoke <androidx.core.content.res.FontResourcesParserCompat: java.util.List readCerts(android.content.res.Resources,int)>($u13, authority);
+
+        fonts = new androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry;
+
+        tag = new androidx.core.provider.FontRequest;
+
+        specialinvoke tag.<androidx.core.provider.FontRequest: void <init>(java.lang.String,java.lang.String,java.lang.String,java.util.List)>($u-1#6, $u-1#9, $u-1#12, $u-1#29);
+
+        specialinvoke fonts.<androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry: void <init>(androidx.core.provider.FontRequest,int,int)>(tag, strategy, timeoutMs);
+
+        return fonts;
+
+     label3:
+        fonts#33 = new java.util.ArrayList;
+
+        specialinvoke fonts#33.<java.util.ArrayList: void <init>()>();
+
+     label4:
+        authority = interfaceinvoke $u12.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        if authority == 3 goto label7;
+
+        authority = interfaceinvoke $u12.<org.xmlpull.v1.XmlPullParser: int getEventType()>();
+
+        if authority == 2 goto label5;
+
+        goto label4;
+
+     label5:
+        $u-1#6 = interfaceinvoke $u12.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+        $u-1#42 = virtualinvoke $u-1#6.<java.lang.String: boolean equals(java.lang.Object)>("font");
+
+        if $u-1#42 == 0 goto label6;
+
+        $u-1#44 = staticinvoke <androidx.core.content.res.FontResourcesParserCompat: androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry readFont(org.xmlpull.v1.XmlPullParser,android.content.res.Resources)>($u12, $u13);
+
+        interfaceinvoke fonts#33.<java.util.List: boolean add(java.lang.Object)>($u-1#44);
+
+        goto label4;
+
+     label6:
+        staticinvoke <androidx.core.content.res.FontResourcesParserCompat: void skip(org.xmlpull.v1.XmlPullParser)>($u12);
+
+        goto label4;
+
+     label7:
+        $u-1#42 = interfaceinvoke fonts#33.<java.util.List: boolean isEmpty()>();
+
+        if $u-1#42 == 0 goto label8;
+
+        return null;
+
+     label8:
+        certs = new androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry;
+
+        authority = interfaceinvoke fonts#33.<java.util.List: int size()>();
+
+        tag#52 = newarray (androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry)[authority];
+
+        $u-1#53 = interfaceinvoke fonts#33.<java.util.List: java.lang.Object[] toArray(java.lang.Object[])>(tag#52);
+
+        tag#52 = (androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry[]) $u-1#53;
+
+        specialinvoke certs.<androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry: void <init>(androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry[])>(tag#52);
+
+        return certs;
+    }
+
+    private static androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry readFont(org.xmlpull.v1.XmlPullParser, android.content.res.Resources) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        org.xmlpull.v1.XmlPullParser $u21;
+        android.content.res.Resources $u22;
+        int ttcIndexAttr, weightAttr, $u6, $u6#34;
+        androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry $u19;
+        android.util.AttributeSet $u-1;
+        int[] array;
+        android.content.res.TypedArray $u-1#3;
+        boolean $u-1#6, $u-1#22;
+        java.lang.String $u-1#29, $u-1#37;
+
+        $u21 := @parameter0: org.xmlpull.v1.XmlPullParser;
+
+        $u22 := @parameter1: android.content.res.Resources;
+
+        $u-1 = staticinvoke <android.util.Xml: android.util.AttributeSet asAttributeSet(org.xmlpull.v1.XmlPullParser)>($u21);
+
+        array = <androidx.core.R$styleable: int[] FontFamilyFont>;
+
+        $u-1#3 = virtualinvoke $u22.<android.content.res.Resources: android.content.res.TypedArray obtainAttributes(android.util.AttributeSet,int[])>($u-1, array);
+
+        weightAttr = <androidx.core.R$styleable: int FontFamilyFont_fontWeight>;
+
+        $u-1#6 = virtualinvoke $u-1#3.<android.content.res.TypedArray: boolean hasValue(int)>(weightAttr);
+
+        if $u-1#6 == 0 goto label01;
+
+        weightAttr = <androidx.core.R$styleable: int FontFamilyFont_fontWeight>;
+
+        goto label02;
+
+     label01:
+        weightAttr = <androidx.core.R$styleable: int FontFamilyFont_android_fontWeight>;
+
+     label02:
+        weightAttr = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getInt(int,int)>(weightAttr, 400);
+
+        ttcIndexAttr = <androidx.core.R$styleable: int FontFamilyFont_fontStyle>;
+
+        $u-1#6 = virtualinvoke $u-1#3.<android.content.res.TypedArray: boolean hasValue(int)>(ttcIndexAttr);
+
+        if $u-1#6 == 0 goto label03;
+
+        ttcIndexAttr = <androidx.core.R$styleable: int FontFamilyFont_fontStyle>;
+
+        goto label04;
+
+     label03:
+        ttcIndexAttr = <androidx.core.R$styleable: int FontFamilyFont_android_fontStyle>;
+
+     label04:
+        ttcIndexAttr = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getInt(int,int)>(ttcIndexAttr, 0);
+
+        if 1 != ttcIndexAttr goto label05;
+
+        $u-1#6 = 1;
+
+        goto label06;
+
+     label05:
+        $u-1#6 = 0;
+
+     label06:
+        ttcIndexAttr = <androidx.core.R$styleable: int FontFamilyFont_ttcIndex>;
+
+        $u-1#22 = virtualinvoke $u-1#3.<android.content.res.TypedArray: boolean hasValue(int)>(ttcIndexAttr);
+
+        if $u-1#22 == 0 goto label07;
+
+        ttcIndexAttr = <androidx.core.R$styleable: int FontFamilyFont_ttcIndex>;
+
+        goto label08;
+
+     label07:
+        ttcIndexAttr = <androidx.core.R$styleable: int FontFamilyFont_android_ttcIndex>;
+
+     label08:
+        $u6 = <androidx.core.R$styleable: int FontFamilyFont_fontVariationSettings>;
+
+        $u-1#22 = virtualinvoke $u-1#3.<android.content.res.TypedArray: boolean hasValue(int)>($u6);
+
+        if $u-1#22 == 0 goto label09;
+
+        $u6 = <androidx.core.R$styleable: int FontFamilyFont_fontVariationSettings>;
+
+        goto label10;
+
+     label09:
+        $u6 = <androidx.core.R$styleable: int FontFamilyFont_android_fontVariationSettings>;
+
+     label10:
+        $u-1#29 = virtualinvoke $u-1#3.<android.content.res.TypedArray: java.lang.String getString(int)>($u6);
+
+        ttcIndexAttr = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getInt(int,int)>(ttcIndexAttr, 0);
+
+        $u6 = <androidx.core.R$styleable: int FontFamilyFont_font>;
+
+        $u-1#22 = virtualinvoke $u-1#3.<android.content.res.TypedArray: boolean hasValue(int)>($u6);
+
+        if $u-1#22 == 0 goto label11;
+
+        $u6#34 = <androidx.core.R$styleable: int FontFamilyFont_font>;
+
+        goto label12;
+
+     label11:
+        $u6#34 = <androidx.core.R$styleable: int FontFamilyFont_android_font>;
+
+     label12:
+        $u6 = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getResourceId(int,int)>($u6#34, 0);
+
+        $u-1#37 = virtualinvoke $u-1#3.<android.content.res.TypedArray: java.lang.String getString(int)>($u6#34);
+
+        virtualinvoke $u-1#3.<android.content.res.TypedArray: void recycle()>();
+
+     label13:
+        $u6#34 = interfaceinvoke $u21.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        if $u6#34 == 3 goto label14;
+
+        staticinvoke <androidx.core.content.res.FontResourcesParserCompat: void skip(org.xmlpull.v1.XmlPullParser)>($u21);
+
+        goto label13;
+
+     label14:
+        $u19 = new androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry;
+
+        specialinvoke $u19.<androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry: void <init>(java.lang.String,int,boolean,java.lang.String,int,int)>($u-1#37, weightAttr, $u-1#6, $u-1#29, ttcIndexAttr, $u6);
+
+        return $u19;
+    }
+
+    private static void skip(org.xmlpull.v1.XmlPullParser) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        org.xmlpull.v1.XmlPullParser $u3;
+        int $u-1, depth;
+
+        $u3 := @parameter0: org.xmlpull.v1.XmlPullParser;
+
+        depth = 1;
+
+     label1:
+        if depth <= 0 goto label4;
+
+        $u-1 = interfaceinvoke $u3.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        if $u-1 == 2 goto label3;
+
+        if $u-1 == 3 goto label2;
+
+        goto label1;
+
+     label2:
+        depth = depth + -1;
+
+        goto label1;
+
+     label3:
+        depth = depth + 1;
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    private static java.util.List toByteArrayList(java.lang.String[])
+    {
+        java.lang.String[] $u6;
+        java.util.ArrayList result;
+        int $u1, $u3;
+        java.lang.String item;
+        byte[] $u-1;
+
+        $u6 := @parameter0: java.lang.String[];
+
+        result = new java.util.ArrayList;
+
+        specialinvoke result.<java.util.ArrayList: void <init>()>();
+
+        $u1 = lengthof $u6;
+
+        $u3 = 0;
+
+     label1:
+        if $u3 >= $u1 goto label2;
+
+        item = $u6[$u3];
+
+        $u-1 = staticinvoke <android.util.Base64: byte[] decode(java.lang.String,int)>(item, 0);
+
+        interfaceinvoke result.<java.util.List: boolean add(java.lang.Object)>($u-1);
+
+        $u3 = $u3 + 1;
+
+        goto label1;
+
+     label2:
+        return result;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.content.res.FontResourcesParserCompat: int NORMAL_WEIGHT> = 400;
+
+        <androidx.core.content.res.FontResourcesParserCompat: int ITALIC> = 1;
+
+        <androidx.core.content.res.FontResourcesParserCompat: int INFINITE_TIMEOUT_VALUE> = -1;
+
+        <androidx.core.content.res.FontResourcesParserCompat: int FETCH_STRATEGY_BLOCKING> = 0;
+
+        <androidx.core.content.res.FontResourcesParserCompat: int FETCH_STRATEGY_ASYNC> = 1;
+
+        <androidx.core.content.res.FontResourcesParserCompat: int DEFAULT_TIMEOUT_MILLIS> = 500;
+
+        return;
+    }
+}

@@ -1,0 +1,65 @@
+class androidx.appcompat.widget.PopupMenu$1 extends java.lang.Object implements androidx.appcompat.view.menu.MenuBuilder$Callback
+{
+    final androidx.appcompat.widget.PopupMenu this$0;
+
+    void <init>(androidx.appcompat.widget.PopupMenu)
+    {
+        androidx.appcompat.widget.PopupMenu$1 this;
+        androidx.appcompat.widget.PopupMenu $u1;
+
+        this := @this: androidx.appcompat.widget.PopupMenu$1;
+
+        $u1 := @parameter0: androidx.appcompat.widget.PopupMenu;
+
+        this.<androidx.appcompat.widget.PopupMenu$1: androidx.appcompat.widget.PopupMenu this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean onMenuItemSelected(androidx.appcompat.view.menu.MenuBuilder, android.view.MenuItem)
+    {
+        androidx.appcompat.widget.PopupMenu$1 this;
+        androidx.appcompat.view.menu.MenuBuilder $u2;
+        android.view.MenuItem $u3;
+        boolean $u-1;
+        androidx.appcompat.widget.PopupMenu $u0;
+        androidx.appcompat.widget.PopupMenu$OnMenuItemClickListener $u0#2;
+
+        this := @this: androidx.appcompat.widget.PopupMenu$1;
+
+        $u2 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u3 := @parameter1: android.view.MenuItem;
+
+        $u0 = this.<androidx.appcompat.widget.PopupMenu$1: androidx.appcompat.widget.PopupMenu this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.PopupMenu: androidx.appcompat.widget.PopupMenu$OnMenuItemClickListener mMenuItemClickListener>;
+
+        if $u0#2 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.PopupMenu$1: androidx.appcompat.widget.PopupMenu this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.PopupMenu: androidx.appcompat.widget.PopupMenu$OnMenuItemClickListener mMenuItemClickListener>;
+
+        $u-1 = interfaceinvoke $u0#2.<androidx.appcompat.widget.PopupMenu$OnMenuItemClickListener: boolean onMenuItemClick(android.view.MenuItem)>($u3);
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public void onMenuModeChange(androidx.appcompat.view.menu.MenuBuilder)
+    {
+        androidx.appcompat.widget.PopupMenu$1 this;
+        androidx.appcompat.view.menu.MenuBuilder $u1;
+
+        this := @this: androidx.appcompat.widget.PopupMenu$1;
+
+        $u1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        return;
+    }
+}

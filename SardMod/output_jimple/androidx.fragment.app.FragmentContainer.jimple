@@ -1,0 +1,39 @@
+public abstract class androidx.fragment.app.FragmentContainer extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        androidx.fragment.app.FragmentContainer this;
+
+        this := @this: androidx.fragment.app.FragmentContainer;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public androidx.fragment.app.Fragment instantiate(android.content.Context, java.lang.String, android.os.Bundle)
+    {
+        androidx.fragment.app.FragmentContainer this;
+        android.content.Context $u2;
+        java.lang.String $u3;
+        android.os.Bundle $u4;
+        androidx.fragment.app.Fragment $u-1;
+
+        this := @this: androidx.fragment.app.FragmentContainer;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: java.lang.String;
+
+        $u4 := @parameter2: android.os.Bundle;
+
+        $u-1 = staticinvoke <androidx.fragment.app.Fragment: androidx.fragment.app.Fragment instantiate(android.content.Context,java.lang.String,android.os.Bundle)>($u2, $u3, $u4);
+
+        return $u-1;
+    }
+
+    public abstract android.view.View onFindViewById(int);
+
+    public abstract boolean onHasView();
+}

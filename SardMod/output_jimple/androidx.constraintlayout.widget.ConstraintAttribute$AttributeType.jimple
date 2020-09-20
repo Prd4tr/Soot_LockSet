@@ -1,0 +1,137 @@
+public final enum class androidx.constraintlayout.widget.ConstraintAttribute$AttributeType extends java.lang.Enum
+{
+    private static final androidx.constraintlayout.widget.ConstraintAttribute$AttributeType[] $VALUES;
+    public static final enum androidx.constraintlayout.widget.ConstraintAttribute$AttributeType BOOLEAN_TYPE;
+    public static final enum androidx.constraintlayout.widget.ConstraintAttribute$AttributeType COLOR_DRAWABLE_TYPE;
+    public static final enum androidx.constraintlayout.widget.ConstraintAttribute$AttributeType COLOR_TYPE;
+    public static final enum androidx.constraintlayout.widget.ConstraintAttribute$AttributeType DIMENSION_TYPE;
+    public static final enum androidx.constraintlayout.widget.ConstraintAttribute$AttributeType FLOAT_TYPE;
+    public static final enum androidx.constraintlayout.widget.ConstraintAttribute$AttributeType INT_TYPE;
+    public static final enum androidx.constraintlayout.widget.ConstraintAttribute$AttributeType STRING_TYPE;
+
+    static void <clinit>()
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType $u9, $u0;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType[] $u1;
+
+        $u0 = new androidx.constraintlayout.widget.ConstraintAttribute$AttributeType;
+
+        specialinvoke $u0.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: void <init>(java.lang.String,int)>("INT_TYPE", 0);
+
+        <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType INT_TYPE> = $u0;
+
+        $u0 = new androidx.constraintlayout.widget.ConstraintAttribute$AttributeType;
+
+        specialinvoke $u0.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: void <init>(java.lang.String,int)>("FLOAT_TYPE", 1);
+
+        <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType FLOAT_TYPE> = $u0;
+
+        $u0 = new androidx.constraintlayout.widget.ConstraintAttribute$AttributeType;
+
+        specialinvoke $u0.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: void <init>(java.lang.String,int)>("COLOR_TYPE", 2);
+
+        <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType COLOR_TYPE> = $u0;
+
+        $u0 = new androidx.constraintlayout.widget.ConstraintAttribute$AttributeType;
+
+        specialinvoke $u0.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: void <init>(java.lang.String,int)>("COLOR_DRAWABLE_TYPE", 3);
+
+        <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType COLOR_DRAWABLE_TYPE> = $u0;
+
+        $u0 = new androidx.constraintlayout.widget.ConstraintAttribute$AttributeType;
+
+        specialinvoke $u0.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: void <init>(java.lang.String,int)>("STRING_TYPE", 4);
+
+        <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType STRING_TYPE> = $u0;
+
+        $u0 = new androidx.constraintlayout.widget.ConstraintAttribute$AttributeType;
+
+        specialinvoke $u0.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: void <init>(java.lang.String,int)>("BOOLEAN_TYPE", 5);
+
+        <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType BOOLEAN_TYPE> = $u0;
+
+        $u0 = new androidx.constraintlayout.widget.ConstraintAttribute$AttributeType;
+
+        specialinvoke $u0.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: void <init>(java.lang.String,int)>("DIMENSION_TYPE", 6);
+
+        <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType DIMENSION_TYPE> = $u0;
+
+        $u1 = newarray (androidx.constraintlayout.widget.ConstraintAttribute$AttributeType)[7];
+
+        $u9 = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType INT_TYPE>;
+
+        $u1[0] = $u9;
+
+        $u9 = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType FLOAT_TYPE>;
+
+        $u1[1] = $u9;
+
+        $u9 = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType COLOR_TYPE>;
+
+        $u1[2] = $u9;
+
+        $u9 = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType COLOR_DRAWABLE_TYPE>;
+
+        $u1[3] = $u9;
+
+        $u9 = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType STRING_TYPE>;
+
+        $u1[4] = $u9;
+
+        $u9 = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType BOOLEAN_TYPE>;
+
+        $u1[5] = $u9;
+
+        $u1[6] = $u0;
+
+        <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType[] $VALUES> = $u1;
+
+        return;
+    }
+
+    private void <init>(java.lang.String, int)
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType this;
+        java.lang.String $u1;
+        int $u2;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType;
+
+        $u1 := @parameter0: java.lang.String;
+
+        $u2 := @parameter1: int;
+
+        specialinvoke this.<java.lang.Enum: void <init>(java.lang.String,int)>($u1, $u2);
+
+        return;
+    }
+
+    public static androidx.constraintlayout.widget.ConstraintAttribute$AttributeType valueOf(java.lang.String)
+    {
+        java.lang.String $u1;
+        java.lang.Enum $u-1;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType $u0;
+
+        $u1 := @parameter0: java.lang.String;
+
+        $u-1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Landroidx/constraintlayout/widget/ConstraintAttribute$AttributeType;", $u1);
+
+        $u0 = (androidx.constraintlayout.widget.ConstraintAttribute$AttributeType) $u-1;
+
+        return $u0;
+    }
+
+    public static androidx.constraintlayout.widget.ConstraintAttribute$AttributeType[] values()
+    {
+        java.lang.Object $u-1;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType[] $u0;
+
+        $u0 = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType[] $VALUES>;
+
+        $u-1 = virtualinvoke $u0.<java.lang.Object: java.lang.Object clone()>();
+
+        $u0 = (androidx.constraintlayout.widget.ConstraintAttribute$AttributeType[]) $u-1;
+
+        return $u0;
+    }
+}

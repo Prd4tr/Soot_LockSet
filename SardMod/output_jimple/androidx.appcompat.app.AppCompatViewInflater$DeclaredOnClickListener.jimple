@@ -1,0 +1,233 @@
+class androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener extends java.lang.Object implements android.view.View$OnClickListener
+{
+    private final android.view.View mHostView;
+    private final java.lang.String mMethodName;
+    private android.content.Context mResolvedContext;
+    private java.lang.reflect.Method mResolvedMethod;
+
+    public void <init>(android.view.View, java.lang.String)
+    {
+        androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener this;
+        android.view.View $u1;
+        java.lang.String $u2;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener;
+
+        $u1 := @parameter0: android.view.View;
+
+        $u2 := @parameter1: java.lang.String;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: android.view.View mHostView> = $u1;
+
+        this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: java.lang.String mMethodName> = $u2;
+
+        return;
+    }
+
+    private void resolveMethod(android.content.Context)
+    {
+        androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener this;
+        android.content.Context $u6;
+        boolean $u-1;
+        java.lang.Class $u-1#4;
+        java.lang.String idText, $u4;
+        java.lang.Class[] $u2;
+        java.lang.reflect.Method $u-1#11;
+        java.lang.NoSuchMethodException method;
+        android.content.ContextWrapper method#16;
+        android.view.View method#18;
+        int $u-1#19;
+        java.lang.StringBuilder idText#23;
+        android.content.res.Resources $u-1#28;
+        java.lang.IllegalStateException $u2#34;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener;
+
+        $u6 := @parameter0: android.content.Context;
+
+     label01:
+        if $u6 == null goto label12;
+
+     label02:
+        $u-1 = virtualinvoke $u6.<android.content.Context: boolean isRestricted()>();
+
+     label03:
+        if $u-1 != 0 goto label08;
+
+     label04:
+        $u-1#4 = virtualinvoke $u6.<java.lang.Object: java.lang.Class getClass()>();
+
+     label05:
+        idText = this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: java.lang.String mMethodName>;
+
+        $u2 = newarray (java.lang.Class)[1];
+
+        $u2[0] = class "Landroid/view/View;";
+
+     label06:
+        $u-1#11 = virtualinvoke $u-1#4.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>(idText, $u2);
+
+     label07:
+        if $u-1#11 == null goto label08;
+
+        this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: java.lang.reflect.Method mResolvedMethod> = $u-1#11;
+
+        this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: android.content.Context mResolvedContext> = $u6;
+
+        return;
+
+     label08:
+        goto label10;
+
+     label09:
+        method := @caughtexception;
+
+     label10:
+        $u-1 = $u6 instanceof android.content.ContextWrapper;
+
+        if $u-1 == 0 goto label11;
+
+        method#16 = (android.content.ContextWrapper) $u6;
+
+        $u6 = virtualinvoke method#16.<android.content.ContextWrapper: android.content.Context getBaseContext()>();
+
+        goto label01;
+
+     label11:
+        $u6 = null;
+
+        goto label01;
+
+     label12:
+        method#18 = this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: android.view.View mHostView>;
+
+        $u-1#19 = virtualinvoke method#18.<android.view.View: int getId()>();
+
+        if $u-1#19 != -1 goto label13;
+
+        idText = "";
+
+        goto label14;
+
+     label13:
+        idText#23 = new java.lang.StringBuilder;
+
+        specialinvoke idText#23.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke idText#23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" with id \'");
+
+        method#18 = this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: android.view.View mHostView>;
+
+        $u6 = virtualinvoke method#18.<android.view.View: android.content.Context getContext()>();
+
+        $u-1#28 = virtualinvoke $u6.<android.content.Context: android.content.res.Resources getResources()>();
+
+        idText = virtualinvoke $u-1#28.<android.content.res.Resources: java.lang.String getResourceEntryName(int)>($u-1#19);
+
+        virtualinvoke idText#23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(idText);
+
+        virtualinvoke idText#23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'");
+
+        idText = virtualinvoke idText#23.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label14:
+        $u2#34 = new java.lang.IllegalStateException;
+
+        idText#23 = new java.lang.StringBuilder;
+
+        specialinvoke idText#23.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke idText#23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Could not find method ");
+
+        $u4 = this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: java.lang.String mMethodName>;
+
+        virtualinvoke idText#23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u4);
+
+        virtualinvoke idText#23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(View) in a parent or ancestor Context for android:onClick attribute defined on view ");
+
+        method#18 = this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: android.view.View mHostView>;
+
+        $u-1#4 = virtualinvoke method#18.<java.lang.Object: java.lang.Class getClass()>();
+
+        virtualinvoke idText#23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u-1#4);
+
+        virtualinvoke idText#23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(idText);
+
+        idText = virtualinvoke idText#23.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u2#34.<java.lang.IllegalStateException: void <init>(java.lang.String)>(idText);
+
+        goto label15;
+
+     label15:
+        throw $u2#34;
+
+        catch java.lang.NoSuchMethodException from label02 to label03 with label09;
+        catch java.lang.NoSuchMethodException from label04 to label05 with label09;
+        catch java.lang.NoSuchMethodException from label06 to label07 with label09;
+    }
+
+    public void onClick(android.view.View)
+    {
+        androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener this;
+        android.view.View $u5, e#2;
+        android.content.Context $u-1;
+        java.lang.reflect.Method e;
+        java.lang.Object[] $u2;
+        java.lang.reflect.InvocationTargetException e#8;
+        java.lang.IllegalStateException $u1;
+        java.lang.IllegalAccessException e#11;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener;
+
+        $u5 := @parameter0: android.view.View;
+
+        e = this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: java.lang.reflect.Method mResolvedMethod>;
+
+        if e != null goto label1;
+
+        e#2 = this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: android.view.View mHostView>;
+
+        $u-1 = virtualinvoke e#2.<android.view.View: android.content.Context getContext()>();
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: void resolveMethod(android.content.Context)>($u-1);
+
+     label1:
+        e = this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: java.lang.reflect.Method mResolvedMethod>;
+
+        $u-1 = this.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: android.content.Context mResolvedContext>;
+
+        $u2 = newarray (java.lang.Object)[1];
+
+        $u2[0] = $u5;
+
+     label2:
+        virtualinvoke e.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u-1, $u2);
+
+     label3:
+        return;
+
+     label4:
+        e#8 := @caughtexception;
+
+        $u1 = new java.lang.IllegalStateException;
+
+        specialinvoke $u1.<java.lang.IllegalStateException: void <init>(java.lang.String,java.lang.Throwable)>("Could not execute method for android:onClick", e#8);
+
+        throw $u1;
+
+     label5:
+        e#11 := @caughtexception;
+
+        $u1 = new java.lang.IllegalStateException;
+
+        specialinvoke $u1.<java.lang.IllegalStateException: void <init>(java.lang.String,java.lang.Throwable)>("Could not execute non-public method for android:onClick", e#11);
+
+        throw $u1;
+
+        catch java.lang.IllegalAccessException from label2 to label3 with label5;
+        catch java.lang.reflect.InvocationTargetException from label2 to label3 with label4;
+    }
+}

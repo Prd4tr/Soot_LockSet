@@ -1,0 +1,565 @@
+public class androidx.appcompat.view.menu.MenuWrapperICS extends androidx.appcompat.view.menu.BaseMenuWrapper implements android.view.Menu
+{
+    private final androidx.core.internal.view.SupportMenu mWrappedObject;
+
+    public void <init>(android.content.Context, androidx.core.internal.view.SupportMenu)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        android.content.Context $u3;
+        androidx.core.internal.view.SupportMenu $u4;
+        java.lang.IllegalArgumentException $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u4 := @parameter1: androidx.core.internal.view.SupportMenu;
+
+        specialinvoke this.<androidx.appcompat.view.menu.BaseMenuWrapper: void <init>(android.content.Context)>($u3);
+
+        if $u4 == null goto label1;
+
+        this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject> = $u4;
+
+        return;
+
+     label1:
+        $u0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Wrapped Object can not be null.");
+
+        throw $u0;
+    }
+
+    public android.view.MenuItem add(int)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2;
+        androidx.core.internal.view.SupportMenu $u0;
+        android.view.MenuItem $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: android.view.MenuItem add(int)>($u2);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: android.view.MenuItem getMenuItemWrapper(android.view.MenuItem)>($u-1);
+
+        return $u-1;
+    }
+
+    public android.view.MenuItem add(int, int, int, int)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2, $u3, $u4, $u5;
+        androidx.core.internal.view.SupportMenu $u0;
+        android.view.MenuItem $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: android.view.MenuItem add(int,int,int,int)>($u2, $u3, $u4, $u5);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: android.view.MenuItem getMenuItemWrapper(android.view.MenuItem)>($u-1);
+
+        return $u-1;
+    }
+
+    public android.view.MenuItem add(int, int, int, java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2, $u3, $u4;
+        java.lang.CharSequence $u5;
+        androidx.core.internal.view.SupportMenu $u0;
+        android.view.MenuItem $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: java.lang.CharSequence;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: android.view.MenuItem add(int,int,int,java.lang.CharSequence)>($u2, $u3, $u4, $u5);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: android.view.MenuItem getMenuItemWrapper(android.view.MenuItem)>($u-1);
+
+        return $u-1;
+    }
+
+    public android.view.MenuItem add(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        java.lang.CharSequence $u2;
+        androidx.core.internal.view.SupportMenu $u0;
+        android.view.MenuItem $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: android.view.MenuItem add(java.lang.CharSequence)>($u2);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: android.view.MenuItem getMenuItemWrapper(android.view.MenuItem)>($u-1);
+
+        return $u-1;
+    }
+
+    public int addIntentOptions(int, int, int, android.content.ComponentName, android.content.Intent[], android.content.Intent, int, android.view.MenuItem[])
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u13, $u14, $u15, $u19, result;
+        android.content.ComponentName $u16;
+        android.content.Intent[] $u17;
+        android.content.Intent $u18;
+        android.view.MenuItem[] $u20, items;
+        androidx.core.internal.view.SupportMenu result#3;
+        android.view.MenuItem $u6;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u13 := @parameter0: int;
+
+        $u14 := @parameter1: int;
+
+        $u15 := @parameter2: int;
+
+        $u16 := @parameter3: android.content.ComponentName;
+
+        $u17 := @parameter4: android.content.Intent[];
+
+        $u18 := @parameter5: android.content.Intent;
+
+        $u19 := @parameter6: int;
+
+        $u20 := @parameter7: android.view.MenuItem[];
+
+        items = null;
+
+        if $u20 == null goto label1;
+
+        result = lengthof $u20;
+
+        items = newarray (android.view.MenuItem)[result];
+
+     label1:
+        result#3 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u13 = interfaceinvoke result#3.<androidx.core.internal.view.SupportMenu: int addIntentOptions(int,int,int,android.content.ComponentName,android.content.Intent[],android.content.Intent,int,android.view.MenuItem[])>($u13, $u14, $u15, $u16, $u17, $u18, $u19, items);
+
+        if items == null goto label3;
+
+        $u14 = 0;
+
+        $u15 = lengthof items;
+
+     label2:
+        if $u14 >= $u15 goto label3;
+
+        $u6 = items[$u14];
+
+        $u6 = virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: android.view.MenuItem getMenuItemWrapper(android.view.MenuItem)>($u6);
+
+        $u20[$u14] = $u6;
+
+        $u14 = $u14 + 1;
+
+        goto label2;
+
+     label3:
+        return $u13;
+    }
+
+    public android.view.SubMenu addSubMenu(int)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2;
+        androidx.core.internal.view.SupportMenu $u0;
+        android.view.SubMenu $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: android.view.SubMenu addSubMenu(int)>($u2);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: android.view.SubMenu getSubMenuWrapper(android.view.SubMenu)>($u-1);
+
+        return $u-1;
+    }
+
+    public android.view.SubMenu addSubMenu(int, int, int, int)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2, $u3, $u4, $u5;
+        androidx.core.internal.view.SupportMenu $u0;
+        android.view.SubMenu $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: android.view.SubMenu addSubMenu(int,int,int,int)>($u2, $u3, $u4, $u5);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: android.view.SubMenu getSubMenuWrapper(android.view.SubMenu)>($u-1);
+
+        return $u-1;
+    }
+
+    public android.view.SubMenu addSubMenu(int, int, int, java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2, $u3, $u4;
+        java.lang.CharSequence $u5;
+        androidx.core.internal.view.SupportMenu $u0;
+        android.view.SubMenu $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: java.lang.CharSequence;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: android.view.SubMenu addSubMenu(int,int,int,java.lang.CharSequence)>($u2, $u3, $u4, $u5);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: android.view.SubMenu getSubMenuWrapper(android.view.SubMenu)>($u-1);
+
+        return $u-1;
+    }
+
+    public android.view.SubMenu addSubMenu(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        java.lang.CharSequence $u2;
+        androidx.core.internal.view.SupportMenu $u0;
+        android.view.SubMenu $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: android.view.SubMenu addSubMenu(java.lang.CharSequence)>($u2);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: android.view.SubMenu getSubMenuWrapper(android.view.SubMenu)>($u-1);
+
+        return $u-1;
+    }
+
+    public void clear()
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        androidx.core.internal.view.SupportMenu $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: void internalClear()>();
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: void clear()>();
+
+        return;
+    }
+
+    public void close()
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        androidx.core.internal.view.SupportMenu $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: void close()>();
+
+        return;
+    }
+
+    public android.view.MenuItem findItem(int)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2;
+        androidx.core.internal.view.SupportMenu $u0;
+        android.view.MenuItem $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: android.view.MenuItem findItem(int)>($u2);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: android.view.MenuItem getMenuItemWrapper(android.view.MenuItem)>($u-1);
+
+        return $u-1;
+    }
+
+    public android.view.MenuItem getItem(int)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2;
+        androidx.core.internal.view.SupportMenu $u0;
+        android.view.MenuItem $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: android.view.MenuItem getItem(int)>($u2);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: android.view.MenuItem getMenuItemWrapper(android.view.MenuItem)>($u-1);
+
+        return $u-1;
+    }
+
+    public boolean hasVisibleItems()
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        boolean $u-1;
+        androidx.core.internal.view.SupportMenu $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: boolean hasVisibleItems()>();
+
+        return $u-1;
+    }
+
+    public boolean isShortcutKey(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2;
+        android.view.KeyEvent $u3;
+        boolean $u-1;
+        androidx.core.internal.view.SupportMenu $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.view.KeyEvent;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: boolean isShortcutKey(int,android.view.KeyEvent)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public boolean performIdentifierAction(int, int)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2, $u3;
+        boolean $u-1;
+        androidx.core.internal.view.SupportMenu $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: boolean performIdentifierAction(int,int)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public boolean performShortcut(int, android.view.KeyEvent, int)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2, $u4;
+        android.view.KeyEvent $u3;
+        boolean $u-1;
+        androidx.core.internal.view.SupportMenu $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.view.KeyEvent;
+
+        $u4 := @parameter2: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: boolean performShortcut(int,android.view.KeyEvent,int)>($u2, $u3, $u4);
+
+        return $u-1;
+    }
+
+    public void removeGroup(int)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2;
+        androidx.core.internal.view.SupportMenu $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: void internalRemoveGroup(int)>($u2);
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: void removeGroup(int)>($u2);
+
+        return;
+    }
+
+    public void removeItem(int)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2;
+        androidx.core.internal.view.SupportMenu $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuWrapperICS: void internalRemoveItem(int)>($u2);
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: void removeItem(int)>($u2);
+
+        return;
+    }
+
+    public void setGroupCheckable(int, boolean, boolean)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2;
+        boolean $u3, $u4;
+        androidx.core.internal.view.SupportMenu $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: boolean;
+
+        $u4 := @parameter2: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: void setGroupCheckable(int,boolean,boolean)>($u2, $u3, $u4);
+
+        return;
+    }
+
+    public void setGroupEnabled(int, boolean)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2;
+        boolean $u3;
+        androidx.core.internal.view.SupportMenu $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: void setGroupEnabled(int,boolean)>($u2, $u3);
+
+        return;
+    }
+
+    public void setGroupVisible(int, boolean)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u2;
+        boolean $u3;
+        androidx.core.internal.view.SupportMenu $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: void setGroupVisible(int,boolean)>($u2, $u3);
+
+        return;
+    }
+
+    public void setQwertyMode(boolean)
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        boolean $u2;
+        androidx.core.internal.view.SupportMenu $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: void setQwertyMode(boolean)>($u2);
+
+        return;
+    }
+
+    public int size()
+    {
+        androidx.appcompat.view.menu.MenuWrapperICS this;
+        int $u-1;
+        androidx.core.internal.view.SupportMenu $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuWrapperICS: androidx.core.internal.view.SupportMenu mWrappedObject>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.internal.view.SupportMenu: int size()>();
+
+        return $u-1;
+    }
+}

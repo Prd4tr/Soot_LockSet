@@ -1,0 +1,44 @@
+public abstract class androidx.arch.core.executor.TaskExecutor extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        androidx.arch.core.executor.TaskExecutor this;
+
+        this := @this: androidx.arch.core.executor.TaskExecutor;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public abstract void executeOnDiskIO(java.lang.Runnable);
+
+    public void executeOnMainThread(java.lang.Runnable)
+    {
+        androidx.arch.core.executor.TaskExecutor this;
+        java.lang.Runnable $u2;
+        boolean $u-1;
+
+        this := @this: androidx.arch.core.executor.TaskExecutor;
+
+        $u2 := @parameter0: java.lang.Runnable;
+
+        $u-1 = virtualinvoke this.<androidx.arch.core.executor.TaskExecutor: boolean isMainThread()>();
+
+        if $u-1 == 0 goto label1;
+
+        interfaceinvoke $u2.<java.lang.Runnable: void run()>();
+
+        return;
+
+     label1:
+        virtualinvoke this.<androidx.arch.core.executor.TaskExecutor: void postToMainThread(java.lang.Runnable)>($u2);
+
+        return;
+    }
+
+    public abstract boolean isMainThread();
+
+    public abstract void postToMainThread(java.lang.Runnable);
+}

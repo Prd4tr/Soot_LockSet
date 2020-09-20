@@ -1,0 +1,536 @@
+class androidx.constraintlayout.solver.widgets.analyzer.HelperReferences extends androidx.constraintlayout.solver.widgets.analyzer.WidgetRun
+{
+
+    public void <init>(androidx.constraintlayout.solver.widgets.ConstraintWidget)
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.HelperReferences this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.HelperReferences;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.analyzer.WidgetRun: void <init>(androidx.constraintlayout.solver.widgets.ConstraintWidget)>($u1);
+
+        return;
+    }
+
+    private void addDependency(androidx.constraintlayout.solver.widgets.analyzer.DependencyNode)
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.HelperReferences this;
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode $u3, $u0;
+        java.util.List $u0#2;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.HelperReferences;
+
+        $u3 := @parameter0: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        $u0#2 = $u0.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List dependencies>;
+
+        interfaceinvoke $u0#2.<java.util.List: boolean add(java.lang.Object)>($u3);
+
+        $u0#2 = $u3.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List targets>;
+
+        $u3 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        interfaceinvoke $u0#2.<java.util.List: boolean add(java.lang.Object)>($u3);
+
+        return;
+    }
+
+    void apply()
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.HelperReferences this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget barrier;
+        boolean barrier#2;
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode barrier#3, $u8;
+        androidx.constraintlayout.solver.widgets.Barrier barrier#6;
+        int $u-1, refwidget#14;
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type refwidget;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] refwidget#15;
+        androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun target;
+        java.util.List $u7;
+        androidx.constraintlayout.solver.widgets.analyzer.HorizontalWidgetRun target#59;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.HelperReferences;
+
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        barrier#2 = barrier instanceof androidx.constraintlayout.solver.widgets.Barrier;
+
+        if barrier#2 == 0 goto label21;
+
+        barrier#3 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        barrier#3.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean delegateToWidgetRun> = 1;
+
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        barrier#6 = (androidx.constraintlayout.solver.widgets.Barrier) barrier;
+
+        $u-1 = virtualinvoke barrier#6.<androidx.constraintlayout.solver.widgets.Barrier: int getBarrierType()>();
+
+        barrier#2 = virtualinvoke barrier#6.<androidx.constraintlayout.solver.widgets.Barrier: boolean allowsGoneWidget()>();
+
+        if $u-1 == 0 goto label16;
+
+        if $u-1 == 1 goto label11;
+
+        if $u-1 == 2 goto label06;
+
+        if $u-1 == 3 goto label01;
+
+        return;
+
+     label01:
+        barrier#3 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        refwidget = <androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type BOTTOM>;
+
+        barrier#3.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type type> = refwidget;
+
+        $u-1 = 0;
+
+     label02:
+        refwidget#14 = barrier#6.<androidx.constraintlayout.solver.widgets.Barrier: int mWidgetsCount>;
+
+        if $u-1 >= refwidget#14 goto label05;
+
+        refwidget#15 = barrier#6.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        barrier = refwidget#15[$u-1];
+
+        if barrier#2 != 0 goto label03;
+
+        refwidget#14 = virtualinvoke barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if refwidget#14 != 8 goto label03;
+
+        goto label04;
+
+     label03:
+        target = barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun verticalRun>;
+
+        barrier#3 = target.<androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode end>;
+
+        $u7 = barrier#3.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List dependencies>;
+
+        $u8 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        interfaceinvoke $u7.<java.util.List: boolean add(java.lang.Object)>($u8);
+
+        $u8 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        $u7 = $u8.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List targets>;
+
+        interfaceinvoke $u7.<java.util.List: boolean add(java.lang.Object)>(barrier#3);
+
+     label04:
+        $u-1 = $u-1 + 1;
+
+        goto label02;
+
+     label05:
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        target = barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun verticalRun>;
+
+        barrier#3 = target.<androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: void addDependency(androidx.constraintlayout.solver.widgets.analyzer.DependencyNode)>(barrier#3);
+
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        target = barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun verticalRun>;
+
+        barrier#3 = target.<androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode end>;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: void addDependency(androidx.constraintlayout.solver.widgets.analyzer.DependencyNode)>(barrier#3);
+
+        return;
+
+     label06:
+        barrier#3 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        refwidget = <androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type TOP>;
+
+        barrier#3.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type type> = refwidget;
+
+        $u-1 = 0;
+
+     label07:
+        refwidget#14 = barrier#6.<androidx.constraintlayout.solver.widgets.Barrier: int mWidgetsCount>;
+
+        if $u-1 >= refwidget#14 goto label10;
+
+        refwidget#15 = barrier#6.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        barrier = refwidget#15[$u-1];
+
+        if barrier#2 != 0 goto label08;
+
+        refwidget#14 = virtualinvoke barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if refwidget#14 != 8 goto label08;
+
+        goto label09;
+
+     label08:
+        target = barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun verticalRun>;
+
+        barrier#3 = target.<androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        $u7 = barrier#3.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List dependencies>;
+
+        $u8 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        interfaceinvoke $u7.<java.util.List: boolean add(java.lang.Object)>($u8);
+
+        $u8 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        $u7 = $u8.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List targets>;
+
+        interfaceinvoke $u7.<java.util.List: boolean add(java.lang.Object)>(barrier#3);
+
+     label09:
+        $u-1 = $u-1 + 1;
+
+        goto label07;
+
+     label10:
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        target = barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun verticalRun>;
+
+        barrier#3 = target.<androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: void addDependency(androidx.constraintlayout.solver.widgets.analyzer.DependencyNode)>(barrier#3);
+
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        target = barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun verticalRun>;
+
+        barrier#3 = target.<androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode end>;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: void addDependency(androidx.constraintlayout.solver.widgets.analyzer.DependencyNode)>(barrier#3);
+
+        return;
+
+     label11:
+        barrier#3 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        refwidget = <androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type RIGHT>;
+
+        barrier#3.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type type> = refwidget;
+
+        $u-1 = 0;
+
+     label12:
+        refwidget#14 = barrier#6.<androidx.constraintlayout.solver.widgets.Barrier: int mWidgetsCount>;
+
+        if $u-1 >= refwidget#14 goto label15;
+
+        refwidget#15 = barrier#6.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        barrier = refwidget#15[$u-1];
+
+        if barrier#2 != 0 goto label13;
+
+        refwidget#14 = virtualinvoke barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if refwidget#14 != 8 goto label13;
+
+        goto label14;
+
+     label13:
+        target#59 = barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.analyzer.HorizontalWidgetRun horizontalRun>;
+
+        barrier#3 = target#59.<androidx.constraintlayout.solver.widgets.analyzer.HorizontalWidgetRun: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode end>;
+
+        $u7 = barrier#3.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List dependencies>;
+
+        $u8 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        interfaceinvoke $u7.<java.util.List: boolean add(java.lang.Object)>($u8);
+
+        $u8 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        $u7 = $u8.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List targets>;
+
+        interfaceinvoke $u7.<java.util.List: boolean add(java.lang.Object)>(barrier#3);
+
+     label14:
+        $u-1 = $u-1 + 1;
+
+        goto label12;
+
+     label15:
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        target#59 = barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.analyzer.HorizontalWidgetRun horizontalRun>;
+
+        barrier#3 = target#59.<androidx.constraintlayout.solver.widgets.analyzer.HorizontalWidgetRun: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: void addDependency(androidx.constraintlayout.solver.widgets.analyzer.DependencyNode)>(barrier#3);
+
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        target#59 = barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.analyzer.HorizontalWidgetRun horizontalRun>;
+
+        barrier#3 = target#59.<androidx.constraintlayout.solver.widgets.analyzer.HorizontalWidgetRun: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode end>;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: void addDependency(androidx.constraintlayout.solver.widgets.analyzer.DependencyNode)>(barrier#3);
+
+        return;
+
+     label16:
+        barrier#3 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        refwidget = <androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type LEFT>;
+
+        barrier#3.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type type> = refwidget;
+
+        $u-1 = 0;
+
+     label17:
+        refwidget#14 = barrier#6.<androidx.constraintlayout.solver.widgets.Barrier: int mWidgetsCount>;
+
+        if $u-1 >= refwidget#14 goto label20;
+
+        refwidget#15 = barrier#6.<androidx.constraintlayout.solver.widgets.Barrier: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        barrier = refwidget#15[$u-1];
+
+        if barrier#2 != 0 goto label18;
+
+        refwidget#14 = virtualinvoke barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if refwidget#14 != 8 goto label18;
+
+        goto label19;
+
+     label18:
+        target#59 = barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.analyzer.HorizontalWidgetRun horizontalRun>;
+
+        barrier#3 = target#59.<androidx.constraintlayout.solver.widgets.analyzer.HorizontalWidgetRun: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        $u7 = barrier#3.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List dependencies>;
+
+        $u8 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        interfaceinvoke $u7.<java.util.List: boolean add(java.lang.Object)>($u8);
+
+        $u8 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        $u7 = $u8.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List targets>;
+
+        interfaceinvoke $u7.<java.util.List: boolean add(java.lang.Object)>(barrier#3);
+
+     label19:
+        $u-1 = $u-1 + 1;
+
+        goto label17;
+
+     label20:
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        target#59 = barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.analyzer.HorizontalWidgetRun horizontalRun>;
+
+        barrier#3 = target#59.<androidx.constraintlayout.solver.widgets.analyzer.HorizontalWidgetRun: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: void addDependency(androidx.constraintlayout.solver.widgets.analyzer.DependencyNode)>(barrier#3);
+
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        target#59 = barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.analyzer.HorizontalWidgetRun horizontalRun>;
+
+        barrier#3 = target#59.<androidx.constraintlayout.solver.widgets.analyzer.HorizontalWidgetRun: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode end>;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: void addDependency(androidx.constraintlayout.solver.widgets.analyzer.DependencyNode)>(barrier#3);
+
+     label21:
+        return;
+    }
+
+    public void applyToWidget()
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.HelperReferences this;
+        int $u-1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget barrier;
+        boolean barrier#2;
+        androidx.constraintlayout.solver.widgets.Barrier barrier#4;
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode $u3;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.HelperReferences;
+
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        barrier#2 = barrier instanceof androidx.constraintlayout.solver.widgets.Barrier;
+
+        if barrier#2 == 0 goto label3;
+
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        barrier#4 = (androidx.constraintlayout.solver.widgets.Barrier) barrier;
+
+        $u-1 = virtualinvoke barrier#4.<androidx.constraintlayout.solver.widgets.Barrier: int getBarrierType()>();
+
+        if $u-1 == 0 goto label2;
+
+        if $u-1 != 1 goto label1;
+
+        goto label2;
+
+     label1:
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        $u3 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        $u-1 = $u3.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: int value>;
+
+        virtualinvoke barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setY(int)>($u-1);
+
+        return;
+
+     label2:
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        $u3 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        $u-1 = $u3.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: int value>;
+
+        virtualinvoke barrier.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setX(int)>($u-1);
+
+     label3:
+        return;
+    }
+
+    void clear()
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.HelperReferences this;
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode $u0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.HelperReferences;
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.RunGroup runGroup> = null;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: void clear()>();
+
+        return;
+    }
+
+    void reset()
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.HelperReferences this;
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode $u0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.HelperReferences;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        $u0.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean resolved> = 0;
+
+        return;
+    }
+
+    boolean supportsWrapComputation()
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.HelperReferences this;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.HelperReferences;
+
+        return 0;
+    }
+
+    public void update(androidx.constraintlayout.solver.widgets.analyzer.Dependency)
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.HelperReferences this;
+        androidx.constraintlayout.solver.widgets.analyzer.Dependency $u9;
+        int value, $u-1, min, max;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget barrier;
+        androidx.constraintlayout.solver.widgets.Barrier barrier#2;
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode $u4;
+        java.util.List $u4#7;
+        java.util.Iterator $u-1#8;
+        boolean $u-1#10;
+        java.lang.Object $u-1#12;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.HelperReferences;
+
+        $u9 := @parameter0: androidx.constraintlayout.solver.widgets.analyzer.Dependency;
+
+        barrier = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        barrier#2 = (androidx.constraintlayout.solver.widgets.Barrier) barrier;
+
+        $u-1 = virtualinvoke barrier#2.<androidx.constraintlayout.solver.widgets.Barrier: int getBarrierType()>();
+
+        min = -1;
+
+        max = 0;
+
+        $u4 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        $u4#7 = $u4.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List targets>;
+
+        $u-1#8 = interfaceinvoke $u4#7.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#10 = interfaceinvoke $u-1#8.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#10 == 0 goto label4;
+
+        $u-1#12 = interfaceinvoke $u-1#8.<java.util.Iterator: java.lang.Object next()>();
+
+        $u4 = (androidx.constraintlayout.solver.widgets.analyzer.DependencyNode) $u-1#12;
+
+        value = $u4.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: int value>;
+
+        if min == -1 goto label2;
+
+        if value >= min goto label3;
+
+     label2:
+        min = value;
+
+     label3:
+        if max >= value goto label1;
+
+        max = value;
+
+        goto label1;
+
+     label4:
+        if $u-1 == 0 goto label6;
+
+        if $u-1 != 2 goto label5;
+
+        goto label6;
+
+     label5:
+        $u4 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        min = virtualinvoke barrier#2.<androidx.constraintlayout.solver.widgets.Barrier: int getMargin()>();
+
+        min = min + max;
+
+        virtualinvoke $u4.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: void resolve(int)>(min);
+
+        return;
+
+     label6:
+        $u4 = this.<androidx.constraintlayout.solver.widgets.analyzer.HelperReferences: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode start>;
+
+        max = virtualinvoke barrier#2.<androidx.constraintlayout.solver.widgets.Barrier: int getMargin()>();
+
+        min = max + min;
+
+        virtualinvoke $u4.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: void resolve(int)>(min);
+
+        return;
+    }
+}

@@ -1,0 +1,787 @@
+class androidx.constraintlayout.motion.utils.ArcCurveFit$Arc extends java.lang.Object
+{
+    private static final double EPSILON;
+    private static final java.lang.String TAG;
+    private static double[] ourPercent;
+    boolean linear;
+    double mArcDistance;
+    double mArcVelocity;
+    double mEllipseA;
+    double mEllipseB;
+    double mEllipseCenterX;
+    double mEllipseCenterY;
+    double[] mLut;
+    double mOneOverDeltaTime;
+    double mTime1;
+    double mTime2;
+    double mTmpCosAngle;
+    double mTmpSinAngle;
+    boolean mVertical;
+    double mX1;
+    double mX2;
+    double mY1;
+    double mY2;
+
+    static void <clinit>()
+    {
+        double[] $u0;
+
+        <androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: java.lang.String TAG> = "Arc";
+
+        <androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double EPSILON> = 0.001;
+
+        $u0 = newarray (double)[91];
+
+        <androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double[] ourPercent> = $u0;
+
+        return;
+    }
+
+    void <init>(int, double, double, double, double, double, double)
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc this;
+        int $u21;
+        double $u22, $u24, $u26, $u28, $u30, $u32, $u-1;
+        boolean $u0;
+        byte $u15, $u0#20;
+        double[] $u0#30;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc;
+
+        $u21 := @parameter0: int;
+
+        $u22 := @parameter1: double;
+
+        $u24 := @parameter2: double;
+
+        $u26 := @parameter3: double;
+
+        $u28 := @parameter4: double;
+
+        $u30 := @parameter5: double;
+
+        $u32 := @parameter6: double;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = 0;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean linear> = 0;
+
+        $u15 = 1;
+
+        if $u21 != 1 goto label01;
+
+        $u0 = 1;
+
+     label01:
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean mVertical> = $u0;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1> = $u22;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2> = $u24;
+
+        $u22 = $u24 - $u22;
+
+        $u22 = 1.0 / $u22;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mOneOverDeltaTime> = $u22;
+
+        if 3 != $u21 goto label02;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean linear> = 1;
+
+     label02:
+        $u24 = $u30 - $u26;
+
+        $u22 = $u32 - $u28;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean linear>;
+
+        if $u0 != 0 goto label12;
+
+        $u-1 = staticinvoke <java.lang.Math: double abs(double)>($u24);
+
+        $u0#20 = $u-1 cmpg 0.001;
+
+        if $u0#20 < 0 goto label12;
+
+        $u-1 = staticinvoke <java.lang.Math: double abs(double)>($u22);
+
+        $u0#20 = $u-1 cmpg 0.001;
+
+        if $u0#20 >= 0 goto label03;
+
+        goto label12;
+
+     label03:
+        $u0#30 = newarray (double)[101];
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double[] mLut> = $u0#30;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean mVertical>;
+
+        if $u0 == 0 goto label04;
+
+        $u0#20 = -1;
+
+        goto label05;
+
+     label04:
+        $u0#20 = 1;
+
+     label05:
+        $u-1 = (double) $u0#20;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($u-1);
+
+        $u24 = $u-1 * $u24;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseA> = $u24;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean mVertical>;
+
+        if $u0 == 0 goto label06;
+
+        goto label07;
+
+     label06:
+        $u15 = -1;
+
+     label07:
+        $u24 = (double) $u15;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($u24);
+
+        $u22 = $u24 * $u22;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseB> = $u22;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean mVertical>;
+
+        if $u0 == 0 goto label08;
+
+        $u22 = $u30;
+
+        goto label09;
+
+     label08:
+        $u22 = $u26;
+
+     label09:
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseCenterX> = $u22;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean mVertical>;
+
+        if $u0 == 0 goto label10;
+
+        $u22 = $u28;
+
+        goto label11;
+
+     label10:
+        $u22 = $u32;
+
+     label11:
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseCenterY> = $u22;
+
+        specialinvoke this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: void buildTable(double,double,double,double)>($u26, $u28, $u30, $u32);
+
+        $u22 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mArcDistance>;
+
+        $u24 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mOneOverDeltaTime>;
+
+        $u22 = $u22 * $u24;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mArcVelocity> = $u22;
+
+        return;
+
+     label12:
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean linear> = 1;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mX1> = $u26;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mX2> = $u30;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mY1> = $u28;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mY2> = $u32;
+
+        $u26 = staticinvoke <java.lang.Math: double hypot(double,double)>($u22, $u24);
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mArcDistance> = $u26;
+
+        $u28 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mOneOverDeltaTime>;
+
+        $u26 = $u26 * $u28;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mArcVelocity> = $u26;
+
+        $u26 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+        $u28 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+        $u30 = $u26 - $u28;
+
+        $u24 = $u24 / $u30;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseCenterX> = $u24;
+
+        $u24 = $u26 - $u28;
+
+        $u22 = $u22 / $u24;
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseCenterY> = $u22;
+
+        return;
+    }
+
+    private void buildTable(double, double, double, double)
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc this;
+        double $u28, $u30, $u32, $u34, px, py, lx, dist1;
+        int i, ans, s#51;
+        double[] s, s#50;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc;
+
+        $u28 := @parameter0: double;
+
+        $u30 := @parameter1: double;
+
+        $u32 := @parameter2: double;
+
+        $u34 := @parameter3: double;
+
+        $u32 = $u32 - $u28;
+
+        $u34 = $u30 - $u34;
+
+        lx = 0.0;
+
+        $u30 = 0.0;
+
+        $u28 = 0.0;
+
+        i = 0;
+
+     label01:
+        s = <androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double[] ourPercent>;
+
+        ans = lengthof s;
+
+        if i >= ans goto label03;
+
+        dist1 = $u28;
+
+        px = (double) i;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(px);
+
+        px = px * 90.0;
+
+        ans = lengthof s;
+
+        ans = ans + -1;
+
+        py = (double) ans;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(py);
+
+        px = px / py;
+
+        py = staticinvoke <java.lang.Math: double toRadians(double)>(px);
+
+        px = staticinvoke <java.lang.Math: double sin(double)>(py);
+
+        py = staticinvoke <java.lang.Math: double cos(double)>(py);
+
+        px = $u32 * px;
+
+        py = $u34 * py;
+
+        if i <= 0 goto label02;
+
+        lx = px - lx;
+
+        $u30 = py - $u30;
+
+        $u30 = staticinvoke <java.lang.Math: double hypot(double,double)>(lx, $u30);
+
+        $u28 = $u30 + $u28;
+
+        s = <androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double[] ourPercent>;
+
+        s[i] = $u28;
+
+        dist1 = $u28;
+
+        goto label02;
+
+     label02:
+        lx = px;
+
+        $u30 = py;
+
+        i = i + 1;
+
+        $u28 = dist1;
+
+        goto label01;
+
+     label03:
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mArcDistance> = $u28;
+
+        i = 0;
+
+     label04:
+        s = <androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double[] ourPercent>;
+
+        ans = lengthof s;
+
+        if i >= ans goto label05;
+
+        $u30 = s[i];
+
+        $u30 = $u30 / $u28;
+
+        s[i] = $u30;
+
+        i = i + 1;
+
+        goto label04;
+
+     label05:
+        i = 0;
+
+     label06:
+        s = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double[] mLut>;
+
+        ans = lengthof s;
+
+        if i >= ans goto label10;
+
+        $u28 = (double) i;
+
+        ans = lengthof s;
+
+        ans = ans + -1;
+
+        $u30 = (double) ans;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($u28);
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($u30);
+
+        $u30 = $u28 / $u30;
+
+        s = <androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double[] ourPercent>;
+
+        ans = staticinvoke <java.util.Arrays: int binarySearch(double[],double)>(s, $u30);
+
+        if ans < 0 goto label07;
+
+        s = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double[] mLut>;
+
+        s#50 = <androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double[] ourPercent>;
+
+        s#51 = lengthof s#50;
+
+        s#51 = s#51 + -1;
+
+        ans = ans / s#51;
+
+        $u28 = (double) ans;
+
+        s[i] = $u28;
+
+        goto label09;
+
+     label07:
+        if ans != -1 goto label08;
+
+        s = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double[] mLut>;
+
+        s[i] = 0.0;
+
+        goto label09;
+
+     label08:
+        s#51 = neg ans;
+
+        s#51 = s#51 + -2;
+
+        ans = neg ans;
+
+        ans = ans + -1;
+
+        $u28 = (double) s#51;
+
+        s = <androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double[] ourPercent>;
+
+        $u32 = s[s#51];
+
+        $u30 = $u30 - $u32;
+
+        $u34 = s[ans];
+
+        $u32 = s[s#51];
+
+        $u32 = $u34 - $u32;
+
+        $u30 = $u30 / $u32;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($u28);
+
+        $u28 = $u28 + $u30;
+
+        ans = lengthof s;
+
+        ans = ans + -1;
+
+        $u30 = (double) ans;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($u30);
+
+        $u28 = $u28 / $u30;
+
+        s = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double[] mLut>;
+
+        s[i] = $u28;
+
+     label09:
+        i = i + 1;
+
+        goto label06;
+
+     label10:
+        return;
+    }
+
+    double getDX()
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc this;
+        double $u-1, vx, vy;
+        boolean $u6;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc;
+
+        vx = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseA>;
+
+        vy = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTmpCosAngle>;
+
+        vx = vx * vy;
+
+        vy = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseB>;
+
+        vy = neg vy;
+
+        $u-1 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTmpSinAngle>;
+
+        $u-1 = vy * $u-1;
+
+        vy = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mArcVelocity>;
+
+        $u-1 = staticinvoke <java.lang.Math: double hypot(double,double)>(vx, $u-1);
+
+        vy = vy / $u-1;
+
+        $u6 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean mVertical>;
+
+        if $u6 == 0 goto label1;
+
+        vx = neg vx;
+
+        vx = vx * vy;
+
+        return vx;
+
+     label1:
+        vx = vx * vy;
+
+        return vx;
+    }
+
+    double getDY()
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc this;
+        double $u-1, vy, norm;
+        boolean $u6;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc;
+
+        $u-1 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseA>;
+
+        vy = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTmpCosAngle>;
+
+        $u-1 = $u-1 * vy;
+
+        vy = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseB>;
+
+        vy = neg vy;
+
+        norm = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTmpSinAngle>;
+
+        vy = vy * norm;
+
+        norm = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mArcVelocity>;
+
+        $u-1 = staticinvoke <java.lang.Math: double hypot(double,double)>($u-1, vy);
+
+        $u-1 = norm / $u-1;
+
+        $u6 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean mVertical>;
+
+        if $u6 == 0 goto label1;
+
+        vy = neg vy;
+
+        $u-1 = vy * $u-1;
+
+        return $u-1;
+
+     label1:
+        $u-1 = vy * $u-1;
+
+        return $u-1;
+    }
+
+    public double getLinearDX(double)
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc this;
+        double $u3;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc;
+
+        $u3 := @parameter0: double;
+
+        $u3 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseCenterX>;
+
+        return $u3;
+    }
+
+    public double getLinearDY(double)
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc this;
+        double $u3;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc;
+
+        $u3 := @parameter0: double;
+
+        $u3 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseCenterY>;
+
+        return $u3;
+    }
+
+    public double getLinearX(double)
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc this;
+        double $u5, t, $u2;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc;
+
+        $u5 := @parameter0: double;
+
+        t = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+        $u5 = $u5 - t;
+
+        t = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mOneOverDeltaTime>;
+
+        t = $u5 * t;
+
+        $u5 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mX1>;
+
+        $u2 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mX2>;
+
+        $u2 = $u2 - $u5;
+
+        t = $u2 * t;
+
+        $u5 = $u5 + t;
+
+        return $u5;
+    }
+
+    public double getLinearY(double)
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc this;
+        double $u5, t, $u2;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc;
+
+        $u5 := @parameter0: double;
+
+        t = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+        $u5 = $u5 - t;
+
+        t = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mOneOverDeltaTime>;
+
+        t = $u5 * t;
+
+        $u5 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mY1>;
+
+        $u2 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mY2>;
+
+        $u2 = $u2 - $u5;
+
+        t = $u2 * t;
+
+        $u5 = $u5 + t;
+
+        return $u5;
+    }
+
+    double getX()
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc this;
+        double $u4, $u0, $u2;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseCenterX>;
+
+        $u2 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseA>;
+
+        $u4 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTmpSinAngle>;
+
+        $u4 = $u2 * $u4;
+
+        $u0 = $u0 + $u4;
+
+        return $u0;
+    }
+
+    double getY()
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc this;
+        double $u4, $u0, $u2;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseCenterY>;
+
+        $u2 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mEllipseB>;
+
+        $u4 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTmpCosAngle>;
+
+        $u4 = $u2 * $u4;
+
+        $u0 = $u0 + $u4;
+
+        return $u0;
+    }
+
+    double lookup(double)
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc this;
+        double $u13, $u10, pos, $u8;
+        int iv, off;
+        byte $u2;
+        double[] $u0;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc;
+
+        $u13 := @parameter0: double;
+
+        $u2 = $u13 cmpg 0.0;
+
+        if $u2 > 0 goto label1;
+
+        return 0.0;
+
+     label1:
+        $u2 = $u13 cmpl 1.0;
+
+        if $u2 < 0 goto label2;
+
+        return 1.0;
+
+     label2:
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double[] mLut>;
+
+        iv = lengthof $u0;
+
+        iv = iv + -1;
+
+        pos = (double) iv;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(pos);
+
+        $u13 = pos * $u13;
+
+        iv = (int) $u13;
+
+        off = (int) $u13;
+
+        pos = (double) off;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(pos);
+
+        pos = $u13 - pos;
+
+        $u13 = $u0[iv];
+
+        off = iv + 1;
+
+        $u8 = $u0[off];
+
+        $u10 = $u0[iv];
+
+        $u10 = $u8 - $u10;
+
+        pos = $u10 * pos;
+
+        $u13 = $u13 + pos;
+
+        return $u13;
+    }
+
+    void setPoint(double)
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc this;
+        double $u7, percent#2;
+        boolean percent;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc;
+
+        $u7 := @parameter0: double;
+
+        percent = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean mVertical>;
+
+        if percent == 0 goto label1;
+
+        percent#2 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+        $u7 = percent#2 - $u7;
+
+        goto label2;
+
+     label1:
+        percent#2 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+        $u7 = $u7 - percent#2;
+
+     label2:
+        percent#2 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mOneOverDeltaTime>;
+
+        $u7 = $u7 * percent#2;
+
+        $u7 = virtualinvoke this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double lookup(double)>($u7);
+
+        $u7 = $u7 * 1.5707963267948966;
+
+        percent#2 = staticinvoke <java.lang.Math: double sin(double)>($u7);
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTmpSinAngle> = percent#2;
+
+        $u7 = staticinvoke <java.lang.Math: double cos(double)>($u7);
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTmpCosAngle> = $u7;
+
+        return;
+    }
+}

@@ -1,0 +1,48 @@
+class androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedVectorDrawableTransition extends androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$Transition
+{
+    private final androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat mAvd;
+
+    void <init>(androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedVectorDrawableTransition this;
+        androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat $u2;
+
+        this := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedVectorDrawableTransition;
+
+        $u2 := @parameter0: androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$Transition: void <init>(androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$1)>(null);
+
+        this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedVectorDrawableTransition: androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat mAvd> = $u2;
+
+        return;
+    }
+
+    public void start()
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedVectorDrawableTransition this;
+        androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedVectorDrawableTransition;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedVectorDrawableTransition: androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat mAvd>;
+
+        virtualinvoke $u0.<androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat: void start()>();
+
+        return;
+    }
+
+    public void stop()
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedVectorDrawableTransition this;
+        androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedVectorDrawableTransition;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatedVectorDrawableTransition: androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat mAvd>;
+
+        virtualinvoke $u0.<androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat: void stop()>();
+
+        return;
+    }
+}

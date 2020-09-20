@@ -1,0 +1,47 @@
+public final class androidx.core.os.ConfigurationCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.os.ConfigurationCompat this;
+
+        this := @this: androidx.core.os.ConfigurationCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.core.os.LocaleListCompat getLocales(android.content.res.Configuration)
+    {
+        android.content.res.Configuration $u3;
+        java.util.Locale $u2;
+        int $u0;
+        android.os.LocaleList $u-1;
+        androidx.core.os.LocaleListCompat $u-1#5;
+        java.util.Locale[] $u0#8;
+
+        $u3 := @parameter0: android.content.res.Configuration;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 24 goto label1;
+
+        $u-1 = virtualinvoke $u3.<android.content.res.Configuration: android.os.LocaleList getLocales()>();
+
+        $u-1#5 = staticinvoke <androidx.core.os.LocaleListCompat: androidx.core.os.LocaleListCompat wrap(android.os.LocaleList)>($u-1);
+
+        return $u-1#5;
+
+     label1:
+        $u0#8 = newarray (java.util.Locale)[1];
+
+        $u2 = $u3.<android.content.res.Configuration: java.util.Locale locale>;
+
+        $u0#8[0] = $u2;
+
+        $u-1#5 = staticinvoke <androidx.core.os.LocaleListCompat: androidx.core.os.LocaleListCompat create(java.util.Locale[])>($u0#8);
+
+        return $u-1#5;
+    }
+}

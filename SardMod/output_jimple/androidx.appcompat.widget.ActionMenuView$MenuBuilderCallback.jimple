@@ -1,0 +1,82 @@
+class androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback extends java.lang.Object implements androidx.appcompat.view.menu.MenuBuilder$Callback
+{
+    final androidx.appcompat.widget.ActionMenuView this$0;
+
+    void <init>(androidx.appcompat.widget.ActionMenuView)
+    {
+        androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback this;
+        androidx.appcompat.widget.ActionMenuView $u1;
+
+        this := @this: androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback;
+
+        $u1 := @parameter0: androidx.appcompat.widget.ActionMenuView;
+
+        this.<androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback: androidx.appcompat.widget.ActionMenuView this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean onMenuItemSelected(androidx.appcompat.view.menu.MenuBuilder, android.view.MenuItem)
+    {
+        androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback this;
+        androidx.appcompat.view.menu.MenuBuilder $u2;
+        android.view.MenuItem $u3;
+        boolean $u-1;
+        androidx.appcompat.widget.ActionMenuView $u0;
+        androidx.appcompat.widget.ActionMenuView$OnMenuItemClickListener $u0#2;
+
+        this := @this: androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback;
+
+        $u2 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u3 := @parameter1: android.view.MenuItem;
+
+        $u0 = this.<androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback: androidx.appcompat.widget.ActionMenuView this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuView$OnMenuItemClickListener mOnMenuItemClickListener>;
+
+        if $u0#2 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback: androidx.appcompat.widget.ActionMenuView this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.widget.ActionMenuView$OnMenuItemClickListener mOnMenuItemClickListener>;
+
+        $u-1 = interfaceinvoke $u0#2.<androidx.appcompat.widget.ActionMenuView$OnMenuItemClickListener: boolean onMenuItemClick(android.view.MenuItem)>($u3);
+
+        if $u-1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void onMenuModeChange(androidx.appcompat.view.menu.MenuBuilder)
+    {
+        androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback this;
+        androidx.appcompat.view.menu.MenuBuilder $u2;
+        androidx.appcompat.widget.ActionMenuView $u0;
+        androidx.appcompat.view.menu.MenuBuilder$Callback $u0#2;
+
+        this := @this: androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback;
+
+        $u2 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u0 = this.<androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback: androidx.appcompat.widget.ActionMenuView this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuBuilder$Callback mMenuBuilderCallback>;
+
+        if $u0#2 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ActionMenuView$MenuBuilderCallback: androidx.appcompat.widget.ActionMenuView this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActionMenuView: androidx.appcompat.view.menu.MenuBuilder$Callback mMenuBuilderCallback>;
+
+        interfaceinvoke $u0#2.<androidx.appcompat.view.menu.MenuBuilder$Callback: void onMenuModeChange(androidx.appcompat.view.menu.MenuBuilder)>($u2);
+
+     label1:
+        return;
+    }
+}

@@ -1,0 +1,470 @@
+public class androidx.cursoradapter.widget.SimpleCursorAdapter extends androidx.cursoradapter.widget.ResourceCursorAdapter
+{
+    private androidx.cursoradapter.widget.SimpleCursorAdapter$CursorToStringConverter mCursorToStringConverter;
+    protected int[] mFrom;
+    java.lang.String[] mOriginalFrom;
+    private int mStringConversionColumn;
+    protected int[] mTo;
+    private androidx.cursoradapter.widget.SimpleCursorAdapter$ViewBinder mViewBinder;
+
+    public void <init>(android.content.Context, int, android.database.Cursor, java.lang.String[], int[])
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        android.content.Context $u2;
+        int $u3;
+        android.database.Cursor $u4;
+        java.lang.String[] $u5;
+        int[] $u6;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.database.Cursor;
+
+        $u5 := @parameter3: java.lang.String[];
+
+        $u6 := @parameter4: int[];
+
+        specialinvoke this.<androidx.cursoradapter.widget.ResourceCursorAdapter: void <init>(android.content.Context,int,android.database.Cursor)>($u2, $u3, $u4);
+
+        this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int mStringConversionColumn> = -1;
+
+        this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int[] mTo> = $u6;
+
+        this.<androidx.cursoradapter.widget.SimpleCursorAdapter: java.lang.String[] mOriginalFrom> = $u5;
+
+        specialinvoke this.<androidx.cursoradapter.widget.SimpleCursorAdapter: void findColumns(android.database.Cursor,java.lang.String[])>($u4, $u5);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, int, android.database.Cursor, java.lang.String[], int[], int)
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        android.content.Context $u2;
+        int $u3, $u7;
+        android.database.Cursor $u4;
+        java.lang.String[] $u5;
+        int[] $u6;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.database.Cursor;
+
+        $u5 := @parameter3: java.lang.String[];
+
+        $u6 := @parameter4: int[];
+
+        $u7 := @parameter5: int;
+
+        specialinvoke this.<androidx.cursoradapter.widget.ResourceCursorAdapter: void <init>(android.content.Context,int,android.database.Cursor,int)>($u2, $u3, $u4, $u7);
+
+        this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int mStringConversionColumn> = -1;
+
+        this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int[] mTo> = $u6;
+
+        this.<androidx.cursoradapter.widget.SimpleCursorAdapter: java.lang.String[] mOriginalFrom> = $u5;
+
+        specialinvoke this.<androidx.cursoradapter.widget.SimpleCursorAdapter: void findColumns(android.database.Cursor,java.lang.String[])>($u4, $u5);
+
+        return;
+    }
+
+    private void findColumns(android.database.Cursor, java.lang.String[])
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        android.database.Cursor $u5;
+        java.lang.String[] $u6;
+        int[] $u2;
+        int $u-1, count, i;
+        java.lang.String $u3;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        $u5 := @parameter0: android.database.Cursor;
+
+        $u6 := @parameter1: java.lang.String[];
+
+        if $u5 == null goto label5;
+
+        count = lengthof $u6;
+
+        $u2 = this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int[] mFrom>;
+
+        if $u2 == null goto label1;
+
+        $u-1 = lengthof $u2;
+
+        if $u-1 == count goto label2;
+
+     label1:
+        $u2 = newarray (int)[count];
+
+        this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int[] mFrom> = $u2;
+
+     label2:
+        i = 0;
+
+     label3:
+        if i >= count goto label4;
+
+        $u2 = this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int[] mFrom>;
+
+        $u3 = $u6[i];
+
+        $u-1 = interfaceinvoke $u5.<android.database.Cursor: int getColumnIndexOrThrow(java.lang.String)>($u3);
+
+        $u2[i] = $u-1;
+
+        i = i + 1;
+
+        goto label3;
+
+     label4:
+        return;
+
+     label5:
+        this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int[] mFrom> = null;
+
+        return;
+    }
+
+    public void bindView(android.view.View, android.content.Context, android.database.Cursor)
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        android.view.View $u12, $u-1;
+        android.content.Context $u13;
+        android.database.Cursor $u14;
+        androidx.cursoradapter.widget.SimpleCursorAdapter$ViewBinder binder;
+        int[] 'from', 'to';
+        int count, i, v;
+        boolean bound;
+        java.lang.String $u-1#11, text;
+        android.widget.TextView $u8;
+        android.widget.ImageView $u8#18;
+        java.lang.IllegalStateException $u8#19;
+        java.lang.StringBuilder $u9;
+        java.lang.Class $u-1#21;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        $u12 := @parameter0: android.view.View;
+
+        $u13 := @parameter1: android.content.Context;
+
+        $u14 := @parameter2: android.database.Cursor;
+
+        binder = this.<androidx.cursoradapter.widget.SimpleCursorAdapter: androidx.cursoradapter.widget.SimpleCursorAdapter$ViewBinder mViewBinder>;
+
+        'from' = this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int[] mTo>;
+
+        count = lengthof 'from';
+
+        'from' = this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int[] mFrom>;
+
+        'to' = this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int[] mTo>;
+
+        i = 0;
+
+     label1:
+        if i >= count goto label7;
+
+        v = 'to'[i];
+
+        $u-1 = virtualinvoke $u12.<android.view.View: android.view.View findViewById(int)>(v);
+
+        if $u-1 == null goto label6;
+
+        bound = 0;
+
+        if binder == null goto label2;
+
+        v = 'from'[i];
+
+        bound = interfaceinvoke binder.<androidx.cursoradapter.widget.SimpleCursorAdapter$ViewBinder: boolean setViewValue(android.view.View,android.database.Cursor,int)>($u-1, $u14, v);
+
+     label2:
+        if bound != 0 goto label6;
+
+        v = 'from'[i];
+
+        $u-1#11 = interfaceinvoke $u14.<android.database.Cursor: java.lang.String getString(int)>(v);
+
+        text = $u-1#11;
+
+        if $u-1#11 != null goto label3;
+
+        text = "";
+
+     label3:
+        bound = $u-1 instanceof android.widget.TextView;
+
+        if bound == 0 goto label4;
+
+        $u8 = (android.widget.TextView) $u-1;
+
+        virtualinvoke this.<androidx.cursoradapter.widget.SimpleCursorAdapter: void setViewText(android.widget.TextView,java.lang.String)>($u8, text);
+
+        goto label6;
+
+     label4:
+        bound = $u-1 instanceof android.widget.ImageView;
+
+        if bound == 0 goto label5;
+
+        $u8#18 = (android.widget.ImageView) $u-1;
+
+        virtualinvoke this.<androidx.cursoradapter.widget.SimpleCursorAdapter: void setViewImage(android.widget.ImageView,java.lang.String)>($u8#18, text);
+
+        goto label6;
+
+     label5:
+        $u8#19 = new java.lang.IllegalStateException;
+
+        $u9 = new java.lang.StringBuilder;
+
+        specialinvoke $u9.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1#21 = virtualinvoke $u-1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#11 = virtualinvoke $u-1#21.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke $u9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#11);
+
+        virtualinvoke $u9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" is not a ");
+
+        virtualinvoke $u9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" view that can be bounds by this SimpleCursorAdapter");
+
+        $u-1#11 = virtualinvoke $u9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u8#19.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u-1#11);
+
+        throw $u8#19;
+
+     label6:
+        i = i + 1;
+
+        goto label1;
+
+     label7:
+        return;
+    }
+
+    public void changeCursorAndColumns(android.database.Cursor, java.lang.String[], int[])
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        android.database.Cursor $u1;
+        java.lang.String[] $u2;
+        int[] $u3;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        $u1 := @parameter0: android.database.Cursor;
+
+        $u2 := @parameter1: java.lang.String[];
+
+        $u3 := @parameter2: int[];
+
+        this.<androidx.cursoradapter.widget.SimpleCursorAdapter: java.lang.String[] mOriginalFrom> = $u2;
+
+        this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int[] mTo> = $u3;
+
+        specialinvoke this.<androidx.cursoradapter.widget.SimpleCursorAdapter: void findColumns(android.database.Cursor,java.lang.String[])>($u1, $u2);
+
+        specialinvoke this.<androidx.cursoradapter.widget.ResourceCursorAdapter: void changeCursor(android.database.Cursor)>($u1);
+
+        return;
+    }
+
+    public java.lang.CharSequence convertToString(android.database.Cursor)
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        android.database.Cursor $u3;
+        androidx.cursoradapter.widget.SimpleCursorAdapter$CursorToStringConverter $u0;
+        java.lang.CharSequence $u-1;
+        int $u0#4;
+        java.lang.String $u-1#5;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        $u3 := @parameter0: android.database.Cursor;
+
+        $u0 = this.<androidx.cursoradapter.widget.SimpleCursorAdapter: androidx.cursoradapter.widget.SimpleCursorAdapter$CursorToStringConverter mCursorToStringConverter>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = interfaceinvoke $u0.<androidx.cursoradapter.widget.SimpleCursorAdapter$CursorToStringConverter: java.lang.CharSequence convertToString(android.database.Cursor)>($u3);
+
+        return $u-1;
+
+     label1:
+        $u0#4 = this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int mStringConversionColumn>;
+
+        if $u0#4 <= -1 goto label2;
+
+        $u-1#5 = interfaceinvoke $u3.<android.database.Cursor: java.lang.String getString(int)>($u0#4);
+
+        return $u-1#5;
+
+     label2:
+        $u-1 = specialinvoke this.<androidx.cursoradapter.widget.ResourceCursorAdapter: java.lang.CharSequence convertToString(android.database.Cursor)>($u3);
+
+        return $u-1;
+    }
+
+    public androidx.cursoradapter.widget.SimpleCursorAdapter$CursorToStringConverter getCursorToStringConverter()
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        androidx.cursoradapter.widget.SimpleCursorAdapter$CursorToStringConverter ret0;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        ret0 = this.<androidx.cursoradapter.widget.SimpleCursorAdapter: androidx.cursoradapter.widget.SimpleCursorAdapter$CursorToStringConverter mCursorToStringConverter>;
+
+        return ret0;
+    }
+
+    public int getStringConversionColumn()
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        int ret0;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        ret0 = this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int mStringConversionColumn>;
+
+        return ret0;
+    }
+
+    public androidx.cursoradapter.widget.SimpleCursorAdapter$ViewBinder getViewBinder()
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        androidx.cursoradapter.widget.SimpleCursorAdapter$ViewBinder ret0;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        ret0 = this.<androidx.cursoradapter.widget.SimpleCursorAdapter: androidx.cursoradapter.widget.SimpleCursorAdapter$ViewBinder mViewBinder>;
+
+        return ret0;
+    }
+
+    public void setCursorToStringConverter(androidx.cursoradapter.widget.SimpleCursorAdapter$CursorToStringConverter)
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        androidx.cursoradapter.widget.SimpleCursorAdapter$CursorToStringConverter $u1;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        $u1 := @parameter0: androidx.cursoradapter.widget.SimpleCursorAdapter$CursorToStringConverter;
+
+        this.<androidx.cursoradapter.widget.SimpleCursorAdapter: androidx.cursoradapter.widget.SimpleCursorAdapter$CursorToStringConverter mCursorToStringConverter> = $u1;
+
+        return;
+    }
+
+    public void setStringConversionColumn(int)
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        int $u1;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.cursoradapter.widget.SimpleCursorAdapter: int mStringConversionColumn> = $u1;
+
+        return;
+    }
+
+    public void setViewBinder(androidx.cursoradapter.widget.SimpleCursorAdapter$ViewBinder)
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        androidx.cursoradapter.widget.SimpleCursorAdapter$ViewBinder $u1;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        $u1 := @parameter0: androidx.cursoradapter.widget.SimpleCursorAdapter$ViewBinder;
+
+        this.<androidx.cursoradapter.widget.SimpleCursorAdapter: androidx.cursoradapter.widget.SimpleCursorAdapter$ViewBinder mViewBinder> = $u1;
+
+        return;
+    }
+
+    public void setViewImage(android.widget.ImageView, java.lang.String)
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        android.widget.ImageView $u3;
+        java.lang.String $u4;
+        int $u-1;
+        java.lang.NumberFormatException nfe;
+        android.net.Uri $u-1#4;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        $u3 := @parameter0: android.widget.ImageView;
+
+        $u4 := @parameter1: java.lang.String;
+
+     label1:
+        $u-1 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($u4);
+
+        virtualinvoke $u3.<android.widget.ImageView: void setImageResource(int)>($u-1);
+
+     label2:
+        return;
+
+     label3:
+        nfe := @caughtexception;
+
+        $u-1#4 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($u4);
+
+        virtualinvoke $u3.<android.widget.ImageView: void setImageURI(android.net.Uri)>($u-1#4);
+
+        return;
+
+        catch java.lang.NumberFormatException from label1 to label2 with label3;
+    }
+
+    public void setViewText(android.widget.TextView, java.lang.String)
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        android.widget.TextView $u1;
+        java.lang.String $u2;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        $u1 := @parameter0: android.widget.TextView;
+
+        $u2 := @parameter1: java.lang.String;
+
+        virtualinvoke $u1.<android.widget.TextView: void setText(java.lang.CharSequence)>($u2);
+
+        return;
+    }
+
+    public android.database.Cursor swapCursor(android.database.Cursor)
+    {
+        androidx.cursoradapter.widget.SimpleCursorAdapter this;
+        android.database.Cursor $u2;
+        java.lang.String[] $u0;
+
+        this := @this: androidx.cursoradapter.widget.SimpleCursorAdapter;
+
+        $u2 := @parameter0: android.database.Cursor;
+
+        $u0 = this.<androidx.cursoradapter.widget.SimpleCursorAdapter: java.lang.String[] mOriginalFrom>;
+
+        specialinvoke this.<androidx.cursoradapter.widget.SimpleCursorAdapter: void findColumns(android.database.Cursor,java.lang.String[])>($u2, $u0);
+
+        $u2 = specialinvoke this.<androidx.cursoradapter.widget.ResourceCursorAdapter: android.database.Cursor swapCursor(android.database.Cursor)>($u2);
+
+        return $u2;
+    }
+}

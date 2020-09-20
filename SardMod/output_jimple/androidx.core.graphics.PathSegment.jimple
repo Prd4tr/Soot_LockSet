@@ -1,0 +1,261 @@
+public final class androidx.core.graphics.PathSegment extends java.lang.Object
+{
+    private final android.graphics.PointF mEnd;
+    private final float mEndFraction;
+    private final android.graphics.PointF mStart;
+    private final float mStartFraction;
+
+    public void <init>(android.graphics.PointF, float, android.graphics.PointF, float)
+    {
+        androidx.core.graphics.PathSegment this;
+        android.graphics.PointF $u2, $u4;
+        float $u3, $u5;
+        java.lang.Object $u-1;
+
+        this := @this: androidx.core.graphics.PathSegment;
+
+        $u2 := @parameter0: android.graphics.PointF;
+
+        $u3 := @parameter1: float;
+
+        $u4 := @parameter2: android.graphics.PointF;
+
+        $u5 := @parameter3: float;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u-1 = staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object,java.lang.Object)>($u2, "start == null");
+
+        $u2 = (android.graphics.PointF) $u-1;
+
+        this.<androidx.core.graphics.PathSegment: android.graphics.PointF mStart> = $u2;
+
+        this.<androidx.core.graphics.PathSegment: float mStartFraction> = $u3;
+
+        $u-1 = staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object,java.lang.Object)>($u4, "end == null");
+
+        $u2 = (android.graphics.PointF) $u-1;
+
+        this.<androidx.core.graphics.PathSegment: android.graphics.PointF mEnd> = $u2;
+
+        this.<androidx.core.graphics.PathSegment: float mEndFraction> = $u5;
+
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.core.graphics.PathSegment this, that#4;
+        java.lang.Object $u6;
+        boolean that;
+        float $u3, $u4;
+        int $u-1;
+        android.graphics.PointF $u3#13, $u4#14;
+
+        this := @this: androidx.core.graphics.PathSegment;
+
+        $u6 := @parameter0: java.lang.Object;
+
+        if this != $u6 goto label1;
+
+        return 1;
+
+     label1:
+        that = $u6 instanceof androidx.core.graphics.PathSegment;
+
+        if that != 0 goto label2;
+
+        return 0;
+
+     label2:
+        that#4 = (androidx.core.graphics.PathSegment) $u6;
+
+        $u3 = this.<androidx.core.graphics.PathSegment: float mStartFraction>;
+
+        $u4 = that#4.<androidx.core.graphics.PathSegment: float mStartFraction>;
+
+        $u-1 = staticinvoke <java.lang.Float: int compare(float,float)>($u3, $u4);
+
+        if $u-1 != 0 goto label3;
+
+        $u3 = this.<androidx.core.graphics.PathSegment: float mEndFraction>;
+
+        $u4 = that#4.<androidx.core.graphics.PathSegment: float mEndFraction>;
+
+        $u-1 = staticinvoke <java.lang.Float: int compare(float,float)>($u3, $u4);
+
+        if $u-1 != 0 goto label3;
+
+        $u3#13 = this.<androidx.core.graphics.PathSegment: android.graphics.PointF mStart>;
+
+        $u4#14 = that#4.<androidx.core.graphics.PathSegment: android.graphics.PointF mStart>;
+
+        that = virtualinvoke $u3#13.<android.graphics.PointF: boolean equals(java.lang.Object)>($u4#14);
+
+        if that == 0 goto label3;
+
+        $u3#13 = this.<androidx.core.graphics.PathSegment: android.graphics.PointF mEnd>;
+
+        $u4#14 = that#4.<androidx.core.graphics.PathSegment: android.graphics.PointF mEnd>;
+
+        that = virtualinvoke $u3#13.<android.graphics.PointF: boolean equals(java.lang.Object)>($u4#14);
+
+        if that == 0 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public android.graphics.PointF getEnd()
+    {
+        androidx.core.graphics.PathSegment this;
+        android.graphics.PointF ret0;
+
+        this := @this: androidx.core.graphics.PathSegment;
+
+        ret0 = this.<androidx.core.graphics.PathSegment: android.graphics.PointF mEnd>;
+
+        return ret0;
+    }
+
+    public float getEndFraction()
+    {
+        androidx.core.graphics.PathSegment this;
+        float ret0;
+
+        this := @this: androidx.core.graphics.PathSegment;
+
+        ret0 = this.<androidx.core.graphics.PathSegment: float mEndFraction>;
+
+        return ret0;
+    }
+
+    public android.graphics.PointF getStart()
+    {
+        androidx.core.graphics.PathSegment this;
+        android.graphics.PointF ret0;
+
+        this := @this: androidx.core.graphics.PathSegment;
+
+        ret0 = this.<androidx.core.graphics.PathSegment: android.graphics.PointF mStart>;
+
+        return ret0;
+    }
+
+    public float getStartFraction()
+    {
+        androidx.core.graphics.PathSegment this;
+        float ret0;
+
+        this := @this: androidx.core.graphics.PathSegment;
+
+        ret0 = this.<androidx.core.graphics.PathSegment: float mStartFraction>;
+
+        return ret0;
+    }
+
+    public int hashCode()
+    {
+        androidx.core.graphics.PathSegment this;
+        byte $u5;
+        android.graphics.PointF result;
+        int $u-1, result1, $u-1#8;
+        float $u2;
+
+        this := @this: androidx.core.graphics.PathSegment;
+
+        result = this.<androidx.core.graphics.PathSegment: android.graphics.PointF mStart>;
+
+        $u-1 = virtualinvoke result.<android.graphics.PointF: int hashCode()>();
+
+        result1 = $u-1 * 31;
+
+        $u2 = this.<androidx.core.graphics.PathSegment: float mStartFraction>;
+
+        $u-1 = 0;
+
+        $u5 = $u2 cmpl 0.0F;
+
+        if $u5 == 0 goto label1;
+
+        $u-1#8 = staticinvoke <java.lang.Float: int floatToIntBits(float)>($u2);
+
+        goto label2;
+
+     label1:
+        $u-1#8 = 0;
+
+     label2:
+        result1 = result1 + $u-1#8;
+
+        result1 = result1 * 31;
+
+        result = this.<androidx.core.graphics.PathSegment: android.graphics.PointF mEnd>;
+
+        $u-1#8 = virtualinvoke result.<android.graphics.PointF: int hashCode()>();
+
+        result1 = result1 + $u-1#8;
+
+        result1 = result1 * 31;
+
+        $u2 = this.<androidx.core.graphics.PathSegment: float mEndFraction>;
+
+        $u5 = $u2 cmpl 0.0F;
+
+        if $u5 == 0 goto label3;
+
+        $u-1 = staticinvoke <java.lang.Float: int floatToIntBits(float)>($u2);
+
+     label3:
+        $u-1 = result1 + $u-1;
+
+        return $u-1;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.core.graphics.PathSegment this;
+        java.lang.String $u-1;
+        java.lang.StringBuilder $u0;
+        android.graphics.PointF $u1;
+        float $u1#5;
+
+        this := @this: androidx.core.graphics.PathSegment;
+
+        $u0 = new java.lang.StringBuilder;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("PathSegment{start=");
+
+        $u1 = this.<androidx.core.graphics.PathSegment: android.graphics.PointF mStart>;
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", startFraction=");
+
+        $u1#5 = this.<androidx.core.graphics.PathSegment: float mStartFraction>;
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($u1#5);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", end=");
+
+        $u1 = this.<androidx.core.graphics.PathSegment: android.graphics.PointF mEnd>;
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", endFraction=");
+
+        $u1#5 = this.<androidx.core.graphics.PathSegment: float mEndFraction>;
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($u1#5);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125);
+
+        $u-1 = virtualinvoke $u0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1;
+    }
+}

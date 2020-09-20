@@ -1,0 +1,131 @@
+public final class androidx.core.text.TextDirectionHeuristicsCompat extends java.lang.Object
+{
+    public static final androidx.core.text.TextDirectionHeuristicCompat ANYRTL_LTR;
+    public static final androidx.core.text.TextDirectionHeuristicCompat FIRSTSTRONG_LTR;
+    public static final androidx.core.text.TextDirectionHeuristicCompat FIRSTSTRONG_RTL;
+    public static final androidx.core.text.TextDirectionHeuristicCompat LOCALE;
+    public static final androidx.core.text.TextDirectionHeuristicCompat LTR;
+    public static final androidx.core.text.TextDirectionHeuristicCompat RTL;
+    private static final int STATE_FALSE;
+    private static final int STATE_TRUE;
+    private static final int STATE_UNKNOWN;
+
+    static void <clinit>()
+    {
+        androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicInternal $u0;
+        androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong $u1;
+        androidx.core.text.TextDirectionHeuristicsCompat$AnyStrong $u1#9;
+        androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicLocale $u0#10;
+
+        <androidx.core.text.TextDirectionHeuristicsCompat: int STATE_UNKNOWN> = 2;
+
+        <androidx.core.text.TextDirectionHeuristicsCompat: int STATE_TRUE> = 0;
+
+        <androidx.core.text.TextDirectionHeuristicsCompat: int STATE_FALSE> = 1;
+
+        $u0 = new androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicInternal;
+
+        specialinvoke $u0.<androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicInternal: void <init>(androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionAlgorithm,boolean)>(null, 0);
+
+        <androidx.core.text.TextDirectionHeuristicsCompat: androidx.core.text.TextDirectionHeuristicCompat LTR> = $u0;
+
+        $u0 = new androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicInternal;
+
+        specialinvoke $u0.<androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicInternal: void <init>(androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionAlgorithm,boolean)>(null, 1);
+
+        <androidx.core.text.TextDirectionHeuristicsCompat: androidx.core.text.TextDirectionHeuristicCompat RTL> = $u0;
+
+        $u0 = new androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicInternal;
+
+        $u1 = <androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong: androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong INSTANCE>;
+
+        specialinvoke $u0.<androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicInternal: void <init>(androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionAlgorithm,boolean)>($u1, 0);
+
+        <androidx.core.text.TextDirectionHeuristicsCompat: androidx.core.text.TextDirectionHeuristicCompat FIRSTSTRONG_LTR> = $u0;
+
+        $u0 = new androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicInternal;
+
+        $u1 = <androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong: androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong INSTANCE>;
+
+        specialinvoke $u0.<androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicInternal: void <init>(androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionAlgorithm,boolean)>($u1, 1);
+
+        <androidx.core.text.TextDirectionHeuristicsCompat: androidx.core.text.TextDirectionHeuristicCompat FIRSTSTRONG_RTL> = $u0;
+
+        $u0 = new androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicInternal;
+
+        $u1#9 = <androidx.core.text.TextDirectionHeuristicsCompat$AnyStrong: androidx.core.text.TextDirectionHeuristicsCompat$AnyStrong INSTANCE_RTL>;
+
+        specialinvoke $u0.<androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicInternal: void <init>(androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionAlgorithm,boolean)>($u1#9, 0);
+
+        <androidx.core.text.TextDirectionHeuristicsCompat: androidx.core.text.TextDirectionHeuristicCompat ANYRTL_LTR> = $u0;
+
+        $u0#10 = <androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicLocale: androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicLocale INSTANCE>;
+
+        <androidx.core.text.TextDirectionHeuristicsCompat: androidx.core.text.TextDirectionHeuristicCompat LOCALE> = $u0#10;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.core.text.TextDirectionHeuristicsCompat this;
+
+        this := @this: androidx.core.text.TextDirectionHeuristicsCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static int isRtlText(int)
+    {
+        int $u1;
+
+        $u1 := @parameter0: int;
+
+        if $u1 == 0 goto label2;
+
+        if $u1 == 1 goto label1;
+
+        if $u1 == 2 goto label1;
+
+        return 2;
+
+     label1:
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    static int isRtlTextOrFormat(int)
+    {
+        int $u2;
+
+        $u2 := @parameter0: int;
+
+        if $u2 == 0 goto label3;
+
+        if $u2 == 1 goto label2;
+
+        if $u2 == 2 goto label2;
+
+        lookupswitch($u2)
+        {
+            case 14: goto label3;
+            case 15: goto label3;
+            case 16: goto label2;
+            case 17: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return 2;
+
+     label2:
+        return 0;
+
+     label3:
+        return 1;
+    }
+}

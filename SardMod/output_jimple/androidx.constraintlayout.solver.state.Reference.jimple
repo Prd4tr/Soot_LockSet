@@ -1,0 +1,13 @@
+public interface  androidx.constraintlayout.solver.state.Reference extends java.lang.Object
+{
+
+    public abstract void apply();
+
+    public abstract androidx.constraintlayout.solver.widgets.ConstraintWidget getConstraintWidget();
+
+    public abstract java.lang.Object getKey();
+
+    public abstract void setConstraintWidget(androidx.constraintlayout.solver.widgets.ConstraintWidget);
+
+    public abstract void setKey(java.lang.Object);
+}

@@ -1,0 +1,88 @@
+class androidx.fragment.app.FragmentManagerImpl$4 extends android.animation.AnimatorListenerAdapter
+{
+    final androidx.fragment.app.FragmentManagerImpl this$0;
+    final android.view.ViewGroup val$container;
+    final androidx.fragment.app.Fragment val$fragment;
+    final android.view.View val$viewToAnimate;
+
+    void <init>(androidx.fragment.app.FragmentManagerImpl, android.view.ViewGroup, android.view.View, androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.FragmentManagerImpl$4 this;
+        androidx.fragment.app.FragmentManagerImpl $u1;
+        android.view.ViewGroup $u2;
+        android.view.View $u3;
+        androidx.fragment.app.Fragment $u4;
+
+        this := @this: androidx.fragment.app.FragmentManagerImpl$4;
+
+        $u1 := @parameter0: androidx.fragment.app.FragmentManagerImpl;
+
+        $u2 := @parameter1: android.view.ViewGroup;
+
+        $u3 := @parameter2: android.view.View;
+
+        $u4 := @parameter3: androidx.fragment.app.Fragment;
+
+        this.<androidx.fragment.app.FragmentManagerImpl$4: androidx.fragment.app.FragmentManagerImpl this$0> = $u1;
+
+        this.<androidx.fragment.app.FragmentManagerImpl$4: android.view.ViewGroup val$container> = $u2;
+
+        this.<androidx.fragment.app.FragmentManagerImpl$4: android.view.View val$viewToAnimate> = $u3;
+
+        this.<androidx.fragment.app.FragmentManagerImpl$4: androidx.fragment.app.Fragment val$fragment> = $u4;
+
+        specialinvoke this.<android.animation.AnimatorListenerAdapter: void <init>()>();
+
+        return;
+    }
+
+    public void onAnimationEnd(android.animation.Animator)
+    {
+        androidx.fragment.app.FragmentManagerImpl$4 this;
+        android.animation.Animator $u9;
+        androidx.fragment.app.Fragment $u3;
+        android.view.ViewGroup animator;
+        android.view.View $u1;
+        int $u-1;
+        androidx.fragment.app.FragmentManagerImpl $u2;
+
+        this := @this: androidx.fragment.app.FragmentManagerImpl$4;
+
+        $u9 := @parameter0: android.animation.Animator;
+
+        animator = this.<androidx.fragment.app.FragmentManagerImpl$4: android.view.ViewGroup val$container>;
+
+        $u1 = this.<androidx.fragment.app.FragmentManagerImpl$4: android.view.View val$viewToAnimate>;
+
+        virtualinvoke animator.<android.view.ViewGroup: void endViewTransition(android.view.View)>($u1);
+
+        $u3 = this.<androidx.fragment.app.FragmentManagerImpl$4: androidx.fragment.app.Fragment val$fragment>;
+
+        $u9 = virtualinvoke $u3.<androidx.fragment.app.Fragment: android.animation.Animator getAnimator()>();
+
+        $u3 = this.<androidx.fragment.app.FragmentManagerImpl$4: androidx.fragment.app.Fragment val$fragment>;
+
+        virtualinvoke $u3.<androidx.fragment.app.Fragment: void setAnimator(android.animation.Animator)>(null);
+
+        if $u9 == null goto label1;
+
+        animator = this.<androidx.fragment.app.FragmentManagerImpl$4: android.view.ViewGroup val$container>;
+
+        $u1 = this.<androidx.fragment.app.FragmentManagerImpl$4: android.view.View val$viewToAnimate>;
+
+        $u-1 = virtualinvoke animator.<android.view.ViewGroup: int indexOfChild(android.view.View)>($u1);
+
+        if $u-1 >= 0 goto label1;
+
+        $u2 = this.<androidx.fragment.app.FragmentManagerImpl$4: androidx.fragment.app.FragmentManagerImpl this$0>;
+
+        $u3 = this.<androidx.fragment.app.FragmentManagerImpl$4: androidx.fragment.app.Fragment val$fragment>;
+
+        $u-1 = virtualinvoke $u3.<androidx.fragment.app.Fragment: int getStateAfterAnimating()>();
+
+        virtualinvoke $u2.<androidx.fragment.app.FragmentManagerImpl: void moveToState(androidx.fragment.app.Fragment,int,int,int,boolean)>($u3, $u-1, 0, 0, 0);
+
+     label1:
+        return;
+    }
+}

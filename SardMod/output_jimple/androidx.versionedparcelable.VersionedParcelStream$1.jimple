@@ -1,0 +1,188 @@
+class androidx.versionedparcelable.VersionedParcelStream$1 extends java.io.FilterInputStream
+{
+    final androidx.versionedparcelable.VersionedParcelStream this$0;
+
+    void <init>(androidx.versionedparcelable.VersionedParcelStream, java.io.InputStream)
+    {
+        androidx.versionedparcelable.VersionedParcelStream$1 this;
+        androidx.versionedparcelable.VersionedParcelStream $u1;
+        java.io.InputStream $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcelStream$1;
+
+        $u1 := @parameter0: androidx.versionedparcelable.VersionedParcelStream;
+
+        $u2 := @parameter1: java.io.InputStream;
+
+        this.<androidx.versionedparcelable.VersionedParcelStream$1: androidx.versionedparcelable.VersionedParcelStream this$0> = $u1;
+
+        specialinvoke this.<java.io.FilterInputStream: void <init>(java.io.InputStream)>($u2);
+
+        return;
+    }
+
+    public int read() throws java.io.IOException
+    {
+        androidx.versionedparcelable.VersionedParcelStream$1 this;
+        int $u-1, $u1;
+        androidx.versionedparcelable.VersionedParcelStream read;
+        java.io.IOException read#8;
+
+        this := @this: androidx.versionedparcelable.VersionedParcelStream$1;
+
+        read = this.<androidx.versionedparcelable.VersionedParcelStream$1: androidx.versionedparcelable.VersionedParcelStream this$0>;
+
+        $u-1 = read.<androidx.versionedparcelable.VersionedParcelStream: int mFieldSize>;
+
+        if $u-1 == -1 goto label2;
+
+        read = this.<androidx.versionedparcelable.VersionedParcelStream$1: androidx.versionedparcelable.VersionedParcelStream this$0>;
+
+        $u-1 = read.<androidx.versionedparcelable.VersionedParcelStream: int mCount>;
+
+        read = this.<androidx.versionedparcelable.VersionedParcelStream$1: androidx.versionedparcelable.VersionedParcelStream this$0>;
+
+        $u1 = read.<androidx.versionedparcelable.VersionedParcelStream: int mFieldSize>;
+
+        if $u-1 >= $u1 goto label1;
+
+        goto label2;
+
+     label1:
+        read#8 = new java.io.IOException;
+
+        specialinvoke read#8.<java.io.IOException: void <init>()>();
+
+        throw read#8;
+
+     label2:
+        $u-1 = specialinvoke this.<java.io.FilterInputStream: int read()>();
+
+        read = this.<androidx.versionedparcelable.VersionedParcelStream$1: androidx.versionedparcelable.VersionedParcelStream this$0>;
+
+        $u1 = read.<androidx.versionedparcelable.VersionedParcelStream: int mCount>;
+
+        $u1 = $u1 + 1;
+
+        read.<androidx.versionedparcelable.VersionedParcelStream: int mCount> = $u1;
+
+        return $u-1;
+    }
+
+    public int read(byte[], int, int) throws java.io.IOException
+    {
+        androidx.versionedparcelable.VersionedParcelStream$1 this;
+        byte[] $u4;
+        int $u5, $u6, read#2, $u1;
+        androidx.versionedparcelable.VersionedParcelStream read;
+        java.io.IOException read#8;
+
+        this := @this: androidx.versionedparcelable.VersionedParcelStream$1;
+
+        $u4 := @parameter0: byte[];
+
+        $u5 := @parameter1: int;
+
+        $u6 := @parameter2: int;
+
+        read = this.<androidx.versionedparcelable.VersionedParcelStream$1: androidx.versionedparcelable.VersionedParcelStream this$0>;
+
+        read#2 = read.<androidx.versionedparcelable.VersionedParcelStream: int mFieldSize>;
+
+        if read#2 == -1 goto label2;
+
+        read = this.<androidx.versionedparcelable.VersionedParcelStream$1: androidx.versionedparcelable.VersionedParcelStream this$0>;
+
+        read#2 = read.<androidx.versionedparcelable.VersionedParcelStream: int mCount>;
+
+        read = this.<androidx.versionedparcelable.VersionedParcelStream$1: androidx.versionedparcelable.VersionedParcelStream this$0>;
+
+        $u1 = read.<androidx.versionedparcelable.VersionedParcelStream: int mFieldSize>;
+
+        if read#2 >= $u1 goto label1;
+
+        goto label2;
+
+     label1:
+        read#8 = new java.io.IOException;
+
+        specialinvoke read#8.<java.io.IOException: void <init>()>();
+
+        throw read#8;
+
+     label2:
+        $u5 = specialinvoke this.<java.io.FilterInputStream: int read(byte[],int,int)>($u4, $u5, $u6);
+
+        if $u5 <= 0 goto label3;
+
+        read = this.<androidx.versionedparcelable.VersionedParcelStream$1: androidx.versionedparcelable.VersionedParcelStream this$0>;
+
+        $u6 = read.<androidx.versionedparcelable.VersionedParcelStream: int mCount>;
+
+        $u6 = $u6 + $u5;
+
+        read.<androidx.versionedparcelable.VersionedParcelStream: int mCount> = $u6;
+
+     label3:
+        return $u5;
+    }
+
+    public long skip(long) throws java.io.IOException
+    {
+        androidx.versionedparcelable.VersionedParcelStream$1 this;
+        long $u6;
+        androidx.versionedparcelable.VersionedParcelStream skip;
+        int skip#2, $u1;
+        java.io.IOException skip#8;
+        byte $u4;
+
+        this := @this: androidx.versionedparcelable.VersionedParcelStream$1;
+
+        $u6 := @parameter0: long;
+
+        skip = this.<androidx.versionedparcelable.VersionedParcelStream$1: androidx.versionedparcelable.VersionedParcelStream this$0>;
+
+        skip#2 = skip.<androidx.versionedparcelable.VersionedParcelStream: int mFieldSize>;
+
+        if skip#2 == -1 goto label2;
+
+        skip = this.<androidx.versionedparcelable.VersionedParcelStream$1: androidx.versionedparcelable.VersionedParcelStream this$0>;
+
+        skip#2 = skip.<androidx.versionedparcelable.VersionedParcelStream: int mCount>;
+
+        skip = this.<androidx.versionedparcelable.VersionedParcelStream$1: androidx.versionedparcelable.VersionedParcelStream this$0>;
+
+        $u1 = skip.<androidx.versionedparcelable.VersionedParcelStream: int mFieldSize>;
+
+        if skip#2 >= $u1 goto label1;
+
+        goto label2;
+
+     label1:
+        skip#8 = new java.io.IOException;
+
+        specialinvoke skip#8.<java.io.IOException: void <init>()>();
+
+        throw skip#8;
+
+     label2:
+        $u6 = specialinvoke this.<java.io.FilterInputStream: long skip(long)>($u6);
+
+        $u4 = $u6 cmp 0L;
+
+        if $u4 <= 0 goto label3;
+
+        skip = this.<androidx.versionedparcelable.VersionedParcelStream$1: androidx.versionedparcelable.VersionedParcelStream this$0>;
+
+        skip#2 = skip.<androidx.versionedparcelable.VersionedParcelStream: int mCount>;
+
+        $u1 = (int) $u6;
+
+        skip#2 = skip#2 + $u1;
+
+        skip.<androidx.versionedparcelable.VersionedParcelStream: int mCount> = skip#2;
+
+     label3:
+        return $u6;
+    }
+}

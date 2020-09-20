@@ -1,0 +1,749 @@
+public class androidx.core.graphics.PathParser extends java.lang.Object
+{
+    private static final java.lang.String LOGTAG;
+
+    private void <init>()
+    {
+        androidx.core.graphics.PathParser this;
+
+        this := @this: androidx.core.graphics.PathParser;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static void addNode(java.util.ArrayList, char, float[])
+    {
+        java.util.ArrayList list;
+        char $u2;
+        float[] $u3;
+        androidx.core.graphics.PathParser$PathDataNode $u0;
+
+        list := @parameter0: java.util.ArrayList;
+
+        $u2 := @parameter1: char;
+
+        $u3 := @parameter2: float[];
+
+        $u0 = new androidx.core.graphics.PathParser$PathDataNode;
+
+        specialinvoke $u0.<androidx.core.graphics.PathParser$PathDataNode: void <init>(char,float[])>($u2, $u3);
+
+        virtualinvoke list.<java.util.ArrayList: boolean add(java.lang.Object)>($u0);
+
+        return;
+    }
+
+    public static boolean canMorph(androidx.core.graphics.PathParser$PathDataNode[], androidx.core.graphics.PathParser$PathDataNode[])
+    {
+        androidx.core.graphics.PathParser$PathDataNode[] $u4, $u5;
+        int i, $u2, $u3#15;
+        androidx.core.graphics.PathParser$PathDataNode $u2#6;
+        char $u2#7, $u3;
+        float[] $u2#11;
+
+        $u4 := @parameter0: androidx.core.graphics.PathParser$PathDataNode[];
+
+        $u5 := @parameter1: androidx.core.graphics.PathParser$PathDataNode[];
+
+        if $u4 == null goto label7;
+
+        if $u5 != null goto label1;
+
+        return 0;
+
+     label1:
+        i = lengthof $u4;
+
+        $u2 = lengthof $u5;
+
+        if i == $u2 goto label2;
+
+        return 0;
+
+     label2:
+        i = 0;
+
+     label3:
+        $u2 = lengthof $u4;
+
+        if i >= $u2 goto label6;
+
+        $u2#6 = $u4[i];
+
+        $u2#7 = $u2#6.<androidx.core.graphics.PathParser$PathDataNode: char mType>;
+
+        $u2#6 = $u5[i];
+
+        $u3 = $u2#6.<androidx.core.graphics.PathParser$PathDataNode: char mType>;
+
+        if $u2#7 != $u3 goto label5;
+
+        $u2#6 = $u4[i];
+
+        $u2#11 = $u2#6.<androidx.core.graphics.PathParser$PathDataNode: float[] mParams>;
+
+        $u2 = lengthof $u2#11;
+
+        $u2#6 = $u5[i];
+
+        $u2#11 = $u2#6.<androidx.core.graphics.PathParser$PathDataNode: float[] mParams>;
+
+        $u3#15 = lengthof $u2#11;
+
+        if $u2 == $u3#15 goto label4;
+
+        return 0;
+
+     label4:
+        i = i + 1;
+
+        goto label3;
+
+     label5:
+        return 0;
+
+     label6:
+        return 1;
+
+     label7:
+        return 0;
+    }
+
+    static float[] copyOfRange(float[], int, int)
+    {
+        float[] $u5, result;
+        int $u6, $u7, $u-1;
+        java.lang.ArrayIndexOutOfBoundsException resultLength;
+        java.lang.IllegalArgumentException originalLength;
+
+        $u5 := @parameter0: float[];
+
+        $u6 := @parameter1: int;
+
+        $u7 := @parameter2: int;
+
+        if $u6 > $u7 goto label2;
+
+        $u-1 = lengthof $u5;
+
+        if $u6 < 0 goto label1;
+
+        if $u6 > $u-1 goto label1;
+
+        $u7 = $u7 - $u6;
+
+        $u-1 = $u-1 - $u6;
+
+        $u-1 = staticinvoke <java.lang.Math: int min(int,int)>($u7, $u-1);
+
+        result = newarray (float)[$u7];
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u5, $u6, result, 0, $u-1);
+
+        return result;
+
+     label1:
+        resultLength = new java.lang.ArrayIndexOutOfBoundsException;
+
+        specialinvoke resultLength.<java.lang.ArrayIndexOutOfBoundsException: void <init>()>();
+
+        throw resultLength;
+
+     label2:
+        originalLength = new java.lang.IllegalArgumentException;
+
+        specialinvoke originalLength.<java.lang.IllegalArgumentException: void <init>()>();
+
+        throw originalLength;
+    }
+
+    public static androidx.core.graphics.PathParser$PathDataNode[] createNodesFromPathData(java.lang.String)
+    {
+        java.lang.String $u6, $u-1#9;
+        java.util.ArrayList list;
+        int start, end, $u-1;
+        float[] $u-1#15;
+        char $u-1#17;
+        androidx.core.graphics.PathParser$PathDataNode[] s;
+        java.lang.Object[] $u-1#29;
+
+        $u6 := @parameter0: java.lang.String;
+
+        if $u6 != null goto label1;
+
+        return null;
+
+     label1:
+        start = 0;
+
+        end = 1;
+
+        list = new java.util.ArrayList;
+
+        specialinvoke list.<java.util.ArrayList: void <init>()>();
+
+     label2:
+        $u-1 = virtualinvoke $u6.<java.lang.String: int length()>();
+
+        if end >= $u-1 goto label4;
+
+        end = staticinvoke <androidx.core.graphics.PathParser: int nextStart(java.lang.String,int)>($u6, end);
+
+        $u-1#9 = virtualinvoke $u6.<java.lang.String: java.lang.String substring(int,int)>(start, end);
+
+        $u-1#9 = virtualinvoke $u-1#9.<java.lang.String: java.lang.String trim()>();
+
+        start = virtualinvoke $u-1#9.<java.lang.String: int length()>();
+
+        if start <= 0 goto label3;
+
+        $u-1#15 = staticinvoke <androidx.core.graphics.PathParser: float[] getFloats(java.lang.String)>($u-1#9);
+
+        $u-1#17 = virtualinvoke $u-1#9.<java.lang.String: char charAt(int)>(0);
+
+        staticinvoke <androidx.core.graphics.PathParser: void addNode(java.util.ArrayList,char,float[])>(list, $u-1#17, $u-1#15);
+
+     label3:
+        start = end;
+
+        end = end + 1;
+
+        goto label2;
+
+     label4:
+        end = end - start;
+
+        if end != 1 goto label5;
+
+        end = virtualinvoke $u6.<java.lang.String: int length()>();
+
+        if start >= end goto label5;
+
+        $u-1#17 = virtualinvoke $u6.<java.lang.String: char charAt(int)>(start);
+
+        $u-1#15 = newarray (float)[0];
+
+        staticinvoke <androidx.core.graphics.PathParser: void addNode(java.util.ArrayList,char,float[])>(list, $u-1#17, $u-1#15);
+
+     label5:
+        start = virtualinvoke list.<java.util.ArrayList: int size()>();
+
+        s = newarray (androidx.core.graphics.PathParser$PathDataNode)[start];
+
+        $u-1#29 = virtualinvoke list.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>(s);
+
+        s = (androidx.core.graphics.PathParser$PathDataNode[]) $u-1#29;
+
+        return s;
+    }
+
+    public static android.graphics.Path createPathFromPathData(java.lang.String)
+    {
+        java.lang.String $u6;
+        android.graphics.Path path;
+        java.lang.RuntimeException $u3, e;
+        androidx.core.graphics.PathParser$PathDataNode[] $u-1;
+        java.lang.StringBuilder $u4;
+
+        $u6 := @parameter0: java.lang.String;
+
+        path = new android.graphics.Path;
+
+        specialinvoke path.<android.graphics.Path: void <init>()>();
+
+        $u-1 = staticinvoke <androidx.core.graphics.PathParser: androidx.core.graphics.PathParser$PathDataNode[] createNodesFromPathData(java.lang.String)>($u6);
+
+        if $u-1 == null goto label4;
+
+     label1:
+        staticinvoke <androidx.core.graphics.PathParser$PathDataNode: void nodesToPath(androidx.core.graphics.PathParser$PathDataNode[],android.graphics.Path)>($u-1, path);
+
+     label2:
+        return path;
+
+     label3:
+        e := @caughtexception;
+
+        $u3 = new java.lang.RuntimeException;
+
+        $u4 = new java.lang.StringBuilder;
+
+        specialinvoke $u4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Error in parsing ");
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u6);
+
+        $u6 = virtualinvoke $u4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u3.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($u6, e);
+
+        throw $u3;
+
+     label4:
+        return null;
+
+        catch java.lang.RuntimeException from label1 to label2 with label3;
+    }
+
+    public static androidx.core.graphics.PathParser$PathDataNode[] deepCopyNodes(androidx.core.graphics.PathParser$PathDataNode[])
+    {
+        androidx.core.graphics.PathParser$PathDataNode[] $u4, copy#3;
+        androidx.core.graphics.PathParser$PathDataNode $u3, $u2#6;
+        int copy, $u2;
+
+        $u4 := @parameter0: androidx.core.graphics.PathParser$PathDataNode[];
+
+        if $u4 != null goto label1;
+
+        return null;
+
+     label1:
+        copy = lengthof $u4;
+
+        copy#3 = newarray (androidx.core.graphics.PathParser$PathDataNode)[copy];
+
+        copy = 0;
+
+     label2:
+        $u2 = lengthof $u4;
+
+        if copy >= $u2 goto label3;
+
+        $u2#6 = new androidx.core.graphics.PathParser$PathDataNode;
+
+        $u3 = $u4[copy];
+
+        specialinvoke $u2#6.<androidx.core.graphics.PathParser$PathDataNode: void <init>(androidx.core.graphics.PathParser$PathDataNode)>($u3);
+
+        copy#3[copy] = $u2#6;
+
+        copy = copy + 1;
+
+        goto label2;
+
+     label3:
+        return copy#3;
+    }
+
+    private static void extract(java.lang.String, int, androidx.core.graphics.PathParser$ExtractFloatResult)
+    {
+        java.lang.String $u7;
+        int $u8, currentIndex, $u-1;
+        androidx.core.graphics.PathParser$ExtractFloatResult $u9;
+        boolean foundSeparator, secondDot, isExponential, isPrevExponential;
+        char $u-1#9;
+
+        $u7 := @parameter0: java.lang.String;
+
+        $u8 := @parameter1: int;
+
+        $u9 := @parameter2: androidx.core.graphics.PathParser$ExtractFloatResult;
+
+        currentIndex = $u8;
+
+        foundSeparator = 0;
+
+        $u9.<androidx.core.graphics.PathParser$ExtractFloatResult: boolean mEndWithNegOrDot> = 0;
+
+        secondDot = 0;
+
+        isExponential = 0;
+
+     label01:
+        $u-1 = virtualinvoke $u7.<java.lang.String: int length()>();
+
+        if currentIndex >= $u-1 goto label10;
+
+        isPrevExponential = isExponential;
+
+        isExponential = 0;
+
+        $u-1#9 = virtualinvoke $u7.<java.lang.String: char charAt(int)>(currentIndex);
+
+        if $u-1#9 == 32 goto label07;
+
+        if $u-1#9 == 69 goto label06;
+
+        if $u-1#9 == 101 goto label06;
+
+        lookupswitch($u-1#9)
+        {
+            case 44: goto label07;
+            case 45: goto label05;
+            case 46: goto label03;
+            default: goto label02;
+        };
+
+     label02:
+        goto label08;
+
+     label03:
+        if secondDot != 0 goto label04;
+
+        secondDot = 1;
+
+        goto label08;
+
+     label04:
+        foundSeparator = 1;
+
+        $u9.<androidx.core.graphics.PathParser$ExtractFloatResult: boolean mEndWithNegOrDot> = 1;
+
+        goto label08;
+
+     label05:
+        if currentIndex == $u8 goto label08;
+
+        if isPrevExponential != 0 goto label08;
+
+        foundSeparator = 1;
+
+        $u9.<androidx.core.graphics.PathParser$ExtractFloatResult: boolean mEndWithNegOrDot> = 1;
+
+        goto label08;
+
+     label06:
+        isExponential = 1;
+
+        goto label08;
+
+     label07:
+        foundSeparator = 1;
+
+     label08:
+        if foundSeparator == 0 goto label09;
+
+        goto label10;
+
+     label09:
+        currentIndex = currentIndex + 1;
+
+        goto label01;
+
+     label10:
+        $u9.<androidx.core.graphics.PathParser$ExtractFloatResult: int mEndPosition> = currentIndex;
+
+        return;
+    }
+
+    private static float[] getFloats(java.lang.String)
+    {
+        java.lang.String $u9, $u-1#18;
+        androidx.core.graphics.PathParser$ExtractFloatResult result;
+        char $u-1;
+        int $u-1#8, startPosition, $u-1#14, count1;
+        float[] results;
+        float $u-1#20;
+        boolean count1#22;
+        java.lang.NumberFormatException e;
+        java.lang.RuntimeException results#26;
+        java.lang.StringBuilder count;
+
+        $u9 := @parameter0: java.lang.String;
+
+        $u-1 = virtualinvoke $u9.<java.lang.String: char charAt(int)>(0);
+
+        if $u-1 == 122 goto label14;
+
+        $u-1 = virtualinvoke $u9.<java.lang.String: char charAt(int)>(0);
+
+        if $u-1 != 90 goto label01;
+
+        goto label14;
+
+     label01:
+        $u-1#8 = virtualinvoke $u9.<java.lang.String: int length()>();
+
+     label02:
+        results = newarray (float)[$u-1#8];
+
+        $u-1#8 = 0;
+
+        startPosition = 1;
+
+        result = new androidx.core.graphics.PathParser$ExtractFloatResult;
+
+     label03:
+        specialinvoke result.<androidx.core.graphics.PathParser$ExtractFloatResult: void <init>()>();
+
+        $u-1#14 = virtualinvoke $u9.<java.lang.String: int length()>();
+
+     label04:
+        if startPosition >= $u-1#14 goto label11;
+
+     label05:
+        staticinvoke <androidx.core.graphics.PathParser: void extract(java.lang.String,int,androidx.core.graphics.PathParser$ExtractFloatResult)>($u9, startPosition, result);
+
+     label06:
+        count1 = result.<androidx.core.graphics.PathParser$ExtractFloatResult: int mEndPosition>;
+
+        if startPosition >= count1 goto label09;
+
+     label07:
+        $u-1#18 = virtualinvoke $u9.<java.lang.String: java.lang.String substring(int,int)>(startPosition, count1);
+
+        $u-1#20 = staticinvoke <java.lang.Float: float parseFloat(java.lang.String)>($u-1#18);
+
+     label08:
+        results[$u-1#8] = $u-1#20;
+
+        $u-1#8 = $u-1#8 + 1;
+
+     label09:
+        count1#22 = result.<androidx.core.graphics.PathParser$ExtractFloatResult: boolean mEndWithNegOrDot>;
+
+        if count1#22 == 0 goto label10;
+
+        startPosition = count1;
+
+        goto label04;
+
+     label10:
+        startPosition = count1 + 1;
+
+        goto label04;
+
+     label11:
+        results = staticinvoke <androidx.core.graphics.PathParser: float[] copyOfRange(float[],int,int)>(results, 0, $u-1#8);
+
+     label12:
+        return results;
+
+     label13:
+        e := @caughtexception;
+
+        results#26 = new java.lang.RuntimeException;
+
+        count = new java.lang.StringBuilder;
+
+        specialinvoke count.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke count.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("error in parsing \"");
+
+        virtualinvoke count.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u9);
+
+        virtualinvoke count.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\"");
+
+        $u9 = virtualinvoke count.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke results#26.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($u9, e);
+
+        throw results#26;
+
+     label14:
+        results = newarray (float)[0];
+
+        return results;
+
+        catch java.lang.NumberFormatException from label01 to label02 with label13;
+        catch java.lang.NumberFormatException from label03 to label04 with label13;
+        catch java.lang.NumberFormatException from label05 to label06 with label13;
+        catch java.lang.NumberFormatException from label07 to label08 with label13;
+        catch java.lang.NumberFormatException from label11 to label12 with label13;
+    }
+
+    public static boolean interpolatePathDataNodes(androidx.core.graphics.PathParser$PathDataNode[], androidx.core.graphics.PathParser$PathDataNode[], androidx.core.graphics.PathParser$PathDataNode[], float)
+    {
+        androidx.core.graphics.PathParser$PathDataNode[] $u4, $u5, $u6;
+        float $u7;
+        androidx.core.graphics.PathParser$PathDataNode $u2, $u3, $u1#9;
+        boolean $u-1;
+        int i, $u1;
+        java.lang.IllegalArgumentException i#11;
+
+        $u4 := @parameter0: androidx.core.graphics.PathParser$PathDataNode[];
+
+        $u5 := @parameter1: androidx.core.graphics.PathParser$PathDataNode[];
+
+        $u6 := @parameter2: androidx.core.graphics.PathParser$PathDataNode[];
+
+        $u7 := @parameter3: float;
+
+        if $u4 == null goto label5;
+
+        if $u5 == null goto label5;
+
+        if $u6 == null goto label5;
+
+        i = lengthof $u4;
+
+        $u1 = lengthof $u5;
+
+        if i != $u1 goto label4;
+
+        i = lengthof $u5;
+
+        $u1 = lengthof $u6;
+
+        if i != $u1 goto label4;
+
+        $u-1 = staticinvoke <androidx.core.graphics.PathParser: boolean canMorph(androidx.core.graphics.PathParser$PathDataNode[],androidx.core.graphics.PathParser$PathDataNode[])>($u5, $u6);
+
+        if $u-1 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        i = 0;
+
+     label2:
+        $u1 = lengthof $u4;
+
+        if i >= $u1 goto label3;
+
+        $u1#9 = $u4[i];
+
+        $u2 = $u5[i];
+
+        $u3 = $u6[i];
+
+        virtualinvoke $u1#9.<androidx.core.graphics.PathParser$PathDataNode: void interpolatePathDataNode(androidx.core.graphics.PathParser$PathDataNode,androidx.core.graphics.PathParser$PathDataNode,float)>($u2, $u3, $u7);
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        return 1;
+
+     label4:
+        i#11 = new java.lang.IllegalArgumentException;
+
+        specialinvoke i#11.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("The nodes to be interpolated and resulting nodes must have the same length");
+
+        throw i#11;
+
+     label5:
+        i#11 = new java.lang.IllegalArgumentException;
+
+        specialinvoke i#11.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("The nodes to be interpolated and resulting nodes cannot be null");
+
+        goto label6;
+
+     label6:
+        throw i#11;
+    }
+
+    private static int nextStart(java.lang.String, int)
+    {
+        java.lang.String $u3;
+        int $u4, $u-1, $u2;
+        char $u-1#4;
+
+        $u3 := @parameter0: java.lang.String;
+
+        $u4 := @parameter1: int;
+
+     label1:
+        $u-1 = virtualinvoke $u3.<java.lang.String: int length()>();
+
+        if $u4 >= $u-1 goto label4;
+
+        $u-1#4 = virtualinvoke $u3.<java.lang.String: char charAt(int)>($u4);
+
+        $u-1 = $u-1#4 + -65;
+
+        $u2 = $u-1#4 + -90;
+
+        $u-1 = $u-1 * $u2;
+
+        if $u-1 <= 0 goto label2;
+
+        $u-1 = $u-1#4 + -97;
+
+        $u2 = $u-1#4 + -122;
+
+        $u-1 = $u-1 * $u2;
+
+        if $u-1 > 0 goto label3;
+
+     label2:
+        if $u-1#4 == 101 goto label3;
+
+        if $u-1#4 == 69 goto label3;
+
+        return $u4;
+
+     label3:
+        $u4 = $u4 + 1;
+
+        goto label1;
+
+     label4:
+        return $u4;
+    }
+
+    public static void updateNodes(androidx.core.graphics.PathParser$PathDataNode[], androidx.core.graphics.PathParser$PathDataNode[])
+    {
+        androidx.core.graphics.PathParser$PathDataNode[] $u4, $u5;
+        int i, j, $u2#9;
+        androidx.core.graphics.PathParser$PathDataNode j#3, $u2;
+        char $u2#5;
+        float[] $u2#8, $u3;
+        float $u3#14;
+
+        $u4 := @parameter0: androidx.core.graphics.PathParser$PathDataNode[];
+
+        $u5 := @parameter1: androidx.core.graphics.PathParser$PathDataNode[];
+
+        i = 0;
+
+     label1:
+        j = lengthof $u5;
+
+        if i >= j goto label4;
+
+        j#3 = $u4[i];
+
+        $u2 = $u5[i];
+
+        $u2#5 = $u2.<androidx.core.graphics.PathParser$PathDataNode: char mType>;
+
+        j#3.<androidx.core.graphics.PathParser$PathDataNode: char mType> = $u2#5;
+
+        j = 0;
+
+     label2:
+        j#3 = $u5[i];
+
+        $u2#8 = j#3.<androidx.core.graphics.PathParser$PathDataNode: float[] mParams>;
+
+        $u2#9 = lengthof $u2#8;
+
+        if j >= $u2#9 goto label3;
+
+        j#3 = $u4[i];
+
+        $u2#8 = j#3.<androidx.core.graphics.PathParser$PathDataNode: float[] mParams>;
+
+        j#3 = $u5[i];
+
+        $u3 = j#3.<androidx.core.graphics.PathParser$PathDataNode: float[] mParams>;
+
+        $u3#14 = $u3[j];
+
+        $u2#8[j] = $u3#14;
+
+        j = j + 1;
+
+        goto label2;
+
+     label3:
+        i = i + 1;
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.graphics.PathParser: java.lang.String LOGTAG> = "PathParser";
+
+        return;
+    }
+}

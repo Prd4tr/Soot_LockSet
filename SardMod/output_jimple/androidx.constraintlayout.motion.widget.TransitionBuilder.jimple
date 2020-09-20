@@ -1,0 +1,131 @@
+public class androidx.constraintlayout.motion.widget.TransitionBuilder extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+
+    public void <init>()
+    {
+        androidx.constraintlayout.motion.widget.TransitionBuilder this;
+
+        this := @this: androidx.constraintlayout.motion.widget.TransitionBuilder;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.constraintlayout.motion.widget.MotionScene$Transition buildTransition(androidx.constraintlayout.motion.widget.MotionScene, int, int, androidx.constraintlayout.widget.ConstraintSet, int, androidx.constraintlayout.widget.ConstraintSet)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene $u1;
+        int $u2, $u3, $u5;
+        androidx.constraintlayout.widget.ConstraintSet $u4, $u6;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition transition;
+
+        $u1 := @parameter0: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: int;
+
+        $u4 := @parameter3: androidx.constraintlayout.widget.ConstraintSet;
+
+        $u5 := @parameter4: int;
+
+        $u6 := @parameter5: androidx.constraintlayout.widget.ConstraintSet;
+
+        transition = new androidx.constraintlayout.motion.widget.MotionScene$Transition;
+
+        specialinvoke transition.<androidx.constraintlayout.motion.widget.MotionScene$Transition: void <init>(int,androidx.constraintlayout.motion.widget.MotionScene,int,int)>($u2, $u1, $u3, $u5);
+
+        staticinvoke <androidx.constraintlayout.motion.widget.TransitionBuilder: void updateConstraintSetInMotionScene(androidx.constraintlayout.motion.widget.MotionScene,androidx.constraintlayout.motion.widget.MotionScene$Transition,androidx.constraintlayout.widget.ConstraintSet,androidx.constraintlayout.widget.ConstraintSet)>($u1, transition, $u4, $u6);
+
+        return transition;
+    }
+
+    private static void updateConstraintSetInMotionScene(androidx.constraintlayout.motion.widget.MotionScene, androidx.constraintlayout.motion.widget.MotionScene$Transition, androidx.constraintlayout.widget.ConstraintSet, androidx.constraintlayout.widget.ConstraintSet)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene $u2;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u3;
+        androidx.constraintlayout.widget.ConstraintSet $u4, $u5;
+        int $u-1, $u-1#2;
+
+        $u2 := @parameter0: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u3 := @parameter1: androidx.constraintlayout.motion.widget.MotionScene$Transition;
+
+        $u4 := @parameter2: androidx.constraintlayout.widget.ConstraintSet;
+
+        $u5 := @parameter3: androidx.constraintlayout.widget.ConstraintSet;
+
+        $u-1 = virtualinvoke $u3.<androidx.constraintlayout.motion.widget.MotionScene$Transition: int getStartConstraintSetId()>();
+
+        $u-1#2 = virtualinvoke $u3.<androidx.constraintlayout.motion.widget.MotionScene$Transition: int getEndConstraintSetId()>();
+
+        virtualinvoke $u2.<androidx.constraintlayout.motion.widget.MotionScene: void setConstraintSet(int,androidx.constraintlayout.widget.ConstraintSet)>($u-1, $u4);
+
+        virtualinvoke $u2.<androidx.constraintlayout.motion.widget.MotionScene: void setConstraintSet(int,androidx.constraintlayout.widget.ConstraintSet)>($u-1#2, $u5);
+
+        return;
+    }
+
+    public static void validate(androidx.constraintlayout.motion.widget.MotionLayout)
+    {
+        androidx.constraintlayout.motion.widget.MotionLayout $u3;
+        androidx.constraintlayout.motion.widget.MotionScene scene;
+        boolean $u-1;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u1;
+        java.util.ArrayList $u-1#6;
+        java.lang.RuntimeException $u1#10;
+
+        $u3 := @parameter0: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        scene = $u3.<androidx.constraintlayout.motion.widget.MotionLayout: androidx.constraintlayout.motion.widget.MotionScene mScene>;
+
+        if scene == null goto label3;
+
+        scene = $u3.<androidx.constraintlayout.motion.widget.MotionLayout: androidx.constraintlayout.motion.widget.MotionScene mScene>;
+
+        $u-1 = virtualinvoke scene.<androidx.constraintlayout.motion.widget.MotionScene: boolean validateLayout(androidx.constraintlayout.motion.widget.MotionLayout)>($u3);
+
+        if $u-1 == 0 goto label2;
+
+        $u1 = scene.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u1 == null goto label1;
+
+        $u-1#6 = virtualinvoke scene.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList getDefinedTransitions()>();
+
+        $u-1 = virtualinvoke $u-1#6.<java.util.ArrayList: boolean isEmpty()>();
+
+        if $u-1 != 0 goto label1;
+
+        return;
+
+     label1:
+        $u1#10 = new java.lang.RuntimeException;
+
+        specialinvoke $u1#10.<java.lang.RuntimeException: void <init>(java.lang.String)>("Invalid motion layout. Motion Scene doesn\'t have any transition.");
+
+        throw $u1#10;
+
+     label2:
+        $u1#10 = new java.lang.RuntimeException;
+
+        specialinvoke $u1#10.<java.lang.RuntimeException: void <init>(java.lang.String)>("MotionLayout doesn\'t have the right motion scene.");
+
+        throw $u1#10;
+
+     label3:
+        $u1#10 = new java.lang.RuntimeException;
+
+        specialinvoke $u1#10.<java.lang.RuntimeException: void <init>(java.lang.String)>("Invalid motion layout. Layout missing Motion Scene.");
+
+        throw $u1#10;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.motion.widget.TransitionBuilder: java.lang.String TAG> = "TransitionBuilder";
+
+        return;
+    }
+}

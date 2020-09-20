@@ -1,0 +1,72 @@
+class androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup extends androidx.appcompat.view.menu.MenuPopupHelper
+{
+    final androidx.appcompat.widget.ActionMenuPresenter this$0;
+
+    public void <init>(androidx.appcompat.widget.ActionMenuPresenter, android.content.Context, androidx.appcompat.view.menu.MenuBuilder, android.view.View, boolean)
+    {
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup this;
+        android.content.Context $u8;
+        androidx.appcompat.view.menu.MenuBuilder $u9;
+        android.view.View $u10;
+        boolean $u11;
+        int $u5;
+        androidx.appcompat.widget.ActionMenuPresenter $u7;
+        androidx.appcompat.widget.ActionMenuPresenter$PopupPresenterCallback $u7#4;
+
+        this := @this: androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup;
+
+        $u7 := @parameter0: androidx.appcompat.widget.ActionMenuPresenter;
+
+        $u8 := @parameter1: android.content.Context;
+
+        $u9 := @parameter2: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u10 := @parameter3: android.view.View;
+
+        $u11 := @parameter4: boolean;
+
+        this.<androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup: androidx.appcompat.widget.ActionMenuPresenter this$0> = $u7;
+
+        $u5 = <androidx.appcompat.R$attr: int actionOverflowMenuStyle>;
+
+        specialinvoke this.<androidx.appcompat.view.menu.MenuPopupHelper: void <init>(android.content.Context,androidx.appcompat.view.menu.MenuBuilder,android.view.View,boolean,int)>($u8, $u9, $u10, $u11, $u5);
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup: void setGravity(int)>(8388613);
+
+        $u7#4 = $u7.<androidx.appcompat.widget.ActionMenuPresenter: androidx.appcompat.widget.ActionMenuPresenter$PopupPresenterCallback mPopupPresenterCallback>;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup: void setPresenterCallback(androidx.appcompat.view.menu.MenuPresenter$Callback)>($u7#4);
+
+        return;
+    }
+
+    protected void onDismiss()
+    {
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup this;
+        androidx.appcompat.widget.ActionMenuPresenter $u0;
+        androidx.appcompat.view.menu.MenuBuilder $u-1;
+
+        this := @this: androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup;
+
+        $u0 = this.<androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.ActionMenuPresenter: androidx.appcompat.view.menu.MenuBuilder access$000(androidx.appcompat.widget.ActionMenuPresenter)>($u0);
+
+        if $u-1 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.ActionMenuPresenter: androidx.appcompat.view.menu.MenuBuilder access$100(androidx.appcompat.widget.ActionMenuPresenter)>($u0);
+
+        virtualinvoke $u-1.<androidx.appcompat.view.menu.MenuBuilder: void close()>();
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        $u0.<androidx.appcompat.widget.ActionMenuPresenter: androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup mOverflowPopup> = null;
+
+        specialinvoke this.<androidx.appcompat.view.menu.MenuPopupHelper: void onDismiss()>();
+
+        return;
+    }
+}

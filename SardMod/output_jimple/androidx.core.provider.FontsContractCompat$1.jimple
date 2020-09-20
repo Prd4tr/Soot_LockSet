@@ -1,0 +1,87 @@
+class androidx.core.provider.FontsContractCompat$1 extends java.lang.Object implements java.util.concurrent.Callable
+{
+    final android.content.Context val$context;
+    final java.lang.String val$id;
+    final androidx.core.provider.FontRequest val$request;
+    final int val$style;
+
+    void <init>(android.content.Context, androidx.core.provider.FontRequest, int, java.lang.String)
+    {
+        androidx.core.provider.FontsContractCompat$1 this;
+        android.content.Context $u1;
+        androidx.core.provider.FontRequest $u2;
+        int $u3;
+        java.lang.String $u4;
+
+        this := @this: androidx.core.provider.FontsContractCompat$1;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: androidx.core.provider.FontRequest;
+
+        $u3 := @parameter2: int;
+
+        $u4 := @parameter3: java.lang.String;
+
+        this.<androidx.core.provider.FontsContractCompat$1: android.content.Context val$context> = $u1;
+
+        this.<androidx.core.provider.FontsContractCompat$1: androidx.core.provider.FontRequest val$request> = $u2;
+
+        this.<androidx.core.provider.FontsContractCompat$1: int val$style> = $u3;
+
+        this.<androidx.core.provider.FontsContractCompat$1: java.lang.String val$id> = $u4;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public androidx.core.provider.FontsContractCompat$TypefaceResult call() throws java.lang.Exception
+    {
+        androidx.core.provider.FontsContractCompat$1 this;
+        android.graphics.Typeface $u3;
+        androidx.core.provider.FontsContractCompat$TypefaceResult $u-1;
+        android.content.Context typeface;
+        androidx.core.provider.FontRequest $u1;
+        int $u2;
+        androidx.collection.LruCache $u1#6;
+        java.lang.String $u2#7;
+
+        this := @this: androidx.core.provider.FontsContractCompat$1;
+
+        typeface = this.<androidx.core.provider.FontsContractCompat$1: android.content.Context val$context>;
+
+        $u1 = this.<androidx.core.provider.FontsContractCompat$1: androidx.core.provider.FontRequest val$request>;
+
+        $u2 = this.<androidx.core.provider.FontsContractCompat$1: int val$style>;
+
+        $u-1 = staticinvoke <androidx.core.provider.FontsContractCompat: androidx.core.provider.FontsContractCompat$TypefaceResult getFontInternal(android.content.Context,androidx.core.provider.FontRequest,int)>(typeface, $u1, $u2);
+
+        $u3 = $u-1.<androidx.core.provider.FontsContractCompat$TypefaceResult: android.graphics.Typeface mTypeface>;
+
+        if $u3 == null goto label1;
+
+        $u1#6 = <androidx.core.provider.FontsContractCompat: androidx.collection.LruCache sTypefaceCache>;
+
+        $u2#7 = this.<androidx.core.provider.FontsContractCompat$1: java.lang.String val$id>;
+
+        $u3 = $u-1.<androidx.core.provider.FontsContractCompat$TypefaceResult: android.graphics.Typeface mTypeface>;
+
+        virtualinvoke $u1#6.<androidx.collection.LruCache: java.lang.Object put(java.lang.Object,java.lang.Object)>($u2#7, $u3);
+
+     label1:
+        return $u-1;
+    }
+
+    public volatile java.lang.Object call() throws java.lang.Exception
+    {
+        androidx.core.provider.FontsContractCompat$1 this;
+        androidx.core.provider.FontsContractCompat$TypefaceResult $u-1;
+
+        this := @this: androidx.core.provider.FontsContractCompat$1;
+
+        $u-1 = virtualinvoke this.<androidx.core.provider.FontsContractCompat$1: androidx.core.provider.FontsContractCompat$TypefaceResult call()>();
+
+        return $u-1;
+    }
+}

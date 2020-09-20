@@ -1,0 +1,939 @@
+class androidx.customview.widget.FocusStrategy extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.customview.widget.FocusStrategy this;
+
+        this := @this: androidx.customview.widget.FocusStrategy;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static boolean beamBeats(int, android.graphics.Rect, android.graphics.Rect, android.graphics.Rect)
+    {
+        int $u6, $u-1#8;
+        android.graphics.Rect $u7, $u8, $u9;
+        boolean $u-1, $u-1#2;
+
+        $u6 := @parameter0: int;
+
+        $u7 := @parameter1: android.graphics.Rect;
+
+        $u8 := @parameter2: android.graphics.Rect;
+
+        $u9 := @parameter3: android.graphics.Rect;
+
+        $u-1 = staticinvoke <androidx.customview.widget.FocusStrategy: boolean beamsOverlap(int,android.graphics.Rect,android.graphics.Rect)>($u6, $u7, $u8);
+
+        $u-1#2 = staticinvoke <androidx.customview.widget.FocusStrategy: boolean beamsOverlap(int,android.graphics.Rect,android.graphics.Rect)>($u6, $u7, $u9);
+
+        if $u-1#2 != 0 goto label5;
+
+        if $u-1 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        $u-1 = staticinvoke <androidx.customview.widget.FocusStrategy: boolean isToDirectionOf(int,android.graphics.Rect,android.graphics.Rect)>($u6, $u7, $u9);
+
+        if $u-1 != 0 goto label2;
+
+        return 1;
+
+     label2:
+        if $u6 == 17 goto label4;
+
+        if $u6 != 66 goto label3;
+
+        return 1;
+
+     label3:
+        $u-1#8 = staticinvoke <androidx.customview.widget.FocusStrategy: int majorAxisDistance(int,android.graphics.Rect,android.graphics.Rect)>($u6, $u7, $u8);
+
+        $u6 = staticinvoke <androidx.customview.widget.FocusStrategy: int majorAxisDistanceToFarEdge(int,android.graphics.Rect,android.graphics.Rect)>($u6, $u7, $u9);
+
+        if $u-1#8 >= $u6 goto label5;
+
+        return 1;
+
+     label4:
+        return 1;
+
+     label5:
+        return 0;
+    }
+
+    private static boolean beamsOverlap(int, android.graphics.Rect, android.graphics.Rect)
+    {
+        int $u4, $u3;
+        android.graphics.Rect $u5, $u6;
+        java.lang.IllegalArgumentException $u0;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: android.graphics.Rect;
+
+        $u6 := @parameter2: android.graphics.Rect;
+
+        if $u4 == 17 goto label4;
+
+        if $u4 == 33 goto label2;
+
+        if $u4 == 66 goto label4;
+
+        if $u4 != 130 goto label1;
+
+        goto label2;
+
+     label1:
+        $u0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+
+        throw $u0;
+
+     label2:
+        $u4 = $u6.<android.graphics.Rect: int right>;
+
+        $u3 = $u5.<android.graphics.Rect: int left>;
+
+        if $u4 < $u3 goto label3;
+
+        $u4 = $u6.<android.graphics.Rect: int left>;
+
+        $u3 = $u5.<android.graphics.Rect: int right>;
+
+        if $u4 > $u3 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+
+     label4:
+        $u4 = $u6.<android.graphics.Rect: int bottom>;
+
+        $u3 = $u5.<android.graphics.Rect: int top>;
+
+        if $u4 < $u3 goto label5;
+
+        $u4 = $u6.<android.graphics.Rect: int top>;
+
+        $u3 = $u5.<android.graphics.Rect: int bottom>;
+
+        if $u4 > $u3 goto label5;
+
+        return 1;
+
+     label5:
+        return 0;
+    }
+
+    public static java.lang.Object findNextFocusInAbsoluteDirection(java.lang.Object, androidx.customview.widget.FocusStrategy$CollectionAdapter, androidx.customview.widget.FocusStrategy$BoundsAdapter, java.lang.Object, android.graphics.Rect, int)
+    {
+        java.lang.Object focusables, focused, closest#22, $u-1#26;
+        androidx.customview.widget.FocusStrategy$CollectionAdapter collectionAdapter;
+        androidx.customview.widget.FocusStrategy$BoundsAdapter adapter;
+        android.graphics.Rect $u11, bestCandidateRect, focusableRect;
+        int $u12, $u-1, i;
+        java.lang.IllegalArgumentException closest;
+        boolean $u-1#27;
+
+        focusables := @parameter0: java.lang.Object;
+
+        collectionAdapter := @parameter1: androidx.customview.widget.FocusStrategy$CollectionAdapter;
+
+        adapter := @parameter2: androidx.customview.widget.FocusStrategy$BoundsAdapter;
+
+        focused := @parameter3: java.lang.Object;
+
+        $u11 := @parameter4: android.graphics.Rect;
+
+        $u12 := @parameter5: int;
+
+        bestCandidateRect = new android.graphics.Rect;
+
+        specialinvoke bestCandidateRect.<android.graphics.Rect: void <init>(android.graphics.Rect)>($u11);
+
+        if $u12 == 17 goto label4;
+
+        if $u12 == 33 goto label3;
+
+        if $u12 == 66 goto label2;
+
+        if $u12 != 130 goto label1;
+
+        $u-1 = virtualinvoke $u11.<android.graphics.Rect: int height()>();
+
+        $u-1 = $u-1 + 1;
+
+        $u-1 = neg $u-1;
+
+        virtualinvoke bestCandidateRect.<android.graphics.Rect: void offset(int,int)>(0, $u-1);
+
+        goto label5;
+
+     label1:
+        closest = new java.lang.IllegalArgumentException;
+
+        specialinvoke closest.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+
+        throw closest;
+
+     label2:
+        $u-1 = virtualinvoke $u11.<android.graphics.Rect: int width()>();
+
+        $u-1 = $u-1 + 1;
+
+        $u-1 = neg $u-1;
+
+        virtualinvoke bestCandidateRect.<android.graphics.Rect: void offset(int,int)>($u-1, 0);
+
+        goto label5;
+
+     label3:
+        $u-1 = virtualinvoke $u11.<android.graphics.Rect: int height()>();
+
+        $u-1 = $u-1 + 1;
+
+        virtualinvoke bestCandidateRect.<android.graphics.Rect: void offset(int,int)>(0, $u-1);
+
+        goto label5;
+
+     label4:
+        $u-1 = virtualinvoke $u11.<android.graphics.Rect: int width()>();
+
+        $u-1 = $u-1 + 1;
+
+        virtualinvoke bestCandidateRect.<android.graphics.Rect: void offset(int,int)>($u-1, 0);
+
+     label5:
+        closest#22 = null;
+
+        $u-1 = interfaceinvoke collectionAdapter.<androidx.customview.widget.FocusStrategy$CollectionAdapter: int size(java.lang.Object)>(focusables);
+
+        focusableRect = new android.graphics.Rect;
+
+        specialinvoke focusableRect.<android.graphics.Rect: void <init>()>();
+
+        i = 0;
+
+     label6:
+        if i >= $u-1 goto label9;
+
+        $u-1#26 = interfaceinvoke collectionAdapter.<androidx.customview.widget.FocusStrategy$CollectionAdapter: java.lang.Object get(java.lang.Object,int)>(focusables, i);
+
+        if $u-1#26 != focused goto label7;
+
+        goto label8;
+
+     label7:
+        interfaceinvoke adapter.<androidx.customview.widget.FocusStrategy$BoundsAdapter: void obtainBounds(java.lang.Object,android.graphics.Rect)>($u-1#26, focusableRect);
+
+        $u-1#27 = staticinvoke <androidx.customview.widget.FocusStrategy: boolean isBetterCandidate(int,android.graphics.Rect,android.graphics.Rect,android.graphics.Rect)>($u12, $u11, focusableRect, bestCandidateRect);
+
+        if $u-1#27 == 0 goto label8;
+
+        virtualinvoke bestCandidateRect.<android.graphics.Rect: void set(android.graphics.Rect)>(focusableRect);
+
+        closest#22 = $u-1#26;
+
+     label8:
+        i = i + 1;
+
+        goto label6;
+
+     label9:
+        return closest#22;
+    }
+
+    public static java.lang.Object findNextFocusInRelativeDirection(java.lang.Object, androidx.customview.widget.FocusStrategy$CollectionAdapter, androidx.customview.widget.FocusStrategy$BoundsAdapter, java.lang.Object, int, boolean, boolean)
+    {
+        java.lang.Object focusables, focused, $u-1#3;
+        androidx.customview.widget.FocusStrategy$CollectionAdapter collectionAdapter;
+        androidx.customview.widget.FocusStrategy$BoundsAdapter adapter;
+        int $u9, $u-1, i;
+        boolean $u10, $u11;
+        java.util.ArrayList sortedFocusables;
+        androidx.customview.widget.FocusStrategy$SequentialComparator i#5;
+        java.lang.IllegalArgumentException $u3;
+
+        focusables := @parameter0: java.lang.Object;
+
+        collectionAdapter := @parameter1: androidx.customview.widget.FocusStrategy$CollectionAdapter;
+
+        adapter := @parameter2: androidx.customview.widget.FocusStrategy$BoundsAdapter;
+
+        focused := @parameter3: java.lang.Object;
+
+        $u9 := @parameter4: int;
+
+        $u10 := @parameter5: boolean;
+
+        $u11 := @parameter6: boolean;
+
+        $u-1 = interfaceinvoke collectionAdapter.<androidx.customview.widget.FocusStrategy$CollectionAdapter: int size(java.lang.Object)>(focusables);
+
+        sortedFocusables = new java.util.ArrayList;
+
+        specialinvoke sortedFocusables.<java.util.ArrayList: void <init>(int)>($u-1);
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label2;
+
+        $u-1#3 = interfaceinvoke collectionAdapter.<androidx.customview.widget.FocusStrategy$CollectionAdapter: java.lang.Object get(java.lang.Object,int)>(focusables, i);
+
+        virtualinvoke sortedFocusables.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1#3);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        i#5 = new androidx.customview.widget.FocusStrategy$SequentialComparator;
+
+        specialinvoke i#5.<androidx.customview.widget.FocusStrategy$SequentialComparator: void <init>(boolean,androidx.customview.widget.FocusStrategy$BoundsAdapter)>($u10, adapter);
+
+        staticinvoke <java.util.Collections: void sort(java.util.List,java.util.Comparator)>(sortedFocusables, i#5);
+
+        if $u9 == 1 goto label4;
+
+        if $u9 != 2 goto label3;
+
+        focusables = staticinvoke <androidx.customview.widget.FocusStrategy: java.lang.Object getNextFocusable(java.lang.Object,java.util.ArrayList,boolean)>(focused, sortedFocusables, $u11);
+
+        return focusables;
+
+     label3:
+        $u3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("direction must be one of {FOCUS_FORWARD, FOCUS_BACKWARD}.");
+
+        throw $u3;
+
+     label4:
+        focusables = staticinvoke <androidx.customview.widget.FocusStrategy: java.lang.Object getPreviousFocusable(java.lang.Object,java.util.ArrayList,boolean)>(focused, sortedFocusables, $u11);
+
+        return focusables;
+    }
+
+    private static java.lang.Object getNextFocusable(java.lang.Object, java.util.ArrayList, boolean)
+    {
+        java.lang.Object focused;
+        java.util.ArrayList focusables;
+        boolean $u5;
+        int $u-1, position;
+
+        focused := @parameter0: java.lang.Object;
+
+        focusables := @parameter1: java.util.ArrayList;
+
+        $u5 := @parameter2: boolean;
+
+        $u-1 = virtualinvoke focusables.<java.util.ArrayList: int size()>();
+
+        if focused != null goto label1;
+
+        position = -1;
+
+        goto label2;
+
+     label1:
+        position = virtualinvoke focusables.<java.util.ArrayList: int lastIndexOf(java.lang.Object)>(focused);
+
+     label2:
+        position = position + 1;
+
+        if position >= $u-1 goto label3;
+
+        focused = virtualinvoke focusables.<java.util.ArrayList: java.lang.Object get(int)>(position);
+
+        return focused;
+
+     label3:
+        if $u5 == 0 goto label4;
+
+        if $u-1 <= 0 goto label4;
+
+        focused = virtualinvoke focusables.<java.util.ArrayList: java.lang.Object get(int)>(0);
+
+        return focused;
+
+     label4:
+        return null;
+    }
+
+    private static java.lang.Object getPreviousFocusable(java.lang.Object, java.util.ArrayList, boolean)
+    {
+        java.lang.Object focused;
+        java.util.ArrayList focusables;
+        boolean $u5;
+        int $u-1, position;
+
+        focused := @parameter0: java.lang.Object;
+
+        focusables := @parameter1: java.util.ArrayList;
+
+        $u5 := @parameter2: boolean;
+
+        $u-1 = virtualinvoke focusables.<java.util.ArrayList: int size()>();
+
+        if focused != null goto label1;
+
+        position = $u-1;
+
+        goto label2;
+
+     label1:
+        position = virtualinvoke focusables.<java.util.ArrayList: int indexOf(java.lang.Object)>(focused);
+
+     label2:
+        position = position + -1;
+
+        if position < 0 goto label3;
+
+        focused = virtualinvoke focusables.<java.util.ArrayList: java.lang.Object get(int)>(position);
+
+        return focused;
+
+     label3:
+        if $u5 == 0 goto label4;
+
+        if $u-1 <= 0 goto label4;
+
+        $u-1 = $u-1 + -1;
+
+        focused = virtualinvoke focusables.<java.util.ArrayList: java.lang.Object get(int)>($u-1);
+
+        return focused;
+
+     label4:
+        return null;
+    }
+
+    private static int getWeightedDistanceFor(int, int)
+    {
+        int $u2, $u3, $u0;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u0 = $u2 * 13;
+
+        $u2 = $u0 * $u2;
+
+        $u3 = $u3 * $u3;
+
+        $u2 = $u2 + $u3;
+
+        return $u2;
+    }
+
+    private static boolean isBetterCandidate(int, android.graphics.Rect, android.graphics.Rect, android.graphics.Rect)
+    {
+        int $u5, $u-1#10, $u-1#12;
+        android.graphics.Rect $u6, $u7, $u8;
+        boolean $u-1;
+
+        $u5 := @parameter0: int;
+
+        $u6 := @parameter1: android.graphics.Rect;
+
+        $u7 := @parameter2: android.graphics.Rect;
+
+        $u8 := @parameter3: android.graphics.Rect;
+
+        $u-1 = staticinvoke <androidx.customview.widget.FocusStrategy: boolean isCandidate(android.graphics.Rect,android.graphics.Rect,int)>($u6, $u7, $u5);
+
+        if $u-1 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        $u-1 = staticinvoke <androidx.customview.widget.FocusStrategy: boolean isCandidate(android.graphics.Rect,android.graphics.Rect,int)>($u6, $u8, $u5);
+
+        if $u-1 != 0 goto label2;
+
+        return 1;
+
+     label2:
+        $u-1 = staticinvoke <androidx.customview.widget.FocusStrategy: boolean beamBeats(int,android.graphics.Rect,android.graphics.Rect,android.graphics.Rect)>($u5, $u6, $u7, $u8);
+
+        if $u-1 == 0 goto label3;
+
+        return 1;
+
+     label3:
+        $u-1 = staticinvoke <androidx.customview.widget.FocusStrategy: boolean beamBeats(int,android.graphics.Rect,android.graphics.Rect,android.graphics.Rect)>($u5, $u6, $u8, $u7);
+
+        if $u-1 == 0 goto label4;
+
+        return 0;
+
+     label4:
+        $u-1#10 = staticinvoke <androidx.customview.widget.FocusStrategy: int majorAxisDistance(int,android.graphics.Rect,android.graphics.Rect)>($u5, $u6, $u7);
+
+        $u-1#12 = staticinvoke <androidx.customview.widget.FocusStrategy: int minorAxisDistance(int,android.graphics.Rect,android.graphics.Rect)>($u5, $u6, $u7);
+
+        $u-1#10 = staticinvoke <androidx.customview.widget.FocusStrategy: int getWeightedDistanceFor(int,int)>($u-1#10, $u-1#12);
+
+        $u-1#12 = staticinvoke <androidx.customview.widget.FocusStrategy: int majorAxisDistance(int,android.graphics.Rect,android.graphics.Rect)>($u5, $u6, $u8);
+
+        $u5 = staticinvoke <androidx.customview.widget.FocusStrategy: int minorAxisDistance(int,android.graphics.Rect,android.graphics.Rect)>($u5, $u6, $u8);
+
+        $u5 = staticinvoke <androidx.customview.widget.FocusStrategy: int getWeightedDistanceFor(int,int)>($u-1#12, $u5);
+
+        if $u-1#10 >= $u5 goto label5;
+
+        return 1;
+
+     label5:
+        return 0;
+    }
+
+    private static boolean isCandidate(android.graphics.Rect, android.graphics.Rect, int)
+    {
+        android.graphics.Rect $u4, $u5;
+        int $u6, $u3;
+        java.lang.IllegalArgumentException $u0;
+
+        $u4 := @parameter0: android.graphics.Rect;
+
+        $u5 := @parameter1: android.graphics.Rect;
+
+        $u6 := @parameter2: int;
+
+        if $u6 == 17 goto label10;
+
+        if $u6 == 33 goto label07;
+
+        if $u6 == 66 goto label04;
+
+        if $u6 != 130 goto label03;
+
+        $u6 = $u4.<android.graphics.Rect: int top>;
+
+        $u3 = $u5.<android.graphics.Rect: int top>;
+
+        if $u6 < $u3 goto label01;
+
+        $u6 = $u4.<android.graphics.Rect: int bottom>;
+
+        $u3 = $u5.<android.graphics.Rect: int top>;
+
+        if $u6 > $u3 goto label02;
+
+     label01:
+        $u6 = $u4.<android.graphics.Rect: int bottom>;
+
+        $u3 = $u5.<android.graphics.Rect: int bottom>;
+
+        if $u6 >= $u3 goto label02;
+
+        return 1;
+
+     label02:
+        return 0;
+
+     label03:
+        $u0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+
+        throw $u0;
+
+     label04:
+        $u6 = $u4.<android.graphics.Rect: int left>;
+
+        $u3 = $u5.<android.graphics.Rect: int left>;
+
+        if $u6 < $u3 goto label05;
+
+        $u6 = $u4.<android.graphics.Rect: int right>;
+
+        $u3 = $u5.<android.graphics.Rect: int left>;
+
+        if $u6 > $u3 goto label06;
+
+     label05:
+        $u6 = $u4.<android.graphics.Rect: int right>;
+
+        $u3 = $u5.<android.graphics.Rect: int right>;
+
+        if $u6 >= $u3 goto label06;
+
+        return 1;
+
+     label06:
+        return 0;
+
+     label07:
+        $u6 = $u4.<android.graphics.Rect: int bottom>;
+
+        $u3 = $u5.<android.graphics.Rect: int bottom>;
+
+        if $u6 > $u3 goto label08;
+
+        $u6 = $u4.<android.graphics.Rect: int top>;
+
+        $u3 = $u5.<android.graphics.Rect: int bottom>;
+
+        if $u6 < $u3 goto label09;
+
+     label08:
+        $u6 = $u4.<android.graphics.Rect: int top>;
+
+        $u3 = $u5.<android.graphics.Rect: int top>;
+
+        if $u6 <= $u3 goto label09;
+
+        return 1;
+
+     label09:
+        return 0;
+
+     label10:
+        $u6 = $u4.<android.graphics.Rect: int right>;
+
+        $u3 = $u5.<android.graphics.Rect: int right>;
+
+        if $u6 > $u3 goto label11;
+
+        $u6 = $u4.<android.graphics.Rect: int left>;
+
+        $u3 = $u5.<android.graphics.Rect: int right>;
+
+        if $u6 < $u3 goto label12;
+
+     label11:
+        $u6 = $u4.<android.graphics.Rect: int left>;
+
+        $u3 = $u5.<android.graphics.Rect: int left>;
+
+        if $u6 <= $u3 goto label12;
+
+        return 1;
+
+     label12:
+        return 0;
+    }
+
+    private static boolean isToDirectionOf(int, android.graphics.Rect, android.graphics.Rect)
+    {
+        int $u4, $u3;
+        android.graphics.Rect $u5, $u6;
+        java.lang.IllegalArgumentException $u0;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: android.graphics.Rect;
+
+        $u6 := @parameter2: android.graphics.Rect;
+
+        if $u4 == 17 goto label7;
+
+        if $u4 == 33 goto label5;
+
+        if $u4 == 66 goto label3;
+
+        if $u4 != 130 goto label2;
+
+        $u4 = $u5.<android.graphics.Rect: int bottom>;
+
+        $u3 = $u6.<android.graphics.Rect: int top>;
+
+        if $u4 > $u3 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+
+     label2:
+        $u0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+
+        throw $u0;
+
+     label3:
+        $u4 = $u5.<android.graphics.Rect: int right>;
+
+        $u3 = $u6.<android.graphics.Rect: int left>;
+
+        if $u4 > $u3 goto label4;
+
+        return 1;
+
+     label4:
+        return 0;
+
+     label5:
+        $u4 = $u5.<android.graphics.Rect: int top>;
+
+        $u3 = $u6.<android.graphics.Rect: int bottom>;
+
+        if $u4 < $u3 goto label6;
+
+        return 1;
+
+     label6:
+        return 0;
+
+     label7:
+        $u4 = $u5.<android.graphics.Rect: int left>;
+
+        $u3 = $u6.<android.graphics.Rect: int right>;
+
+        if $u4 < $u3 goto label8;
+
+        return 1;
+
+     label8:
+        return 0;
+    }
+
+    private static int majorAxisDistance(int, android.graphics.Rect, android.graphics.Rect)
+    {
+        int $u2;
+        android.graphics.Rect $u3, $u4;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.graphics.Rect;
+
+        $u4 := @parameter2: android.graphics.Rect;
+
+        $u2 = staticinvoke <androidx.customview.widget.FocusStrategy: int majorAxisDistanceRaw(int,android.graphics.Rect,android.graphics.Rect)>($u2, $u3, $u4);
+
+        $u2 = staticinvoke <java.lang.Math: int max(int,int)>(0, $u2);
+
+        return $u2;
+    }
+
+    private static int majorAxisDistanceRaw(int, android.graphics.Rect, android.graphics.Rect)
+    {
+        int $u2, $u1;
+        android.graphics.Rect $u3, $u4;
+        java.lang.IllegalArgumentException $u0;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.graphics.Rect;
+
+        $u4 := @parameter2: android.graphics.Rect;
+
+        if $u2 == 17 goto label4;
+
+        if $u2 == 33 goto label3;
+
+        if $u2 == 66 goto label2;
+
+        if $u2 != 130 goto label1;
+
+        $u2 = $u4.<android.graphics.Rect: int top>;
+
+        $u1 = $u3.<android.graphics.Rect: int bottom>;
+
+        $u2 = $u2 - $u1;
+
+        return $u2;
+
+     label1:
+        $u0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+
+        throw $u0;
+
+     label2:
+        $u2 = $u4.<android.graphics.Rect: int left>;
+
+        $u1 = $u3.<android.graphics.Rect: int right>;
+
+        $u2 = $u2 - $u1;
+
+        return $u2;
+
+     label3:
+        $u2 = $u3.<android.graphics.Rect: int top>;
+
+        $u1 = $u4.<android.graphics.Rect: int bottom>;
+
+        $u2 = $u2 - $u1;
+
+        return $u2;
+
+     label4:
+        $u2 = $u3.<android.graphics.Rect: int left>;
+
+        $u1 = $u4.<android.graphics.Rect: int right>;
+
+        $u2 = $u2 - $u1;
+
+        return $u2;
+    }
+
+    private static int majorAxisDistanceToFarEdge(int, android.graphics.Rect, android.graphics.Rect)
+    {
+        int $u2;
+        android.graphics.Rect $u3, $u4;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.graphics.Rect;
+
+        $u4 := @parameter2: android.graphics.Rect;
+
+        $u2 = staticinvoke <androidx.customview.widget.FocusStrategy: int majorAxisDistanceToFarEdgeRaw(int,android.graphics.Rect,android.graphics.Rect)>($u2, $u3, $u4);
+
+        $u2 = staticinvoke <java.lang.Math: int max(int,int)>(1, $u2);
+
+        return $u2;
+    }
+
+    private static int majorAxisDistanceToFarEdgeRaw(int, android.graphics.Rect, android.graphics.Rect)
+    {
+        int $u2, $u1;
+        android.graphics.Rect $u3, $u4;
+        java.lang.IllegalArgumentException $u0;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.graphics.Rect;
+
+        $u4 := @parameter2: android.graphics.Rect;
+
+        if $u2 == 17 goto label4;
+
+        if $u2 == 33 goto label3;
+
+        if $u2 == 66 goto label2;
+
+        if $u2 != 130 goto label1;
+
+        $u2 = $u4.<android.graphics.Rect: int bottom>;
+
+        $u1 = $u3.<android.graphics.Rect: int bottom>;
+
+        $u2 = $u2 - $u1;
+
+        return $u2;
+
+     label1:
+        $u0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+
+        throw $u0;
+
+     label2:
+        $u2 = $u4.<android.graphics.Rect: int right>;
+
+        $u1 = $u3.<android.graphics.Rect: int right>;
+
+        $u2 = $u2 - $u1;
+
+        return $u2;
+
+     label3:
+        $u2 = $u3.<android.graphics.Rect: int top>;
+
+        $u1 = $u4.<android.graphics.Rect: int top>;
+
+        $u2 = $u2 - $u1;
+
+        return $u2;
+
+     label4:
+        $u2 = $u3.<android.graphics.Rect: int left>;
+
+        $u1 = $u4.<android.graphics.Rect: int left>;
+
+        $u2 = $u2 - $u1;
+
+        return $u2;
+    }
+
+    private static int minorAxisDistance(int, android.graphics.Rect, android.graphics.Rect)
+    {
+        int $u3, $u-1, $u-1#13;
+        android.graphics.Rect $u4, $u5;
+        java.lang.IllegalArgumentException $u0;
+
+        $u3 := @parameter0: int;
+
+        $u4 := @parameter1: android.graphics.Rect;
+
+        $u5 := @parameter2: android.graphics.Rect;
+
+        if $u3 == 17 goto label3;
+
+        if $u3 == 33 goto label2;
+
+        if $u3 == 66 goto label3;
+
+        if $u3 != 130 goto label1;
+
+        goto label2;
+
+     label1:
+        $u0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+
+        throw $u0;
+
+     label2:
+        $u3 = $u4.<android.graphics.Rect: int left>;
+
+        $u-1 = virtualinvoke $u4.<android.graphics.Rect: int width()>();
+
+        $u-1 = $u-1 / 2;
+
+        $u3 = $u3 + $u-1;
+
+        $u-1 = $u5.<android.graphics.Rect: int left>;
+
+        $u-1#13 = virtualinvoke $u5.<android.graphics.Rect: int width()>();
+
+        $u-1#13 = $u-1#13 / 2;
+
+        $u-1 = $u-1 + $u-1#13;
+
+        $u3 = $u3 - $u-1;
+
+        $u3 = staticinvoke <java.lang.Math: int abs(int)>($u3);
+
+        return $u3;
+
+     label3:
+        $u3 = $u4.<android.graphics.Rect: int top>;
+
+        $u-1 = virtualinvoke $u4.<android.graphics.Rect: int height()>();
+
+        $u-1 = $u-1 / 2;
+
+        $u3 = $u3 + $u-1;
+
+        $u-1 = $u5.<android.graphics.Rect: int top>;
+
+        $u-1#13 = virtualinvoke $u5.<android.graphics.Rect: int height()>();
+
+        $u-1#13 = $u-1#13 / 2;
+
+        $u-1 = $u-1 + $u-1#13;
+
+        $u3 = $u3 - $u-1;
+
+        $u3 = staticinvoke <java.lang.Math: int abs(int)>($u3);
+
+        return $u3;
+    }
+}

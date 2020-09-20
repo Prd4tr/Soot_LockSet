@@ -1,0 +1,373 @@
+public final class androidx.core.content.res.ComplexColorCompat extends java.lang.Object
+{
+    private static final java.lang.String LOG_TAG;
+    private int mColor;
+    private final android.content.res.ColorStateList mColorStateList;
+    private final android.graphics.Shader mShader;
+
+    private void <init>(android.graphics.Shader, android.content.res.ColorStateList, int)
+    {
+        androidx.core.content.res.ComplexColorCompat this;
+        android.graphics.Shader $u1;
+        android.content.res.ColorStateList $u2;
+        int $u3;
+
+        this := @this: androidx.core.content.res.ComplexColorCompat;
+
+        $u1 := @parameter0: android.graphics.Shader;
+
+        $u2 := @parameter1: android.content.res.ColorStateList;
+
+        $u3 := @parameter2: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.content.res.ComplexColorCompat: android.graphics.Shader mShader> = $u1;
+
+        this.<androidx.core.content.res.ComplexColorCompat: android.content.res.ColorStateList mColorStateList> = $u2;
+
+        this.<androidx.core.content.res.ComplexColorCompat: int mColor> = $u3;
+
+        return;
+    }
+
+    private static androidx.core.content.res.ComplexColorCompat createFromXml(android.content.res.Resources, int, android.content.res.Resources$Theme) throws java.io.IOException, org.xmlpull.v1.XmlPullParserException
+    {
+        android.content.res.Resources $u8;
+        int $u9;
+        android.content.res.Resources$Theme $u10;
+        android.content.res.XmlResourceParser $u-1;
+        android.util.AttributeSet $u-1#2;
+        java.lang.String $u-1#7, $u-1#26;
+        byte $u4;
+        boolean $u-1#15;
+        android.graphics.Shader $u-1#20;
+        androidx.core.content.res.ComplexColorCompat $u-1#22;
+        org.xmlpull.v1.XmlPullParserException $u4#24;
+        java.lang.StringBuilder $u5;
+        android.content.res.ColorStateList $u-1#31;
+
+        $u8 := @parameter0: android.content.res.Resources;
+
+        $u9 := @parameter1: int;
+
+        $u10 := @parameter2: android.content.res.Resources$Theme;
+
+        $u-1 = virtualinvoke $u8.<android.content.res.Resources: android.content.res.XmlResourceParser getXml(int)>($u9);
+
+        $u-1#2 = staticinvoke <android.util.Xml: android.util.AttributeSet asAttributeSet(org.xmlpull.v1.XmlPullParser)>($u-1);
+
+     label01:
+        $u9 = interfaceinvoke $u-1.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        if $u9 == 2 goto label02;
+
+        if $u9 == 1 goto label02;
+
+        goto label01;
+
+     label02:
+        if $u9 != 2 goto label09;
+
+        $u-1#7 = interfaceinvoke $u-1.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+        $u4 = -1;
+
+        $u9 = virtualinvoke $u-1#7.<java.lang.String: int hashCode()>();
+
+        if $u9 == 89650992 goto label05;
+
+        if $u9 == 1191572447 goto label04;
+
+     label03:
+        goto label06;
+
+     label04:
+        $u-1#15 = virtualinvoke $u-1#7.<java.lang.String: boolean equals(java.lang.Object)>("selector");
+
+        if $u-1#15 == 0 goto label03;
+
+        $u4 = 0;
+
+        goto label06;
+
+     label05:
+        $u-1#15 = virtualinvoke $u-1#7.<java.lang.String: boolean equals(java.lang.Object)>("gradient");
+
+        if $u-1#15 == 0 goto label03;
+
+        $u4 = 1;
+
+     label06:
+        if $u4 == 0 goto label08;
+
+        if $u4 != 1 goto label07;
+
+        $u-1#20 = staticinvoke <androidx.core.content.res.GradientColorInflaterCompat: android.graphics.Shader createFromXmlInner(android.content.res.Resources,org.xmlpull.v1.XmlPullParser,android.util.AttributeSet,android.content.res.Resources$Theme)>($u8, $u-1, $u-1#2, $u10);
+
+        $u-1#22 = staticinvoke <androidx.core.content.res.ComplexColorCompat: androidx.core.content.res.ComplexColorCompat 'from'(android.graphics.Shader)>($u-1#20);
+
+        return $u-1#22;
+
+     label07:
+        $u4#24 = new org.xmlpull.v1.XmlPullParserException;
+
+        $u5 = new java.lang.StringBuilder;
+
+        specialinvoke $u5.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1#26 = interfaceinvoke $u-1.<org.xmlpull.v1.XmlPullParser: java.lang.String getPositionDescription()>();
+
+        virtualinvoke $u5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#26);
+
+        virtualinvoke $u5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": unsupported complex color tag ");
+
+        virtualinvoke $u5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#7);
+
+        $u-1#7 = virtualinvoke $u5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u4#24.<org.xmlpull.v1.XmlPullParserException: void <init>(java.lang.String)>($u-1#7);
+
+        throw $u4#24;
+
+     label08:
+        $u-1#31 = staticinvoke <androidx.core.content.res.ColorStateListInflaterCompat: android.content.res.ColorStateList createFromXmlInner(android.content.res.Resources,org.xmlpull.v1.XmlPullParser,android.util.AttributeSet,android.content.res.Resources$Theme)>($u8, $u-1, $u-1#2, $u10);
+
+        $u-1#22 = staticinvoke <androidx.core.content.res.ComplexColorCompat: androidx.core.content.res.ComplexColorCompat 'from'(android.content.res.ColorStateList)>($u-1#31);
+
+        return $u-1#22;
+
+     label09:
+        $u4#24 = new org.xmlpull.v1.XmlPullParserException;
+
+        specialinvoke $u4#24.<org.xmlpull.v1.XmlPullParserException: void <init>(java.lang.String)>("No start tag found");
+
+        goto label10;
+
+     label10:
+        throw $u4#24;
+    }
+
+    static androidx.core.content.res.ComplexColorCompat 'from'(int)
+    {
+        int $u2;
+        androidx.core.content.res.ComplexColorCompat $u0;
+
+        $u2 := @parameter0: int;
+
+        $u0 = new androidx.core.content.res.ComplexColorCompat;
+
+        specialinvoke $u0.<androidx.core.content.res.ComplexColorCompat: void <init>(android.graphics.Shader,android.content.res.ColorStateList,int)>(null, null, $u2);
+
+        return $u0;
+    }
+
+    static androidx.core.content.res.ComplexColorCompat 'from'(android.content.res.ColorStateList)
+    {
+        android.content.res.ColorStateList $u3;
+        androidx.core.content.res.ComplexColorCompat $u0;
+        int $u-1;
+
+        $u3 := @parameter0: android.content.res.ColorStateList;
+
+        $u0 = new androidx.core.content.res.ComplexColorCompat;
+
+        $u-1 = virtualinvoke $u3.<android.content.res.ColorStateList: int getDefaultColor()>();
+
+        specialinvoke $u0.<androidx.core.content.res.ComplexColorCompat: void <init>(android.graphics.Shader,android.content.res.ColorStateList,int)>(null, $u3, $u-1);
+
+        return $u0;
+    }
+
+    static androidx.core.content.res.ComplexColorCompat 'from'(android.graphics.Shader)
+    {
+        android.graphics.Shader $u3;
+        androidx.core.content.res.ComplexColorCompat $u0;
+
+        $u3 := @parameter0: android.graphics.Shader;
+
+        $u0 = new androidx.core.content.res.ComplexColorCompat;
+
+        specialinvoke $u0.<androidx.core.content.res.ComplexColorCompat: void <init>(android.graphics.Shader,android.content.res.ColorStateList,int)>($u3, null, 0);
+
+        return $u0;
+    }
+
+    public static androidx.core.content.res.ComplexColorCompat inflate(android.content.res.Resources, int, android.content.res.Resources$Theme)
+    {
+        android.content.res.Resources $u3;
+        int $u4;
+        android.content.res.Resources$Theme $u5;
+        androidx.core.content.res.ComplexColorCompat $u-1;
+        java.lang.Exception e;
+
+        $u3 := @parameter0: android.content.res.Resources;
+
+        $u4 := @parameter1: int;
+
+        $u5 := @parameter2: android.content.res.Resources$Theme;
+
+     label1:
+        $u-1 = staticinvoke <androidx.core.content.res.ComplexColorCompat: androidx.core.content.res.ComplexColorCompat createFromXml(android.content.res.Resources,int,android.content.res.Resources$Theme)>($u3, $u4, $u5);
+
+     label2:
+        return $u-1;
+
+     label3:
+        e := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ComplexColorCompat", "Failed to inflate ComplexColor.", e);
+
+        return null;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public int getColor()
+    {
+        androidx.core.content.res.ComplexColorCompat this;
+        int ret0;
+
+        this := @this: androidx.core.content.res.ComplexColorCompat;
+
+        ret0 = this.<androidx.core.content.res.ComplexColorCompat: int mColor>;
+
+        return ret0;
+    }
+
+    public android.graphics.Shader getShader()
+    {
+        androidx.core.content.res.ComplexColorCompat this;
+        android.graphics.Shader ret0;
+
+        this := @this: androidx.core.content.res.ComplexColorCompat;
+
+        ret0 = this.<androidx.core.content.res.ComplexColorCompat: android.graphics.Shader mShader>;
+
+        return ret0;
+    }
+
+    public boolean isGradient()
+    {
+        androidx.core.content.res.ComplexColorCompat this;
+        android.graphics.Shader $u0;
+
+        this := @this: androidx.core.content.res.ComplexColorCompat;
+
+        $u0 = this.<androidx.core.content.res.ComplexColorCompat: android.graphics.Shader mShader>;
+
+        if $u0 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isStateful()
+    {
+        androidx.core.content.res.ComplexColorCompat this;
+        boolean $u-1;
+        android.graphics.Shader $u0;
+        android.content.res.ColorStateList $u0#2;
+
+        this := @this: androidx.core.content.res.ComplexColorCompat;
+
+        $u0 = this.<androidx.core.content.res.ComplexColorCompat: android.graphics.Shader mShader>;
+
+        if $u0 != null goto label1;
+
+        $u0#2 = this.<androidx.core.content.res.ComplexColorCompat: android.content.res.ColorStateList mColorStateList>;
+
+        if $u0#2 == null goto label1;
+
+        $u-1 = virtualinvoke $u0#2.<android.content.res.ColorStateList: boolean isStateful()>();
+
+        if $u-1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean onStateChanged(int[])
+    {
+        androidx.core.content.res.ComplexColorCompat this;
+        int[] $u4;
+        boolean $u-1;
+        android.content.res.ColorStateList colorForState;
+        int $u-1#5, $u2;
+
+        this := @this: androidx.core.content.res.ComplexColorCompat;
+
+        $u4 := @parameter0: int[];
+
+        $u-1 = virtualinvoke this.<androidx.core.content.res.ComplexColorCompat: boolean isStateful()>();
+
+        if $u-1 == 0 goto label1;
+
+        colorForState = this.<androidx.core.content.res.ComplexColorCompat: android.content.res.ColorStateList mColorStateList>;
+
+        $u-1#5 = virtualinvoke colorForState.<android.content.res.ColorStateList: int getDefaultColor()>();
+
+        $u-1#5 = virtualinvoke colorForState.<android.content.res.ColorStateList: int getColorForState(int[],int)>($u4, $u-1#5);
+
+        $u2 = this.<androidx.core.content.res.ComplexColorCompat: int mColor>;
+
+        if $u-1#5 == $u2 goto label1;
+
+        this.<androidx.core.content.res.ComplexColorCompat: int mColor> = $u-1#5;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void setColor(int)
+    {
+        androidx.core.content.res.ComplexColorCompat this;
+        int $u1;
+
+        this := @this: androidx.core.content.res.ComplexColorCompat;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.core.content.res.ComplexColorCompat: int mColor> = $u1;
+
+        return;
+    }
+
+    public boolean willDraw()
+    {
+        androidx.core.content.res.ComplexColorCompat this;
+        boolean $u-1;
+        int $u0;
+
+        this := @this: androidx.core.content.res.ComplexColorCompat;
+
+        $u-1 = virtualinvoke this.<androidx.core.content.res.ComplexColorCompat: boolean isGradient()>();
+
+        if $u-1 != 0 goto label2;
+
+        $u0 = this.<androidx.core.content.res.ComplexColorCompat: int mColor>;
+
+        if $u0 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.content.res.ComplexColorCompat: java.lang.String LOG_TAG> = "ComplexColorCompat";
+
+        return;
+    }
+}

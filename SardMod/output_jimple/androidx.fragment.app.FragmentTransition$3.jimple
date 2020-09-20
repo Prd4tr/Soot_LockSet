@@ -1,0 +1,91 @@
+final class androidx.fragment.app.FragmentTransition$3 extends java.lang.Object implements java.lang.Runnable
+{
+    final android.graphics.Rect val$epicenter;
+    final android.view.View val$epicenterView;
+    final androidx.fragment.app.FragmentTransitionImpl val$impl;
+    final androidx.fragment.app.Fragment val$inFragment;
+    final boolean val$inIsPop;
+    final androidx.collection.ArrayMap val$inSharedElements;
+    final androidx.fragment.app.Fragment val$outFragment;
+
+    void <init>(androidx.fragment.app.Fragment, androidx.fragment.app.Fragment, boolean, androidx.collection.ArrayMap, android.view.View, androidx.fragment.app.FragmentTransitionImpl, android.graphics.Rect)
+    {
+        androidx.fragment.app.FragmentTransition$3 this;
+        androidx.fragment.app.Fragment $u1, $u2;
+        boolean $u3;
+        androidx.collection.ArrayMap $u4;
+        android.view.View $u5;
+        androidx.fragment.app.FragmentTransitionImpl $u6;
+        android.graphics.Rect $u7;
+
+        this := @this: androidx.fragment.app.FragmentTransition$3;
+
+        $u1 := @parameter0: androidx.fragment.app.Fragment;
+
+        $u2 := @parameter1: androidx.fragment.app.Fragment;
+
+        $u3 := @parameter2: boolean;
+
+        $u4 := @parameter3: androidx.collection.ArrayMap;
+
+        $u5 := @parameter4: android.view.View;
+
+        $u6 := @parameter5: androidx.fragment.app.FragmentTransitionImpl;
+
+        $u7 := @parameter6: android.graphics.Rect;
+
+        this.<androidx.fragment.app.FragmentTransition$3: androidx.fragment.app.Fragment val$inFragment> = $u1;
+
+        this.<androidx.fragment.app.FragmentTransition$3: androidx.fragment.app.Fragment val$outFragment> = $u2;
+
+        this.<androidx.fragment.app.FragmentTransition$3: boolean val$inIsPop> = $u3;
+
+        this.<androidx.fragment.app.FragmentTransition$3: androidx.collection.ArrayMap val$inSharedElements> = $u4;
+
+        this.<androidx.fragment.app.FragmentTransition$3: android.view.View val$epicenterView> = $u5;
+
+        this.<androidx.fragment.app.FragmentTransition$3: androidx.fragment.app.FragmentTransitionImpl val$impl> = $u6;
+
+        this.<androidx.fragment.app.FragmentTransition$3: android.graphics.Rect val$epicenter> = $u7;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.fragment.app.FragmentTransition$3 this;
+        androidx.collection.ArrayMap $u3;
+        androidx.fragment.app.Fragment $u0, $u1;
+        boolean $u2;
+        android.view.View $u0#4;
+        androidx.fragment.app.FragmentTransitionImpl $u1#5;
+        android.graphics.Rect $u2#6;
+
+        this := @this: androidx.fragment.app.FragmentTransition$3;
+
+        $u0 = this.<androidx.fragment.app.FragmentTransition$3: androidx.fragment.app.Fragment val$inFragment>;
+
+        $u1 = this.<androidx.fragment.app.FragmentTransition$3: androidx.fragment.app.Fragment val$outFragment>;
+
+        $u2 = this.<androidx.fragment.app.FragmentTransition$3: boolean val$inIsPop>;
+
+        $u3 = this.<androidx.fragment.app.FragmentTransition$3: androidx.collection.ArrayMap val$inSharedElements>;
+
+        staticinvoke <androidx.fragment.app.FragmentTransition: void callSharedElementStartEnd(androidx.fragment.app.Fragment,androidx.fragment.app.Fragment,boolean,androidx.collection.ArrayMap,boolean)>($u0, $u1, $u2, $u3, 0);
+
+        $u0#4 = this.<androidx.fragment.app.FragmentTransition$3: android.view.View val$epicenterView>;
+
+        if $u0#4 == null goto label1;
+
+        $u1#5 = this.<androidx.fragment.app.FragmentTransition$3: androidx.fragment.app.FragmentTransitionImpl val$impl>;
+
+        $u2#6 = this.<androidx.fragment.app.FragmentTransition$3: android.graphics.Rect val$epicenter>;
+
+        virtualinvoke $u1#5.<androidx.fragment.app.FragmentTransitionImpl: void getBoundsOnScreen(android.view.View,android.graphics.Rect)>($u0#4, $u2#6);
+
+     label1:
+        return;
+    }
+}

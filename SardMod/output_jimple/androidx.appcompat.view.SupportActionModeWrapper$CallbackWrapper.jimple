@@ -1,0 +1,245 @@
+public class androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper extends java.lang.Object implements androidx.appcompat.view.ActionMode$Callback
+{
+    final java.util.ArrayList mActionModes;
+    final android.content.Context mContext;
+    final androidx.collection.SimpleArrayMap mMenus;
+    final android.view.ActionMode$Callback mWrappedCallback;
+
+    public void <init>(android.content.Context, android.view.ActionMode$Callback)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper this;
+        android.content.Context $u2;
+        android.view.ActionMode$Callback $u3;
+        java.util.ArrayList $u0;
+        androidx.collection.SimpleArrayMap $u0#2;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.view.ActionMode$Callback;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.content.Context mContext> = $u2;
+
+        this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.view.ActionMode$Callback mWrappedCallback> = $u3;
+
+        $u0 = new java.util.ArrayList;
+
+        specialinvoke $u0.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: java.util.ArrayList mActionModes> = $u0;
+
+        $u0#2 = new androidx.collection.SimpleArrayMap;
+
+        specialinvoke $u0#2.<androidx.collection.SimpleArrayMap: void <init>()>();
+
+        this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: androidx.collection.SimpleArrayMap mMenus> = $u0#2;
+
+        return;
+    }
+
+    private android.view.Menu getMenuWrapper(android.view.Menu)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper this;
+        android.view.Menu $u5, wrapper#3;
+        android.content.Context $u2;
+        java.lang.Object $u-1;
+        androidx.collection.SimpleArrayMap wrapper;
+        androidx.appcompat.view.menu.MenuWrapperICS $u1;
+        androidx.core.internal.view.SupportMenu $u3;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper;
+
+        $u5 := @parameter0: android.view.Menu;
+
+        wrapper = this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: androidx.collection.SimpleArrayMap mMenus>;
+
+        $u-1 = virtualinvoke wrapper.<androidx.collection.SimpleArrayMap: java.lang.Object get(java.lang.Object)>($u5);
+
+        wrapper#3 = (android.view.Menu) $u-1;
+
+        if wrapper#3 != null goto label1;
+
+        $u1 = new androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u2 = this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.content.Context mContext>;
+
+        $u3 = (androidx.core.internal.view.SupportMenu) $u5;
+
+        specialinvoke $u1.<androidx.appcompat.view.menu.MenuWrapperICS: void <init>(android.content.Context,androidx.core.internal.view.SupportMenu)>($u2, $u3);
+
+        wrapper = this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: androidx.collection.SimpleArrayMap mMenus>;
+
+        virtualinvoke wrapper.<androidx.collection.SimpleArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u5, $u1);
+
+        return $u1;
+
+     label1:
+        return wrapper#3;
+    }
+
+    public android.view.ActionMode getActionModeWrapper(androidx.appcompat.view.ActionMode)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper this;
+        androidx.appcompat.view.ActionMode $u5, $u3;
+        int i, $u-1;
+        java.util.ArrayList count;
+        java.lang.Object $u-1#6;
+        androidx.appcompat.view.SupportActionModeWrapper wrapper;
+        android.content.Context count#10;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper;
+
+        $u5 := @parameter0: androidx.appcompat.view.ActionMode;
+
+        i = 0;
+
+        count = this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: java.util.ArrayList mActionModes>;
+
+        $u-1 = virtualinvoke count.<java.util.ArrayList: int size()>();
+
+     label1:
+        if i >= $u-1 goto label3;
+
+        count = this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: java.util.ArrayList mActionModes>;
+
+        $u-1#6 = virtualinvoke count.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        wrapper = (androidx.appcompat.view.SupportActionModeWrapper) $u-1#6;
+
+        if wrapper == null goto label2;
+
+        $u3 = wrapper.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        if $u3 != $u5 goto label2;
+
+        return wrapper;
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        wrapper = new androidx.appcompat.view.SupportActionModeWrapper;
+
+        count#10 = this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.content.Context mContext>;
+
+        specialinvoke wrapper.<androidx.appcompat.view.SupportActionModeWrapper: void <init>(android.content.Context,androidx.appcompat.view.ActionMode)>(count#10, $u5);
+
+        count = this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: java.util.ArrayList mActionModes>;
+
+        virtualinvoke count.<java.util.ArrayList: boolean add(java.lang.Object)>(wrapper);
+
+        return wrapper;
+    }
+
+    public boolean onActionItemClicked(androidx.appcompat.view.ActionMode, android.view.MenuItem)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper this;
+        androidx.appcompat.view.ActionMode $u6;
+        android.view.MenuItem $u7;
+        androidx.appcompat.view.menu.MenuItemWrapperICS $u2;
+        android.content.Context $u3;
+        android.view.ActionMode$Callback $u0;
+        android.view.ActionMode $u-1;
+        androidx.core.internal.view.SupportMenuItem $u4;
+        boolean $u-1#5;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper;
+
+        $u6 := @parameter0: androidx.appcompat.view.ActionMode;
+
+        $u7 := @parameter1: android.view.MenuItem;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.view.ActionMode$Callback mWrappedCallback>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.view.ActionMode getActionModeWrapper(androidx.appcompat.view.ActionMode)>($u6);
+
+        $u2 = new androidx.appcompat.view.menu.MenuItemWrapperICS;
+
+        $u3 = this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.content.Context mContext>;
+
+        $u4 = (androidx.core.internal.view.SupportMenuItem) $u7;
+
+        specialinvoke $u2.<androidx.appcompat.view.menu.MenuItemWrapperICS: void <init>(android.content.Context,androidx.core.internal.view.SupportMenuItem)>($u3, $u4);
+
+        $u-1#5 = interfaceinvoke $u0.<android.view.ActionMode$Callback: boolean onActionItemClicked(android.view.ActionMode,android.view.MenuItem)>($u-1, $u2);
+
+        return $u-1#5;
+    }
+
+    public boolean onCreateActionMode(androidx.appcompat.view.ActionMode, android.view.Menu)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper this;
+        androidx.appcompat.view.ActionMode $u4;
+        android.view.Menu $u5;
+        android.view.ActionMode$Callback $u0;
+        android.view.ActionMode $u-1;
+        boolean $u-1#4;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper;
+
+        $u4 := @parameter0: androidx.appcompat.view.ActionMode;
+
+        $u5 := @parameter1: android.view.Menu;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.view.ActionMode$Callback mWrappedCallback>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.view.ActionMode getActionModeWrapper(androidx.appcompat.view.ActionMode)>($u4);
+
+        $u5 = specialinvoke this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.view.Menu getMenuWrapper(android.view.Menu)>($u5);
+
+        $u-1#4 = interfaceinvoke $u0.<android.view.ActionMode$Callback: boolean onCreateActionMode(android.view.ActionMode,android.view.Menu)>($u-1, $u5);
+
+        return $u-1#4;
+    }
+
+    public void onDestroyActionMode(androidx.appcompat.view.ActionMode)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper this;
+        androidx.appcompat.view.ActionMode $u3;
+        android.view.ActionMode$Callback $u0;
+        android.view.ActionMode $u-1;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper;
+
+        $u3 := @parameter0: androidx.appcompat.view.ActionMode;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.view.ActionMode$Callback mWrappedCallback>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.view.ActionMode getActionModeWrapper(androidx.appcompat.view.ActionMode)>($u3);
+
+        interfaceinvoke $u0.<android.view.ActionMode$Callback: void onDestroyActionMode(android.view.ActionMode)>($u-1);
+
+        return;
+    }
+
+    public boolean onPrepareActionMode(androidx.appcompat.view.ActionMode, android.view.Menu)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper this;
+        androidx.appcompat.view.ActionMode $u4;
+        android.view.Menu $u5;
+        android.view.ActionMode$Callback $u0;
+        android.view.ActionMode $u-1;
+        boolean $u-1#4;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper;
+
+        $u4 := @parameter0: androidx.appcompat.view.ActionMode;
+
+        $u5 := @parameter1: android.view.Menu;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.view.ActionMode$Callback mWrappedCallback>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.view.ActionMode getActionModeWrapper(androidx.appcompat.view.ActionMode)>($u4);
+
+        $u5 = specialinvoke this.<androidx.appcompat.view.SupportActionModeWrapper$CallbackWrapper: android.view.Menu getMenuWrapper(android.view.Menu)>($u5);
+
+        $u-1#4 = interfaceinvoke $u0.<android.view.ActionMode$Callback: boolean onPrepareActionMode(android.view.ActionMode,android.view.Menu)>($u-1, $u5);
+
+        return $u-1#4;
+    }
+}

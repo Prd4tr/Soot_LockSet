@@ -1,0 +1,303 @@
+abstract class androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath extends androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VObject
+{
+    protected static final int FILL_TYPE_WINDING;
+    int mChangingConfigurations;
+    int mFillRule;
+    protected androidx.core.graphics.PathParser$PathDataNode[] mNodes;
+    java.lang.String mPathName;
+
+    public void <init>()
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath this;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath;
+
+        specialinvoke this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VObject: void <init>(androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$1)>(null);
+
+        this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: androidx.core.graphics.PathParser$PathDataNode[] mNodes> = null;
+
+        this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: int mFillRule> = 0;
+
+        return;
+    }
+
+    public void <init>(androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath)
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath this, $u2;
+        androidx.core.graphics.PathParser$PathDataNode[] $u-1;
+        java.lang.String $u0;
+        int $u0#4;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath;
+
+        $u2 := @parameter0: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath;
+
+        specialinvoke this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VObject: void <init>(androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$1)>(null);
+
+        this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: androidx.core.graphics.PathParser$PathDataNode[] mNodes> = null;
+
+        this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: int mFillRule> = 0;
+
+        $u0 = $u2.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: java.lang.String mPathName>;
+
+        this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: java.lang.String mPathName> = $u0;
+
+        $u0#4 = $u2.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: int mChangingConfigurations>;
+
+        this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: int mChangingConfigurations> = $u0#4;
+
+        $u-1 = $u2.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: androidx.core.graphics.PathParser$PathDataNode[] mNodes>;
+
+        $u-1 = staticinvoke <androidx.core.graphics.PathParser: androidx.core.graphics.PathParser$PathDataNode[] deepCopyNodes(androidx.core.graphics.PathParser$PathDataNode[])>($u-1);
+
+        this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: androidx.core.graphics.PathParser$PathDataNode[] mNodes> = $u-1;
+
+        return;
+    }
+
+    public void applyTheme(android.content.res.Resources$Theme)
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath this;
+        android.content.res.Resources$Theme $u1;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath;
+
+        $u1 := @parameter0: android.content.res.Resources$Theme;
+
+        return;
+    }
+
+    public boolean canApplyTheme()
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath this;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath;
+
+        return 0;
+    }
+
+    public androidx.core.graphics.PathParser$PathDataNode[] getPathData()
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath this;
+        androidx.core.graphics.PathParser$PathDataNode[] ret0;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath;
+
+        ret0 = this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: androidx.core.graphics.PathParser$PathDataNode[] mNodes>;
+
+        return ret0;
+    }
+
+    public java.lang.String getPathName()
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath this;
+        java.lang.String ret0;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath;
+
+        ret0 = this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: java.lang.String mPathName>;
+
+        return ret0;
+    }
+
+    public boolean isClipPath()
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath this;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath;
+
+        return 0;
+    }
+
+    public java.lang.String nodesToString(androidx.core.graphics.PathParser$PathDataNode[])
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath this;
+        androidx.core.graphics.PathParser$PathDataNode[] $u7;
+        java.lang.String result;
+        int i, params, $u4;
+        java.lang.StringBuilder params#4;
+        androidx.core.graphics.PathParser$PathDataNode j;
+        char j#6;
+        float[] params#10;
+        float $u5;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath;
+
+        $u7 := @parameter0: androidx.core.graphics.PathParser$PathDataNode[];
+
+        result = " ";
+
+        i = 0;
+
+     label1:
+        params = lengthof $u7;
+
+        if i >= params goto label4;
+
+        params#4 = new java.lang.StringBuilder;
+
+        specialinvoke params#4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke params#4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(result);
+
+        j = $u7[i];
+
+        j#6 = j.<androidx.core.graphics.PathParser$PathDataNode: char mType>;
+
+        virtualinvoke params#4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(j#6);
+
+        virtualinvoke params#4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        result = virtualinvoke params#4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        j = $u7[i];
+
+        params#10 = j.<androidx.core.graphics.PathParser$PathDataNode: float[] mParams>;
+
+        params = 0;
+
+     label2:
+        $u4 = lengthof params#10;
+
+        if params >= $u4 goto label3;
+
+        params#4 = new java.lang.StringBuilder;
+
+        specialinvoke params#4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke params#4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(result);
+
+        $u5 = params#10[params];
+
+        virtualinvoke params#4.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($u5);
+
+        virtualinvoke params#4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(",");
+
+        result = virtualinvoke params#4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        params = params + 1;
+
+        goto label2;
+
+     label3:
+        i = i + 1;
+
+        goto label1;
+
+     label4:
+        return result;
+    }
+
+    public void printVPath(int)
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath this;
+        int $u5, i;
+        java.lang.String indent;
+        java.lang.StringBuilder $u2;
+        androidx.core.graphics.PathParser$PathDataNode[] $u2#9;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath;
+
+        $u5 := @parameter0: int;
+
+        indent = "";
+
+        i = 0;
+
+     label1:
+        if i >= $u5 goto label2;
+
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(indent);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("    ");
+
+        indent = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(indent);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("current path is :");
+
+        indent = this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: java.lang.String mPathName>;
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(indent);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" pathData is ");
+
+        $u2#9 = this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: androidx.core.graphics.PathParser$PathDataNode[] mNodes>;
+
+        indent = virtualinvoke this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: java.lang.String nodesToString(androidx.core.graphics.PathParser$PathDataNode[])>($u2#9);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(indent);
+
+        indent = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("VectorDrawableCompat", indent);
+
+        return;
+    }
+
+    public void setPathData(androidx.core.graphics.PathParser$PathDataNode[])
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath this;
+        androidx.core.graphics.PathParser$PathDataNode[] $u2, $u0;
+        boolean $u-1;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath;
+
+        $u2 := @parameter0: androidx.core.graphics.PathParser$PathDataNode[];
+
+        $u0 = this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: androidx.core.graphics.PathParser$PathDataNode[] mNodes>;
+
+        $u-1 = staticinvoke <androidx.core.graphics.PathParser: boolean canMorph(androidx.core.graphics.PathParser$PathDataNode[],androidx.core.graphics.PathParser$PathDataNode[])>($u0, $u2);
+
+        if $u-1 != 0 goto label1;
+
+        $u2 = staticinvoke <androidx.core.graphics.PathParser: androidx.core.graphics.PathParser$PathDataNode[] deepCopyNodes(androidx.core.graphics.PathParser$PathDataNode[])>($u2);
+
+        this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: androidx.core.graphics.PathParser$PathDataNode[] mNodes> = $u2;
+
+        return;
+
+     label1:
+        $u0 = this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: androidx.core.graphics.PathParser$PathDataNode[] mNodes>;
+
+        staticinvoke <androidx.core.graphics.PathParser: void updateNodes(androidx.core.graphics.PathParser$PathDataNode[],androidx.core.graphics.PathParser$PathDataNode[])>($u0, $u2);
+
+        return;
+    }
+
+    public void toPath(android.graphics.Path)
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath this;
+        android.graphics.Path $u2;
+        androidx.core.graphics.PathParser$PathDataNode[] $u0;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath;
+
+        $u2 := @parameter0: android.graphics.Path;
+
+        virtualinvoke $u2.<android.graphics.Path: void reset()>();
+
+        $u0 = this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: androidx.core.graphics.PathParser$PathDataNode[] mNodes>;
+
+        if $u0 == null goto label1;
+
+        staticinvoke <androidx.core.graphics.PathParser$PathDataNode: void nodesToPath(androidx.core.graphics.PathParser$PathDataNode[],android.graphics.Path)>($u0, $u2);
+
+     label1:
+        return;
+    }
+}

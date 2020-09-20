@@ -1,0 +1,1151 @@
+public class androidx.appcompat.app.AppCompatViewInflater extends java.lang.Object
+{
+    private static final java.lang.String LOG_TAG;
+    private static final java.lang.String[] sClassPrefixList;
+    private static final androidx.collection.SimpleArrayMap sConstructorMap;
+    private static final java.lang.Class[] sConstructorSignature;
+    private static final int[] sOnClickAttrs;
+    private final java.lang.Object[] mConstructorArgs;
+
+    static void <clinit>()
+    {
+        java.lang.String[] $u-1;
+        java.lang.Class[] $u0;
+        int[] $u0#4;
+        androidx.collection.SimpleArrayMap $u0#10;
+
+        <androidx.appcompat.app.AppCompatViewInflater: java.lang.String LOG_TAG> = "AppCompatViewInflater";
+
+        $u0 = newarray (java.lang.Class)[2];
+
+        $u0[0] = class "Landroid/content/Context;";
+
+        $u0[1] = class "Landroid/util/AttributeSet;";
+
+        <androidx.appcompat.app.AppCompatViewInflater: java.lang.Class[] sConstructorSignature> = $u0;
+
+        $u0#4 = newarray (int)[1];
+
+        $u0#4[0] = 16843375;
+
+        <androidx.appcompat.app.AppCompatViewInflater: int[] sOnClickAttrs> = $u0#4;
+
+        $u-1 = newarray (java.lang.String)[3];
+
+        $u-1[0] = "android.widget.";
+
+        $u-1[1] = "android.view.";
+
+        $u-1[2] = "android.webkit.";
+
+        <androidx.appcompat.app.AppCompatViewInflater: java.lang.String[] sClassPrefixList> = $u-1;
+
+        $u0#10 = new androidx.collection.SimpleArrayMap;
+
+        specialinvoke $u0#10.<androidx.collection.SimpleArrayMap: void <init>()>();
+
+        <androidx.appcompat.app.AppCompatViewInflater: androidx.collection.SimpleArrayMap sConstructorMap> = $u0#10;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        java.lang.Object[] $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = newarray (java.lang.Object)[2];
+
+        this.<androidx.appcompat.app.AppCompatViewInflater: java.lang.Object[] mConstructorArgs> = $u0;
+
+        return;
+    }
+
+    private void checkOnClickListener(android.view.View, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.view.View $u5;
+        android.util.AttributeSet $u6;
+        androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener $u3;
+        android.content.Context $u-1;
+        boolean a;
+        int a#3;
+        int[] a#7;
+        android.content.res.TypedArray $u-1#8;
+        java.lang.String $u-1#11;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u5 := @parameter0: android.view.View;
+
+        $u6 := @parameter1: android.util.AttributeSet;
+
+        $u-1 = virtualinvoke $u5.<android.view.View: android.content.Context getContext()>();
+
+        a = $u-1 instanceof android.content.ContextWrapper;
+
+        if a == 0 goto label3;
+
+        a#3 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if a#3 < 15 goto label1;
+
+        a = staticinvoke <androidx.core.view.ViewCompat: boolean hasOnClickListeners(android.view.View)>($u5);
+
+        if a != 0 goto label1;
+
+        return;
+
+     label1:
+        a#7 = <androidx.appcompat.app.AppCompatViewInflater: int[] sOnClickAttrs>;
+
+        $u-1#8 = virtualinvoke $u-1.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[])>($u6, a#7);
+
+        $u-1#11 = virtualinvoke $u-1#8.<android.content.res.TypedArray: java.lang.String getString(int)>(0);
+
+        if $u-1#11 == null goto label2;
+
+        $u3 = new androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener;
+
+        specialinvoke $u3.<androidx.appcompat.app.AppCompatViewInflater$DeclaredOnClickListener: void <init>(android.view.View,java.lang.String)>($u5, $u-1#11);
+
+        virtualinvoke $u5.<android.view.View: void setOnClickListener(android.view.View$OnClickListener)>($u3);
+
+     label2:
+        virtualinvoke $u-1#8.<android.content.res.TypedArray: void recycle()>();
+
+     label3:
+        return;
+    }
+
+    private android.view.View createViewByPrefix(android.content.Context, java.lang.String, java.lang.String) throws java.lang.ClassNotFoundException, android.view.InflateException
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u5;
+        java.lang.String $u6, $u7;
+        androidx.collection.SimpleArrayMap constructor;
+        java.lang.Object $u-1;
+        java.lang.reflect.Constructor constructor#4, $u-1#16;
+        java.lang.StringBuilder clazz;
+        java.lang.ClassLoader $u-1#9;
+        java.lang.Class $u-1#10;
+        java.lang.Class[] $u2;
+        java.lang.Object[] clazz#20;
+        android.view.View clazz#23;
+        java.lang.Exception clazz#24;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u5 := @parameter0: android.content.Context;
+
+        $u6 := @parameter1: java.lang.String;
+
+        $u7 := @parameter2: java.lang.String;
+
+        constructor = <androidx.appcompat.app.AppCompatViewInflater: androidx.collection.SimpleArrayMap sConstructorMap>;
+
+        $u-1 = virtualinvoke constructor.<androidx.collection.SimpleArrayMap: java.lang.Object get(java.lang.Object)>($u6);
+
+        constructor#4 = (java.lang.reflect.Constructor) $u-1;
+
+        if constructor#4 != null goto label09;
+
+        if $u7 == null goto label03;
+
+        clazz = new java.lang.StringBuilder;
+
+     label01:
+        specialinvoke clazz.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke clazz.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u7);
+
+        virtualinvoke clazz.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u6);
+
+        $u7 = virtualinvoke clazz.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label02:
+        goto label04;
+
+     label03:
+        $u7 = $u6;
+
+     label04:
+        $u-1#9 = virtualinvoke $u5.<android.content.Context: java.lang.ClassLoader getClassLoader()>();
+
+        $u-1#10 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String,boolean,java.lang.ClassLoader)>($u7, 0, $u-1#9);
+
+        $u-1#10 = virtualinvoke $u-1#10.<java.lang.Class: java.lang.Class asSubclass(java.lang.Class)>(class "Landroid/view/View;");
+
+     label05:
+        $u2 = <androidx.appcompat.app.AppCompatViewInflater: java.lang.Class[] sConstructorSignature>;
+
+     label06:
+        $u-1#16 = virtualinvoke $u-1#10.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>($u2);
+
+     label07:
+        constructor#4 = $u-1#16;
+
+        constructor = <androidx.appcompat.app.AppCompatViewInflater: androidx.collection.SimpleArrayMap sConstructorMap>;
+
+     label08:
+        virtualinvoke constructor.<androidx.collection.SimpleArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u6, $u-1#16);
+
+     label09:
+        virtualinvoke constructor#4.<java.lang.reflect.Constructor: void setAccessible(boolean)>(1);
+
+        clazz#20 = this.<androidx.appcompat.app.AppCompatViewInflater: java.lang.Object[] mConstructorArgs>;
+
+        $u-1 = virtualinvoke constructor#4.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>(clazz#20);
+
+        clazz#23 = (android.view.View) $u-1;
+
+     label10:
+        return clazz#23;
+
+     label11:
+        clazz#24 := @caughtexception;
+
+        return null;
+
+        catch java.lang.Exception from label01 to label02 with label11;
+        catch java.lang.Exception from label04 to label05 with label11;
+        catch java.lang.Exception from label06 to label07 with label11;
+        catch java.lang.Exception from label08 to label10 with label11;
+    }
+
+    private android.view.View createViewFromTag(android.content.Context, java.lang.String, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u7;
+        android.util.AttributeSet $u9;
+        java.lang.Object[] $u5;
+        java.lang.String $u8, view#18;
+        boolean $u-1;
+        int $u-1#12, view#16;
+        java.lang.String[] view;
+        android.view.View $u-1#19;
+        java.lang.Throwable i;
+        java.lang.Exception i#27;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u7 := @parameter0: android.content.Context;
+
+        $u8 := @parameter1: java.lang.String;
+
+        $u9 := @parameter2: android.util.AttributeSet;
+
+        $u-1 = virtualinvoke $u8.<java.lang.String: boolean equals(java.lang.Object)>("view");
+
+        if $u-1 == 0 goto label01;
+
+        $u8 = interfaceinvoke $u9.<android.util.AttributeSet: java.lang.String getAttributeValue(java.lang.String,java.lang.String)>(null, "class");
+
+     label01:
+        $u5 = this.<androidx.appcompat.app.AppCompatViewInflater: java.lang.Object[] mConstructorArgs>;
+
+     label02:
+        $u5[0] = $u7;
+
+     label03:
+        $u5 = this.<androidx.appcompat.app.AppCompatViewInflater: java.lang.Object[] mConstructorArgs>;
+
+     label04:
+        $u5[1] = $u9;
+
+     label05:
+        $u-1#12 = virtualinvoke $u8.<java.lang.String: int indexOf(int)>(46);
+
+     label06:
+        if -1 != $u-1#12 goto label16;
+
+        $u-1#12 = 0;
+
+     label07:
+        view = <androidx.appcompat.app.AppCompatViewInflater: java.lang.String[] sClassPrefixList>;
+
+     label08:
+        view#16 = lengthof view;
+
+     label09:
+        if $u-1#12 >= view#16 goto label15;
+
+     label10:
+        view = <androidx.appcompat.app.AppCompatViewInflater: java.lang.String[] sClassPrefixList>;
+
+     label11:
+        view#18 = view[$u-1#12];
+
+     label12:
+        $u-1#19 = specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: android.view.View createViewByPrefix(android.content.Context,java.lang.String,java.lang.String)>($u7, $u8, view#18);
+
+     label13:
+        if $u-1#19 == null goto label14;
+
+        $u5 = this.<androidx.appcompat.app.AppCompatViewInflater: java.lang.Object[] mConstructorArgs>;
+
+        $u5[0] = null;
+
+        $u5[1] = null;
+
+        return $u-1#19;
+
+     label14:
+        $u-1#12 = $u-1#12 + 1;
+
+        goto label07;
+
+     label15:
+        $u5 = this.<androidx.appcompat.app.AppCompatViewInflater: java.lang.Object[] mConstructorArgs>;
+
+        $u5[0] = null;
+
+        $u5[1] = null;
+
+        return null;
+
+     label16:
+        $u-1#19 = specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: android.view.View createViewByPrefix(android.content.Context,java.lang.String,java.lang.String)>($u7, $u8, null);
+
+     label17:
+        $u5 = this.<androidx.appcompat.app.AppCompatViewInflater: java.lang.Object[] mConstructorArgs>;
+
+        $u5[0] = null;
+
+        $u5[1] = null;
+
+        return $u-1#19;
+
+     label18:
+        i := @caughtexception;
+
+        $u5 = this.<androidx.appcompat.app.AppCompatViewInflater: java.lang.Object[] mConstructorArgs>;
+
+        $u5[0] = null;
+
+        $u5[1] = null;
+
+        throw i;
+
+     label19:
+        i#27 := @caughtexception;
+
+        $u5 = this.<androidx.appcompat.app.AppCompatViewInflater: java.lang.Object[] mConstructorArgs>;
+
+        $u5[0] = null;
+
+        $u5[1] = null;
+
+        return null;
+
+        catch java.lang.Exception from label01 to label06 with label19;
+        catch java.lang.Exception from label08 to label09 with label19;
+        catch java.lang.Exception from label11 to label13 with label19;
+        catch java.lang.Throwable from label01 to label02 with label18;
+        catch java.lang.Throwable from label03 to label04 with label18;
+        catch java.lang.Throwable from label05 to label06 with label18;
+        catch java.lang.Throwable from label07 to label08 with label18;
+        catch java.lang.Throwable from label10 to label11 with label18;
+        catch java.lang.Throwable from label12 to label13 with label18;
+        catch java.lang.Exception from label16 to label17 with label19;
+        catch java.lang.Throwable from label16 to label17 with label18;
+    }
+
+    private static android.content.Context themifyContext(android.content.Context, android.util.AttributeSet, boolean, boolean)
+    {
+        android.util.AttributeSet $u5;
+        boolean $u6, $u7;
+        android.content.Context $u4;
+        int[] a;
+        android.content.res.TypedArray $u-1;
+        int themeId, $u-1#10;
+        androidx.appcompat.view.ContextThemeWrapper $u1;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: android.util.AttributeSet;
+
+        $u6 := @parameter2: boolean;
+
+        $u7 := @parameter3: boolean;
+
+        a = <androidx.appcompat.R$styleable: int[] View>;
+
+        $u-1 = virtualinvoke $u4.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[],int,int)>($u5, a, 0, 0);
+
+        themeId = 0;
+
+        if $u6 == 0 goto label1;
+
+        themeId = <androidx.appcompat.R$styleable: int View_android_theme>;
+
+        themeId = virtualinvoke $u-1.<android.content.res.TypedArray: int getResourceId(int,int)>(themeId, 0);
+
+     label1:
+        if $u7 == 0 goto label2;
+
+        if themeId != 0 goto label2;
+
+        themeId = <androidx.appcompat.R$styleable: int View_theme>;
+
+        $u-1#10 = virtualinvoke $u-1.<android.content.res.TypedArray: int getResourceId(int,int)>(themeId, 0);
+
+        themeId = $u-1#10;
+
+        if $u-1#10 == 0 goto label2;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AppCompatViewInflater", "app:theme is now deprecated. Please move to using android:theme instead.");
+
+     label2:
+        virtualinvoke $u-1.<android.content.res.TypedArray: void recycle()>();
+
+        if themeId == 0 goto label4;
+
+        $u6 = $u4 instanceof androidx.appcompat.view.ContextThemeWrapper;
+
+        if $u6 == 0 goto label3;
+
+        $u1 = (androidx.appcompat.view.ContextThemeWrapper) $u4;
+
+        $u-1#10 = virtualinvoke $u1.<androidx.appcompat.view.ContextThemeWrapper: int getThemeResId()>();
+
+        if $u-1#10 == themeId goto label4;
+
+     label3:
+        $u1 = new androidx.appcompat.view.ContextThemeWrapper;
+
+        specialinvoke $u1.<androidx.appcompat.view.ContextThemeWrapper: void <init>(android.content.Context,int)>($u4, themeId);
+
+        return $u1;
+
+     label4:
+        return $u4;
+    }
+
+    private void verifyNotNull(android.view.View, java.lang.String)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.view.View $u4;
+        java.lang.String $u5, $u-1#4;
+        java.lang.IllegalStateException $u0;
+        java.lang.StringBuilder $u1;
+        java.lang.Class $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u4 := @parameter0: android.view.View;
+
+        $u5 := @parameter1: java.lang.String;
+
+        if $u4 == null goto label1;
+
+        return;
+
+     label1:
+        $u0 = new java.lang.IllegalStateException;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#4 = virtualinvoke $u-1.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#4);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" asked to inflate view for <");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u5);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(">, but returned null");
+
+        $u5 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u5);
+
+        throw $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatAutoCompleteTextView createAutoCompleteTextView(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatAutoCompleteTextView $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatAutoCompleteTextView;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatAutoCompleteTextView: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatButton createButton(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatButton $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatButton;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatButton: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatCheckBox createCheckBox(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatCheckBox $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatCheckBox;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatCheckBox: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatCheckedTextView createCheckedTextView(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatCheckedTextView $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatCheckedTextView;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatCheckedTextView: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatEditText createEditText(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatEditText $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatEditText;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatEditText: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatImageButton createImageButton(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatImageButton $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatImageButton;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatImageButton: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatImageView createImageView(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatImageView $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatImageView;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatImageView: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView createMultiAutoCompleteTextView(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatRadioButton createRadioButton(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatRadioButton $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatRadioButton;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatRadioButton: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatRatingBar createRatingBar(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatRatingBar $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatRatingBar;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatRatingBar: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatSeekBar createSeekBar(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatSeekBar $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatSeekBar;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatSeekBar: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatSpinner createSpinner(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatSpinner $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatSpinner;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatSpinner: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatTextView createTextView(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatTextView $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatTextView;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatTextView: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected androidx.appcompat.widget.AppCompatToggleButton createToggleButton(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.appcompat.widget.AppCompatToggleButton $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = new androidx.appcompat.widget.AppCompatToggleButton;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatToggleButton: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return $u0;
+    }
+
+    protected android.view.View createView(android.content.Context, java.lang.String, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.content.Context $u2;
+        java.lang.String $u3;
+        android.util.AttributeSet $u4;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: java.lang.String;
+
+        $u4 := @parameter2: android.util.AttributeSet;
+
+        return null;
+    }
+
+    final android.view.View createView(android.view.View, java.lang.String, android.content.Context, android.util.AttributeSet, boolean, boolean, boolean, boolean)
+    {
+        androidx.appcompat.app.AppCompatViewInflater this;
+        android.view.View $u5;
+        java.lang.String $u6;
+        android.util.AttributeSet $u8;
+        boolean $u9, $u10, $u11, $u12;
+        android.content.Context originalContext, $u7;
+        byte $u2;
+        int $u-1;
+        androidx.appcompat.widget.AppCompatToggleButton $u-1#53;
+        androidx.appcompat.widget.AppCompatSeekBar $u-1#54;
+        androidx.appcompat.widget.AppCompatRatingBar $u-1#55;
+        androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView $u-1#56;
+        androidx.appcompat.widget.AppCompatAutoCompleteTextView $u-1#57;
+        androidx.appcompat.widget.AppCompatCheckedTextView $u-1#58;
+        androidx.appcompat.widget.AppCompatRadioButton $u-1#59;
+        androidx.appcompat.widget.AppCompatCheckBox $u-1#60;
+        androidx.appcompat.widget.AppCompatImageButton $u-1#61;
+        androidx.appcompat.widget.AppCompatSpinner $u-1#62;
+        androidx.appcompat.widget.AppCompatEditText $u-1#63;
+        androidx.appcompat.widget.AppCompatButton $u-1#64;
+        androidx.appcompat.widget.AppCompatImageView $u-1#65;
+        androidx.appcompat.widget.AppCompatTextView $u-1#66;
+
+        this := @this: androidx.appcompat.app.AppCompatViewInflater;
+
+        $u5 := @parameter0: android.view.View;
+
+        $u6 := @parameter1: java.lang.String;
+
+        $u7 := @parameter2: android.content.Context;
+
+        $u8 := @parameter3: android.util.AttributeSet;
+
+        $u9 := @parameter4: boolean;
+
+        $u10 := @parameter5: boolean;
+
+        $u11 := @parameter6: boolean;
+
+        $u12 := @parameter7: boolean;
+
+        originalContext = $u7;
+
+        if $u9 == 0 goto label01;
+
+        if $u5 == null goto label01;
+
+        $u7 = virtualinvoke $u5.<android.view.View: android.content.Context getContext()>();
+
+     label01:
+        if $u10 != 0 goto label02;
+
+        if $u11 == 0 goto label03;
+
+     label02:
+        $u7 = staticinvoke <androidx.appcompat.app.AppCompatViewInflater: android.content.Context themifyContext(android.content.Context,android.util.AttributeSet,boolean,boolean)>($u7, $u8, $u10, $u11);
+
+     label03:
+        if $u12 == 0 goto label04;
+
+        $u7 = staticinvoke <androidx.appcompat.widget.TintContextWrapper: android.content.Context wrap(android.content.Context)>($u7);
+
+     label04:
+        $u2 = -1;
+
+        $u-1 = virtualinvoke $u6.<java.lang.String: int hashCode()>();
+
+        lookupswitch($u-1)
+        {
+            case -1946472170: goto label19;
+            case -1455429095: goto label18;
+            case -1346021293: goto label17;
+            case -938935918: goto label16;
+            case -937446323: goto label15;
+            case -658531749: goto label14;
+            case -339785223: goto label13;
+            case 776382189: goto label12;
+            case 799298502: goto label11;
+            case 1125864064: goto label10;
+            case 1413872058: goto label09;
+            case 1601505219: goto label08;
+            case 1666676343: goto label07;
+            case 2001146706: goto label06;
+            default: goto label05;
+        };
+
+     label05:
+        goto label20;
+
+     label06:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("Button");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 2;
+
+        goto label20;
+
+     label07:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("EditText");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 3;
+
+        goto label20;
+
+     label08:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("CheckBox");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 6;
+
+        goto label20;
+
+     label09:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("AutoCompleteTextView");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 9;
+
+        goto label20;
+
+     label10:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("ImageView");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 1;
+
+        goto label20;
+
+     label11:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("ToggleButton");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 13;
+
+        goto label20;
+
+     label12:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("RadioButton");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 7;
+
+        goto label20;
+
+     label13:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("Spinner");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 4;
+
+        goto label20;
+
+     label14:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("SeekBar");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 12;
+
+        goto label20;
+
+     label15:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("ImageButton");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 5;
+
+        goto label20;
+
+     label16:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("TextView");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 0;
+
+        goto label20;
+
+     label17:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("MultiAutoCompleteTextView");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 10;
+
+        goto label20;
+
+     label18:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("CheckedTextView");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 8;
+
+        goto label20;
+
+     label19:
+        $u9 = virtualinvoke $u6.<java.lang.String: boolean equals(java.lang.Object)>("RatingBar");
+
+        if $u9 == 0 goto label05;
+
+        $u2 = 11;
+
+     label20:
+        lookupswitch($u2)
+        {
+            case 0: goto label35;
+            case 1: goto label34;
+            case 2: goto label33;
+            case 3: goto label32;
+            case 4: goto label31;
+            case 5: goto label30;
+            case 6: goto label29;
+            case 7: goto label28;
+            case 8: goto label27;
+            case 9: goto label26;
+            case 10: goto label25;
+            case 11: goto label24;
+            case 12: goto label23;
+            case 13: goto label22;
+            default: goto label21;
+        };
+
+     label21:
+        $u5 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: android.view.View createView(android.content.Context,java.lang.String,android.util.AttributeSet)>($u7, $u6, $u8);
+
+        goto label36;
+
+     label22:
+        $u-1#53 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatToggleButton createToggleButton(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#53;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#53, $u6);
+
+        goto label36;
+
+     label23:
+        $u-1#54 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatSeekBar createSeekBar(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#54;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#54, $u6);
+
+        goto label36;
+
+     label24:
+        $u-1#55 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatRatingBar createRatingBar(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#55;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#55, $u6);
+
+        goto label36;
+
+     label25:
+        $u-1#56 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView createMultiAutoCompleteTextView(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#56;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#56, $u6);
+
+        goto label36;
+
+     label26:
+        $u-1#57 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatAutoCompleteTextView createAutoCompleteTextView(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#57;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#57, $u6);
+
+        goto label36;
+
+     label27:
+        $u-1#58 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatCheckedTextView createCheckedTextView(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#58;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#58, $u6);
+
+        goto label36;
+
+     label28:
+        $u-1#59 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatRadioButton createRadioButton(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#59;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#59, $u6);
+
+        goto label36;
+
+     label29:
+        $u-1#60 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatCheckBox createCheckBox(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#60;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#60, $u6);
+
+        goto label36;
+
+     label30:
+        $u-1#61 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatImageButton createImageButton(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#61;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#61, $u6);
+
+        goto label36;
+
+     label31:
+        $u-1#62 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatSpinner createSpinner(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#62;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#62, $u6);
+
+        goto label36;
+
+     label32:
+        $u-1#63 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatEditText createEditText(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#63;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#63, $u6);
+
+        goto label36;
+
+     label33:
+        $u-1#64 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatButton createButton(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#64;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#64, $u6);
+
+        goto label36;
+
+     label34:
+        $u-1#65 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatImageView createImageView(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#65;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#65, $u6);
+
+        goto label36;
+
+     label35:
+        $u-1#66 = virtualinvoke this.<androidx.appcompat.app.AppCompatViewInflater: androidx.appcompat.widget.AppCompatTextView createTextView(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u5 = $u-1#66;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void verifyNotNull(android.view.View,java.lang.String)>($u-1#66, $u6);
+
+     label36:
+        if $u5 != null goto label37;
+
+        if originalContext == $u7 goto label37;
+
+        $u5 = specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: android.view.View createViewFromTag(android.content.Context,java.lang.String,android.util.AttributeSet)>($u7, $u6, $u8);
+
+     label37:
+        if $u5 == null goto label38;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatViewInflater: void checkOnClickListener(android.view.View,android.util.AttributeSet)>($u5, $u8);
+
+     label38:
+        return $u5;
+    }
+}

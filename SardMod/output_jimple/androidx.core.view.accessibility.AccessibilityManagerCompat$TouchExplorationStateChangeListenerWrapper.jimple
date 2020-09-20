@@ -1,0 +1,86 @@
+final class androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper extends java.lang.Object implements android.view.accessibility.AccessibilityManager$TouchExplorationStateChangeListener
+{
+    final androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener mListener;
+
+    void <init>(androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener)
+    {
+        androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper this;
+        androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener $u1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper;
+
+        $u1 := @parameter0: androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper: androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener mListener> = $u1;
+
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper this, other;
+        java.lang.Object $u4;
+        androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener $u2, $u1;
+        boolean $u-1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper;
+
+        $u4 := @parameter0: java.lang.Object;
+
+        if this != $u4 goto label1;
+
+        return 1;
+
+     label1:
+        $u-1 = $u4 instanceof androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper;
+
+        if $u-1 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        other = (androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper) $u4;
+
+        $u1 = this.<androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper: androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener mListener>;
+
+        $u2 = other.<androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper: androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener mListener>;
+
+        $u-1 = virtualinvoke $u1.<java.lang.Object: boolean equals(java.lang.Object)>($u2);
+
+        return $u-1;
+    }
+
+    public int hashCode()
+    {
+        androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper this;
+        int $u-1;
+        androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper: androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener mListener>;
+
+        $u-1 = virtualinvoke $u0.<java.lang.Object: int hashCode()>();
+
+        return $u-1;
+    }
+
+    public void onTouchExplorationStateChanged(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper this;
+        boolean $u2;
+        androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper: androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener mListener>;
+
+        interfaceinvoke $u0.<androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener: void onTouchExplorationStateChanged(boolean)>($u2);
+
+        return;
+    }
+}

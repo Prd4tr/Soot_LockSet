@@ -1,0 +1,99 @@
+public final class androidx.core.database.DatabaseUtilsCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.database.DatabaseUtilsCompat this;
+
+        this := @this: androidx.core.database.DatabaseUtilsCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.String[] appendSelectionArgs(java.lang.String[], java.lang.String[])
+    {
+        java.lang.String[] $u4, $u5, result;
+        int $u3, $u1;
+
+        $u4 := @parameter0: java.lang.String[];
+
+        $u5 := @parameter1: java.lang.String[];
+
+        if $u4 == null goto label2;
+
+        $u3 = lengthof $u4;
+
+        if $u3 != 0 goto label1;
+
+        return $u5;
+
+     label1:
+        $u3 = lengthof $u4;
+
+        $u1 = lengthof $u5;
+
+        $u3 = $u3 + $u1;
+
+        result = newarray (java.lang.String)[$u3];
+
+        $u3 = lengthof $u4;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u4, 0, result, 0, $u3);
+
+        $u1 = lengthof $u4;
+
+        $u3 = lengthof $u5;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u5, 0, result, $u1, $u3);
+
+        return result;
+
+     label2:
+        return $u5;
+    }
+
+    public static java.lang.String concatenateWhere(java.lang.String, java.lang.String)
+    {
+        java.lang.String $u2, $u3;
+        boolean $u-1;
+        java.lang.StringBuilder $u0;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u3 := @parameter1: java.lang.String;
+
+        $u-1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u2);
+
+        if $u-1 == 0 goto label1;
+
+        return $u3;
+
+     label1:
+        $u-1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u3);
+
+        if $u-1 == 0 goto label2;
+
+        return $u2;
+
+     label2:
+        $u0 = new java.lang.StringBuilder;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(");
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u2);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") AND (");
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u3);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $u2 = virtualinvoke $u0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u2;
+    }
+}

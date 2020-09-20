@@ -1,0 +1,94 @@
+public class androidx.core.app.AppLaunchChecker extends java.lang.Object
+{
+    private static final java.lang.String KEY_STARTED_FROM_LAUNCHER;
+    private static final java.lang.String SHARED_PREFS_NAME;
+
+    public void <init>()
+    {
+        androidx.core.app.AppLaunchChecker this;
+
+        this := @this: androidx.core.app.AppLaunchChecker;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static boolean hasStartedFromLauncher(android.content.Context)
+    {
+        android.content.Context $u3;
+        android.content.SharedPreferences $u-1;
+        boolean $u-1#4;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u-1 = virtualinvoke $u3.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("android.support.AppLaunchChecker", 0);
+
+        $u-1#4 = interfaceinvoke $u-1.<android.content.SharedPreferences: boolean getBoolean(java.lang.String,boolean)>("startedFromLauncher", 0);
+
+        return $u-1#4;
+    }
+
+    public static void onActivityCreate(android.app.Activity)
+    {
+        android.app.Activity $u5;
+        android.content.SharedPreferences $u-1;
+        boolean $u-1#6;
+        android.content.Intent $u-1#8;
+        java.lang.String $u-1#10, $u4;
+        android.content.SharedPreferences$Editor $u-1#21;
+
+        $u5 := @parameter0: android.app.Activity;
+
+        $u-1 = virtualinvoke $u5.<android.app.Activity: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("android.support.AppLaunchChecker", 0);
+
+        $u-1#6 = interfaceinvoke $u-1.<android.content.SharedPreferences: boolean getBoolean(java.lang.String,boolean)>("startedFromLauncher", 0);
+
+        if $u-1#6 == 0 goto label1;
+
+        return;
+
+     label1:
+        $u-1#8 = virtualinvoke $u5.<android.app.Activity: android.content.Intent getIntent()>();
+
+        if $u-1#8 != null goto label2;
+
+        return;
+
+     label2:
+        $u-1#10 = virtualinvoke $u-1#8.<android.content.Intent: java.lang.String getAction()>();
+
+        $u4 = "android.intent.action.MAIN";
+
+        $u-1#6 = virtualinvoke $u4.<java.lang.String: boolean equals(java.lang.Object)>($u-1#10);
+
+        if $u-1#6 == 0 goto label4;
+
+        $u-1#6 = virtualinvoke $u-1#8.<android.content.Intent: boolean hasCategory(java.lang.String)>("android.intent.category.LAUNCHER");
+
+        if $u-1#6 != 0 goto label3;
+
+        $u-1#6 = virtualinvoke $u-1#8.<android.content.Intent: boolean hasCategory(java.lang.String)>("android.intent.category.LEANBACK_LAUNCHER");
+
+        if $u-1#6 == 0 goto label4;
+
+     label3:
+        $u-1#21 = interfaceinvoke $u-1.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $u-1#21 = interfaceinvoke $u-1#21.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putBoolean(java.lang.String,boolean)>("startedFromLauncher", 1);
+
+        interfaceinvoke $u-1#21.<android.content.SharedPreferences$Editor: void apply()>();
+
+     label4:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.AppLaunchChecker: java.lang.String SHARED_PREFS_NAME> = "android.support.AppLaunchChecker";
+
+        <androidx.core.app.AppLaunchChecker: java.lang.String KEY_STARTED_FROM_LAUNCHER> = "startedFromLauncher";
+
+        return;
+    }
+}

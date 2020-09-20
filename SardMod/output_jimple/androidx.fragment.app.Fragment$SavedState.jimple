@@ -1,0 +1,92 @@
+public class androidx.fragment.app.Fragment$SavedState extends java.lang.Object implements android.os.Parcelable
+{
+    public static final android.os.Parcelable$Creator CREATOR;
+    final android.os.Bundle mState;
+
+    static void <clinit>()
+    {
+        androidx.fragment.app.Fragment$SavedState$1 $u0;
+
+        $u0 = new androidx.fragment.app.Fragment$SavedState$1;
+
+        specialinvoke $u0.<androidx.fragment.app.Fragment$SavedState$1: void <init>()>();
+
+        <androidx.fragment.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR> = $u0;
+
+        return;
+    }
+
+    void <init>(android.os.Bundle)
+    {
+        androidx.fragment.app.Fragment$SavedState this;
+        android.os.Bundle $u1;
+
+        this := @this: androidx.fragment.app.Fragment$SavedState;
+
+        $u1 := @parameter0: android.os.Bundle;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.fragment.app.Fragment$SavedState: android.os.Bundle mState> = $u1;
+
+        return;
+    }
+
+    void <init>(android.os.Parcel, java.lang.ClassLoader)
+    {
+        androidx.fragment.app.Fragment$SavedState this;
+        android.os.Parcel $u2;
+        java.lang.ClassLoader $u3;
+        android.os.Bundle $u-1;
+
+        this := @this: androidx.fragment.app.Fragment$SavedState;
+
+        $u2 := @parameter0: android.os.Parcel;
+
+        $u3 := @parameter1: java.lang.ClassLoader;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u-1 = virtualinvoke $u2.<android.os.Parcel: android.os.Bundle readBundle()>();
+
+        this.<androidx.fragment.app.Fragment$SavedState: android.os.Bundle mState> = $u-1;
+
+        if $u3 == null goto label1;
+
+        if $u-1 == null goto label1;
+
+        virtualinvoke $u-1.<android.os.Bundle: void setClassLoader(java.lang.ClassLoader)>($u3);
+
+     label1:
+        return;
+    }
+
+    public int describeContents()
+    {
+        androidx.fragment.app.Fragment$SavedState this;
+
+        this := @this: androidx.fragment.app.Fragment$SavedState;
+
+        return 0;
+    }
+
+    public void writeToParcel(android.os.Parcel, int)
+    {
+        androidx.fragment.app.Fragment$SavedState this;
+        android.os.Parcel $u2;
+        int $u3;
+        android.os.Bundle $u0;
+
+        this := @this: androidx.fragment.app.Fragment$SavedState;
+
+        $u2 := @parameter0: android.os.Parcel;
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.fragment.app.Fragment$SavedState: android.os.Bundle mState>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeBundle(android.os.Bundle)>($u0);
+
+        return;
+    }
+}

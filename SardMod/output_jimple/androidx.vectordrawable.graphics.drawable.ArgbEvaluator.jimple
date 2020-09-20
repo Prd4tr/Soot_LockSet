@@ -1,0 +1,233 @@
+public class androidx.vectordrawable.graphics.drawable.ArgbEvaluator extends java.lang.Object implements android.animation.TypeEvaluator
+{
+    private static final androidx.vectordrawable.graphics.drawable.ArgbEvaluator sInstance;
+
+    static void <clinit>()
+    {
+        androidx.vectordrawable.graphics.drawable.ArgbEvaluator $u0;
+
+        $u0 = new androidx.vectordrawable.graphics.drawable.ArgbEvaluator;
+
+        specialinvoke $u0.<androidx.vectordrawable.graphics.drawable.ArgbEvaluator: void <init>()>();
+
+        <androidx.vectordrawable.graphics.drawable.ArgbEvaluator: androidx.vectordrawable.graphics.drawable.ArgbEvaluator sInstance> = $u0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.vectordrawable.graphics.drawable.ArgbEvaluator this;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.ArgbEvaluator;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.vectordrawable.graphics.drawable.ArgbEvaluator getInstance()
+    {
+        androidx.vectordrawable.graphics.drawable.ArgbEvaluator ret0;
+
+        ret0 = <androidx.vectordrawable.graphics.drawable.ArgbEvaluator: androidx.vectordrawable.graphics.drawable.ArgbEvaluator sInstance>;
+
+        return ret0;
+    }
+
+    public java.lang.Object evaluate(float, java.lang.Object, java.lang.Object)
+    {
+        androidx.vectordrawable.graphics.drawable.ArgbEvaluator this;
+        float $u19, startA#7, startR, startG, startB, startB#20, endA, endR, endG, endB, endR#56;
+        java.lang.Object $u20, $u21;
+        java.lang.Integer startInt;
+        int $u-1, startA;
+        double a;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.ArgbEvaluator;
+
+        $u19 := @parameter0: float;
+
+        $u20 := @parameter1: java.lang.Object;
+
+        $u21 := @parameter2: java.lang.Object;
+
+        startInt = (java.lang.Integer) $u20;
+
+        $u-1 = virtualinvoke startInt.<java.lang.Integer: int intValue()>();
+
+        startA = $u-1 >> 24;
+
+        startA = startA & 255;
+
+        startA#7 = (float) startA;
+
+        startA#7 = startA#7 / 255.0F;
+
+        startA = $u-1 >> 16;
+
+        startA = startA & 255;
+
+        startR = (float) startA;
+
+        startR = startR / 255.0F;
+
+        startA = $u-1 >> 8;
+
+        startA = startA & 255;
+
+        startG = (float) startA;
+
+        startG = startG / 255.0F;
+
+        $u-1 = $u-1 & 255;
+
+        startB = (float) $u-1;
+
+        startB#20 = startB / 255.0F;
+
+        startInt = (java.lang.Integer) $u21;
+
+        $u-1 = virtualinvoke startInt.<java.lang.Integer: int intValue()>();
+
+        startA = $u-1 >> 24;
+
+        startA = startA & 255;
+
+        startB = (float) startA;
+
+        endA = startB / 255.0F;
+
+        startA = $u-1 >> 16;
+
+        startA = startA & 255;
+
+        startB = (float) startA;
+
+        endR = startB / 255.0F;
+
+        startA = $u-1 >> 8;
+
+        startA = startA & 255;
+
+        startB = (float) startA;
+
+        endG = startB / 255.0F;
+
+        $u-1 = $u-1 & 255;
+
+        startB = (float) $u-1;
+
+        endB = startB / 255.0F;
+
+        a = (double) startR;
+
+        a = staticinvoke <java.lang.Math: double pow(double,double)>(a, 2.2);
+
+        startB = (float) a;
+
+        a = (double) startG;
+
+        a = staticinvoke <java.lang.Math: double pow(double,double)>(a, 2.2);
+
+        startG = (float) a;
+
+        a = (double) startB#20;
+
+        a = staticinvoke <java.lang.Math: double pow(double,double)>(a, 2.2);
+
+        startR = (float) a;
+
+        a = (double) endR;
+
+        a = staticinvoke <java.lang.Math: double pow(double,double)>(a, 2.2);
+
+        endR#56 = (float) a;
+
+        a = (double) endG;
+
+        a = staticinvoke <java.lang.Math: double pow(double,double)>(a, 2.2);
+
+        endR = (float) a;
+
+        a = (double) endB;
+
+        a = staticinvoke <java.lang.Math: double pow(double,double)>(a, 2.2);
+
+        startB#20 = (float) a;
+
+        endA = endA - startA#7;
+
+        endA = endA * $u19;
+
+        startA#7 = endA + startA#7;
+
+        endA = endR#56 - startB;
+
+        endA = endA * $u19;
+
+        startB = endA + startB;
+
+        endA = endR - startG;
+
+        endA = endA * $u19;
+
+        startG = endA + startG;
+
+        endA = startB#20 - startR;
+
+        $u19 = endA * $u19;
+
+        startR = $u19 + startR;
+
+        $u19 = startA#7 * 255.0F;
+
+        a = (double) startB;
+
+        a = staticinvoke <java.lang.Math: double pow(double,double)>(a, 0.45454545454545453);
+
+        startA#7 = (float) a;
+
+        startA#7 = startA#7 * 255.0F;
+
+        a = (double) startG;
+
+        a = staticinvoke <java.lang.Math: double pow(double,double)>(a, 0.45454545454545453);
+
+        startG = (float) a;
+
+        startG = startG * 255.0F;
+
+        a = (double) startR;
+
+        a = staticinvoke <java.lang.Math: double pow(double,double)>(a, 0.45454545454545453);
+
+        startR = (float) a;
+
+        startR = startR * 255.0F;
+
+        $u-1 = staticinvoke <java.lang.Math: int round(float)>($u19);
+
+        $u-1 = $u-1 << 24;
+
+        startA = staticinvoke <java.lang.Math: int round(float)>(startA#7);
+
+        startA = startA << 16;
+
+        $u-1 = $u-1 | startA;
+
+        startA = staticinvoke <java.lang.Math: int round(float)>(startG);
+
+        startA = startA << 8;
+
+        $u-1 = $u-1 | startA;
+
+        startA = staticinvoke <java.lang.Math: int round(float)>(startR);
+
+        $u-1 = $u-1 | startA;
+
+        startInt = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1);
+
+        return startInt;
+    }
+}

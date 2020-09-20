@@ -1,0 +1,76 @@
+final class androidx.core.app.JobIntentService$JobWorkEnqueuer extends androidx.core.app.JobIntentService$WorkEnqueuer
+{
+    private final android.app.job.JobInfo mJobInfo;
+    private final android.app.job.JobScheduler mJobScheduler;
+
+    void <init>(android.content.Context, android.content.ComponentName, int)
+    {
+        androidx.core.app.JobIntentService$JobWorkEnqueuer this;
+        android.content.Context $u4;
+        android.content.ComponentName $u5;
+        int $u6;
+        android.app.job.JobInfo$Builder b;
+        android.app.job.JobInfo $u-1;
+        java.lang.Object $u-1#9;
+        android.app.job.JobScheduler $u1;
+
+        this := @this: androidx.core.app.JobIntentService$JobWorkEnqueuer;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: android.content.ComponentName;
+
+        $u6 := @parameter2: int;
+
+        specialinvoke this.<androidx.core.app.JobIntentService$WorkEnqueuer: void <init>(android.content.ComponentName)>($u5);
+
+        virtualinvoke this.<androidx.core.app.JobIntentService$JobWorkEnqueuer: void ensureJobId(int)>($u6);
+
+        b = new android.app.job.JobInfo$Builder;
+
+        $u5 = this.<androidx.core.app.JobIntentService$JobWorkEnqueuer: android.content.ComponentName mComponentName>;
+
+        specialinvoke b.<android.app.job.JobInfo$Builder: void <init>(int,android.content.ComponentName)>($u6, $u5);
+
+        b = virtualinvoke b.<android.app.job.JobInfo$Builder: android.app.job.JobInfo$Builder setOverrideDeadline(long)>(0L);
+
+        $u-1 = virtualinvoke b.<android.app.job.JobInfo$Builder: android.app.job.JobInfo build()>();
+
+        this.<androidx.core.app.JobIntentService$JobWorkEnqueuer: android.app.job.JobInfo mJobInfo> = $u-1;
+
+        $u4 = virtualinvoke $u4.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $u-1#9 = virtualinvoke $u4.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("jobscheduler");
+
+        $u1 = (android.app.job.JobScheduler) $u-1#9;
+
+        this.<androidx.core.app.JobIntentService$JobWorkEnqueuer: android.app.job.JobScheduler mJobScheduler> = $u1;
+
+        return;
+    }
+
+    void enqueueWork(android.content.Intent)
+    {
+        androidx.core.app.JobIntentService$JobWorkEnqueuer this;
+        android.content.Intent $u4;
+        android.app.job.JobScheduler $u0;
+        android.app.job.JobInfo $u1;
+        android.app.job.JobWorkItem $u2;
+
+        this := @this: androidx.core.app.JobIntentService$JobWorkEnqueuer;
+
+        $u4 := @parameter0: android.content.Intent;
+
+        $u0 = this.<androidx.core.app.JobIntentService$JobWorkEnqueuer: android.app.job.JobScheduler mJobScheduler>;
+
+        $u1 = this.<androidx.core.app.JobIntentService$JobWorkEnqueuer: android.app.job.JobInfo mJobInfo>;
+
+        $u2 = new android.app.job.JobWorkItem;
+
+        specialinvoke $u2.<android.app.job.JobWorkItem: void <init>(android.content.Intent)>($u4);
+
+        virtualinvoke $u0.<android.app.job.JobScheduler: int enqueue(android.app.job.JobInfo,android.app.job.JobWorkItem)>($u1, $u2);
+
+        return;
+    }
+}

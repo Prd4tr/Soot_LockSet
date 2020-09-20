@@ -1,0 +1,50 @@
+class androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable extends java.lang.Object implements androidx.activity.Cancellable
+{
+    private final androidx.activity.OnBackPressedCallback mOnBackPressedCallback;
+    final androidx.activity.OnBackPressedDispatcher this$0;
+
+    void <init>(androidx.activity.OnBackPressedDispatcher, androidx.activity.OnBackPressedCallback)
+    {
+        androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable this;
+        androidx.activity.OnBackPressedDispatcher $u1;
+        androidx.activity.OnBackPressedCallback $u2;
+
+        this := @this: androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable;
+
+        $u1 := @parameter0: androidx.activity.OnBackPressedDispatcher;
+
+        $u2 := @parameter1: androidx.activity.OnBackPressedCallback;
+
+        this.<androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable: androidx.activity.OnBackPressedDispatcher this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable: androidx.activity.OnBackPressedCallback mOnBackPressedCallback> = $u2;
+
+        return;
+    }
+
+    public void cancel()
+    {
+        androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable this;
+        androidx.activity.OnBackPressedCallback $u1;
+        androidx.activity.OnBackPressedDispatcher $u0;
+        java.util.ArrayDeque $u0#2;
+
+        this := @this: androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable;
+
+        $u0 = this.<androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable: androidx.activity.OnBackPressedDispatcher this$0>;
+
+        $u0#2 = $u0.<androidx.activity.OnBackPressedDispatcher: java.util.ArrayDeque mOnBackPressedCallbacks>;
+
+        $u1 = this.<androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable: androidx.activity.OnBackPressedCallback mOnBackPressedCallback>;
+
+        virtualinvoke $u0#2.<java.util.ArrayDeque: boolean remove(java.lang.Object)>($u1);
+
+        $u1 = this.<androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable: androidx.activity.OnBackPressedCallback mOnBackPressedCallback>;
+
+        virtualinvoke $u1.<androidx.activity.OnBackPressedCallback: void removeCancellable(androidx.activity.Cancellable)>(this);
+
+        return;
+    }
+}

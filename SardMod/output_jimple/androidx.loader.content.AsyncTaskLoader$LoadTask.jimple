@@ -1,0 +1,195 @@
+final class androidx.loader.content.AsyncTaskLoader$LoadTask extends androidx.loader.content.ModernAsyncTask implements java.lang.Runnable
+{
+    private final java.util.concurrent.CountDownLatch mDone;
+    final androidx.loader.content.AsyncTaskLoader this$0;
+    boolean waiting;
+
+    void <init>(androidx.loader.content.AsyncTaskLoader)
+    {
+        androidx.loader.content.AsyncTaskLoader$LoadTask this;
+        androidx.loader.content.AsyncTaskLoader $u3;
+        java.util.concurrent.CountDownLatch $u0;
+
+        this := @this: androidx.loader.content.AsyncTaskLoader$LoadTask;
+
+        $u3 := @parameter0: androidx.loader.content.AsyncTaskLoader;
+
+        this.<androidx.loader.content.AsyncTaskLoader$LoadTask: androidx.loader.content.AsyncTaskLoader this$0> = $u3;
+
+        specialinvoke this.<androidx.loader.content.ModernAsyncTask: void <init>()>();
+
+        $u0 = new java.util.concurrent.CountDownLatch;
+
+        specialinvoke $u0.<java.util.concurrent.CountDownLatch: void <init>(int)>(1);
+
+        this.<androidx.loader.content.AsyncTaskLoader$LoadTask: java.util.concurrent.CountDownLatch mDone> = $u0;
+
+        return;
+    }
+
+    protected volatile java.lang.Object doInBackground(java.lang.Object[])
+    {
+        androidx.loader.content.AsyncTaskLoader$LoadTask this;
+        java.lang.Object $u-1;
+        java.lang.Object[] $u1;
+        java.lang.Void[] $u1#2;
+
+        this := @this: androidx.loader.content.AsyncTaskLoader$LoadTask;
+
+        $u1 := @parameter0: java.lang.Object[];
+
+        $u1#2 = (java.lang.Void[]) $u1;
+
+        $u-1 = virtualinvoke this.<androidx.loader.content.AsyncTaskLoader$LoadTask: java.lang.Object doInBackground(java.lang.Void[])>($u1#2);
+
+        return $u-1;
+    }
+
+    protected transient java.lang.Object doInBackground(java.lang.Void[])
+    {
+        androidx.loader.content.AsyncTaskLoader$LoadTask this;
+        java.lang.Void[] $u3;
+        androidx.loader.content.AsyncTaskLoader data;
+        java.lang.Object $u-1;
+        androidx.core.os.OperationCanceledException data#4;
+        boolean $u-1#5;
+
+        this := @this: androidx.loader.content.AsyncTaskLoader$LoadTask;
+
+        $u3 := @parameter0: java.lang.Void[];
+
+        data = this.<androidx.loader.content.AsyncTaskLoader$LoadTask: androidx.loader.content.AsyncTaskLoader this$0>;
+
+     label1:
+        $u-1 = virtualinvoke data.<androidx.loader.content.AsyncTaskLoader: java.lang.Object onLoadInBackground()>();
+
+     label2:
+        return $u-1;
+
+     label3:
+        data#4 := @caughtexception;
+
+        $u-1#5 = virtualinvoke this.<androidx.loader.content.AsyncTaskLoader$LoadTask: boolean isCancelled()>();
+
+        if $u-1#5 == 0 goto label4;
+
+        return null;
+
+     label4:
+        throw data#4;
+
+        catch androidx.core.os.OperationCanceledException from label1 to label2 with label3;
+    }
+
+    protected void onCancelled(java.lang.Object)
+    {
+        androidx.loader.content.AsyncTaskLoader$LoadTask this;
+        java.lang.Object data;
+        java.util.concurrent.CountDownLatch $u1;
+        androidx.loader.content.AsyncTaskLoader $u0;
+        java.lang.Throwable $u0#3;
+
+        this := @this: androidx.loader.content.AsyncTaskLoader$LoadTask;
+
+        data := @parameter0: java.lang.Object;
+
+     label1:
+        $u0 = this.<androidx.loader.content.AsyncTaskLoader$LoadTask: androidx.loader.content.AsyncTaskLoader this$0>;
+
+        virtualinvoke $u0.<androidx.loader.content.AsyncTaskLoader: void dispatchOnCancelled(androidx.loader.content.AsyncTaskLoader$LoadTask,java.lang.Object)>(this, data);
+
+     label2:
+        $u1 = this.<androidx.loader.content.AsyncTaskLoader$LoadTask: java.util.concurrent.CountDownLatch mDone>;
+
+        virtualinvoke $u1.<java.util.concurrent.CountDownLatch: void countDown()>();
+
+        return;
+
+     label3:
+        $u0#3 := @caughtexception;
+
+        $u1 = this.<androidx.loader.content.AsyncTaskLoader$LoadTask: java.util.concurrent.CountDownLatch mDone>;
+
+        virtualinvoke $u1.<java.util.concurrent.CountDownLatch: void countDown()>();
+
+        throw $u0#3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    protected void onPostExecute(java.lang.Object)
+    {
+        androidx.loader.content.AsyncTaskLoader$LoadTask this;
+        java.lang.Object data;
+        java.util.concurrent.CountDownLatch $u1;
+        androidx.loader.content.AsyncTaskLoader $u0;
+        java.lang.Throwable $u0#3;
+
+        this := @this: androidx.loader.content.AsyncTaskLoader$LoadTask;
+
+        data := @parameter0: java.lang.Object;
+
+     label1:
+        $u0 = this.<androidx.loader.content.AsyncTaskLoader$LoadTask: androidx.loader.content.AsyncTaskLoader this$0>;
+
+        virtualinvoke $u0.<androidx.loader.content.AsyncTaskLoader: void dispatchOnLoadComplete(androidx.loader.content.AsyncTaskLoader$LoadTask,java.lang.Object)>(this, data);
+
+     label2:
+        $u1 = this.<androidx.loader.content.AsyncTaskLoader$LoadTask: java.util.concurrent.CountDownLatch mDone>;
+
+        virtualinvoke $u1.<java.util.concurrent.CountDownLatch: void countDown()>();
+
+        return;
+
+     label3:
+        $u0#3 := @caughtexception;
+
+        $u1 = this.<androidx.loader.content.AsyncTaskLoader$LoadTask: java.util.concurrent.CountDownLatch mDone>;
+
+        virtualinvoke $u1.<java.util.concurrent.CountDownLatch: void countDown()>();
+
+        throw $u0#3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public void run()
+    {
+        androidx.loader.content.AsyncTaskLoader$LoadTask this;
+        androidx.loader.content.AsyncTaskLoader $u0;
+
+        this := @this: androidx.loader.content.AsyncTaskLoader$LoadTask;
+
+        this.<androidx.loader.content.AsyncTaskLoader$LoadTask: boolean waiting> = 0;
+
+        $u0 = this.<androidx.loader.content.AsyncTaskLoader$LoadTask: androidx.loader.content.AsyncTaskLoader this$0>;
+
+        virtualinvoke $u0.<androidx.loader.content.AsyncTaskLoader: void executePendingTask()>();
+
+        return;
+    }
+
+    public void waitForLoader()
+    {
+        androidx.loader.content.AsyncTaskLoader$LoadTask this;
+        java.util.concurrent.CountDownLatch $u0;
+        java.lang.InterruptedException $u0#2;
+
+        this := @this: androidx.loader.content.AsyncTaskLoader$LoadTask;
+
+        $u0 = this.<androidx.loader.content.AsyncTaskLoader$LoadTask: java.util.concurrent.CountDownLatch mDone>;
+
+     label1:
+        virtualinvoke $u0.<java.util.concurrent.CountDownLatch: void await()>();
+
+     label2:
+        return;
+
+     label3:
+        $u0#2 := @caughtexception;
+
+        return;
+
+        catch java.lang.InterruptedException from label1 to label2 with label3;
+    }
+}

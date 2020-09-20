@@ -1,0 +1,222 @@
+public abstract class androidx.core.view.ActionProvider extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    private final android.content.Context mContext;
+    private androidx.core.view.ActionProvider$SubUiVisibilityListener mSubUiVisibilityListener;
+    private androidx.core.view.ActionProvider$VisibilityListener mVisibilityListener;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.core.view.ActionProvider this;
+        android.content.Context $u1;
+
+        this := @this: androidx.core.view.ActionProvider;
+
+        $u1 := @parameter0: android.content.Context;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.view.ActionProvider: android.content.Context mContext> = $u1;
+
+        return;
+    }
+
+    public android.content.Context getContext()
+    {
+        androidx.core.view.ActionProvider this;
+        android.content.Context ret0;
+
+        this := @this: androidx.core.view.ActionProvider;
+
+        ret0 = this.<androidx.core.view.ActionProvider: android.content.Context mContext>;
+
+        return ret0;
+    }
+
+    public boolean hasSubMenu()
+    {
+        androidx.core.view.ActionProvider this;
+
+        this := @this: androidx.core.view.ActionProvider;
+
+        return 0;
+    }
+
+    public boolean isVisible()
+    {
+        androidx.core.view.ActionProvider this;
+
+        this := @this: androidx.core.view.ActionProvider;
+
+        return 1;
+    }
+
+    public abstract android.view.View onCreateActionView();
+
+    public android.view.View onCreateActionView(android.view.MenuItem)
+    {
+        androidx.core.view.ActionProvider this;
+        android.view.MenuItem $u2;
+        android.view.View $u-1;
+
+        this := @this: androidx.core.view.ActionProvider;
+
+        $u2 := @parameter0: android.view.MenuItem;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.ActionProvider: android.view.View onCreateActionView()>();
+
+        return $u-1;
+    }
+
+    public boolean onPerformDefaultAction()
+    {
+        androidx.core.view.ActionProvider this;
+
+        this := @this: androidx.core.view.ActionProvider;
+
+        return 0;
+    }
+
+    public void onPrepareSubMenu(android.view.SubMenu)
+    {
+        androidx.core.view.ActionProvider this;
+        android.view.SubMenu $u1;
+
+        this := @this: androidx.core.view.ActionProvider;
+
+        $u1 := @parameter0: android.view.SubMenu;
+
+        return;
+    }
+
+    public boolean overridesItemVisibility()
+    {
+        androidx.core.view.ActionProvider this;
+
+        this := @this: androidx.core.view.ActionProvider;
+
+        return 0;
+    }
+
+    public void refreshVisibility()
+    {
+        androidx.core.view.ActionProvider this;
+        androidx.core.view.ActionProvider$VisibilityListener $u0;
+        boolean $u-1;
+
+        this := @this: androidx.core.view.ActionProvider;
+
+        $u0 = this.<androidx.core.view.ActionProvider: androidx.core.view.ActionProvider$VisibilityListener mVisibilityListener>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.ActionProvider: boolean overridesItemVisibility()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = this.<androidx.core.view.ActionProvider: androidx.core.view.ActionProvider$VisibilityListener mVisibilityListener>;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.ActionProvider: boolean isVisible()>();
+
+        interfaceinvoke $u0.<androidx.core.view.ActionProvider$VisibilityListener: void onActionProviderVisibilityChanged(boolean)>($u-1);
+
+     label1:
+        return;
+    }
+
+    public void reset()
+    {
+        androidx.core.view.ActionProvider this;
+
+        this := @this: androidx.core.view.ActionProvider;
+
+        this.<androidx.core.view.ActionProvider: androidx.core.view.ActionProvider$VisibilityListener mVisibilityListener> = null;
+
+        this.<androidx.core.view.ActionProvider: androidx.core.view.ActionProvider$SubUiVisibilityListener mSubUiVisibilityListener> = null;
+
+        return;
+    }
+
+    public void setSubUiVisibilityListener(androidx.core.view.ActionProvider$SubUiVisibilityListener)
+    {
+        androidx.core.view.ActionProvider this;
+        androidx.core.view.ActionProvider$SubUiVisibilityListener $u1;
+
+        this := @this: androidx.core.view.ActionProvider;
+
+        $u1 := @parameter0: androidx.core.view.ActionProvider$SubUiVisibilityListener;
+
+        this.<androidx.core.view.ActionProvider: androidx.core.view.ActionProvider$SubUiVisibilityListener mSubUiVisibilityListener> = $u1;
+
+        return;
+    }
+
+    public void setVisibilityListener(androidx.core.view.ActionProvider$VisibilityListener)
+    {
+        androidx.core.view.ActionProvider this;
+        androidx.core.view.ActionProvider$VisibilityListener $u3, $u0;
+        java.lang.StringBuilder $u0#2;
+        java.lang.Class $u-1;
+        java.lang.String $u-1#6;
+
+        this := @this: androidx.core.view.ActionProvider;
+
+        $u3 := @parameter0: androidx.core.view.ActionProvider$VisibilityListener;
+
+        $u0 = this.<androidx.core.view.ActionProvider: androidx.core.view.ActionProvider$VisibilityListener mVisibilityListener>;
+
+        if $u0 == null goto label1;
+
+        if $u3 == null goto label1;
+
+        $u0#2 = new java.lang.StringBuilder;
+
+        specialinvoke $u0#2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u0#2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("setVisibilityListener: Setting a new ActionProvider.VisibilityListener when one is already set. Are you reusing this ");
+
+        $u-1 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#6 = virtualinvoke $u-1.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        virtualinvoke $u0#2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#6);
+
+        virtualinvoke $u0#2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" instance while it is still in use somewhere else?");
+
+        $u-1#6 = virtualinvoke $u0#2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("ActionProvider(support)", $u-1#6);
+
+     label1:
+        this.<androidx.core.view.ActionProvider: androidx.core.view.ActionProvider$VisibilityListener mVisibilityListener> = $u3;
+
+        return;
+    }
+
+    public void subUiVisibilityChanged(boolean)
+    {
+        androidx.core.view.ActionProvider this;
+        boolean $u2;
+        androidx.core.view.ActionProvider$SubUiVisibilityListener $u0;
+
+        this := @this: androidx.core.view.ActionProvider;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.view.ActionProvider: androidx.core.view.ActionProvider$SubUiVisibilityListener mSubUiVisibilityListener>;
+
+        if $u0 == null goto label1;
+
+        interfaceinvoke $u0.<androidx.core.view.ActionProvider$SubUiVisibilityListener: void onSubUiVisibilityChanged(boolean)>($u2);
+
+     label1:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.view.ActionProvider: java.lang.String TAG> = "ActionProvider(support)";
+
+        return;
+    }
+}

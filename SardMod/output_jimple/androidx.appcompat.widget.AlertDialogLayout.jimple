@@ -1,0 +1,627 @@
+public class androidx.appcompat.widget.AlertDialogLayout extends androidx.appcompat.widget.LinearLayoutCompat
+{
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.AlertDialogLayout this;
+        android.content.Context $u1;
+
+        this := @this: androidx.appcompat.widget.AlertDialogLayout;
+
+        $u1 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: void <init>(android.content.Context)>($u1);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.AlertDialogLayout this;
+        android.content.Context $u1;
+        android.util.AttributeSet $u2;
+
+        this := @this: androidx.appcompat.widget.AlertDialogLayout;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: void <init>(android.content.Context,android.util.AttributeSet)>($u1, $u2);
+
+        return;
+    }
+
+    private void forceUniformWidth(int, int)
+    {
+        androidx.appcompat.widget.AlertDialogLayout this;
+        int $u12, $u13, oldHeight, $u-1, i, $u-1#17;
+        android.view.View $u-1#7;
+        android.view.ViewGroup$LayoutParams $u-1#11;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams lp;
+
+        this := @this: androidx.appcompat.widget.AlertDialogLayout;
+
+        $u12 := @parameter0: int;
+
+        $u13 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getMeasuredWidth()>();
+
+        $u-1 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($u-1, 1073741824);
+
+        i = 0;
+
+     label1:
+        if i >= $u12 goto label3;
+
+        $u-1#7 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: android.view.View getChildAt(int)>(i);
+
+        oldHeight = virtualinvoke $u-1#7.<android.view.View: int getVisibility()>();
+
+        if oldHeight == 8 goto label2;
+
+        $u-1#11 = virtualinvoke $u-1#7.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        lp = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $u-1#11;
+
+        oldHeight = lp.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int width>;
+
+        if oldHeight != -1 goto label2;
+
+        oldHeight = lp.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height>;
+
+        $u-1#17 = virtualinvoke $u-1#7.<android.view.View: int getMeasuredHeight()>();
+
+        lp.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height> = $u-1#17;
+
+        virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: void measureChildWithMargins(android.view.View,int,int,int,int)>($u-1#7, $u-1, 0, $u13, 0);
+
+        lp.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int height> = oldHeight;
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    private static int resolveMinimumHeight(android.view.View)
+    {
+        android.view.View $u5;
+        int $u-1;
+        boolean vg;
+        android.view.ViewGroup vg#5;
+
+        $u5 := @parameter0: android.view.View;
+
+        $u-1 = staticinvoke <androidx.core.view.ViewCompat: int getMinimumHeight(android.view.View)>($u5);
+
+        if $u-1 <= 0 goto label1;
+
+        return $u-1;
+
+     label1:
+        vg = $u5 instanceof android.view.ViewGroup;
+
+        if vg == 0 goto label2;
+
+        vg#5 = (android.view.ViewGroup) $u5;
+
+        $u-1 = virtualinvoke vg#5.<android.view.ViewGroup: int getChildCount()>();
+
+        if $u-1 != 1 goto label2;
+
+        $u5 = virtualinvoke vg#5.<android.view.ViewGroup: android.view.View getChildAt(int)>(0);
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.AlertDialogLayout: int resolveMinimumHeight(android.view.View)>($u5);
+
+        return $u-1;
+
+     label2:
+        return 0;
+    }
+
+    private void setChildFrame(android.view.View, int, int, int, int)
+    {
+        androidx.appcompat.widget.AlertDialogLayout this;
+        android.view.View $u3;
+        int $u4, $u5, $u6, $u7;
+
+        this := @this: androidx.appcompat.widget.AlertDialogLayout;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u4 := @parameter1: int;
+
+        $u5 := @parameter2: int;
+
+        $u6 := @parameter3: int;
+
+        $u7 := @parameter4: int;
+
+        $u6 = $u4 + $u6;
+
+        $u7 = $u5 + $u7;
+
+        virtualinvoke $u3.<android.view.View: void layout(int,int,int,int)>($u4, $u5, $u6, $u7);
+
+        return;
+    }
+
+    private boolean tryOnMeasure(int, int)
+    {
+        androidx.appcompat.widget.AlertDialogLayout this;
+        int $u25, $u26, $u-1, i, $u-1#10, widthMode, $u-1#18, $u-1#20, $u-1#27, buttonWantsHeight, $u-1#37, $u-1#52;
+        android.view.View topPanel, buttonPanel, middlePanel, $u-1#8;
+
+        this := @this: androidx.appcompat.widget.AlertDialogLayout;
+
+        $u25 := @parameter0: int;
+
+        $u26 := @parameter1: int;
+
+        topPanel = null;
+
+        buttonPanel = null;
+
+        middlePanel = null;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getChildCount()>();
+
+        i = 0;
+
+     label01:
+        if i >= $u-1 goto label09;
+
+        $u-1#8 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: android.view.View getChildAt(int)>(i);
+
+        $u-1#10 = virtualinvoke $u-1#8.<android.view.View: int getVisibility()>();
+
+        if $u-1#10 != 8 goto label02;
+
+        goto label08;
+
+     label02:
+        $u-1#10 = virtualinvoke $u-1#8.<android.view.View: int getId()>();
+
+        widthMode = <androidx.appcompat.R$id: int topPanel>;
+
+        if $u-1#10 != widthMode goto label03;
+
+        topPanel = $u-1#8;
+
+        goto label08;
+
+     label03:
+        widthMode = <androidx.appcompat.R$id: int buttonPanel>;
+
+        if $u-1#10 != widthMode goto label04;
+
+        buttonPanel = $u-1#8;
+
+        goto label08;
+
+     label04:
+        widthMode = <androidx.appcompat.R$id: int contentPanel>;
+
+        if $u-1#10 == widthMode goto label06;
+
+        widthMode = <androidx.appcompat.R$id: int customPanel>;
+
+        if $u-1#10 != widthMode goto label05;
+
+        goto label06;
+
+     label05:
+        return 0;
+
+     label06:
+        if middlePanel == null goto label07;
+
+        return 0;
+
+     label07:
+        middlePanel = $u-1#8;
+
+     label08:
+        i = i + 1;
+
+        goto label01;
+
+     label09:
+        $u-1#18 = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($u26);
+
+        $u-1#20 = staticinvoke <android.view.View$MeasureSpec: int getSize(int)>($u26);
+
+        i = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($u25);
+
+        $u-1#10 = 0;
+
+        widthMode = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getPaddingTop()>();
+
+        $u-1#27 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getPaddingBottom()>();
+
+        widthMode = widthMode + $u-1#27;
+
+        if topPanel == null goto label10;
+
+        virtualinvoke topPanel.<android.view.View: void measure(int,int)>($u25, 0);
+
+        $u-1#10 = virtualinvoke topPanel.<android.view.View: int getMeasuredHeight()>();
+
+        widthMode = widthMode + $u-1#10;
+
+        $u-1#10 = virtualinvoke topPanel.<android.view.View: int getMeasuredState()>();
+
+        $u-1#10 = staticinvoke <android.view.View: int combineMeasuredStates(int,int)>(0, $u-1#10);
+
+     label10:
+        $u-1#27 = 0;
+
+        buttonWantsHeight = 0;
+
+        if buttonPanel == null goto label11;
+
+        virtualinvoke buttonPanel.<android.view.View: void measure(int,int)>($u25, 0);
+
+        $u-1#37 = staticinvoke <androidx.appcompat.widget.AlertDialogLayout: int resolveMinimumHeight(android.view.View)>(buttonPanel);
+
+        $u-1#27 = $u-1#37;
+
+        buttonWantsHeight = virtualinvoke buttonPanel.<android.view.View: int getMeasuredHeight()>();
+
+        buttonWantsHeight = buttonWantsHeight - $u-1#37;
+
+        widthMode = widthMode + $u-1#37;
+
+        $u-1#37 = virtualinvoke buttonPanel.<android.view.View: int getMeasuredState()>();
+
+        $u-1#10 = staticinvoke <android.view.View: int combineMeasuredStates(int,int)>($u-1#10, $u-1#37);
+
+     label11:
+        $u-1#37 = 0;
+
+        if middlePanel == null goto label14;
+
+        if $u-1#18 != 0 goto label12;
+
+        $u-1#37 = 0;
+
+        goto label13;
+
+     label12:
+        $u-1#37 = $u-1#20 - widthMode;
+
+        $u-1#37 = staticinvoke <java.lang.Math: int max(int,int)>(0, $u-1#37);
+
+        $u-1#37 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($u-1#37, $u-1#18);
+
+     label13:
+        virtualinvoke middlePanel.<android.view.View: void measure(int,int)>($u25, $u-1#37);
+
+        $u-1#52 = virtualinvoke middlePanel.<android.view.View: int getMeasuredHeight()>();
+
+        $u-1#37 = $u-1#52;
+
+        widthMode = widthMode + $u-1#52;
+
+        $u-1#52 = virtualinvoke middlePanel.<android.view.View: int getMeasuredState()>();
+
+        $u-1#10 = staticinvoke <android.view.View: int combineMeasuredStates(int,int)>($u-1#10, $u-1#52);
+
+        goto label14;
+
+     label14:
+        $u-1#20 = $u-1#20 - widthMode;
+
+        if buttonPanel == null goto label16;
+
+        widthMode = widthMode - $u-1#27;
+
+        buttonWantsHeight = staticinvoke <java.lang.Math: int min(int,int)>($u-1#20, buttonWantsHeight);
+
+        if buttonWantsHeight <= 0 goto label15;
+
+        $u-1#20 = $u-1#20 - buttonWantsHeight;
+
+        $u-1#27 = $u-1#27 + buttonWantsHeight;
+
+     label15:
+        $u-1#27 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($u-1#27, 1073741824);
+
+        virtualinvoke buttonPanel.<android.view.View: void measure(int,int)>($u25, $u-1#27);
+
+        $u-1#27 = virtualinvoke buttonPanel.<android.view.View: int getMeasuredHeight()>();
+
+        widthMode = widthMode + $u-1#27;
+
+        $u-1#27 = virtualinvoke buttonPanel.<android.view.View: int getMeasuredState()>();
+
+        $u-1#10 = staticinvoke <android.view.View: int combineMeasuredStates(int,int)>($u-1#10, $u-1#27);
+
+     label16:
+        if middlePanel == null goto label17;
+
+        if $u-1#20 <= 0 goto label17;
+
+        widthMode = widthMode - $u-1#37;
+
+        $u-1#20 = $u-1#37 + $u-1#20;
+
+        $u-1#18 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($u-1#20, $u-1#18);
+
+        virtualinvoke middlePanel.<android.view.View: void measure(int,int)>($u25, $u-1#18);
+
+        $u-1#18 = virtualinvoke middlePanel.<android.view.View: int getMeasuredHeight()>();
+
+        widthMode = widthMode + $u-1#18;
+
+        $u-1#18 = virtualinvoke middlePanel.<android.view.View: int getMeasuredState()>();
+
+        $u-1#10 = staticinvoke <android.view.View: int combineMeasuredStates(int,int)>($u-1#10, $u-1#18);
+
+     label17:
+        $u-1#18 = 0;
+
+        $u-1#20 = 0;
+
+     label18:
+        if $u-1#20 >= $u-1 goto label20;
+
+        topPanel = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: android.view.View getChildAt(int)>($u-1#20);
+
+        $u-1#27 = virtualinvoke topPanel.<android.view.View: int getVisibility()>();
+
+        if $u-1#27 == 8 goto label19;
+
+        $u-1#27 = virtualinvoke topPanel.<android.view.View: int getMeasuredWidth()>();
+
+        $u-1#18 = staticinvoke <java.lang.Math: int max(int,int)>($u-1#18, $u-1#27);
+
+     label19:
+        $u-1#20 = $u-1#20 + 1;
+
+        goto label18;
+
+     label20:
+        $u-1#20 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getPaddingLeft()>();
+
+        $u-1#27 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getPaddingRight()>();
+
+        $u-1#20 = $u-1#20 + $u-1#27;
+
+        $u-1#18 = $u-1#18 + $u-1#20;
+
+        $u25 = staticinvoke <android.view.View: int resolveSizeAndState(int,int,int)>($u-1#18, $u25, $u-1#10);
+
+        $u-1#10 = staticinvoke <android.view.View: int resolveSizeAndState(int,int,int)>(widthMode, $u26, 0);
+
+        virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: void setMeasuredDimension(int,int)>($u25, $u-1#10);
+
+        if i == 1073741824 goto label21;
+
+        specialinvoke this.<androidx.appcompat.widget.AlertDialogLayout: void forceUniformWidth(int,int)>($u-1, $u26);
+
+     label21:
+        return 1;
+    }
+
+    protected void onLayout(boolean, int, int, int, int)
+    {
+        androidx.appcompat.widget.AlertDialogLayout this, lp1;
+        boolean $u28;
+        int $u29, $u30, $u31, $u32, majorGravity, minorGravity, $u-1, $u-1#6, $u-1#8, $u-1#34, layoutGravity, $u-1#43;
+        android.graphics.drawable.Drawable $u-1#25;
+        android.view.View $u-1#30;
+        android.view.ViewGroup$LayoutParams $u-1#36;
+        androidx.appcompat.widget.LinearLayoutCompat$LayoutParams lp;
+
+        this := @this: androidx.appcompat.widget.AlertDialogLayout;
+
+        $u28 := @parameter0: boolean;
+
+        $u29 := @parameter1: int;
+
+        $u30 := @parameter2: int;
+
+        $u31 := @parameter3: int;
+
+        $u32 := @parameter4: int;
+
+        lp1 = this;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getPaddingLeft()>();
+
+        $u31 = $u31 - $u29;
+
+        $u29 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getPaddingRight()>();
+
+        $u29 = $u31 - $u29;
+
+        $u31 = $u31 - $u-1;
+
+        $u-1#6 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getPaddingRight()>();
+
+        $u31 = $u31 - $u-1#6;
+
+        $u-1#8 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getMeasuredHeight()>();
+
+        $u-1#6 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getChildCount()>();
+
+        minorGravity = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getGravity()>();
+
+        majorGravity = minorGravity & 112;
+
+        minorGravity = minorGravity & 8388615;
+
+        if majorGravity == 16 goto label02;
+
+        if majorGravity == 80 goto label01;
+
+        $u32 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getPaddingTop()>();
+
+        goto label03;
+
+     label01:
+        majorGravity = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getPaddingTop()>();
+
+        $u32 = majorGravity + $u32;
+
+        $u30 = $u32 - $u30;
+
+        $u32 = $u30 - $u-1#8;
+
+        goto label03;
+
+     label02:
+        majorGravity = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: int getPaddingTop()>();
+
+        $u30 = $u32 - $u30;
+
+        $u30 = $u30 - $u-1#8;
+
+        $u30 = $u30 / 2;
+
+        $u32 = majorGravity + $u30;
+
+     label03:
+        $u-1#25 = virtualinvoke this.<androidx.appcompat.widget.AlertDialogLayout: android.graphics.drawable.Drawable getDividerDrawable()>();
+
+        if $u-1#25 != null goto label04;
+
+        $u30 = 0;
+
+        goto label05;
+
+     label04:
+        $u30 = virtualinvoke $u-1#25.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+     label05:
+        majorGravity = 0;
+
+     label06:
+        if majorGravity >= $u-1#6 goto label13;
+
+        $u-1#30 = virtualinvoke lp1.<androidx.appcompat.widget.AlertDialogLayout: android.view.View getChildAt(int)>(majorGravity);
+
+        if $u-1#30 == null goto label12;
+
+        $u-1#8 = virtualinvoke $u-1#30.<android.view.View: int getVisibility()>();
+
+        if $u-1#8 == 8 goto label12;
+
+        $u-1#34 = virtualinvoke $u-1#30.<android.view.View: int getMeasuredWidth()>();
+
+        $u-1#8 = virtualinvoke $u-1#30.<android.view.View: int getMeasuredHeight()>();
+
+        $u-1#36 = virtualinvoke $u-1#30.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        lp = (androidx.appcompat.widget.LinearLayoutCompat$LayoutParams) $u-1#36;
+
+        layoutGravity = lp.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int gravity>;
+
+        if layoutGravity >= 0 goto label07;
+
+        layoutGravity = minorGravity;
+
+        goto label07;
+
+     label07:
+        $u-1#43 = staticinvoke <androidx.core.view.ViewCompat: int getLayoutDirection(android.view.View)>(this);
+
+        layoutGravity = staticinvoke <androidx.core.view.GravityCompat: int getAbsoluteGravity(int,int)>(layoutGravity, $u-1#43);
+
+        layoutGravity = layoutGravity & 7;
+
+        if layoutGravity == 1 goto label09;
+
+        if layoutGravity == 5 goto label08;
+
+        layoutGravity = lp.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        layoutGravity = layoutGravity + $u-1;
+
+        goto label10;
+
+     label08:
+        layoutGravity = $u29 - $u-1#34;
+
+        $u-1#43 = lp.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        layoutGravity = layoutGravity - $u-1#43;
+
+        goto label10;
+
+     label09:
+        layoutGravity = $u31 - $u-1#34;
+
+        layoutGravity = layoutGravity / 2;
+
+        layoutGravity = layoutGravity + $u-1;
+
+        $u-1#43 = lp.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int leftMargin>;
+
+        layoutGravity = layoutGravity + $u-1#43;
+
+        $u-1#43 = lp.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int rightMargin>;
+
+        layoutGravity = layoutGravity - $u-1#43;
+
+     label10:
+        $u28 = virtualinvoke lp1.<androidx.appcompat.widget.AlertDialogLayout: boolean hasDividerBeforeChildAt(int)>(majorGravity);
+
+        if $u28 == 0 goto label11;
+
+        $u32 = $u32 + $u30;
+
+     label11:
+        $u-1#43 = lp.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int topMargin>;
+
+        $u32 = $u32 + $u-1#43;
+
+        specialinvoke this.<androidx.appcompat.widget.AlertDialogLayout: void setChildFrame(android.view.View,int,int,int,int)>($u-1#30, layoutGravity, $u32, $u-1#34, $u-1#8);
+
+        $u-1#34 = lp.<androidx.appcompat.widget.LinearLayoutCompat$LayoutParams: int bottomMargin>;
+
+        $u-1#8 = $u-1#8 + $u-1#34;
+
+        $u32 = $u32 + $u-1#8;
+
+        goto label12;
+
+     label12:
+        majorGravity = majorGravity + 1;
+
+        lp1 = this;
+
+        goto label06;
+
+     label13:
+        return;
+    }
+
+    protected void onMeasure(int, int)
+    {
+        androidx.appcompat.widget.AlertDialogLayout this;
+        int $u2, $u3;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.widget.AlertDialogLayout;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AlertDialogLayout: boolean tryOnMeasure(int,int)>($u2, $u3);
+
+        if $u-1 != 0 goto label1;
+
+        specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: void onMeasure(int,int)>($u2, $u3);
+
+     label1:
+        return;
+    }
+}

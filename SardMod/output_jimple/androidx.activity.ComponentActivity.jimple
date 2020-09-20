@@ -1,0 +1,371 @@
+public class androidx.activity.ComponentActivity extends androidx.core.app.ComponentActivity implements androidx.lifecycle.LifecycleOwner, androidx.lifecycle.ViewModelStoreOwner, androidx.savedstate.SavedStateRegistryOwner, androidx.activity.OnBackPressedDispatcherOwner
+{
+    private int mContentLayoutId;
+    private final androidx.lifecycle.LifecycleRegistry mLifecycleRegistry;
+    private final androidx.activity.OnBackPressedDispatcher mOnBackPressedDispatcher;
+    private final androidx.savedstate.SavedStateRegistryController mSavedStateRegistryController;
+    private androidx.lifecycle.ViewModelStore mViewModelStore;
+
+    public void <init>()
+    {
+        androidx.activity.ComponentActivity this;
+        androidx.lifecycle.LifecycleRegistry lifecycle;
+        androidx.savedstate.SavedStateRegistryController $u-1;
+        androidx.activity.OnBackPressedDispatcher lifecycle#4;
+        androidx.activity.ComponentActivity$1 $u1;
+        androidx.lifecycle.Lifecycle $u-1#6;
+        int $u1#8;
+        androidx.activity.ComponentActivity$2 $u3;
+        androidx.activity.ComponentActivity$3 $u3#15;
+        androidx.activity.ImmLeaksCleaner $u2;
+        java.lang.IllegalStateException $u1#22;
+
+        this := @this: androidx.activity.ComponentActivity;
+
+        specialinvoke this.<androidx.core.app.ComponentActivity: void <init>()>();
+
+        lifecycle = new androidx.lifecycle.LifecycleRegistry;
+
+        specialinvoke lifecycle.<androidx.lifecycle.LifecycleRegistry: void <init>(androidx.lifecycle.LifecycleOwner)>(this);
+
+        this.<androidx.activity.ComponentActivity: androidx.lifecycle.LifecycleRegistry mLifecycleRegistry> = lifecycle;
+
+        $u-1 = staticinvoke <androidx.savedstate.SavedStateRegistryController: androidx.savedstate.SavedStateRegistryController create(androidx.savedstate.SavedStateRegistryOwner)>(this);
+
+        this.<androidx.activity.ComponentActivity: androidx.savedstate.SavedStateRegistryController mSavedStateRegistryController> = $u-1;
+
+        lifecycle#4 = new androidx.activity.OnBackPressedDispatcher;
+
+        $u1 = new androidx.activity.ComponentActivity$1;
+
+        specialinvoke $u1.<androidx.activity.ComponentActivity$1: void <init>(androidx.activity.ComponentActivity)>(this);
+
+        specialinvoke lifecycle#4.<androidx.activity.OnBackPressedDispatcher: void <init>(java.lang.Runnable)>($u1);
+
+        this.<androidx.activity.ComponentActivity: androidx.activity.OnBackPressedDispatcher mOnBackPressedDispatcher> = lifecycle#4;
+
+        $u-1#6 = virtualinvoke this.<androidx.activity.ComponentActivity: androidx.lifecycle.Lifecycle getLifecycle()>();
+
+        if $u-1#6 == null goto label2;
+
+        $u1#8 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u1#8 < 19 goto label1;
+
+        $u-1#6 = virtualinvoke this.<androidx.activity.ComponentActivity: androidx.lifecycle.Lifecycle getLifecycle()>();
+
+        $u3 = new androidx.activity.ComponentActivity$2;
+
+        specialinvoke $u3.<androidx.activity.ComponentActivity$2: void <init>(androidx.activity.ComponentActivity)>(this);
+
+        virtualinvoke $u-1#6.<androidx.lifecycle.Lifecycle: void addObserver(androidx.lifecycle.LifecycleObserver)>($u3);
+
+     label1:
+        $u-1#6 = virtualinvoke this.<androidx.activity.ComponentActivity: androidx.lifecycle.Lifecycle getLifecycle()>();
+
+        $u3#15 = new androidx.activity.ComponentActivity$3;
+
+        specialinvoke $u3#15.<androidx.activity.ComponentActivity$3: void <init>(androidx.activity.ComponentActivity)>(this);
+
+        virtualinvoke $u-1#6.<androidx.lifecycle.Lifecycle: void addObserver(androidx.lifecycle.LifecycleObserver)>($u3#15);
+
+        $u1#8 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if 19 > $u1#8 goto label3;
+
+        $u1#8 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u1#8 > 23 goto label3;
+
+        $u-1#6 = virtualinvoke this.<androidx.activity.ComponentActivity: androidx.lifecycle.Lifecycle getLifecycle()>();
+
+        $u2 = new androidx.activity.ImmLeaksCleaner;
+
+        specialinvoke $u2.<androidx.activity.ImmLeaksCleaner: void <init>(android.app.Activity)>(this);
+
+        virtualinvoke $u-1#6.<androidx.lifecycle.Lifecycle: void addObserver(androidx.lifecycle.LifecycleObserver)>($u2);
+
+        return;
+
+     label2:
+        $u1#22 = new java.lang.IllegalStateException;
+
+        specialinvoke $u1#22.<java.lang.IllegalStateException: void <init>(java.lang.String)>("getLifecycle() returned null in ComponentActivity\'s constructor. Please make sure you are lazily constructing your Lifecycle in the first call to getLifecycle() rather than relying on field initialization.");
+
+        throw $u1#22;
+
+     label3:
+        return;
+    }
+
+    public void <init>(int)
+    {
+        androidx.activity.ComponentActivity this;
+        int $u1;
+
+        this := @this: androidx.activity.ComponentActivity;
+
+        $u1 := @parameter0: int;
+
+        specialinvoke this.<androidx.activity.ComponentActivity: void <init>()>();
+
+        this.<androidx.activity.ComponentActivity: int mContentLayoutId> = $u1;
+
+        return;
+    }
+
+    static void access$001(androidx.activity.ComponentActivity)
+    {
+        androidx.activity.ComponentActivity $u0;
+
+        $u0 := @parameter0: androidx.activity.ComponentActivity;
+
+        specialinvoke $u0.<androidx.core.app.ComponentActivity: void onBackPressed()>();
+
+        return;
+    }
+
+    public java.lang.Object getLastCustomNonConfigurationInstance()
+    {
+        androidx.activity.ComponentActivity this;
+        java.lang.Object $u-1;
+        androidx.activity.ComponentActivity$NonConfigurationInstances nc;
+
+        this := @this: androidx.activity.ComponentActivity;
+
+        $u-1 = virtualinvoke this.<androidx.activity.ComponentActivity: java.lang.Object getLastNonConfigurationInstance()>();
+
+        nc = (androidx.activity.ComponentActivity$NonConfigurationInstances) $u-1;
+
+        if nc == null goto label1;
+
+        $u-1 = nc.<androidx.activity.ComponentActivity$NonConfigurationInstances: java.lang.Object custom>;
+
+        return $u-1;
+
+     label1:
+        return null;
+    }
+
+    public androidx.lifecycle.Lifecycle getLifecycle()
+    {
+        androidx.activity.ComponentActivity this;
+        androidx.lifecycle.LifecycleRegistry ret0;
+
+        this := @this: androidx.activity.ComponentActivity;
+
+        ret0 = this.<androidx.activity.ComponentActivity: androidx.lifecycle.LifecycleRegistry mLifecycleRegistry>;
+
+        return ret0;
+    }
+
+    public final androidx.activity.OnBackPressedDispatcher getOnBackPressedDispatcher()
+    {
+        androidx.activity.ComponentActivity this;
+        androidx.activity.OnBackPressedDispatcher ret0;
+
+        this := @this: androidx.activity.ComponentActivity;
+
+        ret0 = this.<androidx.activity.ComponentActivity: androidx.activity.OnBackPressedDispatcher mOnBackPressedDispatcher>;
+
+        return ret0;
+    }
+
+    public final androidx.savedstate.SavedStateRegistry getSavedStateRegistry()
+    {
+        androidx.activity.ComponentActivity this;
+        androidx.savedstate.SavedStateRegistry $u-1;
+        androidx.savedstate.SavedStateRegistryController $u0;
+
+        this := @this: androidx.activity.ComponentActivity;
+
+        $u0 = this.<androidx.activity.ComponentActivity: androidx.savedstate.SavedStateRegistryController mSavedStateRegistryController>;
+
+        $u-1 = virtualinvoke $u0.<androidx.savedstate.SavedStateRegistryController: androidx.savedstate.SavedStateRegistry getSavedStateRegistry()>();
+
+        return $u-1;
+    }
+
+    public androidx.lifecycle.ViewModelStore getViewModelStore()
+    {
+        androidx.activity.ComponentActivity this;
+        android.app.Application $u-1;
+        androidx.lifecycle.ViewModelStore nc;
+        java.lang.Object $u-1#4;
+        androidx.activity.ComponentActivity$NonConfigurationInstances nc#6;
+        java.lang.IllegalStateException nc#11;
+
+        this := @this: androidx.activity.ComponentActivity;
+
+        $u-1 = virtualinvoke this.<androidx.activity.ComponentActivity: android.app.Application getApplication()>();
+
+        if $u-1 == null goto label3;
+
+        nc = this.<androidx.activity.ComponentActivity: androidx.lifecycle.ViewModelStore mViewModelStore>;
+
+        if nc != null goto label2;
+
+        $u-1#4 = virtualinvoke this.<androidx.activity.ComponentActivity: java.lang.Object getLastNonConfigurationInstance()>();
+
+        nc#6 = (androidx.activity.ComponentActivity$NonConfigurationInstances) $u-1#4;
+
+        if nc#6 == null goto label1;
+
+        nc = nc#6.<androidx.activity.ComponentActivity$NonConfigurationInstances: androidx.lifecycle.ViewModelStore viewModelStore>;
+
+        this.<androidx.activity.ComponentActivity: androidx.lifecycle.ViewModelStore mViewModelStore> = nc;
+
+     label1:
+        nc = this.<androidx.activity.ComponentActivity: androidx.lifecycle.ViewModelStore mViewModelStore>;
+
+        if nc != null goto label2;
+
+        nc = new androidx.lifecycle.ViewModelStore;
+
+        specialinvoke nc.<androidx.lifecycle.ViewModelStore: void <init>()>();
+
+        this.<androidx.activity.ComponentActivity: androidx.lifecycle.ViewModelStore mViewModelStore> = nc;
+
+     label2:
+        nc = this.<androidx.activity.ComponentActivity: androidx.lifecycle.ViewModelStore mViewModelStore>;
+
+        return nc;
+
+     label3:
+        nc#11 = new java.lang.IllegalStateException;
+
+        specialinvoke nc#11.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Your activity is not yet attached to the Application instance. You can\'t request ViewModel before onCreate call.");
+
+        throw nc#11;
+    }
+
+    public void onBackPressed()
+    {
+        androidx.activity.ComponentActivity this;
+        androidx.activity.OnBackPressedDispatcher $u0;
+
+        this := @this: androidx.activity.ComponentActivity;
+
+        $u0 = this.<androidx.activity.ComponentActivity: androidx.activity.OnBackPressedDispatcher mOnBackPressedDispatcher>;
+
+        virtualinvoke $u0.<androidx.activity.OnBackPressedDispatcher: void onBackPressed()>();
+
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        androidx.activity.ComponentActivity this;
+        android.os.Bundle $u2;
+        androidx.savedstate.SavedStateRegistryController $u0;
+        int $u0#2;
+
+        this := @this: androidx.activity.ComponentActivity;
+
+        $u2 := @parameter0: android.os.Bundle;
+
+        specialinvoke this.<androidx.core.app.ComponentActivity: void onCreate(android.os.Bundle)>($u2);
+
+        $u0 = this.<androidx.activity.ComponentActivity: androidx.savedstate.SavedStateRegistryController mSavedStateRegistryController>;
+
+        virtualinvoke $u0.<androidx.savedstate.SavedStateRegistryController: void performRestore(android.os.Bundle)>($u2);
+
+        staticinvoke <androidx.lifecycle.ReportFragment: void injectIfNeededIn(android.app.Activity)>(this);
+
+        $u0#2 = this.<androidx.activity.ComponentActivity: int mContentLayoutId>;
+
+        if $u0#2 == 0 goto label1;
+
+        virtualinvoke this.<androidx.activity.ComponentActivity: void setContentView(int)>($u0#2);
+
+     label1:
+        return;
+    }
+
+    public java.lang.Object onRetainCustomNonConfigurationInstance()
+    {
+        androidx.activity.ComponentActivity this;
+
+        this := @this: androidx.activity.ComponentActivity;
+
+        return null;
+    }
+
+    public final java.lang.Object onRetainNonConfigurationInstance()
+    {
+        androidx.activity.ComponentActivity this;
+        java.lang.Object $u-1, $u-1#3;
+        androidx.lifecycle.ViewModelStore viewModelStore;
+        androidx.activity.ComponentActivity$NonConfigurationInstances nc;
+
+        this := @this: androidx.activity.ComponentActivity;
+
+        $u-1 = virtualinvoke this.<androidx.activity.ComponentActivity: java.lang.Object onRetainCustomNonConfigurationInstance()>();
+
+        viewModelStore = this.<androidx.activity.ComponentActivity: androidx.lifecycle.ViewModelStore mViewModelStore>;
+
+        if viewModelStore != null goto label1;
+
+        $u-1#3 = virtualinvoke this.<androidx.activity.ComponentActivity: java.lang.Object getLastNonConfigurationInstance()>();
+
+        nc = (androidx.activity.ComponentActivity$NonConfigurationInstances) $u-1#3;
+
+        if nc == null goto label1;
+
+        viewModelStore = nc.<androidx.activity.ComponentActivity$NonConfigurationInstances: androidx.lifecycle.ViewModelStore viewModelStore>;
+
+     label1:
+        if viewModelStore != null goto label2;
+
+        if $u-1 != null goto label2;
+
+        return null;
+
+     label2:
+        nc = new androidx.activity.ComponentActivity$NonConfigurationInstances;
+
+        specialinvoke nc.<androidx.activity.ComponentActivity$NonConfigurationInstances: void <init>()>();
+
+        nc.<androidx.activity.ComponentActivity$NonConfigurationInstances: java.lang.Object custom> = $u-1;
+
+        nc.<androidx.activity.ComponentActivity$NonConfigurationInstances: androidx.lifecycle.ViewModelStore viewModelStore> = viewModelStore;
+
+        return nc;
+    }
+
+    protected void onSaveInstanceState(android.os.Bundle)
+    {
+        androidx.activity.ComponentActivity this;
+        android.os.Bundle $u4;
+        androidx.lifecycle.Lifecycle$State $u2;
+        androidx.lifecycle.Lifecycle $u-1;
+        boolean $u1;
+        androidx.lifecycle.LifecycleRegistry $u1#3;
+        androidx.savedstate.SavedStateRegistryController $u1#4;
+
+        this := @this: androidx.activity.ComponentActivity;
+
+        $u4 := @parameter0: android.os.Bundle;
+
+        $u-1 = virtualinvoke this.<androidx.activity.ComponentActivity: androidx.lifecycle.Lifecycle getLifecycle()>();
+
+        $u1 = $u-1 instanceof androidx.lifecycle.LifecycleRegistry;
+
+        if $u1 == 0 goto label1;
+
+        $u1#3 = (androidx.lifecycle.LifecycleRegistry) $u-1;
+
+        $u2 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State CREATED>;
+
+        virtualinvoke $u1#3.<androidx.lifecycle.LifecycleRegistry: void setCurrentState(androidx.lifecycle.Lifecycle$State)>($u2);
+
+     label1:
+        specialinvoke this.<androidx.core.app.ComponentActivity: void onSaveInstanceState(android.os.Bundle)>($u4);
+
+        $u1#4 = this.<androidx.activity.ComponentActivity: androidx.savedstate.SavedStateRegistryController mSavedStateRegistryController>;
+
+        virtualinvoke $u1#4.<androidx.savedstate.SavedStateRegistryController: void performSave(android.os.Bundle)>($u4);
+
+        return;
+    }
+}

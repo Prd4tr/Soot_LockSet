@@ -1,0 +1,60 @@
+public final class androidx.core.content.SharedPreferencesCompat$EditorCompat extends java.lang.Object
+{
+    private static androidx.core.content.SharedPreferencesCompat$EditorCompat sInstance;
+    private final androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper mHelper;
+
+    private void <init>()
+    {
+        androidx.core.content.SharedPreferencesCompat$EditorCompat this;
+        androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper $u0;
+
+        this := @this: androidx.core.content.SharedPreferencesCompat$EditorCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper;
+
+        specialinvoke $u0.<androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper: void <init>()>();
+
+        this.<androidx.core.content.SharedPreferencesCompat$EditorCompat: androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper mHelper> = $u0;
+
+        return;
+    }
+
+    public static androidx.core.content.SharedPreferencesCompat$EditorCompat getInstance()
+    {
+        androidx.core.content.SharedPreferencesCompat$EditorCompat $u0;
+
+        $u0 = <androidx.core.content.SharedPreferencesCompat$EditorCompat: androidx.core.content.SharedPreferencesCompat$EditorCompat sInstance>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new androidx.core.content.SharedPreferencesCompat$EditorCompat;
+
+        specialinvoke $u0.<androidx.core.content.SharedPreferencesCompat$EditorCompat: void <init>()>();
+
+        <androidx.core.content.SharedPreferencesCompat$EditorCompat: androidx.core.content.SharedPreferencesCompat$EditorCompat sInstance> = $u0;
+
+     label1:
+        $u0 = <androidx.core.content.SharedPreferencesCompat$EditorCompat: androidx.core.content.SharedPreferencesCompat$EditorCompat sInstance>;
+
+        return $u0;
+    }
+
+    public void apply(android.content.SharedPreferences$Editor)
+    {
+        androidx.core.content.SharedPreferencesCompat$EditorCompat this;
+        android.content.SharedPreferences$Editor $u2;
+        androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper $u0;
+
+        this := @this: androidx.core.content.SharedPreferencesCompat$EditorCompat;
+
+        $u2 := @parameter0: android.content.SharedPreferences$Editor;
+
+        $u0 = this.<androidx.core.content.SharedPreferencesCompat$EditorCompat: androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper mHelper>;
+
+        virtualinvoke $u0.<androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper: void apply(android.content.SharedPreferences$Editor)>($u2);
+
+        return;
+    }
+}

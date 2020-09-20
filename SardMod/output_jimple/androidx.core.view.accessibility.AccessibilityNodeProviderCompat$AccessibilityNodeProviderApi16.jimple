@@ -1,0 +1,123 @@
+class androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16 extends android.view.accessibility.AccessibilityNodeProvider
+{
+    final androidx.core.view.accessibility.AccessibilityNodeProviderCompat mCompat;
+
+    void <init>(androidx.core.view.accessibility.AccessibilityNodeProviderCompat)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16 this;
+        androidx.core.view.accessibility.AccessibilityNodeProviderCompat $u1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16;
+
+        $u1 := @parameter0: androidx.core.view.accessibility.AccessibilityNodeProviderCompat;
+
+        specialinvoke this.<android.view.accessibility.AccessibilityNodeProvider: void <init>()>();
+
+        this.<androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16: androidx.core.view.accessibility.AccessibilityNodeProviderCompat mCompat> = $u1;
+
+        return;
+    }
+
+    public android.view.accessibility.AccessibilityNodeInfo createAccessibilityNodeInfo(int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16 this;
+        int $u3;
+        androidx.core.view.accessibility.AccessibilityNodeProviderCompat compatInfo;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u-1#5;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16;
+
+        $u3 := @parameter0: int;
+
+        compatInfo = this.<androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16: androidx.core.view.accessibility.AccessibilityNodeProviderCompat mCompat>;
+
+        $u-1 = virtualinvoke compatInfo.<androidx.core.view.accessibility.AccessibilityNodeProviderCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat createAccessibilityNodeInfo(int)>($u3);
+
+        if $u-1 != null goto label1;
+
+        return null;
+
+     label1:
+        $u-1#5 = virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo unwrap()>();
+
+        return $u-1#5;
+    }
+
+    public java.util.List findAccessibilityNodeInfosByText(java.lang.String, int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16 this;
+        java.lang.String $u7;
+        int $u8, i;
+        androidx.core.view.accessibility.AccessibilityNodeProviderCompat compatInfos;
+        java.util.List $u-1;
+        java.util.ArrayList infoList;
+        java.lang.Object $u-1#8;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat infoCompat;
+        android.view.accessibility.AccessibilityNodeInfo $u-1#11;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16;
+
+        $u7 := @parameter0: java.lang.String;
+
+        $u8 := @parameter1: int;
+
+        compatInfos = this.<androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16: androidx.core.view.accessibility.AccessibilityNodeProviderCompat mCompat>;
+
+        $u-1 = virtualinvoke compatInfos.<androidx.core.view.accessibility.AccessibilityNodeProviderCompat: java.util.List findAccessibilityNodeInfosByText(java.lang.String,int)>($u7, $u8);
+
+        if $u-1 != null goto label1;
+
+        return null;
+
+     label1:
+        infoList = new java.util.ArrayList;
+
+        specialinvoke infoList.<java.util.ArrayList: void <init>()>();
+
+        $u8 = interfaceinvoke $u-1.<java.util.List: int size()>();
+
+        i = 0;
+
+     label2:
+        if i >= $u8 goto label3;
+
+        $u-1#8 = interfaceinvoke $u-1.<java.util.List: java.lang.Object get(int)>(i);
+
+        infoCompat = (androidx.core.view.accessibility.AccessibilityNodeInfoCompat) $u-1#8;
+
+        $u-1#11 = virtualinvoke infoCompat.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo unwrap()>();
+
+        interfaceinvoke infoList.<java.util.List: boolean add(java.lang.Object)>($u-1#11);
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        return infoList;
+    }
+
+    public boolean performAction(int, int, android.os.Bundle)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16 this;
+        int $u2, $u3;
+        android.os.Bundle $u4;
+        boolean $u-1;
+        androidx.core.view.accessibility.AccessibilityNodeProviderCompat $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.os.Bundle;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16: androidx.core.view.accessibility.AccessibilityNodeProviderCompat mCompat>;
+
+        $u-1 = virtualinvoke $u0.<androidx.core.view.accessibility.AccessibilityNodeProviderCompat: boolean performAction(int,int,android.os.Bundle)>($u2, $u3, $u4);
+
+        return $u-1;
+    }
+}

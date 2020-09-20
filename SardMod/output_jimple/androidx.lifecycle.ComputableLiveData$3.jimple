@@ -1,0 +1,62 @@
+class androidx.lifecycle.ComputableLiveData$3 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.lifecycle.ComputableLiveData this$0;
+
+    void <init>(androidx.lifecycle.ComputableLiveData)
+    {
+        androidx.lifecycle.ComputableLiveData$3 this;
+        androidx.lifecycle.ComputableLiveData $u1;
+
+        this := @this: androidx.lifecycle.ComputableLiveData$3;
+
+        $u1 := @parameter0: androidx.lifecycle.ComputableLiveData;
+
+        this.<androidx.lifecycle.ComputableLiveData$3: androidx.lifecycle.ComputableLiveData this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.lifecycle.ComputableLiveData$3 this;
+        androidx.lifecycle.ComputableLiveData isActive;
+        androidx.lifecycle.LiveData isActive#2;
+        boolean $u-1, $u-1#8;
+        java.util.concurrent.atomic.AtomicBoolean $u1;
+        java.util.concurrent.Executor $u1#11;
+        java.lang.Runnable $u2;
+
+        this := @this: androidx.lifecycle.ComputableLiveData$3;
+
+        isActive = this.<androidx.lifecycle.ComputableLiveData$3: androidx.lifecycle.ComputableLiveData this$0>;
+
+        isActive#2 = isActive.<androidx.lifecycle.ComputableLiveData: androidx.lifecycle.LiveData mLiveData>;
+
+        $u-1 = virtualinvoke isActive#2.<androidx.lifecycle.LiveData: boolean hasActiveObservers()>();
+
+        isActive = this.<androidx.lifecycle.ComputableLiveData$3: androidx.lifecycle.ComputableLiveData this$0>;
+
+        $u1 = isActive.<androidx.lifecycle.ComputableLiveData: java.util.concurrent.atomic.AtomicBoolean mInvalid>;
+
+        $u-1#8 = virtualinvoke $u1.<java.util.concurrent.atomic.AtomicBoolean: boolean compareAndSet(boolean,boolean)>(0, 1);
+
+        if $u-1#8 == 0 goto label1;
+
+        if $u-1 == 0 goto label1;
+
+        isActive = this.<androidx.lifecycle.ComputableLiveData$3: androidx.lifecycle.ComputableLiveData this$0>;
+
+        $u1#11 = isActive.<androidx.lifecycle.ComputableLiveData: java.util.concurrent.Executor mExecutor>;
+
+        isActive = this.<androidx.lifecycle.ComputableLiveData$3: androidx.lifecycle.ComputableLiveData this$0>;
+
+        $u2 = isActive.<androidx.lifecycle.ComputableLiveData: java.lang.Runnable mRefreshRunnable>;
+
+        interfaceinvoke $u1#11.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>($u2);
+
+     label1:
+        return;
+    }
+}

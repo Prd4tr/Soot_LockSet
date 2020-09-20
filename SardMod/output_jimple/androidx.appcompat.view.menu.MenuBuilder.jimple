@@ -1,0 +1,3331 @@
+public class androidx.appcompat.view.menu.MenuBuilder extends java.lang.Object implements androidx.core.internal.view.SupportMenu
+{
+    private static final java.lang.String ACTION_VIEW_STATES_KEY;
+    private static final java.lang.String EXPANDED_ACTION_VIEW_ID;
+    private static final java.lang.String PRESENTER_KEY;
+    private static final java.lang.String TAG;
+    private static final int[] sCategoryToOrder;
+    private java.util.ArrayList mActionItems;
+    private androidx.appcompat.view.menu.MenuBuilder$Callback mCallback;
+    private final android.content.Context mContext;
+    private android.view.ContextMenu$ContextMenuInfo mCurrentMenuInfo;
+    private int mDefaultShowAsAction;
+    private androidx.appcompat.view.menu.MenuItemImpl mExpandedItem;
+    private boolean mGroupDividerEnabled;
+    android.graphics.drawable.Drawable mHeaderIcon;
+    java.lang.CharSequence mHeaderTitle;
+    android.view.View mHeaderView;
+    private boolean mIsActionItemsStale;
+    private boolean mIsClosing;
+    private boolean mIsVisibleItemsStale;
+    private java.util.ArrayList mItems;
+    private boolean mItemsChangedWhileDispatchPrevented;
+    private java.util.ArrayList mNonActionItems;
+    private boolean mOptionalIconsVisible;
+    private boolean mOverrideVisibleItems;
+    private java.util.concurrent.CopyOnWriteArrayList mPresenters;
+    private boolean mPreventDispatchingItemsChanged;
+    private boolean mQwertyMode;
+    private final android.content.res.Resources mResources;
+    private boolean mShortcutsVisible;
+    private boolean mStructureChangedWhileDispatchPrevented;
+    private java.util.ArrayList mTempShortcutItemList;
+    private java.util.ArrayList mVisibleItems;
+
+    static void <clinit>()
+    {
+        int[] $u0;
+
+        <androidx.appcompat.view.menu.MenuBuilder: java.lang.String TAG> = "MenuBuilder";
+
+        <androidx.appcompat.view.menu.MenuBuilder: java.lang.String PRESENTER_KEY> = "android:menu:presenters";
+
+        <androidx.appcompat.view.menu.MenuBuilder: java.lang.String EXPANDED_ACTION_VIEW_ID> = "android:menu:expandedactionview";
+
+        <androidx.appcompat.view.menu.MenuBuilder: java.lang.String ACTION_VIEW_STATES_KEY> = "android:menu:actionviewstates";
+
+        $u0 = newarray (int)[6];
+
+        $u0[0] = 1;
+
+        $u0[1] = 4;
+
+        $u0[2] = 5;
+
+        $u0[3] = 3;
+
+        $u0[4] = 2;
+
+        $u0[5] = 0;
+
+        <androidx.appcompat.view.menu.MenuBuilder: int[] sCategoryToOrder> = $u0;
+
+        return;
+    }
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.content.Context $u3;
+        android.content.res.Resources $u-1;
+        java.util.ArrayList $u1;
+        java.util.concurrent.CopyOnWriteArrayList $u1#3;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u3 := @parameter0: android.content.Context;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: int mDefaultShowAsAction> = 0;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mPreventDispatchingItemsChanged> = 0;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mItemsChangedWhileDispatchPrevented> = 0;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mStructureChangedWhileDispatchPrevented> = 0;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mOptionalIconsVisible> = 0;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsClosing> = 0;
+
+        $u1 = new java.util.ArrayList;
+
+        specialinvoke $u1.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mTempShortcutItemList> = $u1;
+
+        $u1#3 = new java.util.concurrent.CopyOnWriteArrayList;
+
+        specialinvoke $u1#3.<java.util.concurrent.CopyOnWriteArrayList: void <init>()>();
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters> = $u1#3;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mGroupDividerEnabled> = 0;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: android.content.Context mContext> = $u3;
+
+        $u-1 = virtualinvoke $u3.<android.content.Context: android.content.res.Resources getResources()>();
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: android.content.res.Resources mResources> = $u-1;
+
+        $u1 = new java.util.ArrayList;
+
+        specialinvoke $u1.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems> = $u1;
+
+        $u1 = new java.util.ArrayList;
+
+        specialinvoke $u1.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mVisibleItems> = $u1;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsVisibleItemsStale> = 1;
+
+        $u1 = new java.util.ArrayList;
+
+        specialinvoke $u1.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mActionItems> = $u1;
+
+        $u1 = new java.util.ArrayList;
+
+        specialinvoke $u1.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mNonActionItems> = $u1;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsActionItemsStale> = 1;
+
+        specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void setShortcutsVisibleInner(boolean)>(1);
+
+        return;
+    }
+
+    private androidx.appcompat.view.menu.MenuItemImpl createNewMenuItem(int, int, int, int, java.lang.CharSequence, int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u10, $u11, $u12, $u13, $u15;
+        java.lang.CharSequence $u14;
+        androidx.appcompat.view.menu.MenuItemImpl $u8;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u10 := @parameter0: int;
+
+        $u11 := @parameter1: int;
+
+        $u12 := @parameter2: int;
+
+        $u13 := @parameter3: int;
+
+        $u14 := @parameter4: java.lang.CharSequence;
+
+        $u15 := @parameter5: int;
+
+        $u8 = new androidx.appcompat.view.menu.MenuItemImpl;
+
+        specialinvoke $u8.<androidx.appcompat.view.menu.MenuItemImpl: void <init>(androidx.appcompat.view.menu.MenuBuilder,int,int,int,int,java.lang.CharSequence,int)>(this, $u10, $u11, $u12, $u13, $u14, $u15);
+
+        return $u8;
+    }
+
+    private void dispatchPresenterUpdate(boolean)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean $u5, $u-1;
+        java.util.concurrent.CopyOnWriteArrayList $u3;
+        java.util.Iterator $u-1#5;
+        java.lang.Object $u-1#9;
+        java.lang.ref.WeakReference ref;
+        androidx.appcompat.view.menu.MenuPresenter presenter;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u5 := @parameter0: boolean;
+
+        $u3 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1 = virtualinvoke $u3.<java.util.concurrent.CopyOnWriteArrayList: boolean isEmpty()>();
+
+        if $u-1 == 0 goto label1;
+
+        return;
+
+     label1:
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void stopDispatchingItemsChanged()>();
+
+        $u3 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1#5 = virtualinvoke $u3.<java.util.concurrent.CopyOnWriteArrayList: java.util.Iterator iterator()>();
+
+     label2:
+        $u-1 = interfaceinvoke $u-1#5.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1 == 0 goto label4;
+
+        $u-1#9 = interfaceinvoke $u-1#5.<java.util.Iterator: java.lang.Object next()>();
+
+        ref = (java.lang.ref.WeakReference) $u-1#9;
+
+        $u-1#9 = virtualinvoke ref.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        presenter = (androidx.appcompat.view.menu.MenuPresenter) $u-1#9;
+
+        if presenter != null goto label3;
+
+        $u3 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        virtualinvoke $u3.<java.util.concurrent.CopyOnWriteArrayList: boolean remove(java.lang.Object)>(ref);
+
+        goto label2;
+
+     label3:
+        interfaceinvoke presenter.<androidx.appcompat.view.menu.MenuPresenter: void updateMenuView(boolean)>($u5);
+
+        goto label2;
+
+     label4:
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void startDispatchingItemsChanged()>();
+
+        return;
+    }
+
+    private void dispatchRestoreInstanceState(android.os.Bundle)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.os.Bundle $u7;
+        android.util.SparseArray $u-1;
+        java.util.concurrent.CopyOnWriteArrayList $u1;
+        boolean $u-1#5;
+        java.util.Iterator $u-1#8;
+        java.lang.Object $u-1#12;
+        java.lang.ref.WeakReference ref;
+        androidx.appcompat.view.menu.MenuPresenter presenter;
+        int $u-1#19;
+        android.os.Parcelable parcel;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u7 := @parameter0: android.os.Bundle;
+
+        $u-1 = virtualinvoke $u7.<android.os.Bundle: android.util.SparseArray getSparseParcelableArray(java.lang.String)>("android:menu:presenters");
+
+        if $u-1 == null goto label4;
+
+        $u1 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1#5 = virtualinvoke $u1.<java.util.concurrent.CopyOnWriteArrayList: boolean isEmpty()>();
+
+        if $u-1#5 == 0 goto label1;
+
+        return;
+
+     label1:
+        $u1 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1#8 = virtualinvoke $u1.<java.util.concurrent.CopyOnWriteArrayList: java.util.Iterator iterator()>();
+
+     label2:
+        $u-1#5 = interfaceinvoke $u-1#8.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#5 == 0 goto label4;
+
+        $u-1#12 = interfaceinvoke $u-1#8.<java.util.Iterator: java.lang.Object next()>();
+
+        ref = (java.lang.ref.WeakReference) $u-1#12;
+
+        $u-1#12 = virtualinvoke ref.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        presenter = (androidx.appcompat.view.menu.MenuPresenter) $u-1#12;
+
+        if presenter != null goto label3;
+
+        $u1 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        virtualinvoke $u1.<java.util.concurrent.CopyOnWriteArrayList: boolean remove(java.lang.Object)>(ref);
+
+        goto label2;
+
+     label3:
+        $u-1#19 = interfaceinvoke presenter.<androidx.appcompat.view.menu.MenuPresenter: int getId()>();
+
+        if $u-1#19 <= 0 goto label2;
+
+        $u-1#12 = virtualinvoke $u-1.<android.util.SparseArray: java.lang.Object get(int)>($u-1#19);
+
+        parcel = (android.os.Parcelable) $u-1#12;
+
+        if parcel == null goto label2;
+
+        interfaceinvoke presenter.<androidx.appcompat.view.menu.MenuPresenter: void onRestoreInstanceState(android.os.Parcelable)>(parcel);
+
+        goto label2;
+
+     label4:
+        return;
+    }
+
+    private void dispatchSaveInstanceState(android.os.Bundle)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.os.Bundle $u7;
+        java.util.concurrent.CopyOnWriteArrayList presenterStates;
+        boolean $u-1;
+        android.util.SparseArray presenterStates#4;
+        java.util.Iterator $u-1#6;
+        java.lang.Object $u-1#10;
+        java.lang.ref.WeakReference ref;
+        androidx.appcompat.view.menu.MenuPresenter presenter;
+        int $u-1#17;
+        android.os.Parcelable $u-1#19;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u7 := @parameter0: android.os.Bundle;
+
+        presenterStates = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1 = virtualinvoke presenterStates.<java.util.concurrent.CopyOnWriteArrayList: boolean isEmpty()>();
+
+        if $u-1 == 0 goto label1;
+
+        return;
+
+     label1:
+        presenterStates#4 = new android.util.SparseArray;
+
+        specialinvoke presenterStates#4.<android.util.SparseArray: void <init>()>();
+
+        presenterStates = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1#6 = virtualinvoke presenterStates.<java.util.concurrent.CopyOnWriteArrayList: java.util.Iterator iterator()>();
+
+     label2:
+        $u-1 = interfaceinvoke $u-1#6.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1 == 0 goto label4;
+
+        $u-1#10 = interfaceinvoke $u-1#6.<java.util.Iterator: java.lang.Object next()>();
+
+        ref = (java.lang.ref.WeakReference) $u-1#10;
+
+        $u-1#10 = virtualinvoke ref.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        presenter = (androidx.appcompat.view.menu.MenuPresenter) $u-1#10;
+
+        if presenter != null goto label3;
+
+        presenterStates = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        virtualinvoke presenterStates.<java.util.concurrent.CopyOnWriteArrayList: boolean remove(java.lang.Object)>(ref);
+
+        goto label2;
+
+     label3:
+        $u-1#17 = interfaceinvoke presenter.<androidx.appcompat.view.menu.MenuPresenter: int getId()>();
+
+        if $u-1#17 <= 0 goto label2;
+
+        $u-1#19 = interfaceinvoke presenter.<androidx.appcompat.view.menu.MenuPresenter: android.os.Parcelable onSaveInstanceState()>();
+
+        if $u-1#19 == null goto label2;
+
+        virtualinvoke presenterStates#4.<android.util.SparseArray: void put(int,java.lang.Object)>($u-1#17, $u-1#19);
+
+        goto label2;
+
+     label4:
+        virtualinvoke $u7.<android.os.Bundle: void putSparseParcelableArray(java.lang.String,android.util.SparseArray)>("android:menu:presenters", presenterStates#4);
+
+        return;
+    }
+
+    private boolean dispatchSubMenuSelected(androidx.appcompat.view.menu.SubMenuBuilder, androidx.appcompat.view.menu.MenuPresenter)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        androidx.appcompat.view.menu.SubMenuBuilder $u6;
+        androidx.appcompat.view.menu.MenuPresenter $u7;
+        java.util.concurrent.CopyOnWriteArrayList $u4;
+        boolean $u-1, $u-1#10;
+        java.util.Iterator $u-1#8;
+        java.lang.Object $u-1#12;
+        java.lang.ref.WeakReference ref;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u6 := @parameter0: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $u7 := @parameter1: androidx.appcompat.view.menu.MenuPresenter;
+
+        $u4 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1 = virtualinvoke $u4.<java.util.concurrent.CopyOnWriteArrayList: boolean isEmpty()>();
+
+        if $u-1 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        $u-1 = 0;
+
+        if $u7 == null goto label2;
+
+        $u-1 = interfaceinvoke $u7.<androidx.appcompat.view.menu.MenuPresenter: boolean onSubMenuSelected(androidx.appcompat.view.menu.SubMenuBuilder)>($u6);
+
+     label2:
+        $u4 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1#8 = virtualinvoke $u4.<java.util.concurrent.CopyOnWriteArrayList: java.util.Iterator iterator()>();
+
+     label3:
+        $u-1#10 = interfaceinvoke $u-1#8.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#10 == 0 goto label5;
+
+        $u-1#12 = interfaceinvoke $u-1#8.<java.util.Iterator: java.lang.Object next()>();
+
+        ref = (java.lang.ref.WeakReference) $u-1#12;
+
+        $u-1#12 = virtualinvoke ref.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $u7 = (androidx.appcompat.view.menu.MenuPresenter) $u-1#12;
+
+        if $u7 != null goto label4;
+
+        $u4 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        virtualinvoke $u4.<java.util.concurrent.CopyOnWriteArrayList: boolean remove(java.lang.Object)>(ref);
+
+        goto label3;
+
+     label4:
+        if $u-1 != 0 goto label3;
+
+        $u-1 = interfaceinvoke $u7.<androidx.appcompat.view.menu.MenuPresenter: boolean onSubMenuSelected(androidx.appcompat.view.menu.SubMenuBuilder)>($u6);
+
+        goto label3;
+
+     label5:
+        return $u-1;
+    }
+
+    private static int findInsertIndex(java.util.ArrayList, int)
+    {
+        java.util.ArrayList items;
+        int $u4, $u-1, $u-1#7;
+        java.lang.Object $u-1#4;
+        androidx.appcompat.view.menu.MenuItemImpl item;
+
+        items := @parameter0: java.util.ArrayList;
+
+        $u4 := @parameter1: int;
+
+        $u-1 = virtualinvoke items.<java.util.ArrayList: int size()>();
+
+        $u-1 = $u-1 + -1;
+
+     label1:
+        if $u-1 < 0 goto label3;
+
+        $u-1#4 = virtualinvoke items.<java.util.ArrayList: java.lang.Object get(int)>($u-1);
+
+        item = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#4;
+
+        $u-1#7 = virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: int getOrdering()>();
+
+        if $u-1#7 > $u4 goto label2;
+
+        $u4 = $u-1 + 1;
+
+        return $u4;
+
+     label2:
+        $u-1 = $u-1 + -1;
+
+        goto label1;
+
+     label3:
+        return 0;
+    }
+
+    private static int getOrdering(int)
+    {
+        int $u3, index, $u2;
+        int[] $u1;
+        java.lang.IllegalArgumentException $u1#11;
+
+        $u3 := @parameter0: int;
+
+        index = -65536 & $u3;
+
+        index = index >> 16;
+
+        if index < 0 goto label1;
+
+        $u1 = <androidx.appcompat.view.menu.MenuBuilder: int[] sCategoryToOrder>;
+
+        $u2 = lengthof $u1;
+
+        if index >= $u2 goto label1;
+
+        index = $u1[index];
+
+        index = index << 16;
+
+        $u3 = 65535 & $u3;
+
+        $u3 = index | $u3;
+
+        return $u3;
+
+     label1:
+        $u1#11 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u1#11.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("order does not contain a valid category.");
+
+        throw $u1#11;
+    }
+
+    private void removeItemAtInt(int, boolean)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u2, $u-1;
+        boolean $u3;
+        java.util.ArrayList $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: boolean;
+
+        if $u2 < 0 goto label2;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1 = virtualinvoke $u0.<java.util.ArrayList: int size()>();
+
+        if $u2 < $u-1 goto label1;
+
+        return;
+
+     label1:
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        virtualinvoke $u0.<java.util.ArrayList: java.lang.Object remove(int)>($u2);
+
+        if $u3 == 0 goto label2;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>(1);
+
+     label2:
+        return;
+    }
+
+    private void setHeaderInternal(int, java.lang.CharSequence, int, android.graphics.drawable.Drawable, android.view.View)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u4, $u6;
+        java.lang.CharSequence $u5;
+        android.graphics.drawable.Drawable $u7;
+        android.view.View $u8;
+        android.content.res.Resources $u-1;
+        android.content.Context $u-1#5;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: java.lang.CharSequence;
+
+        $u6 := @parameter2: int;
+
+        $u7 := @parameter3: android.graphics.drawable.Drawable;
+
+        $u8 := @parameter4: android.view.View;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.content.res.Resources getResources()>();
+
+        if $u8 == null goto label1;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: android.view.View mHeaderView> = $u8;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: java.lang.CharSequence mHeaderTitle> = null;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: android.graphics.drawable.Drawable mHeaderIcon> = null;
+
+        goto label6;
+
+     label1:
+        if $u4 <= 0 goto label2;
+
+        $u5 = virtualinvoke $u-1.<android.content.res.Resources: java.lang.CharSequence getText(int)>($u4);
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: java.lang.CharSequence mHeaderTitle> = $u5;
+
+        goto label3;
+
+     label2:
+        if $u5 == null goto label3;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: java.lang.CharSequence mHeaderTitle> = $u5;
+
+     label3:
+        if $u6 <= 0 goto label4;
+
+        $u-1#5 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.content.Context getContext()>();
+
+        $u7 = staticinvoke <androidx.core.content.ContextCompat: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1#5, $u6);
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: android.graphics.drawable.Drawable mHeaderIcon> = $u7;
+
+        goto label5;
+
+     label4:
+        if $u7 == null goto label5;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: android.graphics.drawable.Drawable mHeaderIcon> = $u7;
+
+     label5:
+        this.<androidx.appcompat.view.menu.MenuBuilder: android.view.View mHeaderView> = null;
+
+     label6:
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>(0);
+
+        return;
+    }
+
+    private void setShortcutsVisibleInner(boolean)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean $u4, $u0;
+        android.content.Context $u2;
+        android.content.res.Resources $u1;
+        android.content.res.Configuration $u-1;
+        int $u1#5;
+        android.view.ViewConfiguration $u-1#7;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u4 := @parameter0: boolean;
+
+        $u0 = 1;
+
+        if $u4 == 0 goto label1;
+
+        $u1 = this.<androidx.appcompat.view.menu.MenuBuilder: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u1.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        $u1#5 = $u-1.<android.content.res.Configuration: int keyboard>;
+
+        if $u1#5 == 1 goto label1;
+
+        $u2 = this.<androidx.appcompat.view.menu.MenuBuilder: android.content.Context mContext>;
+
+        $u-1#7 = staticinvoke <android.view.ViewConfiguration: android.view.ViewConfiguration get(android.content.Context)>($u2);
+
+        $u2 = this.<androidx.appcompat.view.menu.MenuBuilder: android.content.Context mContext>;
+
+        $u4 = staticinvoke <androidx.core.view.ViewConfigurationCompat: boolean shouldShowMenuShortcutsWhenKeyboardPresent(android.view.ViewConfiguration,android.content.Context)>($u-1#7, $u2);
+
+        if $u4 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        $u0 = 0;
+
+     label2:
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mShortcutsVisible> = $u0;
+
+        return;
+    }
+
+    public android.view.MenuItem add(int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u3;
+        android.content.res.Resources $u0;
+        java.lang.String $u-1;
+        android.view.MenuItem $u-1#4;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.String getString(int)>($u3);
+
+        $u-1#4 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.view.MenuItem addInternal(int,int,int,java.lang.CharSequence)>(0, 0, 0, $u-1);
+
+        return $u-1#4;
+    }
+
+    public android.view.MenuItem add(int, int, int, int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u2, $u3, $u4, $u5;
+        android.content.res.Resources $u0;
+        java.lang.String $u-1;
+        android.view.MenuItem $u-1#4;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.String getString(int)>($u5);
+
+        $u-1#4 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.view.MenuItem addInternal(int,int,int,java.lang.CharSequence)>($u2, $u3, $u4, $u-1);
+
+        return $u-1#4;
+    }
+
+    public android.view.MenuItem add(int, int, int, java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u2, $u3, $u4;
+        java.lang.CharSequence $u5;
+        android.view.MenuItem $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: java.lang.CharSequence;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.view.MenuItem addInternal(int,int,int,java.lang.CharSequence)>($u2, $u3, $u4, $u5);
+
+        return $u-1;
+    }
+
+    public android.view.MenuItem add(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        java.lang.CharSequence $u2;
+        android.view.MenuItem $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.view.MenuItem addInternal(int,int,int,java.lang.CharSequence)>(0, 0, 0, $u2);
+
+        return $u-1;
+    }
+
+    public int addIntentOptions(int, int, int, android.content.ComponentName, android.content.Intent[], android.content.Intent, int, android.view.MenuItem[])
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u16, $u17, $u18, $u22, N, item;
+        android.content.ComponentName $u19;
+        android.content.Intent[] $u20;
+        android.content.Intent $u21, rintent, item#13;
+        android.view.MenuItem[] $u23;
+        android.content.Context pm;
+        android.content.pm.PackageManager $u-1;
+        java.util.List $u-1#5;
+        java.lang.Object $u-1#9;
+        android.content.pm.ResolveInfo ri;
+        android.content.pm.ActivityInfo $u11;
+        android.content.pm.ApplicationInfo $u11#17;
+        java.lang.String $u11#18, $u12;
+        java.lang.CharSequence $u-1#21;
+        android.view.MenuItem $u-1#26;
+        android.graphics.drawable.Drawable $u-1#28;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u16 := @parameter0: int;
+
+        $u17 := @parameter1: int;
+
+        $u18 := @parameter2: int;
+
+        $u19 := @parameter3: android.content.ComponentName;
+
+        $u20 := @parameter4: android.content.Intent[];
+
+        $u21 := @parameter5: android.content.Intent;
+
+        $u22 := @parameter6: int;
+
+        $u23 := @parameter7: android.view.MenuItem[];
+
+        pm = this.<androidx.appcompat.view.menu.MenuBuilder: android.content.Context mContext>;
+
+        $u-1 = virtualinvoke pm.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        N = 0;
+
+        $u-1#5 = virtualinvoke $u-1.<android.content.pm.PackageManager: java.util.List queryIntentActivityOptions(android.content.ComponentName,android.content.Intent[],android.content.Intent,int)>($u19, $u20, $u21, 0);
+
+        if $u-1#5 == null goto label1;
+
+        N = interfaceinvoke $u-1#5.<java.util.List: int size()>();
+
+     label1:
+        $u22 = $u22 & 1;
+
+        if $u22 != 0 goto label2;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void removeGroup(int)>($u16);
+
+     label2:
+        $u22 = 0;
+
+     label3:
+        if $u22 >= N goto label7;
+
+        $u-1#9 = interfaceinvoke $u-1#5.<java.util.List: java.lang.Object get(int)>($u22);
+
+        ri = (android.content.pm.ResolveInfo) $u-1#9;
+
+        rintent = new android.content.Intent;
+
+        item = ri.<android.content.pm.ResolveInfo: int specificIndex>;
+
+        if item >= 0 goto label4;
+
+        item#13 = $u21;
+
+        goto label5;
+
+     label4:
+        item = ri.<android.content.pm.ResolveInfo: int specificIndex>;
+
+        item#13 = $u20[item];
+
+     label5:
+        specialinvoke rintent.<android.content.Intent: void <init>(android.content.Intent)>(item#13);
+
+        $u19 = new android.content.ComponentName;
+
+        $u11 = ri.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        $u11#17 = $u11.<android.content.pm.ActivityInfo: android.content.pm.ApplicationInfo applicationInfo>;
+
+        $u11#18 = $u11#17.<android.content.pm.ApplicationInfo: java.lang.String packageName>;
+
+        $u11 = ri.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        $u12 = $u11.<android.content.pm.ActivityInfo: java.lang.String name>;
+
+        specialinvoke $u19.<android.content.ComponentName: void <init>(java.lang.String,java.lang.String)>($u11#18, $u12);
+
+        virtualinvoke rintent.<android.content.Intent: android.content.Intent setComponent(android.content.ComponentName)>($u19);
+
+        $u-1#21 = virtualinvoke ri.<android.content.pm.ResolveInfo: java.lang.CharSequence loadLabel(android.content.pm.PackageManager)>($u-1);
+
+        $u-1#26 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.view.MenuItem add(int,int,int,java.lang.CharSequence)>($u16, $u17, $u18, $u-1#21);
+
+        $u-1#28 = virtualinvoke ri.<android.content.pm.ResolveInfo: android.graphics.drawable.Drawable loadIcon(android.content.pm.PackageManager)>($u-1);
+
+        $u-1#26 = interfaceinvoke $u-1#26.<android.view.MenuItem: android.view.MenuItem setIcon(android.graphics.drawable.Drawable)>($u-1#28);
+
+        $u-1#26 = interfaceinvoke $u-1#26.<android.view.MenuItem: android.view.MenuItem setIntent(android.content.Intent)>(rintent);
+
+        if $u23 == null goto label6;
+
+        item = ri.<android.content.pm.ResolveInfo: int specificIndex>;
+
+        if item < 0 goto label6;
+
+        item = ri.<android.content.pm.ResolveInfo: int specificIndex>;
+
+        $u23[item] = $u-1#26;
+
+     label6:
+        $u22 = $u22 + 1;
+
+        goto label3;
+
+     label7:
+        return N;
+    }
+
+    protected android.view.MenuItem addInternal(int, int, int, java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u9, $u10, $u11, $u6, $u-1;
+        java.lang.CharSequence $u12;
+        androidx.appcompat.view.menu.MenuItemImpl $u-1#5;
+        android.view.ContextMenu$ContextMenuInfo $u1;
+        java.util.ArrayList $u1#8;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u9 := @parameter0: int;
+
+        $u10 := @parameter1: int;
+
+        $u11 := @parameter2: int;
+
+        $u12 := @parameter3: java.lang.CharSequence;
+
+        $u-1 = staticinvoke <androidx.appcompat.view.menu.MenuBuilder: int getOrdering(int)>($u11);
+
+        $u6 = this.<androidx.appcompat.view.menu.MenuBuilder: int mDefaultShowAsAction>;
+
+        $u-1#5 = specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuItemImpl createNewMenuItem(int,int,int,int,java.lang.CharSequence,int)>($u9, $u10, $u11, $u-1, $u12, $u6);
+
+        $u1 = this.<androidx.appcompat.view.menu.MenuBuilder: android.view.ContextMenu$ContextMenuInfo mCurrentMenuInfo>;
+
+        if $u1 == null goto label1;
+
+        virtualinvoke $u-1#5.<androidx.appcompat.view.menu.MenuItemImpl: void setMenuInfo(android.view.ContextMenu$ContextMenuInfo)>($u1);
+
+     label1:
+        $u1#8 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u9 = staticinvoke <androidx.appcompat.view.menu.MenuBuilder: int findInsertIndex(java.util.ArrayList,int)>($u1#8, $u-1);
+
+        virtualinvoke $u1#8.<java.util.ArrayList: void add(int,java.lang.Object)>($u9, $u-1#5);
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>(1);
+
+        return $u-1#5;
+    }
+
+    public void addMenuPresenter(androidx.appcompat.view.menu.MenuPresenter)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        androidx.appcompat.view.menu.MenuPresenter $u2;
+        android.content.Context $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: androidx.appcompat.view.menu.MenuPresenter;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: android.content.Context mContext>;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void addMenuPresenter(androidx.appcompat.view.menu.MenuPresenter,android.content.Context)>($u2, $u0);
+
+        return;
+    }
+
+    public void addMenuPresenter(androidx.appcompat.view.menu.MenuPresenter, android.content.Context)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        androidx.appcompat.view.menu.MenuPresenter $u3;
+        android.content.Context $u4;
+        java.lang.ref.WeakReference $u1;
+        java.util.concurrent.CopyOnWriteArrayList $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u3 := @parameter0: androidx.appcompat.view.menu.MenuPresenter;
+
+        $u4 := @parameter1: android.content.Context;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u1 = new java.lang.ref.WeakReference;
+
+        specialinvoke $u1.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>($u3);
+
+        virtualinvoke $u0.<java.util.concurrent.CopyOnWriteArrayList: boolean add(java.lang.Object)>($u1);
+
+        interfaceinvoke $u3.<androidx.appcompat.view.menu.MenuPresenter: void initForMenu(android.content.Context,androidx.appcompat.view.menu.MenuBuilder)>($u4, this);
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsActionItemsStale> = 1;
+
+        return;
+    }
+
+    public android.view.SubMenu addSubMenu(int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u3;
+        android.content.res.Resources $u0;
+        java.lang.String $u-1;
+        android.view.SubMenu $u-1#4;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.String getString(int)>($u3);
+
+        $u-1#4 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.view.SubMenu addSubMenu(int,int,int,java.lang.CharSequence)>(0, 0, 0, $u-1);
+
+        return $u-1#4;
+    }
+
+    public android.view.SubMenu addSubMenu(int, int, int, int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u2, $u3, $u4, $u5;
+        android.content.res.Resources $u0;
+        java.lang.String $u-1;
+        android.view.SubMenu $u-1#4;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.String getString(int)>($u5);
+
+        $u-1#4 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.view.SubMenu addSubMenu(int,int,int,java.lang.CharSequence)>($u2, $u3, $u4, $u-1);
+
+        return $u-1#4;
+    }
+
+    public android.view.SubMenu addSubMenu(int, int, int, java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u4, $u5, $u6;
+        java.lang.CharSequence $u7;
+        androidx.appcompat.view.menu.SubMenuBuilder subMenu;
+        android.content.Context $u2;
+        android.view.MenuItem $u-1;
+        androidx.appcompat.view.menu.MenuItemImpl item;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: int;
+
+        $u6 := @parameter2: int;
+
+        $u7 := @parameter3: java.lang.CharSequence;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.view.MenuItem addInternal(int,int,int,java.lang.CharSequence)>($u4, $u5, $u6, $u7);
+
+        item = (androidx.appcompat.view.menu.MenuItemImpl) $u-1;
+
+        subMenu = new androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $u2 = this.<androidx.appcompat.view.menu.MenuBuilder: android.content.Context mContext>;
+
+        specialinvoke subMenu.<androidx.appcompat.view.menu.SubMenuBuilder: void <init>(android.content.Context,androidx.appcompat.view.menu.MenuBuilder,androidx.appcompat.view.menu.MenuItemImpl)>($u2, this, item);
+
+        virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: void setSubMenu(androidx.appcompat.view.menu.SubMenuBuilder)>(subMenu);
+
+        return subMenu;
+    }
+
+    public android.view.SubMenu addSubMenu(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        java.lang.CharSequence $u2;
+        android.view.SubMenu $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.view.SubMenu addSubMenu(int,int,int,java.lang.CharSequence)>(0, 0, 0, $u2);
+
+        return $u-1;
+    }
+
+    public void changeMenuMode()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        androidx.appcompat.view.menu.MenuBuilder$Callback $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuBuilder$Callback mCallback>;
+
+        if $u0 == null goto label1;
+
+        interfaceinvoke $u0.<androidx.appcompat.view.menu.MenuBuilder$Callback: void onMenuModeChange(androidx.appcompat.view.menu.MenuBuilder)>(this);
+
+     label1:
+        return;
+    }
+
+    public void clear()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        androidx.appcompat.view.menu.MenuItemImpl $u0;
+        java.util.ArrayList $u0#2;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuItemImpl mExpandedItem>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: boolean collapseItemActionView(androidx.appcompat.view.menu.MenuItemImpl)>($u0);
+
+     label1:
+        $u0#2 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        virtualinvoke $u0#2.<java.util.ArrayList: void clear()>();
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>(1);
+
+        return;
+    }
+
+    public void clearAll()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        java.util.concurrent.CopyOnWriteArrayList $u1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mPreventDispatchingItemsChanged> = 1;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void clear()>();
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void clearHeader()>();
+
+        $u1 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        virtualinvoke $u1.<java.util.concurrent.CopyOnWriteArrayList: void clear()>();
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mPreventDispatchingItemsChanged> = 0;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mItemsChangedWhileDispatchPrevented> = 0;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mStructureChangedWhileDispatchPrevented> = 0;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>(1);
+
+        return;
+    }
+
+    public void clearHeader()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: android.graphics.drawable.Drawable mHeaderIcon> = null;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: java.lang.CharSequence mHeaderTitle> = null;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: android.view.View mHeaderView> = null;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>(0);
+
+        return;
+    }
+
+    public void close()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void close(boolean)>(1);
+
+        return;
+    }
+
+    public final void close(boolean)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean $u5, $u0;
+        java.util.concurrent.CopyOnWriteArrayList $u3;
+        java.util.Iterator $u-1;
+        java.lang.Object $u-1#8;
+        java.lang.ref.WeakReference ref;
+        androidx.appcompat.view.menu.MenuPresenter presenter;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u5 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsClosing>;
+
+        if $u0 == 0 goto label1;
+
+        return;
+
+     label1:
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsClosing> = 1;
+
+        $u3 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1 = virtualinvoke $u3.<java.util.concurrent.CopyOnWriteArrayList: java.util.Iterator iterator()>();
+
+     label2:
+        $u0 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u0 == 0 goto label4;
+
+        $u-1#8 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        ref = (java.lang.ref.WeakReference) $u-1#8;
+
+        $u-1#8 = virtualinvoke ref.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        presenter = (androidx.appcompat.view.menu.MenuPresenter) $u-1#8;
+
+        if presenter != null goto label3;
+
+        $u3 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        virtualinvoke $u3.<java.util.concurrent.CopyOnWriteArrayList: boolean remove(java.lang.Object)>(ref);
+
+        goto label2;
+
+     label3:
+        interfaceinvoke presenter.<androidx.appcompat.view.menu.MenuPresenter: void onCloseMenu(androidx.appcompat.view.menu.MenuBuilder,boolean)>(this, $u5);
+
+        goto label2;
+
+     label4:
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsClosing> = 0;
+
+        return;
+    }
+
+    public boolean collapseItemActionView(androidx.appcompat.view.menu.MenuItemImpl)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        androidx.appcompat.view.menu.MenuItemImpl $u6, collapsed#4;
+        java.util.concurrent.CopyOnWriteArrayList collapsed;
+        boolean $u-1, $u-1#9;
+        java.util.Iterator $u-1#7;
+        java.lang.Object $u-1#11;
+        java.lang.ref.WeakReference ref;
+        androidx.appcompat.view.menu.MenuPresenter presenter;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u6 := @parameter0: androidx.appcompat.view.menu.MenuItemImpl;
+
+        collapsed = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1 = virtualinvoke collapsed.<java.util.concurrent.CopyOnWriteArrayList: boolean isEmpty()>();
+
+        if $u-1 != 0 goto label5;
+
+        collapsed#4 = this.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuItemImpl mExpandedItem>;
+
+        if collapsed#4 == $u6 goto label1;
+
+        goto label5;
+
+     label1:
+        $u-1 = 0;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void stopDispatchingItemsChanged()>();
+
+        collapsed = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1#7 = virtualinvoke collapsed.<java.util.concurrent.CopyOnWriteArrayList: java.util.Iterator iterator()>();
+
+     label2:
+        $u-1#9 = interfaceinvoke $u-1#7.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#9 == 0 goto label4;
+
+        $u-1#11 = interfaceinvoke $u-1#7.<java.util.Iterator: java.lang.Object next()>();
+
+        ref = (java.lang.ref.WeakReference) $u-1#11;
+
+        $u-1#11 = virtualinvoke ref.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        presenter = (androidx.appcompat.view.menu.MenuPresenter) $u-1#11;
+
+        if presenter != null goto label3;
+
+        collapsed = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        virtualinvoke collapsed.<java.util.concurrent.CopyOnWriteArrayList: boolean remove(java.lang.Object)>(ref);
+
+        goto label2;
+
+     label3:
+        $u-1#9 = interfaceinvoke presenter.<androidx.appcompat.view.menu.MenuPresenter: boolean collapseItemActionView(androidx.appcompat.view.menu.MenuBuilder,androidx.appcompat.view.menu.MenuItemImpl)>(this, $u6);
+
+        $u-1 = $u-1#9;
+
+        if $u-1#9 == 0 goto label2;
+
+        goto label4;
+
+     label4:
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void startDispatchingItemsChanged()>();
+
+        if $u-1 == 0 goto label6;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuItemImpl mExpandedItem> = null;
+
+        return $u-1;
+
+     label5:
+        return 0;
+
+     label6:
+        return $u-1;
+    }
+
+    boolean dispatchMenuItemSelected(androidx.appcompat.view.menu.MenuBuilder, android.view.MenuItem)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this, $u2;
+        android.view.MenuItem $u3;
+        boolean $u-1;
+        androidx.appcompat.view.menu.MenuBuilder$Callback $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u3 := @parameter1: android.view.MenuItem;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuBuilder$Callback mCallback>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = interfaceinvoke $u0.<androidx.appcompat.view.menu.MenuBuilder$Callback: boolean onMenuItemSelected(androidx.appcompat.view.menu.MenuBuilder,android.view.MenuItem)>($u2, $u3);
+
+        if $u-1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean expandItemActionView(androidx.appcompat.view.menu.MenuItemImpl)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        androidx.appcompat.view.menu.MenuItemImpl $u6;
+        java.util.concurrent.CopyOnWriteArrayList expanded;
+        boolean $u-1, $u-1#9;
+        java.util.Iterator $u-1#7;
+        java.lang.Object $u-1#11;
+        java.lang.ref.WeakReference ref;
+        androidx.appcompat.view.menu.MenuPresenter presenter;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u6 := @parameter0: androidx.appcompat.view.menu.MenuItemImpl;
+
+        expanded = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1 = virtualinvoke expanded.<java.util.concurrent.CopyOnWriteArrayList: boolean isEmpty()>();
+
+        if $u-1 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        $u-1 = 0;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void stopDispatchingItemsChanged()>();
+
+        expanded = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1#7 = virtualinvoke expanded.<java.util.concurrent.CopyOnWriteArrayList: java.util.Iterator iterator()>();
+
+     label2:
+        $u-1#9 = interfaceinvoke $u-1#7.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#9 == 0 goto label4;
+
+        $u-1#11 = interfaceinvoke $u-1#7.<java.util.Iterator: java.lang.Object next()>();
+
+        ref = (java.lang.ref.WeakReference) $u-1#11;
+
+        $u-1#11 = virtualinvoke ref.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        presenter = (androidx.appcompat.view.menu.MenuPresenter) $u-1#11;
+
+        if presenter != null goto label3;
+
+        expanded = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        virtualinvoke expanded.<java.util.concurrent.CopyOnWriteArrayList: boolean remove(java.lang.Object)>(ref);
+
+        goto label2;
+
+     label3:
+        $u-1#9 = interfaceinvoke presenter.<androidx.appcompat.view.menu.MenuPresenter: boolean expandItemActionView(androidx.appcompat.view.menu.MenuBuilder,androidx.appcompat.view.menu.MenuItemImpl)>(this, $u6);
+
+        $u-1 = $u-1#9;
+
+        if $u-1#9 == 0 goto label2;
+
+        goto label4;
+
+     label4:
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void startDispatchingItemsChanged()>();
+
+        if $u-1 == 0 goto label5;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuItemImpl mExpandedItem> = $u6;
+
+     label5:
+        return $u-1;
+    }
+
+    public int findGroupIndex(int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u2;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: int;
+
+        $u2 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: int findGroupIndex(int,int)>($u2, 0);
+
+        return $u2;
+    }
+
+    public int findGroupIndex(int, int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u5, $u6, $u-1, $u-1#8;
+        java.util.ArrayList item;
+        java.lang.Object $u-1#5;
+        androidx.appcompat.view.menu.MenuItemImpl item#7;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u5 := @parameter0: int;
+
+        $u6 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: int size()>();
+
+        if $u6 >= 0 goto label1;
+
+        $u6 = 0;
+
+     label1:
+        if $u6 >= $u-1 goto label3;
+
+        item = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1#5 = virtualinvoke item.<java.util.ArrayList: java.lang.Object get(int)>($u6);
+
+        item#7 = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#5;
+
+        $u-1#8 = virtualinvoke item#7.<androidx.appcompat.view.menu.MenuItemImpl: int getGroupId()>();
+
+        if $u-1#8 != $u5 goto label2;
+
+        return $u6;
+
+     label2:
+        $u6 = $u6 + 1;
+
+        goto label1;
+
+     label3:
+        return -1;
+    }
+
+    public android.view.MenuItem findItem(int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u5, $u-1, i, $u-1#7;
+        java.util.ArrayList item;
+        java.lang.Object $u-1#4;
+        androidx.appcompat.view.menu.MenuItemImpl item#6;
+        boolean $u-1#9;
+        android.view.SubMenu $u-1#11;
+        android.view.MenuItem $u-1#13;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u5 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: int size()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label4;
+
+        item = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1#4 = virtualinvoke item.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        item#6 = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#4;
+
+        $u-1#7 = virtualinvoke item#6.<androidx.appcompat.view.menu.MenuItemImpl: int getItemId()>();
+
+        if $u-1#7 != $u5 goto label2;
+
+        return item#6;
+
+     label2:
+        $u-1#9 = virtualinvoke item#6.<androidx.appcompat.view.menu.MenuItemImpl: boolean hasSubMenu()>();
+
+        if $u-1#9 == 0 goto label3;
+
+        $u-1#11 = virtualinvoke item#6.<androidx.appcompat.view.menu.MenuItemImpl: android.view.SubMenu getSubMenu()>();
+
+        $u-1#13 = interfaceinvoke $u-1#11.<android.view.SubMenu: android.view.MenuItem findItem(int)>($u5);
+
+        if $u-1#13 == null goto label3;
+
+        return $u-1#13;
+
+     label3:
+        i = i + 1;
+
+        goto label1;
+
+     label4:
+        return null;
+    }
+
+    public int findItemIndex(int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u5, $u-1, i, $u-1#7;
+        java.util.ArrayList item;
+        java.lang.Object $u-1#4;
+        androidx.appcompat.view.menu.MenuItemImpl item#6;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u5 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: int size()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label3;
+
+        item = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1#4 = virtualinvoke item.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        item#6 = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#4;
+
+        $u-1#7 = virtualinvoke item#6.<androidx.appcompat.view.menu.MenuItemImpl: int getItemId()>();
+
+        if $u-1#7 != $u5 goto label2;
+
+        return i;
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        return -1;
+    }
+
+    androidx.appcompat.view.menu.MenuItemImpl findItemWithShortcutForKey(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u13, $u-1#4, $u-1#6, i, $u10#22;
+        android.view.KeyEvent $u14;
+        java.util.ArrayList items;
+        android.view.KeyCharacterMap$KeyData possibleChars;
+        boolean $u-1;
+        java.lang.Object $u-1#8;
+        androidx.appcompat.view.menu.MenuItemImpl $u2;
+        char $u-1#17, $u10#21;
+        char[] $u10;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u13 := @parameter0: int;
+
+        $u14 := @parameter1: android.view.KeyEvent;
+
+        items = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mTempShortcutItemList>;
+
+        virtualinvoke items.<java.util.ArrayList: void clear()>();
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void findItemsWithShortcutForKey(java.util.List,int,android.view.KeyEvent)>(items, $u13, $u14);
+
+        $u-1 = virtualinvoke items.<java.util.ArrayList: boolean isEmpty()>();
+
+        if $u-1 == 0 goto label01;
+
+        return null;
+
+     label01:
+        $u-1#4 = virtualinvoke $u14.<android.view.KeyEvent: int getMetaState()>();
+
+        possibleChars = new android.view.KeyCharacterMap$KeyData;
+
+        specialinvoke possibleChars.<android.view.KeyCharacterMap$KeyData: void <init>()>();
+
+        virtualinvoke $u14.<android.view.KeyEvent: boolean getKeyData(android.view.KeyCharacterMap$KeyData)>(possibleChars);
+
+        $u-1#6 = virtualinvoke items.<java.util.ArrayList: int size()>();
+
+        if $u-1#6 != 1 goto label02;
+
+        $u-1#8 = virtualinvoke items.<java.util.ArrayList: java.lang.Object get(int)>(0);
+
+        $u2 = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#8;
+
+        return $u2;
+
+     label02:
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: boolean isQwertyMode()>();
+
+        i = 0;
+
+     label03:
+        if i >= $u-1#6 goto label09;
+
+        $u-1#8 = virtualinvoke items.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        $u2 = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#8;
+
+        if $u-1 == 0 goto label04;
+
+        $u-1#17 = virtualinvoke $u2.<androidx.appcompat.view.menu.MenuItemImpl: char getAlphabeticShortcut()>();
+
+        goto label05;
+
+     label04:
+        $u-1#17 = virtualinvoke $u2.<androidx.appcompat.view.menu.MenuItemImpl: char getNumericShortcut()>();
+
+     label05:
+        $u10 = possibleChars.<android.view.KeyCharacterMap$KeyData: char[] meta>;
+
+        $u10#21 = $u10[0];
+
+        if $u-1#17 != $u10#21 goto label06;
+
+        $u10#22 = $u-1#4 & 2;
+
+        if $u10#22 == 0 goto label10;
+
+     label06:
+        $u10 = possibleChars.<android.view.KeyCharacterMap$KeyData: char[] meta>;
+
+        $u10#21 = $u10[2];
+
+        if $u-1#17 != $u10#21 goto label07;
+
+        $u10#22 = $u-1#4 & 2;
+
+        if $u10#22 != 0 goto label10;
+
+     label07:
+        if $u-1 == 0 goto label08;
+
+        if $u-1#17 != 8 goto label08;
+
+        if $u13 != 67 goto label08;
+
+        return $u2;
+
+     label08:
+        i = i + 1;
+
+        goto label03;
+
+     label09:
+        return null;
+
+     label10:
+        return $u2;
+    }
+
+    void findItemsWithShortcutForKey(java.util.List, int, android.view.KeyEvent)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this, shortcutChar;
+        java.util.List items;
+        int $u19, $u-1#2, $u-1#5, i, $u-1#20, shortcutModifiers;
+        android.view.KeyEvent $u20;
+        android.view.KeyCharacterMap$KeyData possibleChars;
+        boolean $u-1, $u-1#3;
+        java.util.ArrayList N;
+        java.lang.Object $u-1#9;
+        androidx.appcompat.view.menu.MenuItemImpl item;
+        android.view.SubMenu $u-1#14;
+        char $u-1#17, $u15#29;
+        char[] $u15;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        items := @parameter0: java.util.List;
+
+        $u19 := @parameter1: int;
+
+        $u20 := @parameter2: android.view.KeyEvent;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: boolean isQwertyMode()>();
+
+        $u-1#2 = virtualinvoke $u20.<android.view.KeyEvent: int getModifiers()>();
+
+        possibleChars = new android.view.KeyCharacterMap$KeyData;
+
+        specialinvoke possibleChars.<android.view.KeyCharacterMap$KeyData: void <init>()>();
+
+        $u-1#3 = virtualinvoke $u20.<android.view.KeyEvent: boolean getKeyData(android.view.KeyCharacterMap$KeyData)>(possibleChars);
+
+        if $u-1#3 != 0 goto label01;
+
+        if $u19 == 67 goto label01;
+
+        return;
+
+     label01:
+        N = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1#5 = virtualinvoke N.<java.util.ArrayList: int size()>();
+
+        i = 0;
+
+     label02:
+        if i >= $u-1#5 goto label12;
+
+        N = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1#9 = virtualinvoke N.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        item = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#9;
+
+        $u-1#3 = virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: boolean hasSubMenu()>();
+
+        if $u-1#3 == 0 goto label03;
+
+        $u-1#14 = virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: android.view.SubMenu getSubMenu()>();
+
+        shortcutChar = (androidx.appcompat.view.menu.MenuBuilder) $u-1#14;
+
+        virtualinvoke shortcutChar.<androidx.appcompat.view.menu.MenuBuilder: void findItemsWithShortcutForKey(java.util.List,int,android.view.KeyEvent)>(items, $u19, $u20);
+
+     label03:
+        if $u-1 == 0 goto label04;
+
+        $u-1#17 = virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: char getAlphabeticShortcut()>();
+
+        goto label05;
+
+     label04:
+        $u-1#17 = virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: char getNumericShortcut()>();
+
+     label05:
+        if $u-1 == 0 goto label06;
+
+        shortcutModifiers = virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: int getAlphabeticModifiers()>();
+
+        goto label07;
+
+     label06:
+        shortcutModifiers = virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: int getNumericModifiers()>();
+
+     label07:
+        $u-1#20 = $u-1#2 & 69647;
+
+        shortcutModifiers = 69647 & shortcutModifiers;
+
+        if $u-1#20 != shortcutModifiers goto label08;
+
+        $u-1#3 = 1;
+
+        goto label09;
+
+     label08:
+        $u-1#3 = 0;
+
+     label09:
+        if $u-1#3 == 0 goto label11;
+
+        if $u-1#17 == 0 goto label11;
+
+        $u15 = possibleChars.<android.view.KeyCharacterMap$KeyData: char[] meta>;
+
+        $u15#29 = $u15[0];
+
+        if $u-1#17 == $u15#29 goto label10;
+
+        $u15 = possibleChars.<android.view.KeyCharacterMap$KeyData: char[] meta>;
+
+        $u15#29 = $u15[2];
+
+        if $u-1#17 == $u15#29 goto label10;
+
+        if $u-1 == 0 goto label11;
+
+        if $u-1#17 != 8 goto label11;
+
+        if $u19 != 67 goto label11;
+
+     label10:
+        $u-1#3 = virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: boolean isEnabled()>();
+
+        if $u-1#3 == 0 goto label11;
+
+        interfaceinvoke items.<java.util.List: boolean add(java.lang.Object)>(item);
+
+     label11:
+        i = i + 1;
+
+        goto label02;
+
+     label12:
+        return;
+    }
+
+    public void flagActionItems()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        java.util.ArrayList $u-1, itemsSize#18;
+        boolean flagged, $u-1#7;
+        java.util.concurrent.CopyOnWriteArrayList itemsSize;
+        java.util.Iterator $u-1#5;
+        java.lang.Object $u-1#9;
+        java.lang.ref.WeakReference ref;
+        androidx.appcompat.view.menu.MenuPresenter presenter;
+        int $u-1#20, ref#22;
+        androidx.appcompat.view.menu.MenuItemImpl presenter#25;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList getVisibleItems()>();
+
+        flagged = this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsActionItemsStale>;
+
+        if flagged != 0 goto label01;
+
+        return;
+
+     label01:
+        flagged = 0;
+
+        itemsSize = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1#5 = virtualinvoke itemsSize.<java.util.concurrent.CopyOnWriteArrayList: java.util.Iterator iterator()>();
+
+     label02:
+        $u-1#7 = interfaceinvoke $u-1#5.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#7 == 0 goto label04;
+
+        $u-1#9 = interfaceinvoke $u-1#5.<java.util.Iterator: java.lang.Object next()>();
+
+        ref = (java.lang.ref.WeakReference) $u-1#9;
+
+        $u-1#9 = virtualinvoke ref.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        presenter = (androidx.appcompat.view.menu.MenuPresenter) $u-1#9;
+
+        if presenter != null goto label03;
+
+        itemsSize = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        virtualinvoke itemsSize.<java.util.concurrent.CopyOnWriteArrayList: boolean remove(java.lang.Object)>(ref);
+
+        goto label02;
+
+     label03:
+        $u-1#7 = interfaceinvoke presenter.<androidx.appcompat.view.menu.MenuPresenter: boolean flagActionItems()>();
+
+        flagged = flagged | $u-1#7;
+
+        goto label02;
+
+     label04:
+        if flagged == 0 goto label09;
+
+        itemsSize#18 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mActionItems>;
+
+        virtualinvoke itemsSize#18.<java.util.ArrayList: void clear()>();
+
+        itemsSize#18 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mNonActionItems>;
+
+        virtualinvoke itemsSize#18.<java.util.ArrayList: void clear()>();
+
+        $u-1#20 = virtualinvoke $u-1.<java.util.ArrayList: int size()>();
+
+        ref#22 = 0;
+
+     label05:
+        if ref#22 >= $u-1#20 goto label08;
+
+        $u-1#9 = virtualinvoke $u-1.<java.util.ArrayList: java.lang.Object get(int)>(ref#22);
+
+        presenter#25 = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#9;
+
+        flagged = virtualinvoke presenter#25.<androidx.appcompat.view.menu.MenuItemImpl: boolean isActionButton()>();
+
+        if flagged == 0 goto label06;
+
+        itemsSize#18 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mActionItems>;
+
+        virtualinvoke itemsSize#18.<java.util.ArrayList: boolean add(java.lang.Object)>(presenter#25);
+
+        goto label07;
+
+     label06:
+        itemsSize#18 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mNonActionItems>;
+
+        virtualinvoke itemsSize#18.<java.util.ArrayList: boolean add(java.lang.Object)>(presenter#25);
+
+     label07:
+        ref#22 = ref#22 + 1;
+
+        goto label05;
+
+     label08:
+        goto label10;
+
+     label09:
+        $u-1 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mActionItems>;
+
+        virtualinvoke $u-1.<java.util.ArrayList: void clear()>();
+
+        $u-1 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mNonActionItems>;
+
+        virtualinvoke $u-1.<java.util.ArrayList: void clear()>();
+
+        $u-1 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mNonActionItems>;
+
+        itemsSize#18 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList getVisibleItems()>();
+
+        virtualinvoke $u-1.<java.util.ArrayList: boolean addAll(java.util.Collection)>(itemsSize#18);
+
+     label10:
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsActionItemsStale> = 0;
+
+        return;
+    }
+
+    public java.util.ArrayList getActionItems()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        java.util.ArrayList ret0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void flagActionItems()>();
+
+        ret0 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mActionItems>;
+
+        return ret0;
+    }
+
+    protected java.lang.String getActionViewStatesKey()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        return "android:menu:actionviewstates";
+    }
+
+    public android.content.Context getContext()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.content.Context ret0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        ret0 = this.<androidx.appcompat.view.menu.MenuBuilder: android.content.Context mContext>;
+
+        return ret0;
+    }
+
+    public androidx.appcompat.view.menu.MenuItemImpl getExpandedItem()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        androidx.appcompat.view.menu.MenuItemImpl ret0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        ret0 = this.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuItemImpl mExpandedItem>;
+
+        return ret0;
+    }
+
+    public android.graphics.drawable.Drawable getHeaderIcon()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.graphics.drawable.Drawable ret0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        ret0 = this.<androidx.appcompat.view.menu.MenuBuilder: android.graphics.drawable.Drawable mHeaderIcon>;
+
+        return ret0;
+    }
+
+    public java.lang.CharSequence getHeaderTitle()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        java.lang.CharSequence ret0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        ret0 = this.<androidx.appcompat.view.menu.MenuBuilder: java.lang.CharSequence mHeaderTitle>;
+
+        return ret0;
+    }
+
+    public android.view.View getHeaderView()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.view.View ret0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        ret0 = this.<androidx.appcompat.view.menu.MenuBuilder: android.view.View mHeaderView>;
+
+        return ret0;
+    }
+
+    public android.view.MenuItem getItem(int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u2;
+        java.lang.Object $u-1;
+        java.util.ArrayList $u0;
+        android.view.MenuItem $u0#3;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1 = virtualinvoke $u0.<java.util.ArrayList: java.lang.Object get(int)>($u2);
+
+        $u0#3 = (android.view.MenuItem) $u-1;
+
+        return $u0#3;
+    }
+
+    public java.util.ArrayList getNonActionItems()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        java.util.ArrayList ret0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void flagActionItems()>();
+
+        ret0 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mNonActionItems>;
+
+        return ret0;
+    }
+
+    boolean getOptionalIconsVisible()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        ret0 = this.<androidx.appcompat.view.menu.MenuBuilder: boolean mOptionalIconsVisible>;
+
+        return ret0;
+    }
+
+    android.content.res.Resources getResources()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.content.res.Resources ret0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        ret0 = this.<androidx.appcompat.view.menu.MenuBuilder: android.content.res.Resources mResources>;
+
+        return ret0;
+    }
+
+    public androidx.appcompat.view.menu.MenuBuilder getRootMenu()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        return this;
+    }
+
+    public java.util.ArrayList getVisibleItems()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean itemsSize;
+        java.util.ArrayList itemsSize#3;
+        int $u-1, i;
+        java.lang.Object $u-1#9;
+        androidx.appcompat.view.menu.MenuItemImpl item;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        itemsSize = this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsVisibleItemsStale>;
+
+        if itemsSize != 0 goto label1;
+
+        itemsSize#3 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mVisibleItems>;
+
+        return itemsSize#3;
+
+     label1:
+        itemsSize#3 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mVisibleItems>;
+
+        virtualinvoke itemsSize#3.<java.util.ArrayList: void clear()>();
+
+        itemsSize#3 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1 = virtualinvoke itemsSize#3.<java.util.ArrayList: int size()>();
+
+        i = 0;
+
+     label2:
+        if i >= $u-1 goto label4;
+
+        itemsSize#3 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1#9 = virtualinvoke itemsSize#3.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        item = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#9;
+
+        itemsSize = virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: boolean isVisible()>();
+
+        if itemsSize == 0 goto label3;
+
+        itemsSize#3 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mVisibleItems>;
+
+        virtualinvoke itemsSize#3.<java.util.ArrayList: boolean add(java.lang.Object)>(item);
+
+     label3:
+        i = i + 1;
+
+        goto label2;
+
+     label4:
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsVisibleItemsStale> = 0;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsActionItemsStale> = 1;
+
+        itemsSize#3 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mVisibleItems>;
+
+        return itemsSize#3;
+    }
+
+    public boolean hasVisibleItems()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean size;
+        int $u-1, i;
+        java.util.ArrayList item;
+        java.lang.Object $u-1#7;
+        androidx.appcompat.view.menu.MenuItemImpl item#9;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        size = this.<androidx.appcompat.view.menu.MenuBuilder: boolean mOverrideVisibleItems>;
+
+        if size == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: int size()>();
+
+        i = 0;
+
+     label2:
+        if i >= $u-1 goto label4;
+
+        item = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1#7 = virtualinvoke item.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        item#9 = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#7;
+
+        size = virtualinvoke item#9.<androidx.appcompat.view.menu.MenuItemImpl: boolean isVisible()>();
+
+        if size == 0 goto label3;
+
+        return 1;
+
+     label3:
+        i = i + 1;
+
+        goto label2;
+
+     label4:
+        return 0;
+    }
+
+    public boolean isGroupDividerEnabled()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        ret0 = this.<androidx.appcompat.view.menu.MenuBuilder: boolean mGroupDividerEnabled>;
+
+        return ret0;
+    }
+
+    boolean isQwertyMode()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        ret0 = this.<androidx.appcompat.view.menu.MenuBuilder: boolean mQwertyMode>;
+
+        return ret0;
+    }
+
+    public boolean isShortcutKey(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u2;
+        android.view.KeyEvent $u3;
+        androidx.appcompat.view.menu.MenuItemImpl $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.view.KeyEvent;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuItemImpl findItemWithShortcutForKey(int,android.view.KeyEvent)>($u2, $u3);
+
+        if $u-1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isShortcutsVisible()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        ret0 = this.<androidx.appcompat.view.menu.MenuBuilder: boolean mShortcutsVisible>;
+
+        return ret0;
+    }
+
+    void onItemActionRequestChanged(androidx.appcompat.view.menu.MenuItemImpl)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        androidx.appcompat.view.menu.MenuItemImpl $u2;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: androidx.appcompat.view.menu.MenuItemImpl;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsActionItemsStale> = 1;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>(1);
+
+        return;
+    }
+
+    void onItemVisibleChanged(androidx.appcompat.view.menu.MenuItemImpl)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        androidx.appcompat.view.menu.MenuItemImpl $u2;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: androidx.appcompat.view.menu.MenuItemImpl;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsVisibleItemsStale> = 1;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>(1);
+
+        return;
+    }
+
+    public void onItemsChanged(boolean)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean $u3, $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: boolean mPreventDispatchingItemsChanged>;
+
+        if $u0 != 0 goto label2;
+
+        if $u3 == 0 goto label1;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsVisibleItemsStale> = 1;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mIsActionItemsStale> = 1;
+
+     label1:
+        specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void dispatchPresenterUpdate(boolean)>($u3);
+
+        return;
+
+     label2:
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mItemsChangedWhileDispatchPrevented> = 1;
+
+        if $u3 == 0 goto label3;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mStructureChangedWhileDispatchPrevented> = 1;
+
+     label3:
+        return;
+    }
+
+    public boolean performIdentifierAction(int, int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u2, $u3;
+        android.view.MenuItem $u-1;
+        boolean $u-1#3;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.view.MenuItem findItem(int)>($u2);
+
+        $u-1#3 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: boolean performItemAction(android.view.MenuItem,int)>($u-1, $u3);
+
+        return $u-1#3;
+    }
+
+    public boolean performItemAction(android.view.MenuItem, int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.view.MenuItem $u2;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: android.view.MenuItem;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: boolean performItemAction(android.view.MenuItem,androidx.appcompat.view.menu.MenuPresenter,int)>($u2, null, $u3);
+
+        return $u-1;
+    }
+
+    public boolean performItemAction(android.view.MenuItem, androidx.appcompat.view.menu.MenuPresenter, int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.view.MenuItem $u8;
+        androidx.appcompat.view.menu.MenuPresenter $u9;
+        int $u10;
+        androidx.appcompat.view.menu.MenuItemImpl itemImpl;
+        boolean $u-1, $u-1#9, $u-1#12;
+        androidx.core.view.ActionProvider $u-1#8;
+        androidx.appcompat.view.menu.SubMenuBuilder subMenu;
+        android.content.Context $u-1#24;
+        android.view.SubMenu $u-1#26;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u8 := @parameter0: android.view.MenuItem;
+
+        $u9 := @parameter1: androidx.appcompat.view.menu.MenuPresenter;
+
+        $u10 := @parameter2: int;
+
+        itemImpl = (androidx.appcompat.view.menu.MenuItemImpl) $u8;
+
+        if itemImpl == null goto label11;
+
+        $u-1 = virtualinvoke itemImpl.<androidx.appcompat.view.menu.MenuItemImpl: boolean isEnabled()>();
+
+        if $u-1 != 0 goto label01;
+
+        return 0;
+
+     label01:
+        $u-1 = virtualinvoke itemImpl.<androidx.appcompat.view.menu.MenuItemImpl: boolean invoke()>();
+
+        $u-1#8 = virtualinvoke itemImpl.<androidx.appcompat.view.menu.MenuItemImpl: androidx.core.view.ActionProvider getSupportActionProvider()>();
+
+        if $u-1#8 == null goto label02;
+
+        $u-1#9 = virtualinvoke $u-1#8.<androidx.core.view.ActionProvider: boolean hasSubMenu()>();
+
+        if $u-1#9 == 0 goto label02;
+
+        $u-1#9 = 1;
+
+        goto label03;
+
+     label02:
+        $u-1#9 = 0;
+
+     label03:
+        $u-1#12 = virtualinvoke itemImpl.<androidx.appcompat.view.menu.MenuItemImpl: boolean hasCollapsibleActionView()>();
+
+        if $u-1#12 == 0 goto label04;
+
+        $u-1#9 = virtualinvoke itemImpl.<androidx.appcompat.view.menu.MenuItemImpl: boolean expandActionView()>();
+
+        $u-1 = $u-1 | $u-1#9;
+
+        if $u-1 == 0 goto label12;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void close(boolean)>(1);
+
+        return $u-1;
+
+     label04:
+        $u-1#12 = virtualinvoke itemImpl.<androidx.appcompat.view.menu.MenuItemImpl: boolean hasSubMenu()>();
+
+        if $u-1#12 != 0 goto label06;
+
+        if $u-1#9 == 0 goto label05;
+
+        goto label06;
+
+     label05:
+        $u10 = $u10 & 1;
+
+        if $u10 != 0 goto label12;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void close(boolean)>(1);
+
+        return $u-1;
+
+     label06:
+        $u10 = $u10 & 4;
+
+        if $u10 != 0 goto label07;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void close(boolean)>(0);
+
+     label07:
+        $u-1#12 = virtualinvoke itemImpl.<androidx.appcompat.view.menu.MenuItemImpl: boolean hasSubMenu()>();
+
+        if $u-1#12 != 0 goto label08;
+
+        subMenu = new androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $u-1#24 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.content.Context getContext()>();
+
+        specialinvoke subMenu.<androidx.appcompat.view.menu.SubMenuBuilder: void <init>(android.content.Context,androidx.appcompat.view.menu.MenuBuilder,androidx.appcompat.view.menu.MenuItemImpl)>($u-1#24, this, itemImpl);
+
+        virtualinvoke itemImpl.<androidx.appcompat.view.menu.MenuItemImpl: void setSubMenu(androidx.appcompat.view.menu.SubMenuBuilder)>(subMenu);
+
+     label08:
+        $u-1#26 = virtualinvoke itemImpl.<androidx.appcompat.view.menu.MenuItemImpl: android.view.SubMenu getSubMenu()>();
+
+        subMenu = (androidx.appcompat.view.menu.SubMenuBuilder) $u-1#26;
+
+        if $u-1#9 == 0 goto label09;
+
+        virtualinvoke $u-1#8.<androidx.core.view.ActionProvider: void onPrepareSubMenu(android.view.SubMenu)>(subMenu);
+
+     label09:
+        $u-1#9 = specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: boolean dispatchSubMenuSelected(androidx.appcompat.view.menu.SubMenuBuilder,androidx.appcompat.view.menu.MenuPresenter)>(subMenu, $u9);
+
+        $u-1 = $u-1 | $u-1#9;
+
+        if $u-1 != 0 goto label10;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void close(boolean)>(1);
+
+     label10:
+        return $u-1;
+
+     label11:
+        return 0;
+
+     label12:
+        return $u-1;
+    }
+
+    public boolean performShortcut(int, android.view.KeyEvent, int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u4, $u6;
+        android.view.KeyEvent $u5;
+        androidx.appcompat.view.menu.MenuItemImpl $u-1;
+        boolean handled;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: android.view.KeyEvent;
+
+        $u6 := @parameter2: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuItemImpl findItemWithShortcutForKey(int,android.view.KeyEvent)>($u4, $u5);
+
+        handled = 0;
+
+        if $u-1 == null goto label1;
+
+        handled = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: boolean performItemAction(android.view.MenuItem,int)>($u-1, $u6);
+
+     label1:
+        $u4 = $u6 & 2;
+
+        if $u4 == 0 goto label2;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void close(boolean)>(1);
+
+     label2:
+        return handled;
+    }
+
+    public void removeGroup(int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u5, numRemoved1, $u-1, maxRemovable#5, numRemoved;
+        java.util.ArrayList maxRemovable;
+        java.lang.Object $u-1#8;
+        androidx.appcompat.view.menu.MenuItemImpl numRemoved#10;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u5 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: int findGroupIndex(int)>($u5);
+
+        if $u-1 < 0 goto label3;
+
+        maxRemovable = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        numRemoved1 = virtualinvoke maxRemovable.<java.util.ArrayList: int size()>();
+
+        maxRemovable#5 = numRemoved1 - $u-1;
+
+        numRemoved = 0;
+
+     label1:
+        numRemoved1 = numRemoved + 1;
+
+        if numRemoved >= maxRemovable#5 goto label2;
+
+        maxRemovable = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1#8 = virtualinvoke maxRemovable.<java.util.ArrayList: java.lang.Object get(int)>($u-1);
+
+        numRemoved#10 = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#8;
+
+        numRemoved = virtualinvoke numRemoved#10.<androidx.appcompat.view.menu.MenuItemImpl: int getGroupId()>();
+
+        if numRemoved != $u5 goto label2;
+
+        specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void removeItemAtInt(int,boolean)>($u-1, 0);
+
+        numRemoved = numRemoved1;
+
+        goto label1;
+
+     label2:
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>(1);
+
+     label3:
+        return;
+    }
+
+    public void removeItem(int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u3;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u3 := @parameter0: int;
+
+        $u3 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: int findItemIndex(int)>($u3);
+
+        specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void removeItemAtInt(int,boolean)>($u3, 1);
+
+        return;
+    }
+
+    public void removeItemAt(int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u2;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: int;
+
+        specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void removeItemAtInt(int,boolean)>($u2, 1);
+
+        return;
+    }
+
+    public void removeMenuPresenter(androidx.appcompat.view.menu.MenuPresenter)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        androidx.appcompat.view.menu.MenuPresenter $u5, item;
+        java.util.concurrent.CopyOnWriteArrayList $u3;
+        java.util.Iterator $u-1;
+        boolean $u-1#4;
+        java.lang.Object $u-1#6;
+        java.lang.ref.WeakReference ref;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u5 := @parameter0: androidx.appcompat.view.menu.MenuPresenter;
+
+        $u3 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        $u-1 = virtualinvoke $u3.<java.util.concurrent.CopyOnWriteArrayList: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label3;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        ref = (java.lang.ref.WeakReference) $u-1#6;
+
+        $u-1#6 = virtualinvoke ref.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        item = (androidx.appcompat.view.menu.MenuPresenter) $u-1#6;
+
+        if item == null goto label2;
+
+        if item != $u5 goto label1;
+
+     label2:
+        $u3 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.concurrent.CopyOnWriteArrayList mPresenters>;
+
+        virtualinvoke $u3.<java.util.concurrent.CopyOnWriteArrayList: boolean remove(java.lang.Object)>(ref);
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    public void restoreActionViewStates(android.os.Bundle)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.os.Bundle $u8;
+        java.lang.String $u-1;
+        android.util.SparseArray $u-1#3;
+        int $u-1#5, i, $u-1#10;
+        android.view.MenuItem $u-1#7;
+        android.view.View $u-1#9;
+        boolean $u-1#12;
+        android.view.SubMenu $u-1#14;
+        androidx.appcompat.view.menu.SubMenuBuilder subMenu;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u8 := @parameter0: android.os.Bundle;
+
+        if $u8 != null goto label1;
+
+        return;
+
+     label1:
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: java.lang.String getActionViewStatesKey()>();
+
+        $u-1#3 = virtualinvoke $u8.<android.os.Bundle: android.util.SparseArray getSparseParcelableArray(java.lang.String)>($u-1);
+
+        $u-1#5 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: int size()>();
+
+        i = 0;
+
+     label2:
+        if i >= $u-1#5 goto label5;
+
+        $u-1#7 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.view.MenuItem getItem(int)>(i);
+
+        $u-1#9 = interfaceinvoke $u-1#7.<android.view.MenuItem: android.view.View getActionView()>();
+
+        if $u-1#9 == null goto label3;
+
+        $u-1#10 = virtualinvoke $u-1#9.<android.view.View: int getId()>();
+
+        if $u-1#10 == -1 goto label3;
+
+        virtualinvoke $u-1#9.<android.view.View: void restoreHierarchyState(android.util.SparseArray)>($u-1#3);
+
+     label3:
+        $u-1#12 = interfaceinvoke $u-1#7.<android.view.MenuItem: boolean hasSubMenu()>();
+
+        if $u-1#12 == 0 goto label4;
+
+        $u-1#14 = interfaceinvoke $u-1#7.<android.view.MenuItem: android.view.SubMenu getSubMenu()>();
+
+        subMenu = (androidx.appcompat.view.menu.SubMenuBuilder) $u-1#14;
+
+        virtualinvoke subMenu.<androidx.appcompat.view.menu.SubMenuBuilder: void restoreActionViewStates(android.os.Bundle)>($u8);
+
+     label4:
+        i = i + 1;
+
+        goto label2;
+
+     label5:
+        $u-1#5 = virtualinvoke $u8.<android.os.Bundle: int getInt(java.lang.String)>("android:menu:expandedactionview");
+
+        if $u-1#5 <= 0 goto label6;
+
+        $u-1#7 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.view.MenuItem findItem(int)>($u-1#5);
+
+        if $u-1#7 == null goto label6;
+
+        interfaceinvoke $u-1#7.<android.view.MenuItem: boolean expandActionView()>();
+
+     label6:
+        return;
+    }
+
+    public void restorePresenterStates(android.os.Bundle)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.os.Bundle $u1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u1 := @parameter0: android.os.Bundle;
+
+        specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void dispatchRestoreInstanceState(android.os.Bundle)>($u1);
+
+        return;
+    }
+
+    public void saveActionViewStates(android.os.Bundle)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.os.Bundle $u8;
+        android.util.SparseArray viewStates;
+        int $u-1, i, $u-1#6;
+        android.view.MenuItem $u-1#4;
+        android.view.View $u-1#5;
+        boolean $u-1#10;
+        android.view.SubMenu $u-1#17;
+        androidx.appcompat.view.menu.SubMenuBuilder subMenu;
+        java.lang.String $u-1#20;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u8 := @parameter0: android.os.Bundle;
+
+        viewStates = null;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: int size()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label5;
+
+        $u-1#4 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: android.view.MenuItem getItem(int)>(i);
+
+        $u-1#5 = interfaceinvoke $u-1#4.<android.view.MenuItem: android.view.View getActionView()>();
+
+        if $u-1#5 == null goto label3;
+
+        $u-1#6 = virtualinvoke $u-1#5.<android.view.View: int getId()>();
+
+        if $u-1#6 == -1 goto label3;
+
+        if viewStates != null goto label2;
+
+        viewStates = new android.util.SparseArray;
+
+        specialinvoke viewStates.<android.util.SparseArray: void <init>()>();
+
+     label2:
+        virtualinvoke $u-1#5.<android.view.View: void saveHierarchyState(android.util.SparseArray)>(viewStates);
+
+        $u-1#10 = interfaceinvoke $u-1#4.<android.view.MenuItem: boolean isActionViewExpanded()>();
+
+        if $u-1#10 == 0 goto label3;
+
+        $u-1#6 = interfaceinvoke $u-1#4.<android.view.MenuItem: int getItemId()>();
+
+        virtualinvoke $u8.<android.os.Bundle: void putInt(java.lang.String,int)>("android:menu:expandedactionview", $u-1#6);
+
+     label3:
+        $u-1#10 = interfaceinvoke $u-1#4.<android.view.MenuItem: boolean hasSubMenu()>();
+
+        if $u-1#10 == 0 goto label4;
+
+        $u-1#17 = interfaceinvoke $u-1#4.<android.view.MenuItem: android.view.SubMenu getSubMenu()>();
+
+        subMenu = (androidx.appcompat.view.menu.SubMenuBuilder) $u-1#17;
+
+        virtualinvoke subMenu.<androidx.appcompat.view.menu.SubMenuBuilder: void saveActionViewStates(android.os.Bundle)>($u8);
+
+     label4:
+        i = i + 1;
+
+        goto label1;
+
+     label5:
+        if viewStates == null goto label6;
+
+        $u-1#20 = virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: java.lang.String getActionViewStatesKey()>();
+
+        virtualinvoke $u8.<android.os.Bundle: void putSparseParcelableArray(java.lang.String,android.util.SparseArray)>($u-1#20, viewStates);
+
+     label6:
+        return;
+    }
+
+    public void savePresenterStates(android.os.Bundle)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.os.Bundle $u1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u1 := @parameter0: android.os.Bundle;
+
+        specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void dispatchSaveInstanceState(android.os.Bundle)>($u1);
+
+        return;
+    }
+
+    public void setCallback(androidx.appcompat.view.menu.MenuBuilder$Callback)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        androidx.appcompat.view.menu.MenuBuilder$Callback $u1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder$Callback;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuBuilder$Callback mCallback> = $u1;
+
+        return;
+    }
+
+    public void setCurrentMenuInfo(android.view.ContextMenu$ContextMenuInfo)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.view.ContextMenu$ContextMenuInfo $u1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u1 := @parameter0: android.view.ContextMenu$ContextMenuInfo;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: android.view.ContextMenu$ContextMenuInfo mCurrentMenuInfo> = $u1;
+
+        return;
+    }
+
+    public androidx.appcompat.view.menu.MenuBuilder setDefaultShowAsAction(int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: int mDefaultShowAsAction> = $u1;
+
+        return this;
+    }
+
+    void setExclusiveItemChecked(android.view.MenuItem)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.view.MenuItem $u6;
+        int $u-1, $u-1#3, i, $u-1#10;
+        java.util.ArrayList N;
+        java.lang.Object $u-1#7;
+        androidx.appcompat.view.menu.MenuItemImpl curItem;
+        boolean $u-1#12;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u6 := @parameter0: android.view.MenuItem;
+
+        $u-1 = interfaceinvoke $u6.<android.view.MenuItem: int getGroupId()>();
+
+        N = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1#3 = virtualinvoke N.<java.util.ArrayList: int size()>();
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void stopDispatchingItemsChanged()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1#3 goto label7;
+
+        N = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1#7 = virtualinvoke N.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        curItem = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#7;
+
+        $u-1#10 = virtualinvoke curItem.<androidx.appcompat.view.menu.MenuItemImpl: int getGroupId()>();
+
+        if $u-1#10 != $u-1 goto label6;
+
+        $u-1#12 = virtualinvoke curItem.<androidx.appcompat.view.menu.MenuItemImpl: boolean isExclusiveCheckable()>();
+
+        if $u-1#12 != 0 goto label2;
+
+        goto label6;
+
+     label2:
+        $u-1#12 = virtualinvoke curItem.<androidx.appcompat.view.menu.MenuItemImpl: boolean isCheckable()>();
+
+        if $u-1#12 != 0 goto label3;
+
+        goto label6;
+
+     label3:
+        if curItem != $u6 goto label4;
+
+        $u-1#12 = 1;
+
+        goto label5;
+
+     label4:
+        $u-1#12 = 0;
+
+     label5:
+        virtualinvoke curItem.<androidx.appcompat.view.menu.MenuItemImpl: void setCheckedInt(boolean)>($u-1#12);
+
+     label6:
+        i = i + 1;
+
+        goto label1;
+
+     label7:
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void startDispatchingItemsChanged()>();
+
+        return;
+    }
+
+    public void setGroupCheckable(int, boolean, boolean)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u5, $u-1, i, $u-1#9;
+        boolean $u6, $u7;
+        java.util.ArrayList N;
+        java.lang.Object $u-1#6;
+        androidx.appcompat.view.menu.MenuItemImpl item;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u5 := @parameter0: int;
+
+        $u6 := @parameter1: boolean;
+
+        $u7 := @parameter2: boolean;
+
+        N = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1 = virtualinvoke N.<java.util.ArrayList: int size()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label3;
+
+        N = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1#6 = virtualinvoke N.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        item = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#6;
+
+        $u-1#9 = virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: int getGroupId()>();
+
+        if $u-1#9 != $u5 goto label2;
+
+        virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: void setExclusiveCheckable(boolean)>($u7);
+
+        virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: android.view.MenuItem setCheckable(boolean)>($u6);
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    public void setGroupDividerEnabled(boolean)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean $u1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u1 := @parameter0: boolean;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mGroupDividerEnabled> = $u1;
+
+        return;
+    }
+
+    public void setGroupEnabled(int, boolean)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u5, $u-1, i, $u-1#9;
+        boolean $u6;
+        java.util.ArrayList N;
+        java.lang.Object $u-1#6;
+        androidx.appcompat.view.menu.MenuItemImpl item;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u5 := @parameter0: int;
+
+        $u6 := @parameter1: boolean;
+
+        N = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1 = virtualinvoke N.<java.util.ArrayList: int size()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label3;
+
+        N = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1#6 = virtualinvoke N.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        item = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#6;
+
+        $u-1#9 = virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: int getGroupId()>();
+
+        if $u-1#9 != $u5 goto label2;
+
+        virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: android.view.MenuItem setEnabled(boolean)>($u6);
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    public void setGroupVisible(int, boolean)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u6, $u-1, i, $u-1#10;
+        boolean $u7, changedAtLeastOneItem, $u-1#12;
+        java.util.ArrayList N;
+        java.lang.Object $u-1#7;
+        androidx.appcompat.view.menu.MenuItemImpl item;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u6 := @parameter0: int;
+
+        $u7 := @parameter1: boolean;
+
+        N = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1 = virtualinvoke N.<java.util.ArrayList: int size()>();
+
+        changedAtLeastOneItem = 0;
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label3;
+
+        N = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1#7 = virtualinvoke N.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        item = (androidx.appcompat.view.menu.MenuItemImpl) $u-1#7;
+
+        $u-1#10 = virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: int getGroupId()>();
+
+        if $u-1#10 != $u6 goto label2;
+
+        $u-1#12 = virtualinvoke item.<androidx.appcompat.view.menu.MenuItemImpl: boolean setVisibleInt(boolean)>($u7);
+
+        if $u-1#12 == 0 goto label2;
+
+        changedAtLeastOneItem = 1;
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        if changedAtLeastOneItem == 0 goto label4;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>(1);
+
+     label4:
+        return;
+    }
+
+    protected androidx.appcompat.view.menu.MenuBuilder setHeaderIconInt(int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u7;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u7 := @parameter0: int;
+
+        specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void setHeaderInternal(int,java.lang.CharSequence,int,android.graphics.drawable.Drawable,android.view.View)>(0, null, $u7, null, null);
+
+        return this;
+    }
+
+    protected androidx.appcompat.view.menu.MenuBuilder setHeaderIconInt(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.graphics.drawable.Drawable $u7;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u7 := @parameter0: android.graphics.drawable.Drawable;
+
+        specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void setHeaderInternal(int,java.lang.CharSequence,int,android.graphics.drawable.Drawable,android.view.View)>(0, null, 0, $u7, null);
+
+        return this;
+    }
+
+    protected androidx.appcompat.view.menu.MenuBuilder setHeaderTitleInt(int)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u7;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u7 := @parameter0: int;
+
+        specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void setHeaderInternal(int,java.lang.CharSequence,int,android.graphics.drawable.Drawable,android.view.View)>($u7, null, 0, null, null);
+
+        return this;
+    }
+
+    protected androidx.appcompat.view.menu.MenuBuilder setHeaderTitleInt(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        java.lang.CharSequence $u7;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u7 := @parameter0: java.lang.CharSequence;
+
+        specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void setHeaderInternal(int,java.lang.CharSequence,int,android.graphics.drawable.Drawable,android.view.View)>(0, $u7, 0, null, null);
+
+        return this;
+    }
+
+    protected androidx.appcompat.view.menu.MenuBuilder setHeaderViewInt(android.view.View)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        android.view.View $u7;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u7 := @parameter0: android.view.View;
+
+        specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void setHeaderInternal(int,java.lang.CharSequence,int,android.graphics.drawable.Drawable,android.view.View)>(0, null, 0, null, $u7);
+
+        return this;
+    }
+
+    public void setOptionalIconsVisible(boolean)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean $u1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u1 := @parameter0: boolean;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mOptionalIconsVisible> = $u1;
+
+        return;
+    }
+
+    public void setOverrideVisibleItems(boolean)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean $u1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u1 := @parameter0: boolean;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mOverrideVisibleItems> = $u1;
+
+        return;
+    }
+
+    public void setQwertyMode(boolean)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean $u2;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: boolean;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mQwertyMode> = $u2;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>(0);
+
+        return;
+    }
+
+    public void setShortcutsVisible(boolean)
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean $u2, $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: boolean mShortcutsVisible>;
+
+        if $u0 != $u2 goto label1;
+
+        return;
+
+     label1:
+        specialinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void setShortcutsVisibleInner(boolean)>($u2);
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>(0);
+
+        return;
+    }
+
+    public int size()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        int $u-1;
+        java.util.ArrayList $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: java.util.ArrayList mItems>;
+
+        $u-1 = virtualinvoke $u0.<java.util.ArrayList: int size()>();
+
+        return $u-1;
+    }
+
+    public void startDispatchingItemsChanged()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean $u1;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mPreventDispatchingItemsChanged> = 0;
+
+        $u1 = this.<androidx.appcompat.view.menu.MenuBuilder: boolean mItemsChangedWhileDispatchPrevented>;
+
+        if $u1 == 0 goto label1;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mItemsChangedWhileDispatchPrevented> = 0;
+
+        $u1 = this.<androidx.appcompat.view.menu.MenuBuilder: boolean mStructureChangedWhileDispatchPrevented>;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.MenuBuilder: void onItemsChanged(boolean)>($u1);
+
+     label1:
+        return;
+    }
+
+    public void stopDispatchingItemsChanged()
+    {
+        androidx.appcompat.view.menu.MenuBuilder this;
+        boolean $u0;
+
+        this := @this: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u0 = this.<androidx.appcompat.view.menu.MenuBuilder: boolean mPreventDispatchingItemsChanged>;
+
+        if $u0 != 0 goto label1;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mPreventDispatchingItemsChanged> = 1;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mItemsChangedWhileDispatchPrevented> = 0;
+
+        this.<androidx.appcompat.view.menu.MenuBuilder: boolean mStructureChangedWhileDispatchPrevented> = 0;
+
+     label1:
+        return;
+    }
+}

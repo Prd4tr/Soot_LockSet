@@ -1,0 +1,385 @@
+public final class androidx.core.widget.ScrollerCompat extends java.lang.Object
+{
+    android.widget.OverScroller mScroller;
+
+    void <init>(android.content.Context, android.view.animation.Interpolator)
+    {
+        androidx.core.widget.ScrollerCompat this;
+        android.content.Context $u2;
+        android.view.animation.Interpolator $u3;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.view.animation.Interpolator;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        if $u3 == null goto label1;
+
+        $u0 = new android.widget.OverScroller;
+
+        specialinvoke $u0.<android.widget.OverScroller: void <init>(android.content.Context,android.view.animation.Interpolator)>($u2, $u3);
+
+        goto label2;
+
+     label1:
+        $u0 = new android.widget.OverScroller;
+
+        specialinvoke $u0.<android.widget.OverScroller: void <init>(android.content.Context)>($u2);
+
+     label2:
+        this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller> = $u0;
+
+        return;
+    }
+
+    public static androidx.core.widget.ScrollerCompat create(android.content.Context)
+    {
+        android.content.Context $u1;
+        androidx.core.widget.ScrollerCompat $u-1;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u-1 = staticinvoke <androidx.core.widget.ScrollerCompat: androidx.core.widget.ScrollerCompat create(android.content.Context,android.view.animation.Interpolator)>($u1, null);
+
+        return $u-1;
+    }
+
+    public static androidx.core.widget.ScrollerCompat create(android.content.Context, android.view.animation.Interpolator)
+    {
+        android.content.Context $u1;
+        android.view.animation.Interpolator $u2;
+        androidx.core.widget.ScrollerCompat $u0;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: android.view.animation.Interpolator;
+
+        $u0 = new androidx.core.widget.ScrollerCompat;
+
+        specialinvoke $u0.<androidx.core.widget.ScrollerCompat: void <init>(android.content.Context,android.view.animation.Interpolator)>($u1, $u2);
+
+        return $u0;
+    }
+
+    public void abortAnimation()
+    {
+        androidx.core.widget.ScrollerCompat this;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        virtualinvoke $u0.<android.widget.OverScroller: void abortAnimation()>();
+
+        return;
+    }
+
+    public boolean computeScrollOffset()
+    {
+        androidx.core.widget.ScrollerCompat this;
+        boolean $u-1;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        $u-1 = virtualinvoke $u0.<android.widget.OverScroller: boolean computeScrollOffset()>();
+
+        return $u-1;
+    }
+
+    public void fling(int, int, int, int, int, int, int, int)
+    {
+        androidx.core.widget.ScrollerCompat this;
+        int $u11, $u12, $u13, $u14, $u15, $u16, $u17, $u18;
+        android.widget.OverScroller $u1;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u11 := @parameter0: int;
+
+        $u12 := @parameter1: int;
+
+        $u13 := @parameter2: int;
+
+        $u14 := @parameter3: int;
+
+        $u15 := @parameter4: int;
+
+        $u16 := @parameter5: int;
+
+        $u17 := @parameter6: int;
+
+        $u18 := @parameter7: int;
+
+        $u1 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        virtualinvoke $u1.<android.widget.OverScroller: void fling(int,int,int,int,int,int,int,int)>($u11, $u12, $u13, $u14, $u15, $u16, $u17, $u18);
+
+        return;
+    }
+
+    public void fling(int, int, int, int, int, int, int, int, int, int)
+    {
+        androidx.core.widget.ScrollerCompat this;
+        int $u13, $u14, $u15, $u16, $u17, $u18, $u19, $u20, $u21, $u22;
+        android.widget.OverScroller $u1;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u13 := @parameter0: int;
+
+        $u14 := @parameter1: int;
+
+        $u15 := @parameter2: int;
+
+        $u16 := @parameter3: int;
+
+        $u17 := @parameter4: int;
+
+        $u18 := @parameter5: int;
+
+        $u19 := @parameter6: int;
+
+        $u20 := @parameter7: int;
+
+        $u21 := @parameter8: int;
+
+        $u22 := @parameter9: int;
+
+        $u1 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        virtualinvoke $u1.<android.widget.OverScroller: void fling(int,int,int,int,int,int,int,int,int,int)>($u13, $u14, $u15, $u16, $u17, $u18, $u19, $u20, $u21, $u22);
+
+        return;
+    }
+
+    public float getCurrVelocity()
+    {
+        androidx.core.widget.ScrollerCompat this;
+        float $u-1;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        $u-1 = virtualinvoke $u0.<android.widget.OverScroller: float getCurrVelocity()>();
+
+        return $u-1;
+    }
+
+    public int getCurrX()
+    {
+        androidx.core.widget.ScrollerCompat this;
+        int $u-1;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        $u-1 = virtualinvoke $u0.<android.widget.OverScroller: int getCurrX()>();
+
+        return $u-1;
+    }
+
+    public int getCurrY()
+    {
+        androidx.core.widget.ScrollerCompat this;
+        int $u-1;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        $u-1 = virtualinvoke $u0.<android.widget.OverScroller: int getCurrY()>();
+
+        return $u-1;
+    }
+
+    public int getFinalX()
+    {
+        androidx.core.widget.ScrollerCompat this;
+        int $u-1;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        $u-1 = virtualinvoke $u0.<android.widget.OverScroller: int getFinalX()>();
+
+        return $u-1;
+    }
+
+    public int getFinalY()
+    {
+        androidx.core.widget.ScrollerCompat this;
+        int $u-1;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        $u-1 = virtualinvoke $u0.<android.widget.OverScroller: int getFinalY()>();
+
+        return $u-1;
+    }
+
+    public boolean isFinished()
+    {
+        androidx.core.widget.ScrollerCompat this;
+        boolean $u-1;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        $u-1 = virtualinvoke $u0.<android.widget.OverScroller: boolean isFinished()>();
+
+        return $u-1;
+    }
+
+    public boolean isOverScrolled()
+    {
+        androidx.core.widget.ScrollerCompat this;
+        boolean $u-1;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        $u-1 = virtualinvoke $u0.<android.widget.OverScroller: boolean isOverScrolled()>();
+
+        return $u-1;
+    }
+
+    public void notifyHorizontalEdgeReached(int, int, int)
+    {
+        androidx.core.widget.ScrollerCompat this;
+        int $u2, $u3, $u4;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        virtualinvoke $u0.<android.widget.OverScroller: void notifyHorizontalEdgeReached(int,int,int)>($u2, $u3, $u4);
+
+        return;
+    }
+
+    public void notifyVerticalEdgeReached(int, int, int)
+    {
+        androidx.core.widget.ScrollerCompat this;
+        int $u2, $u3, $u4;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        virtualinvoke $u0.<android.widget.OverScroller: void notifyVerticalEdgeReached(int,int,int)>($u2, $u3, $u4);
+
+        return;
+    }
+
+    public boolean springBack(int, int, int, int, int, int)
+    {
+        androidx.core.widget.ScrollerCompat this;
+        int $u8, $u9, $u10, $u11, $u12, $u13;
+        boolean $u-1;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u8 := @parameter0: int;
+
+        $u9 := @parameter1: int;
+
+        $u10 := @parameter2: int;
+
+        $u11 := @parameter3: int;
+
+        $u12 := @parameter4: int;
+
+        $u13 := @parameter5: int;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        $u-1 = virtualinvoke $u0.<android.widget.OverScroller: boolean springBack(int,int,int,int,int,int)>($u8, $u9, $u10, $u11, $u12, $u13);
+
+        return $u-1;
+    }
+
+    public void startScroll(int, int, int, int)
+    {
+        androidx.core.widget.ScrollerCompat this;
+        int $u2, $u3, $u4, $u5;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        virtualinvoke $u0.<android.widget.OverScroller: void startScroll(int,int,int,int)>($u2, $u3, $u4, $u5);
+
+        return;
+    }
+
+    public void startScroll(int, int, int, int, int)
+    {
+        androidx.core.widget.ScrollerCompat this;
+        int $u7, $u8, $u9, $u10, $u11;
+        android.widget.OverScroller $u0;
+
+        this := @this: androidx.core.widget.ScrollerCompat;
+
+        $u7 := @parameter0: int;
+
+        $u8 := @parameter1: int;
+
+        $u9 := @parameter2: int;
+
+        $u10 := @parameter3: int;
+
+        $u11 := @parameter4: int;
+
+        $u0 = this.<androidx.core.widget.ScrollerCompat: android.widget.OverScroller mScroller>;
+
+        virtualinvoke $u0.<android.widget.OverScroller: void startScroll(int,int,int,int,int)>($u7, $u8, $u9, $u10, $u11);
+
+        return;
+    }
+}

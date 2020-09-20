@@ -1,0 +1,66 @@
+class androidx.appcompat.widget.ListPopupWindow$3 extends java.lang.Object implements android.widget.AdapterView$OnItemSelectedListener
+{
+    final androidx.appcompat.widget.ListPopupWindow this$0;
+
+    void <init>(androidx.appcompat.widget.ListPopupWindow)
+    {
+        androidx.appcompat.widget.ListPopupWindow$3 this;
+        androidx.appcompat.widget.ListPopupWindow $u1;
+
+        this := @this: androidx.appcompat.widget.ListPopupWindow$3;
+
+        $u1 := @parameter0: androidx.appcompat.widget.ListPopupWindow;
+
+        this.<androidx.appcompat.widget.ListPopupWindow$3: androidx.appcompat.widget.ListPopupWindow this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onItemSelected(android.widget.AdapterView, android.view.View, int, long)
+    {
+        androidx.appcompat.widget.ListPopupWindow$3 this;
+        android.widget.AdapterView parent;
+        android.view.View $u4;
+        int $u5;
+        long $u6;
+        androidx.appcompat.widget.ListPopupWindow dropDownList;
+        androidx.appcompat.widget.DropDownListView dropDownList#3;
+
+        this := @this: androidx.appcompat.widget.ListPopupWindow$3;
+
+        parent := @parameter0: android.widget.AdapterView;
+
+        $u4 := @parameter1: android.view.View;
+
+        $u5 := @parameter2: int;
+
+        $u6 := @parameter3: long;
+
+        if $u5 == -1 goto label1;
+
+        dropDownList = this.<androidx.appcompat.widget.ListPopupWindow$3: androidx.appcompat.widget.ListPopupWindow this$0>;
+
+        dropDownList#3 = dropDownList.<androidx.appcompat.widget.ListPopupWindow: androidx.appcompat.widget.DropDownListView mDropDownList>;
+
+        if dropDownList#3 == null goto label1;
+
+        virtualinvoke dropDownList#3.<androidx.appcompat.widget.DropDownListView: void setListSelectionHidden(boolean)>(0);
+
+     label1:
+        return;
+    }
+
+    public void onNothingSelected(android.widget.AdapterView)
+    {
+        androidx.appcompat.widget.ListPopupWindow$3 this;
+        android.widget.AdapterView parent;
+
+        this := @this: androidx.appcompat.widget.ListPopupWindow$3;
+
+        parent := @parameter0: android.widget.AdapterView;
+
+        return;
+    }
+}

@@ -1,0 +1,147 @@
+class androidx.appcompat.widget.DropDownListView$GateKeeperDrawable extends androidx.appcompat.graphics.drawable.DrawableWrapper
+{
+    private boolean mEnabled;
+
+    void <init>(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.DropDownListView$GateKeeperDrawable this;
+        android.graphics.drawable.Drawable $u2;
+
+        this := @this: androidx.appcompat.widget.DropDownListView$GateKeeperDrawable;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableWrapper: void <init>(android.graphics.drawable.Drawable)>($u2);
+
+        this.<androidx.appcompat.widget.DropDownListView$GateKeeperDrawable: boolean mEnabled> = 1;
+
+        return;
+    }
+
+    public void draw(android.graphics.Canvas)
+    {
+        androidx.appcompat.widget.DropDownListView$GateKeeperDrawable this;
+        android.graphics.Canvas $u2;
+        boolean $u0;
+
+        this := @this: androidx.appcompat.widget.DropDownListView$GateKeeperDrawable;
+
+        $u2 := @parameter0: android.graphics.Canvas;
+
+        $u0 = this.<androidx.appcompat.widget.DropDownListView$GateKeeperDrawable: boolean mEnabled>;
+
+        if $u0 == 0 goto label1;
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableWrapper: void draw(android.graphics.Canvas)>($u2);
+
+     label1:
+        return;
+    }
+
+    void setEnabled(boolean)
+    {
+        androidx.appcompat.widget.DropDownListView$GateKeeperDrawable this;
+        boolean $u1;
+
+        this := @this: androidx.appcompat.widget.DropDownListView$GateKeeperDrawable;
+
+        $u1 := @parameter0: boolean;
+
+        this.<androidx.appcompat.widget.DropDownListView$GateKeeperDrawable: boolean mEnabled> = $u1;
+
+        return;
+    }
+
+    public void setHotspot(float, float)
+    {
+        androidx.appcompat.widget.DropDownListView$GateKeeperDrawable this;
+        float $u2, $u3;
+        boolean $u0;
+
+        this := @this: androidx.appcompat.widget.DropDownListView$GateKeeperDrawable;
+
+        $u2 := @parameter0: float;
+
+        $u3 := @parameter1: float;
+
+        $u0 = this.<androidx.appcompat.widget.DropDownListView$GateKeeperDrawable: boolean mEnabled>;
+
+        if $u0 == 0 goto label1;
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableWrapper: void setHotspot(float,float)>($u2, $u3);
+
+     label1:
+        return;
+    }
+
+    public void setHotspotBounds(int, int, int, int)
+    {
+        androidx.appcompat.widget.DropDownListView$GateKeeperDrawable this;
+        int $u2, $u3, $u4, $u5;
+        boolean $u0;
+
+        this := @this: androidx.appcompat.widget.DropDownListView$GateKeeperDrawable;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        $u0 = this.<androidx.appcompat.widget.DropDownListView$GateKeeperDrawable: boolean mEnabled>;
+
+        if $u0 == 0 goto label1;
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableWrapper: void setHotspotBounds(int,int,int,int)>($u2, $u3, $u4, $u5);
+
+     label1:
+        return;
+    }
+
+    public boolean setState(int[])
+    {
+        androidx.appcompat.widget.DropDownListView$GateKeeperDrawable this;
+        int[] $u2;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.widget.DropDownListView$GateKeeperDrawable;
+
+        $u2 := @parameter0: int[];
+
+        $u-1 = this.<androidx.appcompat.widget.DropDownListView$GateKeeperDrawable: boolean mEnabled>;
+
+        if $u-1 == 0 goto label1;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableWrapper: boolean setState(int[])>($u2);
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean setVisible(boolean, boolean)
+    {
+        androidx.appcompat.widget.DropDownListView$GateKeeperDrawable this;
+        boolean $u2, $u3, $u0;
+
+        this := @this: androidx.appcompat.widget.DropDownListView$GateKeeperDrawable;
+
+        $u2 := @parameter0: boolean;
+
+        $u3 := @parameter1: boolean;
+
+        $u0 = this.<androidx.appcompat.widget.DropDownListView$GateKeeperDrawable: boolean mEnabled>;
+
+        if $u0 == 0 goto label1;
+
+        $u2 = specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableWrapper: boolean setVisible(boolean,boolean)>($u2, $u3);
+
+        return $u2;
+
+     label1:
+        return 0;
+    }
+}

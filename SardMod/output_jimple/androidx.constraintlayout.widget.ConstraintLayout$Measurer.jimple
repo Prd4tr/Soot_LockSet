@@ -1,0 +1,838 @@
+class androidx.constraintlayout.widget.ConstraintLayout$Measurer extends java.lang.Object implements androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measurer
+{
+    androidx.constraintlayout.widget.ConstraintLayout layout;
+    int layoutHeightSpec;
+    int layoutWidthSpec;
+    int paddingBottom;
+    int paddingHeight;
+    int paddingTop;
+    int paddingWidth;
+    final androidx.constraintlayout.widget.ConstraintLayout this$0;
+
+    public void <init>(androidx.constraintlayout.widget.ConstraintLayout, androidx.constraintlayout.widget.ConstraintLayout)
+    {
+        androidx.constraintlayout.widget.ConstraintLayout$Measurer this;
+        androidx.constraintlayout.widget.ConstraintLayout $u1, $u2;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintLayout$Measurer;
+
+        $u1 := @parameter0: androidx.constraintlayout.widget.ConstraintLayout;
+
+        $u2 := @parameter1: androidx.constraintlayout.widget.ConstraintLayout;
+
+        this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: androidx.constraintlayout.widget.ConstraintLayout this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: androidx.constraintlayout.widget.ConstraintLayout layout> = $u2;
+
+        return;
+    }
+
+    public void captureLayoutInfos(int, int, int, int, int, int)
+    {
+        androidx.constraintlayout.widget.ConstraintLayout$Measurer this;
+        int $u1, $u2, $u3, $u4, $u5, $u6;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintLayout$Measurer;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: int;
+
+        $u4 := @parameter3: int;
+
+        $u5 := @parameter4: int;
+
+        $u6 := @parameter5: int;
+
+        this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int paddingTop> = $u3;
+
+        this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int paddingBottom> = $u4;
+
+        this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int paddingWidth> = $u5;
+
+        this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int paddingHeight> = $u6;
+
+        this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int layoutWidthSpec> = $u1;
+
+        this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int layoutHeightSpec> = $u2;
+
+        return;
+    }
+
+    public final void didMeasures()
+    {
+        androidx.constraintlayout.widget.ConstraintLayout$Measurer this;
+        androidx.constraintlayout.widget.ConstraintLayout widgetsCount;
+        int $u-1, i;
+        android.view.View $u-1#6;
+        boolean helper;
+        androidx.constraintlayout.widget.Placeholder helper#10;
+        java.util.ArrayList $u-1#13;
+        java.lang.Object $u-1#21;
+        androidx.constraintlayout.widget.ConstraintHelper helper#23;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintLayout$Measurer;
+
+        widgetsCount = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: androidx.constraintlayout.widget.ConstraintLayout layout>;
+
+        $u-1 = virtualinvoke widgetsCount.<androidx.constraintlayout.widget.ConstraintLayout: int getChildCount()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label3;
+
+        widgetsCount = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: androidx.constraintlayout.widget.ConstraintLayout layout>;
+
+        $u-1#6 = virtualinvoke widgetsCount.<androidx.constraintlayout.widget.ConstraintLayout: android.view.View getChildAt(int)>(i);
+
+        helper = $u-1#6 instanceof androidx.constraintlayout.widget.Placeholder;
+
+        if helper == 0 goto label2;
+
+        helper#10 = (androidx.constraintlayout.widget.Placeholder) $u-1#6;
+
+        widgetsCount = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: androidx.constraintlayout.widget.ConstraintLayout layout>;
+
+        virtualinvoke helper#10.<androidx.constraintlayout.widget.Placeholder: void updatePostMeasure(androidx.constraintlayout.widget.ConstraintLayout)>(widgetsCount);
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        widgetsCount = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: androidx.constraintlayout.widget.ConstraintLayout layout>;
+
+        $u-1#13 = staticinvoke <androidx.constraintlayout.widget.ConstraintLayout: java.util.ArrayList access$000(androidx.constraintlayout.widget.ConstraintLayout)>(widgetsCount);
+
+        $u-1 = virtualinvoke $u-1#13.<java.util.ArrayList: int size()>();
+
+        if $u-1 <= 0 goto label5;
+
+        i = 0;
+
+     label4:
+        if i >= $u-1 goto label5;
+
+        widgetsCount = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: androidx.constraintlayout.widget.ConstraintLayout layout>;
+
+        $u-1#13 = staticinvoke <androidx.constraintlayout.widget.ConstraintLayout: java.util.ArrayList access$000(androidx.constraintlayout.widget.ConstraintLayout)>(widgetsCount);
+
+        $u-1#21 = virtualinvoke $u-1#13.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        helper#23 = (androidx.constraintlayout.widget.ConstraintHelper) $u-1#21;
+
+        widgetsCount = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: androidx.constraintlayout.widget.ConstraintLayout layout>;
+
+        virtualinvoke helper#23.<androidx.constraintlayout.widget.ConstraintHelper: void updatePostMeasure(androidx.constraintlayout.widget.ConstraintLayout)>(widgetsCount);
+
+        i = i + 1;
+
+        goto label4;
+
+     label5:
+        return;
+    }
+
+    public final void measure(androidx.constraintlayout.solver.widgets.ConstraintWidget, androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure)
+    {
+        androidx.constraintlayout.widget.ConstraintLayout$Measurer this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u31;
+        androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure $u32;
+        int $u-1, horizontalDimension, verticalDimension, verticalSpec, widthPadding, $u-1#24, horizontalDimension#212, horizontalDimension#223;
+        boolean $u-1#6, didVerticalWrap, shouldDoWrap#39, horizontalSpec1, horizontalSpec#131, horizontalDimension#133, horizontalBehavior#144, verticalBehavior#149, heightPadding;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour horizontalBehavior, verticalBehavior, horizontalSpec;
+        java.lang.Object $u-1#20;
+        android.view.View child;
+        int[] shouldDoWrap;
+        float horizontalBehavior#142, horizontalBehavior#228;
+        byte horizontalBehavior#143;
+        android.view.ViewGroup$LayoutParams $u-1#151;
+        androidx.constraintlayout.widget.ConstraintLayout$LayoutParams verticalDimension#154;
+        androidx.constraintlayout.solver.widgets.VirtualLayout heightPadding#172;
+        androidx.constraintlayout.widget.VirtualLayout horizontalSpec#175;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintLayout$Measurer;
+
+        $u31 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $u32 := @parameter1: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure;
+
+        if $u31 != null goto label01;
+
+        return;
+
+     label01:
+        $u-1 = virtualinvoke $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if $u-1 != 8 goto label02;
+
+        $u-1#6 = virtualinvoke $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: boolean isInPlaceholder()>();
+
+        if $u-1#6 != 0 goto label02;
+
+        $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int measuredWidth> = 0;
+
+        $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int measuredHeight> = 0;
+
+        $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int measuredBaseline> = 0;
+
+        return;
+
+     label02:
+        horizontalBehavior = $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour horizontalBehavior>;
+
+        verticalBehavior = $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour verticalBehavior>;
+
+        horizontalDimension = $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int horizontalDimension>;
+
+        verticalDimension = $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int verticalDimension>;
+
+        verticalSpec = 0;
+
+        $u-1 = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int paddingTop>;
+
+        widthPadding = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int paddingBottom>;
+
+        widthPadding = $u-1 + widthPadding;
+
+        $u-1 = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int paddingWidth>;
+
+        $u-1#6 = 0;
+
+        didVerticalWrap = 0;
+
+        $u-1#20 = virtualinvoke $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: java.lang.Object getCompanionWidget()>();
+
+        child = (android.view.View) $u-1#20;
+
+        shouldDoWrap = <androidx.constraintlayout.widget.ConstraintLayout$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintWidget$DimensionBehaviour>;
+
+        $u-1#24 = virtualinvoke horizontalBehavior.<androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: int ordinal()>();
+
+        $u-1#24 = shouldDoWrap[$u-1#24];
+
+        if $u-1#24 == 1 goto label14;
+
+        if $u-1#24 == 2 goto label13;
+
+        if $u-1#24 == 3 goto label12;
+
+        if $u-1#24 == 4 goto label03;
+
+        $u-1 = 0;
+
+        goto label15;
+
+     label03:
+        horizontalDimension = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int layoutWidthSpec>;
+
+        $u-1 = staticinvoke <android.view.ViewGroup: int getChildMeasureSpec(int,int,int)>(horizontalDimension, $u-1, -2);
+
+        $u-1#6 = 1;
+
+        horizontalDimension = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultWidth>;
+
+        if horizontalDimension != 1 goto label04;
+
+        shouldDoWrap#39 = 1;
+
+        goto label05;
+
+     label04:
+        shouldDoWrap#39 = 0;
+
+     label05:
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[2] = 0;
+
+        horizontalSpec1 = $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: boolean useCurrentDimensions>;
+
+        if horizontalSpec1 == 0 goto label11;
+
+        if shouldDoWrap#39 == 0 goto label06;
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        horizontalDimension = shouldDoWrap[3];
+
+        if horizontalDimension == 0 goto label06;
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        horizontalDimension = shouldDoWrap[0];
+
+        $u-1#24 = virtualinvoke $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        if horizontalDimension != $u-1#24 goto label07;
+
+        goto label06;
+
+     label06:
+        horizontalSpec1 = child instanceof androidx.constraintlayout.widget.Placeholder;
+
+        if horizontalSpec1 == 0 goto label08;
+
+     label07:
+        horizontalSpec1 = 1;
+
+        goto label09;
+
+     label08:
+        horizontalSpec1 = 0;
+
+     label09:
+        if shouldDoWrap#39 == 0 goto label10;
+
+        if horizontalSpec1 == 0 goto label11;
+
+     label10:
+        $u-1 = virtualinvoke $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        $u-1#6 = 0;
+
+        $u-1 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($u-1, 1073741824);
+
+        goto label15;
+
+     label11:
+        goto label15;
+
+     label12:
+        horizontalDimension = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int layoutWidthSpec>;
+
+        $u-1#24 = virtualinvoke $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHorizontalMargin()>();
+
+        $u-1 = $u-1#24 + $u-1;
+
+        $u-1 = staticinvoke <android.view.ViewGroup: int getChildMeasureSpec(int,int,int)>(horizontalDimension, $u-1, -1);
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[2] = -1;
+
+        goto label15;
+
+     label13:
+        horizontalDimension = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int layoutWidthSpec>;
+
+        $u-1 = staticinvoke <android.view.ViewGroup: int getChildMeasureSpec(int,int,int)>(horizontalDimension, $u-1, -2);
+
+        $u-1#6 = 1;
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[2] = -2;
+
+        goto label15;
+
+     label14:
+        $u-1 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>(horizontalDimension, 1073741824);
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[2] = horizontalDimension;
+
+     label15:
+        shouldDoWrap = <androidx.constraintlayout.widget.ConstraintLayout$1: int[] $SwitchMap$androidx$constraintlayout$solver$widgets$ConstraintWidget$DimensionBehaviour>;
+
+        horizontalDimension = virtualinvoke verticalBehavior.<androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: int ordinal()>();
+
+        horizontalDimension = shouldDoWrap[horizontalDimension];
+
+        if horizontalDimension == 1 goto label27;
+
+        if horizontalDimension == 2 goto label26;
+
+        if horizontalDimension == 3 goto label25;
+
+        if horizontalDimension == 4 goto label16;
+
+        goto label28;
+
+     label16:
+        verticalSpec = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int layoutHeightSpec>;
+
+        verticalSpec = staticinvoke <android.view.ViewGroup: int getChildMeasureSpec(int,int,int)>(verticalSpec, widthPadding, -2);
+
+        didVerticalWrap = 1;
+
+        widthPadding = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultHeight>;
+
+        if widthPadding != 1 goto label17;
+
+        shouldDoWrap#39 = 1;
+
+        goto label18;
+
+     label17:
+        shouldDoWrap#39 = 0;
+
+     label18:
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[3] = 0;
+
+        horizontalSpec1 = $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: boolean useCurrentDimensions>;
+
+        if horizontalSpec1 == 0 goto label24;
+
+        if shouldDoWrap#39 == 0 goto label19;
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        widthPadding = shouldDoWrap[2];
+
+        if widthPadding == 0 goto label19;
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        widthPadding = shouldDoWrap[1];
+
+        verticalDimension = virtualinvoke $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        if widthPadding != verticalDimension goto label20;
+
+     label19:
+        horizontalSpec1 = child instanceof androidx.constraintlayout.widget.Placeholder;
+
+        if horizontalSpec1 == 0 goto label21;
+
+     label20:
+        horizontalSpec1 = 1;
+
+        goto label22;
+
+     label21:
+        horizontalSpec1 = 0;
+
+     label22:
+        if shouldDoWrap#39 == 0 goto label23;
+
+        if horizontalSpec1 == 0 goto label28;
+
+     label23:
+        verticalSpec = virtualinvoke $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        verticalSpec = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>(verticalSpec, 1073741824);
+
+        didVerticalWrap = 0;
+
+        goto label28;
+
+     label24:
+        goto label28;
+
+     label25:
+        verticalSpec = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int layoutHeightSpec>;
+
+        verticalDimension = virtualinvoke $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVerticalMargin()>();
+
+        widthPadding = verticalDimension + widthPadding;
+
+        verticalSpec = staticinvoke <android.view.ViewGroup: int getChildMeasureSpec(int,int,int)>(verticalSpec, widthPadding, -1);
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[3] = -1;
+
+        goto label28;
+
+     label26:
+        verticalSpec = this.<androidx.constraintlayout.widget.ConstraintLayout$Measurer: int layoutHeightSpec>;
+
+        verticalSpec = staticinvoke <android.view.ViewGroup: int getChildMeasureSpec(int,int,int)>(verticalSpec, widthPadding, -2);
+
+        didVerticalWrap = 1;
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[3] = -2;
+
+        goto label28;
+
+     label27:
+        verticalSpec = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>(verticalDimension, 1073741824);
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[3] = verticalDimension;
+
+     label28:
+        horizontalSpec = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if horizontalBehavior != horizontalSpec goto label29;
+
+        horizontalSpec#131 = 1;
+
+        goto label30;
+
+     label29:
+        horizontalSpec#131 = 0;
+
+     label30:
+        horizontalSpec = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if verticalBehavior != horizontalSpec goto label31;
+
+        horizontalDimension#133 = 1;
+
+        goto label32;
+
+     label31:
+        horizontalDimension#133 = 0;
+
+     label32:
+        horizontalSpec = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_PARENT>;
+
+        if verticalBehavior == horizontalSpec goto label34;
+
+        horizontalSpec = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        if verticalBehavior != horizontalSpec goto label33;
+
+        goto label34;
+
+     label33:
+        shouldDoWrap#39 = 0;
+
+        goto label35;
+
+     label34:
+        shouldDoWrap#39 = 1;
+
+     label35:
+        verticalBehavior = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_PARENT>;
+
+        if horizontalBehavior == verticalBehavior goto label37;
+
+        verticalBehavior = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        if horizontalBehavior != verticalBehavior goto label36;
+
+        goto label37;
+
+     label36:
+        horizontalSpec1 = 0;
+
+        goto label38;
+
+     label37:
+        horizontalSpec1 = 1;
+
+     label38:
+        if horizontalSpec#131 == 0 goto label39;
+
+        horizontalBehavior#142 = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: float mDimensionRatio>;
+
+        horizontalBehavior#143 = horizontalBehavior#142 cmpl 0.0F;
+
+        if horizontalBehavior#143 <= 0 goto label39;
+
+        horizontalBehavior#144 = 1;
+
+        goto label40;
+
+     label39:
+        horizontalBehavior#144 = 0;
+
+     label40:
+        if horizontalDimension#133 == 0 goto label41;
+
+        horizontalBehavior#142 = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: float mDimensionRatio>;
+
+        horizontalBehavior#143 = horizontalBehavior#142 cmpl 0.0F;
+
+        if horizontalBehavior#143 <= 0 goto label41;
+
+        verticalBehavior#149 = 1;
+
+        goto label42;
+
+     label41:
+        verticalBehavior#149 = 0;
+
+     label42:
+        $u-1#151 = virtualinvoke child.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        verticalDimension#154 = (androidx.constraintlayout.widget.ConstraintLayout$LayoutParams) $u-1#151;
+
+        heightPadding = $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: boolean useCurrentDimensions>;
+
+        if heightPadding != 0 goto label44;
+
+        if horizontalSpec#131 == 0 goto label44;
+
+        widthPadding = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultWidth>;
+
+        if widthPadding != 0 goto label44;
+
+        if horizontalDimension#133 == 0 goto label44;
+
+        widthPadding = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultHeight>;
+
+        if widthPadding == 0 goto label43;
+
+        goto label44;
+
+     label43:
+        $u-1 = 0;
+
+        widthPadding = 0;
+
+        verticalSpec = 0;
+
+        goto label63;
+
+     label44:
+        horizontalSpec#131 = child instanceof androidx.constraintlayout.widget.VirtualLayout;
+
+        if horizontalSpec#131 == 0 goto label45;
+
+        horizontalSpec#131 = $u31 instanceof androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        if horizontalSpec#131 == 0 goto label45;
+
+        heightPadding#172 = (androidx.constraintlayout.solver.widgets.VirtualLayout) $u31;
+
+        horizontalSpec#175 = (androidx.constraintlayout.widget.VirtualLayout) child;
+
+        virtualinvoke horizontalSpec#175.<androidx.constraintlayout.widget.VirtualLayout: void onMeasure(androidx.constraintlayout.solver.widgets.VirtualLayout,int,int)>(heightPadding#172, $u-1, verticalSpec);
+
+        goto label46;
+
+     label45:
+        virtualinvoke child.<android.view.View: void measure(int,int)>($u-1, verticalSpec);
+
+     label46:
+        horizontalDimension = virtualinvoke child.<android.view.View: int getMeasuredWidth()>();
+
+        verticalDimension = virtualinvoke child.<android.view.View: int getMeasuredHeight()>();
+
+        widthPadding = virtualinvoke child.<android.view.View: int getBaseline()>();
+
+        if $u-1#6 == 0 goto label47;
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[0] = horizontalDimension;
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[2] = verticalDimension;
+
+        goto label48;
+
+     label47:
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[0] = 0;
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[2] = 0;
+
+     label48:
+        if didVerticalWrap == 0 goto label49;
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[1] = verticalDimension;
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[3] = horizontalDimension;
+
+        goto label50;
+
+     label49:
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[1] = 0;
+
+        shouldDoWrap = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] wrapMeasure>;
+
+        shouldDoWrap[3] = 0;
+
+     label50:
+        $u-1#24 = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintMinWidth>;
+
+        if $u-1#24 <= 0 goto label51;
+
+        $u-1#24 = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintMinWidth>;
+
+        $u-1#24 = staticinvoke <java.lang.Math: int max(int,int)>($u-1#24, horizontalDimension);
+
+        goto label52;
+
+     label51:
+        $u-1#24 = horizontalDimension;
+
+     label52:
+        horizontalDimension#212 = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintMaxWidth>;
+
+        if horizontalDimension#212 <= 0 goto label53;
+
+        horizontalDimension#212 = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintMaxWidth>;
+
+        $u-1#24 = staticinvoke <java.lang.Math: int min(int,int)>(horizontalDimension#212, $u-1#24);
+
+     label53:
+        horizontalDimension#212 = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintMinHeight>;
+
+        if horizontalDimension#212 <= 0 goto label54;
+
+        horizontalDimension#212 = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintMinHeight>;
+
+        horizontalDimension#212 = staticinvoke <java.lang.Math: int max(int,int)>(horizontalDimension#212, verticalDimension);
+
+        goto label55;
+
+     label54:
+        horizontalDimension#212 = verticalDimension;
+
+     label55:
+        horizontalDimension#223 = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintMaxHeight>;
+
+        if horizontalDimension#223 <= 0 goto label56;
+
+        horizontalDimension#223 = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintMaxHeight>;
+
+        horizontalDimension#212 = staticinvoke <java.lang.Math: int min(int,int)>(horizontalDimension#223, horizontalDimension#212);
+
+     label56:
+        if horizontalBehavior#144 == 0 goto label57;
+
+        if shouldDoWrap#39 == 0 goto label57;
+
+        horizontalBehavior#142 = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: float mDimensionRatio>;
+
+        horizontalBehavior#228 = (float) horizontalDimension#212;
+
+        horizontalBehavior#142 = horizontalBehavior#228 * horizontalBehavior#142;
+
+        horizontalBehavior#142 = horizontalBehavior#142 + 0.5F;
+
+        $u-1#24 = (int) horizontalBehavior#142;
+
+        goto label58;
+
+     label57:
+        if verticalBehavior#149 == 0 goto label58;
+
+        if horizontalSpec1 == 0 goto label58;
+
+        horizontalBehavior#142 = $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: float mDimensionRatio>;
+
+        horizontalBehavior#228 = (float) $u-1#24;
+
+        horizontalBehavior#142 = horizontalBehavior#228 / horizontalBehavior#142;
+
+        horizontalBehavior#142 = horizontalBehavior#142 + 0.5F;
+
+        horizontalDimension#212 = (int) horizontalBehavior#142;
+
+     label58:
+        if horizontalDimension != $u-1#24 goto label60;
+
+        if verticalDimension == horizontalDimension#212 goto label59;
+
+        goto label60;
+
+     label59:
+        $u-1 = $u-1#24;
+
+        verticalSpec = horizontalDimension#212;
+
+        goto label63;
+
+     label60:
+        if horizontalDimension == $u-1#24 goto label61;
+
+        $u-1 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($u-1#24, 1073741824);
+
+        goto label61;
+
+     label61:
+        if verticalDimension == horizontalDimension#212 goto label62;
+
+        verticalSpec = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>(horizontalDimension#212, 1073741824);
+
+        goto label62;
+
+     label62:
+        virtualinvoke child.<android.view.View: void measure(int,int)>($u-1, verticalSpec);
+
+        $u-1 = virtualinvoke child.<android.view.View: int getMeasuredWidth()>();
+
+        verticalSpec = virtualinvoke child.<android.view.View: int getMeasuredHeight()>();
+
+        widthPadding = virtualinvoke child.<android.view.View: int getBaseline()>();
+
+     label63:
+        if widthPadding == -1 goto label64;
+
+        $u-1#6 = 1;
+
+        goto label65;
+
+     label64:
+        $u-1#6 = 0;
+
+     label65:
+        verticalDimension = $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int horizontalDimension>;
+
+        if $u-1 != verticalDimension goto label67;
+
+        verticalDimension = $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int verticalDimension>;
+
+        if verticalSpec == verticalDimension goto label66;
+
+        goto label67;
+
+     label66:
+        didVerticalWrap = 0;
+
+        goto label68;
+
+     label67:
+        didVerticalWrap = 1;
+
+     label68:
+        $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: boolean measuredNeedsSolverPass> = didVerticalWrap;
+
+        didVerticalWrap = verticalDimension#154.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: boolean needsBaseline>;
+
+        if didVerticalWrap == 0 goto label69;
+
+        $u-1#6 = 1;
+
+     label69:
+        if $u-1#6 == 0 goto label70;
+
+        if widthPadding == -1 goto label70;
+
+        verticalDimension = virtualinvoke $u31.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getBaselineDistance()>();
+
+        if verticalDimension == widthPadding goto label70;
+
+        $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: boolean measuredNeedsSolverPass> = 1;
+
+     label70:
+        $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int measuredWidth> = $u-1;
+
+        $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int measuredHeight> = verticalSpec;
+
+        $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: boolean measuredHasBaseline> = $u-1#6;
+
+        $u32.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int measuredBaseline> = widthPadding;
+
+        return;
+    }
+}

@@ -1,0 +1,74 @@
+public class androidx.core.util.DebugUtils extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.util.DebugUtils this;
+
+        this := @this: androidx.core.util.DebugUtils;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void buildShortClassTag(java.lang.Object, java.lang.StringBuilder)
+    {
+        java.lang.Object $u3;
+        java.lang.StringBuilder $u4;
+        int $u2;
+        java.lang.Class $u-1;
+        java.lang.String $u-1#4, simpleName;
+
+        $u3 := @parameter0: java.lang.Object;
+
+        $u4 := @parameter1: java.lang.StringBuilder;
+
+        if $u3 != null goto label1;
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("null");
+
+        return;
+
+     label1:
+        $u-1 = virtualinvoke $u3.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#4 = virtualinvoke $u-1.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        simpleName = $u-1#4;
+
+        if $u-1#4 == null goto label2;
+
+        $u2 = virtualinvoke $u-1#4.<java.lang.String: int length()>();
+
+        if $u2 > 0 goto label3;
+
+     label2:
+        $u-1 = virtualinvoke $u3.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#4 = virtualinvoke $u-1.<java.lang.Class: java.lang.String getName()>();
+
+        simpleName = $u-1#4;
+
+        $u2 = virtualinvoke $u-1#4.<java.lang.String: int lastIndexOf(int)>(46);
+
+        if $u2 <= 0 goto label3;
+
+        $u2 = $u2 + 1;
+
+        simpleName = virtualinvoke $u-1#4.<java.lang.String: java.lang.String substring(int)>($u2);
+
+     label3:
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(simpleName);
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(123);
+
+        $u2 = staticinvoke <java.lang.System: int identityHashCode(java.lang.Object)>($u3);
+
+        simpleName = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($u2);
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(simpleName);
+
+        return;
+    }
+}

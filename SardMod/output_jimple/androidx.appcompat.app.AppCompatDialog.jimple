@@ -1,0 +1,444 @@
+public class androidx.appcompat.app.AppCompatDialog extends android.app.Dialog implements androidx.appcompat.app.AppCompatCallback
+{
+    private androidx.appcompat.app.AppCompatDelegate mDelegate;
+    private final androidx.core.view.KeyEventDispatcher$Component mKeyDispatcher;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        android.content.Context $u2;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatDialog: void <init>(android.content.Context,int)>($u2, 0);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, int)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        android.content.Context $u3;
+        int $u4, $u-1;
+        androidx.appcompat.app.AppCompatDialog$1 delegate;
+        androidx.appcompat.app.AppCompatDelegate $u-1#4;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u4 := @parameter1: int;
+
+        $u-1 = staticinvoke <androidx.appcompat.app.AppCompatDialog: int getThemeResId(android.content.Context,int)>($u3, $u4);
+
+        specialinvoke this.<android.app.Dialog: void <init>(android.content.Context,int)>($u3, $u-1);
+
+        delegate = new androidx.appcompat.app.AppCompatDialog$1;
+
+        specialinvoke delegate.<androidx.appcompat.app.AppCompatDialog$1: void <init>(androidx.appcompat.app.AppCompatDialog)>(this);
+
+        this.<androidx.appcompat.app.AppCompatDialog: androidx.core.view.KeyEventDispatcher$Component mKeyDispatcher> = delegate;
+
+        $u-1#4 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        $u4 = staticinvoke <androidx.appcompat.app.AppCompatDialog: int getThemeResId(android.content.Context,int)>($u3, $u4);
+
+        virtualinvoke $u-1#4.<androidx.appcompat.app.AppCompatDelegate: void setTheme(int)>($u4);
+
+        virtualinvoke $u-1#4.<androidx.appcompat.app.AppCompatDelegate: void onCreate(android.os.Bundle)>(null);
+
+        return;
+    }
+
+    protected void <init>(android.content.Context, boolean, android.content.DialogInterface$OnCancelListener)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        android.content.Context $u2;
+        boolean $u3;
+        android.content.DialogInterface$OnCancelListener $u4;
+        androidx.appcompat.app.AppCompatDialog$1 $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: boolean;
+
+        $u4 := @parameter2: android.content.DialogInterface$OnCancelListener;
+
+        specialinvoke this.<android.app.Dialog: void <init>(android.content.Context,boolean,android.content.DialogInterface$OnCancelListener)>($u2, $u3, $u4);
+
+        $u0 = new androidx.appcompat.app.AppCompatDialog$1;
+
+        specialinvoke $u0.<androidx.appcompat.app.AppCompatDialog$1: void <init>(androidx.appcompat.app.AppCompatDialog)>(this);
+
+        this.<androidx.appcompat.app.AppCompatDialog: androidx.core.view.KeyEventDispatcher$Component mKeyDispatcher> = $u0;
+
+        return;
+    }
+
+    private static int getThemeResId(android.content.Context, int)
+    {
+        android.content.Context $u4;
+        android.util.TypedValue outValue;
+        int $u2;
+        android.content.res.Resources$Theme $u-1;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: int;
+
+        if $u2 != 0 goto label1;
+
+        outValue = new android.util.TypedValue;
+
+        specialinvoke outValue.<android.util.TypedValue: void <init>()>();
+
+        $u-1 = virtualinvoke $u4.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        $u2 = <androidx.appcompat.R$attr: int dialogTheme>;
+
+        virtualinvoke $u-1.<android.content.res.Resources$Theme: boolean resolveAttribute(int,android.util.TypedValue,boolean)>($u2, outValue, 1);
+
+        $u2 = outValue.<android.util.TypedValue: int resourceId>;
+
+     label1:
+        return $u2;
+    }
+
+    public void addContentView(android.view.View, android.view.ViewGroup$LayoutParams)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        android.view.View $u2;
+        android.view.ViewGroup$LayoutParams $u3;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: android.view.ViewGroup$LayoutParams;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: void addContentView(android.view.View,android.view.ViewGroup$LayoutParams)>($u2, $u3);
+
+        return;
+    }
+
+    public void dismiss()
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        specialinvoke this.<android.app.Dialog: void dismiss()>();
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: void onDestroy()>();
+
+        return;
+    }
+
+    public boolean dispatchKeyEvent(android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        android.view.KeyEvent $u3;
+        android.view.Window $u-1;
+        android.view.View $u-1#3;
+        androidx.core.view.KeyEventDispatcher$Component $u1;
+        boolean $u-1#6;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u3 := @parameter0: android.view.KeyEvent;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: android.view.Window getWindow()>();
+
+        $u-1#3 = virtualinvoke $u-1.<android.view.Window: android.view.View getDecorView()>();
+
+        $u1 = this.<androidx.appcompat.app.AppCompatDialog: androidx.core.view.KeyEventDispatcher$Component mKeyDispatcher>;
+
+        $u-1#6 = staticinvoke <androidx.core.view.KeyEventDispatcher: boolean dispatchKeyEvent(androidx.core.view.KeyEventDispatcher$Component,android.view.View,android.view.Window$Callback,android.view.KeyEvent)>($u1, $u-1#3, this, $u3);
+
+        return $u-1#6;
+    }
+
+    public android.view.View findViewById(int)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        int $u2;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+        android.view.View $u-1#3;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u2 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        $u-1#3 = virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: android.view.View findViewById(int)>($u2);
+
+        return $u-1#3;
+    }
+
+    public androidx.appcompat.app.AppCompatDelegate getDelegate()
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u-1 = this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate mDelegate>;
+
+        if $u-1 != null goto label1;
+
+        $u-1 = staticinvoke <androidx.appcompat.app.AppCompatDelegate: androidx.appcompat.app.AppCompatDelegate create(android.app.Dialog,androidx.appcompat.app.AppCompatCallback)>(this, this);
+
+        this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate mDelegate> = $u-1;
+
+     label1:
+        $u-1 = this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate mDelegate>;
+
+        return $u-1;
+    }
+
+    public androidx.appcompat.app.ActionBar getSupportActionBar()
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+        androidx.appcompat.app.ActionBar $u-1#3;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        $u-1#3 = virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: androidx.appcompat.app.ActionBar getSupportActionBar()>();
+
+        return $u-1#3;
+    }
+
+    public void invalidateOptionsMenu()
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: void invalidateOptionsMenu()>();
+
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        android.os.Bundle $u2;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u2 := @parameter0: android.os.Bundle;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: void installViewFactory()>();
+
+        specialinvoke this.<android.app.Dialog: void onCreate(android.os.Bundle)>($u2);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: void onCreate(android.os.Bundle)>($u2);
+
+        return;
+    }
+
+    protected void onStop()
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        specialinvoke this.<android.app.Dialog: void onStop()>();
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: void onStop()>();
+
+        return;
+    }
+
+    public void onSupportActionModeFinished(androidx.appcompat.view.ActionMode)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        androidx.appcompat.view.ActionMode $u1;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u1 := @parameter0: androidx.appcompat.view.ActionMode;
+
+        return;
+    }
+
+    public void onSupportActionModeStarted(androidx.appcompat.view.ActionMode)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        androidx.appcompat.view.ActionMode $u1;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u1 := @parameter0: androidx.appcompat.view.ActionMode;
+
+        return;
+    }
+
+    public androidx.appcompat.view.ActionMode onWindowStartingSupportActionMode(androidx.appcompat.view.ActionMode$Callback)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        androidx.appcompat.view.ActionMode$Callback $u2;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u2 := @parameter0: androidx.appcompat.view.ActionMode$Callback;
+
+        return null;
+    }
+
+    public void setContentView(int)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        int $u2;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u2 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: void setContentView(int)>($u2);
+
+        return;
+    }
+
+    public void setContentView(android.view.View)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        android.view.View $u2;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: void setContentView(android.view.View)>($u2);
+
+        return;
+    }
+
+    public void setContentView(android.view.View, android.view.ViewGroup$LayoutParams)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        android.view.View $u2;
+        android.view.ViewGroup$LayoutParams $u3;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: android.view.ViewGroup$LayoutParams;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: void setContentView(android.view.View,android.view.ViewGroup$LayoutParams)>($u2, $u3);
+
+        return;
+    }
+
+    public void setTitle(int)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        int $u3;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+        android.content.Context $u-1#2;
+        java.lang.String $u-1#4;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u3 := @parameter0: int;
+
+        specialinvoke this.<android.app.Dialog: void setTitle(int)>($u3);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        $u-1#2 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: android.content.Context getContext()>();
+
+        $u-1#4 = virtualinvoke $u-1#2.<android.content.Context: java.lang.String getString(int)>($u3);
+
+        virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: void setTitle(java.lang.CharSequence)>($u-1#4);
+
+        return;
+    }
+
+    public void setTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        java.lang.CharSequence $u2;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        specialinvoke this.<android.app.Dialog: void setTitle(java.lang.CharSequence)>($u2);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: void setTitle(java.lang.CharSequence)>($u2);
+
+        return;
+    }
+
+    boolean superDispatchKeyEvent(android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        android.view.KeyEvent $u2;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u2 := @parameter0: android.view.KeyEvent;
+
+        $u-1 = specialinvoke this.<android.app.Dialog: boolean dispatchKeyEvent(android.view.KeyEvent)>($u2);
+
+        return $u-1;
+    }
+
+    public boolean supportRequestWindowFeature(int)
+    {
+        androidx.appcompat.app.AppCompatDialog this;
+        int $u2;
+        androidx.appcompat.app.AppCompatDelegate $u-1;
+        boolean $u-1#3;
+
+        this := @this: androidx.appcompat.app.AppCompatDialog;
+
+        $u2 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialog: androidx.appcompat.app.AppCompatDelegate getDelegate()>();
+
+        $u-1#3 = virtualinvoke $u-1.<androidx.appcompat.app.AppCompatDelegate: boolean requestWindowFeature(int)>($u2);
+
+        return $u-1#3;
+    }
+}

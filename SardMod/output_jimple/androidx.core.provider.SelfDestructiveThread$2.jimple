@@ -1,0 +1,76 @@
+class androidx.core.provider.SelfDestructiveThread$2 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.core.provider.SelfDestructiveThread this$0;
+    final java.util.concurrent.Callable val$callable;
+    final android.os.Handler val$callingHandler;
+    final androidx.core.provider.SelfDestructiveThread$ReplyCallback val$reply;
+
+    void <init>(androidx.core.provider.SelfDestructiveThread, java.util.concurrent.Callable, android.os.Handler, androidx.core.provider.SelfDestructiveThread$ReplyCallback)
+    {
+        androidx.core.provider.SelfDestructiveThread$2 this;
+        androidx.core.provider.SelfDestructiveThread $u1;
+        java.util.concurrent.Callable $u2;
+        android.os.Handler $u3;
+        androidx.core.provider.SelfDestructiveThread$ReplyCallback $u4;
+
+        this := @this: androidx.core.provider.SelfDestructiveThread$2;
+
+        $u1 := @parameter0: androidx.core.provider.SelfDestructiveThread;
+
+        $u2 := @parameter1: java.util.concurrent.Callable;
+
+        $u3 := @parameter2: android.os.Handler;
+
+        $u4 := @parameter3: androidx.core.provider.SelfDestructiveThread$ReplyCallback;
+
+        this.<androidx.core.provider.SelfDestructiveThread$2: androidx.core.provider.SelfDestructiveThread this$0> = $u1;
+
+        this.<androidx.core.provider.SelfDestructiveThread$2: java.util.concurrent.Callable val$callable> = $u2;
+
+        this.<androidx.core.provider.SelfDestructiveThread$2: android.os.Handler val$callingHandler> = $u3;
+
+        this.<androidx.core.provider.SelfDestructiveThread$2: androidx.core.provider.SelfDestructiveThread$ReplyCallback val$reply> = $u4;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.core.provider.SelfDestructiveThread$2 this;
+        android.os.Handler $u2;
+        androidx.core.provider.SelfDestructiveThread$2$1 $u3;
+        java.lang.Object $u-1;
+        java.util.concurrent.Callable t;
+        java.lang.Exception t#3;
+
+        this := @this: androidx.core.provider.SelfDestructiveThread$2;
+
+     label1:
+        t = this.<androidx.core.provider.SelfDestructiveThread$2: java.util.concurrent.Callable val$callable>;
+
+        $u-1 = interfaceinvoke t.<java.util.concurrent.Callable: java.lang.Object call()>();
+
+     label2:
+        goto label4;
+
+     label3:
+        t#3 := @caughtexception;
+
+        $u-1 = null;
+
+     label4:
+        $u2 = this.<androidx.core.provider.SelfDestructiveThread$2: android.os.Handler val$callingHandler>;
+
+        $u3 = new androidx.core.provider.SelfDestructiveThread$2$1;
+
+        specialinvoke $u3.<androidx.core.provider.SelfDestructiveThread$2$1: void <init>(androidx.core.provider.SelfDestructiveThread$2,java.lang.Object)>(this, $u-1);
+
+        virtualinvoke $u2.<android.os.Handler: boolean post(java.lang.Runnable)>($u3);
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+}

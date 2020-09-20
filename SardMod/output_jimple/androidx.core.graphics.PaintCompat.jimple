@@ -1,0 +1,280 @@
+public final class androidx.core.graphics.PaintCompat extends java.lang.Object
+{
+    private static final java.lang.String EM_STRING;
+    private static final java.lang.String TOFU_STRING;
+    private static final java.lang.ThreadLocal sRectThreadLocal;
+
+    static void <clinit>()
+    {
+        java.lang.ThreadLocal $u0;
+
+        <androidx.core.graphics.PaintCompat: java.lang.String TOFU_STRING> = "\udb3f\udffd";
+
+        <androidx.core.graphics.PaintCompat: java.lang.String EM_STRING> = "m";
+
+        $u0 = new java.lang.ThreadLocal;
+
+        specialinvoke $u0.<java.lang.ThreadLocal: void <init>()>();
+
+        <androidx.core.graphics.PaintCompat: java.lang.ThreadLocal sRectThreadLocal> = $u0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.core.graphics.PaintCompat this;
+
+        this := @this: androidx.core.graphics.PaintCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static boolean hasGlyph(android.graphics.Paint, java.lang.String)
+    {
+        android.graphics.Paint $u11;
+        java.lang.String $u12, $u3;
+        int length, $u-1#21, $u-1#30, $u10;
+        boolean $u-1;
+        char $u-1#9;
+        float $u-1#14, $u-1#16, $u-1#18, $u-1#35;
+        byte sumWidth;
+        androidx.core.util.Pair $u-1#39;
+        java.lang.Object charCount;
+        android.graphics.Rect charCount#44;
+
+        $u11 := @parameter0: android.graphics.Paint;
+
+        $u12 := @parameter1: java.lang.String;
+
+        length = <android.os.Build$VERSION: int SDK_INT>;
+
+        if length < 23 goto label1;
+
+        $u-1 = virtualinvoke $u11.<android.graphics.Paint: boolean hasGlyph(java.lang.String)>($u12);
+
+        return $u-1;
+
+     label1:
+        length = virtualinvoke $u12.<java.lang.String: int length()>();
+
+        if length != 1 goto label2;
+
+        $u-1#9 = virtualinvoke $u12.<java.lang.String: char charAt(int)>(0);
+
+        $u-1 = staticinvoke <java.lang.Character: boolean isWhitespace(char)>($u-1#9);
+
+        if $u-1 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        $u3 = "\udb3f\udffd";
+
+        $u-1#14 = virtualinvoke $u11.<android.graphics.Paint: float measureText(java.lang.String)>("\udb3f\udffd");
+
+        $u-1#16 = virtualinvoke $u11.<android.graphics.Paint: float measureText(java.lang.String)>("m");
+
+        $u-1#18 = virtualinvoke $u11.<android.graphics.Paint: float measureText(java.lang.String)>($u12);
+
+        sumWidth = $u-1#18 cmpl 0.0F;
+
+        if sumWidth != 0 goto label3;
+
+        return 0;
+
+     label3:
+        $u-1#21 = virtualinvoke $u12.<java.lang.String: int length()>();
+
+        $u-1#21 = virtualinvoke $u12.<java.lang.String: int codePointCount(int,int)>(0, $u-1#21);
+
+        if $u-1#21 <= 1 goto label7;
+
+        $u-1#16 = 2.0F * $u-1#16;
+
+        sumWidth = $u-1#18 cmpl $u-1#16;
+
+        if sumWidth <= 0 goto label4;
+
+        return 0;
+
+     label4:
+        $u-1#16 = 0.0F;
+
+        $u-1#21 = 0;
+
+     label5:
+        if $u-1#21 >= length goto label6;
+
+        $u-1#30 = virtualinvoke $u12.<java.lang.String: int codePointAt(int)>($u-1#21);
+
+        $u-1#30 = staticinvoke <java.lang.Character: int charCount(int)>($u-1#30);
+
+        $u10 = $u-1#21 + $u-1#30;
+
+        $u-1#35 = virtualinvoke $u11.<android.graphics.Paint: float measureText(java.lang.String,int,int)>($u12, $u-1#21, $u10);
+
+        $u-1#16 = $u-1#16 + $u-1#35;
+
+        $u-1#21 = $u-1#21 + $u-1#30;
+
+        goto label5;
+
+     label6:
+        sumWidth = $u-1#18 cmpl $u-1#16;
+
+        if sumWidth < 0 goto label7;
+
+        return 0;
+
+     label7:
+        sumWidth = $u-1#18 cmpl $u-1#14;
+
+        if sumWidth == 0 goto label8;
+
+        return 1;
+
+     label8:
+        $u-1#39 = staticinvoke <androidx.core.graphics.PaintCompat: androidx.core.util.Pair obtainEmptyRects()>();
+
+        $u-1#21 = virtualinvoke $u3.<java.lang.String: int length()>();
+
+        charCount = $u-1#39.<androidx.core.util.Pair: java.lang.Object first>;
+
+        charCount#44 = (android.graphics.Rect) charCount;
+
+        virtualinvoke $u11.<android.graphics.Paint: void getTextBounds(java.lang.String,int,int,android.graphics.Rect)>("\udb3f\udffd", 0, $u-1#21, charCount#44);
+
+        charCount = $u-1#39.<androidx.core.util.Pair: java.lang.Object second>;
+
+        charCount#44 = (android.graphics.Rect) charCount;
+
+        virtualinvoke $u11.<android.graphics.Paint: void getTextBounds(java.lang.String,int,int,android.graphics.Rect)>($u12, 0, length, charCount#44);
+
+        charCount = $u-1#39.<androidx.core.util.Pair: java.lang.Object first>;
+
+        charCount#44 = (android.graphics.Rect) charCount;
+
+        charCount = $u-1#39.<androidx.core.util.Pair: java.lang.Object second>;
+
+        $u-1 = virtualinvoke charCount#44.<android.graphics.Rect: boolean equals(java.lang.Object)>(charCount);
+
+        $u-1 = 1 ^ $u-1;
+
+        return $u-1;
+    }
+
+    private static androidx.core.util.Pair obtainEmptyRects()
+    {
+        android.graphics.Rect $u2, $u3;
+        java.lang.Object $u-1;
+        java.lang.ThreadLocal rects;
+        androidx.core.util.Pair rects#3;
+
+        rects = <androidx.core.graphics.PaintCompat: java.lang.ThreadLocal sRectThreadLocal>;
+
+        $u-1 = virtualinvoke rects.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        rects#3 = (androidx.core.util.Pair) $u-1;
+
+        if rects#3 != null goto label1;
+
+        rects#3 = new androidx.core.util.Pair;
+
+        $u2 = new android.graphics.Rect;
+
+        specialinvoke $u2.<android.graphics.Rect: void <init>()>();
+
+        $u3 = new android.graphics.Rect;
+
+        specialinvoke $u3.<android.graphics.Rect: void <init>()>();
+
+        specialinvoke rects#3.<androidx.core.util.Pair: void <init>(java.lang.Object,java.lang.Object)>($u2, $u3);
+
+        rects = <androidx.core.graphics.PaintCompat: java.lang.ThreadLocal sRectThreadLocal>;
+
+        virtualinvoke rects.<java.lang.ThreadLocal: void set(java.lang.Object)>(rects#3);
+
+        return rects#3;
+
+     label1:
+        $u-1 = rects#3.<androidx.core.util.Pair: java.lang.Object first>;
+
+        $u2 = (android.graphics.Rect) $u-1;
+
+        virtualinvoke $u2.<android.graphics.Rect: void setEmpty()>();
+
+        $u-1 = rects#3.<androidx.core.util.Pair: java.lang.Object second>;
+
+        $u2 = (android.graphics.Rect) $u-1;
+
+        virtualinvoke $u2.<android.graphics.Rect: void setEmpty()>();
+
+        return rects#3;
+    }
+
+    public static boolean setBlendMode(android.graphics.Paint, androidx.core.graphics.BlendModeCompat)
+    {
+        android.graphics.Paint $u4;
+        androidx.core.graphics.BlendModeCompat $u5;
+        int mode;
+        java.lang.Object $u2;
+        android.graphics.BlendMode $u-1;
+        android.graphics.PorterDuff$Mode $u-1#5;
+        android.graphics.PorterDuffXfermode $u0;
+        android.graphics.Xfermode $r1;
+
+        $u4 := @parameter0: android.graphics.Paint;
+
+        $u5 := @parameter1: androidx.core.graphics.BlendModeCompat;
+
+        mode = <android.os.Build$VERSION: int SDK_INT>;
+
+        $u2 = null;
+
+        if mode < 29 goto label2;
+
+        if $u5 == null goto label1;
+
+        $u2 = staticinvoke <androidx.core.graphics.BlendModeUtils: android.graphics.BlendMode obtainBlendModeFromCompat(androidx.core.graphics.BlendModeCompat)>($u5);
+
+     label1:
+        $u-1 = (android.graphics.BlendMode) $u2;
+
+        virtualinvoke $u4.<android.graphics.Paint: void setBlendMode(android.graphics.BlendMode)>($u-1);
+
+        return 1;
+
+     label2:
+        if $u5 == null goto label5;
+
+        $u-1#5 = staticinvoke <androidx.core.graphics.BlendModeUtils: android.graphics.PorterDuff$Mode obtainPorterDuffFromCompat(androidx.core.graphics.BlendModeCompat)>($u5);
+
+        if $u-1#5 == null goto label3;
+
+        $u0 = new android.graphics.PorterDuffXfermode;
+
+        $u2 = $u0;
+
+        specialinvoke $u0.<android.graphics.PorterDuffXfermode: void <init>(android.graphics.PorterDuff$Mode)>($u-1#5);
+
+     label3:
+        $r1 = (android.graphics.Xfermode) $u2;
+
+        virtualinvoke $u4.<android.graphics.Paint: android.graphics.Xfermode setXfermode(android.graphics.Xfermode)>($r1);
+
+        if $u-1#5 == null goto label4;
+
+        return 1;
+
+     label4:
+        return 0;
+
+     label5:
+        virtualinvoke $u4.<android.graphics.Paint: android.graphics.Xfermode setXfermode(android.graphics.Xfermode)>(null);
+
+        return 1;
+    }
+}

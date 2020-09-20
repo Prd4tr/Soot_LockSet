@@ -1,0 +1,302 @@
+public final class androidx.core.graphics.Insets extends java.lang.Object
+{
+    public static final androidx.core.graphics.Insets NONE;
+    public final int bottom;
+    public final int left;
+    public final int right;
+    public final int top;
+
+    static void <clinit>()
+    {
+        androidx.core.graphics.Insets $u0;
+
+        $u0 = new androidx.core.graphics.Insets;
+
+        specialinvoke $u0.<androidx.core.graphics.Insets: void <init>(int,int,int,int)>(0, 0, 0, 0);
+
+        <androidx.core.graphics.Insets: androidx.core.graphics.Insets NONE> = $u0;
+
+        return;
+    }
+
+    private void <init>(int, int, int, int)
+    {
+        androidx.core.graphics.Insets this;
+        int $u1, $u2, $u3, $u4;
+
+        this := @this: androidx.core.graphics.Insets;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: int;
+
+        $u4 := @parameter3: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.graphics.Insets: int left> = $u1;
+
+        this.<androidx.core.graphics.Insets: int top> = $u2;
+
+        this.<androidx.core.graphics.Insets: int right> = $u3;
+
+        this.<androidx.core.graphics.Insets: int bottom> = $u4;
+
+        return;
+    }
+
+    public static androidx.core.graphics.Insets of(int, int, int, int)
+    {
+        int $u1, $u2, $u3, $u4;
+        androidx.core.graphics.Insets $u0;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: int;
+
+        $u4 := @parameter3: int;
+
+        if $u1 != 0 goto label1;
+
+        if $u2 != 0 goto label1;
+
+        if $u3 != 0 goto label1;
+
+        if $u4 != 0 goto label1;
+
+        $u0 = <androidx.core.graphics.Insets: androidx.core.graphics.Insets NONE>;
+
+        return $u0;
+
+     label1:
+        $u0 = new androidx.core.graphics.Insets;
+
+        specialinvoke $u0.<androidx.core.graphics.Insets: void <init>(int,int,int,int)>($u1, $u2, $u3, $u4);
+
+        return $u0;
+    }
+
+    public static androidx.core.graphics.Insets of(android.graphics.Rect)
+    {
+        android.graphics.Rect $u4;
+        int $u1, $u2, $u3, $u0;
+        androidx.core.graphics.Insets $u-1;
+
+        $u4 := @parameter0: android.graphics.Rect;
+
+        $u0 = $u4.<android.graphics.Rect: int left>;
+
+        $u1 = $u4.<android.graphics.Rect: int top>;
+
+        $u2 = $u4.<android.graphics.Rect: int right>;
+
+        $u3 = $u4.<android.graphics.Rect: int bottom>;
+
+        $u-1 = staticinvoke <androidx.core.graphics.Insets: androidx.core.graphics.Insets of(int,int,int,int)>($u0, $u1, $u2, $u3);
+
+        return $u-1;
+    }
+
+    public static androidx.core.graphics.Insets toCompatInsets(android.graphics.Insets)
+    {
+        android.graphics.Insets $u4;
+        int $u1, $u2, $u3, $u0;
+        androidx.core.graphics.Insets $u-1;
+
+        $u4 := @parameter0: android.graphics.Insets;
+
+        $u0 = $u4.<android.graphics.Insets: int left>;
+
+        $u1 = $u4.<android.graphics.Insets: int top>;
+
+        $u2 = $u4.<android.graphics.Insets: int right>;
+
+        $u3 = $u4.<android.graphics.Insets: int bottom>;
+
+        $u-1 = staticinvoke <androidx.core.graphics.Insets: androidx.core.graphics.Insets of(int,int,int,int)>($u0, $u1, $u2, $u3);
+
+        return $u-1;
+    }
+
+    public static androidx.core.graphics.Insets wrap(android.graphics.Insets)
+    {
+        android.graphics.Insets $u1;
+        androidx.core.graphics.Insets $u-1;
+
+        $u1 := @parameter0: android.graphics.Insets;
+
+        $u-1 = staticinvoke <androidx.core.graphics.Insets: androidx.core.graphics.Insets toCompatInsets(android.graphics.Insets)>($u1);
+
+        return $u-1;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.core.graphics.Insets this, insets;
+        java.lang.Object $u6;
+        java.lang.Class $u-1, $u-1#3;
+        int $u3, $u4;
+
+        this := @this: androidx.core.graphics.Insets;
+
+        $u6 := @parameter0: java.lang.Object;
+
+        if this != $u6 goto label1;
+
+        return 1;
+
+     label1:
+        if $u6 == null goto label7;
+
+        $u-1 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#3 = virtualinvoke $u6.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $u-1 == $u-1#3 goto label2;
+
+        return 0;
+
+     label2:
+        insets = (androidx.core.graphics.Insets) $u6;
+
+        $u3 = this.<androidx.core.graphics.Insets: int bottom>;
+
+        $u4 = insets.<androidx.core.graphics.Insets: int bottom>;
+
+        if $u3 == $u4 goto label3;
+
+        return 0;
+
+     label3:
+        $u3 = this.<androidx.core.graphics.Insets: int left>;
+
+        $u4 = insets.<androidx.core.graphics.Insets: int left>;
+
+        if $u3 == $u4 goto label4;
+
+        return 0;
+
+     label4:
+        $u3 = this.<androidx.core.graphics.Insets: int right>;
+
+        $u4 = insets.<androidx.core.graphics.Insets: int right>;
+
+        if $u3 == $u4 goto label5;
+
+        return 0;
+
+     label5:
+        $u3 = this.<androidx.core.graphics.Insets: int top>;
+
+        $u4 = insets.<androidx.core.graphics.Insets: int top>;
+
+        if $u3 == $u4 goto label6;
+
+        return 0;
+
+     label6:
+        return 1;
+
+     label7:
+        return 0;
+    }
+
+    public int hashCode()
+    {
+        androidx.core.graphics.Insets this;
+        int result, $u2;
+
+        this := @this: androidx.core.graphics.Insets;
+
+        result = this.<androidx.core.graphics.Insets: int left>;
+
+        result = result * 31;
+
+        $u2 = this.<androidx.core.graphics.Insets: int top>;
+
+        result = result + $u2;
+
+        result = result * 31;
+
+        $u2 = this.<androidx.core.graphics.Insets: int right>;
+
+        result = result + $u2;
+
+        result = result * 31;
+
+        $u2 = this.<androidx.core.graphics.Insets: int bottom>;
+
+        result = result + $u2;
+
+        return result;
+    }
+
+    public android.graphics.Insets toPlatformInsets()
+    {
+        androidx.core.graphics.Insets this;
+        int $u1, $u2, $u3, $u0;
+        android.graphics.Insets $u-1;
+
+        this := @this: androidx.core.graphics.Insets;
+
+        $u0 = this.<androidx.core.graphics.Insets: int left>;
+
+        $u1 = this.<androidx.core.graphics.Insets: int top>;
+
+        $u2 = this.<androidx.core.graphics.Insets: int right>;
+
+        $u3 = this.<androidx.core.graphics.Insets: int bottom>;
+
+        $u-1 = staticinvoke <android.graphics.Insets: android.graphics.Insets of(int,int,int,int)>($u0, $u1, $u2, $u3);
+
+        return $u-1;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.core.graphics.Insets this;
+        java.lang.String $u-1;
+        java.lang.StringBuilder $u0;
+        int $u1;
+
+        this := @this: androidx.core.graphics.Insets;
+
+        $u0 = new java.lang.StringBuilder;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Insets{left=");
+
+        $u1 = this.<androidx.core.graphics.Insets: int left>;
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", top=");
+
+        $u1 = this.<androidx.core.graphics.Insets: int top>;
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", right=");
+
+        $u1 = this.<androidx.core.graphics.Insets: int right>;
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", bottom=");
+
+        $u1 = this.<androidx.core.graphics.Insets: int bottom>;
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125);
+
+        $u-1 = virtualinvoke $u0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1;
+    }
+}

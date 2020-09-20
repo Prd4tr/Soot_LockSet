@@ -1,0 +1,192 @@
+public class androidx.appcompat.widget.Toolbar$LayoutParams extends androidx.appcompat.app.ActionBar$LayoutParams
+{
+    static final int CUSTOM;
+    static final int EXPANDED;
+    static final int SYSTEM;
+    int mViewType;
+
+    public void <init>(int)
+    {
+        androidx.appcompat.widget.Toolbar$LayoutParams this;
+        int $u3;
+
+        this := @this: androidx.appcompat.widget.Toolbar$LayoutParams;
+
+        $u3 := @parameter0: int;
+
+        specialinvoke this.<androidx.appcompat.widget.Toolbar$LayoutParams: void <init>(int,int,int)>(-2, -1, $u3);
+
+        return;
+    }
+
+    public void <init>(int, int)
+    {
+        androidx.appcompat.widget.Toolbar$LayoutParams this;
+        int $u2, $u3;
+
+        this := @this: androidx.appcompat.widget.Toolbar$LayoutParams;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        specialinvoke this.<androidx.appcompat.app.ActionBar$LayoutParams: void <init>(int,int)>($u2, $u3);
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int mViewType> = 0;
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int gravity> = 8388627;
+
+        return;
+    }
+
+    public void <init>(int, int, int)
+    {
+        androidx.appcompat.widget.Toolbar$LayoutParams this;
+        int $u2, $u3, $u4;
+
+        this := @this: androidx.appcompat.widget.Toolbar$LayoutParams;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        specialinvoke this.<androidx.appcompat.app.ActionBar$LayoutParams: void <init>(int,int)>($u2, $u3);
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int mViewType> = 0;
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int gravity> = $u4;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.Toolbar$LayoutParams this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+
+        this := @this: androidx.appcompat.widget.Toolbar$LayoutParams;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.appcompat.app.ActionBar$LayoutParams: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int mViewType> = 0;
+
+        return;
+    }
+
+    public void <init>(android.view.ViewGroup$LayoutParams)
+    {
+        androidx.appcompat.widget.Toolbar$LayoutParams this;
+        android.view.ViewGroup$LayoutParams $u2;
+
+        this := @this: androidx.appcompat.widget.Toolbar$LayoutParams;
+
+        $u2 := @parameter0: android.view.ViewGroup$LayoutParams;
+
+        specialinvoke this.<androidx.appcompat.app.ActionBar$LayoutParams: void <init>(android.view.ViewGroup$LayoutParams)>($u2);
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int mViewType> = 0;
+
+        return;
+    }
+
+    public void <init>(android.view.ViewGroup$MarginLayoutParams)
+    {
+        androidx.appcompat.widget.Toolbar$LayoutParams this;
+        android.view.ViewGroup$MarginLayoutParams $u2;
+
+        this := @this: androidx.appcompat.widget.Toolbar$LayoutParams;
+
+        $u2 := @parameter0: android.view.ViewGroup$MarginLayoutParams;
+
+        specialinvoke this.<androidx.appcompat.app.ActionBar$LayoutParams: void <init>(android.view.ViewGroup$LayoutParams)>($u2);
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int mViewType> = 0;
+
+        virtualinvoke this.<androidx.appcompat.widget.Toolbar$LayoutParams: void copyMarginsFromCompat(android.view.ViewGroup$MarginLayoutParams)>($u2);
+
+        return;
+    }
+
+    public void <init>(androidx.appcompat.app.ActionBar$LayoutParams)
+    {
+        androidx.appcompat.widget.Toolbar$LayoutParams this;
+        androidx.appcompat.app.ActionBar$LayoutParams $u2;
+
+        this := @this: androidx.appcompat.widget.Toolbar$LayoutParams;
+
+        $u2 := @parameter0: androidx.appcompat.app.ActionBar$LayoutParams;
+
+        specialinvoke this.<androidx.appcompat.app.ActionBar$LayoutParams: void <init>(androidx.appcompat.app.ActionBar$LayoutParams)>($u2);
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int mViewType> = 0;
+
+        return;
+    }
+
+    public void <init>(androidx.appcompat.widget.Toolbar$LayoutParams)
+    {
+        androidx.appcompat.widget.Toolbar$LayoutParams this, $u2;
+        int $u0;
+
+        this := @this: androidx.appcompat.widget.Toolbar$LayoutParams;
+
+        $u2 := @parameter0: androidx.appcompat.widget.Toolbar$LayoutParams;
+
+        specialinvoke this.<androidx.appcompat.app.ActionBar$LayoutParams: void <init>(androidx.appcompat.app.ActionBar$LayoutParams)>($u2);
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int mViewType> = 0;
+
+        $u0 = $u2.<androidx.appcompat.widget.Toolbar$LayoutParams: int mViewType>;
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int mViewType> = $u0;
+
+        return;
+    }
+
+    void copyMarginsFromCompat(android.view.ViewGroup$MarginLayoutParams)
+    {
+        androidx.appcompat.widget.Toolbar$LayoutParams this;
+        android.view.ViewGroup$MarginLayoutParams $u2;
+        int $u0;
+
+        this := @this: androidx.appcompat.widget.Toolbar$LayoutParams;
+
+        $u2 := @parameter0: android.view.ViewGroup$MarginLayoutParams;
+
+        $u0 = $u2.<android.view.ViewGroup$MarginLayoutParams: int leftMargin>;
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int leftMargin> = $u0;
+
+        $u0 = $u2.<android.view.ViewGroup$MarginLayoutParams: int topMargin>;
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int topMargin> = $u0;
+
+        $u0 = $u2.<android.view.ViewGroup$MarginLayoutParams: int rightMargin>;
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int rightMargin> = $u0;
+
+        $u0 = $u2.<android.view.ViewGroup$MarginLayoutParams: int bottomMargin>;
+
+        this.<androidx.appcompat.widget.Toolbar$LayoutParams: int bottomMargin> = $u0;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.widget.Toolbar$LayoutParams: int SYSTEM> = 1;
+
+        <androidx.appcompat.widget.Toolbar$LayoutParams: int EXPANDED> = 2;
+
+        <androidx.appcompat.widget.Toolbar$LayoutParams: int CUSTOM> = 0;
+
+        return;
+    }
+}

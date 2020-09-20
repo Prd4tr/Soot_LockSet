@@ -1,0 +1,107 @@
+public class androidx.core.provider.FontsContractCompat$FontInfo extends java.lang.Object
+{
+    private final boolean mItalic;
+    private final int mResultCode;
+    private final int mTtcIndex;
+    private final android.net.Uri mUri;
+    private final int mWeight;
+
+    public void <init>(android.net.Uri, int, int, boolean, int)
+    {
+        androidx.core.provider.FontsContractCompat$FontInfo this;
+        android.net.Uri $u2;
+        int $u3, $u4, $u6;
+        boolean $u5;
+        java.lang.Object $u-1;
+
+        this := @this: androidx.core.provider.FontsContractCompat$FontInfo;
+
+        $u2 := @parameter0: android.net.Uri;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: boolean;
+
+        $u6 := @parameter4: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u-1 = staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($u2);
+
+        $u2 = (android.net.Uri) $u-1;
+
+        this.<androidx.core.provider.FontsContractCompat$FontInfo: android.net.Uri mUri> = $u2;
+
+        this.<androidx.core.provider.FontsContractCompat$FontInfo: int mTtcIndex> = $u3;
+
+        this.<androidx.core.provider.FontsContractCompat$FontInfo: int mWeight> = $u4;
+
+        this.<androidx.core.provider.FontsContractCompat$FontInfo: boolean mItalic> = $u5;
+
+        this.<androidx.core.provider.FontsContractCompat$FontInfo: int mResultCode> = $u6;
+
+        return;
+    }
+
+    public int getResultCode()
+    {
+        androidx.core.provider.FontsContractCompat$FontInfo this;
+        int ret0;
+
+        this := @this: androidx.core.provider.FontsContractCompat$FontInfo;
+
+        ret0 = this.<androidx.core.provider.FontsContractCompat$FontInfo: int mResultCode>;
+
+        return ret0;
+    }
+
+    public int getTtcIndex()
+    {
+        androidx.core.provider.FontsContractCompat$FontInfo this;
+        int ret0;
+
+        this := @this: androidx.core.provider.FontsContractCompat$FontInfo;
+
+        ret0 = this.<androidx.core.provider.FontsContractCompat$FontInfo: int mTtcIndex>;
+
+        return ret0;
+    }
+
+    public android.net.Uri getUri()
+    {
+        androidx.core.provider.FontsContractCompat$FontInfo this;
+        android.net.Uri ret0;
+
+        this := @this: androidx.core.provider.FontsContractCompat$FontInfo;
+
+        ret0 = this.<androidx.core.provider.FontsContractCompat$FontInfo: android.net.Uri mUri>;
+
+        return ret0;
+    }
+
+    public int getWeight()
+    {
+        androidx.core.provider.FontsContractCompat$FontInfo this;
+        int ret0;
+
+        this := @this: androidx.core.provider.FontsContractCompat$FontInfo;
+
+        ret0 = this.<androidx.core.provider.FontsContractCompat$FontInfo: int mWeight>;
+
+        return ret0;
+    }
+
+    public boolean isItalic()
+    {
+        androidx.core.provider.FontsContractCompat$FontInfo this;
+        boolean ret0;
+
+        this := @this: androidx.core.provider.FontsContractCompat$FontInfo;
+
+        ret0 = this.<androidx.core.provider.FontsContractCompat$FontInfo: boolean mItalic>;
+
+        return ret0;
+    }
+}

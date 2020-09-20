@@ -1,0 +1,304 @@
+public class androidx.appcompat.view.SupportActionModeWrapper extends android.view.ActionMode
+{
+    final android.content.Context mContext;
+    final androidx.appcompat.view.ActionMode mWrappedObject;
+
+    public void <init>(android.content.Context, androidx.appcompat.view.ActionMode)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        android.content.Context $u1;
+        androidx.appcompat.view.ActionMode $u2;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: androidx.appcompat.view.ActionMode;
+
+        specialinvoke this.<android.view.ActionMode: void <init>()>();
+
+        this.<androidx.appcompat.view.SupportActionModeWrapper: android.content.Context mContext> = $u1;
+
+        this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject> = $u2;
+
+        return;
+    }
+
+    public void finish()
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        virtualinvoke $u0.<androidx.appcompat.view.ActionMode: void finish()>();
+
+        return;
+    }
+
+    public android.view.View getCustomView()
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        android.view.View $u-1;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.view.ActionMode: android.view.View getCustomView()>();
+
+        return $u-1;
+    }
+
+    public android.view.Menu getMenu()
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        androidx.appcompat.view.menu.MenuWrapperICS $u0;
+        android.content.Context $u1;
+        android.view.Menu $u-1;
+        androidx.appcompat.view.ActionMode $u2;
+        androidx.core.internal.view.SupportMenu $u2#3;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u0 = new androidx.appcompat.view.menu.MenuWrapperICS;
+
+        $u1 = this.<androidx.appcompat.view.SupportActionModeWrapper: android.content.Context mContext>;
+
+        $u2 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        $u-1 = virtualinvoke $u2.<androidx.appcompat.view.ActionMode: android.view.Menu getMenu()>();
+
+        $u2#3 = (androidx.core.internal.view.SupportMenu) $u-1;
+
+        specialinvoke $u0.<androidx.appcompat.view.menu.MenuWrapperICS: void <init>(android.content.Context,androidx.core.internal.view.SupportMenu)>($u1, $u2#3);
+
+        return $u0;
+    }
+
+    public android.view.MenuInflater getMenuInflater()
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        android.view.MenuInflater $u-1;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.view.ActionMode: android.view.MenuInflater getMenuInflater()>();
+
+        return $u-1;
+    }
+
+    public java.lang.CharSequence getSubtitle()
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        java.lang.CharSequence $u-1;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.view.ActionMode: java.lang.CharSequence getSubtitle()>();
+
+        return $u-1;
+    }
+
+    public java.lang.Object getTag()
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        java.lang.Object $u-1;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.view.ActionMode: java.lang.Object getTag()>();
+
+        return $u-1;
+    }
+
+    public java.lang.CharSequence getTitle()
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        java.lang.CharSequence $u-1;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.view.ActionMode: java.lang.CharSequence getTitle()>();
+
+        return $u-1;
+    }
+
+    public boolean getTitleOptionalHint()
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        boolean $u-1;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.view.ActionMode: boolean getTitleOptionalHint()>();
+
+        return $u-1;
+    }
+
+    public void invalidate()
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        virtualinvoke $u0.<androidx.appcompat.view.ActionMode: void invalidate()>();
+
+        return;
+    }
+
+    public boolean isTitleOptional()
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        boolean $u-1;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.view.ActionMode: boolean isTitleOptional()>();
+
+        return $u-1;
+    }
+
+    public void setCustomView(android.view.View)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        android.view.View $u2;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        virtualinvoke $u0.<androidx.appcompat.view.ActionMode: void setCustomView(android.view.View)>($u2);
+
+        return;
+    }
+
+    public void setSubtitle(int)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        int $u2;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        virtualinvoke $u0.<androidx.appcompat.view.ActionMode: void setSubtitle(int)>($u2);
+
+        return;
+    }
+
+    public void setSubtitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        java.lang.CharSequence $u2;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        virtualinvoke $u0.<androidx.appcompat.view.ActionMode: void setSubtitle(java.lang.CharSequence)>($u2);
+
+        return;
+    }
+
+    public void setTag(java.lang.Object)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        java.lang.Object $u2;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        virtualinvoke $u0.<androidx.appcompat.view.ActionMode: void setTag(java.lang.Object)>($u2);
+
+        return;
+    }
+
+    public void setTitle(int)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        int $u2;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        virtualinvoke $u0.<androidx.appcompat.view.ActionMode: void setTitle(int)>($u2);
+
+        return;
+    }
+
+    public void setTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        java.lang.CharSequence $u2;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        virtualinvoke $u0.<androidx.appcompat.view.ActionMode: void setTitle(java.lang.CharSequence)>($u2);
+
+        return;
+    }
+
+    public void setTitleOptionalHint(boolean)
+    {
+        androidx.appcompat.view.SupportActionModeWrapper this;
+        boolean $u2;
+        androidx.appcompat.view.ActionMode $u0;
+
+        this := @this: androidx.appcompat.view.SupportActionModeWrapper;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.view.SupportActionModeWrapper: androidx.appcompat.view.ActionMode mWrappedObject>;
+
+        virtualinvoke $u0.<androidx.appcompat.view.ActionMode: void setTitleOptionalHint(boolean)>($u2);
+
+        return;
+    }
+}

@@ -1,0 +1,62 @@
+public class androidx.lifecycle.Transformations extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.lifecycle.Transformations this;
+
+        this := @this: androidx.lifecycle.Transformations;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.lifecycle.LiveData map(androidx.lifecycle.LiveData, androidx.arch.core.util.Function)
+    {
+        androidx.lifecycle.LiveData source;
+        androidx.arch.core.util.Function mapFunction;
+        androidx.lifecycle.MediatorLiveData result;
+        androidx.lifecycle.Transformations$1 $u1;
+
+        source := @parameter0: androidx.lifecycle.LiveData;
+
+        mapFunction := @parameter1: androidx.arch.core.util.Function;
+
+        result = new androidx.lifecycle.MediatorLiveData;
+
+        specialinvoke result.<androidx.lifecycle.MediatorLiveData: void <init>()>();
+
+        $u1 = new androidx.lifecycle.Transformations$1;
+
+        specialinvoke $u1.<androidx.lifecycle.Transformations$1: void <init>(androidx.lifecycle.MediatorLiveData,androidx.arch.core.util.Function)>(result, mapFunction);
+
+        virtualinvoke result.<androidx.lifecycle.MediatorLiveData: void addSource(androidx.lifecycle.LiveData,androidx.lifecycle.Observer)>(source, $u1);
+
+        return result;
+    }
+
+    public static androidx.lifecycle.LiveData switchMap(androidx.lifecycle.LiveData, androidx.arch.core.util.Function)
+    {
+        androidx.lifecycle.LiveData source;
+        androidx.arch.core.util.Function switchMapFunction;
+        androidx.lifecycle.MediatorLiveData result;
+        androidx.lifecycle.Transformations$2 $u1;
+
+        source := @parameter0: androidx.lifecycle.LiveData;
+
+        switchMapFunction := @parameter1: androidx.arch.core.util.Function;
+
+        result = new androidx.lifecycle.MediatorLiveData;
+
+        specialinvoke result.<androidx.lifecycle.MediatorLiveData: void <init>()>();
+
+        $u1 = new androidx.lifecycle.Transformations$2;
+
+        specialinvoke $u1.<androidx.lifecycle.Transformations$2: void <init>(androidx.arch.core.util.Function,androidx.lifecycle.MediatorLiveData)>(switchMapFunction, result);
+
+        virtualinvoke result.<androidx.lifecycle.MediatorLiveData: void addSource(androidx.lifecycle.LiveData,androidx.lifecycle.Observer)>(source, $u1);
+
+        return result;
+    }
+}

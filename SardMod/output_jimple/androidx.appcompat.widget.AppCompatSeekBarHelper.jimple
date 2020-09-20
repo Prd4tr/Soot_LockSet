@@ -1,0 +1,499 @@
+class androidx.appcompat.widget.AppCompatSeekBarHelper extends androidx.appcompat.widget.AppCompatProgressBarHelper
+{
+    private boolean mHasTickMarkTint;
+    private boolean mHasTickMarkTintMode;
+    private android.graphics.drawable.Drawable mTickMark;
+    private android.content.res.ColorStateList mTickMarkTintList;
+    private android.graphics.PorterDuff$Mode mTickMarkTintMode;
+    private final android.widget.SeekBar mView;
+
+    void <init>(android.widget.SeekBar)
+    {
+        androidx.appcompat.widget.AppCompatSeekBarHelper this;
+        android.widget.SeekBar $u2;
+
+        this := @this: androidx.appcompat.widget.AppCompatSeekBarHelper;
+
+        $u2 := @parameter0: android.widget.SeekBar;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatProgressBarHelper: void <init>(android.widget.ProgressBar)>($u2);
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.content.res.ColorStateList mTickMarkTintList> = null;
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.PorterDuff$Mode mTickMarkTintMode> = null;
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: boolean mHasTickMarkTint> = 0;
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: boolean mHasTickMarkTintMode> = 0;
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView> = $u2;
+
+        return;
+    }
+
+    private void applyTickMarkTint()
+    {
+        androidx.appcompat.widget.AppCompatSeekBarHelper this;
+        android.graphics.drawable.Drawable $u0;
+        boolean $u0#2;
+        android.content.res.ColorStateList $u1;
+        android.graphics.PorterDuff$Mode $u1#13;
+        android.widget.SeekBar $u1#18;
+        int[] $u-1;
+
+        this := @this: androidx.appcompat.widget.AppCompatSeekBarHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        if $u0 == null goto label4;
+
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: boolean mHasTickMarkTint>;
+
+        if $u0#2 != 0 goto label1;
+
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: boolean mHasTickMarkTintMode>;
+
+        if $u0#2 == 0 goto label4;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        $u0 = virtualinvoke $u0.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable mutate()>();
+
+        $u0 = staticinvoke <androidx.core.graphics.drawable.DrawableCompat: android.graphics.drawable.Drawable wrap(android.graphics.drawable.Drawable)>($u0);
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark> = $u0;
+
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: boolean mHasTickMarkTint>;
+
+        if $u0#2 == 0 goto label2;
+
+        $u1 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.content.res.ColorStateList mTickMarkTintList>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintList(android.graphics.drawable.Drawable,android.content.res.ColorStateList)>($u0, $u1);
+
+     label2:
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: boolean mHasTickMarkTintMode>;
+
+        if $u0#2 == 0 goto label3;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        $u1#13 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.PorterDuff$Mode mTickMarkTintMode>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintMode(android.graphics.drawable.Drawable,android.graphics.PorterDuff$Mode)>($u0, $u1#13);
+
+     label3:
+        $u0 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        $u0#2 = virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean isStateful()>();
+
+        if $u0#2 == 0 goto label4;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        $u1#18 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        $u-1 = virtualinvoke $u1#18.<android.widget.SeekBar: int[] getDrawableState()>();
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean setState(int[])>($u-1);
+
+     label4:
+        return;
+    }
+
+    void drawTickMarks(android.graphics.Canvas)
+    {
+        androidx.appcompat.widget.AppCompatSeekBarHelper this;
+        android.graphics.Canvas $u10;
+        android.graphics.drawable.Drawable count;
+        android.widget.SeekBar count#2;
+        int $u-1, halfH, $u-1#7, $u-1#10, i;
+        float spacing, saveCount, $u8;
+
+        this := @this: androidx.appcompat.widget.AppCompatSeekBarHelper;
+
+        $u10 := @parameter0: android.graphics.Canvas;
+
+        count = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        if count == null goto label6;
+
+        count#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        $u-1 = virtualinvoke count#2.<android.widget.SeekBar: int getMax()>();
+
+        halfH = 1;
+
+        if $u-1 <= 1 goto label6;
+
+        count = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        $u-1#7 = virtualinvoke count.<android.graphics.drawable.Drawable: int getIntrinsicWidth()>();
+
+        count = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        $u-1#10 = virtualinvoke count.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+        if $u-1#7 < 0 goto label1;
+
+        $u-1#7 = $u-1#7 / 2;
+
+        goto label2;
+
+     label1:
+        $u-1#7 = 1;
+
+     label2:
+        if $u-1#10 < 0 goto label3;
+
+        halfH = $u-1#10 / 2;
+
+     label3:
+        count = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        $u-1#10 = neg $u-1#7;
+
+        i = neg halfH;
+
+        virtualinvoke count.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>($u-1#10, i, $u-1#7, halfH);
+
+        count#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        halfH = virtualinvoke count#2.<android.widget.SeekBar: int getWidth()>();
+
+        count#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        $u-1#7 = virtualinvoke count#2.<android.widget.SeekBar: int getPaddingLeft()>();
+
+        halfH = halfH - $u-1#7;
+
+        count#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        $u-1#7 = virtualinvoke count#2.<android.widget.SeekBar: int getPaddingRight()>();
+
+        halfH = halfH - $u-1#7;
+
+        spacing = (float) halfH;
+
+        saveCount = (float) $u-1;
+
+        spacing = spacing / saveCount;
+
+        halfH = virtualinvoke $u10.<android.graphics.Canvas: int save()>();
+
+        count#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        $u-1#7 = virtualinvoke count#2.<android.widget.SeekBar: int getPaddingLeft()>();
+
+        saveCount = (float) $u-1#7;
+
+        count#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        $u-1#7 = virtualinvoke count#2.<android.widget.SeekBar: int getHeight()>();
+
+        $u-1#7 = $u-1#7 / 2;
+
+        $u8 = (float) $u-1#7;
+
+        virtualinvoke $u10.<android.graphics.Canvas: void translate(float,float)>(saveCount, $u8);
+
+        $u-1#7 = 0;
+
+     label4:
+        if $u-1#7 > $u-1 goto label5;
+
+        count = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        virtualinvoke count.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>($u10);
+
+        virtualinvoke $u10.<android.graphics.Canvas: void translate(float,float)>(spacing, 0.0F);
+
+        $u-1#7 = $u-1#7 + 1;
+
+        goto label4;
+
+     label5:
+        virtualinvoke $u10.<android.graphics.Canvas: void restoreToCount(int)>(halfH);
+
+     label6:
+        return;
+    }
+
+    void drawableStateChanged()
+    {
+        androidx.appcompat.widget.AppCompatSeekBarHelper this;
+        android.graphics.drawable.Drawable tickMark;
+        boolean $u-1;
+        android.widget.SeekBar $u1;
+        int[] $u-1#4;
+
+        this := @this: androidx.appcompat.widget.AppCompatSeekBarHelper;
+
+        tickMark = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        if tickMark == null goto label1;
+
+        $u-1 = virtualinvoke tickMark.<android.graphics.drawable.Drawable: boolean isStateful()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u1 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        $u-1#4 = virtualinvoke $u1.<android.widget.SeekBar: int[] getDrawableState()>();
+
+        $u-1 = virtualinvoke tickMark.<android.graphics.drawable.Drawable: boolean setState(int[])>($u-1#4);
+
+        if $u-1 == 0 goto label1;
+
+        $u1 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        virtualinvoke $u1.<android.widget.SeekBar: void invalidateDrawable(android.graphics.drawable.Drawable)>(tickMark);
+
+     label1:
+        return;
+    }
+
+    android.graphics.drawable.Drawable getTickMark()
+    {
+        androidx.appcompat.widget.AppCompatSeekBarHelper this;
+        android.graphics.drawable.Drawable ret0;
+
+        this := @this: androidx.appcompat.widget.AppCompatSeekBarHelper;
+
+        ret0 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        return ret0;
+    }
+
+    android.content.res.ColorStateList getTickMarkTintList()
+    {
+        androidx.appcompat.widget.AppCompatSeekBarHelper this;
+        android.content.res.ColorStateList ret0;
+
+        this := @this: androidx.appcompat.widget.AppCompatSeekBarHelper;
+
+        ret0 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.content.res.ColorStateList mTickMarkTintList>;
+
+        return ret0;
+    }
+
+    android.graphics.PorterDuff$Mode getTickMarkTintMode()
+    {
+        androidx.appcompat.widget.AppCompatSeekBarHelper this;
+        android.graphics.PorterDuff$Mode ret0;
+
+        this := @this: androidx.appcompat.widget.AppCompatSeekBarHelper;
+
+        ret0 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.PorterDuff$Mode mTickMarkTintMode>;
+
+        return ret0;
+    }
+
+    void jumpDrawablesToCurrentState()
+    {
+        androidx.appcompat.widget.AppCompatSeekBarHelper this;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatSeekBarHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void jumpToCurrentState()>();
+
+     label1:
+        return;
+    }
+
+    void loadFromAttributes(android.util.AttributeSet, int)
+    {
+        androidx.appcompat.widget.AppCompatSeekBarHelper this;
+        android.util.AttributeSet $u9;
+        int $u10;
+        android.widget.SeekBar a;
+        android.content.Context $u-1;
+        int[] drawable;
+        androidx.appcompat.widget.TintTypedArray $u-1#6;
+        android.content.res.TypedArray $u-1#12;
+        android.graphics.drawable.Drawable $u-1#16;
+        boolean $u-1#23;
+        android.graphics.PorterDuff$Mode $u5;
+        android.content.res.ColorStateList $u-1#37;
+
+        this := @this: androidx.appcompat.widget.AppCompatSeekBarHelper;
+
+        $u9 := @parameter0: android.util.AttributeSet;
+
+        $u10 := @parameter1: int;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatProgressBarHelper: void loadFromAttributes(android.util.AttributeSet,int)>($u9, $u10);
+
+        a = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        $u-1 = virtualinvoke a.<android.widget.SeekBar: android.content.Context getContext()>();
+
+        drawable = <androidx.appcompat.R$styleable: int[] AppCompatSeekBar>;
+
+        $u-1#6 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[],int,int)>($u-1, $u9, drawable, $u10, 0);
+
+        a = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        $u-1 = virtualinvoke a.<android.widget.SeekBar: android.content.Context getContext()>();
+
+        drawable = <androidx.appcompat.R$styleable: int[] AppCompatSeekBar>;
+
+        $u-1#12 = virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: android.content.res.TypedArray getWrappedTypeArray()>();
+
+        staticinvoke <androidx.core.view.ViewCompat: void saveAttributeDataForStyleable(android.view.View,android.content.Context,int[],android.util.AttributeSet,android.content.res.TypedArray,int,int)>(a, $u-1, drawable, $u9, $u-1#12, $u10, 0);
+
+        $u10 = <androidx.appcompat.R$styleable: int AppCompatSeekBar_android_thumb>;
+
+        $u-1#16 = virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawableIfKnown(int)>($u10);
+
+        if $u-1#16 == null goto label1;
+
+        a = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        virtualinvoke a.<android.widget.SeekBar: void setThumb(android.graphics.drawable.Drawable)>($u-1#16);
+
+     label1:
+        $u10 = <androidx.appcompat.R$styleable: int AppCompatSeekBar_tickMark>;
+
+        $u-1#16 = virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>($u10);
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatSeekBarHelper: void setTickMark(android.graphics.drawable.Drawable)>($u-1#16);
+
+        $u10 = <androidx.appcompat.R$styleable: int AppCompatSeekBar_tickMarkTintMode>;
+
+        $u-1#23 = virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>($u10);
+
+        if $u-1#23 == 0 goto label2;
+
+        $u10 = <androidx.appcompat.R$styleable: int AppCompatSeekBar_tickMarkTintMode>;
+
+        $u10 = virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>($u10, -1);
+
+        $u5 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.PorterDuff$Mode mTickMarkTintMode>;
+
+        $u5 = staticinvoke <androidx.appcompat.widget.DrawableUtils: android.graphics.PorterDuff$Mode parseTintMode(int,android.graphics.PorterDuff$Mode)>($u10, $u5);
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.PorterDuff$Mode mTickMarkTintMode> = $u5;
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: boolean mHasTickMarkTintMode> = 1;
+
+     label2:
+        $u10 = <androidx.appcompat.R$styleable: int AppCompatSeekBar_tickMarkTint>;
+
+        $u-1#23 = virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>($u10);
+
+        if $u-1#23 == 0 goto label3;
+
+        $u10 = <androidx.appcompat.R$styleable: int AppCompatSeekBar_tickMarkTint>;
+
+        $u-1#37 = virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: android.content.res.ColorStateList getColorStateList(int)>($u10);
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.content.res.ColorStateList mTickMarkTintList> = $u-1#37;
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: boolean mHasTickMarkTint> = 1;
+
+     label3:
+        virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatSeekBarHelper: void applyTickMarkTint()>();
+
+        return;
+    }
+
+    void setTickMark(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.AppCompatSeekBarHelper this;
+        android.graphics.drawable.Drawable $u3, $u0;
+        android.widget.SeekBar $u0#2;
+        int $u-1;
+        boolean $u-1#6;
+        int[] $u-1#9;
+
+        this := @this: androidx.appcompat.widget.AppCompatSeekBarHelper;
+
+        $u3 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>(null);
+
+     label1:
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.drawable.Drawable mTickMark> = $u3;
+
+        if $u3 == null goto label3;
+
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        virtualinvoke $u3.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>($u0#2);
+
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        $u-1 = staticinvoke <androidx.core.view.ViewCompat: int getLayoutDirection(android.view.View)>($u0#2);
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: boolean setLayoutDirection(android.graphics.drawable.Drawable,int)>($u3, $u-1);
+
+        $u-1#6 = virtualinvoke $u3.<android.graphics.drawable.Drawable: boolean isStateful()>();
+
+        if $u-1#6 == 0 goto label2;
+
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        $u-1#9 = virtualinvoke $u0#2.<android.widget.SeekBar: int[] getDrawableState()>();
+
+        virtualinvoke $u3.<android.graphics.drawable.Drawable: boolean setState(int[])>($u-1#9);
+
+     label2:
+        specialinvoke this.<androidx.appcompat.widget.AppCompatSeekBarHelper: void applyTickMarkTint()>();
+
+     label3:
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.widget.SeekBar mView>;
+
+        virtualinvoke $u0#2.<android.widget.SeekBar: void invalidate()>();
+
+        return;
+    }
+
+    void setTickMarkTintList(android.content.res.ColorStateList)
+    {
+        androidx.appcompat.widget.AppCompatSeekBarHelper this;
+        android.content.res.ColorStateList $u2;
+
+        this := @this: androidx.appcompat.widget.AppCompatSeekBarHelper;
+
+        $u2 := @parameter0: android.content.res.ColorStateList;
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.content.res.ColorStateList mTickMarkTintList> = $u2;
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: boolean mHasTickMarkTint> = 1;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatSeekBarHelper: void applyTickMarkTint()>();
+
+        return;
+    }
+
+    void setTickMarkTintMode(android.graphics.PorterDuff$Mode)
+    {
+        androidx.appcompat.widget.AppCompatSeekBarHelper this;
+        android.graphics.PorterDuff$Mode $u2;
+
+        this := @this: androidx.appcompat.widget.AppCompatSeekBarHelper;
+
+        $u2 := @parameter0: android.graphics.PorterDuff$Mode;
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: android.graphics.PorterDuff$Mode mTickMarkTintMode> = $u2;
+
+        this.<androidx.appcompat.widget.AppCompatSeekBarHelper: boolean mHasTickMarkTintMode> = 1;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatSeekBarHelper: void applyTickMarkTint()>();
+
+        return;
+    }
+}

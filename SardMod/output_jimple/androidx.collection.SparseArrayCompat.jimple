@@ -1,0 +1,1085 @@
+public class androidx.collection.SparseArrayCompat extends java.lang.Object implements java.lang.Cloneable
+{
+    private static final java.lang.Object DELETED;
+    private boolean mGarbage;
+    private int[] mKeys;
+    private int mSize;
+    private java.lang.Object[] mValues;
+
+    static void <clinit>()
+    {
+        java.lang.Object $u0;
+
+        $u0 = new java.lang.Object;
+
+        specialinvoke $u0.<java.lang.Object: void <init>()>();
+
+        <androidx.collection.SparseArrayCompat: java.lang.Object DELETED> = $u0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.collection.SparseArrayCompat this;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        specialinvoke this.<androidx.collection.SparseArrayCompat: void <init>(int)>(10);
+
+        return;
+    }
+
+    public void <init>(int)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u-1;
+        int[] $u0;
+        java.lang.Object[] $u0#4;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u-1 := @parameter0: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.collection.SparseArrayCompat: boolean mGarbage> = 0;
+
+        if $u-1 != 0 goto label1;
+
+        $u0 = <androidx.collection.ContainerHelpers: int[] EMPTY_INTS>;
+
+        this.<androidx.collection.SparseArrayCompat: int[] mKeys> = $u0;
+
+        $u0#4 = <androidx.collection.ContainerHelpers: java.lang.Object[] EMPTY_OBJECTS>;
+
+        this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues> = $u0#4;
+
+        return;
+
+     label1:
+        $u-1 = staticinvoke <androidx.collection.ContainerHelpers: int idealIntArraySize(int)>($u-1);
+
+        $u0 = newarray (int)[$u-1];
+
+        this.<androidx.collection.SparseArrayCompat: int[] mKeys> = $u0;
+
+        $u0#4 = newarray (java.lang.Object)[$u-1];
+
+        this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues> = $u0#4;
+
+        return;
+    }
+
+    private void gc()
+    {
+        androidx.collection.SparseArrayCompat this;
+        int n, o, i, $u6#4;
+        int[] keys;
+        java.lang.Object[] values;
+        java.lang.Object val, $u6;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        n = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        o = 0;
+
+        keys = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        values = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        i = 0;
+
+     label1:
+        if i >= n goto label4;
+
+        val = values[i];
+
+        $u6 = <androidx.collection.SparseArrayCompat: java.lang.Object DELETED>;
+
+        if val == $u6 goto label3;
+
+        if i == o goto label2;
+
+        $u6#4 = keys[i];
+
+        keys[o] = $u6#4;
+
+        values[o] = val;
+
+        values[i] = null;
+
+     label2:
+        o = o + 1;
+
+     label3:
+        i = i + 1;
+
+        goto label1;
+
+     label4:
+        this.<androidx.collection.SparseArrayCompat: boolean mGarbage> = 0;
+
+        this.<androidx.collection.SparseArrayCompat: int mSize> = o;
+
+        return;
+    }
+
+    public void append(int, java.lang.Object)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u8, $u-1, pos;
+        java.lang.Object value;
+        int[] nkeys, $u4;
+        java.lang.Object[] nvalues, $u4#16;
+        boolean pos#5;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u8 := @parameter0: int;
+
+        value := @parameter1: java.lang.Object;
+
+        pos = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        if pos == 0 goto label1;
+
+        nkeys = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        pos = pos + -1;
+
+        pos = nkeys[pos];
+
+        if $u8 > pos goto label1;
+
+        virtualinvoke this.<androidx.collection.SparseArrayCompat: void put(int,java.lang.Object)>($u8, value);
+
+        return;
+
+     label1:
+        pos#5 = this.<androidx.collection.SparseArrayCompat: boolean mGarbage>;
+
+        if pos#5 == 0 goto label2;
+
+        pos = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        nkeys = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        $u-1 = lengthof nkeys;
+
+        if pos < $u-1 goto label2;
+
+        specialinvoke this.<androidx.collection.SparseArrayCompat: void gc()>();
+
+     label2:
+        pos = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        nkeys = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        $u-1 = lengthof nkeys;
+
+        if pos < $u-1 goto label3;
+
+        $u-1 = pos + 1;
+
+        $u-1 = staticinvoke <androidx.collection.ContainerHelpers: int idealIntArraySize(int)>($u-1);
+
+        nkeys = newarray (int)[$u-1];
+
+        nvalues = newarray (java.lang.Object)[$u-1];
+
+        $u4 = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        $u-1 = lengthof $u4;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u4, 0, nkeys, 0, $u-1);
+
+        $u4#16 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        $u-1 = lengthof $u4#16;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u4#16, 0, nvalues, 0, $u-1);
+
+        this.<androidx.collection.SparseArrayCompat: int[] mKeys> = nkeys;
+
+        this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues> = nvalues;
+
+     label3:
+        nkeys = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        nkeys[pos] = $u8;
+
+        nvalues = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        nvalues[pos] = value;
+
+        $u8 = pos + 1;
+
+        this.<androidx.collection.SparseArrayCompat: int mSize> = $u8;
+
+        return;
+    }
+
+    public void clear()
+    {
+        androidx.collection.SparseArrayCompat this;
+        int n, i;
+        java.lang.Object[] values;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        n = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        values = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        i = 0;
+
+     label1:
+        if i >= n goto label2;
+
+        values[i] = null;
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        this.<androidx.collection.SparseArrayCompat: int mSize> = 0;
+
+        this.<androidx.collection.SparseArrayCompat: boolean mGarbage> = 0;
+
+        return;
+    }
+
+    public androidx.collection.SparseArrayCompat clone()
+    {
+        androidx.collection.SparseArrayCompat this, clone;
+        java.lang.Object $u-1;
+        int[] $u1;
+        java.lang.Object[] $u1#8;
+        java.lang.CloneNotSupportedException clone#12;
+        java.lang.AssertionError $u1#13;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+     label1:
+        $u-1 = specialinvoke this.<java.lang.Object: java.lang.Object clone()>();
+
+     label2:
+        clone = (androidx.collection.SparseArrayCompat) $u-1;
+
+        $u1 = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+     label3:
+        $u-1 = virtualinvoke $u1.<java.lang.Object: java.lang.Object clone()>();
+
+     label4:
+        $u1 = (int[]) $u-1;
+
+        clone.<androidx.collection.SparseArrayCompat: int[] mKeys> = $u1;
+
+        $u1#8 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+     label5:
+        $u-1 = virtualinvoke $u1#8.<java.lang.Object: java.lang.Object clone()>();
+
+     label6:
+        $u1#8 = (java.lang.Object[]) $u-1;
+
+        clone.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues> = $u1#8;
+
+        return clone;
+
+     label7:
+        clone#12 := @caughtexception;
+
+        $u1#13 = new java.lang.AssertionError;
+
+        specialinvoke $u1#13.<java.lang.AssertionError: void <init>(java.lang.Object)>(clone#12);
+
+        throw $u1#13;
+
+        catch java.lang.CloneNotSupportedException from label1 to label2 with label7;
+        catch java.lang.CloneNotSupportedException from label3 to label4 with label7;
+        catch java.lang.CloneNotSupportedException from label5 to label6 with label7;
+    }
+
+    public volatile java.lang.Object clone() throws java.lang.CloneNotSupportedException
+    {
+        androidx.collection.SparseArrayCompat this;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        this = virtualinvoke this.<androidx.collection.SparseArrayCompat: androidx.collection.SparseArrayCompat clone()>();
+
+        return this;
+    }
+
+    public boolean containsKey(int)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u2;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u2 := @parameter0: int;
+
+        $u2 = virtualinvoke this.<androidx.collection.SparseArrayCompat: int indexOfKey(int)>($u2);
+
+        if $u2 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean containsValue(java.lang.Object)
+    {
+        androidx.collection.SparseArrayCompat this;
+        java.lang.Object value;
+        int $u-1;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        value := @parameter0: java.lang.Object;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SparseArrayCompat: int indexOfValue(java.lang.Object)>(value);
+
+        if $u-1 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void delete(int)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u1;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u1 := @parameter0: int;
+
+        virtualinvoke this.<androidx.collection.SparseArrayCompat: void remove(int)>($u1);
+
+        return;
+    }
+
+    public java.lang.Object get(int)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u2;
+        java.lang.Object $u-1;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u2 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SparseArrayCompat: java.lang.Object get(int,java.lang.Object)>($u2, null);
+
+        return $u-1;
+    }
+
+    public java.lang.Object get(int, java.lang.Object)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u5, $u1;
+        java.lang.Object valueIfKeyNotFound, $u2, $u3;
+        int[] i;
+        java.lang.Object[] $u1#4;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u5 := @parameter0: int;
+
+        valueIfKeyNotFound := @parameter1: java.lang.Object;
+
+        i = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        $u1 = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        $u5 = staticinvoke <androidx.collection.ContainerHelpers: int binarySearch(int[],int,int)>(i, $u1, $u5);
+
+        if $u5 < 0 goto label2;
+
+        $u1#4 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        $u2 = $u1#4[$u5];
+
+        $u3 = <androidx.collection.SparseArrayCompat: java.lang.Object DELETED>;
+
+        if $u2 != $u3 goto label1;
+
+        return valueIfKeyNotFound;
+
+     label1:
+        valueIfKeyNotFound = $u1#4[$u5];
+
+     label2:
+        return valueIfKeyNotFound;
+    }
+
+    public int indexOfKey(int)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u3, $u1;
+        boolean $u0;
+        int[] $u0#2;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.collection.SparseArrayCompat: boolean mGarbage>;
+
+        if $u0 == 0 goto label1;
+
+        specialinvoke this.<androidx.collection.SparseArrayCompat: void gc()>();
+
+     label1:
+        $u0#2 = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        $u1 = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        $u3 = staticinvoke <androidx.collection.ContainerHelpers: int binarySearch(int[],int,int)>($u0#2, $u1, $u3);
+
+        return $u3;
+    }
+
+    public int indexOfValue(java.lang.Object)
+    {
+        androidx.collection.SparseArrayCompat this;
+        java.lang.Object value, $u1#5;
+        boolean i;
+        int i#2, $u1;
+        java.lang.Object[] $u1#4;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        value := @parameter0: java.lang.Object;
+
+        i = this.<androidx.collection.SparseArrayCompat: boolean mGarbage>;
+
+        if i == 0 goto label1;
+
+        specialinvoke this.<androidx.collection.SparseArrayCompat: void gc()>();
+
+     label1:
+        i#2 = 0;
+
+     label2:
+        $u1 = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        if i#2 >= $u1 goto label4;
+
+        $u1#4 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        $u1#5 = $u1#4[i#2];
+
+        if $u1#5 != value goto label3;
+
+        return i#2;
+
+     label3:
+        i#2 = i#2 + 1;
+
+        goto label2;
+
+     label4:
+        return -1;
+    }
+
+    public boolean isEmpty()
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u-1;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SparseArrayCompat: int size()>();
+
+        if $u-1 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public int keyAt(int)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u2;
+        boolean $u0;
+        int[] $u0#2;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.collection.SparseArrayCompat: boolean mGarbage>;
+
+        if $u0 == 0 goto label1;
+
+        specialinvoke this.<androidx.collection.SparseArrayCompat: void gc()>();
+
+     label1:
+        $u0#2 = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        $u2 = $u0#2[$u2];
+
+        return $u2;
+    }
+
+    public void put(int, java.lang.Object)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u8, n, n#7, nkeys#15;
+        java.lang.Object value, nkeys, nvalues;
+        int[] i, $u4;
+        java.lang.Object[] n#5, $u4#30;
+        boolean n#12;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u8 := @parameter0: int;
+
+        value := @parameter1: java.lang.Object;
+
+        i = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        n = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        n = staticinvoke <androidx.collection.ContainerHelpers: int binarySearch(int[],int,int)>(i, n, $u8);
+
+        if n < 0 goto label1;
+
+        n#5 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        n#5[n] = value;
+
+        return;
+
+     label1:
+        n = n ^ -1;
+
+        n#7 = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        if n >= n#7 goto label2;
+
+        n#5 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        nkeys = n#5[n];
+
+        nvalues = <androidx.collection.SparseArrayCompat: java.lang.Object DELETED>;
+
+        if nkeys != nvalues goto label2;
+
+        i = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        i[n] = $u8;
+
+        n#5[n] = value;
+
+        return;
+
+     label2:
+        n#12 = this.<androidx.collection.SparseArrayCompat: boolean mGarbage>;
+
+        if n#12 == 0 goto label3;
+
+        n#7 = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        i = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        nkeys#15 = lengthof i;
+
+        if n#7 < nkeys#15 goto label3;
+
+        specialinvoke this.<androidx.collection.SparseArrayCompat: void gc()>();
+
+        i = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        n = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        n = staticinvoke <androidx.collection.ContainerHelpers: int binarySearch(int[],int,int)>(i, n, $u8);
+
+        n = n ^ -1;
+
+     label3:
+        n#7 = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        i = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        nkeys#15 = lengthof i;
+
+        if n#7 < nkeys#15 goto label4;
+
+        n#7 = n#7 + 1;
+
+        n#7 = staticinvoke <androidx.collection.ContainerHelpers: int idealIntArraySize(int)>(n#7);
+
+        i = newarray (int)[n#7];
+
+        n#5 = newarray (java.lang.Object)[n#7];
+
+        $u4 = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        n#7 = lengthof $u4;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u4, 0, i, 0, n#7);
+
+        $u4#30 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        n#7 = lengthof $u4#30;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u4#30, 0, n#5, 0, n#7);
+
+        this.<androidx.collection.SparseArrayCompat: int[] mKeys> = i;
+
+        this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues> = n#5;
+
+     label4:
+        n#7 = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        nkeys#15 = n#7 - n;
+
+        if nkeys#15 == 0 goto label5;
+
+        i = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        nkeys#15 = n + 1;
+
+        n#7 = n#7 - n;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(i, n, i, nkeys#15, n#7);
+
+        n#5 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        n#7 = n + 1;
+
+        nkeys#15 = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        nkeys#15 = nkeys#15 - n;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(n#5, n, n#5, n#7, nkeys#15);
+
+     label5:
+        i = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        i[n] = $u8;
+
+        n#5 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        n#5[n] = value;
+
+        $u8 = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        $u8 = $u8 + 1;
+
+        this.<androidx.collection.SparseArrayCompat: int mSize> = $u8;
+
+        return;
+    }
+
+    public void putAll(androidx.collection.SparseArrayCompat)
+    {
+        androidx.collection.SparseArrayCompat this, other;
+        int i, $u-1, $u-1#3;
+        java.lang.Object $u-1#4;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        other := @parameter0: androidx.collection.SparseArrayCompat;
+
+        i = 0;
+
+        $u-1 = virtualinvoke other.<androidx.collection.SparseArrayCompat: int size()>();
+
+     label1:
+        if i >= $u-1 goto label2;
+
+        $u-1#3 = virtualinvoke other.<androidx.collection.SparseArrayCompat: int keyAt(int)>(i);
+
+        $u-1#4 = virtualinvoke other.<androidx.collection.SparseArrayCompat: java.lang.Object valueAt(int)>(i);
+
+        virtualinvoke this.<androidx.collection.SparseArrayCompat: void put(int,java.lang.Object)>($u-1#3, $u-1#4);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public java.lang.Object putIfAbsent(int, java.lang.Object)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u2;
+        java.lang.Object value, $u-1;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u2 := @parameter0: int;
+
+        value := @parameter1: java.lang.Object;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SparseArrayCompat: java.lang.Object get(int)>($u2);
+
+        if $u-1 != null goto label1;
+
+        virtualinvoke this.<androidx.collection.SparseArrayCompat: void put(int,java.lang.Object)>($u2, value);
+
+     label1:
+        return $u-1;
+    }
+
+    public void remove(int)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u5, $u1;
+        java.lang.Object $u2, $u3;
+        int[] i;
+        java.lang.Object[] $u1#4;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u5 := @parameter0: int;
+
+        i = this.<androidx.collection.SparseArrayCompat: int[] mKeys>;
+
+        $u1 = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        $u5 = staticinvoke <androidx.collection.ContainerHelpers: int binarySearch(int[],int,int)>(i, $u1, $u5);
+
+        if $u5 < 0 goto label1;
+
+        $u1#4 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        $u2 = $u1#4[$u5];
+
+        $u3 = <androidx.collection.SparseArrayCompat: java.lang.Object DELETED>;
+
+        if $u2 == $u3 goto label1;
+
+        $u1#4[$u5] = $u3;
+
+        this.<androidx.collection.SparseArrayCompat: boolean mGarbage> = 1;
+
+     label1:
+        return;
+    }
+
+    public boolean remove(int, java.lang.Object)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u4;
+        java.lang.Object $u5, $u-1;
+        boolean $u-1#4;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: java.lang.Object;
+
+        $u4 = virtualinvoke this.<androidx.collection.SparseArrayCompat: int indexOfKey(int)>($u4);
+
+        if $u4 < 0 goto label2;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SparseArrayCompat: java.lang.Object valueAt(int)>($u4);
+
+        if $u5 == $u-1 goto label1;
+
+        if $u5 == null goto label2;
+
+        $u-1#4 = virtualinvoke $u5.<java.lang.Object: boolean equals(java.lang.Object)>($u-1);
+
+        if $u-1#4 == 0 goto label2;
+
+     label1:
+        virtualinvoke this.<androidx.collection.SparseArrayCompat: void removeAt(int)>($u4);
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public void removeAt(int)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u4;
+        java.lang.Object $u1, $u2;
+        java.lang.Object[] $u0;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u4 := @parameter0: int;
+
+        $u0 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        $u1 = $u0[$u4];
+
+        $u2 = <androidx.collection.SparseArrayCompat: java.lang.Object DELETED>;
+
+        if $u1 == $u2 goto label1;
+
+        $u0[$u4] = $u2;
+
+        this.<androidx.collection.SparseArrayCompat: boolean mGarbage> = 1;
+
+     label1:
+        return;
+    }
+
+    public void removeAtRange(int, int)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u3, $u4, end;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u3 := @parameter0: int;
+
+        $u4 := @parameter1: int;
+
+        end = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        $u4 = $u3 + $u4;
+
+        $u4 = staticinvoke <java.lang.Math: int min(int,int)>(end, $u4);
+
+     label1:
+        if $u3 >= $u4 goto label2;
+
+        virtualinvoke this.<androidx.collection.SparseArrayCompat: void removeAt(int)>($u3);
+
+        $u3 = $u3 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public java.lang.Object replace(int, java.lang.Object)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u4;
+        java.lang.Object value, oldValue;
+        java.lang.Object[] $u1;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u4 := @parameter0: int;
+
+        value := @parameter1: java.lang.Object;
+
+        $u4 = virtualinvoke this.<androidx.collection.SparseArrayCompat: int indexOfKey(int)>($u4);
+
+        if $u4 < 0 goto label1;
+
+        $u1 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        oldValue = $u1[$u4];
+
+        $u1[$u4] = value;
+
+        return oldValue;
+
+     label1:
+        return null;
+    }
+
+    public boolean replace(int, java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u4;
+        java.lang.Object oldValue, newValue, mapValue#3;
+        java.lang.Object[] mapValue;
+        boolean $u-1;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u4 := @parameter0: int;
+
+        oldValue := @parameter1: java.lang.Object;
+
+        newValue := @parameter2: java.lang.Object;
+
+        $u4 = virtualinvoke this.<androidx.collection.SparseArrayCompat: int indexOfKey(int)>($u4);
+
+        if $u4 < 0 goto label2;
+
+        mapValue = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        mapValue#3 = mapValue[$u4];
+
+        if mapValue#3 == oldValue goto label1;
+
+        if oldValue == null goto label2;
+
+        $u-1 = virtualinvoke oldValue.<java.lang.Object: boolean equals(java.lang.Object)>(mapValue#3);
+
+        if $u-1 == 0 goto label2;
+
+     label1:
+        mapValue = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        mapValue[$u4] = newValue;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public void setValueAt(int, java.lang.Object)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u2;
+        java.lang.Object value;
+        boolean $u0;
+        java.lang.Object[] $u0#2;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u2 := @parameter0: int;
+
+        value := @parameter1: java.lang.Object;
+
+        $u0 = this.<androidx.collection.SparseArrayCompat: boolean mGarbage>;
+
+        if $u0 == 0 goto label1;
+
+        specialinvoke this.<androidx.collection.SparseArrayCompat: void gc()>();
+
+     label1:
+        $u0#2 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        $u0#2[$u2] = value;
+
+        return;
+    }
+
+    public int size()
+    {
+        androidx.collection.SparseArrayCompat this;
+        boolean $u0;
+        int ret0;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u0 = this.<androidx.collection.SparseArrayCompat: boolean mGarbage>;
+
+        if $u0 == 0 goto label1;
+
+        specialinvoke this.<androidx.collection.SparseArrayCompat: void gc()>();
+
+     label1:
+        ret0 = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        return ret0;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u-1, key;
+        java.lang.StringBuilder buffer;
+        java.lang.Object $u-1#14;
+        java.lang.String $u-1#17;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SparseArrayCompat: int size()>();
+
+        if $u-1 > 0 goto label1;
+
+        return "{}";
+
+     label1:
+        buffer = new java.lang.StringBuilder;
+
+        $u-1 = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        $u-1 = $u-1 * 28;
+
+        specialinvoke buffer.<java.lang.StringBuilder: void <init>(int)>($u-1);
+
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(123);
+
+        $u-1 = 0;
+
+     label2:
+        key = this.<androidx.collection.SparseArrayCompat: int mSize>;
+
+        if $u-1 >= key goto label6;
+
+        if $u-1 <= 0 goto label3;
+
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ");
+
+     label3:
+        key = virtualinvoke this.<androidx.collection.SparseArrayCompat: int keyAt(int)>($u-1);
+
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(key);
+
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(61);
+
+        $u-1#14 = virtualinvoke this.<androidx.collection.SparseArrayCompat: java.lang.Object valueAt(int)>($u-1);
+
+        if $u-1#14 == this goto label4;
+
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u-1#14);
+
+        goto label5;
+
+     label4:
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(this Map)");
+
+     label5:
+        $u-1 = $u-1 + 1;
+
+        goto label2;
+
+     label6:
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125);
+
+        $u-1#17 = virtualinvoke buffer.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1#17;
+    }
+
+    public java.lang.Object valueAt(int)
+    {
+        androidx.collection.SparseArrayCompat this;
+        int $u2;
+        boolean $u0;
+        java.lang.Object[] $u0#2;
+        java.lang.Object $u0#3;
+
+        this := @this: androidx.collection.SparseArrayCompat;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.collection.SparseArrayCompat: boolean mGarbage>;
+
+        if $u0 == 0 goto label1;
+
+        specialinvoke this.<androidx.collection.SparseArrayCompat: void gc()>();
+
+     label1:
+        $u0#2 = this.<androidx.collection.SparseArrayCompat: java.lang.Object[] mValues>;
+
+        $u0#3 = $u0#2[$u2];
+
+        return $u0#3;
+    }
+}

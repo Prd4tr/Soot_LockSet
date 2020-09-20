@@ -1,0 +1,163 @@
+public class androidx.constraintlayout.solver.state.helpers.BarrierReference extends androidx.constraintlayout.solver.state.HelperReference
+{
+    private androidx.constraintlayout.solver.widgets.Barrier mBarrierWidget;
+    private androidx.constraintlayout.solver.state.State$Direction mDirection;
+    private int mMargin;
+
+    public void <init>(androidx.constraintlayout.solver.state.State)
+    {
+        androidx.constraintlayout.solver.state.helpers.BarrierReference this;
+        androidx.constraintlayout.solver.state.State $u2;
+        androidx.constraintlayout.solver.state.State$Helper $u0;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.BarrierReference;
+
+        $u2 := @parameter0: androidx.constraintlayout.solver.state.State;
+
+        $u0 = <androidx.constraintlayout.solver.state.State$Helper: androidx.constraintlayout.solver.state.State$Helper BARRIER>;
+
+        specialinvoke this.<androidx.constraintlayout.solver.state.HelperReference: void <init>(androidx.constraintlayout.solver.state.State,androidx.constraintlayout.solver.state.State$Helper)>($u2, $u0);
+
+        return;
+    }
+
+    public void apply()
+    {
+        androidx.constraintlayout.solver.state.helpers.BarrierReference this;
+        int $u-1;
+        byte direction;
+        int[] $u1;
+        androidx.constraintlayout.solver.state.State$Direction $u2;
+        androidx.constraintlayout.solver.widgets.Barrier $u1#6;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.BarrierReference;
+
+        virtualinvoke this.<androidx.constraintlayout.solver.state.helpers.BarrierReference: androidx.constraintlayout.solver.widgets.HelperWidget getHelperWidget()>();
+
+        direction = 0;
+
+        $u1 = <androidx.constraintlayout.solver.state.helpers.BarrierReference$1: int[] $SwitchMap$androidx$constraintlayout$solver$state$State$Direction>;
+
+        $u2 = this.<androidx.constraintlayout.solver.state.helpers.BarrierReference: androidx.constraintlayout.solver.state.State$Direction mDirection>;
+
+        $u-1 = virtualinvoke $u2.<androidx.constraintlayout.solver.state.State$Direction: int ordinal()>();
+
+        $u-1 = $u1[$u-1];
+
+        lookupswitch($u-1)
+        {
+            case 1: goto label5;
+            case 2: goto label5;
+            case 3: goto label4;
+            case 4: goto label4;
+            case 5: goto label3;
+            case 6: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        goto label6;
+
+     label2:
+        direction = 3;
+
+        goto label6;
+
+     label3:
+        direction = 2;
+
+        goto label6;
+
+     label4:
+        direction = 1;
+
+        goto label6;
+
+     label5:
+        direction = 0;
+
+     label6:
+        $u1#6 = this.<androidx.constraintlayout.solver.state.helpers.BarrierReference: androidx.constraintlayout.solver.widgets.Barrier mBarrierWidget>;
+
+        virtualinvoke $u1#6.<androidx.constraintlayout.solver.widgets.Barrier: void setBarrierType(int)>(direction);
+
+        $u1#6 = this.<androidx.constraintlayout.solver.state.helpers.BarrierReference: androidx.constraintlayout.solver.widgets.Barrier mBarrierWidget>;
+
+        $u-1 = this.<androidx.constraintlayout.solver.state.helpers.BarrierReference: int mMargin>;
+
+        virtualinvoke $u1#6.<androidx.constraintlayout.solver.widgets.Barrier: void setMargin(int)>($u-1);
+
+        return;
+    }
+
+    public androidx.constraintlayout.solver.widgets.HelperWidget getHelperWidget()
+    {
+        androidx.constraintlayout.solver.state.helpers.BarrierReference this;
+        androidx.constraintlayout.solver.widgets.Barrier $u0;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.BarrierReference;
+
+        $u0 = this.<androidx.constraintlayout.solver.state.helpers.BarrierReference: androidx.constraintlayout.solver.widgets.Barrier mBarrierWidget>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new androidx.constraintlayout.solver.widgets.Barrier;
+
+        specialinvoke $u0.<androidx.constraintlayout.solver.widgets.Barrier: void <init>()>();
+
+        this.<androidx.constraintlayout.solver.state.helpers.BarrierReference: androidx.constraintlayout.solver.widgets.Barrier mBarrierWidget> = $u0;
+
+     label1:
+        $u0 = this.<androidx.constraintlayout.solver.state.helpers.BarrierReference: androidx.constraintlayout.solver.widgets.Barrier mBarrierWidget>;
+
+        return $u0;
+    }
+
+    public void margin(int)
+    {
+        androidx.constraintlayout.solver.state.helpers.BarrierReference this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.BarrierReference;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.state.helpers.BarrierReference: int mMargin> = $u1;
+
+        return;
+    }
+
+    public void margin(java.lang.Object)
+    {
+        androidx.constraintlayout.solver.state.helpers.BarrierReference this;
+        java.lang.Object $u2;
+        int $u-1;
+        androidx.constraintlayout.solver.state.State $u0;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.BarrierReference;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        $u0 = this.<androidx.constraintlayout.solver.state.helpers.BarrierReference: androidx.constraintlayout.solver.state.State mState>;
+
+        $u-1 = virtualinvoke $u0.<androidx.constraintlayout.solver.state.State: int convertDimension(java.lang.Object)>($u2);
+
+        virtualinvoke this.<androidx.constraintlayout.solver.state.helpers.BarrierReference: void margin(int)>($u-1);
+
+        return;
+    }
+
+    public void setBarrierDirection(androidx.constraintlayout.solver.state.State$Direction)
+    {
+        androidx.constraintlayout.solver.state.helpers.BarrierReference this;
+        androidx.constraintlayout.solver.state.State$Direction $u1;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.BarrierReference;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.state.State$Direction;
+
+        this.<androidx.constraintlayout.solver.state.helpers.BarrierReference: androidx.constraintlayout.solver.state.State$Direction mDirection> = $u1;
+
+        return;
+    }
+}

@@ -1,0 +1,21 @@
+public interface  androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker extends java.lang.Object
+{
+
+    public abstract void addMovement(android.view.MotionEvent);
+
+    public abstract void clear();
+
+    public abstract void computeCurrentVelocity(int);
+
+    public abstract void computeCurrentVelocity(int, float);
+
+    public abstract float getXVelocity();
+
+    public abstract float getXVelocity(int);
+
+    public abstract float getYVelocity();
+
+    public abstract float getYVelocity(int);
+
+    public abstract void recycle();
+}

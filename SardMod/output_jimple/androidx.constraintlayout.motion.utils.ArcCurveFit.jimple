@@ -1,0 +1,874 @@
+class androidx.constraintlayout.motion.utils.ArcCurveFit extends androidx.constraintlayout.motion.utils.CurveFit
+{
+    public static final int ARC_START_FLIP;
+    public static final int ARC_START_HORIZONTAL;
+    public static final int ARC_START_LINEAR;
+    public static final int ARC_START_VERTICAL;
+    private static final int START_HORIZONTAL;
+    private static final int START_LINEAR;
+    private static final int START_VERTICAL;
+    androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs;
+    private final double[] mTime;
+
+    public void <init>(int[], double[], double[][])
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit this;
+        int[] $u25;
+        double[] $u26, $u6#15;
+        double[][] $u27;
+        double $u10, $u12, $u15, $u17, $u21, $u8;
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc $u20;
+        int mode, $u6;
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mode#3;
+        byte mode#4, last, $u7;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit;
+
+        $u25 := @parameter0: int[];
+
+        $u26 := @parameter1: double[];
+
+        $u27 := @parameter2: double[][];
+
+        specialinvoke this.<androidx.constraintlayout.motion.utils.CurveFit: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit: double[] mTime> = $u26;
+
+        mode = lengthof $u26;
+
+        mode = mode - 1;
+
+        mode#3 = newarray (androidx.constraintlayout.motion.utils.ArcCurveFit$Arc)[mode];
+
+        this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs> = mode#3;
+
+        mode#4 = 1;
+
+        last = 1;
+
+        mode = 0;
+
+     label1:
+        mode#3 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u6 = lengthof mode#3;
+
+        if mode >= $u6 goto label9;
+
+        $u6 = $u25[mode];
+
+        if $u6 == 0 goto label7;
+
+        if $u6 == 1 goto label6;
+
+        $u7 = 2;
+
+        if $u6 == 2 goto label5;
+
+        if $u6 == 3 goto label2;
+
+        goto label8;
+
+     label2:
+        if last != 1 goto label3;
+
+        goto label4;
+
+     label3:
+        $u7 = 1;
+
+     label4:
+        mode#4 = $u7;
+
+        last = $u7;
+
+        goto label8;
+
+     label5:
+        mode#4 = 2;
+
+        last = 2;
+
+        goto label8;
+
+     label6:
+        mode#4 = 1;
+
+        last = 1;
+
+        goto label8;
+
+     label7:
+        mode#4 = 3;
+
+     label8:
+        mode#3 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u20 = new androidx.constraintlayout.motion.utils.ArcCurveFit$Arc;
+
+        $u8 = $u26[mode];
+
+        $u6 = mode + 1;
+
+        $u10 = $u26[$u6];
+
+        $u6#15 = $u27[mode];
+
+        $u12 = $u6#15[0];
+
+        $u6#15 = $u27[mode];
+
+        $u15 = $u6#15[1];
+
+        $u6 = mode + 1;
+
+        $u6#15 = $u27[$u6];
+
+        $u17 = $u6#15[0];
+
+        $u6 = mode + 1;
+
+        $u6#15 = $u27[$u6];
+
+        $u21 = $u6#15[1];
+
+        specialinvoke $u20.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: void <init>(int,double,double,double,double,double,double)>(mode#4, $u8, $u10, $u12, $u15, $u17, $u21);
+
+        mode#3[mode] = $u20;
+
+        mode = mode + 1;
+
+        goto label1;
+
+     label9:
+        return;
+    }
+
+    public double getPos(double, int)
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit this;
+        int $u7, $u1, $u2#21;
+        byte $u3;
+        double $u5, $u2;
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] i;
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc i#4;
+        boolean $u1#26;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit;
+
+        $u5 := @parameter0: double;
+
+        $u7 := @parameter1: int;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[0];
+
+        $u2 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+        $u3 = $u5 cmpg $u2;
+
+        if $u3 >= 0 goto label1;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[0];
+
+        $u5 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+        goto label2;
+
+     label1:
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u1 = lengthof i;
+
+        $u1 = $u1 + -1;
+
+        i#4 = i[$u1];
+
+        $u2 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+        $u3 = $u5 cmpl $u2;
+
+        if $u3 <= 0 goto label2;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u1 = lengthof i;
+
+        $u1 = $u1 + -1;
+
+        i#4 = i[$u1];
+
+        $u5 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+     label2:
+        $u1 = 0;
+
+     label3:
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u2#21 = lengthof i;
+
+        if $u1 >= $u2#21 goto label8;
+
+        i#4 = i[$u1];
+
+        $u2 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+        $u3 = $u5 cmpg $u2;
+
+        if $u3 > 0 goto label7;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u1];
+
+        $u1#26 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean linear>;
+
+        if $u1#26 == 0 goto label5;
+
+        if $u7 != 0 goto label4;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u1];
+
+        $u5 = virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getLinearX(double)>($u5);
+
+        return $u5;
+
+     label4:
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u1];
+
+        $u5 = virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getLinearY(double)>($u5);
+
+        return $u5;
+
+     label5:
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u1];
+
+        virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: void setPoint(double)>($u5);
+
+        if $u7 != 0 goto label6;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u1];
+
+        $u5 = virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getX()>();
+
+        return $u5;
+
+     label6:
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u1];
+
+        $u5 = virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getY()>();
+
+        return $u5;
+
+     label7:
+        $u1 = $u1 + 1;
+
+        goto label3;
+
+     label8:
+        return #NaN;
+    }
+
+    public void getPos(double, double[])
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit this;
+        double[] $u9;
+        double $u7, $u2;
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] i;
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc i#4;
+        byte i#6;
+        int $u2#10, $u4;
+        boolean $u2#27;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit;
+
+        $u7 := @parameter0: double;
+
+        $u9 := @parameter1: double[];
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[0];
+
+        $u2 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+        i#6 = $u7 cmpg $u2;
+
+        if i#6 >= 0 goto label1;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[0];
+
+        $u7 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+     label1:
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u2#10 = lengthof i;
+
+        $u2#10 = $u2#10 - 1;
+
+        i#4 = i[$u2#10];
+
+        $u2 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+        i#6 = $u7 cmpl $u2;
+
+        if i#6 <= 0 goto label2;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u2#10 = lengthof i;
+
+        $u2#10 = $u2#10 - 1;
+
+        i#4 = i[$u2#10];
+
+        $u7 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+     label2:
+        $u2#10 = 0;
+
+     label3:
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u4 = lengthof i;
+
+        if $u2#10 >= $u4 goto label6;
+
+        i#4 = i[$u2#10];
+
+        $u2 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+        i#6 = $u7 cmpg $u2;
+
+        if i#6 > 0 goto label5;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u2#10];
+
+        $u2#27 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean linear>;
+
+        if $u2#27 == 0 goto label4;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u2#10];
+
+        $u2 = virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getLinearX(double)>($u7);
+
+        $u9[0] = $u2;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u2#10];
+
+        $u7 = virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getLinearY(double)>($u7);
+
+        $u9[1] = $u7;
+
+        return;
+
+     label4:
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u2#10];
+
+        virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: void setPoint(double)>($u7);
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u2#10];
+
+        $u7 = virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getX()>();
+
+        $u9[0] = $u7;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u2#10];
+
+        $u7 = virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getY()>();
+
+        $u9[1] = $u7;
+
+        return;
+
+     label5:
+        $u2#10 = $u2#10 + 1;
+
+        goto label3;
+
+     label6:
+        return;
+    }
+
+    public void getPos(double, float[])
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit this;
+        float[] $u9;
+        byte $u5;
+        double $u7, i;
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] $u0;
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc $u0#4;
+        int $u3, $u4;
+        boolean $u3#27;
+        float $u3#32;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit;
+
+        $u7 := @parameter0: double;
+
+        $u9 := @parameter1: float[];
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[0];
+
+        i = $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+        $u5 = $u7 cmpg i;
+
+        if $u5 >= 0 goto label1;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[0];
+
+        $u7 = $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+        goto label2;
+
+     label1:
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u3 = lengthof $u0;
+
+        $u3 = $u3 - 1;
+
+        $u0#4 = $u0[$u3];
+
+        i = $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+        $u5 = $u7 cmpl i;
+
+        if $u5 <= 0 goto label2;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u3 = lengthof $u0;
+
+        $u3 = $u3 - 1;
+
+        $u0#4 = $u0[$u3];
+
+        $u7 = $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+     label2:
+        $u3 = 0;
+
+     label3:
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u4 = lengthof $u0;
+
+        if $u3 >= $u4 goto label6;
+
+        $u0#4 = $u0[$u3];
+
+        i = $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+        $u5 = $u7 cmpg i;
+
+        if $u5 > 0 goto label5;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[$u3];
+
+        $u3#27 = $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean linear>;
+
+        if $u3#27 == 0 goto label4;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[$u3];
+
+        i = virtualinvoke $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getLinearX(double)>($u7);
+
+        $u3#32 = (float) i;
+
+        $u9[0] = $u3#32;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[$u3];
+
+        $u7 = virtualinvoke $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getLinearY(double)>($u7);
+
+        $u3#32 = (float) $u7;
+
+        $u9[1] = $u3#32;
+
+        return;
+
+     label4:
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[$u3];
+
+        virtualinvoke $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: void setPoint(double)>($u7);
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[$u3];
+
+        $u7 = virtualinvoke $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getX()>();
+
+        $u3#32 = (float) $u7;
+
+        $u9[0] = $u3#32;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[$u3];
+
+        $u7 = virtualinvoke $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getY()>();
+
+        $u3#32 = (float) $u7;
+
+        $u9[1] = $u3#32;
+
+        return;
+
+     label5:
+        $u3 = $u3 + 1;
+
+        goto label3;
+
+     label6:
+        return;
+    }
+
+    public double getSlope(double, int)
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit this;
+        int $u7, $u1, $u2#21;
+        byte $u3;
+        double $u5, $u2;
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] i;
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc i#4;
+        boolean $u1#26;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit;
+
+        $u5 := @parameter0: double;
+
+        $u7 := @parameter1: int;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[0];
+
+        $u2 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+        $u3 = $u5 cmpg $u2;
+
+        if $u3 >= 0 goto label1;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[0];
+
+        $u5 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+     label1:
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u1 = lengthof i;
+
+        $u1 = $u1 + -1;
+
+        i#4 = i[$u1];
+
+        $u2 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+        $u3 = $u5 cmpl $u2;
+
+        if $u3 <= 0 goto label2;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u1 = lengthof i;
+
+        $u1 = $u1 + -1;
+
+        i#4 = i[$u1];
+
+        $u5 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+     label2:
+        $u1 = 0;
+
+     label3:
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u2#21 = lengthof i;
+
+        if $u1 >= $u2#21 goto label8;
+
+        i#4 = i[$u1];
+
+        $u2 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+        $u3 = $u5 cmpg $u2;
+
+        if $u3 > 0 goto label7;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u1];
+
+        $u1#26 = i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean linear>;
+
+        if $u1#26 == 0 goto label5;
+
+        if $u7 != 0 goto label4;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u1];
+
+        $u5 = virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getLinearDX(double)>($u5);
+
+        return $u5;
+
+     label4:
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u1];
+
+        $u5 = virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getLinearDY(double)>($u5);
+
+        return $u5;
+
+     label5:
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u1];
+
+        virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: void setPoint(double)>($u5);
+
+        if $u7 != 0 goto label6;
+
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u1];
+
+        $u5 = virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getDX()>();
+
+        return $u5;
+
+     label6:
+        i = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        i#4 = i[$u1];
+
+        $u5 = virtualinvoke i#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getDY()>();
+
+        return $u5;
+
+     label7:
+        $u1 = $u1 + 1;
+
+        goto label3;
+
+     label8:
+        return #NaN;
+    }
+
+    public void getSlope(double, double[])
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit this;
+        double[] $u9;
+        byte $u5;
+        double $u7, i;
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] $u0;
+        androidx.constraintlayout.motion.utils.ArcCurveFit$Arc $u0#4;
+        int $u3, $u4;
+        boolean $u3#27;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit;
+
+        $u7 := @parameter0: double;
+
+        $u9 := @parameter1: double[];
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[0];
+
+        i = $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+        $u5 = $u7 cmpg i;
+
+        if $u5 >= 0 goto label1;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[0];
+
+        $u7 = $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime1>;
+
+        goto label2;
+
+     label1:
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u3 = lengthof $u0;
+
+        $u3 = $u3 - 1;
+
+        $u0#4 = $u0[$u3];
+
+        i = $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+        $u5 = $u7 cmpl i;
+
+        if $u5 <= 0 goto label2;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u3 = lengthof $u0;
+
+        $u3 = $u3 - 1;
+
+        $u0#4 = $u0[$u3];
+
+        $u7 = $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+     label2:
+        $u3 = 0;
+
+     label3:
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u4 = lengthof $u0;
+
+        if $u3 >= $u4 goto label6;
+
+        $u0#4 = $u0[$u3];
+
+        i = $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double mTime2>;
+
+        $u5 = $u7 cmpg i;
+
+        if $u5 > 0 goto label5;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[$u3];
+
+        $u3#27 = $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: boolean linear>;
+
+        if $u3#27 == 0 goto label4;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[$u3];
+
+        i = virtualinvoke $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getLinearDX(double)>($u7);
+
+        $u9[0] = i;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[$u3];
+
+        $u7 = virtualinvoke $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getLinearDY(double)>($u7);
+
+        $u9[1] = $u7;
+
+        return;
+
+     label4:
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[$u3];
+
+        virtualinvoke $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: void setPoint(double)>($u7);
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[$u3];
+
+        $u7 = virtualinvoke $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getDX()>();
+
+        $u9[0] = $u7;
+
+        $u0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: androidx.constraintlayout.motion.utils.ArcCurveFit$Arc[] mArcs>;
+
+        $u0#4 = $u0[$u3];
+
+        $u7 = virtualinvoke $u0#4.<androidx.constraintlayout.motion.utils.ArcCurveFit$Arc: double getDY()>();
+
+        $u9[1] = $u7;
+
+        return;
+
+     label5:
+        $u3 = $u3 + 1;
+
+        goto label3;
+
+     label6:
+        return;
+    }
+
+    public double[] getTimePoints()
+    {
+        androidx.constraintlayout.motion.utils.ArcCurveFit this;
+        double[] ret0;
+
+        this := @this: androidx.constraintlayout.motion.utils.ArcCurveFit;
+
+        ret0 = this.<androidx.constraintlayout.motion.utils.ArcCurveFit: double[] mTime>;
+
+        return ret0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.motion.utils.ArcCurveFit: int START_VERTICAL> = 1;
+
+        <androidx.constraintlayout.motion.utils.ArcCurveFit: int START_LINEAR> = 3;
+
+        <androidx.constraintlayout.motion.utils.ArcCurveFit: int START_HORIZONTAL> = 2;
+
+        <androidx.constraintlayout.motion.utils.ArcCurveFit: int ARC_START_VERTICAL> = 1;
+
+        <androidx.constraintlayout.motion.utils.ArcCurveFit: int ARC_START_LINEAR> = 0;
+
+        <androidx.constraintlayout.motion.utils.ArcCurveFit: int ARC_START_HORIZONTAL> = 2;
+
+        <androidx.constraintlayout.motion.utils.ArcCurveFit: int ARC_START_FLIP> = 3;
+
+        return;
+    }
+}

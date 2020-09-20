@@ -1,0 +1,94 @@
+class androidx.core.provider.FontsContractCompat$5 extends java.lang.Object implements java.util.Comparator
+{
+
+    void <init>()
+    {
+        androidx.core.provider.FontsContractCompat$5 this;
+
+        this := @this: androidx.core.provider.FontsContractCompat$5;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public volatile int compare(java.lang.Object, java.lang.Object)
+    {
+        androidx.core.provider.FontsContractCompat$5 this;
+        int $u-1;
+        java.lang.Object $u1, $u2;
+        byte[] $u1#3, $u2#4;
+
+        this := @this: androidx.core.provider.FontsContractCompat$5;
+
+        $u1 := @parameter0: java.lang.Object;
+
+        $u2 := @parameter1: java.lang.Object;
+
+        $u1#3 = (byte[]) $u1;
+
+        $u2#4 = (byte[]) $u2;
+
+        $u-1 = virtualinvoke this.<androidx.core.provider.FontsContractCompat$5: int compare(byte[],byte[])>($u1#3, $u2#4);
+
+        return $u-1;
+    }
+
+    public int compare(byte[], byte[])
+    {
+        androidx.core.provider.FontsContractCompat$5 this;
+        byte[] $u4, $u5;
+        int i, $u1;
+        byte $u1#8, $u2;
+
+        this := @this: androidx.core.provider.FontsContractCompat$5;
+
+        $u4 := @parameter0: byte[];
+
+        $u5 := @parameter1: byte[];
+
+        i = lengthof $u4;
+
+        $u1 = lengthof $u5;
+
+        if i == $u1 goto label1;
+
+        i = lengthof $u4;
+
+        $u1 = lengthof $u5;
+
+        i = i - $u1;
+
+        return i;
+
+     label1:
+        i = 0;
+
+     label2:
+        $u1 = lengthof $u4;
+
+        if i >= $u1 goto label4;
+
+        $u1#8 = $u4[i];
+
+        $u2 = $u5[i];
+
+        if $u1#8 == $u2 goto label3;
+
+        $u1#8 = $u4[i];
+
+        $u2 = $u5[i];
+
+        i = $u1#8 - $u2;
+
+        return i;
+
+     label3:
+        i = i + 1;
+
+        goto label2;
+
+     label4:
+        return 0;
+    }
+}

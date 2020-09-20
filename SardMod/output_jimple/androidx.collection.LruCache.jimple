@@ -1,0 +1,909 @@
+public class androidx.collection.LruCache extends java.lang.Object
+{
+    private int createCount;
+    private int evictionCount;
+    private int hitCount;
+    private final java.util.LinkedHashMap map;
+    private int maxSize;
+    private int missCount;
+    private int putCount;
+    private int size;
+
+    public void <init>(int)
+    {
+        androidx.collection.LruCache this;
+        int $u5;
+        java.util.LinkedHashMap $u0;
+        java.lang.IllegalArgumentException $u0#3;
+
+        this := @this: androidx.collection.LruCache;
+
+        $u5 := @parameter0: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        if $u5 <= 0 goto label1;
+
+        this.<androidx.collection.LruCache: int maxSize> = $u5;
+
+        $u0 = new java.util.LinkedHashMap;
+
+        specialinvoke $u0.<java.util.LinkedHashMap: void <init>(int,float,boolean)>(0, 0.75F, 1);
+
+        this.<androidx.collection.LruCache: java.util.LinkedHashMap map> = $u0;
+
+        return;
+
+     label1:
+        $u0#3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("maxSize <= 0");
+
+        throw $u0#3;
+    }
+
+    private int safeSizeOf(java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.LruCache this;
+        java.lang.Object key, value;
+        java.lang.IllegalStateException $u1;
+        int $u-1;
+        java.lang.StringBuilder $u2;
+        java.lang.String $u-1#5;
+
+        this := @this: androidx.collection.LruCache;
+
+        key := @parameter0: java.lang.Object;
+
+        value := @parameter1: java.lang.Object;
+
+        $u-1 = virtualinvoke this.<androidx.collection.LruCache: int sizeOf(java.lang.Object,java.lang.Object)>(key, value);
+
+        if $u-1 < 0 goto label1;
+
+        return $u-1;
+
+     label1:
+        $u1 = new java.lang.IllegalStateException;
+
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Negative size: ");
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(key);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("=");
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(value);
+
+        $u-1#5 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u1.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u-1#5);
+
+        throw $u1;
+    }
+
+    protected java.lang.Object create(java.lang.Object)
+    {
+        androidx.collection.LruCache this;
+        java.lang.Object key;
+
+        this := @this: androidx.collection.LruCache;
+
+        key := @parameter0: java.lang.Object;
+
+        return null;
+    }
+
+    public final int createCount()
+    {
+        androidx.collection.LruCache this;
+        java.lang.Throwable $u0;
+        int ret0;
+
+        this := @this: androidx.collection.LruCache;
+
+        entermonitor this;
+
+     label1:
+        ret0 = this.<androidx.collection.LruCache: int createCount>;
+
+     label2:
+        exitmonitor this;
+
+        return ret0;
+
+     label3:
+        $u0 := @caughtexception;
+
+        exitmonitor this;
+
+        throw $u0;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    protected void entryRemoved(boolean, java.lang.Object, java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.LruCache this;
+        boolean $u1;
+        java.lang.Object key, oldValue, newValue;
+
+        this := @this: androidx.collection.LruCache;
+
+        $u1 := @parameter0: boolean;
+
+        key := @parameter1: java.lang.Object;
+
+        oldValue := @parameter2: java.lang.Object;
+
+        newValue := @parameter3: java.lang.Object;
+
+        return;
+    }
+
+    public final void evictAll()
+    {
+        androidx.collection.LruCache this;
+
+        this := @this: androidx.collection.LruCache;
+
+        virtualinvoke this.<androidx.collection.LruCache: void trimToSize(int)>(-1);
+
+        return;
+    }
+
+    public final int evictionCount()
+    {
+        androidx.collection.LruCache this;
+        java.lang.Throwable $u0;
+        int ret0;
+
+        this := @this: androidx.collection.LruCache;
+
+        entermonitor this;
+
+     label1:
+        ret0 = this.<androidx.collection.LruCache: int evictionCount>;
+
+     label2:
+        exitmonitor this;
+
+        return ret0;
+
+     label3:
+        $u0 := @caughtexception;
+
+        exitmonitor this;
+
+        throw $u0;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final java.lang.Object get(java.lang.Object)
+    {
+        androidx.collection.LruCache this;
+        java.lang.Object key, $u-1, $u-1#14;
+        java.util.LinkedHashMap mapValue;
+        int createdValue, $u-1#19;
+        java.lang.Throwable $u2, mapValue#24;
+        java.lang.NullPointerException mapValue#25;
+
+        this := @this: androidx.collection.LruCache;
+
+        key := @parameter0: java.lang.Object;
+
+        if key == null goto label17;
+
+        entermonitor this;
+
+     label01:
+        mapValue = this.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $u-1 = virtualinvoke mapValue.<java.util.LinkedHashMap: java.lang.Object get(java.lang.Object)>(key);
+
+        if $u-1 == null goto label03;
+
+        createdValue = this.<androidx.collection.LruCache: int hitCount>;
+
+        createdValue = createdValue + 1;
+
+        this.<androidx.collection.LruCache: int hitCount> = createdValue;
+
+        exitmonitor this;
+
+     label02:
+        return $u-1;
+
+     label03:
+        createdValue = this.<androidx.collection.LruCache: int missCount>;
+
+        createdValue = createdValue + 1;
+
+        this.<androidx.collection.LruCache: int missCount> = createdValue;
+
+        exitmonitor this;
+
+     label04:
+        $u-1 = virtualinvoke this.<androidx.collection.LruCache: java.lang.Object create(java.lang.Object)>(key);
+
+        if $u-1 != null goto label05;
+
+        return null;
+
+     label05:
+        entermonitor this;
+
+     label06:
+        createdValue = this.<androidx.collection.LruCache: int createCount>;
+
+        createdValue = createdValue + 1;
+
+        this.<androidx.collection.LruCache: int createCount> = createdValue;
+
+        mapValue = this.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $u-1#14 = virtualinvoke mapValue.<java.util.LinkedHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(key, $u-1);
+
+        if $u-1#14 == null goto label07;
+
+        mapValue = this.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        virtualinvoke mapValue.<java.util.LinkedHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(key, $u-1#14);
+
+        goto label08;
+
+     label07:
+        createdValue = this.<androidx.collection.LruCache: int size>;
+
+        $u-1#19 = specialinvoke this.<androidx.collection.LruCache: int safeSizeOf(java.lang.Object,java.lang.Object)>(key, $u-1);
+
+        createdValue = createdValue + $u-1#19;
+
+        this.<androidx.collection.LruCache: int size> = createdValue;
+
+     label08:
+        exitmonitor this;
+
+     label09:
+        if $u-1#14 == null goto label10;
+
+        virtualinvoke this.<androidx.collection.LruCache: void entryRemoved(boolean,java.lang.Object,java.lang.Object,java.lang.Object)>(0, key, $u-1, $u-1#14);
+
+        return $u-1#14;
+
+     label10:
+        createdValue = this.<androidx.collection.LruCache: int maxSize>;
+
+        virtualinvoke this.<androidx.collection.LruCache: void trimToSize(int)>(createdValue);
+
+        return $u-1;
+
+     label11:
+        $u2 := @caughtexception;
+
+     label12:
+        exitmonitor this;
+
+     label13:
+        throw $u2;
+
+     label14:
+        mapValue#24 := @caughtexception;
+
+     label15:
+        exitmonitor this;
+
+     label16:
+        throw mapValue#24;
+
+     label17:
+        mapValue#25 = new java.lang.NullPointerException;
+
+        specialinvoke mapValue#25.<java.lang.NullPointerException: void <init>(java.lang.String)>("key == null");
+
+        throw mapValue#25;
+
+        catch java.lang.Throwable from label01 to label02 with label14;
+        catch java.lang.Throwable from label03 to label04 with label14;
+        catch java.lang.Throwable from label06 to label09 with label11;
+        catch java.lang.Throwable from label12 to label13 with label11;
+        catch java.lang.Throwable from label15 to label16 with label14;
+    }
+
+    public final int hitCount()
+    {
+        androidx.collection.LruCache this;
+        java.lang.Throwable $u0;
+        int ret0;
+
+        this := @this: androidx.collection.LruCache;
+
+        entermonitor this;
+
+     label1:
+        ret0 = this.<androidx.collection.LruCache: int hitCount>;
+
+     label2:
+        exitmonitor this;
+
+        return ret0;
+
+     label3:
+        $u0 := @caughtexception;
+
+        exitmonitor this;
+
+        throw $u0;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final int maxSize()
+    {
+        androidx.collection.LruCache this;
+        java.lang.Throwable $u0;
+        int ret0;
+
+        this := @this: androidx.collection.LruCache;
+
+        entermonitor this;
+
+     label1:
+        ret0 = this.<androidx.collection.LruCache: int maxSize>;
+
+     label2:
+        exitmonitor this;
+
+        return ret0;
+
+     label3:
+        $u0 := @caughtexception;
+
+        exitmonitor this;
+
+        throw $u0;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final int missCount()
+    {
+        androidx.collection.LruCache this;
+        java.lang.Throwable $u0;
+        int ret0;
+
+        this := @this: androidx.collection.LruCache;
+
+        entermonitor this;
+
+     label1:
+        ret0 = this.<androidx.collection.LruCache: int missCount>;
+
+     label2:
+        exitmonitor this;
+
+        return ret0;
+
+     label3:
+        $u0 := @caughtexception;
+
+        exitmonitor this;
+
+        throw $u0;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final java.lang.Object put(java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.LruCache this;
+        java.lang.Object key, value, $u-1#8;
+        int previous, $u-1;
+        java.util.LinkedHashMap previous#7;
+        java.lang.Throwable previous#15;
+        java.lang.NullPointerException previous#16;
+
+        this := @this: androidx.collection.LruCache;
+
+        key := @parameter0: java.lang.Object;
+
+        value := @parameter1: java.lang.Object;
+
+        if key == null goto label8;
+
+        if value == null goto label8;
+
+        entermonitor this;
+
+     label1:
+        previous = this.<androidx.collection.LruCache: int putCount>;
+
+        previous = previous + 1;
+
+        this.<androidx.collection.LruCache: int putCount> = previous;
+
+        previous = this.<androidx.collection.LruCache: int size>;
+
+        $u-1 = specialinvoke this.<androidx.collection.LruCache: int safeSizeOf(java.lang.Object,java.lang.Object)>(key, value);
+
+        previous = previous + $u-1;
+
+        this.<androidx.collection.LruCache: int size> = previous;
+
+        previous#7 = this.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $u-1#8 = virtualinvoke previous#7.<java.util.LinkedHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(key, value);
+
+        if $u-1#8 == null goto label2;
+
+        previous = this.<androidx.collection.LruCache: int size>;
+
+        $u-1 = specialinvoke this.<androidx.collection.LruCache: int safeSizeOf(java.lang.Object,java.lang.Object)>(key, $u-1#8);
+
+        previous = previous - $u-1;
+
+        this.<androidx.collection.LruCache: int size> = previous;
+
+     label2:
+        exitmonitor this;
+
+     label3:
+        if $u-1#8 == null goto label4;
+
+        virtualinvoke this.<androidx.collection.LruCache: void entryRemoved(boolean,java.lang.Object,java.lang.Object,java.lang.Object)>(0, key, $u-1#8, value);
+
+     label4:
+        previous = this.<androidx.collection.LruCache: int maxSize>;
+
+        virtualinvoke this.<androidx.collection.LruCache: void trimToSize(int)>(previous);
+
+        return $u-1#8;
+
+     label5:
+        previous#15 := @caughtexception;
+
+     label6:
+        exitmonitor this;
+
+     label7:
+        throw previous#15;
+
+     label8:
+        previous#16 = new java.lang.NullPointerException;
+
+        specialinvoke previous#16.<java.lang.NullPointerException: void <init>(java.lang.String)>("key == null || value == null");
+
+        throw previous#16;
+
+        catch java.lang.Throwable from label1 to label3 with label5;
+        catch java.lang.Throwable from label6 to label7 with label5;
+    }
+
+    public final int putCount()
+    {
+        androidx.collection.LruCache this;
+        java.lang.Throwable $u0;
+        int ret0;
+
+        this := @this: androidx.collection.LruCache;
+
+        entermonitor this;
+
+     label1:
+        ret0 = this.<androidx.collection.LruCache: int putCount>;
+
+     label2:
+        exitmonitor this;
+
+        return ret0;
+
+     label3:
+        $u0 := @caughtexception;
+
+        exitmonitor this;
+
+        throw $u0;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final java.lang.Object remove(java.lang.Object)
+    {
+        androidx.collection.LruCache this;
+        java.lang.Object key, $u-1;
+        java.util.LinkedHashMap previous;
+        int $u1, $u-1#5;
+        java.lang.Throwable previous#10;
+        java.lang.NullPointerException previous#11;
+
+        this := @this: androidx.collection.LruCache;
+
+        key := @parameter0: java.lang.Object;
+
+        if key == null goto label7;
+
+        entermonitor this;
+
+     label1:
+        previous = this.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $u-1 = virtualinvoke previous.<java.util.LinkedHashMap: java.lang.Object remove(java.lang.Object)>(key);
+
+        if $u-1 == null goto label2;
+
+        $u1 = this.<androidx.collection.LruCache: int size>;
+
+        $u-1#5 = specialinvoke this.<androidx.collection.LruCache: int safeSizeOf(java.lang.Object,java.lang.Object)>(key, $u-1);
+
+        $u1 = $u1 - $u-1#5;
+
+        this.<androidx.collection.LruCache: int size> = $u1;
+
+     label2:
+        exitmonitor this;
+
+     label3:
+        if $u-1 == null goto label8;
+
+        virtualinvoke this.<androidx.collection.LruCache: void entryRemoved(boolean,java.lang.Object,java.lang.Object,java.lang.Object)>(0, key, $u-1, null);
+
+        return $u-1;
+
+     label4:
+        previous#10 := @caughtexception;
+
+     label5:
+        exitmonitor this;
+
+     label6:
+        throw previous#10;
+
+     label7:
+        previous#11 = new java.lang.NullPointerException;
+
+        specialinvoke previous#11.<java.lang.NullPointerException: void <init>(java.lang.String)>("key == null");
+
+        throw previous#11;
+
+     label8:
+        return $u-1;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label5 to label6 with label4;
+    }
+
+    public void resize(int)
+    {
+        androidx.collection.LruCache this;
+        int $u3;
+        java.lang.Throwable $u0;
+        java.lang.IllegalArgumentException $u0#2;
+
+        this := @this: androidx.collection.LruCache;
+
+        $u3 := @parameter0: int;
+
+        if $u3 <= 0 goto label6;
+
+        entermonitor this;
+
+     label1:
+        this.<androidx.collection.LruCache: int maxSize> = $u3;
+
+        exitmonitor this;
+
+     label2:
+        virtualinvoke this.<androidx.collection.LruCache: void trimToSize(int)>($u3);
+
+        return;
+
+     label3:
+        $u0 := @caughtexception;
+
+     label4:
+        exitmonitor this;
+
+     label5:
+        throw $u0;
+
+     label6:
+        $u0#2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("maxSize <= 0");
+
+        throw $u0#2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label4 to label5 with label3;
+    }
+
+    public final int size()
+    {
+        androidx.collection.LruCache this;
+        java.lang.Throwable $u0;
+        int ret0;
+
+        this := @this: androidx.collection.LruCache;
+
+        entermonitor this;
+
+     label1:
+        ret0 = this.<androidx.collection.LruCache: int size>;
+
+     label2:
+        exitmonitor this;
+
+        return ret0;
+
+     label3:
+        $u0 := @caughtexception;
+
+        exitmonitor this;
+
+        throw $u0;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    protected int sizeOf(java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.LruCache this;
+        java.lang.Object key, value;
+
+        this := @this: androidx.collection.LruCache;
+
+        key := @parameter0: java.lang.Object;
+
+        value := @parameter1: java.lang.Object;
+
+        return 1;
+    }
+
+    public final java.util.Map snapshot()
+    {
+        androidx.collection.LruCache this;
+        java.util.LinkedHashMap $u1, $u0;
+        java.lang.Throwable $u0#2;
+
+        this := @this: androidx.collection.LruCache;
+
+        entermonitor this;
+
+     label1:
+        $u0 = new java.util.LinkedHashMap;
+
+        $u1 = this.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        specialinvoke $u0.<java.util.LinkedHashMap: void <init>(java.util.Map)>($u1);
+
+     label2:
+        exitmonitor this;
+
+        return $u0;
+
+     label3:
+        $u0#2 := @caughtexception;
+
+        exitmonitor this;
+
+        throw $u0#2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final java.lang.String toString()
+    {
+        androidx.collection.LruCache this;
+        java.util.Locale $u3;
+        int accesses, $u1;
+        java.lang.Object[] $u5;
+        java.lang.Integer $u-1;
+        java.lang.String $u-1#24;
+        java.lang.Throwable accesses#26;
+
+        this := @this: androidx.collection.LruCache;
+
+        entermonitor this;
+
+     label1:
+        accesses = this.<androidx.collection.LruCache: int hitCount>;
+
+        $u1 = this.<androidx.collection.LruCache: int missCount>;
+
+        accesses = accesses + $u1;
+
+        if accesses == 0 goto label2;
+
+        $u1 = this.<androidx.collection.LruCache: int hitCount>;
+
+        $u1 = $u1 * 100;
+
+        accesses = $u1 / accesses;
+
+        goto label3;
+
+     label2:
+        accesses = 0;
+
+     label3:
+        $u3 = <java.util.Locale: java.util.Locale US>;
+
+        $u5 = newarray (java.lang.Object)[4];
+
+        $u1 = this.<androidx.collection.LruCache: int maxSize>;
+
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u1);
+
+        $u5[0] = $u-1;
+
+        $u1 = this.<androidx.collection.LruCache: int hitCount>;
+
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u1);
+
+        $u5[1] = $u-1;
+
+        $u1 = this.<androidx.collection.LruCache: int missCount>;
+
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u1);
+
+        $u5[2] = $u-1;
+
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(accesses);
+
+        $u5[3] = $u-1;
+
+        $u-1#24 = staticinvoke <java.lang.String: java.lang.String format(java.util.Locale,java.lang.String,java.lang.Object[])>($u3, "LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", $u5);
+
+     label4:
+        exitmonitor this;
+
+        return $u-1#24;
+
+     label5:
+        accesses#26 := @caughtexception;
+
+        exitmonitor this;
+
+        throw accesses#26;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void trimToSize(int)
+    {
+        androidx.collection.LruCache this;
+        int $u6, toEvict, $u-1#24;
+        java.util.LinkedHashMap toEvict#2;
+        boolean $u-1;
+        java.util.Set $u-1#11;
+        java.util.Iterator $u-1#13;
+        java.lang.Object $u-1#15, $u-1#20;
+        java.util.Map$Entry toEvict#17;
+        java.lang.IllegalStateException toEvict#31;
+        java.lang.StringBuilder key;
+        java.lang.Class $u-1#33;
+        java.lang.String $u-1#35;
+        java.lang.Throwable toEvict#40;
+
+        this := @this: androidx.collection.LruCache;
+
+        $u6 := @parameter0: int;
+
+     label01:
+        entermonitor this;
+
+     label02:
+        toEvict = this.<androidx.collection.LruCache: int size>;
+
+        if toEvict < 0 goto label08;
+
+        toEvict#2 = this.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $u-1 = virtualinvoke toEvict#2.<java.util.LinkedHashMap: boolean isEmpty()>();
+
+        if $u-1 == 0 goto label03;
+
+        toEvict = this.<androidx.collection.LruCache: int size>;
+
+        if toEvict != 0 goto label08;
+
+     label03:
+        toEvict = this.<androidx.collection.LruCache: int size>;
+
+        if toEvict <= $u6 goto label06;
+
+        toEvict#2 = this.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $u-1 = virtualinvoke toEvict#2.<java.util.LinkedHashMap: boolean isEmpty()>();
+
+        if $u-1 == 0 goto label04;
+
+        goto label06;
+
+     label04:
+        toEvict#2 = this.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        $u-1#11 = virtualinvoke toEvict#2.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $u-1#13 = interfaceinvoke $u-1#11.<java.util.Set: java.util.Iterator iterator()>();
+
+        $u-1#15 = interfaceinvoke $u-1#13.<java.util.Iterator: java.lang.Object next()>();
+
+        toEvict#17 = (java.util.Map$Entry) $u-1#15;
+
+        $u-1#15 = interfaceinvoke toEvict#17.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $u-1#20 = interfaceinvoke toEvict#17.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        toEvict#2 = this.<androidx.collection.LruCache: java.util.LinkedHashMap map>;
+
+        virtualinvoke toEvict#2.<java.util.LinkedHashMap: java.lang.Object remove(java.lang.Object)>($u-1#15);
+
+        toEvict = this.<androidx.collection.LruCache: int size>;
+
+        $u-1#24 = specialinvoke this.<androidx.collection.LruCache: int safeSizeOf(java.lang.Object,java.lang.Object)>($u-1#15, $u-1#20);
+
+        toEvict = toEvict - $u-1#24;
+
+        this.<androidx.collection.LruCache: int size> = toEvict;
+
+        toEvict = this.<androidx.collection.LruCache: int evictionCount>;
+
+        toEvict = toEvict + 1;
+
+        this.<androidx.collection.LruCache: int evictionCount> = toEvict;
+
+        exitmonitor this;
+
+     label05:
+        virtualinvoke this.<androidx.collection.LruCache: void entryRemoved(boolean,java.lang.Object,java.lang.Object,java.lang.Object)>(1, $u-1#15, $u-1#20, null);
+
+        goto label01;
+
+     label06:
+        exitmonitor this;
+
+     label07:
+        return;
+
+     label08:
+        toEvict#31 = new java.lang.IllegalStateException;
+
+        key = new java.lang.StringBuilder;
+
+        specialinvoke key.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1#33 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#35 = virtualinvoke $u-1#33.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#35);
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".sizeOf() is reporting inconsistent results!");
+
+        $u-1#35 = virtualinvoke key.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke toEvict#31.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u-1#35);
+
+        throw toEvict#31;
+
+     label09:
+        toEvict#40 := @caughtexception;
+
+        exitmonitor this;
+
+     label10:
+        goto label11;
+
+     label11:
+        throw toEvict#40;
+
+        catch java.lang.Throwable from label02 to label05 with label09;
+        catch java.lang.Throwable from label06 to label07 with label09;
+        catch java.lang.Throwable from label08 to label10 with label09;
+    }
+}

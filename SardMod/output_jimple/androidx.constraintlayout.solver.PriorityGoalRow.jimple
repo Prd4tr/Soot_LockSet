@@ -1,0 +1,521 @@
+public class androidx.constraintlayout.solver.PriorityGoalRow extends androidx.constraintlayout.solver.ArrayRow
+{
+    private static final boolean DEBUG;
+    static final int NOT_FOUND;
+    private static final float epsilon;
+    private int TABLE_SIZE;
+    androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor accessor;
+    private androidx.constraintlayout.solver.SolverVariable[] arrayGoals;
+    androidx.constraintlayout.solver.Cache mCache;
+    private int numGoals;
+    private androidx.constraintlayout.solver.SolverVariable[] sortArray;
+
+    public void <init>(androidx.constraintlayout.solver.Cache)
+    {
+        androidx.constraintlayout.solver.PriorityGoalRow this;
+        androidx.constraintlayout.solver.Cache $u3;
+        androidx.constraintlayout.solver.SolverVariable[] $u1;
+        androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor $u0;
+
+        this := @this: androidx.constraintlayout.solver.PriorityGoalRow;
+
+        $u3 := @parameter0: androidx.constraintlayout.solver.Cache;
+
+        specialinvoke this.<androidx.constraintlayout.solver.ArrayRow: void <init>(androidx.constraintlayout.solver.Cache)>($u3);
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow: int TABLE_SIZE> = 128;
+
+        $u1 = newarray (androidx.constraintlayout.solver.SolverVariable)[128];
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] arrayGoals> = $u1;
+
+        $u1 = newarray (androidx.constraintlayout.solver.SolverVariable)[128];
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] sortArray> = $u1;
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow: int numGoals> = 0;
+
+        $u0 = new androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor;
+
+        specialinvoke $u0.<androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor: void <init>(androidx.constraintlayout.solver.PriorityGoalRow,androidx.constraintlayout.solver.PriorityGoalRow)>(this, this);
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor accessor> = $u0;
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.Cache mCache> = $u3;
+
+        return;
+    }
+
+    static void access$000(androidx.constraintlayout.solver.PriorityGoalRow, androidx.constraintlayout.solver.SolverVariable)
+    {
+        androidx.constraintlayout.solver.PriorityGoalRow $u0;
+        androidx.constraintlayout.solver.SolverVariable $u1;
+
+        $u0 := @parameter0: androidx.constraintlayout.solver.PriorityGoalRow;
+
+        $u1 := @parameter1: androidx.constraintlayout.solver.SolverVariable;
+
+        specialinvoke $u0.<androidx.constraintlayout.solver.PriorityGoalRow: void removeGoal(androidx.constraintlayout.solver.SolverVariable)>($u1);
+
+        return;
+    }
+
+    private final void addToGoal(androidx.constraintlayout.solver.SolverVariable)
+    {
+        androidx.constraintlayout.solver.PriorityGoalRow this;
+        androidx.constraintlayout.solver.SolverVariable $u6, i#19;
+        androidx.constraintlayout.solver.PriorityGoalRow$1 $u4;
+        int i, $u3;
+        androidx.constraintlayout.solver.SolverVariable[] $u2, $u3#25;
+        java.lang.Object[] $u-1;
+
+        this := @this: androidx.constraintlayout.solver.PriorityGoalRow;
+
+        $u6 := @parameter0: androidx.constraintlayout.solver.SolverVariable;
+
+        i = this.<androidx.constraintlayout.solver.PriorityGoalRow: int numGoals>;
+
+        i = i + 1;
+
+        $u2 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] arrayGoals>;
+
+        $u3 = lengthof $u2;
+
+        if i <= $u3 goto label1;
+
+        i = lengthof $u2;
+
+        i = i * 2;
+
+        $u-1 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($u2, i);
+
+        $u2 = (androidx.constraintlayout.solver.SolverVariable[]) $u-1;
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] arrayGoals> = $u2;
+
+        i = lengthof $u2;
+
+        i = i * 2;
+
+        $u-1 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($u2, i);
+
+        $u2 = (androidx.constraintlayout.solver.SolverVariable[]) $u-1;
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] sortArray> = $u2;
+
+     label1:
+        $u2 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] arrayGoals>;
+
+        i = this.<androidx.constraintlayout.solver.PriorityGoalRow: int numGoals>;
+
+        $u2[i] = $u6;
+
+        i = i + 1;
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow: int numGoals> = i;
+
+        if i <= 1 goto label5;
+
+        i = i - 1;
+
+        i#19 = $u2[i];
+
+        i = i#19.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        $u3 = $u6.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        if i <= $u3 goto label5;
+
+        i = 0;
+
+     label2:
+        $u3 = this.<androidx.constraintlayout.solver.PriorityGoalRow: int numGoals>;
+
+        if i >= $u3 goto label3;
+
+        $u2 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] sortArray>;
+
+        $u3#25 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] arrayGoals>;
+
+        i#19 = $u3#25[i];
+
+        $u2[i] = i#19;
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        $u2 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] sortArray>;
+
+        $u4 = new androidx.constraintlayout.solver.PriorityGoalRow$1;
+
+        specialinvoke $u4.<androidx.constraintlayout.solver.PriorityGoalRow$1: void <init>(androidx.constraintlayout.solver.PriorityGoalRow)>(this);
+
+        staticinvoke <java.util.Arrays: void sort(java.lang.Object[],int,int,java.util.Comparator)>($u2, 0, $u3, $u4);
+
+        i = 0;
+
+     label4:
+        $u3 = this.<androidx.constraintlayout.solver.PriorityGoalRow: int numGoals>;
+
+        if i >= $u3 goto label5;
+
+        $u2 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] arrayGoals>;
+
+        $u3#25 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] sortArray>;
+
+        i#19 = $u3#25[i];
+
+        $u2[i] = i#19;
+
+        i = i + 1;
+
+        goto label4;
+
+     label5:
+        $u6.<androidx.constraintlayout.solver.SolverVariable: boolean inGoal> = 1;
+
+        virtualinvoke $u6.<androidx.constraintlayout.solver.SolverVariable: void addToRow(androidx.constraintlayout.solver.ArrayRow)>(this);
+
+        return;
+    }
+
+    private final void removeGoal(androidx.constraintlayout.solver.SolverVariable)
+    {
+        androidx.constraintlayout.solver.PriorityGoalRow this;
+        androidx.constraintlayout.solver.SolverVariable $u5, j#4;
+        int i, j, $u3;
+        androidx.constraintlayout.solver.SolverVariable[] j#3;
+
+        this := @this: androidx.constraintlayout.solver.PriorityGoalRow;
+
+        $u5 := @parameter0: androidx.constraintlayout.solver.SolverVariable;
+
+        i = 0;
+
+     label1:
+        j = this.<androidx.constraintlayout.solver.PriorityGoalRow: int numGoals>;
+
+        if i >= j goto label5;
+
+        j#3 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] arrayGoals>;
+
+        j#4 = j#3[i];
+
+        if j#4 != $u5 goto label4;
+
+     label2:
+        j = this.<androidx.constraintlayout.solver.PriorityGoalRow: int numGoals>;
+
+        $u3 = j + -1;
+
+        if i >= $u3 goto label3;
+
+        j#3 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] arrayGoals>;
+
+        j = i + 1;
+
+        j#4 = j#3[j];
+
+        j#3[i] = j#4;
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        i = j + -1;
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow: int numGoals> = i;
+
+        $u5.<androidx.constraintlayout.solver.SolverVariable: boolean inGoal> = 0;
+
+        return;
+
+     label4:
+        i = i + 1;
+
+        goto label1;
+
+     label5:
+        return;
+    }
+
+    public void addError(androidx.constraintlayout.solver.SolverVariable)
+    {
+        androidx.constraintlayout.solver.PriorityGoalRow this;
+        androidx.constraintlayout.solver.SolverVariable $u4;
+        int $u1;
+        androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor $u0;
+        float[] $u0#3;
+
+        this := @this: androidx.constraintlayout.solver.PriorityGoalRow;
+
+        $u4 := @parameter0: androidx.constraintlayout.solver.SolverVariable;
+
+        $u0 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor accessor>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor: void init(androidx.constraintlayout.solver.SolverVariable)>($u4);
+
+        $u0 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor accessor>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor: void reset()>();
+
+        $u0#3 = $u4.<androidx.constraintlayout.solver.SolverVariable: float[] goalStrengthVector>;
+
+        $u1 = $u4.<androidx.constraintlayout.solver.SolverVariable: int strength>;
+
+        $u0#3[$u1] = 1.0F;
+
+        specialinvoke this.<androidx.constraintlayout.solver.PriorityGoalRow: void addToGoal(androidx.constraintlayout.solver.SolverVariable)>($u4);
+
+        return;
+    }
+
+    public void clear()
+    {
+        androidx.constraintlayout.solver.PriorityGoalRow this;
+
+        this := @this: androidx.constraintlayout.solver.PriorityGoalRow;
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow: int numGoals> = 0;
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow: float constantValue> = 0.0F;
+
+        return;
+    }
+
+    public androidx.constraintlayout.solver.SolverVariable getPivotCandidate(androidx.constraintlayout.solver.LinearSystem, boolean[])
+    {
+        androidx.constraintlayout.solver.PriorityGoalRow this;
+        androidx.constraintlayout.solver.LinearSystem $u6;
+        boolean[] $u7;
+        int pivot, i, variable;
+        androidx.constraintlayout.solver.SolverVariable[] variable#5;
+        androidx.constraintlayout.solver.SolverVariable variable#6;
+        boolean $u4;
+        androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor $u4#9;
+
+        this := @this: androidx.constraintlayout.solver.PriorityGoalRow;
+
+        $u6 := @parameter0: androidx.constraintlayout.solver.LinearSystem;
+
+        $u7 := @parameter1: boolean[];
+
+        pivot = -1;
+
+        i = 0;
+
+     label1:
+        variable = this.<androidx.constraintlayout.solver.PriorityGoalRow: int numGoals>;
+
+        if i >= variable goto label5;
+
+        variable#5 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] arrayGoals>;
+
+        variable#6 = variable#5[i];
+
+        variable = variable#6.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        $u4 = $u7[variable];
+
+        if $u4 == 0 goto label2;
+
+        goto label4;
+
+     label2:
+        $u4#9 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor accessor>;
+
+        virtualinvoke $u4#9.<androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor: void init(androidx.constraintlayout.solver.SolverVariable)>(variable#6);
+
+        if pivot != -1 goto label3;
+
+        $u4#9 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor accessor>;
+
+        $u4 = virtualinvoke $u4#9.<androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor: boolean isNegative()>();
+
+        if $u4 == 0 goto label4;
+
+        pivot = i;
+
+        goto label4;
+
+     label3:
+        $u4#9 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor accessor>;
+
+        variable#5 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] arrayGoals>;
+
+        variable#6 = variable#5[pivot];
+
+        $u4 = virtualinvoke $u4#9.<androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor: boolean isSmallerThan(androidx.constraintlayout.solver.SolverVariable)>(variable#6);
+
+        if $u4 == 0 goto label4;
+
+        pivot = i;
+
+     label4:
+        i = i + 1;
+
+        goto label1;
+
+     label5:
+        if pivot != -1 goto label6;
+
+        return null;
+
+     label6:
+        variable#5 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] arrayGoals>;
+
+        variable#6 = variable#5[pivot];
+
+        return variable#6;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.constraintlayout.solver.PriorityGoalRow this;
+        java.lang.StringBuilder i;
+        float v;
+        java.lang.String $u-1;
+        int i#8, v#9;
+        androidx.constraintlayout.solver.SolverVariable[] v#10;
+        androidx.constraintlayout.solver.SolverVariable v#11;
+        androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor $u3;
+
+        this := @this: androidx.constraintlayout.solver.PriorityGoalRow;
+
+        i = new java.lang.StringBuilder;
+
+        specialinvoke i.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke i.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("");
+
+        virtualinvoke i.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" goal -> (");
+
+        v = this.<androidx.constraintlayout.solver.PriorityGoalRow: float constantValue>;
+
+        virtualinvoke i.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>(v);
+
+        virtualinvoke i.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") : ");
+
+        $u-1 = virtualinvoke i.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        i#8 = 0;
+
+     label1:
+        v#9 = this.<androidx.constraintlayout.solver.PriorityGoalRow: int numGoals>;
+
+        if i#8 >= v#9 goto label2;
+
+        v#10 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.SolverVariable[] arrayGoals>;
+
+        v#11 = v#10[i#8];
+
+        $u3 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor accessor>;
+
+        virtualinvoke $u3.<androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor: void init(androidx.constraintlayout.solver.SolverVariable)>(v#11);
+
+        i = new java.lang.StringBuilder;
+
+        specialinvoke i.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke i.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        $u3 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor accessor>;
+
+        virtualinvoke i.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u3);
+
+        virtualinvoke i.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $u-1 = virtualinvoke i.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        i#8 = i#8 + 1;
+
+        goto label1;
+
+     label2:
+        return $u-1;
+    }
+
+    public void updateFromRow(androidx.constraintlayout.solver.ArrayRow, boolean)
+    {
+        androidx.constraintlayout.solver.PriorityGoalRow this;
+        androidx.constraintlayout.solver.ArrayRow $u9;
+        boolean $u10;
+        androidx.constraintlayout.solver.SolverVariable goalVariable, $u-1#3;
+        androidx.constraintlayout.solver.ArrayRow$ArrayRowVariables rowVariables;
+        int $u-1, i;
+        float $u-1#4, $u6#9, $u7;
+        androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor $u6;
+
+        this := @this: androidx.constraintlayout.solver.PriorityGoalRow;
+
+        $u9 := @parameter0: androidx.constraintlayout.solver.ArrayRow;
+
+        $u10 := @parameter1: boolean;
+
+        goalVariable = $u9.<androidx.constraintlayout.solver.ArrayRow: androidx.constraintlayout.solver.SolverVariable variable>;
+
+        if goalVariable != null goto label1;
+
+        return;
+
+     label1:
+        rowVariables = $u9.<androidx.constraintlayout.solver.ArrayRow: androidx.constraintlayout.solver.ArrayRow$ArrayRowVariables variables>;
+
+        $u-1 = interfaceinvoke rowVariables.<androidx.constraintlayout.solver.ArrayRow$ArrayRowVariables: int getCurrentSize()>();
+
+        i = 0;
+
+     label2:
+        if i >= $u-1 goto label4;
+
+        $u-1#3 = interfaceinvoke rowVariables.<androidx.constraintlayout.solver.ArrayRow$ArrayRowVariables: androidx.constraintlayout.solver.SolverVariable getVariable(int)>(i);
+
+        $u-1#4 = interfaceinvoke rowVariables.<androidx.constraintlayout.solver.ArrayRow$ArrayRowVariables: float getVariableValue(int)>(i);
+
+        $u6 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor accessor>;
+
+        virtualinvoke $u6.<androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor: void init(androidx.constraintlayout.solver.SolverVariable)>($u-1#3);
+
+        $u6 = this.<androidx.constraintlayout.solver.PriorityGoalRow: androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor accessor>;
+
+        $u10 = virtualinvoke $u6.<androidx.constraintlayout.solver.PriorityGoalRow$GoalVariableAccessor: boolean addToGoal(androidx.constraintlayout.solver.SolverVariable,float)>(goalVariable, $u-1#4);
+
+        if $u10 == 0 goto label3;
+
+        specialinvoke this.<androidx.constraintlayout.solver.PriorityGoalRow: void addToGoal(androidx.constraintlayout.solver.SolverVariable)>($u-1#3);
+
+     label3:
+        $u6#9 = this.<androidx.constraintlayout.solver.PriorityGoalRow: float constantValue>;
+
+        $u7 = $u9.<androidx.constraintlayout.solver.ArrayRow: float constantValue>;
+
+        $u-1#4 = $u7 * $u-1#4;
+
+        $u6#9 = $u6#9 + $u-1#4;
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow: float constantValue> = $u6#9;
+
+        i = i + 1;
+
+        goto label2;
+
+     label4:
+        specialinvoke this.<androidx.constraintlayout.solver.PriorityGoalRow: void removeGoal(androidx.constraintlayout.solver.SolverVariable)>(goalVariable);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.solver.PriorityGoalRow: float epsilon> = 1.0E-4F;
+
+        <androidx.constraintlayout.solver.PriorityGoalRow: int NOT_FOUND> = -1;
+
+        <androidx.constraintlayout.solver.PriorityGoalRow: boolean DEBUG> = 0;
+
+        return;
+    }
+}

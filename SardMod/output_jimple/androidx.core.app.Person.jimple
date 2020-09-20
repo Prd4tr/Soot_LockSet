@@ -1,0 +1,469 @@
+public class androidx.core.app.Person extends java.lang.Object
+{
+    private static final java.lang.String ICON_KEY;
+    private static final java.lang.String IS_BOT_KEY;
+    private static final java.lang.String IS_IMPORTANT_KEY;
+    private static final java.lang.String KEY_KEY;
+    private static final java.lang.String NAME_KEY;
+    private static final java.lang.String URI_KEY;
+    androidx.core.graphics.drawable.IconCompat mIcon;
+    boolean mIsBot;
+    boolean mIsImportant;
+    java.lang.String mKey;
+    java.lang.CharSequence mName;
+    java.lang.String mUri;
+
+    void <init>(androidx.core.app.Person$Builder)
+    {
+        androidx.core.app.Person this;
+        androidx.core.app.Person$Builder $u2;
+        java.lang.CharSequence $u0;
+        androidx.core.graphics.drawable.IconCompat $u0#2;
+        java.lang.String $u0#3;
+        boolean $u0#5;
+
+        this := @this: androidx.core.app.Person;
+
+        $u2 := @parameter0: androidx.core.app.Person$Builder;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = $u2.<androidx.core.app.Person$Builder: java.lang.CharSequence mName>;
+
+        this.<androidx.core.app.Person: java.lang.CharSequence mName> = $u0;
+
+        $u0#2 = $u2.<androidx.core.app.Person$Builder: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        this.<androidx.core.app.Person: androidx.core.graphics.drawable.IconCompat mIcon> = $u0#2;
+
+        $u0#3 = $u2.<androidx.core.app.Person$Builder: java.lang.String mUri>;
+
+        this.<androidx.core.app.Person: java.lang.String mUri> = $u0#3;
+
+        $u0#3 = $u2.<androidx.core.app.Person$Builder: java.lang.String mKey>;
+
+        this.<androidx.core.app.Person: java.lang.String mKey> = $u0#3;
+
+        $u0#5 = $u2.<androidx.core.app.Person$Builder: boolean mIsBot>;
+
+        this.<androidx.core.app.Person: boolean mIsBot> = $u0#5;
+
+        $u0#5 = $u2.<androidx.core.app.Person$Builder: boolean mIsImportant>;
+
+        this.<androidx.core.app.Person: boolean mIsImportant> = $u0#5;
+
+        return;
+    }
+
+    public static androidx.core.app.Person fromAndroidPerson(android.app.Person)
+    {
+        android.app.Person $u2;
+        androidx.core.app.Person$Builder $u0;
+        java.lang.CharSequence $u-1;
+        android.graphics.drawable.Icon $u-1#6;
+        androidx.core.graphics.drawable.IconCompat $u-1#10;
+        java.lang.String $u-1#14;
+        boolean $u-1#22;
+        androidx.core.app.Person $u-1#30;
+
+        $u2 := @parameter0: android.app.Person;
+
+        $u0 = new androidx.core.app.Person$Builder;
+
+        specialinvoke $u0.<androidx.core.app.Person$Builder: void <init>()>();
+
+        $u-1 = virtualinvoke $u2.<android.app.Person: java.lang.CharSequence getName()>();
+
+        $u0 = virtualinvoke $u0.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setName(java.lang.CharSequence)>($u-1);
+
+        $u-1#6 = virtualinvoke $u2.<android.app.Person: android.graphics.drawable.Icon getIcon()>();
+
+        if $u-1#6 == null goto label1;
+
+        $u-1#6 = virtualinvoke $u2.<android.app.Person: android.graphics.drawable.Icon getIcon()>();
+
+        $u-1#10 = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createFromIcon(android.graphics.drawable.Icon)>($u-1#6);
+
+        goto label2;
+
+     label1:
+        $u-1#10 = null;
+
+     label2:
+        $u0 = virtualinvoke $u0.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setIcon(androidx.core.graphics.drawable.IconCompat)>($u-1#10);
+
+        $u-1#14 = virtualinvoke $u2.<android.app.Person: java.lang.String getUri()>();
+
+        $u0 = virtualinvoke $u0.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setUri(java.lang.String)>($u-1#14);
+
+        $u-1#14 = virtualinvoke $u2.<android.app.Person: java.lang.String getKey()>();
+
+        $u0 = virtualinvoke $u0.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setKey(java.lang.String)>($u-1#14);
+
+        $u-1#22 = virtualinvoke $u2.<android.app.Person: boolean isBot()>();
+
+        $u0 = virtualinvoke $u0.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setBot(boolean)>($u-1#22);
+
+        $u-1#22 = virtualinvoke $u2.<android.app.Person: boolean isImportant()>();
+
+        $u0 = virtualinvoke $u0.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setImportant(boolean)>($u-1#22);
+
+        $u-1#30 = virtualinvoke $u0.<androidx.core.app.Person$Builder: androidx.core.app.Person build()>();
+
+        return $u-1#30;
+    }
+
+    public static androidx.core.app.Person fromBundle(android.os.Bundle)
+    {
+        android.os.Bundle $u3, $u-1;
+        androidx.core.app.Person$Builder $u1;
+        java.lang.CharSequence $u-1#6;
+        androidx.core.graphics.drawable.IconCompat $u-1#10;
+        java.lang.String $u-1#15;
+        boolean $u-1#25;
+        androidx.core.app.Person $u-1#34;
+
+        $u3 := @parameter0: android.os.Bundle;
+
+        $u-1 = virtualinvoke $u3.<android.os.Bundle: android.os.Bundle getBundle(java.lang.String)>("icon");
+
+        $u1 = new androidx.core.app.Person$Builder;
+
+        specialinvoke $u1.<androidx.core.app.Person$Builder: void <init>()>();
+
+        $u-1#6 = virtualinvoke $u3.<android.os.Bundle: java.lang.CharSequence getCharSequence(java.lang.String)>("name");
+
+        $u1 = virtualinvoke $u1.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setName(java.lang.CharSequence)>($u-1#6);
+
+        if $u-1 == null goto label1;
+
+        $u-1#10 = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createFromBundle(android.os.Bundle)>($u-1);
+
+        goto label2;
+
+     label1:
+        $u-1#10 = null;
+
+     label2:
+        $u1 = virtualinvoke $u1.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setIcon(androidx.core.graphics.drawable.IconCompat)>($u-1#10);
+
+        $u-1#15 = virtualinvoke $u3.<android.os.Bundle: java.lang.String getString(java.lang.String)>("uri");
+
+        $u1 = virtualinvoke $u1.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setUri(java.lang.String)>($u-1#15);
+
+        $u-1#15 = virtualinvoke $u3.<android.os.Bundle: java.lang.String getString(java.lang.String)>("key");
+
+        $u1 = virtualinvoke $u1.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setKey(java.lang.String)>($u-1#15);
+
+        $u-1#25 = virtualinvoke $u3.<android.os.Bundle: boolean getBoolean(java.lang.String)>("isBot");
+
+        $u1 = virtualinvoke $u1.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setBot(boolean)>($u-1#25);
+
+        $u-1#25 = virtualinvoke $u3.<android.os.Bundle: boolean getBoolean(java.lang.String)>("isImportant");
+
+        $u1 = virtualinvoke $u1.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setImportant(boolean)>($u-1#25);
+
+        $u-1#34 = virtualinvoke $u1.<androidx.core.app.Person$Builder: androidx.core.app.Person build()>();
+
+        return $u-1#34;
+    }
+
+    public static androidx.core.app.Person fromPersistableBundle(android.os.PersistableBundle)
+    {
+        android.os.PersistableBundle $u2;
+        androidx.core.app.Person$Builder $u0;
+        java.lang.String $u-1;
+        boolean $u-1#18;
+        androidx.core.app.Person $u-1#27;
+
+        $u2 := @parameter0: android.os.PersistableBundle;
+
+        $u0 = new androidx.core.app.Person$Builder;
+
+        specialinvoke $u0.<androidx.core.app.Person$Builder: void <init>()>();
+
+        $u-1 = virtualinvoke $u2.<android.os.PersistableBundle: java.lang.String getString(java.lang.String)>("name");
+
+        $u0 = virtualinvoke $u0.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setName(java.lang.CharSequence)>($u-1);
+
+        $u-1 = virtualinvoke $u2.<android.os.PersistableBundle: java.lang.String getString(java.lang.String)>("uri");
+
+        $u0 = virtualinvoke $u0.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setUri(java.lang.String)>($u-1);
+
+        $u-1 = virtualinvoke $u2.<android.os.PersistableBundle: java.lang.String getString(java.lang.String)>("key");
+
+        $u0 = virtualinvoke $u0.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setKey(java.lang.String)>($u-1);
+
+        $u-1#18 = virtualinvoke $u2.<android.os.PersistableBundle: boolean getBoolean(java.lang.String)>("isBot");
+
+        $u0 = virtualinvoke $u0.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setBot(boolean)>($u-1#18);
+
+        $u-1#18 = virtualinvoke $u2.<android.os.PersistableBundle: boolean getBoolean(java.lang.String)>("isImportant");
+
+        $u0 = virtualinvoke $u0.<androidx.core.app.Person$Builder: androidx.core.app.Person$Builder setImportant(boolean)>($u-1#18);
+
+        $u-1#27 = virtualinvoke $u0.<androidx.core.app.Person$Builder: androidx.core.app.Person build()>();
+
+        return $u-1#27;
+    }
+
+    public androidx.core.graphics.drawable.IconCompat getIcon()
+    {
+        androidx.core.app.Person this;
+        androidx.core.graphics.drawable.IconCompat ret0;
+
+        this := @this: androidx.core.app.Person;
+
+        ret0 = this.<androidx.core.app.Person: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        return ret0;
+    }
+
+    public java.lang.String getKey()
+    {
+        androidx.core.app.Person this;
+        java.lang.String ret0;
+
+        this := @this: androidx.core.app.Person;
+
+        ret0 = this.<androidx.core.app.Person: java.lang.String mKey>;
+
+        return ret0;
+    }
+
+    public java.lang.CharSequence getName()
+    {
+        androidx.core.app.Person this;
+        java.lang.CharSequence ret0;
+
+        this := @this: androidx.core.app.Person;
+
+        ret0 = this.<androidx.core.app.Person: java.lang.CharSequence mName>;
+
+        return ret0;
+    }
+
+    public java.lang.String getUri()
+    {
+        androidx.core.app.Person this;
+        java.lang.String ret0;
+
+        this := @this: androidx.core.app.Person;
+
+        ret0 = this.<androidx.core.app.Person: java.lang.String mUri>;
+
+        return ret0;
+    }
+
+    public boolean isBot()
+    {
+        androidx.core.app.Person this;
+        boolean ret0;
+
+        this := @this: androidx.core.app.Person;
+
+        ret0 = this.<androidx.core.app.Person: boolean mIsBot>;
+
+        return ret0;
+    }
+
+    public boolean isImportant()
+    {
+        androidx.core.app.Person this;
+        boolean ret0;
+
+        this := @this: androidx.core.app.Person;
+
+        ret0 = this.<androidx.core.app.Person: boolean mIsImportant>;
+
+        return ret0;
+    }
+
+    public android.app.Person toAndroidPerson()
+    {
+        androidx.core.app.Person this;
+        android.app.Person$Builder $u0;
+        java.lang.CharSequence $u-1;
+        androidx.core.graphics.drawable.IconCompat $u-1#6;
+        android.graphics.drawable.Icon $u-1#10;
+        java.lang.String $u-1#14;
+        boolean $u-1#22;
+        android.app.Person $u-1#30;
+
+        this := @this: androidx.core.app.Person;
+
+        $u0 = new android.app.Person$Builder;
+
+        specialinvoke $u0.<android.app.Person$Builder: void <init>()>();
+
+        $u-1 = virtualinvoke this.<androidx.core.app.Person: java.lang.CharSequence getName()>();
+
+        $u0 = virtualinvoke $u0.<android.app.Person$Builder: android.app.Person$Builder setName(java.lang.CharSequence)>($u-1);
+
+        $u-1#6 = virtualinvoke this.<androidx.core.app.Person: androidx.core.graphics.drawable.IconCompat getIcon()>();
+
+        if $u-1#6 == null goto label1;
+
+        $u-1#6 = virtualinvoke this.<androidx.core.app.Person: androidx.core.graphics.drawable.IconCompat getIcon()>();
+
+        $u-1#10 = virtualinvoke $u-1#6.<androidx.core.graphics.drawable.IconCompat: android.graphics.drawable.Icon toIcon()>();
+
+        goto label2;
+
+     label1:
+        $u-1#10 = null;
+
+     label2:
+        $u0 = virtualinvoke $u0.<android.app.Person$Builder: android.app.Person$Builder setIcon(android.graphics.drawable.Icon)>($u-1#10);
+
+        $u-1#14 = virtualinvoke this.<androidx.core.app.Person: java.lang.String getUri()>();
+
+        $u0 = virtualinvoke $u0.<android.app.Person$Builder: android.app.Person$Builder setUri(java.lang.String)>($u-1#14);
+
+        $u-1#14 = virtualinvoke this.<androidx.core.app.Person: java.lang.String getKey()>();
+
+        $u0 = virtualinvoke $u0.<android.app.Person$Builder: android.app.Person$Builder setKey(java.lang.String)>($u-1#14);
+
+        $u-1#22 = virtualinvoke this.<androidx.core.app.Person: boolean isBot()>();
+
+        $u0 = virtualinvoke $u0.<android.app.Person$Builder: android.app.Person$Builder setBot(boolean)>($u-1#22);
+
+        $u-1#22 = virtualinvoke this.<androidx.core.app.Person: boolean isImportant()>();
+
+        $u0 = virtualinvoke $u0.<android.app.Person$Builder: android.app.Person$Builder setImportant(boolean)>($u-1#22);
+
+        $u-1#30 = virtualinvoke $u0.<android.app.Person$Builder: android.app.Person build()>();
+
+        return $u-1#30;
+    }
+
+    public androidx.core.app.Person$Builder toBuilder()
+    {
+        androidx.core.app.Person this;
+        androidx.core.app.Person$Builder $u0;
+
+        this := @this: androidx.core.app.Person;
+
+        $u0 = new androidx.core.app.Person$Builder;
+
+        specialinvoke $u0.<androidx.core.app.Person$Builder: void <init>(androidx.core.app.Person)>(this);
+
+        return $u0;
+    }
+
+    public android.os.Bundle toBundle()
+    {
+        androidx.core.app.Person this;
+        android.os.Bundle result, $u-1;
+        java.lang.CharSequence $u1;
+        androidx.core.graphics.drawable.IconCompat $u1#3;
+        java.lang.String $u1#6;
+        boolean $u1#10;
+
+        this := @this: androidx.core.app.Person;
+
+        result = new android.os.Bundle;
+
+        specialinvoke result.<android.os.Bundle: void <init>()>();
+
+        $u1 = this.<androidx.core.app.Person: java.lang.CharSequence mName>;
+
+        virtualinvoke result.<android.os.Bundle: void putCharSequence(java.lang.String,java.lang.CharSequence)>("name", $u1);
+
+        $u1#3 = this.<androidx.core.app.Person: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        if $u1#3 == null goto label1;
+
+        $u-1 = virtualinvoke $u1#3.<androidx.core.graphics.drawable.IconCompat: android.os.Bundle toBundle()>();
+
+        goto label2;
+
+     label1:
+        $u-1 = null;
+
+     label2:
+        virtualinvoke result.<android.os.Bundle: void putBundle(java.lang.String,android.os.Bundle)>("icon", $u-1);
+
+        $u1#6 = this.<androidx.core.app.Person: java.lang.String mUri>;
+
+        virtualinvoke result.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("uri", $u1#6);
+
+        $u1#6 = this.<androidx.core.app.Person: java.lang.String mKey>;
+
+        virtualinvoke result.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("key", $u1#6);
+
+        $u1#10 = this.<androidx.core.app.Person: boolean mIsBot>;
+
+        virtualinvoke result.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>("isBot", $u1#10);
+
+        $u1#10 = this.<androidx.core.app.Person: boolean mIsImportant>;
+
+        virtualinvoke result.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>("isImportant", $u1#10);
+
+        return result;
+    }
+
+    public android.os.PersistableBundle toPersistableBundle()
+    {
+        androidx.core.app.Person this;
+        android.os.PersistableBundle result;
+        java.lang.String $u-1;
+        java.lang.CharSequence $u1;
+        boolean $u1#8;
+
+        this := @this: androidx.core.app.Person;
+
+        result = new android.os.PersistableBundle;
+
+        specialinvoke result.<android.os.PersistableBundle: void <init>()>();
+
+        $u1 = this.<androidx.core.app.Person: java.lang.CharSequence mName>;
+
+        if $u1 == null goto label1;
+
+        $u-1 = interfaceinvoke $u1.<java.lang.CharSequence: java.lang.String toString()>();
+
+        goto label2;
+
+     label1:
+        $u-1 = null;
+
+     label2:
+        virtualinvoke result.<android.os.PersistableBundle: void putString(java.lang.String,java.lang.String)>("name", $u-1);
+
+        $u-1 = this.<androidx.core.app.Person: java.lang.String mUri>;
+
+        virtualinvoke result.<android.os.PersistableBundle: void putString(java.lang.String,java.lang.String)>("uri", $u-1);
+
+        $u-1 = this.<androidx.core.app.Person: java.lang.String mKey>;
+
+        virtualinvoke result.<android.os.PersistableBundle: void putString(java.lang.String,java.lang.String)>("key", $u-1);
+
+        $u1#8 = this.<androidx.core.app.Person: boolean mIsBot>;
+
+        virtualinvoke result.<android.os.PersistableBundle: void putBoolean(java.lang.String,boolean)>("isBot", $u1#8);
+
+        $u1#8 = this.<androidx.core.app.Person: boolean mIsImportant>;
+
+        virtualinvoke result.<android.os.PersistableBundle: void putBoolean(java.lang.String,boolean)>("isImportant", $u1#8);
+
+        return result;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.Person: java.lang.String URI_KEY> = "uri";
+
+        <androidx.core.app.Person: java.lang.String NAME_KEY> = "name";
+
+        <androidx.core.app.Person: java.lang.String KEY_KEY> = "key";
+
+        <androidx.core.app.Person: java.lang.String IS_IMPORTANT_KEY> = "isImportant";
+
+        <androidx.core.app.Person: java.lang.String IS_BOT_KEY> = "isBot";
+
+        <androidx.core.app.Person: java.lang.String ICON_KEY> = "icon";
+
+        return;
+    }
+}

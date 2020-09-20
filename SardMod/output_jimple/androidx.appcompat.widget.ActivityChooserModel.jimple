@@ -1,0 +1,1527 @@
+class androidx.appcompat.widget.ActivityChooserModel extends android.database.DataSetObservable
+{
+    static final java.lang.String ATTRIBUTE_ACTIVITY;
+    static final java.lang.String ATTRIBUTE_TIME;
+    static final java.lang.String ATTRIBUTE_WEIGHT;
+    static final boolean DEBUG;
+    private static final int DEFAULT_ACTIVITY_INFLATION;
+    private static final float DEFAULT_HISTORICAL_RECORD_WEIGHT;
+    public static final java.lang.String DEFAULT_HISTORY_FILE_NAME;
+    public static final int DEFAULT_HISTORY_MAX_LENGTH;
+    private static final java.lang.String HISTORY_FILE_EXTENSION;
+    private static final int INVALID_INDEX;
+    static final java.lang.String LOG_TAG;
+    static final java.lang.String TAG_HISTORICAL_RECORD;
+    static final java.lang.String TAG_HISTORICAL_RECORDS;
+    private static final java.util.Map sDataModelRegistry;
+    private static final java.lang.Object sRegistryLock;
+    private final java.util.List mActivities;
+    private androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener mActivityChoserModelPolicy;
+    private androidx.appcompat.widget.ActivityChooserModel$ActivitySorter mActivitySorter;
+    boolean mCanReadHistoricalData;
+    final android.content.Context mContext;
+    private final java.util.List mHistoricalRecords;
+    private boolean mHistoricalRecordsChanged;
+    final java.lang.String mHistoryFileName;
+    private int mHistoryMaxSize;
+    private final java.lang.Object mInstanceLock;
+    private android.content.Intent mIntent;
+    private boolean mReadShareHistoryCalled;
+    private boolean mReloadActivities;
+
+    static void <clinit>()
+    {
+        java.lang.String $u-1;
+        java.lang.Class $u0;
+        java.lang.Object $u0#3;
+        java.util.HashMap $u0#4;
+
+        <androidx.appcompat.widget.ActivityChooserModel: java.lang.String TAG_HISTORICAL_RECORDS> = "historical-records";
+
+        <androidx.appcompat.widget.ActivityChooserModel: java.lang.String TAG_HISTORICAL_RECORD> = "historical-record";
+
+        <androidx.appcompat.widget.ActivityChooserModel: int INVALID_INDEX> = -1;
+
+        <androidx.appcompat.widget.ActivityChooserModel: java.lang.String HISTORY_FILE_EXTENSION> = ".xml";
+
+        <androidx.appcompat.widget.ActivityChooserModel: int DEFAULT_HISTORY_MAX_LENGTH> = 50;
+
+        <androidx.appcompat.widget.ActivityChooserModel: java.lang.String DEFAULT_HISTORY_FILE_NAME> = "activity_choser_model_history.xml";
+
+        <androidx.appcompat.widget.ActivityChooserModel: float DEFAULT_HISTORICAL_RECORD_WEIGHT> = 1.0F;
+
+        <androidx.appcompat.widget.ActivityChooserModel: int DEFAULT_ACTIVITY_INFLATION> = 5;
+
+        <androidx.appcompat.widget.ActivityChooserModel: boolean DEBUG> = 0;
+
+        <androidx.appcompat.widget.ActivityChooserModel: java.lang.String ATTRIBUTE_WEIGHT> = "weight";
+
+        <androidx.appcompat.widget.ActivityChooserModel: java.lang.String ATTRIBUTE_TIME> = "time";
+
+        <androidx.appcompat.widget.ActivityChooserModel: java.lang.String ATTRIBUTE_ACTIVITY> = "activity";
+
+        $u0 = class "Landroidx/appcompat/widget/ActivityChooserModel;";
+
+        $u-1 = virtualinvoke $u0.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        <androidx.appcompat.widget.ActivityChooserModel: java.lang.String LOG_TAG> = $u-1;
+
+        $u0#3 = new java.lang.Object;
+
+        specialinvoke $u0#3.<java.lang.Object: void <init>()>();
+
+        <androidx.appcompat.widget.ActivityChooserModel: java.lang.Object sRegistryLock> = $u0#3;
+
+        $u0#4 = new java.util.HashMap;
+
+        specialinvoke $u0#4.<java.util.HashMap: void <init>()>();
+
+        <androidx.appcompat.widget.ActivityChooserModel: java.util.Map sDataModelRegistry> = $u0#4;
+
+        return;
+    }
+
+    private void <init>(android.content.Context, java.lang.String)
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        android.content.Context $u3;
+        java.lang.String $u4;
+        java.lang.Object $u0;
+        java.util.ArrayList $u0#2;
+        androidx.appcompat.widget.ActivityChooserModel$DefaultSorter $u0#4;
+        boolean $u-1;
+        java.lang.StringBuilder $u1;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u4 := @parameter1: java.lang.String;
+
+        specialinvoke this.<android.database.DataSetObservable: void <init>()>();
+
+        $u0 = new java.lang.Object;
+
+        specialinvoke $u0.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock> = $u0;
+
+        $u0#2 = new java.util.ArrayList;
+
+        specialinvoke $u0#2.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mActivities> = $u0#2;
+
+        $u0#2 = new java.util.ArrayList;
+
+        specialinvoke $u0#2.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mHistoricalRecords> = $u0#2;
+
+        $u0#4 = new androidx.appcompat.widget.ActivityChooserModel$DefaultSorter;
+
+        specialinvoke $u0#4.<androidx.appcompat.widget.ActivityChooserModel$DefaultSorter: void <init>()>();
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: androidx.appcompat.widget.ActivityChooserModel$ActivitySorter mActivitySorter> = $u0#4;
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: int mHistoryMaxSize> = 50;
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: boolean mCanReadHistoricalData> = 1;
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: boolean mReadShareHistoryCalled> = 0;
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: boolean mHistoricalRecordsChanged> = 1;
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: boolean mReloadActivities> = 0;
+
+        $u3 = virtualinvoke $u3.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: android.content.Context mContext> = $u3;
+
+        $u-1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u4);
+
+        if $u-1 != 0 goto label1;
+
+        $u-1 = virtualinvoke $u4.<java.lang.String: boolean endsWith(java.lang.String)>(".xml");
+
+        if $u-1 != 0 goto label1;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u4);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".xml");
+
+        $u4 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.String mHistoryFileName> = $u4;
+
+        return;
+
+     label1:
+        this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.String mHistoryFileName> = $u4;
+
+        return;
+    }
+
+    private boolean addHistoricalRecord(androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord)
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord $u3;
+        boolean $u-1;
+        java.util.List added;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u3 := @parameter0: androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord;
+
+        added = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mHistoricalRecords>;
+
+        $u-1 = interfaceinvoke added.<java.util.List: boolean add(java.lang.Object)>($u3);
+
+        if $u-1 == 0 goto label1;
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: boolean mHistoricalRecordsChanged> = 1;
+
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void pruneExcessiveHistoricalRecordsIfNeeded()>();
+
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void persistHistoricalDataIfNeeded()>();
+
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: boolean sortActivitiesIfNeeded()>();
+
+        virtualinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void notifyChanged()>();
+
+     label1:
+        return $u-1;
+    }
+
+    private void ensureConsistentState()
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        boolean $u-1, $u-1#3;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: boolean loadActivitiesIfNeeded()>();
+
+        $u-1#3 = specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: boolean readHistoricalDataIfNeeded()>();
+
+        $u-1 = $u-1 | $u-1#3;
+
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void pruneExcessiveHistoricalRecordsIfNeeded()>();
+
+        if $u-1 == 0 goto label1;
+
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: boolean sortActivitiesIfNeeded()>();
+
+        virtualinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void notifyChanged()>();
+
+     label1:
+        return;
+    }
+
+    public static androidx.appcompat.widget.ActivityChooserModel get(android.content.Context, java.lang.String)
+    {
+        android.content.Context $u3;
+        java.lang.String $u4;
+        java.lang.Object $u0, $u-1;
+        java.util.Map dataModel;
+        androidx.appcompat.widget.ActivityChooserModel dataModel#3, $u2;
+        java.lang.Throwable dataModel#6;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u4 := @parameter1: java.lang.String;
+
+        $u0 = <androidx.appcompat.widget.ActivityChooserModel: java.lang.Object sRegistryLock>;
+
+        entermonitor $u0;
+
+     label1:
+        dataModel = <androidx.appcompat.widget.ActivityChooserModel: java.util.Map sDataModelRegistry>;
+
+        $u-1 = interfaceinvoke dataModel.<java.util.Map: java.lang.Object get(java.lang.Object)>($u4);
+
+        dataModel#3 = (androidx.appcompat.widget.ActivityChooserModel) $u-1;
+
+        if dataModel#3 != null goto label2;
+
+        $u2 = new androidx.appcompat.widget.ActivityChooserModel;
+
+        specialinvoke $u2.<androidx.appcompat.widget.ActivityChooserModel: void <init>(android.content.Context,java.lang.String)>($u3, $u4);
+
+        dataModel#3 = $u2;
+
+        dataModel = <androidx.appcompat.widget.ActivityChooserModel: java.util.Map sDataModelRegistry>;
+
+        interfaceinvoke dataModel.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($u4, $u2);
+
+     label2:
+        exitmonitor $u0;
+
+     label3:
+        return dataModel#3;
+
+     label4:
+        dataModel#6 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label5:
+        throw dataModel#6;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+
+    private boolean loadActivitiesIfNeeded()
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        java.util.List $u4, $u-1#9;
+        androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo $u5;
+        boolean resolveInfos;
+        android.content.Intent resolveInfos#3;
+        android.content.Context resolveInfos#5;
+        android.content.pm.PackageManager $u-1;
+        int $u-1#11, i;
+        java.lang.Object $u-1#14;
+        android.content.pm.ResolveInfo resolveInfo;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        resolveInfos = this.<androidx.appcompat.widget.ActivityChooserModel: boolean mReloadActivities>;
+
+        if resolveInfos == 0 goto label3;
+
+        resolveInfos#3 = this.<androidx.appcompat.widget.ActivityChooserModel: android.content.Intent mIntent>;
+
+        if resolveInfos#3 == null goto label3;
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: boolean mReloadActivities> = 0;
+
+        $u4 = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mActivities>;
+
+        interfaceinvoke $u4.<java.util.List: void clear()>();
+
+        resolveInfos#5 = this.<androidx.appcompat.widget.ActivityChooserModel: android.content.Context mContext>;
+
+        $u-1 = virtualinvoke resolveInfos#5.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        resolveInfos#3 = this.<androidx.appcompat.widget.ActivityChooserModel: android.content.Intent mIntent>;
+
+        $u-1#9 = virtualinvoke $u-1.<android.content.pm.PackageManager: java.util.List queryIntentActivities(android.content.Intent,int)>(resolveInfos#3, 0);
+
+        $u-1#11 = interfaceinvoke $u-1#9.<java.util.List: int size()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1#11 goto label2;
+
+        $u-1#14 = interfaceinvoke $u-1#9.<java.util.List: java.lang.Object get(int)>(i);
+
+        resolveInfo = (android.content.pm.ResolveInfo) $u-1#14;
+
+        $u4 = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mActivities>;
+
+        $u5 = new androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo;
+
+        specialinvoke $u5.<androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo: void <init>(android.content.pm.ResolveInfo)>(resolveInfo);
+
+        interfaceinvoke $u4.<java.util.List: boolean add(java.lang.Object)>($u5);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    private void persistHistoricalDataIfNeeded()
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        java.util.concurrent.Executor $u2;
+        java.util.List $u5;
+        boolean $u-1;
+        java.lang.String $u1;
+        androidx.appcompat.widget.ActivityChooserModel$PersistHistoryAsyncTask $u1#6;
+        java.lang.Object[] $u3;
+        java.util.ArrayList $u4;
+        java.lang.IllegalStateException $u0;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u-1 = this.<androidx.appcompat.widget.ActivityChooserModel: boolean mReadShareHistoryCalled>;
+
+        if $u-1 == 0 goto label2;
+
+        $u-1 = this.<androidx.appcompat.widget.ActivityChooserModel: boolean mHistoricalRecordsChanged>;
+
+        if $u-1 != 0 goto label1;
+
+        return;
+
+     label1:
+        this.<androidx.appcompat.widget.ActivityChooserModel: boolean mHistoricalRecordsChanged> = 0;
+
+        $u1 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.String mHistoryFileName>;
+
+        $u-1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u1);
+
+        if $u-1 != 0 goto label3;
+
+        $u1#6 = new androidx.appcompat.widget.ActivityChooserModel$PersistHistoryAsyncTask;
+
+        specialinvoke $u1#6.<androidx.appcompat.widget.ActivityChooserModel$PersistHistoryAsyncTask: void <init>(androidx.appcompat.widget.ActivityChooserModel)>(this);
+
+        $u2 = <android.os.AsyncTask: java.util.concurrent.Executor THREAD_POOL_EXECUTOR>;
+
+        $u3 = newarray (java.lang.Object)[2];
+
+        $u4 = new java.util.ArrayList;
+
+        $u5 = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mHistoricalRecords>;
+
+        specialinvoke $u4.<java.util.ArrayList: void <init>(java.util.Collection)>($u5);
+
+        $u3[0] = $u4;
+
+        $u1 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.String mHistoryFileName>;
+
+        $u3[1] = $u1;
+
+        virtualinvoke $u1#6.<androidx.appcompat.widget.ActivityChooserModel$PersistHistoryAsyncTask: android.os.AsyncTask executeOnExecutor(java.util.concurrent.Executor,java.lang.Object[])>($u2, $u3);
+
+        return;
+
+     label2:
+        $u0 = new java.lang.IllegalStateException;
+
+        specialinvoke $u0.<java.lang.IllegalStateException: void <init>(java.lang.String)>("No preceding call to #readHistoricalData");
+
+        throw $u0;
+
+     label3:
+        return;
+    }
+
+    private void pruneExcessiveHistoricalRecordsIfNeeded()
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        java.util.List pruneCount;
+        int $u-1, i;
+        java.lang.Object $u-1#9;
+        androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord $u2;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        pruneCount = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mHistoricalRecords>;
+
+        $u-1 = interfaceinvoke pruneCount.<java.util.List: int size()>();
+
+        i = this.<androidx.appcompat.widget.ActivityChooserModel: int mHistoryMaxSize>;
+
+        $u-1 = $u-1 - i;
+
+        if $u-1 > 0 goto label1;
+
+        return;
+
+     label1:
+        this.<androidx.appcompat.widget.ActivityChooserModel: boolean mHistoricalRecordsChanged> = 1;
+
+        i = 0;
+
+     label2:
+        if i >= $u-1 goto label3;
+
+        pruneCount = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mHistoricalRecords>;
+
+        $u-1#9 = interfaceinvoke pruneCount.<java.util.List: java.lang.Object remove(int)>(0);
+
+        $u2 = (androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord) $u-1#9;
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    private boolean readHistoricalDataIfNeeded()
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        boolean $u-1;
+        java.lang.String $u0;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u-1 = this.<androidx.appcompat.widget.ActivityChooserModel: boolean mCanReadHistoricalData>;
+
+        if $u-1 == 0 goto label1;
+
+        $u-1 = this.<androidx.appcompat.widget.ActivityChooserModel: boolean mHistoricalRecordsChanged>;
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.String mHistoryFileName>;
+
+        $u-1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u0);
+
+        if $u-1 != 0 goto label1;
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: boolean mCanReadHistoricalData> = 0;
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: boolean mReadShareHistoryCalled> = 1;
+
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void readHistoricalDataImpl()>();
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private void readHistoricalDataImpl()
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        android.content.Context parser;
+        java.lang.String type, $u-1#17;
+        java.io.FileInputStream $u-1;
+        org.xmlpull.v1.XmlPullParser $u-1#8;
+        int type#11;
+        boolean $u-1#19;
+        java.util.List historicalRecords;
+        long $u-1#39;
+        float $u-1#44;
+        androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord readRecord;
+        org.xmlpull.v1.XmlPullParserException $u4;
+        java.lang.Throwable fnfe;
+        java.io.IOException parser#52, fnfe#64, parser#65;
+        java.lang.StringBuilder $u4#54;
+        java.io.FileNotFoundException fnfe#66;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        parser = this.<androidx.appcompat.widget.ActivityChooserModel: android.content.Context mContext>;
+
+        type = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.String mHistoryFileName>;
+
+     label01:
+        $u-1 = virtualinvoke parser.<android.content.Context: java.io.FileInputStream openFileInput(java.lang.String)>(type);
+
+     label02:
+        $u-1#8 = staticinvoke <android.util.Xml: org.xmlpull.v1.XmlPullParser newPullParser()>();
+
+        interfaceinvoke $u-1#8.<org.xmlpull.v1.XmlPullParser: void setInput(java.io.InputStream,java.lang.String)>($u-1, "UTF-8");
+
+     label03:
+        type#11 = 0;
+
+     label04:
+        if type#11 == 1 goto label07;
+
+        if type#11 == 2 goto label07;
+
+     label05:
+        type#11 = interfaceinvoke $u-1#8.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+     label06:
+        goto label04;
+
+     label07:
+        type = "historical-records";
+
+     label08:
+        $u-1#17 = interfaceinvoke $u-1#8.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+        $u-1#19 = virtualinvoke type.<java.lang.String: boolean equals(java.lang.Object)>($u-1#17);
+
+     label09:
+        if $u-1#19 == 0 goto label28;
+
+     label10:
+        historicalRecords = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mHistoricalRecords>;
+
+     label11:
+        interfaceinvoke historicalRecords.<java.util.List: void clear()>();
+
+     label12:
+        type#11 = interfaceinvoke $u-1#8.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+     label13:
+        if type#11 != 1 goto label16;
+
+        if $u-1 == null goto label43;
+
+     label14:
+        virtualinvoke $u-1.<java.io.FileInputStream: void close()>();
+
+     label15:
+        goto label41;
+
+     label16:
+        if type#11 == 3 goto label12;
+
+        if type#11 != 4 goto label17;
+
+        goto label12;
+
+     label17:
+        type = interfaceinvoke $u-1#8.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+     label18:
+        $u-1#17 = "historical-record";
+
+     label19:
+        $u-1#19 = virtualinvoke $u-1#17.<java.lang.String: boolean equals(java.lang.Object)>(type);
+
+     label20:
+        if $u-1#19 == 0 goto label25;
+
+     label21:
+        type = interfaceinvoke $u-1#8.<org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)>(null, "activity");
+
+        $u-1#17 = interfaceinvoke $u-1#8.<org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)>(null, "time");
+
+        $u-1#39 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>($u-1#17);
+
+        $u-1#17 = interfaceinvoke $u-1#8.<org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(java.lang.String,java.lang.String)>(null, "weight");
+
+        $u-1#44 = staticinvoke <java.lang.Float: float parseFloat(java.lang.String)>($u-1#17);
+
+     label22:
+        readRecord = new androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord;
+
+     label23:
+        specialinvoke readRecord.<androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord: void <init>(java.lang.String,long,float)>(type, $u-1#39, $u-1#44);
+
+        interfaceinvoke historicalRecords.<java.util.List: boolean add(java.lang.Object)>(readRecord);
+
+     label24:
+        goto label12;
+
+     label25:
+        $u4 = new org.xmlpull.v1.XmlPullParserException;
+
+     label26:
+        specialinvoke $u4.<org.xmlpull.v1.XmlPullParserException: void <init>(java.lang.String)>("Share records file not well-formed.");
+
+     label27:
+        throw $u4;
+
+     label28:
+        $u4 = new org.xmlpull.v1.XmlPullParserException;
+
+     label29:
+        specialinvoke $u4.<org.xmlpull.v1.XmlPullParserException: void <init>(java.lang.String)>("Share records file does not start with historical-records tag.");
+
+     label30:
+        throw $u4;
+
+     label31:
+        fnfe := @caughtexception;
+
+        goto label44;
+
+     label32:
+        parser#52 := @caughtexception;
+
+     label33:
+        type = <androidx.appcompat.widget.ActivityChooserModel: java.lang.String LOG_TAG>;
+
+        $u4#54 = new java.lang.StringBuilder;
+
+        specialinvoke $u4#54.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4#54.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Error reading historical recrod file: ");
+
+        $u-1#17 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.String mHistoryFileName>;
+
+        virtualinvoke $u4#54.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#17);
+
+        $u-1#17 = virtualinvoke $u4#54.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>(type, $u-1#17, parser#52);
+
+     label34:
+        if $u-1 == null goto label50;
+
+     label35:
+        virtualinvoke $u-1.<java.io.FileInputStream: void close()>();
+
+     label36:
+        goto label41;
+
+     label37:
+        $u4 := @caughtexception;
+
+     label38:
+        type = <androidx.appcompat.widget.ActivityChooserModel: java.lang.String LOG_TAG>;
+
+        $u4#54 = new java.lang.StringBuilder;
+
+        specialinvoke $u4#54.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4#54.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Error reading historical recrod file: ");
+
+        $u-1#17 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.String mHistoryFileName>;
+
+        virtualinvoke $u4#54.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#17);
+
+        $u-1#17 = virtualinvoke $u4#54.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>(type, $u-1#17, $u4);
+
+     label39:
+        if $u-1 == null goto label50;
+
+     label40:
+        virtualinvoke $u-1.<java.io.FileInputStream: void close()>();
+
+     label41:
+        return;
+
+     label42:
+        fnfe#64 := @caughtexception;
+
+        goto label41;
+
+     label43:
+        return;
+
+     label44:
+        if $u-1 == null goto label48;
+
+     label45:
+        virtualinvoke $u-1.<java.io.FileInputStream: void close()>();
+
+     label46:
+        goto label48;
+
+     label47:
+        parser#65 := @caughtexception;
+
+     label48:
+        throw fnfe;
+
+     label49:
+        fnfe#66 := @caughtexception;
+
+     label50:
+        return;
+
+        catch java.io.FileNotFoundException from label01 to label02 with label49;
+        catch org.xmlpull.v1.XmlPullParserException from label02 to label03 with label37;
+        catch org.xmlpull.v1.XmlPullParserException from label05 to label06 with label37;
+        catch org.xmlpull.v1.XmlPullParserException from label08 to label09 with label37;
+        catch org.xmlpull.v1.XmlPullParserException from label11 to label13 with label37;
+        catch java.io.IOException from label02 to label03 with label32;
+        catch java.io.IOException from label05 to label06 with label32;
+        catch java.io.IOException from label08 to label09 with label32;
+        catch java.io.IOException from label11 to label13 with label32;
+        catch java.lang.Throwable from label02 to label03 with label31;
+        catch java.lang.Throwable from label05 to label06 with label31;
+        catch java.lang.Throwable from label08 to label09 with label31;
+        catch java.lang.Throwable from label10 to label13 with label31;
+        catch java.io.IOException from label14 to label15 with label42;
+        catch org.xmlpull.v1.XmlPullParserException from label17 to label18 with label37;
+        catch org.xmlpull.v1.XmlPullParserException from label19 to label20 with label37;
+        catch org.xmlpull.v1.XmlPullParserException from label21 to label22 with label37;
+        catch org.xmlpull.v1.XmlPullParserException from label23 to label24 with label37;
+        catch org.xmlpull.v1.XmlPullParserException from label26 to label28 with label37;
+        catch org.xmlpull.v1.XmlPullParserException from label29 to label31 with label37;
+        catch java.io.IOException from label17 to label18 with label32;
+        catch java.io.IOException from label19 to label20 with label32;
+        catch java.io.IOException from label21 to label22 with label32;
+        catch java.io.IOException from label23 to label24 with label32;
+        catch java.io.IOException from label26 to label27 with label32;
+        catch java.io.IOException from label29 to label30 with label32;
+        catch java.lang.Throwable from label17 to label18 with label31;
+        catch java.lang.Throwable from label19 to label20 with label31;
+        catch java.lang.Throwable from label21 to label24 with label31;
+        catch java.lang.Throwable from label25 to label31 with label31;
+        catch java.lang.Throwable from label33 to label34 with label31;
+        catch java.io.IOException from label35 to label36 with label42;
+        catch java.lang.Throwable from label38 to label39 with label31;
+        catch java.io.IOException from label40 to label41 with label42;
+        catch java.io.IOException from label45 to label46 with label47;
+    }
+
+    private boolean sortActivitiesIfNeeded()
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        android.content.Intent $u1;
+        java.util.List $u2, $u3;
+        androidx.appcompat.widget.ActivityChooserModel$ActivitySorter $u0;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: androidx.appcompat.widget.ActivityChooserModel$ActivitySorter mActivitySorter>;
+
+        if $u0 == null goto label1;
+
+        $u1 = this.<androidx.appcompat.widget.ActivityChooserModel: android.content.Intent mIntent>;
+
+        if $u1 == null goto label1;
+
+        $u2 = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mActivities>;
+
+        $u-1 = interfaceinvoke $u2.<java.util.List: boolean isEmpty()>();
+
+        if $u-1 != 0 goto label1;
+
+        $u2 = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mHistoricalRecords>;
+
+        $u-1 = interfaceinvoke $u2.<java.util.List: boolean isEmpty()>();
+
+        if $u-1 != 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: androidx.appcompat.widget.ActivityChooserModel$ActivitySorter mActivitySorter>;
+
+        $u1 = this.<androidx.appcompat.widget.ActivityChooserModel: android.content.Intent mIntent>;
+
+        $u2 = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mActivities>;
+
+        $u3 = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mHistoricalRecords>;
+
+        $u3 = staticinvoke <java.util.Collections: java.util.List unmodifiableList(java.util.List)>($u3);
+
+        interfaceinvoke $u0.<androidx.appcompat.widget.ActivityChooserModel$ActivitySorter: void sort(android.content.Intent,java.util.List,java.util.List)>($u1, $u2, $u3);
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public android.content.Intent chooseActivity(int)
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        int $u9;
+        java.lang.Object $u0, $u-1;
+        android.content.ComponentName chosenName;
+        android.content.Intent chosenActivity, choiceIntentCopy#14;
+        java.util.List chosenActivity#3;
+        androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo chosenActivity#6;
+        android.content.pm.ResolveInfo choiceIntent;
+        android.content.pm.ActivityInfo choiceIntent#8;
+        java.lang.String choiceIntent#9, choiceIntentCopy;
+        androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener choiceIntentCopy#15;
+        boolean $u-1#18;
+        androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord historicalRecord;
+        long $u-1#21;
+        java.lang.Throwable chosenActivity#23;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u9 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock>;
+
+        entermonitor $u0;
+
+     label1:
+        chosenActivity = this.<androidx.appcompat.widget.ActivityChooserModel: android.content.Intent mIntent>;
+
+        if chosenActivity != null goto label3;
+
+        exitmonitor $u0;
+
+     label2:
+        return null;
+
+     label3:
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void ensureConsistentState()>();
+
+        chosenActivity#3 = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mActivities>;
+
+        $u-1 = interfaceinvoke chosenActivity#3.<java.util.List: java.lang.Object get(int)>($u9);
+
+        chosenActivity#6 = (androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo) $u-1;
+
+        chosenName = new android.content.ComponentName;
+
+        choiceIntent = chosenActivity#6.<androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo: android.content.pm.ResolveInfo resolveInfo>;
+
+        choiceIntent#8 = choiceIntent.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        choiceIntent#9 = choiceIntent#8.<android.content.pm.ActivityInfo: java.lang.String packageName>;
+
+        choiceIntent = chosenActivity#6.<androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo: android.content.pm.ResolveInfo resolveInfo>;
+
+        choiceIntent#8 = choiceIntent.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        choiceIntentCopy = choiceIntent#8.<android.content.pm.ActivityInfo: java.lang.String name>;
+
+        specialinvoke chosenName.<android.content.ComponentName: void <init>(java.lang.String,java.lang.String)>(choiceIntent#9, choiceIntentCopy);
+
+        chosenActivity = new android.content.Intent;
+
+        choiceIntentCopy#14 = this.<androidx.appcompat.widget.ActivityChooserModel: android.content.Intent mIntent>;
+
+        specialinvoke chosenActivity.<android.content.Intent: void <init>(android.content.Intent)>(choiceIntentCopy#14);
+
+        virtualinvoke chosenActivity.<android.content.Intent: android.content.Intent setComponent(android.content.ComponentName)>(chosenName);
+
+        choiceIntentCopy#15 = this.<androidx.appcompat.widget.ActivityChooserModel: androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener mActivityChoserModelPolicy>;
+
+        if choiceIntentCopy#15 == null goto label5;
+
+        choiceIntentCopy#14 = new android.content.Intent;
+
+        specialinvoke choiceIntentCopy#14.<android.content.Intent: void <init>(android.content.Intent)>(chosenActivity);
+
+        choiceIntentCopy#15 = this.<androidx.appcompat.widget.ActivityChooserModel: androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener mActivityChoserModelPolicy>;
+
+        $u-1#18 = interfaceinvoke choiceIntentCopy#15.<androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener: boolean onChooseActivity(androidx.appcompat.widget.ActivityChooserModel,android.content.Intent)>(this, choiceIntentCopy#14);
+
+        if $u-1#18 == 0 goto label5;
+
+        exitmonitor $u0;
+
+     label4:
+        return null;
+
+     label5:
+        historicalRecord = new androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord;
+
+        $u-1#21 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        specialinvoke historicalRecord.<androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord: void <init>(android.content.ComponentName,long,float)>(chosenName, $u-1#21, 1.0F);
+
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: boolean addHistoricalRecord(androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord)>(historicalRecord);
+
+        exitmonitor $u0;
+
+     label6:
+        return chosenActivity;
+
+     label7:
+        chosenActivity#23 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label8:
+        throw chosenActivity#23;
+
+        catch java.lang.Throwable from label1 to label2 with label7;
+        catch java.lang.Throwable from label3 to label4 with label7;
+        catch java.lang.Throwable from label5 to label6 with label7;
+        catch java.lang.Throwable from label7 to label8 with label7;
+    }
+
+    public android.content.pm.ResolveInfo getActivity(int)
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        int $u3;
+        java.lang.Object $u0, $u-1;
+        java.util.List $u1;
+        androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo $u1#3;
+        java.lang.Throwable $u1#5;
+        android.content.pm.ResolveInfo ret0;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock>;
+
+        entermonitor $u0;
+
+     label1:
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void ensureConsistentState()>();
+
+        $u1 = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mActivities>;
+
+        $u-1 = interfaceinvoke $u1.<java.util.List: java.lang.Object get(int)>($u3);
+
+        $u1#3 = (androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo) $u-1;
+
+        ret0 = $u1#3.<androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo: android.content.pm.ResolveInfo resolveInfo>;
+
+        exitmonitor $u0;
+
+     label2:
+        return ret0;
+
+     label3:
+        $u1#5 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label4:
+        throw $u1#5;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public int getActivityCount()
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        java.lang.Object $u0;
+        int $u-1;
+        java.util.List $u1;
+        java.lang.Throwable $u1#3;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock>;
+
+        entermonitor $u0;
+
+     label1:
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void ensureConsistentState()>();
+
+        $u1 = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mActivities>;
+
+        $u-1 = interfaceinvoke $u1.<java.util.List: int size()>();
+
+        exitmonitor $u0;
+
+     label2:
+        return $u-1;
+
+     label3:
+        $u1#3 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label4:
+        throw $u1#3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public int getActivityIndex(android.content.pm.ResolveInfo)
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        android.content.pm.ResolveInfo $u7, $u5;
+        java.lang.Object $u0, $u-1#4;
+        java.util.List activities;
+        int $u-1, i;
+        androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo currentActivity;
+        java.lang.Throwable activities#8;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u7 := @parameter0: android.content.pm.ResolveInfo;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock>;
+
+        entermonitor $u0;
+
+     label1:
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void ensureConsistentState()>();
+
+        activities = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mActivities>;
+
+        $u-1 = interfaceinvoke activities.<java.util.List: int size()>();
+
+        i = 0;
+
+     label2:
+        if i >= $u-1 goto label5;
+
+        $u-1#4 = interfaceinvoke activities.<java.util.List: java.lang.Object get(int)>(i);
+
+        currentActivity = (androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo) $u-1#4;
+
+        $u5 = currentActivity.<androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo: android.content.pm.ResolveInfo resolveInfo>;
+
+        if $u5 != $u7 goto label4;
+
+        exitmonitor $u0;
+
+     label3:
+        return i;
+
+     label4:
+        i = i + 1;
+
+        goto label2;
+
+     label5:
+        exitmonitor $u0;
+
+     label6:
+        return -1;
+
+     label7:
+        activities#8 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label8:
+        goto label9;
+
+     label9:
+        throw activities#8;
+
+        catch java.lang.Throwable from label1 to label3 with label7;
+        catch java.lang.Throwable from label4 to label6 with label7;
+        catch java.lang.Throwable from label7 to label8 with label7;
+    }
+
+    public android.content.pm.ResolveInfo getDefaultActivity()
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        java.lang.Object $u0, $u-1#6;
+        java.util.List $u1;
+        boolean $u-1;
+        androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo $u1#8;
+        java.lang.Throwable $u1#11;
+        android.content.pm.ResolveInfo ret0;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock>;
+
+        entermonitor $u0;
+
+     label1:
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void ensureConsistentState()>();
+
+        $u1 = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mActivities>;
+
+        $u-1 = interfaceinvoke $u1.<java.util.List: boolean isEmpty()>();
+
+        if $u-1 != 0 goto label3;
+
+        $u1 = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mActivities>;
+
+        $u-1#6 = interfaceinvoke $u1.<java.util.List: java.lang.Object get(int)>(0);
+
+        $u1#8 = (androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo) $u-1#6;
+
+        ret0 = $u1#8.<androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo: android.content.pm.ResolveInfo resolveInfo>;
+
+        exitmonitor $u0;
+
+     label2:
+        return ret0;
+
+     label3:
+        exitmonitor $u0;
+
+     label4:
+        return null;
+
+     label5:
+        $u1#11 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label6:
+        throw $u1#11;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    public int getHistoryMaxSize()
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        java.lang.Object $u0;
+        java.lang.Throwable $u1;
+        int ret0;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock>;
+
+        entermonitor $u0;
+
+     label1:
+        ret0 = this.<androidx.appcompat.widget.ActivityChooserModel: int mHistoryMaxSize>;
+
+        exitmonitor $u0;
+
+     label2:
+        return ret0;
+
+     label3:
+        $u1 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label4:
+        throw $u1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public int getHistorySize()
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        java.lang.Object $u0;
+        int $u-1;
+        java.util.List $u1;
+        java.lang.Throwable $u1#3;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock>;
+
+        entermonitor $u0;
+
+     label1:
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void ensureConsistentState()>();
+
+        $u1 = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mHistoricalRecords>;
+
+        $u-1 = interfaceinvoke $u1.<java.util.List: int size()>();
+
+        exitmonitor $u0;
+
+     label2:
+        return $u-1;
+
+     label3:
+        $u1#3 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label4:
+        throw $u1#3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public android.content.Intent getIntent()
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        java.lang.Object $u0;
+        java.lang.Throwable $u1;
+        android.content.Intent ret0;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock>;
+
+        entermonitor $u0;
+
+     label1:
+        ret0 = this.<androidx.appcompat.widget.ActivityChooserModel: android.content.Intent mIntent>;
+
+        exitmonitor $u0;
+
+     label2:
+        return ret0;
+
+     label3:
+        $u1 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label4:
+        throw $u1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public void setActivitySorter(androidx.appcompat.widget.ActivityChooserModel$ActivitySorter)
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        androidx.appcompat.widget.ActivityChooserModel$ActivitySorter $u3, $u1;
+        java.lang.Object $u0;
+        boolean $u-1;
+        java.lang.Throwable $u1#3;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u3 := @parameter0: androidx.appcompat.widget.ActivityChooserModel$ActivitySorter;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock>;
+
+        entermonitor $u0;
+
+     label1:
+        $u1 = this.<androidx.appcompat.widget.ActivityChooserModel: androidx.appcompat.widget.ActivityChooserModel$ActivitySorter mActivitySorter>;
+
+        if $u1 != $u3 goto label3;
+
+        exitmonitor $u0;
+
+     label2:
+        return;
+
+     label3:
+        this.<androidx.appcompat.widget.ActivityChooserModel: androidx.appcompat.widget.ActivityChooserModel$ActivitySorter mActivitySorter> = $u3;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: boolean sortActivitiesIfNeeded()>();
+
+        if $u-1 == 0 goto label4;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void notifyChanged()>();
+
+     label4:
+        exitmonitor $u0;
+
+     label5:
+        return;
+
+     label6:
+        $u1#3 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label7:
+        throw $u1#3;
+
+        catch java.lang.Throwable from label1 to label2 with label6;
+        catch java.lang.Throwable from label3 to label5 with label6;
+        catch java.lang.Throwable from label6 to label7 with label6;
+    }
+
+    public void setDefaultActivity(int)
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        int $u9;
+        java.lang.Object $u0, $u-1;
+        java.util.List newDefaultActivity;
+        androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo newDefaultActivity#4, oldDefaultActivity;
+        float weight, defaultName;
+        android.content.ComponentName defaultName#15;
+        android.content.pm.ResolveInfo historicalRecord;
+        android.content.pm.ActivityInfo historicalRecord#17;
+        java.lang.String historicalRecord#18, $u6;
+        androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord historicalRecord#22;
+        long $u-1#23;
+        java.lang.Throwable newDefaultActivity#25;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u9 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock>;
+
+        entermonitor $u0;
+
+     label1:
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void ensureConsistentState()>();
+
+        newDefaultActivity = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mActivities>;
+
+        $u-1 = interfaceinvoke newDefaultActivity.<java.util.List: java.lang.Object get(int)>($u9);
+
+        newDefaultActivity#4 = (androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo) $u-1;
+
+        newDefaultActivity = this.<androidx.appcompat.widget.ActivityChooserModel: java.util.List mActivities>;
+
+        $u-1 = interfaceinvoke newDefaultActivity.<java.util.List: java.lang.Object get(int)>(0);
+
+        oldDefaultActivity = (androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo) $u-1;
+
+        if oldDefaultActivity == null goto label2;
+
+        weight = oldDefaultActivity.<androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo: float weight>;
+
+        defaultName = newDefaultActivity#4.<androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo: float weight>;
+
+        weight = weight - defaultName;
+
+        weight = weight + 5.0F;
+
+        goto label3;
+
+     label2:
+        weight = 1.0F;
+
+     label3:
+        defaultName#15 = new android.content.ComponentName;
+
+        historicalRecord = newDefaultActivity#4.<androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo: android.content.pm.ResolveInfo resolveInfo>;
+
+        historicalRecord#17 = historicalRecord.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        historicalRecord#18 = historicalRecord#17.<android.content.pm.ActivityInfo: java.lang.String packageName>;
+
+        historicalRecord = newDefaultActivity#4.<androidx.appcompat.widget.ActivityChooserModel$ActivityResolveInfo: android.content.pm.ResolveInfo resolveInfo>;
+
+        historicalRecord#17 = historicalRecord.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        $u6 = historicalRecord#17.<android.content.pm.ActivityInfo: java.lang.String name>;
+
+        specialinvoke defaultName#15.<android.content.ComponentName: void <init>(java.lang.String,java.lang.String)>(historicalRecord#18, $u6);
+
+        historicalRecord#22 = new androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord;
+
+        $u-1#23 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        specialinvoke historicalRecord#22.<androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord: void <init>(android.content.ComponentName,long,float)>(defaultName#15, $u-1#23, weight);
+
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: boolean addHistoricalRecord(androidx.appcompat.widget.ActivityChooserModel$HistoricalRecord)>(historicalRecord#22);
+
+        exitmonitor $u0;
+
+     label4:
+        return;
+
+     label5:
+        newDefaultActivity#25 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label6:
+        throw newDefaultActivity#25;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    public void setHistoryMaxSize(int)
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        int $u3, $u1;
+        java.lang.Object $u0;
+        boolean $u-1;
+        java.lang.Throwable $u1#3;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock>;
+
+        entermonitor $u0;
+
+     label1:
+        $u1 = this.<androidx.appcompat.widget.ActivityChooserModel: int mHistoryMaxSize>;
+
+        if $u1 != $u3 goto label3;
+
+        exitmonitor $u0;
+
+     label2:
+        return;
+
+     label3:
+        this.<androidx.appcompat.widget.ActivityChooserModel: int mHistoryMaxSize> = $u3;
+
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void pruneExcessiveHistoricalRecordsIfNeeded()>();
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: boolean sortActivitiesIfNeeded()>();
+
+        if $u-1 == 0 goto label4;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void notifyChanged()>();
+
+     label4:
+        exitmonitor $u0;
+
+     label5:
+        return;
+
+     label6:
+        $u1#3 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label7:
+        throw $u1#3;
+
+        catch java.lang.Throwable from label1 to label2 with label6;
+        catch java.lang.Throwable from label3 to label5 with label6;
+        catch java.lang.Throwable from label6 to label7 with label6;
+    }
+
+    public void setIntent(android.content.Intent)
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        android.content.Intent $u3, $u1;
+        java.lang.Object $u0;
+        java.lang.Throwable $u1#3;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u3 := @parameter0: android.content.Intent;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock>;
+
+        entermonitor $u0;
+
+     label1:
+        $u1 = this.<androidx.appcompat.widget.ActivityChooserModel: android.content.Intent mIntent>;
+
+        if $u1 != $u3 goto label3;
+
+        exitmonitor $u0;
+
+     label2:
+        return;
+
+     label3:
+        this.<androidx.appcompat.widget.ActivityChooserModel: android.content.Intent mIntent> = $u3;
+
+        this.<androidx.appcompat.widget.ActivityChooserModel: boolean mReloadActivities> = 1;
+
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserModel: void ensureConsistentState()>();
+
+        exitmonitor $u0;
+
+     label4:
+        return;
+
+     label5:
+        $u1#3 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label6:
+        throw $u1#3;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    public void setOnChooseActivityListener(androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener)
+    {
+        androidx.appcompat.widget.ActivityChooserModel this;
+        androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener $u3;
+        java.lang.Object $u0;
+        java.lang.Throwable $u1;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserModel;
+
+        $u3 := @parameter0: androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserModel: java.lang.Object mInstanceLock>;
+
+        entermonitor $u0;
+
+     label1:
+        this.<androidx.appcompat.widget.ActivityChooserModel: androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener mActivityChoserModelPolicy> = $u3;
+
+        exitmonitor $u0;
+
+     label2:
+        return;
+
+     label3:
+        $u1 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label4:
+        throw $u1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+}

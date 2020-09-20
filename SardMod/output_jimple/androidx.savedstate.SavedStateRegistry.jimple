@@ -1,0 +1,331 @@
+public final class androidx.savedstate.SavedStateRegistry extends java.lang.Object
+{
+    private static final java.lang.String SAVED_COMPONENTS_KEY;
+    boolean mAllowingSavingState;
+    private androidx.arch.core.internal.SafeIterableMap mComponents;
+    private androidx.savedstate.Recreator$SavedStateProvider mRecreatorProvider;
+    private boolean mRestored;
+    private android.os.Bundle mRestoredState;
+
+    void <init>()
+    {
+        androidx.savedstate.SavedStateRegistry this;
+        androidx.arch.core.internal.SafeIterableMap $u0;
+
+        this := @this: androidx.savedstate.SavedStateRegistry;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new androidx.arch.core.internal.SafeIterableMap;
+
+        specialinvoke $u0.<androidx.arch.core.internal.SafeIterableMap: void <init>()>();
+
+        this.<androidx.savedstate.SavedStateRegistry: androidx.arch.core.internal.SafeIterableMap mComponents> = $u0;
+
+        this.<androidx.savedstate.SavedStateRegistry: boolean mAllowingSavingState> = 1;
+
+        return;
+    }
+
+    public android.os.Bundle consumeRestoredStateForKey(java.lang.String)
+    {
+        androidx.savedstate.SavedStateRegistry this;
+        java.lang.String $u4;
+        boolean result;
+        android.os.Bundle result#2, $u2;
+        java.lang.IllegalStateException result#10;
+
+        this := @this: androidx.savedstate.SavedStateRegistry;
+
+        $u4 := @parameter0: java.lang.String;
+
+        result = this.<androidx.savedstate.SavedStateRegistry: boolean mRestored>;
+
+        if result == 0 goto label2;
+
+        result#2 = this.<androidx.savedstate.SavedStateRegistry: android.os.Bundle mRestoredState>;
+
+        if result#2 == null goto label1;
+
+        result#2 = virtualinvoke result#2.<android.os.Bundle: android.os.Bundle getBundle(java.lang.String)>($u4);
+
+        $u2 = this.<androidx.savedstate.SavedStateRegistry: android.os.Bundle mRestoredState>;
+
+        virtualinvoke $u2.<android.os.Bundle: void remove(java.lang.String)>($u4);
+
+        $u2 = this.<androidx.savedstate.SavedStateRegistry: android.os.Bundle mRestoredState>;
+
+        result = virtualinvoke $u2.<android.os.Bundle: boolean isEmpty()>();
+
+        if result == 0 goto label3;
+
+        this.<androidx.savedstate.SavedStateRegistry: android.os.Bundle mRestoredState> = null;
+
+        return result#2;
+
+     label1:
+        return null;
+
+     label2:
+        result#10 = new java.lang.IllegalStateException;
+
+        specialinvoke result#10.<java.lang.IllegalStateException: void <init>(java.lang.String)>("You can consumeRestoredStateForKey only after super.onCreate of corresponding component");
+
+        throw result#10;
+
+     label3:
+        return result#2;
+    }
+
+    public boolean isRestored()
+    {
+        androidx.savedstate.SavedStateRegistry this;
+        boolean ret0;
+
+        this := @this: androidx.savedstate.SavedStateRegistry;
+
+        ret0 = this.<androidx.savedstate.SavedStateRegistry: boolean mRestored>;
+
+        return ret0;
+    }
+
+    void performRestore(androidx.lifecycle.Lifecycle, android.os.Bundle)
+    {
+        androidx.savedstate.SavedStateRegistry this;
+        androidx.lifecycle.Lifecycle $u3;
+        android.os.Bundle $u4;
+        boolean $u0;
+        androidx.savedstate.SavedStateRegistry$1 $u0#4;
+        java.lang.IllegalStateException $u0#6;
+
+        this := @this: androidx.savedstate.SavedStateRegistry;
+
+        $u3 := @parameter0: androidx.lifecycle.Lifecycle;
+
+        $u4 := @parameter1: android.os.Bundle;
+
+        $u0 = this.<androidx.savedstate.SavedStateRegistry: boolean mRestored>;
+
+        if $u0 != 0 goto label2;
+
+        if $u4 == null goto label1;
+
+        $u4 = virtualinvoke $u4.<android.os.Bundle: android.os.Bundle getBundle(java.lang.String)>("androidx.lifecycle.BundlableSavedStateRegistry.key");
+
+        this.<androidx.savedstate.SavedStateRegistry: android.os.Bundle mRestoredState> = $u4;
+
+     label1:
+        $u0#4 = new androidx.savedstate.SavedStateRegistry$1;
+
+        specialinvoke $u0#4.<androidx.savedstate.SavedStateRegistry$1: void <init>(androidx.savedstate.SavedStateRegistry)>(this);
+
+        virtualinvoke $u3.<androidx.lifecycle.Lifecycle: void addObserver(androidx.lifecycle.LifecycleObserver)>($u0#4);
+
+        this.<androidx.savedstate.SavedStateRegistry: boolean mRestored> = 1;
+
+        return;
+
+     label2:
+        $u0#6 = new java.lang.IllegalStateException;
+
+        specialinvoke $u0#6.<java.lang.IllegalStateException: void <init>(java.lang.String)>("SavedStateRegistry was already restored.");
+
+        throw $u0#6;
+    }
+
+    void performSave(android.os.Bundle)
+    {
+        androidx.savedstate.SavedStateRegistry this;
+        android.os.Bundle $u6, components, it;
+        androidx.arch.core.internal.SafeIterableMap it#2;
+        androidx.arch.core.internal.SafeIterableMap$IteratorWithAdditions $u-1;
+        boolean $u-1#5;
+        java.lang.Object $u-1#7;
+        java.util.Map$Entry entry1;
+        java.lang.String $u3;
+        androidx.savedstate.SavedStateRegistry$SavedStateProvider $u4;
+
+        this := @this: androidx.savedstate.SavedStateRegistry;
+
+        $u6 := @parameter0: android.os.Bundle;
+
+        components = new android.os.Bundle;
+
+        specialinvoke components.<android.os.Bundle: void <init>()>();
+
+        it = this.<androidx.savedstate.SavedStateRegistry: android.os.Bundle mRestoredState>;
+
+        if it == null goto label1;
+
+        virtualinvoke components.<android.os.Bundle: void putAll(android.os.Bundle)>(it);
+
+     label1:
+        it#2 = this.<androidx.savedstate.SavedStateRegistry: androidx.arch.core.internal.SafeIterableMap mComponents>;
+
+        $u-1 = virtualinvoke it#2.<androidx.arch.core.internal.SafeIterableMap: androidx.arch.core.internal.SafeIterableMap$IteratorWithAdditions iteratorWithAdditions()>();
+
+     label2:
+        $u-1#5 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#5 == 0 goto label3;
+
+        $u-1#7 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        entry1 = (java.util.Map$Entry) $u-1#7;
+
+        $u-1#7 = interfaceinvoke entry1.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $u3 = (java.lang.String) $u-1#7;
+
+        $u-1#7 = interfaceinvoke entry1.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $u4 = (androidx.savedstate.SavedStateRegistry$SavedStateProvider) $u-1#7;
+
+        it = interfaceinvoke $u4.<androidx.savedstate.SavedStateRegistry$SavedStateProvider: android.os.Bundle saveState()>();
+
+        virtualinvoke components.<android.os.Bundle: void putBundle(java.lang.String,android.os.Bundle)>($u3, it);
+
+        goto label2;
+
+     label3:
+        virtualinvoke $u6.<android.os.Bundle: void putBundle(java.lang.String,android.os.Bundle)>("androidx.lifecycle.BundlableSavedStateRegistry.key", components);
+
+        return;
+    }
+
+    public void registerSavedStateProvider(java.lang.String, androidx.savedstate.SavedStateRegistry$SavedStateProvider)
+    {
+        androidx.savedstate.SavedStateRegistry this;
+        java.lang.String $u4;
+        androidx.savedstate.SavedStateRegistry$SavedStateProvider $u5;
+        java.lang.IllegalArgumentException $u1;
+        java.lang.Object $u-1;
+        androidx.arch.core.internal.SafeIterableMap previous;
+
+        this := @this: androidx.savedstate.SavedStateRegistry;
+
+        $u4 := @parameter0: java.lang.String;
+
+        $u5 := @parameter1: androidx.savedstate.SavedStateRegistry$SavedStateProvider;
+
+        previous = this.<androidx.savedstate.SavedStateRegistry: androidx.arch.core.internal.SafeIterableMap mComponents>;
+
+        $u-1 = virtualinvoke previous.<androidx.arch.core.internal.SafeIterableMap: java.lang.Object putIfAbsent(java.lang.Object,java.lang.Object)>($u4, $u5);
+
+        $u5 = (androidx.savedstate.SavedStateRegistry$SavedStateProvider) $u-1;
+
+        if $u5 != null goto label1;
+
+        return;
+
+     label1:
+        $u1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("SavedStateProvider with the given key is already registered");
+
+        throw $u1;
+    }
+
+    public void runOnNextRecreation(java.lang.Class)
+    {
+        androidx.savedstate.SavedStateRegistry this;
+        java.lang.Class clazz;
+        boolean e;
+        androidx.savedstate.Recreator$SavedStateProvider e#2;
+        java.lang.Class[] e#5;
+        java.lang.String $u-1;
+        java.lang.NoSuchMethodException e#9;
+        java.lang.IllegalArgumentException $u1;
+        java.lang.StringBuilder $u2;
+        java.lang.IllegalStateException e#18;
+
+        this := @this: androidx.savedstate.SavedStateRegistry;
+
+        clazz := @parameter0: java.lang.Class;
+
+        e = this.<androidx.savedstate.SavedStateRegistry: boolean mAllowingSavingState>;
+
+        if e == 0 goto label5;
+
+        e#2 = this.<androidx.savedstate.SavedStateRegistry: androidx.savedstate.Recreator$SavedStateProvider mRecreatorProvider>;
+
+        if e#2 != null goto label1;
+
+        e#2 = new androidx.savedstate.Recreator$SavedStateProvider;
+
+        specialinvoke e#2.<androidx.savedstate.Recreator$SavedStateProvider: void <init>(androidx.savedstate.SavedStateRegistry)>(this);
+
+        this.<androidx.savedstate.SavedStateRegistry: androidx.savedstate.Recreator$SavedStateProvider mRecreatorProvider> = e#2;
+
+     label1:
+        e#5 = newarray (java.lang.Class)[0];
+
+     label2:
+        virtualinvoke clazz.<java.lang.Class: java.lang.reflect.Constructor getDeclaredConstructor(java.lang.Class[])>(e#5);
+
+     label3:
+        e#2 = this.<androidx.savedstate.SavedStateRegistry: androidx.savedstate.Recreator$SavedStateProvider mRecreatorProvider>;
+
+        $u-1 = virtualinvoke clazz.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke e#2.<androidx.savedstate.Recreator$SavedStateProvider: void add(java.lang.String)>($u-1);
+
+        return;
+
+     label4:
+        e#9 := @caughtexception;
+
+        $u1 = new java.lang.IllegalArgumentException;
+
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Class");
+
+        $u-1 = virtualinvoke clazz.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" must have default constructor in order to be automatically recreated");
+
+        $u-1 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u1.<java.lang.IllegalArgumentException: void <init>(java.lang.String,java.lang.Throwable)>($u-1, e#9);
+
+        throw $u1;
+
+     label5:
+        e#18 = new java.lang.IllegalStateException;
+
+        specialinvoke e#18.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Can not perform this action after onSaveInstanceState");
+
+        throw e#18;
+
+        catch java.lang.NoSuchMethodException from label2 to label3 with label4;
+    }
+
+    public void unregisterSavedStateProvider(java.lang.String)
+    {
+        androidx.savedstate.SavedStateRegistry this;
+        java.lang.String $u2;
+        androidx.arch.core.internal.SafeIterableMap $u0;
+
+        this := @this: androidx.savedstate.SavedStateRegistry;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u0 = this.<androidx.savedstate.SavedStateRegistry: androidx.arch.core.internal.SafeIterableMap mComponents>;
+
+        virtualinvoke $u0.<androidx.arch.core.internal.SafeIterableMap: java.lang.Object remove(java.lang.Object)>($u2);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.savedstate.SavedStateRegistry: java.lang.String SAVED_COMPONENTS_KEY> = "androidx.lifecycle.BundlableSavedStateRegistry.key";
+
+        return;
+    }
+}

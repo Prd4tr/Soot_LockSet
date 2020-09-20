@@ -1,0 +1,880 @@
+class androidx.appcompat.widget.ResourcesWrapper extends android.content.res.Resources
+{
+    private final android.content.res.Resources mResources;
+
+    public void <init>(android.content.res.Resources)
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        android.content.res.Resources $u4;
+        android.content.res.AssetManager $u-1;
+        android.util.DisplayMetrics $u-1#2;
+        android.content.res.Configuration $u-1#3;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u4 := @parameter0: android.content.res.Resources;
+
+        $u-1 = virtualinvoke $u4.<android.content.res.Resources: android.content.res.AssetManager getAssets()>();
+
+        $u-1#2 = virtualinvoke $u4.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $u-1#3 = virtualinvoke $u4.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        specialinvoke this.<android.content.res.Resources: void <init>(android.content.res.AssetManager,android.util.DisplayMetrics,android.content.res.Configuration)>($u-1, $u-1#2, $u-1#3);
+
+        this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources> = $u4;
+
+        return;
+    }
+
+    public android.content.res.XmlResourceParser getAnimation(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.content.res.XmlResourceParser $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.content.res.XmlResourceParser getAnimation(int)>($u2);
+
+        return $u-1;
+    }
+
+    public boolean getBoolean(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        boolean $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: boolean getBoolean(int)>($u2);
+
+        return $u-1;
+    }
+
+    public int getColor(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u2 = virtualinvoke $u0.<android.content.res.Resources: int getColor(int)>($u2);
+
+        return $u2;
+    }
+
+    public android.content.res.ColorStateList getColorStateList(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.content.res.ColorStateList $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.content.res.ColorStateList getColorStateList(int)>($u2);
+
+        return $u-1;
+    }
+
+    public android.content.res.Configuration getConfiguration()
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        android.content.res.Configuration $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        return $u-1;
+    }
+
+    public float getDimension(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        float $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: float getDimension(int)>($u2);
+
+        return $u-1;
+    }
+
+    public int getDimensionPixelOffset(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u2 = virtualinvoke $u0.<android.content.res.Resources: int getDimensionPixelOffset(int)>($u2);
+
+        return $u2;
+    }
+
+    public int getDimensionPixelSize(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u2 = virtualinvoke $u0.<android.content.res.Resources: int getDimensionPixelSize(int)>($u2);
+
+        return $u2;
+    }
+
+    public android.util.DisplayMetrics getDisplayMetrics()
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        android.util.DisplayMetrics $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        return $u-1;
+    }
+
+    public android.graphics.drawable.Drawable getDrawable(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.graphics.drawable.Drawable $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int)>($u2);
+
+        return $u-1;
+    }
+
+    public android.graphics.drawable.Drawable getDrawable(int, android.content.res.Resources$Theme) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.content.res.Resources$Theme $u3;
+        android.graphics.drawable.Drawable $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.content.res.Resources$Theme;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int,android.content.res.Resources$Theme)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public android.graphics.drawable.Drawable getDrawableForDensity(int, int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2, $u3;
+        android.graphics.drawable.Drawable $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawableForDensity(int,int)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public android.graphics.drawable.Drawable getDrawableForDensity(int, int, android.content.res.Resources$Theme)
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2, $u3;
+        android.content.res.Resources$Theme $u4;
+        android.graphics.drawable.Drawable $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.content.res.Resources$Theme;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawableForDensity(int,int,android.content.res.Resources$Theme)>($u2, $u3, $u4);
+
+        return $u-1;
+    }
+
+    public float getFraction(int, int, int)
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2, $u3, $u4;
+        float $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: float getFraction(int,int,int)>($u2, $u3, $u4);
+
+        return $u-1;
+    }
+
+    public int getIdentifier(java.lang.String, java.lang.String, java.lang.String)
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        java.lang.String $u2, $u3, $u4;
+        int $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u3 := @parameter1: java.lang.String;
+
+        $u4 := @parameter2: java.lang.String;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: int getIdentifier(java.lang.String,java.lang.String,java.lang.String)>($u2, $u3, $u4);
+
+        return $u-1;
+    }
+
+    public int[] getIntArray(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        int[] $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: int[] getIntArray(int)>($u2);
+
+        return $u-1;
+    }
+
+    public int getInteger(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u2 = virtualinvoke $u0.<android.content.res.Resources: int getInteger(int)>($u2);
+
+        return $u2;
+    }
+
+    public android.content.res.XmlResourceParser getLayout(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.content.res.XmlResourceParser $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.content.res.XmlResourceParser getLayout(int)>($u2);
+
+        return $u-1;
+    }
+
+    public android.graphics.Movie getMovie(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.graphics.Movie $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.graphics.Movie getMovie(int)>($u2);
+
+        return $u-1;
+    }
+
+    public java.lang.String getQuantityString(int, int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2, $u3;
+        java.lang.String $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.String getQuantityString(int,int)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public transient java.lang.String getQuantityString(int, int, java.lang.Object[]) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2, $u3;
+        java.lang.Object[] $u4;
+        java.lang.String $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: java.lang.Object[];
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.String getQuantityString(int,int,java.lang.Object[])>($u2, $u3, $u4);
+
+        return $u-1;
+    }
+
+    public java.lang.CharSequence getQuantityText(int, int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2, $u3;
+        java.lang.CharSequence $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.CharSequence getQuantityText(int,int)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public java.lang.String getResourceEntryName(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        java.lang.String $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.String getResourceEntryName(int)>($u2);
+
+        return $u-1;
+    }
+
+    public java.lang.String getResourceName(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        java.lang.String $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.String getResourceName(int)>($u2);
+
+        return $u-1;
+    }
+
+    public java.lang.String getResourcePackageName(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        java.lang.String $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.String getResourcePackageName(int)>($u2);
+
+        return $u-1;
+    }
+
+    public java.lang.String getResourceTypeName(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        java.lang.String $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.String getResourceTypeName(int)>($u2);
+
+        return $u-1;
+    }
+
+    public java.lang.String getString(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        java.lang.String $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.String getString(int)>($u2);
+
+        return $u-1;
+    }
+
+    public transient java.lang.String getString(int, java.lang.Object[]) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        java.lang.Object[] $u3;
+        java.lang.String $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: java.lang.Object[];
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.String getString(int,java.lang.Object[])>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public java.lang.String[] getStringArray(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        java.lang.String[] $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.String[] getStringArray(int)>($u2);
+
+        return $u-1;
+    }
+
+    public java.lang.CharSequence getText(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        java.lang.CharSequence $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.CharSequence getText(int)>($u2);
+
+        return $u-1;
+    }
+
+    public java.lang.CharSequence getText(int, java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        java.lang.CharSequence $u3;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: java.lang.CharSequence;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u3 = virtualinvoke $u0.<android.content.res.Resources: java.lang.CharSequence getText(int,java.lang.CharSequence)>($u2, $u3);
+
+        return $u3;
+    }
+
+    public java.lang.CharSequence[] getTextArray(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        java.lang.CharSequence[] $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.lang.CharSequence[] getTextArray(int)>($u2);
+
+        return $u-1;
+    }
+
+    public void getValue(int, android.util.TypedValue, boolean) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.util.TypedValue $u3;
+        boolean $u4;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.util.TypedValue;
+
+        $u4 := @parameter2: boolean;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        virtualinvoke $u0.<android.content.res.Resources: void getValue(int,android.util.TypedValue,boolean)>($u2, $u3, $u4);
+
+        return;
+    }
+
+    public void getValue(java.lang.String, android.util.TypedValue, boolean) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        java.lang.String $u2;
+        android.util.TypedValue $u3;
+        boolean $u4;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u3 := @parameter1: android.util.TypedValue;
+
+        $u4 := @parameter2: boolean;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        virtualinvoke $u0.<android.content.res.Resources: void getValue(java.lang.String,android.util.TypedValue,boolean)>($u2, $u3, $u4);
+
+        return;
+    }
+
+    public void getValueForDensity(int, int, android.util.TypedValue, boolean) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2, $u3;
+        android.util.TypedValue $u4;
+        boolean $u5;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.util.TypedValue;
+
+        $u5 := @parameter3: boolean;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        virtualinvoke $u0.<android.content.res.Resources: void getValueForDensity(int,int,android.util.TypedValue,boolean)>($u2, $u3, $u4, $u5);
+
+        return;
+    }
+
+    public android.content.res.XmlResourceParser getXml(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.content.res.XmlResourceParser $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.content.res.XmlResourceParser getXml(int)>($u2);
+
+        return $u-1;
+    }
+
+    public android.content.res.TypedArray obtainAttributes(android.util.AttributeSet, int[])
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        android.util.AttributeSet $u2;
+        int[] $u3;
+        android.content.res.TypedArray $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: android.util.AttributeSet;
+
+        $u3 := @parameter1: int[];
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.content.res.TypedArray obtainAttributes(android.util.AttributeSet,int[])>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public android.content.res.TypedArray obtainTypedArray(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.content.res.TypedArray $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.content.res.TypedArray obtainTypedArray(int)>($u2);
+
+        return $u-1;
+    }
+
+    public java.io.InputStream openRawResource(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        java.io.InputStream $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.io.InputStream openRawResource(int)>($u2);
+
+        return $u-1;
+    }
+
+    public java.io.InputStream openRawResource(int, android.util.TypedValue) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.util.TypedValue $u3;
+        java.io.InputStream $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.util.TypedValue;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: java.io.InputStream openRawResource(int,android.util.TypedValue)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public android.content.res.AssetFileDescriptor openRawResourceFd(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        int $u2;
+        android.content.res.AssetFileDescriptor $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.content.res.AssetFileDescriptor openRawResourceFd(int)>($u2);
+
+        return $u-1;
+    }
+
+    public void parseBundleExtra(java.lang.String, android.util.AttributeSet, android.os.Bundle) throws org.xmlpull.v1.XmlPullParserException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        java.lang.String $u2;
+        android.util.AttributeSet $u3;
+        android.os.Bundle $u4;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u4 := @parameter2: android.os.Bundle;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        virtualinvoke $u0.<android.content.res.Resources: void parseBundleExtra(java.lang.String,android.util.AttributeSet,android.os.Bundle)>($u2, $u3, $u4);
+
+        return;
+    }
+
+    public void parseBundleExtras(android.content.res.XmlResourceParser, android.os.Bundle) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        android.content.res.XmlResourceParser $u2;
+        android.os.Bundle $u3;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: android.content.res.XmlResourceParser;
+
+        $u3 := @parameter1: android.os.Bundle;
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        virtualinvoke $u0.<android.content.res.Resources: void parseBundleExtras(android.content.res.XmlResourceParser,android.os.Bundle)>($u2, $u3);
+
+        return;
+    }
+
+    public void updateConfiguration(android.content.res.Configuration, android.util.DisplayMetrics)
+    {
+        androidx.appcompat.widget.ResourcesWrapper this;
+        android.content.res.Configuration $u2;
+        android.util.DisplayMetrics $u3;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.ResourcesWrapper;
+
+        $u2 := @parameter0: android.content.res.Configuration;
+
+        $u3 := @parameter1: android.util.DisplayMetrics;
+
+        specialinvoke this.<android.content.res.Resources: void updateConfiguration(android.content.res.Configuration,android.util.DisplayMetrics)>($u2, $u3);
+
+        $u0 = this.<androidx.appcompat.widget.ResourcesWrapper: android.content.res.Resources mResources>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.content.res.Resources: void updateConfiguration(android.content.res.Configuration,android.util.DisplayMetrics)>($u2, $u3);
+
+     label1:
+        return;
+    }
+}

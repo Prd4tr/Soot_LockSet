@@ -1,0 +1,102 @@
+public class androidx.appcompat.app.AlertController$RecycleListView extends android.widget.ListView
+{
+    private final int mPaddingBottomNoButtons;
+    private final int mPaddingTopNoTitle;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.app.AlertController$RecycleListView this;
+        android.content.Context $u2;
+
+        this := @this: androidx.appcompat.app.AlertController$RecycleListView;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.appcompat.app.AlertController$RecycleListView: void <init>(android.content.Context,android.util.AttributeSet)>($u2, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.app.AlertController$RecycleListView this;
+        android.content.Context $u4;
+        android.util.AttributeSet $u5;
+        int[] ta;
+        android.content.res.TypedArray $u-1;
+        int $u1;
+
+        this := @this: androidx.appcompat.app.AlertController$RecycleListView;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<android.widget.ListView: void <init>(android.content.Context,android.util.AttributeSet)>($u4, $u5);
+
+        ta = <androidx.appcompat.R$styleable: int[] RecycleListView>;
+
+        $u-1 = virtualinvoke $u4.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[])>($u5, ta);
+
+        $u1 = <androidx.appcompat.R$styleable: int RecycleListView_paddingBottomNoButtons>;
+
+        $u1 = virtualinvoke $u-1.<android.content.res.TypedArray: int getDimensionPixelOffset(int,int)>($u1, -1);
+
+        this.<androidx.appcompat.app.AlertController$RecycleListView: int mPaddingBottomNoButtons> = $u1;
+
+        $u1 = <androidx.appcompat.R$styleable: int RecycleListView_paddingTopNoTitle>;
+
+        $u1 = virtualinvoke $u-1.<android.content.res.TypedArray: int getDimensionPixelOffset(int,int)>($u1, -1);
+
+        this.<androidx.appcompat.app.AlertController$RecycleListView: int mPaddingTopNoTitle> = $u1;
+
+        return;
+    }
+
+    public void setHasDecor(boolean, boolean)
+    {
+        androidx.appcompat.app.AlertController$RecycleListView this;
+        boolean $u5, $u6;
+        int $u-1, $u-1#2, $u-1#4, $u-1#5;
+
+        this := @this: androidx.appcompat.app.AlertController$RecycleListView;
+
+        $u5 := @parameter0: boolean;
+
+        $u6 := @parameter1: boolean;
+
+        if $u6 == 0 goto label1;
+
+        if $u5 != 0 goto label6;
+
+     label1:
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AlertController$RecycleListView: int getPaddingLeft()>();
+
+        if $u5 == 0 goto label2;
+
+        $u-1#2 = virtualinvoke this.<androidx.appcompat.app.AlertController$RecycleListView: int getPaddingTop()>();
+
+        goto label3;
+
+     label2:
+        $u-1#2 = this.<androidx.appcompat.app.AlertController$RecycleListView: int mPaddingTopNoTitle>;
+
+     label3:
+        $u-1#4 = virtualinvoke this.<androidx.appcompat.app.AlertController$RecycleListView: int getPaddingRight()>();
+
+        if $u6 == 0 goto label4;
+
+        $u-1#5 = virtualinvoke this.<androidx.appcompat.app.AlertController$RecycleListView: int getPaddingBottom()>();
+
+        goto label5;
+
+     label4:
+        $u-1#5 = this.<androidx.appcompat.app.AlertController$RecycleListView: int mPaddingBottomNoButtons>;
+
+     label5:
+        virtualinvoke this.<androidx.appcompat.app.AlertController$RecycleListView: void setPadding(int,int,int,int)>($u-1, $u-1#2, $u-1#4, $u-1#5);
+
+     label6:
+        return;
+    }
+}

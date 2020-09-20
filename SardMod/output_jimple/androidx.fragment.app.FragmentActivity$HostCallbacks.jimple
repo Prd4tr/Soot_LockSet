@@ -1,0 +1,399 @@
+class androidx.fragment.app.FragmentActivity$HostCallbacks extends androidx.fragment.app.FragmentHostCallback implements androidx.lifecycle.ViewModelStoreOwner, androidx.activity.OnBackPressedDispatcherOwner
+{
+    final androidx.fragment.app.FragmentActivity this$0;
+
+    public void <init>(androidx.fragment.app.FragmentActivity)
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.FragmentActivity $u1;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u1 := @parameter0: androidx.fragment.app.FragmentActivity;
+
+        this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0> = $u1;
+
+        specialinvoke this.<androidx.fragment.app.FragmentHostCallback: void <init>(androidx.fragment.app.FragmentActivity)>($u1);
+
+        return;
+    }
+
+    public androidx.lifecycle.Lifecycle getLifecycle()
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.FragmentActivity $u0;
+        androidx.lifecycle.LifecycleRegistry ret0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        ret0 = $u0.<androidx.fragment.app.FragmentActivity: androidx.lifecycle.LifecycleRegistry mFragmentLifecycleRegistry>;
+
+        return ret0;
+    }
+
+    public androidx.activity.OnBackPressedDispatcher getOnBackPressedDispatcher()
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.activity.OnBackPressedDispatcher $u-1;
+        androidx.fragment.app.FragmentActivity $u0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.fragment.app.FragmentActivity: androidx.activity.OnBackPressedDispatcher getOnBackPressedDispatcher()>();
+
+        return $u-1;
+    }
+
+    public androidx.lifecycle.ViewModelStore getViewModelStore()
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.lifecycle.ViewModelStore $u-1;
+        androidx.fragment.app.FragmentActivity $u0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.fragment.app.FragmentActivity: androidx.lifecycle.ViewModelStore getViewModelStore()>();
+
+        return $u-1;
+    }
+
+    public void onAttachFragment(androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.Fragment $u2;
+        androidx.fragment.app.FragmentActivity $u0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u2 := @parameter0: androidx.fragment.app.Fragment;
+
+        $u0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        virtualinvoke $u0.<androidx.fragment.app.FragmentActivity: void onAttachFragment(androidx.fragment.app.Fragment)>($u2);
+
+        return;
+    }
+
+    public void onDump(java.lang.String, java.io.FileDescriptor, java.io.PrintWriter, java.lang.String[])
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        java.lang.String $u2;
+        java.io.FileDescriptor $u3;
+        java.io.PrintWriter $u4;
+        java.lang.String[] $u5;
+        androidx.fragment.app.FragmentActivity $u0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u3 := @parameter1: java.io.FileDescriptor;
+
+        $u4 := @parameter2: java.io.PrintWriter;
+
+        $u5 := @parameter3: java.lang.String[];
+
+        $u0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        virtualinvoke $u0.<androidx.fragment.app.FragmentActivity: void dump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[])>($u2, $u3, $u4, $u5);
+
+        return;
+    }
+
+    public android.view.View onFindViewById(int)
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        int $u2;
+        android.view.View $u-1;
+        androidx.fragment.app.FragmentActivity $u0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.fragment.app.FragmentActivity: android.view.View findViewById(int)>($u2);
+
+        return $u-1;
+    }
+
+    public androidx.fragment.app.FragmentActivity onGetHost()
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.FragmentActivity ret0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        ret0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        return ret0;
+    }
+
+    public volatile java.lang.Object onGetHost()
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.FragmentActivity $u-1;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u-1 = virtualinvoke this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity onGetHost()>();
+
+        return $u-1;
+    }
+
+    public android.view.LayoutInflater onGetLayoutInflater()
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.FragmentActivity $u1;
+        android.view.LayoutInflater $u-1;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u1 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        $u-1 = virtualinvoke $u1.<androidx.fragment.app.FragmentActivity: android.view.LayoutInflater getLayoutInflater()>();
+
+        $u1 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        $u-1 = virtualinvoke $u-1.<android.view.LayoutInflater: android.view.LayoutInflater cloneInContext(android.content.Context)>($u1);
+
+        return $u-1;
+    }
+
+    public int onGetWindowAnimations()
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.FragmentActivity w;
+        android.view.Window $u-1;
+        android.view.WindowManager$LayoutParams $u-1#5;
+        int ret0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        w = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        $u-1 = virtualinvoke w.<androidx.fragment.app.FragmentActivity: android.view.Window getWindow()>();
+
+        if $u-1 != null goto label1;
+
+        return 0;
+
+     label1:
+        $u-1#5 = virtualinvoke $u-1.<android.view.Window: android.view.WindowManager$LayoutParams getAttributes()>();
+
+        ret0 = $u-1#5.<android.view.WindowManager$LayoutParams: int windowAnimations>;
+
+        return ret0;
+    }
+
+    public boolean onHasView()
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.FragmentActivity w;
+        android.view.Window $u-1;
+        android.view.View $u-1#4;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        w = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        $u-1 = virtualinvoke w.<androidx.fragment.app.FragmentActivity: android.view.Window getWindow()>();
+
+        if $u-1 == null goto label1;
+
+        $u-1#4 = virtualinvoke $u-1.<android.view.Window: android.view.View peekDecorView()>();
+
+        if $u-1#4 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean onHasWindowAnimations()
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        android.view.Window $u-1;
+        androidx.fragment.app.FragmentActivity $u0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.fragment.app.FragmentActivity: android.view.Window getWindow()>();
+
+        if $u-1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void onRequestPermissionsFromFragment(androidx.fragment.app.Fragment, java.lang.String[], int)
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.Fragment $u2;
+        java.lang.String[] $u3;
+        int $u4;
+        androidx.fragment.app.FragmentActivity $u0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u2 := @parameter0: androidx.fragment.app.Fragment;
+
+        $u3 := @parameter1: java.lang.String[];
+
+        $u4 := @parameter2: int;
+
+        $u0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        virtualinvoke $u0.<androidx.fragment.app.FragmentActivity: void requestPermissionsFromFragment(androidx.fragment.app.Fragment,java.lang.String[],int)>($u2, $u3, $u4);
+
+        return;
+    }
+
+    public boolean onShouldSaveFragmentState(androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.Fragment $u2;
+        boolean $u-1;
+        androidx.fragment.app.FragmentActivity $u0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u2 := @parameter0: androidx.fragment.app.Fragment;
+
+        $u0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.fragment.app.FragmentActivity: boolean isFinishing()>();
+
+        $u-1 = $u-1 ^ 1;
+
+        return $u-1;
+    }
+
+    public boolean onShouldShowRequestPermissionRationale(java.lang.String)
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        java.lang.String $u2;
+        boolean $u-1;
+        androidx.fragment.app.FragmentActivity $u0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        $u-1 = staticinvoke <androidx.core.app.ActivityCompat: boolean shouldShowRequestPermissionRationale(android.app.Activity,java.lang.String)>($u0, $u2);
+
+        return $u-1;
+    }
+
+    public void onStartActivityFromFragment(androidx.fragment.app.Fragment, android.content.Intent, int)
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.Fragment $u2;
+        android.content.Intent $u3;
+        int $u4;
+        androidx.fragment.app.FragmentActivity $u0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u2 := @parameter0: androidx.fragment.app.Fragment;
+
+        $u3 := @parameter1: android.content.Intent;
+
+        $u4 := @parameter2: int;
+
+        $u0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        virtualinvoke $u0.<androidx.fragment.app.FragmentActivity: void startActivityFromFragment(androidx.fragment.app.Fragment,android.content.Intent,int)>($u2, $u3, $u4);
+
+        return;
+    }
+
+    public void onStartActivityFromFragment(androidx.fragment.app.Fragment, android.content.Intent, int, android.os.Bundle)
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.Fragment $u2;
+        android.content.Intent $u3;
+        int $u4;
+        android.os.Bundle $u5;
+        androidx.fragment.app.FragmentActivity $u0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u2 := @parameter0: androidx.fragment.app.Fragment;
+
+        $u3 := @parameter1: android.content.Intent;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: android.os.Bundle;
+
+        $u0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        virtualinvoke $u0.<androidx.fragment.app.FragmentActivity: void startActivityFromFragment(androidx.fragment.app.Fragment,android.content.Intent,int,android.os.Bundle)>($u2, $u3, $u4, $u5);
+
+        return;
+    }
+
+    public void onStartIntentSenderFromFragment(androidx.fragment.app.Fragment, android.content.IntentSender, int, android.content.Intent, int, int, int, android.os.Bundle) throws android.content.IntentSender$SendIntentException
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.Fragment $u11;
+        android.content.IntentSender $u12;
+        int $u13, $u15, $u16, $u17;
+        android.content.Intent $u14;
+        android.os.Bundle $u18;
+        androidx.fragment.app.FragmentActivity $u1;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u11 := @parameter0: androidx.fragment.app.Fragment;
+
+        $u12 := @parameter1: android.content.IntentSender;
+
+        $u13 := @parameter2: int;
+
+        $u14 := @parameter3: android.content.Intent;
+
+        $u15 := @parameter4: int;
+
+        $u16 := @parameter5: int;
+
+        $u17 := @parameter6: int;
+
+        $u18 := @parameter7: android.os.Bundle;
+
+        $u1 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        virtualinvoke $u1.<androidx.fragment.app.FragmentActivity: void startIntentSenderFromFragment(androidx.fragment.app.Fragment,android.content.IntentSender,int,android.content.Intent,int,int,int,android.os.Bundle)>($u11, $u12, $u13, $u14, $u15, $u16, $u17, $u18);
+
+        return;
+    }
+
+    public void onSupportInvalidateOptionsMenu()
+    {
+        androidx.fragment.app.FragmentActivity$HostCallbacks this;
+        androidx.fragment.app.FragmentActivity $u0;
+
+        this := @this: androidx.fragment.app.FragmentActivity$HostCallbacks;
+
+        $u0 = this.<androidx.fragment.app.FragmentActivity$HostCallbacks: androidx.fragment.app.FragmentActivity this$0>;
+
+        virtualinvoke $u0.<androidx.fragment.app.FragmentActivity: void supportInvalidateOptionsMenu()>();
+
+        return;
+    }
+}

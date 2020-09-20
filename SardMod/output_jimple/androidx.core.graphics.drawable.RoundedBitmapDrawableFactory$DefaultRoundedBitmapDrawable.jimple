@@ -1,0 +1,91 @@
+class androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable extends androidx.core.graphics.drawable.RoundedBitmapDrawable
+{
+
+    void <init>(android.content.res.Resources, android.graphics.Bitmap)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable this;
+        android.content.res.Resources $u1;
+        android.graphics.Bitmap $u2;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable;
+
+        $u1 := @parameter0: android.content.res.Resources;
+
+        $u2 := @parameter1: android.graphics.Bitmap;
+
+        specialinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void <init>(android.content.res.Resources,android.graphics.Bitmap)>($u1, $u2);
+
+        return;
+    }
+
+    void gravityCompatApply(int, int, int, android.graphics.Rect, android.graphics.Rect)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable this;
+        int $u7, $u8, $u9;
+        android.graphics.Rect $u10, $u11;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable;
+
+        $u7 := @parameter0: int;
+
+        $u8 := @parameter1: int;
+
+        $u9 := @parameter2: int;
+
+        $u10 := @parameter3: android.graphics.Rect;
+
+        $u11 := @parameter4: android.graphics.Rect;
+
+        staticinvoke <androidx.core.view.GravityCompat: void apply(int,int,int,android.graphics.Rect,android.graphics.Rect,int)>($u7, $u8, $u9, $u10, $u11, 0);
+
+        return;
+    }
+
+    public boolean hasMipMap()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable this;
+        boolean $u-1;
+        android.graphics.Bitmap $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable: android.graphics.Bitmap mBitmap>;
+
+        if $u0 == null goto label1;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable: android.graphics.Bitmap mBitmap>;
+
+        $u-1 = staticinvoke <androidx.core.graphics.BitmapCompat: boolean hasMipMap(android.graphics.Bitmap)>($u0);
+
+        if $u-1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void setMipMap(boolean)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable this;
+        boolean $u2;
+        android.graphics.Bitmap $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable: android.graphics.Bitmap mBitmap>;
+
+        if $u0 == null goto label1;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable: android.graphics.Bitmap mBitmap>;
+
+        staticinvoke <androidx.core.graphics.BitmapCompat: void setHasMipMap(android.graphics.Bitmap,boolean)>($u0, $u2);
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+}

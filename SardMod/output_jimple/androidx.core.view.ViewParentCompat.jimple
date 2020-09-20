@@ -1,0 +1,780 @@
+public final class androidx.core.view.ViewParentCompat extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    private static int[] sTempNestedScrollConsumed;
+
+    private void <init>()
+    {
+        androidx.core.view.ViewParentCompat this;
+
+        this := @this: androidx.core.view.ViewParentCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static int[] getTempNestedScrollConsumed()
+    {
+        int[] $u0;
+
+        $u0 = <androidx.core.view.ViewParentCompat: int[] sTempNestedScrollConsumed>;
+
+        if $u0 != null goto label1;
+
+        $u0 = newarray (int)[2];
+
+        <androidx.core.view.ViewParentCompat: int[] sTempNestedScrollConsumed> = $u0;
+
+        goto label2;
+
+     label1:
+        $u0[0] = 0;
+
+        $u0[1] = 0;
+
+     label2:
+        $u0 = <androidx.core.view.ViewParentCompat: int[] sTempNestedScrollConsumed>;
+
+        return $u0;
+    }
+
+    public static void notifySubtreeAccessibilityStateChanged(android.view.ViewParent, android.view.View, android.view.View, int)
+    {
+        android.view.ViewParent $u2;
+        android.view.View $u3, $u4;
+        int $u5, $u0;
+
+        $u2 := @parameter0: android.view.ViewParent;
+
+        $u3 := @parameter1: android.view.View;
+
+        $u4 := @parameter2: android.view.View;
+
+        $u5 := @parameter3: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        interfaceinvoke $u2.<android.view.ViewParent: void notifySubtreeAccessibilityStateChanged(android.view.View,android.view.View,int)>($u3, $u4, $u5);
+
+     label1:
+        return;
+    }
+
+    public static boolean onNestedFling(android.view.ViewParent, android.view.View, float, float, boolean)
+    {
+        android.view.ViewParent $u3;
+        android.view.View $u4;
+        float $u5, $u6;
+        boolean $u7, e#12;
+        int e;
+        java.lang.AbstractMethodError e#5;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1;
+        androidx.core.view.NestedScrollingParent e#14;
+
+        $u3 := @parameter0: android.view.ViewParent;
+
+        $u4 := @parameter1: android.view.View;
+
+        $u5 := @parameter2: float;
+
+        $u6 := @parameter3: float;
+
+        $u7 := @parameter4: boolean;
+
+        e = <android.os.Build$VERSION: int SDK_INT>;
+
+        if e < 21 goto label4;
+
+     label1:
+        $u7 = interfaceinvoke $u3.<android.view.ViewParent: boolean onNestedFling(android.view.View,float,float,boolean)>($u4, $u5, $u6, $u7);
+
+     label2:
+        return $u7;
+
+     label3:
+        e#5 := @caughtexception;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ViewParent ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u3);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not implement interface method onNestedFling");
+
+        $u-1 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewParentCompat", $u-1, e#5);
+
+        goto label5;
+
+     label4:
+        e#12 = $u3 instanceof androidx.core.view.NestedScrollingParent;
+
+        if e#12 == 0 goto label5;
+
+        e#14 = (androidx.core.view.NestedScrollingParent) $u3;
+
+        $u7 = interfaceinvoke e#14.<androidx.core.view.NestedScrollingParent: boolean onNestedFling(android.view.View,float,float,boolean)>($u4, $u5, $u6, $u7);
+
+        return $u7;
+
+     label5:
+        return 0;
+
+        catch java.lang.AbstractMethodError from label1 to label2 with label3;
+    }
+
+    public static boolean onNestedPreFling(android.view.ViewParent, android.view.View, float, float)
+    {
+        android.view.ViewParent $u3;
+        android.view.View $u4;
+        float $u5, $u6;
+        int e;
+        boolean $u-1;
+        java.lang.AbstractMethodError e#5;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1#9;
+        androidx.core.view.NestedScrollingParent e#14;
+
+        $u3 := @parameter0: android.view.ViewParent;
+
+        $u4 := @parameter1: android.view.View;
+
+        $u5 := @parameter2: float;
+
+        $u6 := @parameter3: float;
+
+        e = <android.os.Build$VERSION: int SDK_INT>;
+
+        if e < 21 goto label4;
+
+     label1:
+        $u-1 = interfaceinvoke $u3.<android.view.ViewParent: boolean onNestedPreFling(android.view.View,float,float)>($u4, $u5, $u6);
+
+     label2:
+        return $u-1;
+
+     label3:
+        e#5 := @caughtexception;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ViewParent ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u3);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not implement interface method onNestedPreFling");
+
+        $u-1#9 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewParentCompat", $u-1#9, e#5);
+
+        goto label5;
+
+     label4:
+        $u-1 = $u3 instanceof androidx.core.view.NestedScrollingParent;
+
+        if $u-1 == 0 goto label5;
+
+        e#14 = (androidx.core.view.NestedScrollingParent) $u3;
+
+        $u-1 = interfaceinvoke e#14.<androidx.core.view.NestedScrollingParent: boolean onNestedPreFling(android.view.View,float,float)>($u4, $u5, $u6);
+
+        return $u-1;
+
+     label5:
+        return 0;
+
+        catch java.lang.AbstractMethodError from label1 to label2 with label3;
+    }
+
+    public static void onNestedPreScroll(android.view.ViewParent, android.view.View, int, int, int[])
+    {
+        android.view.ViewParent $u6;
+        android.view.View $u7;
+        int $u8, $u9;
+        int[] $u10;
+
+        $u6 := @parameter0: android.view.ViewParent;
+
+        $u7 := @parameter1: android.view.View;
+
+        $u8 := @parameter2: int;
+
+        $u9 := @parameter3: int;
+
+        $u10 := @parameter4: int[];
+
+        staticinvoke <androidx.core.view.ViewParentCompat: void onNestedPreScroll(android.view.ViewParent,android.view.View,int,int,int[],int)>($u6, $u7, $u8, $u9, $u10, 0);
+
+        return;
+    }
+
+    public static void onNestedPreScroll(android.view.ViewParent, android.view.View, int, int, int[], int)
+    {
+        android.view.ViewParent $u7;
+        android.view.View $u8;
+        int $u9, $u10, $u12;
+        int[] $u11;
+        java.lang.String $u-1;
+        boolean e;
+        androidx.core.view.NestedScrollingParent2 $u1;
+        java.lang.AbstractMethodError e#7;
+        java.lang.StringBuilder $u1#8;
+        androidx.core.view.NestedScrollingParent e#15;
+
+        $u7 := @parameter0: android.view.ViewParent;
+
+        $u8 := @parameter1: android.view.View;
+
+        $u9 := @parameter2: int;
+
+        $u10 := @parameter3: int;
+
+        $u11 := @parameter4: int[];
+
+        $u12 := @parameter5: int;
+
+        e = $u7 instanceof androidx.core.view.NestedScrollingParent2;
+
+        if e == 0 goto label1;
+
+        $u1 = (androidx.core.view.NestedScrollingParent2) $u7;
+
+        interfaceinvoke $u1.<androidx.core.view.NestedScrollingParent2: void onNestedPreScroll(android.view.View,int,int,int[],int)>($u8, $u9, $u10, $u11, $u12);
+
+        return;
+
+     label1:
+        if $u12 != 0 goto label6;
+
+        $u12 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u12 < 21 goto label5;
+
+     label2:
+        interfaceinvoke $u7.<android.view.ViewParent: void onNestedPreScroll(android.view.View,int,int,int[])>($u8, $u9, $u10, $u11);
+
+     label3:
+        return;
+
+     label4:
+        e#7 := @caughtexception;
+
+        $u1#8 = new java.lang.StringBuilder;
+
+        specialinvoke $u1#8.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1#8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ViewParent ");
+
+        virtualinvoke $u1#8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u7);
+
+        virtualinvoke $u1#8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not implement interface method onNestedPreScroll");
+
+        $u-1 = virtualinvoke $u1#8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewParentCompat", $u-1, e#7);
+
+        goto label3;
+
+     label5:
+        e = $u7 instanceof androidx.core.view.NestedScrollingParent;
+
+        if e == 0 goto label6;
+
+        e#15 = (androidx.core.view.NestedScrollingParent) $u7;
+
+        interfaceinvoke e#15.<androidx.core.view.NestedScrollingParent: void onNestedPreScroll(android.view.View,int,int,int[])>($u8, $u9, $u10, $u11);
+
+     label6:
+        return;
+
+        catch java.lang.AbstractMethodError from label2 to label3 with label4;
+    }
+
+    public static void onNestedScroll(android.view.ViewParent, android.view.View, int, int, int, int)
+    {
+        android.view.ViewParent $u8;
+        android.view.View $u9;
+        int $u10, $u11, $u12, $u13;
+        int[] $u-1;
+
+        $u8 := @parameter0: android.view.ViewParent;
+
+        $u9 := @parameter1: android.view.View;
+
+        $u10 := @parameter2: int;
+
+        $u11 := @parameter3: int;
+
+        $u12 := @parameter4: int;
+
+        $u13 := @parameter5: int;
+
+        $u-1 = staticinvoke <androidx.core.view.ViewParentCompat: int[] getTempNestedScrollConsumed()>();
+
+        staticinvoke <androidx.core.view.ViewParentCompat: void onNestedScroll(android.view.ViewParent,android.view.View,int,int,int,int,int,int[])>($u8, $u9, $u10, $u11, $u12, $u13, 0, $u-1);
+
+        return;
+    }
+
+    public static void onNestedScroll(android.view.ViewParent, android.view.View, int, int, int, int, int)
+    {
+        android.view.ViewParent $u8;
+        android.view.View $u9;
+        int $u10, $u11, $u12, $u13, $u14;
+        int[] $u-1;
+
+        $u8 := @parameter0: android.view.ViewParent;
+
+        $u9 := @parameter1: android.view.View;
+
+        $u10 := @parameter2: int;
+
+        $u11 := @parameter3: int;
+
+        $u12 := @parameter4: int;
+
+        $u13 := @parameter5: int;
+
+        $u14 := @parameter6: int;
+
+        $u-1 = staticinvoke <androidx.core.view.ViewParentCompat: int[] getTempNestedScrollConsumed()>();
+
+        staticinvoke <androidx.core.view.ViewParentCompat: void onNestedScroll(android.view.ViewParent,android.view.View,int,int,int,int,int,int[])>($u8, $u9, $u10, $u11, $u12, $u13, $u14, $u-1);
+
+        return;
+    }
+
+    public static void onNestedScroll(android.view.ViewParent, android.view.View, int, int, int, int, int, int[])
+    {
+        android.view.ViewParent $u10;
+        android.view.View $u11;
+        int $u12, $u13, $u14, $u15, $u16, $u2#12;
+        int[] $u17;
+        java.lang.String $u-1;
+        boolean e;
+        androidx.core.view.NestedScrollingParent3 $u2;
+        androidx.core.view.NestedScrollingParent2 $u3;
+        java.lang.AbstractMethodError e#28;
+        java.lang.StringBuilder $u2#31;
+        androidx.core.view.NestedScrollingParent $u3#38;
+
+        $u10 := @parameter0: android.view.ViewParent;
+
+        $u11 := @parameter1: android.view.View;
+
+        $u12 := @parameter2: int;
+
+        $u13 := @parameter3: int;
+
+        $u14 := @parameter4: int;
+
+        $u15 := @parameter5: int;
+
+        $u16 := @parameter6: int;
+
+        $u17 := @parameter7: int[];
+
+        e = $u10 instanceof androidx.core.view.NestedScrollingParent3;
+
+        if e == 0 goto label1;
+
+        $u2 = (androidx.core.view.NestedScrollingParent3) $u10;
+
+        interfaceinvoke $u2.<androidx.core.view.NestedScrollingParent3: void onNestedScroll(android.view.View,int,int,int,int,int,int[])>($u11, $u12, $u13, $u14, $u15, $u16, $u17);
+
+        return;
+
+     label1:
+        $u2#12 = $u17[0];
+
+        $u2#12 = $u2#12 + $u14;
+
+        $u17[0] = $u2#12;
+
+        $u2#12 = $u17[1];
+
+        $u2#12 = $u2#12 + $u15;
+
+        $u17[1] = $u2#12;
+
+        e = $u10 instanceof androidx.core.view.NestedScrollingParent2;
+
+        if e == 0 goto label2;
+
+        $u3 = (androidx.core.view.NestedScrollingParent2) $u10;
+
+        interfaceinvoke $u3.<androidx.core.view.NestedScrollingParent2: void onNestedScroll(android.view.View,int,int,int,int,int)>($u11, $u12, $u13, $u14, $u15, $u16);
+
+        return;
+
+     label2:
+        if $u16 != 0 goto label7;
+
+        $u16 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u16 < 21 goto label6;
+
+     label3:
+        interfaceinvoke $u10.<android.view.ViewParent: void onNestedScroll(android.view.View,int,int,int,int)>($u11, $u12, $u13, $u14, $u15);
+
+     label4:
+        return;
+
+     label5:
+        e#28 := @caughtexception;
+
+        $u2#31 = new java.lang.StringBuilder;
+
+        specialinvoke $u2#31.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2#31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ViewParent ");
+
+        virtualinvoke $u2#31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u10);
+
+        virtualinvoke $u2#31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not implement interface method onNestedScroll");
+
+        $u-1 = virtualinvoke $u2#31.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewParentCompat", $u-1, e#28);
+
+        goto label4;
+
+     label6:
+        e = $u10 instanceof androidx.core.view.NestedScrollingParent;
+
+        if e == 0 goto label7;
+
+        $u3#38 = (androidx.core.view.NestedScrollingParent) $u10;
+
+        interfaceinvoke $u3#38.<androidx.core.view.NestedScrollingParent: void onNestedScroll(android.view.View,int,int,int,int)>($u11, $u12, $u13, $u14, $u15);
+
+     label7:
+        return;
+
+        catch java.lang.AbstractMethodError from label3 to label4 with label5;
+    }
+
+    public static void onNestedScrollAccepted(android.view.ViewParent, android.view.View, android.view.View, int)
+    {
+        android.view.ViewParent $u1;
+        android.view.View $u2, $u3;
+        int $u4;
+
+        $u1 := @parameter0: android.view.ViewParent;
+
+        $u2 := @parameter1: android.view.View;
+
+        $u3 := @parameter2: android.view.View;
+
+        $u4 := @parameter3: int;
+
+        staticinvoke <androidx.core.view.ViewParentCompat: void onNestedScrollAccepted(android.view.ViewParent,android.view.View,android.view.View,int,int)>($u1, $u2, $u3, $u4, 0);
+
+        return;
+    }
+
+    public static void onNestedScrollAccepted(android.view.ViewParent, android.view.View, android.view.View, int, int)
+    {
+        android.view.ViewParent $u3;
+        android.view.View $u4, $u5;
+        int $u6, $u7;
+        java.lang.String $u-1;
+        boolean e;
+        androidx.core.view.NestedScrollingParent2 e#3;
+        java.lang.AbstractMethodError e#6;
+        java.lang.StringBuilder $u1;
+        androidx.core.view.NestedScrollingParent e#14;
+
+        $u3 := @parameter0: android.view.ViewParent;
+
+        $u4 := @parameter1: android.view.View;
+
+        $u5 := @parameter2: android.view.View;
+
+        $u6 := @parameter3: int;
+
+        $u7 := @parameter4: int;
+
+        e = $u3 instanceof androidx.core.view.NestedScrollingParent2;
+
+        if e == 0 goto label1;
+
+        e#3 = (androidx.core.view.NestedScrollingParent2) $u3;
+
+        interfaceinvoke e#3.<androidx.core.view.NestedScrollingParent2: void onNestedScrollAccepted(android.view.View,android.view.View,int,int)>($u4, $u5, $u6, $u7);
+
+        return;
+
+     label1:
+        if $u7 != 0 goto label6;
+
+        $u7 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u7 < 21 goto label5;
+
+     label2:
+        interfaceinvoke $u3.<android.view.ViewParent: void onNestedScrollAccepted(android.view.View,android.view.View,int)>($u4, $u5, $u6);
+
+     label3:
+        return;
+
+     label4:
+        e#6 := @caughtexception;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ViewParent ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u3);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not implement interface method onNestedScrollAccepted");
+
+        $u-1 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewParentCompat", $u-1, e#6);
+
+        goto label3;
+
+     label5:
+        e = $u3 instanceof androidx.core.view.NestedScrollingParent;
+
+        if e == 0 goto label6;
+
+        e#14 = (androidx.core.view.NestedScrollingParent) $u3;
+
+        interfaceinvoke e#14.<androidx.core.view.NestedScrollingParent: void onNestedScrollAccepted(android.view.View,android.view.View,int)>($u4, $u5, $u6);
+
+     label6:
+        return;
+
+        catch java.lang.AbstractMethodError from label2 to label3 with label4;
+    }
+
+    public static boolean onStartNestedScroll(android.view.ViewParent, android.view.View, android.view.View, int)
+    {
+        android.view.ViewParent $u1;
+        android.view.View $u2, $u3;
+        int $u4;
+        boolean $u-1;
+
+        $u1 := @parameter0: android.view.ViewParent;
+
+        $u2 := @parameter1: android.view.View;
+
+        $u3 := @parameter2: android.view.View;
+
+        $u4 := @parameter3: int;
+
+        $u-1 = staticinvoke <androidx.core.view.ViewParentCompat: boolean onStartNestedScroll(android.view.ViewParent,android.view.View,android.view.View,int,int)>($u1, $u2, $u3, $u4, 0);
+
+        return $u-1;
+    }
+
+    public static boolean onStartNestedScroll(android.view.ViewParent, android.view.View, android.view.View, int, int)
+    {
+        android.view.ViewParent $u3;
+        android.view.View $u4, $u5;
+        int $u6, $u7;
+        boolean e;
+        androidx.core.view.NestedScrollingParent2 e#3;
+        java.lang.AbstractMethodError e#10;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1;
+        androidx.core.view.NestedScrollingParent e#19;
+
+        $u3 := @parameter0: android.view.ViewParent;
+
+        $u4 := @parameter1: android.view.View;
+
+        $u5 := @parameter2: android.view.View;
+
+        $u6 := @parameter3: int;
+
+        $u7 := @parameter4: int;
+
+        e = $u3 instanceof androidx.core.view.NestedScrollingParent2;
+
+        if e == 0 goto label1;
+
+        e#3 = (androidx.core.view.NestedScrollingParent2) $u3;
+
+        e = interfaceinvoke e#3.<androidx.core.view.NestedScrollingParent2: boolean onStartNestedScroll(android.view.View,android.view.View,int,int)>($u4, $u5, $u6, $u7);
+
+        return e;
+
+     label1:
+        if $u7 != 0 goto label6;
+
+        $u7 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u7 < 21 goto label5;
+
+     label2:
+        e = interfaceinvoke $u3.<android.view.ViewParent: boolean onStartNestedScroll(android.view.View,android.view.View,int)>($u4, $u5, $u6);
+
+     label3:
+        return e;
+
+     label4:
+        e#10 := @caughtexception;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ViewParent ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u3);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not implement interface method onStartNestedScroll");
+
+        $u-1 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewParentCompat", $u-1, e#10);
+
+        goto label6;
+
+     label5:
+        e = $u3 instanceof androidx.core.view.NestedScrollingParent;
+
+        if e == 0 goto label6;
+
+        e#19 = (androidx.core.view.NestedScrollingParent) $u3;
+
+        e = interfaceinvoke e#19.<androidx.core.view.NestedScrollingParent: boolean onStartNestedScroll(android.view.View,android.view.View,int)>($u4, $u5, $u6);
+
+        return e;
+
+     label6:
+        return 0;
+
+        catch java.lang.AbstractMethodError from label2 to label3 with label4;
+    }
+
+    public static void onStopNestedScroll(android.view.ViewParent, android.view.View)
+    {
+        android.view.ViewParent $u1;
+        android.view.View $u2;
+
+        $u1 := @parameter0: android.view.ViewParent;
+
+        $u2 := @parameter1: android.view.View;
+
+        staticinvoke <androidx.core.view.ViewParentCompat: void onStopNestedScroll(android.view.ViewParent,android.view.View,int)>($u1, $u2, 0);
+
+        return;
+    }
+
+    public static void onStopNestedScroll(android.view.ViewParent, android.view.View, int)
+    {
+        android.view.ViewParent $u3;
+        android.view.View $u4;
+        int $u5;
+        java.lang.String $u-1;
+        boolean e;
+        androidx.core.view.NestedScrollingParent2 e#3;
+        java.lang.AbstractMethodError e#6;
+        java.lang.StringBuilder $u1;
+        androidx.core.view.NestedScrollingParent e#14;
+
+        $u3 := @parameter0: android.view.ViewParent;
+
+        $u4 := @parameter1: android.view.View;
+
+        $u5 := @parameter2: int;
+
+        e = $u3 instanceof androidx.core.view.NestedScrollingParent2;
+
+        if e == 0 goto label1;
+
+        e#3 = (androidx.core.view.NestedScrollingParent2) $u3;
+
+        interfaceinvoke e#3.<androidx.core.view.NestedScrollingParent2: void onStopNestedScroll(android.view.View,int)>($u4, $u5);
+
+        return;
+
+     label1:
+        if $u5 != 0 goto label6;
+
+        $u5 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u5 < 21 goto label5;
+
+     label2:
+        interfaceinvoke $u3.<android.view.ViewParent: void onStopNestedScroll(android.view.View)>($u4);
+
+     label3:
+        return;
+
+     label4:
+        e#6 := @caughtexception;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ViewParent ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u3);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not implement interface method onStopNestedScroll");
+
+        $u-1 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ViewParentCompat", $u-1, e#6);
+
+        goto label3;
+
+     label5:
+        e = $u3 instanceof androidx.core.view.NestedScrollingParent;
+
+        if e == 0 goto label6;
+
+        e#14 = (androidx.core.view.NestedScrollingParent) $u3;
+
+        interfaceinvoke e#14.<androidx.core.view.NestedScrollingParent: void onStopNestedScroll(android.view.View)>($u4);
+
+     label6:
+        return;
+
+        catch java.lang.AbstractMethodError from label2 to label3 with label4;
+    }
+
+    public static boolean requestSendAccessibilityEvent(android.view.ViewParent, android.view.View, android.view.accessibility.AccessibilityEvent)
+    {
+        android.view.ViewParent $u1;
+        android.view.View $u2;
+        android.view.accessibility.AccessibilityEvent $u3;
+        boolean $u-1;
+
+        $u1 := @parameter0: android.view.ViewParent;
+
+        $u2 := @parameter1: android.view.View;
+
+        $u3 := @parameter2: android.view.accessibility.AccessibilityEvent;
+
+        $u-1 = interfaceinvoke $u1.<android.view.ViewParent: boolean requestSendAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.view.ViewParentCompat: java.lang.String TAG> = "ViewParentCompat";
+
+        return;
+    }
+}

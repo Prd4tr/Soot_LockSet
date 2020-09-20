@@ -1,0 +1,131 @@
+class androidx.lifecycle.LiveData$LifecycleBoundObserver extends androidx.lifecycle.LiveData$ObserverWrapper implements androidx.lifecycle.GenericLifecycleObserver
+{
+    final androidx.lifecycle.LifecycleOwner mOwner;
+    final androidx.lifecycle.LiveData this$0;
+
+    void <init>(androidx.lifecycle.LiveData, androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Observer)
+    {
+        androidx.lifecycle.LiveData$LifecycleBoundObserver this;
+        androidx.lifecycle.LiveData $u1;
+        androidx.lifecycle.LifecycleOwner $u2;
+        androidx.lifecycle.Observer observer;
+
+        this := @this: androidx.lifecycle.LiveData$LifecycleBoundObserver;
+
+        $u1 := @parameter0: androidx.lifecycle.LiveData;
+
+        $u2 := @parameter1: androidx.lifecycle.LifecycleOwner;
+
+        observer := @parameter2: androidx.lifecycle.Observer;
+
+        this.<androidx.lifecycle.LiveData$LifecycleBoundObserver: androidx.lifecycle.LiveData this$0> = $u1;
+
+        specialinvoke this.<androidx.lifecycle.LiveData$ObserverWrapper: void <init>(androidx.lifecycle.LiveData,androidx.lifecycle.Observer)>($u1, observer);
+
+        this.<androidx.lifecycle.LiveData$LifecycleBoundObserver: androidx.lifecycle.LifecycleOwner mOwner> = $u2;
+
+        return;
+    }
+
+    void detachObserver()
+    {
+        androidx.lifecycle.LiveData$LifecycleBoundObserver this;
+        androidx.lifecycle.Lifecycle $u-1;
+        androidx.lifecycle.LifecycleOwner $u0;
+
+        this := @this: androidx.lifecycle.LiveData$LifecycleBoundObserver;
+
+        $u0 = this.<androidx.lifecycle.LiveData$LifecycleBoundObserver: androidx.lifecycle.LifecycleOwner mOwner>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.lifecycle.LifecycleOwner: androidx.lifecycle.Lifecycle getLifecycle()>();
+
+        virtualinvoke $u-1.<androidx.lifecycle.Lifecycle: void removeObserver(androidx.lifecycle.LifecycleObserver)>(this);
+
+        return;
+    }
+
+    boolean isAttachedTo(androidx.lifecycle.LifecycleOwner)
+    {
+        androidx.lifecycle.LiveData$LifecycleBoundObserver this;
+        androidx.lifecycle.LifecycleOwner $u2, $u0;
+
+        this := @this: androidx.lifecycle.LiveData$LifecycleBoundObserver;
+
+        $u2 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        $u0 = this.<androidx.lifecycle.LiveData$LifecycleBoundObserver: androidx.lifecycle.LifecycleOwner mOwner>;
+
+        if $u0 != $u2 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void onStateChanged(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Lifecycle$Event)
+    {
+        androidx.lifecycle.LiveData$LifecycleBoundObserver this;
+        androidx.lifecycle.LifecycleOwner $u3;
+        androidx.lifecycle.Lifecycle$Event $u4;
+        androidx.lifecycle.Lifecycle $u-1;
+        androidx.lifecycle.Lifecycle$State $u-1#4, $u1;
+        androidx.lifecycle.LiveData $u0;
+        androidx.lifecycle.Observer $u1#8;
+        boolean $u-1#9;
+
+        this := @this: androidx.lifecycle.LiveData$LifecycleBoundObserver;
+
+        $u3 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        $u4 := @parameter1: androidx.lifecycle.Lifecycle$Event;
+
+        $u3 = this.<androidx.lifecycle.LiveData$LifecycleBoundObserver: androidx.lifecycle.LifecycleOwner mOwner>;
+
+        $u-1 = interfaceinvoke $u3.<androidx.lifecycle.LifecycleOwner: androidx.lifecycle.Lifecycle getLifecycle()>();
+
+        $u-1#4 = virtualinvoke $u-1.<androidx.lifecycle.Lifecycle: androidx.lifecycle.Lifecycle$State getCurrentState()>();
+
+        $u1 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State DESTROYED>;
+
+        if $u-1#4 != $u1 goto label1;
+
+        $u0 = this.<androidx.lifecycle.LiveData$LifecycleBoundObserver: androidx.lifecycle.LiveData this$0>;
+
+        $u1#8 = this.<androidx.lifecycle.LiveData$LifecycleBoundObserver: androidx.lifecycle.Observer mObserver>;
+
+        virtualinvoke $u0.<androidx.lifecycle.LiveData: void removeObserver(androidx.lifecycle.Observer)>($u1#8);
+
+        return;
+
+     label1:
+        $u-1#9 = virtualinvoke this.<androidx.lifecycle.LiveData$LifecycleBoundObserver: boolean shouldBeActive()>();
+
+        virtualinvoke this.<androidx.lifecycle.LiveData$LifecycleBoundObserver: void activeStateChanged(boolean)>($u-1#9);
+
+        return;
+    }
+
+    boolean shouldBeActive()
+    {
+        androidx.lifecycle.LiveData$LifecycleBoundObserver this;
+        androidx.lifecycle.Lifecycle$State $u1, $u-1#4;
+        androidx.lifecycle.LifecycleOwner $u0;
+        androidx.lifecycle.Lifecycle $u-1;
+        boolean $u-1#6;
+
+        this := @this: androidx.lifecycle.LiveData$LifecycleBoundObserver;
+
+        $u0 = this.<androidx.lifecycle.LiveData$LifecycleBoundObserver: androidx.lifecycle.LifecycleOwner mOwner>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.lifecycle.LifecycleOwner: androidx.lifecycle.Lifecycle getLifecycle()>();
+
+        $u-1#4 = virtualinvoke $u-1.<androidx.lifecycle.Lifecycle: androidx.lifecycle.Lifecycle$State getCurrentState()>();
+
+        $u1 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State STARTED>;
+
+        $u-1#6 = virtualinvoke $u-1#4.<androidx.lifecycle.Lifecycle$State: boolean isAtLeast(androidx.lifecycle.Lifecycle$State)>($u1);
+
+        return $u-1#6;
+    }
+}

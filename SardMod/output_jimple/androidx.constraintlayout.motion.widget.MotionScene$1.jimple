@@ -1,0 +1,48 @@
+class androidx.constraintlayout.motion.widget.MotionScene$1 extends java.lang.Object implements android.view.animation.Interpolator
+{
+    final androidx.constraintlayout.motion.widget.MotionScene this$0;
+    final androidx.constraintlayout.motion.utils.Easing val$easing;
+
+    void <init>(androidx.constraintlayout.motion.widget.MotionScene, androidx.constraintlayout.motion.utils.Easing)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene$1 this;
+        androidx.constraintlayout.motion.widget.MotionScene $u1;
+        androidx.constraintlayout.motion.utils.Easing $u2;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene$1;
+
+        $u1 := @parameter0: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u2 := @parameter1: androidx.constraintlayout.motion.utils.Easing;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene$1: androidx.constraintlayout.motion.widget.MotionScene this$0> = $u1;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene$1: androidx.constraintlayout.motion.utils.Easing val$easing> = $u2;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public float getInterpolation(float)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene$1 this;
+        float $u4;
+        double $u1;
+        androidx.constraintlayout.motion.utils.Easing $u0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene$1;
+
+        $u4 := @parameter0: float;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene$1: androidx.constraintlayout.motion.utils.Easing val$easing>;
+
+        $u1 = (double) $u4;
+
+        $u1 = virtualinvoke $u0.<androidx.constraintlayout.motion.utils.Easing: double get(double)>($u1);
+
+        $u4 = (float) $u1;
+
+        return $u4;
+    }
+}

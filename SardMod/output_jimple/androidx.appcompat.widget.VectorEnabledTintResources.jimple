@@ -1,0 +1,136 @@
+public class androidx.appcompat.widget.VectorEnabledTintResources extends android.content.res.Resources
+{
+    public static final int MAX_SDK_WHERE_REQUIRED;
+    private static boolean sCompatVectorFromResourcesEnabled;
+    private final java.lang.ref.WeakReference mContextRef;
+
+    static void <clinit>()
+    {
+        <androidx.appcompat.widget.VectorEnabledTintResources: int MAX_SDK_WHERE_REQUIRED> = 20;
+
+        <androidx.appcompat.widget.VectorEnabledTintResources: boolean sCompatVectorFromResourcesEnabled> = 0;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.content.res.Resources)
+    {
+        androidx.appcompat.widget.VectorEnabledTintResources this;
+        android.content.Context $u4;
+        android.content.res.Resources $u5;
+        android.content.res.AssetManager $u-1;
+        android.util.DisplayMetrics $u-1#3;
+        android.content.res.Configuration $u-1#4;
+        java.lang.ref.WeakReference $u0;
+
+        this := @this: androidx.appcompat.widget.VectorEnabledTintResources;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: android.content.res.Resources;
+
+        $u-1 = virtualinvoke $u5.<android.content.res.Resources: android.content.res.AssetManager getAssets()>();
+
+        $u-1#3 = virtualinvoke $u5.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $u-1#4 = virtualinvoke $u5.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        specialinvoke this.<android.content.res.Resources: void <init>(android.content.res.AssetManager,android.util.DisplayMetrics,android.content.res.Configuration)>($u-1, $u-1#3, $u-1#4);
+
+        $u0 = new java.lang.ref.WeakReference;
+
+        specialinvoke $u0.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>($u4);
+
+        this.<androidx.appcompat.widget.VectorEnabledTintResources: java.lang.ref.WeakReference mContextRef> = $u0;
+
+        return;
+    }
+
+    public static boolean isCompatVectorFromResourcesEnabled()
+    {
+        boolean ret0;
+
+        ret0 = <androidx.appcompat.widget.VectorEnabledTintResources: boolean sCompatVectorFromResourcesEnabled>;
+
+        return ret0;
+    }
+
+    public static void setCompatVectorFromResourcesEnabled(boolean)
+    {
+        boolean $u0;
+
+        $u0 := @parameter0: boolean;
+
+        <androidx.appcompat.widget.VectorEnabledTintResources: boolean sCompatVectorFromResourcesEnabled> = $u0;
+
+        return;
+    }
+
+    public static boolean shouldBeUsed()
+    {
+        boolean $u-1;
+        int $u0;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.VectorEnabledTintResources: boolean isCompatVectorFromResourcesEnabled()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 > 20 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public android.graphics.drawable.Drawable getDrawable(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.VectorEnabledTintResources this;
+        int $u3;
+        java.lang.ref.WeakReference context;
+        java.lang.Object $u-1;
+        android.content.Context context#4;
+        androidx.appcompat.widget.ResourceManagerInternal $u-1#5;
+        android.graphics.drawable.Drawable $u-1#7;
+
+        this := @this: androidx.appcompat.widget.VectorEnabledTintResources;
+
+        $u3 := @parameter0: int;
+
+        context = this.<androidx.appcompat.widget.VectorEnabledTintResources: java.lang.ref.WeakReference mContextRef>;
+
+        $u-1 = virtualinvoke context.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        context#4 = (android.content.Context) $u-1;
+
+        if context#4 == null goto label1;
+
+        $u-1#5 = staticinvoke <androidx.appcompat.widget.ResourceManagerInternal: androidx.appcompat.widget.ResourceManagerInternal get()>();
+
+        $u-1#7 = virtualinvoke $u-1#5.<androidx.appcompat.widget.ResourceManagerInternal: android.graphics.drawable.Drawable onDrawableLoadedFromResources(android.content.Context,androidx.appcompat.widget.VectorEnabledTintResources,int)>(context#4, this, $u3);
+
+        return $u-1#7;
+
+     label1:
+        $u-1#7 = specialinvoke this.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int)>($u3);
+
+        return $u-1#7;
+    }
+
+    final android.graphics.drawable.Drawable superGetDrawable(int)
+    {
+        androidx.appcompat.widget.VectorEnabledTintResources this;
+        int $u2;
+        android.graphics.drawable.Drawable $u-1;
+
+        this := @this: androidx.appcompat.widget.VectorEnabledTintResources;
+
+        $u2 := @parameter0: int;
+
+        $u-1 = specialinvoke this.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int)>($u2);
+
+        return $u-1;
+    }
+}
