@@ -1,0 +1,237 @@
+class androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager extends java.lang.Object implements android.view.ViewTreeObserver$OnGlobalLayoutListener, android.view.View$OnAttachStateChangeListener
+{
+    private java.util.WeakHashMap mPanesToVisible;
+
+    void <init>()
+    {
+        androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager this;
+        java.util.WeakHashMap $u0;
+
+        this := @this: androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new java.util.WeakHashMap;
+
+        specialinvoke $u0.<java.util.WeakHashMap: void <init>()>();
+
+        this.<androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager: java.util.WeakHashMap mPanesToVisible> = $u0;
+
+        return;
+    }
+
+    private void checkPaneVisibility(android.view.View, boolean)
+    {
+        androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager this;
+        android.view.View $u4;
+        boolean $u5, newVisibility;
+        int $u-1;
+        java.util.WeakHashMap $u1;
+        java.lang.Boolean $u-1#6;
+
+        this := @this: androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager;
+
+        $u4 := @parameter0: android.view.View;
+
+        $u5 := @parameter1: boolean;
+
+        $u-1 = virtualinvoke $u4.<android.view.View: int getVisibility()>();
+
+        if $u-1 != 0 goto label1;
+
+        newVisibility = 1;
+
+        goto label2;
+
+     label1:
+        newVisibility = 0;
+
+     label2:
+        if $u5 == newVisibility goto label4;
+
+        if newVisibility == 0 goto label3;
+
+        staticinvoke <androidx.core.view.ViewCompat: void notifyViewAccessibilityStateChangedIfNeeded(android.view.View,int)>($u4, 16);
+
+     label3:
+        $u1 = this.<androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager: java.util.WeakHashMap mPanesToVisible>;
+
+        $u-1#6 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(newVisibility);
+
+        virtualinvoke $u1.<java.util.WeakHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u4, $u-1#6);
+
+     label4:
+        return;
+    }
+
+    private void registerForLayoutCallback(android.view.View)
+    {
+        androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager this;
+        android.view.View $u2;
+        android.view.ViewTreeObserver $u-1;
+
+        this := @this: androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u-1 = virtualinvoke $u2.<android.view.View: android.view.ViewTreeObserver getViewTreeObserver()>();
+
+        virtualinvoke $u-1.<android.view.ViewTreeObserver: void addOnGlobalLayoutListener(android.view.ViewTreeObserver$OnGlobalLayoutListener)>(this);
+
+        return;
+    }
+
+    private void unregisterForLayoutCallback(android.view.View)
+    {
+        androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager this;
+        android.view.View $u2;
+        android.view.ViewTreeObserver $u-1;
+
+        this := @this: androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u-1 = virtualinvoke $u2.<android.view.View: android.view.ViewTreeObserver getViewTreeObserver()>();
+
+        virtualinvoke $u-1.<android.view.ViewTreeObserver: void removeOnGlobalLayoutListener(android.view.ViewTreeObserver$OnGlobalLayoutListener)>(this);
+
+        return;
+    }
+
+    void addAccessibilityPane(android.view.View)
+    {
+        androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager this;
+        android.view.View $u3;
+        java.util.WeakHashMap $u0;
+        int $u-1;
+        boolean $u1;
+        java.lang.Boolean $u-1#5;
+
+        this := @this: androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u0 = this.<androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager: java.util.WeakHashMap mPanesToVisible>;
+
+        $u-1 = virtualinvoke $u3.<android.view.View: int getVisibility()>();
+
+        if $u-1 != 0 goto label1;
+
+        $u1 = 1;
+
+        goto label2;
+
+     label1:
+        $u1 = 0;
+
+     label2:
+        $u-1#5 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($u1);
+
+        virtualinvoke $u0.<java.util.WeakHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u3, $u-1#5);
+
+        virtualinvoke $u3.<android.view.View: void addOnAttachStateChangeListener(android.view.View$OnAttachStateChangeListener)>(this);
+
+        $u1 = virtualinvoke $u3.<android.view.View: boolean isAttachedToWindow()>();
+
+        if $u1 == 0 goto label3;
+
+        specialinvoke this.<androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager: void registerForLayoutCallback(android.view.View)>($u3);
+
+     label3:
+        return;
+    }
+
+    public void onGlobalLayout()
+    {
+        androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager this;
+        java.util.WeakHashMap $u0;
+        java.util.Set $u-1;
+        java.util.Iterator $u-1#4;
+        boolean $u-1#6;
+        java.lang.Object $u-1#8;
+        java.util.Map$Entry entry;
+        android.view.View $u2;
+        java.lang.Boolean $u3;
+
+        this := @this: androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager;
+
+        $u0 = this.<androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager: java.util.WeakHashMap mPanesToVisible>;
+
+        $u-1 = virtualinvoke $u0.<java.util.WeakHashMap: java.util.Set entrySet()>();
+
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#6 == 0 goto label2;
+
+        $u-1#8 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        entry = (java.util.Map$Entry) $u-1#8;
+
+        $u-1#8 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $u2 = (android.view.View) $u-1#8;
+
+        $u-1#8 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $u3 = (java.lang.Boolean) $u-1#8;
+
+        $u-1#6 = virtualinvoke $u3.<java.lang.Boolean: boolean booleanValue()>();
+
+        specialinvoke this.<androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager: void checkPaneVisibility(android.view.View,boolean)>($u2, $u-1#6);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void onViewAttachedToWindow(android.view.View)
+    {
+        androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager this;
+        android.view.View $u1;
+
+        this := @this: androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager;
+
+        $u1 := @parameter0: android.view.View;
+
+        specialinvoke this.<androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager: void registerForLayoutCallback(android.view.View)>($u1);
+
+        return;
+    }
+
+    public void onViewDetachedFromWindow(android.view.View)
+    {
+        androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager this;
+        android.view.View $u1;
+
+        this := @this: androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager;
+
+        $u1 := @parameter0: android.view.View;
+
+        return;
+    }
+
+    void removeAccessibilityPane(android.view.View)
+    {
+        androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager this;
+        android.view.View $u2;
+        java.util.WeakHashMap $u0;
+
+        this := @this: androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u0 = this.<androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager: java.util.WeakHashMap mPanesToVisible>;
+
+        virtualinvoke $u0.<java.util.WeakHashMap: java.lang.Object remove(java.lang.Object)>($u2);
+
+        virtualinvoke $u2.<android.view.View: void removeOnAttachStateChangeListener(android.view.View$OnAttachStateChangeListener)>(this);
+
+        specialinvoke this.<androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager: void unregisterForLayoutCallback(android.view.View)>($u2);
+
+        return;
+    }
+}

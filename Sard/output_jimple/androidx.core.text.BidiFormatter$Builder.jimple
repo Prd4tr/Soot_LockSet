@@ -1,0 +1,184 @@
+public final class androidx.core.text.BidiFormatter$Builder extends java.lang.Object
+{
+    private int mFlags;
+    private boolean mIsRtlContext;
+    private androidx.core.text.TextDirectionHeuristicCompat mTextDirectionHeuristicCompat;
+
+    public void <init>()
+    {
+        androidx.core.text.BidiFormatter$Builder this;
+        java.util.Locale $u-1;
+        boolean $u-1#3;
+
+        this := @this: androidx.core.text.BidiFormatter$Builder;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u-1 = staticinvoke <java.util.Locale: java.util.Locale getDefault()>();
+
+        $u-1#3 = staticinvoke <androidx.core.text.BidiFormatter: boolean isRtlLocale(java.util.Locale)>($u-1);
+
+        specialinvoke this.<androidx.core.text.BidiFormatter$Builder: void initialize(boolean)>($u-1#3);
+
+        return;
+    }
+
+    public void <init>(java.util.Locale)
+    {
+        androidx.core.text.BidiFormatter$Builder this;
+        java.util.Locale $u2;
+        boolean $u-1;
+
+        this := @this: androidx.core.text.BidiFormatter$Builder;
+
+        $u2 := @parameter0: java.util.Locale;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u-1 = staticinvoke <androidx.core.text.BidiFormatter: boolean isRtlLocale(java.util.Locale)>($u2);
+
+        specialinvoke this.<androidx.core.text.BidiFormatter$Builder: void initialize(boolean)>($u-1);
+
+        return;
+    }
+
+    public void <init>(boolean)
+    {
+        androidx.core.text.BidiFormatter$Builder this;
+        boolean $u1;
+
+        this := @this: androidx.core.text.BidiFormatter$Builder;
+
+        $u1 := @parameter0: boolean;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        specialinvoke this.<androidx.core.text.BidiFormatter$Builder: void initialize(boolean)>($u1);
+
+        return;
+    }
+
+    private static androidx.core.text.BidiFormatter getDefaultInstanceFromContext(boolean)
+    {
+        boolean $u1;
+        androidx.core.text.BidiFormatter ret0;
+
+        $u1 := @parameter0: boolean;
+
+        if $u1 == 0 goto label1;
+
+        ret0 = <androidx.core.text.BidiFormatter: androidx.core.text.BidiFormatter DEFAULT_RTL_INSTANCE>;
+
+        return ret0;
+
+     label1:
+        ret0 = <androidx.core.text.BidiFormatter: androidx.core.text.BidiFormatter DEFAULT_LTR_INSTANCE>;
+
+        return ret0;
+    }
+
+    private void initialize(boolean)
+    {
+        androidx.core.text.BidiFormatter$Builder this;
+        boolean $u2;
+        androidx.core.text.TextDirectionHeuristicCompat $u0;
+
+        this := @this: androidx.core.text.BidiFormatter$Builder;
+
+        $u2 := @parameter0: boolean;
+
+        this.<androidx.core.text.BidiFormatter$Builder: boolean mIsRtlContext> = $u2;
+
+        $u0 = <androidx.core.text.BidiFormatter: androidx.core.text.TextDirectionHeuristicCompat DEFAULT_TEXT_DIRECTION_HEURISTIC>;
+
+        this.<androidx.core.text.BidiFormatter$Builder: androidx.core.text.TextDirectionHeuristicCompat mTextDirectionHeuristicCompat> = $u0;
+
+        this.<androidx.core.text.BidiFormatter$Builder: int mFlags> = 2;
+
+        return;
+    }
+
+    public androidx.core.text.BidiFormatter build()
+    {
+        androidx.core.text.BidiFormatter$Builder this;
+        int $u2;
+        androidx.core.text.TextDirectionHeuristicCompat $u3, $u1;
+        androidx.core.text.BidiFormatter $u-1;
+        boolean $u0;
+
+        this := @this: androidx.core.text.BidiFormatter$Builder;
+
+        $u2 = this.<androidx.core.text.BidiFormatter$Builder: int mFlags>;
+
+        if $u2 != 2 goto label1;
+
+        $u3 = this.<androidx.core.text.BidiFormatter$Builder: androidx.core.text.TextDirectionHeuristicCompat mTextDirectionHeuristicCompat>;
+
+        $u1 = <androidx.core.text.BidiFormatter: androidx.core.text.TextDirectionHeuristicCompat DEFAULT_TEXT_DIRECTION_HEURISTIC>;
+
+        if $u3 != $u1 goto label1;
+
+        $u0 = this.<androidx.core.text.BidiFormatter$Builder: boolean mIsRtlContext>;
+
+        $u-1 = staticinvoke <androidx.core.text.BidiFormatter$Builder: androidx.core.text.BidiFormatter getDefaultInstanceFromContext(boolean)>($u0);
+
+        return $u-1;
+
+     label1:
+        $u-1 = new androidx.core.text.BidiFormatter;
+
+        $u0 = this.<androidx.core.text.BidiFormatter$Builder: boolean mIsRtlContext>;
+
+        $u2 = this.<androidx.core.text.BidiFormatter$Builder: int mFlags>;
+
+        $u3 = this.<androidx.core.text.BidiFormatter$Builder: androidx.core.text.TextDirectionHeuristicCompat mTextDirectionHeuristicCompat>;
+
+        specialinvoke $u-1.<androidx.core.text.BidiFormatter: void <init>(boolean,int,androidx.core.text.TextDirectionHeuristicCompat)>($u0, $u2, $u3);
+
+        return $u-1;
+    }
+
+    public androidx.core.text.BidiFormatter$Builder setTextDirectionHeuristic(androidx.core.text.TextDirectionHeuristicCompat)
+    {
+        androidx.core.text.BidiFormatter$Builder this;
+        androidx.core.text.TextDirectionHeuristicCompat $u1;
+
+        this := @this: androidx.core.text.BidiFormatter$Builder;
+
+        $u1 := @parameter0: androidx.core.text.TextDirectionHeuristicCompat;
+
+        this.<androidx.core.text.BidiFormatter$Builder: androidx.core.text.TextDirectionHeuristicCompat mTextDirectionHeuristicCompat> = $u1;
+
+        return this;
+    }
+
+    public androidx.core.text.BidiFormatter$Builder stereoReset(boolean)
+    {
+        androidx.core.text.BidiFormatter$Builder this;
+        boolean $u2;
+        int $u0;
+
+        this := @this: androidx.core.text.BidiFormatter$Builder;
+
+        $u2 := @parameter0: boolean;
+
+        if $u2 == 0 goto label1;
+
+        $u0 = this.<androidx.core.text.BidiFormatter$Builder: int mFlags>;
+
+        $u0 = $u0 | 2;
+
+        this.<androidx.core.text.BidiFormatter$Builder: int mFlags> = $u0;
+
+        return this;
+
+     label1:
+        $u0 = this.<androidx.core.text.BidiFormatter$Builder: int mFlags>;
+
+        $u0 = $u0 & -3;
+
+        this.<androidx.core.text.BidiFormatter$Builder: int mFlags> = $u0;
+
+        return this;
+    }
+}

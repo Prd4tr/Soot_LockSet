@@ -1,0 +1,1346 @@
+public class androidx.appcompat.widget.ActionBarContextView extends androidx.appcompat.widget.AbsActionBarView
+{
+    private android.view.View mClose;
+    private int mCloseItemLayout;
+    private android.view.View mCustomView;
+    private java.lang.CharSequence mSubtitle;
+    private int mSubtitleStyleRes;
+    private android.widget.TextView mSubtitleView;
+    private java.lang.CharSequence mTitle;
+    private android.widget.LinearLayout mTitleLayout;
+    private boolean mTitleOptional;
+    private int mTitleStyleRes;
+    private android.widget.TextView mTitleView;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        android.content.Context $u2;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.appcompat.widget.ActionBarContextView: void <init>(android.content.Context,android.util.AttributeSet)>($u2, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        int $u0;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = <androidx.appcompat.R$attr: int actionModeStyle>;
+
+        specialinvoke this.<androidx.appcompat.widget.ActionBarContextView: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, $u0);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        android.content.Context $u4;
+        android.util.AttributeSet $u5;
+        int $u6, $u2;
+        int[] a;
+        androidx.appcompat.widget.TintTypedArray $u-1;
+        android.graphics.drawable.Drawable $u-1#6;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: android.util.AttributeSet;
+
+        $u6 := @parameter2: int;
+
+        specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: void <init>(android.content.Context,android.util.AttributeSet,int)>($u4, $u5, $u6);
+
+        a = <androidx.appcompat.R$styleable: int[] ActionMode>;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[],int,int)>($u4, $u5, a, $u6, 0);
+
+        $u6 = <androidx.appcompat.R$styleable: int ActionMode_background>;
+
+        $u-1#6 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>($u6);
+
+        staticinvoke <androidx.core.view.ViewCompat: void setBackground(android.view.View,android.graphics.drawable.Drawable)>(this, $u-1#6);
+
+        $u6 = <androidx.appcompat.R$styleable: int ActionMode_titleTextStyle>;
+
+        $u6 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u6, 0);
+
+        this.<androidx.appcompat.widget.ActionBarContextView: int mTitleStyleRes> = $u6;
+
+        $u6 = <androidx.appcompat.R$styleable: int ActionMode_subtitleTextStyle>;
+
+        $u6 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u6, 0);
+
+        this.<androidx.appcompat.widget.ActionBarContextView: int mSubtitleStyleRes> = $u6;
+
+        $u6 = <androidx.appcompat.R$styleable: int ActionMode_height>;
+
+        $u6 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getLayoutDimension(int,int)>($u6, 0);
+
+        this.<androidx.appcompat.widget.ActionBarContextView: int mContentHeight> = $u6;
+
+        $u6 = <androidx.appcompat.R$styleable: int ActionMode_closeItemLayout>;
+
+        $u2 = <androidx.appcompat.R$layout: int abc_action_mode_close_item_material>;
+
+        $u6 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u6, $u2);
+
+        this.<androidx.appcompat.widget.ActionBarContextView: int mCloseItemLayout> = $u6;
+
+        virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        return;
+    }
+
+    private void initTitle()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        android.widget.LinearLayout inflater;
+        android.content.Context $u-1;
+        android.view.LayoutInflater $u-1#4;
+        int hasSubtitle, $u5;
+        android.view.View $u-1#10;
+        android.widget.TextView hasSubtitle#16;
+        java.lang.CharSequence hasSubtitle#33;
+        boolean $u-1#37, $u-1#41;
+        android.view.ViewParent $u-1#49;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        inflater = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout>;
+
+        if inflater != null goto label2;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: android.content.Context getContext()>();
+
+        $u-1#4 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($u-1);
+
+        hasSubtitle = <androidx.appcompat.R$layout: int abc_action_bar_title_item>;
+
+        virtualinvoke $u-1#4.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>(hasSubtitle, this);
+
+        hasSubtitle = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int getChildCount()>();
+
+        hasSubtitle = hasSubtitle + -1;
+
+        $u-1#10 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: android.view.View getChildAt(int)>(hasSubtitle);
+
+        inflater = (android.widget.LinearLayout) $u-1#10;
+
+        this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout> = inflater;
+
+        hasSubtitle = <androidx.appcompat.R$id: int action_bar_title>;
+
+        $u-1#10 = virtualinvoke inflater.<android.widget.LinearLayout: android.view.View findViewById(int)>(hasSubtitle);
+
+        hasSubtitle#16 = (android.widget.TextView) $u-1#10;
+
+        this.<androidx.appcompat.widget.ActionBarContextView: android.widget.TextView mTitleView> = hasSubtitle#16;
+
+        inflater = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout>;
+
+        hasSubtitle = <androidx.appcompat.R$id: int action_bar_subtitle>;
+
+        $u-1#10 = virtualinvoke inflater.<android.widget.LinearLayout: android.view.View findViewById(int)>(hasSubtitle);
+
+        hasSubtitle#16 = (android.widget.TextView) $u-1#10;
+
+        this.<androidx.appcompat.widget.ActionBarContextView: android.widget.TextView mSubtitleView> = hasSubtitle#16;
+
+        hasSubtitle = this.<androidx.appcompat.widget.ActionBarContextView: int mTitleStyleRes>;
+
+        if hasSubtitle == 0 goto label1;
+
+        hasSubtitle#16 = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.TextView mTitleView>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: android.content.Context getContext()>();
+
+        hasSubtitle = this.<androidx.appcompat.widget.ActionBarContextView: int mTitleStyleRes>;
+
+        virtualinvoke hasSubtitle#16.<android.widget.TextView: void setTextAppearance(android.content.Context,int)>($u-1, hasSubtitle);
+
+     label1:
+        hasSubtitle = this.<androidx.appcompat.widget.ActionBarContextView: int mSubtitleStyleRes>;
+
+        if hasSubtitle == 0 goto label2;
+
+        hasSubtitle#16 = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.TextView mSubtitleView>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: android.content.Context getContext()>();
+
+        hasSubtitle = this.<androidx.appcompat.widget.ActionBarContextView: int mSubtitleStyleRes>;
+
+        virtualinvoke hasSubtitle#16.<android.widget.TextView: void setTextAppearance(android.content.Context,int)>($u-1, hasSubtitle);
+
+     label2:
+        hasSubtitle#16 = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.TextView mTitleView>;
+
+        hasSubtitle#33 = this.<androidx.appcompat.widget.ActionBarContextView: java.lang.CharSequence mTitle>;
+
+        virtualinvoke hasSubtitle#16.<android.widget.TextView: void setText(java.lang.CharSequence)>(hasSubtitle#33);
+
+        hasSubtitle#16 = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.TextView mSubtitleView>;
+
+        hasSubtitle#33 = this.<androidx.appcompat.widget.ActionBarContextView: java.lang.CharSequence mSubtitle>;
+
+        virtualinvoke hasSubtitle#16.<android.widget.TextView: void setText(java.lang.CharSequence)>(hasSubtitle#33);
+
+        hasSubtitle#33 = this.<androidx.appcompat.widget.ActionBarContextView: java.lang.CharSequence mTitle>;
+
+        $u-1#37 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>(hasSubtitle#33);
+
+        $u-1#37 = $u-1#37 ^ 1;
+
+        hasSubtitle#33 = this.<androidx.appcompat.widget.ActionBarContextView: java.lang.CharSequence mSubtitle>;
+
+        $u-1#41 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>(hasSubtitle#33);
+
+        $u-1#41 = $u-1#41 ^ 1;
+
+        hasSubtitle#16 = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.TextView mSubtitleView>;
+
+        hasSubtitle = 0;
+
+        if $u-1#41 == 0 goto label3;
+
+        $u5 = 0;
+
+        goto label4;
+
+     label3:
+        $u5 = 8;
+
+     label4:
+        virtualinvoke hasSubtitle#16.<android.widget.TextView: void setVisibility(int)>($u5);
+
+        inflater = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout>;
+
+        if $u-1#37 != 0 goto label6;
+
+        if $u-1#41 == 0 goto label5;
+
+        goto label6;
+
+     label5:
+        hasSubtitle = 8;
+
+     label6:
+        virtualinvoke inflater.<android.widget.LinearLayout: void setVisibility(int)>(hasSubtitle);
+
+        inflater = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout>;
+
+        $u-1#49 = virtualinvoke inflater.<android.widget.LinearLayout: android.view.ViewParent getParent()>();
+
+        if $u-1#49 != null goto label7;
+
+        inflater = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout>;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: void addView(android.view.View)>(inflater);
+
+     label7:
+        return;
+    }
+
+    public volatile void animateToVisibility(int)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        int $u1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u1 := @parameter0: int;
+
+        specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: void animateToVisibility(int)>($u1);
+
+        return;
+    }
+
+    public volatile boolean canShowOverflowMenu()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: boolean canShowOverflowMenu()>();
+
+        return $u-1;
+    }
+
+    public void closeMode()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        android.view.View $u0;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mClose>;
+
+        if $u0 != null goto label1;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: void killMode()>();
+
+     label1:
+        return;
+    }
+
+    public volatile void dismissPopupMenus()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: void dismissPopupMenus()>();
+
+        return;
+    }
+
+    protected android.view.ViewGroup$LayoutParams generateDefaultLayoutParams()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        android.view.ViewGroup$MarginLayoutParams $u0;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u0 = new android.view.ViewGroup$MarginLayoutParams;
+
+        specialinvoke $u0.<android.view.ViewGroup$MarginLayoutParams: void <init>(int,int)>(-1, -2);
+
+        return $u0;
+    }
+
+    public android.view.ViewGroup$LayoutParams generateLayoutParams(android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        android.util.AttributeSet $u3;
+        android.view.ViewGroup$MarginLayoutParams $u0;
+        android.content.Context $u-1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u3 := @parameter0: android.util.AttributeSet;
+
+        $u0 = new android.view.ViewGroup$MarginLayoutParams;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: android.content.Context getContext()>();
+
+        specialinvoke $u0.<android.view.ViewGroup$MarginLayoutParams: void <init>(android.content.Context,android.util.AttributeSet)>($u-1, $u3);
+
+        return $u0;
+    }
+
+    public volatile int getAnimatedVisibility()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        int $u-1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: int getAnimatedVisibility()>();
+
+        return $u-1;
+    }
+
+    public volatile int getContentHeight()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        int $u-1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: int getContentHeight()>();
+
+        return $u-1;
+    }
+
+    public java.lang.CharSequence getSubtitle()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        java.lang.CharSequence ret0;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        ret0 = this.<androidx.appcompat.widget.ActionBarContextView: java.lang.CharSequence mSubtitle>;
+
+        return ret0;
+    }
+
+    public java.lang.CharSequence getTitle()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        java.lang.CharSequence ret0;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        ret0 = this.<androidx.appcompat.widget.ActionBarContextView: java.lang.CharSequence mTitle>;
+
+        return ret0;
+    }
+
+    public boolean hideOverflowMenu()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        boolean $u-1;
+        androidx.appcompat.widget.ActionMenuPresenter $u0;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        if $u0 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.ActionMenuPresenter: boolean hideOverflowMenu()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public void initForMode(androidx.appcompat.view.ActionMode)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        androidx.appcompat.view.ActionMode $u6;
+        android.view.View inflater;
+        android.content.Context $u-1;
+        android.view.LayoutInflater $u-1#4;
+        int menu;
+        android.view.ViewParent $u-1#10;
+        androidx.appcompat.widget.ActionBarContextView$1 menu#17;
+        android.view.Menu $u-1#18;
+        androidx.appcompat.view.menu.MenuBuilder menu#20;
+        androidx.appcompat.widget.ActionMenuPresenter layoutParams;
+        android.view.ViewGroup$LayoutParams layoutParams#28;
+        androidx.appcompat.view.menu.MenuView $u-1#34;
+        androidx.appcompat.widget.ActionMenuView $u3;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u6 := @parameter0: androidx.appcompat.view.ActionMode;
+
+        inflater = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mClose>;
+
+        if inflater != null goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: android.content.Context getContext()>();
+
+        $u-1#4 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($u-1);
+
+        menu = this.<androidx.appcompat.widget.ActionBarContextView: int mCloseItemLayout>;
+
+        inflater = virtualinvoke $u-1#4.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>(menu, this, 0);
+
+        this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mClose> = inflater;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: void addView(android.view.View)>(inflater);
+
+        goto label2;
+
+     label1:
+        $u-1#10 = virtualinvoke inflater.<android.view.View: android.view.ViewParent getParent()>();
+
+        if $u-1#10 != null goto label2;
+
+        inflater = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mClose>;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: void addView(android.view.View)>(inflater);
+
+        goto label2;
+
+     label2:
+        inflater = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mClose>;
+
+        menu = <androidx.appcompat.R$id: int action_mode_close_button>;
+
+        inflater = virtualinvoke inflater.<android.view.View: android.view.View findViewById(int)>(menu);
+
+        menu#17 = new androidx.appcompat.widget.ActionBarContextView$1;
+
+        specialinvoke menu#17.<androidx.appcompat.widget.ActionBarContextView$1: void <init>(androidx.appcompat.widget.ActionBarContextView,androidx.appcompat.view.ActionMode)>(this, $u6);
+
+        virtualinvoke inflater.<android.view.View: void setOnClickListener(android.view.View$OnClickListener)>(menu#17);
+
+        $u-1#18 = virtualinvoke $u6.<androidx.appcompat.view.ActionMode: android.view.Menu getMenu()>();
+
+        menu#20 = (androidx.appcompat.view.menu.MenuBuilder) $u-1#18;
+
+        layoutParams = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        if layoutParams == null goto label3;
+
+        layoutParams = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        virtualinvoke layoutParams.<androidx.appcompat.widget.ActionMenuPresenter: boolean dismissPopupMenus()>();
+
+     label3:
+        layoutParams = new androidx.appcompat.widget.ActionMenuPresenter;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: android.content.Context getContext()>();
+
+        specialinvoke layoutParams.<androidx.appcompat.widget.ActionMenuPresenter: void <init>(android.content.Context)>($u-1);
+
+        this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter> = layoutParams;
+
+        layoutParams = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        virtualinvoke layoutParams.<androidx.appcompat.widget.ActionMenuPresenter: void setReserveOverflow(boolean)>(1);
+
+        layoutParams#28 = new android.view.ViewGroup$LayoutParams;
+
+        specialinvoke layoutParams#28.<android.view.ViewGroup$LayoutParams: void <init>(int,int)>(-2, -1);
+
+        layoutParams = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        $u-1 = this.<androidx.appcompat.widget.ActionBarContextView: android.content.Context mPopupContext>;
+
+        virtualinvoke menu#20.<androidx.appcompat.view.menu.MenuBuilder: void addMenuPresenter(androidx.appcompat.view.menu.MenuPresenter,android.content.Context)>(layoutParams, $u-1);
+
+        layoutParams = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        $u-1#34 = virtualinvoke layoutParams.<androidx.appcompat.widget.ActionMenuPresenter: androidx.appcompat.view.menu.MenuView getMenuView(android.view.ViewGroup)>(this);
+
+        $u3 = (androidx.appcompat.widget.ActionMenuView) $u-1#34;
+
+        this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuView mMenuView> = $u3;
+
+        $u3 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuView mMenuView>;
+
+        staticinvoke <androidx.core.view.ViewCompat: void setBackground(android.view.View,android.graphics.drawable.Drawable)>($u3, null);
+
+        $u3 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuView mMenuView>;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($u3, layoutParams#28);
+
+        return;
+    }
+
+    public volatile boolean isOverflowMenuShowPending()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: boolean isOverflowMenuShowPending()>();
+
+        return $u-1;
+    }
+
+    public boolean isOverflowMenuShowing()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        boolean $u-1;
+        androidx.appcompat.widget.ActionMenuPresenter $u0;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        if $u0 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.ActionMenuPresenter: boolean isOverflowMenuShowing()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public volatile boolean isOverflowReserved()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: boolean isOverflowReserved()>();
+
+        return $u-1;
+    }
+
+    public boolean isTitleOptional()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        ret0 = this.<androidx.appcompat.widget.ActionBarContextView: boolean mTitleOptional>;
+
+        return ret0;
+    }
+
+    public void killMode()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: void removeAllViews()>();
+
+        this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mCustomView> = null;
+
+        this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuView mMenuView> = null;
+
+        return;
+    }
+
+    public void onDetachedFromWindow()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        androidx.appcompat.widget.ActionMenuPresenter $u0;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: void onDetachedFromWindow()>();
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        if $u0 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.ActionMenuPresenter: boolean hideOverflowMenu()>();
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.ActionMenuPresenter: boolean hideSubMenus()>();
+
+     label1:
+        return;
+    }
+
+    public volatile boolean onHoverEvent(android.view.MotionEvent)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        boolean $u-1;
+        android.view.MotionEvent $u1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u1 := @parameter0: android.view.MotionEvent;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: boolean onHoverEvent(android.view.MotionEvent)>($u1);
+
+        return $u-1;
+    }
+
+    public void onInitializeAccessibilityEvent(android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        android.view.accessibility.AccessibilityEvent $u3;
+        int $u-1;
+        java.lang.Class $u-1#3;
+        java.lang.String $u-1#5;
+        android.content.Context $u-1#7;
+        java.lang.CharSequence $u0;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u3 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        $u-1 = virtualinvoke $u3.<android.view.accessibility.AccessibilityEvent: int getEventType()>();
+
+        if $u-1 != 32 goto label1;
+
+        virtualinvoke $u3.<android.view.accessibility.AccessibilityEvent: void setSource(android.view.View)>(this);
+
+        $u-1#3 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#5 = virtualinvoke $u-1#3.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke $u3.<android.view.accessibility.AccessibilityEvent: void setClassName(java.lang.CharSequence)>($u-1#5);
+
+        $u-1#7 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: android.content.Context getContext()>();
+
+        $u-1#5 = virtualinvoke $u-1#7.<android.content.Context: java.lang.String getPackageName()>();
+
+        virtualinvoke $u3.<android.view.accessibility.AccessibilityEvent: void setPackageName(java.lang.CharSequence)>($u-1#5);
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarContextView: java.lang.CharSequence mTitle>;
+
+        virtualinvoke $u3.<android.view.accessibility.AccessibilityEvent: void setContentDescription(java.lang.CharSequence)>($u0);
+
+        return;
+
+     label1:
+        specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: void onInitializeAccessibilityEvent(android.view.accessibility.AccessibilityEvent)>($u3);
+
+        return;
+    }
+
+    protected void onLayout(boolean, int, int, int, int)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        boolean $u16;
+        int $u17, $u18, $u19, $u20, startMargin, x, $u-1;
+        android.view.View $u1;
+        android.view.ViewGroup$LayoutParams $u-1#19;
+        android.view.ViewGroup$MarginLayoutParams lp;
+        android.widget.LinearLayout x#39;
+        androidx.appcompat.widget.ActionMenuView x#66;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u16 := @parameter0: boolean;
+
+        $u17 := @parameter1: int;
+
+        $u18 := @parameter2: int;
+
+        $u19 := @parameter3: int;
+
+        $u20 := @parameter4: int;
+
+        $u16 = staticinvoke <androidx.appcompat.widget.ViewUtils: boolean isLayoutRtl(android.view.View)>(this);
+
+        if $u16 == 0 goto label01;
+
+        x = $u19 - $u17;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int getPaddingRight()>();
+
+        $u-1 = x - $u-1;
+
+        goto label02;
+
+     label01:
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int getPaddingLeft()>();
+
+     label02:
+        x = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int getPaddingTop()>();
+
+        $u18 = $u20 - $u18;
+
+        $u20 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int getPaddingTop()>();
+
+        $u18 = $u18 - $u20;
+
+        $u20 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int getPaddingBottom()>();
+
+        $u18 = $u18 - $u20;
+
+        $u1 = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mClose>;
+
+        if $u1 == null goto label07;
+
+        $u20 = virtualinvoke $u1.<android.view.View: int getVisibility()>();
+
+        if $u20 == 8 goto label07;
+
+        $u1 = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mClose>;
+
+        $u-1#19 = virtualinvoke $u1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        lp = (android.view.ViewGroup$MarginLayoutParams) $u-1#19;
+
+        if $u16 == 0 goto label03;
+
+        $u20 = lp.<android.view.ViewGroup$MarginLayoutParams: int rightMargin>;
+
+        goto label04;
+
+     label03:
+        $u20 = lp.<android.view.ViewGroup$MarginLayoutParams: int leftMargin>;
+
+     label04:
+        startMargin = $u20;
+
+        if $u16 == 0 goto label05;
+
+        $u20 = lp.<android.view.ViewGroup$MarginLayoutParams: int leftMargin>;
+
+        goto label06;
+
+     label05:
+        $u20 = lp.<android.view.ViewGroup$MarginLayoutParams: int rightMargin>;
+
+     label06:
+        $u-1 = staticinvoke <androidx.appcompat.widget.ActionBarContextView: int next(int,int,boolean)>($u-1, startMargin, $u16);
+
+        $u1 = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mClose>;
+
+        startMargin = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int positionChild(android.view.View,int,int,int,boolean)>($u1, $u-1, x, $u18, $u16);
+
+        $u-1 = $u-1 + startMargin;
+
+        $u20 = staticinvoke <androidx.appcompat.widget.ActionBarContextView: int next(int,int,boolean)>($u-1, $u20, $u16);
+
+        goto label08;
+
+     label07:
+        $u20 = $u-1;
+
+     label08:
+        x#39 = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout>;
+
+        if x#39 == null goto label09;
+
+        $u1 = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mCustomView>;
+
+        if $u1 != null goto label09;
+
+        $u-1 = virtualinvoke x#39.<android.widget.LinearLayout: int getVisibility()>();
+
+        if $u-1 == 8 goto label09;
+
+        x#39 = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int positionChild(android.view.View,int,int,int,boolean)>(x#39, $u20, x, $u18, $u16);
+
+        $u20 = $u20 + $u-1;
+
+     label09:
+        $u1 = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mCustomView>;
+
+        if $u1 == null goto label10;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int positionChild(android.view.View,int,int,int,boolean)>($u1, $u20, x, $u18, $u16);
+
+     label10:
+        if $u16 == 0 goto label11;
+
+        $u17 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int getPaddingLeft()>();
+
+        goto label12;
+
+     label11:
+        $u17 = $u19 - $u17;
+
+        $u19 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int getPaddingRight()>();
+
+        $u17 = $u17 - $u19;
+
+     label12:
+        x#66 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuView mMenuView>;
+
+        if x#66 == null goto label13;
+
+        x#66 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuView mMenuView>;
+
+        $u16 = $u16 ^ 1;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int positionChild(android.view.View,int,int,int,boolean)>(x#66, $u17, x, $u18, $u16);
+
+     label13:
+        return;
+    }
+
+    protected void onMeasure(int, int)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        int $u18, $u19, $u-1, customHeightMode, $u-1#13, $u-1#19, availableWidth, titleWidth, titleFits;
+        android.view.View lp;
+        byte customWidthMode;
+        android.view.ViewGroup$LayoutParams $u-1#30;
+        android.view.ViewGroup$MarginLayoutParams lp#32;
+        androidx.appcompat.widget.ActionMenuView lp#36;
+        android.view.ViewParent $u-1#38;
+        android.widget.LinearLayout lp#42;
+        boolean titleWidth#44;
+        java.lang.IllegalStateException widthMode;
+        java.lang.StringBuilder customHeightMode#88;
+        java.lang.Class $u-1#89;
+        java.lang.String $u-1#91;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u18 := @parameter0: int;
+
+        $u19 := @parameter1: int;
+
+        $u-1 = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($u18);
+
+        customHeightMode = 1073741824;
+
+        if $u-1 != 1073741824 goto label24;
+
+        $u-1 = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($u19);
+
+        if $u-1 == 0 goto label23;
+
+        $u18 = staticinvoke <android.view.View$MeasureSpec: int getSize(int)>($u18);
+
+        $u-1 = this.<androidx.appcompat.widget.ActionBarContextView: int mContentHeight>;
+
+        if $u-1 <= 0 goto label01;
+
+        $u-1 = this.<androidx.appcompat.widget.ActionBarContextView: int mContentHeight>;
+
+        goto label02;
+
+     label01:
+        $u-1 = staticinvoke <android.view.View$MeasureSpec: int getSize(int)>($u19);
+
+     label02:
+        $u19 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int getPaddingTop()>();
+
+        $u-1#13 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int getPaddingBottom()>();
+
+        $u19 = $u19 + $u-1#13;
+
+        $u-1#13 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int getPaddingLeft()>();
+
+        $u-1#13 = $u18 - $u-1#13;
+
+        $u-1#19 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int getPaddingRight()>();
+
+        availableWidth = $u-1#13 - $u-1#19;
+
+        $u-1#13 = $u-1 - $u19;
+
+        $u-1#19 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($u-1#13, -2147483648);
+
+        lp = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mClose>;
+
+        customWidthMode = 0;
+
+        if lp == null goto label03;
+
+        availableWidth = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int measureChildView(android.view.View,int,int,int)>(lp, availableWidth, $u-1#19, 0);
+
+        lp = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mClose>;
+
+        $u-1#30 = virtualinvoke lp.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        lp#32 = (android.view.ViewGroup$MarginLayoutParams) $u-1#30;
+
+        titleWidth = lp#32.<android.view.ViewGroup$MarginLayoutParams: int leftMargin>;
+
+        titleFits = lp#32.<android.view.ViewGroup$MarginLayoutParams: int rightMargin>;
+
+        titleWidth = titleWidth + titleFits;
+
+        availableWidth = availableWidth - titleWidth;
+
+     label03:
+        lp#36 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuView mMenuView>;
+
+        if lp#36 == null goto label04;
+
+        lp#36 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuView mMenuView>;
+
+        $u-1#38 = virtualinvoke lp#36.<androidx.appcompat.widget.ActionMenuView: android.view.ViewParent getParent()>();
+
+        if $u-1#38 != this goto label04;
+
+        lp#36 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuView mMenuView>;
+
+        availableWidth = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int measureChildView(android.view.View,int,int,int)>(lp#36, availableWidth, $u-1#19, 0);
+
+     label04:
+        lp#42 = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout>;
+
+        if lp#42 == null goto label11;
+
+        lp = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mCustomView>;
+
+        if lp != null goto label11;
+
+        titleWidth#44 = this.<androidx.appcompat.widget.ActionBarContextView: boolean mTitleOptional>;
+
+        if titleWidth#44 == 0 goto label10;
+
+        titleWidth = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>(0, 0);
+
+        lp#42 = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout>;
+
+        virtualinvoke lp#42.<android.widget.LinearLayout: void measure(int,int)>(titleWidth, $u-1#19);
+
+        lp#42 = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout>;
+
+        $u-1#19 = virtualinvoke lp#42.<android.widget.LinearLayout: int getMeasuredWidth()>();
+
+        if $u-1#19 > availableWidth goto label05;
+
+        titleWidth#44 = 1;
+
+        goto label06;
+
+     label05:
+        titleWidth#44 = 0;
+
+     label06:
+        if titleWidth#44 == 0 goto label07;
+
+        availableWidth = availableWidth - $u-1#19;
+
+     label07:
+        lp#42 = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout>;
+
+        if titleWidth#44 == 0 goto label08;
+
+        goto label09;
+
+     label08:
+        customWidthMode = 8;
+
+     label09:
+        virtualinvoke lp#42.<android.widget.LinearLayout: void setVisibility(int)>(customWidthMode);
+
+        goto label11;
+
+     label10:
+        availableWidth = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int measureChildView(android.view.View,int,int,int)>(lp#42, availableWidth, $u-1#19, 0);
+
+     label11:
+        lp = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mCustomView>;
+
+        if lp == null goto label18;
+
+        $u-1#30 = virtualinvoke lp.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        $u-1#19 = $u-1#30.<android.view.ViewGroup$LayoutParams: int width>;
+
+        if $u-1#19 == -2 goto label12;
+
+        $u-1#19 = 1073741824;
+
+        goto label13;
+
+     label12:
+        $u-1#19 = -2147483648;
+
+     label13:
+        titleWidth = $u-1#30.<android.view.ViewGroup$LayoutParams: int width>;
+
+        if titleWidth < 0 goto label14;
+
+        titleWidth = $u-1#30.<android.view.ViewGroup$LayoutParams: int width>;
+
+        availableWidth = staticinvoke <java.lang.Math: int min(int,int)>(titleWidth, availableWidth);
+
+        goto label14;
+
+     label14:
+        titleWidth = $u-1#30.<android.view.ViewGroup$LayoutParams: int height>;
+
+        if titleWidth == -2 goto label15;
+
+        goto label16;
+
+     label15:
+        customHeightMode = -2147483648;
+
+     label16:
+        titleWidth = $u-1#30.<android.view.ViewGroup$LayoutParams: int height>;
+
+        if titleWidth < 0 goto label17;
+
+        titleWidth = $u-1#30.<android.view.ViewGroup$LayoutParams: int height>;
+
+        $u-1#13 = staticinvoke <java.lang.Math: int min(int,int)>(titleWidth, $u-1#13);
+
+        goto label17;
+
+     label17:
+        lp = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mCustomView>;
+
+        $u-1#19 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>(availableWidth, $u-1#19);
+
+        customHeightMode = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($u-1#13, customHeightMode);
+
+        virtualinvoke lp.<android.view.View: void measure(int,int)>($u-1#19, customHeightMode);
+
+        goto label18;
+
+     label18:
+        customHeightMode = this.<androidx.appcompat.widget.ActionBarContextView: int mContentHeight>;
+
+        if customHeightMode > 0 goto label22;
+
+        customHeightMode = 0;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: int getChildCount()>();
+
+        $u-1#13 = 0;
+
+     label19:
+        if $u-1#13 >= $u-1 goto label21;
+
+        lp = virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: android.view.View getChildAt(int)>($u-1#13);
+
+        $u-1#19 = virtualinvoke lp.<android.view.View: int getMeasuredHeight()>();
+
+        $u-1#19 = $u-1#19 + $u19;
+
+        if $u-1#19 <= customHeightMode goto label20;
+
+        customHeightMode = $u-1#19;
+
+     label20:
+        $u-1#13 = $u-1#13 + 1;
+
+        goto label19;
+
+     label21:
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: void setMeasuredDimension(int,int)>($u18, customHeightMode);
+
+        return;
+
+     label22:
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: void setMeasuredDimension(int,int)>($u18, $u-1);
+
+        return;
+
+     label23:
+        widthMode = new java.lang.IllegalStateException;
+
+        customHeightMode#88 = new java.lang.StringBuilder;
+
+        specialinvoke customHeightMode#88.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1#89 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#91 = virtualinvoke $u-1#89.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        virtualinvoke customHeightMode#88.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#91);
+
+        virtualinvoke customHeightMode#88.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" can only be used with android:layout_height=\"wrap_content\"");
+
+        $u-1#91 = virtualinvoke customHeightMode#88.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke widthMode.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u-1#91);
+
+        throw widthMode;
+
+     label24:
+        widthMode = new java.lang.IllegalStateException;
+
+        customHeightMode#88 = new java.lang.StringBuilder;
+
+        specialinvoke customHeightMode#88.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1#89 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#91 = virtualinvoke $u-1#89.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        virtualinvoke customHeightMode#88.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#91);
+
+        virtualinvoke customHeightMode#88.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" can only be used with android:layout_width=\"match_parent\" (or fill_parent)");
+
+        $u-1#91 = virtualinvoke customHeightMode#88.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke widthMode.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u-1#91);
+
+        goto label25;
+
+     label25:
+        throw widthMode;
+    }
+
+    public volatile boolean onTouchEvent(android.view.MotionEvent)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        boolean $u-1;
+        android.view.MotionEvent $u1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u1 := @parameter0: android.view.MotionEvent;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: boolean onTouchEvent(android.view.MotionEvent)>($u1);
+
+        return $u-1;
+    }
+
+    public volatile void postShowOverflowMenu()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: void postShowOverflowMenu()>();
+
+        return;
+    }
+
+    public void setContentHeight(int)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        int $u1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.appcompat.widget.ActionBarContextView: int mContentHeight> = $u1;
+
+        return;
+    }
+
+    public void setCustomView(android.view.View)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        android.view.View $u2, $u0;
+        android.widget.LinearLayout $u0#2;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mCustomView>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: void removeView(android.view.View)>($u0);
+
+     label1:
+        this.<androidx.appcompat.widget.ActionBarContextView: android.view.View mCustomView> = $u2;
+
+        if $u2 == null goto label2;
+
+        $u0#2 = this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout>;
+
+        if $u0#2 == null goto label2;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: void removeView(android.view.View)>($u0#2);
+
+        this.<androidx.appcompat.widget.ActionBarContextView: android.widget.LinearLayout mTitleLayout> = null;
+
+     label2:
+        if $u2 == null goto label3;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: void addView(android.view.View)>($u2);
+
+     label3:
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: void requestLayout()>();
+
+        return;
+    }
+
+    public void setSubtitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        this.<androidx.appcompat.widget.ActionBarContextView: java.lang.CharSequence mSubtitle> = $u1;
+
+        specialinvoke this.<androidx.appcompat.widget.ActionBarContextView: void initTitle()>();
+
+        return;
+    }
+
+    public void setTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        this.<androidx.appcompat.widget.ActionBarContextView: java.lang.CharSequence mTitle> = $u1;
+
+        specialinvoke this.<androidx.appcompat.widget.ActionBarContextView: void initTitle()>();
+
+        return;
+    }
+
+    public void setTitleOptional(boolean)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        boolean $u2, $u0;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarContextView: boolean mTitleOptional>;
+
+        if $u2 == $u0 goto label1;
+
+        virtualinvoke this.<androidx.appcompat.widget.ActionBarContextView: void requestLayout()>();
+
+     label1:
+        this.<androidx.appcompat.widget.ActionBarContextView: boolean mTitleOptional> = $u2;
+
+        return;
+    }
+
+    public volatile void setVisibility(int)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        int $u1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u1 := @parameter0: int;
+
+        specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: void setVisibility(int)>($u1);
+
+        return;
+    }
+
+    public volatile androidx.core.view.ViewPropertyAnimatorCompat setupAnimatorToVisibility(int, long)
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        long $u2;
+        androidx.core.view.ViewPropertyAnimatorCompat $u-1;
+        int $u1;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: long;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AbsActionBarView: androidx.core.view.ViewPropertyAnimatorCompat setupAnimatorToVisibility(int,long)>($u1, $u2);
+
+        return $u-1;
+    }
+
+    public boolean shouldDelayChildPressedState()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        return 0;
+    }
+
+    public boolean showOverflowMenu()
+    {
+        androidx.appcompat.widget.ActionBarContextView this;
+        boolean $u-1;
+        androidx.appcompat.widget.ActionMenuPresenter $u0;
+
+        this := @this: androidx.appcompat.widget.ActionBarContextView;
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        if $u0 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarContextView: androidx.appcompat.widget.ActionMenuPresenter mActionMenuPresenter>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.ActionMenuPresenter: boolean showOverflowMenu()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+}

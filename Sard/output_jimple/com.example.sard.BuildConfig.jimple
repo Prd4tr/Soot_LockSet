@@ -1,0 +1,38 @@
+public final class com.example.sard.BuildConfig extends java.lang.Object
+{
+    public static final java.lang.String APPLICATION_ID;
+    public static final java.lang.String BUILD_TYPE;
+    public static final boolean DEBUG;
+    public static final int VERSION_CODE;
+    public static final java.lang.String VERSION_NAME;
+
+    static void <clinit>()
+    {
+        boolean $u-1;
+
+        <com.example.sard.BuildConfig: java.lang.String VERSION_NAME> = "1.0";
+
+        <com.example.sard.BuildConfig: int VERSION_CODE> = 1;
+
+        <com.example.sard.BuildConfig: java.lang.String BUILD_TYPE> = "debug";
+
+        <com.example.sard.BuildConfig: java.lang.String APPLICATION_ID> = "com.example.sard";
+
+        $u-1 = staticinvoke <java.lang.Boolean: boolean parseBoolean(java.lang.String)>("true");
+
+        <com.example.sard.BuildConfig: boolean DEBUG> = $u-1;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.example.sard.BuildConfig this;
+
+        this := @this: com.example.sard.BuildConfig;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

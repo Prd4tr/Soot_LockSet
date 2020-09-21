@@ -1,0 +1,702 @@
+class androidx.core.text.BidiFormatter$DirectionalityEstimator extends java.lang.Object
+{
+    private static final byte[] DIR_TYPE_CACHE;
+    private static final int DIR_TYPE_CACHE_SIZE;
+    private int charIndex;
+    private final boolean isHtml;
+    private char lastChar;
+    private final int length;
+    private final java.lang.CharSequence text;
+
+    static void <clinit>()
+    {
+        byte[] $u2;
+        byte $u-1;
+        int i;
+
+        <androidx.core.text.BidiFormatter$DirectionalityEstimator: int DIR_TYPE_CACHE_SIZE> = 1792;
+
+        $u2 = newarray (byte)[1792];
+
+        <androidx.core.text.BidiFormatter$DirectionalityEstimator: byte[] DIR_TYPE_CACHE> = $u2;
+
+        i = 0;
+
+     label1:
+        if i >= 1792 goto label2;
+
+        $u2 = <androidx.core.text.BidiFormatter$DirectionalityEstimator: byte[] DIR_TYPE_CACHE>;
+
+        $u-1 = staticinvoke <java.lang.Character: byte getDirectionality(int)>(i);
+
+        $u2[i] = $u-1;
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    void <init>(java.lang.CharSequence, boolean)
+    {
+        androidx.core.text.BidiFormatter$DirectionalityEstimator this;
+        java.lang.CharSequence $u2;
+        boolean $u3;
+        int $u-1;
+
+        this := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u3 := @parameter1: boolean;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text> = $u2;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: boolean isHtml> = $u3;
+
+        $u-1 = interfaceinvoke $u2.<java.lang.CharSequence: int length()>();
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int length> = $u-1;
+
+        return;
+    }
+
+    private static byte getCachedDirectionality(char)
+    {
+        char $u1;
+        byte $u-1;
+        byte[] $u0;
+
+        $u1 := @parameter0: char;
+
+        if $u1 >= 1792 goto label1;
+
+        $u0 = <androidx.core.text.BidiFormatter$DirectionalityEstimator: byte[] DIR_TYPE_CACHE>;
+
+        $u-1 = $u0[$u1];
+
+        return $u-1;
+
+     label1:
+        $u-1 = staticinvoke <java.lang.Character: byte getDirectionality(char)>($u1);
+
+        return $u-1;
+    }
+
+    private byte skipEntityBackward()
+    {
+        androidx.core.text.BidiFormatter$DirectionalityEstimator this;
+        int initialCharIndex, $u1;
+        char $u-1;
+        java.lang.CharSequence $u3;
+
+        this := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        initialCharIndex = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+     label1:
+        $u1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        if $u1 <= 0 goto label3;
+
+        $u3 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $u1 = $u1 + -1;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $u1;
+
+        $u-1 = interfaceinvoke $u3.<java.lang.CharSequence: char charAt(int)>($u1);
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $u-1;
+
+        if $u-1 != 38 goto label2;
+
+        return 12;
+
+     label2:
+        if $u-1 != 59 goto label1;
+
+     label3:
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = initialCharIndex;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = 59;
+
+        return 13;
+    }
+
+    private byte skipEntityForward()
+    {
+        androidx.core.text.BidiFormatter$DirectionalityEstimator this;
+        int $u2, $u0;
+        char $u-1;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+     label1:
+        $u0 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $u2 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int length>;
+
+        if $u0 >= $u2 goto label2;
+
+        $u1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $u2 = $u0 + 1;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $u2;
+
+        $u-1 = interfaceinvoke $u1.<java.lang.CharSequence: char charAt(int)>($u0);
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $u-1;
+
+        if $u-1 == 59 goto label2;
+
+        goto label1;
+
+     label2:
+        return 12;
+    }
+
+    private byte skipTagBackward()
+    {
+        androidx.core.text.BidiFormatter$DirectionalityEstimator this;
+        int initialCharIndex, quote;
+        java.lang.CharSequence $u3;
+        char $u-1, $u-1#15;
+
+        this := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        initialCharIndex = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+     label1:
+        quote = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        if quote <= 0 goto label6;
+
+        $u3 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        quote = quote + -1;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = quote;
+
+        $u-1 = interfaceinvoke $u3.<java.lang.CharSequence: char charAt(int)>(quote);
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $u-1;
+
+        if $u-1 != 60 goto label2;
+
+        return 12;
+
+     label2:
+        if $u-1 != 62 goto label3;
+
+        goto label6;
+
+     label3:
+        if $u-1 == 34 goto label4;
+
+        if $u-1 != 39 goto label1;
+
+     label4:
+        $u-1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+     label5:
+        quote = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        if quote <= 0 goto label1;
+
+        $u3 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        quote = quote + -1;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = quote;
+
+        $u-1#15 = interfaceinvoke $u3.<java.lang.CharSequence: char charAt(int)>(quote);
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $u-1#15;
+
+        if $u-1#15 == $u-1 goto label1;
+
+        goto label5;
+
+     label6:
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = initialCharIndex;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = 62;
+
+        return 13;
+    }
+
+    private byte skipTagForward()
+    {
+        androidx.core.text.BidiFormatter$DirectionalityEstimator this;
+        int initialCharIndex, $u4, quote;
+        java.lang.CharSequence $u2;
+        char $u-1, $u-1#15;
+
+        this := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        initialCharIndex = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+     label1:
+        quote = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $u4 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int length>;
+
+        if quote >= $u4 goto label5;
+
+        $u2 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $u4 = quote + 1;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $u4;
+
+        $u-1 = interfaceinvoke $u2.<java.lang.CharSequence: char charAt(int)>(quote);
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $u-1;
+
+        if $u-1 != 62 goto label2;
+
+        return 12;
+
+     label2:
+        if $u-1 == 34 goto label3;
+
+        if $u-1 != 39 goto label1;
+
+     label3:
+        $u-1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+     label4:
+        quote = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $u4 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int length>;
+
+        if quote >= $u4 goto label1;
+
+        $u2 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $u4 = quote + 1;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $u4;
+
+        $u-1#15 = interfaceinvoke $u2.<java.lang.CharSequence: char charAt(int)>(quote);
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $u-1#15;
+
+        if $u-1#15 == $u-1 goto label1;
+
+        goto label4;
+
+     label5:
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = initialCharIndex;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = 60;
+
+        return 13;
+    }
+
+    byte dirTypeBackward()
+    {
+        androidx.core.text.BidiFormatter$DirectionalityEstimator this;
+        java.lang.CharSequence codePoint;
+        int $u1, $u1#12, $u-1#13;
+        char $u-1;
+        boolean $u-1#6;
+        byte $u-1#16;
+
+        this := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        codePoint = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $u1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $u1 = $u1 + -1;
+
+        $u-1 = interfaceinvoke codePoint.<java.lang.CharSequence: char charAt(int)>($u1);
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $u-1;
+
+        $u-1#6 = staticinvoke <java.lang.Character: boolean isLowSurrogate(char)>($u-1);
+
+        if $u-1#6 == 0 goto label1;
+
+        codePoint = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $u1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $u1 = staticinvoke <java.lang.Character: int codePointBefore(java.lang.CharSequence,int)>(codePoint, $u1);
+
+        $u1#12 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $u-1#13 = staticinvoke <java.lang.Character: int charCount(int)>($u1);
+
+        $u1#12 = $u1#12 - $u-1#13;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $u1#12;
+
+        $u-1#16 = staticinvoke <java.lang.Character: byte getDirectionality(int)>($u1);
+
+        return $u-1#16;
+
+     label1:
+        $u1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $u1 = $u1 + -1;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $u1;
+
+        $u-1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $u-1#16 = staticinvoke <androidx.core.text.BidiFormatter$DirectionalityEstimator: byte getCachedDirectionality(char)>($u-1);
+
+        $u-1#6 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: boolean isHtml>;
+
+        if $u-1#6 == 0 goto label3;
+
+        $u-1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        if $u-1 != 62 goto label2;
+
+        $u-1#16 = specialinvoke this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte skipTagBackward()>();
+
+        return $u-1#16;
+
+     label2:
+        if $u-1 != 59 goto label3;
+
+        $u-1#16 = specialinvoke this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte skipEntityBackward()>();
+
+     label3:
+        return $u-1#16;
+    }
+
+    byte dirTypeForward()
+    {
+        androidx.core.text.BidiFormatter$DirectionalityEstimator this;
+        java.lang.CharSequence codePoint;
+        int $u1, $u1#11, $u-1#12;
+        char $u-1;
+        boolean $u-1#5;
+        byte $u-1#15;
+
+        this := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        codePoint = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $u1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $u-1 = interfaceinvoke codePoint.<java.lang.CharSequence: char charAt(int)>($u1);
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar> = $u-1;
+
+        $u-1#5 = staticinvoke <java.lang.Character: boolean isHighSurrogate(char)>($u-1);
+
+        if $u-1#5 == 0 goto label1;
+
+        codePoint = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: java.lang.CharSequence text>;
+
+        $u1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $u1 = staticinvoke <java.lang.Character: int codePointAt(java.lang.CharSequence,int)>(codePoint, $u1);
+
+        $u1#11 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $u-1#12 = staticinvoke <java.lang.Character: int charCount(int)>($u1);
+
+        $u1#11 = $u1#11 + $u-1#12;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $u1#11;
+
+        $u-1#15 = staticinvoke <java.lang.Character: byte getDirectionality(int)>($u1);
+
+        return $u-1#15;
+
+     label1:
+        $u1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $u1 = $u1 + 1;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = $u1;
+
+        $u-1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        $u-1#15 = staticinvoke <androidx.core.text.BidiFormatter$DirectionalityEstimator: byte getCachedDirectionality(char)>($u-1);
+
+        $u-1#5 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: boolean isHtml>;
+
+        if $u-1#5 == 0 goto label3;
+
+        $u-1 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: char lastChar>;
+
+        if $u-1 != 60 goto label2;
+
+        $u-1#15 = specialinvoke this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte skipTagForward()>();
+
+        return $u-1#15;
+
+     label2:
+        if $u-1 != 38 goto label3;
+
+        $u-1#15 = specialinvoke this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte skipEntityForward()>();
+
+     label3:
+        return $u-1#15;
+    }
+
+    int getEntryDir()
+    {
+        androidx.core.text.BidiFormatter$DirectionalityEstimator this;
+        int embeddingLevel, firstNonEmptyEmbeddingLevel, $u4, $u5;
+        byte embeddingLevelDir, $u-1;
+
+        this := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = 0;
+
+        embeddingLevel = 0;
+
+        embeddingLevelDir = 0;
+
+        firstNonEmptyEmbeddingLevel = 0;
+
+     label01:
+        $u4 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        $u5 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int length>;
+
+        if $u4 >= $u5 goto label10;
+
+        if firstNonEmptyEmbeddingLevel != 0 goto label10;
+
+        $u-1 = virtualinvoke this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte dirTypeForward()>();
+
+        if $u-1 == 0 goto label08;
+
+        if $u-1 == 1 goto label06;
+
+        if $u-1 == 2 goto label06;
+
+        if $u-1 == 9 goto label01;
+
+        lookupswitch($u-1)
+        {
+            case 14: goto label05;
+            case 15: goto label05;
+            case 16: goto label04;
+            case 17: goto label04;
+            case 18: goto label03;
+            default: goto label02;
+        };
+
+     label02:
+        firstNonEmptyEmbeddingLevel = embeddingLevel;
+
+        goto label01;
+
+     label03:
+        embeddingLevel = embeddingLevel + -1;
+
+        embeddingLevelDir = 0;
+
+        goto label01;
+
+     label04:
+        embeddingLevel = embeddingLevel + 1;
+
+        embeddingLevelDir = 1;
+
+        goto label01;
+
+     label05:
+        embeddingLevel = embeddingLevel + 1;
+
+        embeddingLevelDir = -1;
+
+        goto label01;
+
+     label06:
+        if embeddingLevel != 0 goto label07;
+
+        return 1;
+
+     label07:
+        firstNonEmptyEmbeddingLevel = embeddingLevel;
+
+        goto label01;
+
+     label08:
+        if embeddingLevel != 0 goto label09;
+
+        return -1;
+
+     label09:
+        firstNonEmptyEmbeddingLevel = embeddingLevel;
+
+        goto label01;
+
+     label10:
+        if firstNonEmptyEmbeddingLevel != 0 goto label11;
+
+        return 0;
+
+     label11:
+        if embeddingLevelDir == 0 goto label12;
+
+        return embeddingLevelDir;
+
+     label12:
+        $u4 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        if $u4 <= 0 goto label19;
+
+        embeddingLevelDir = virtualinvoke this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte dirTypeBackward()>();
+
+        lookupswitch(embeddingLevelDir)
+        {
+            case 14: goto label17;
+            case 15: goto label17;
+            case 16: goto label15;
+            case 17: goto label15;
+            case 18: goto label14;
+            default: goto label13;
+        };
+
+     label13:
+        goto label12;
+
+     label14:
+        embeddingLevel = embeddingLevel + 1;
+
+        goto label12;
+
+     label15:
+        if firstNonEmptyEmbeddingLevel != embeddingLevel goto label16;
+
+        return 1;
+
+     label16:
+        embeddingLevel = embeddingLevel + -1;
+
+        goto label12;
+
+     label17:
+        if firstNonEmptyEmbeddingLevel != embeddingLevel goto label18;
+
+        return -1;
+
+     label18:
+        embeddingLevel = embeddingLevel + -1;
+
+        goto label12;
+
+     label19:
+        return 0;
+    }
+
+    int getExitDir()
+    {
+        androidx.core.text.BidiFormatter$DirectionalityEstimator this;
+        byte $u-1;
+        int embeddingLevel, lastNonEmptyEmbeddingLevel, $u2;
+
+        this := @this: androidx.core.text.BidiFormatter$DirectionalityEstimator;
+
+        embeddingLevel = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int length>;
+
+        this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex> = embeddingLevel;
+
+        embeddingLevel = 0;
+
+        lastNonEmptyEmbeddingLevel = 0;
+
+     label01:
+        $u2 = this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: int charIndex>;
+
+        if $u2 <= 0 goto label12;
+
+        $u-1 = virtualinvoke this.<androidx.core.text.BidiFormatter$DirectionalityEstimator: byte dirTypeBackward()>();
+
+        if $u-1 == 0 goto label10;
+
+        if $u-1 == 1 goto label08;
+
+        if $u-1 == 2 goto label08;
+
+        if $u-1 == 9 goto label01;
+
+        lookupswitch($u-1)
+        {
+            case 14: goto label06;
+            case 15: goto label06;
+            case 16: goto label04;
+            case 17: goto label04;
+            case 18: goto label03;
+            default: goto label02;
+        };
+
+     label02:
+        if lastNonEmptyEmbeddingLevel != 0 goto label01;
+
+        lastNonEmptyEmbeddingLevel = embeddingLevel;
+
+        goto label01;
+
+     label03:
+        embeddingLevel = embeddingLevel + 1;
+
+        goto label01;
+
+     label04:
+        if lastNonEmptyEmbeddingLevel != embeddingLevel goto label05;
+
+        return 1;
+
+     label05:
+        embeddingLevel = embeddingLevel + -1;
+
+        goto label01;
+
+     label06:
+        if lastNonEmptyEmbeddingLevel != embeddingLevel goto label07;
+
+        return -1;
+
+     label07:
+        embeddingLevel = embeddingLevel + -1;
+
+        goto label01;
+
+     label08:
+        if embeddingLevel != 0 goto label09;
+
+        return 1;
+
+     label09:
+        if lastNonEmptyEmbeddingLevel != 0 goto label01;
+
+        lastNonEmptyEmbeddingLevel = embeddingLevel;
+
+        goto label01;
+
+     label10:
+        if embeddingLevel != 0 goto label11;
+
+        return -1;
+
+     label11:
+        if lastNonEmptyEmbeddingLevel != 0 goto label01;
+
+        lastNonEmptyEmbeddingLevel = embeddingLevel;
+
+        goto label01;
+
+     label12:
+        return 0;
+    }
+}

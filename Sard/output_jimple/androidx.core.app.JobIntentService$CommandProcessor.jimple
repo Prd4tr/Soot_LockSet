@@ -1,0 +1,139 @@
+final class androidx.core.app.JobIntentService$CommandProcessor extends android.os.AsyncTask
+{
+    final androidx.core.app.JobIntentService this$0;
+
+    void <init>(androidx.core.app.JobIntentService)
+    {
+        androidx.core.app.JobIntentService$CommandProcessor this;
+        androidx.core.app.JobIntentService $u1;
+
+        this := @this: androidx.core.app.JobIntentService$CommandProcessor;
+
+        $u1 := @parameter0: androidx.core.app.JobIntentService;
+
+        this.<androidx.core.app.JobIntentService$CommandProcessor: androidx.core.app.JobIntentService this$0> = $u1;
+
+        specialinvoke this.<android.os.AsyncTask: void <init>()>();
+
+        return;
+    }
+
+    protected volatile java.lang.Object doInBackground(java.lang.Object[])
+    {
+        androidx.core.app.JobIntentService$CommandProcessor this;
+        java.lang.Void $u-1;
+        java.lang.Object[] $u1;
+        java.lang.Void[] $u1#2;
+
+        this := @this: androidx.core.app.JobIntentService$CommandProcessor;
+
+        $u1 := @parameter0: java.lang.Object[];
+
+        $u1#2 = (java.lang.Void[]) $u1;
+
+        $u-1 = virtualinvoke this.<androidx.core.app.JobIntentService$CommandProcessor: java.lang.Void doInBackground(java.lang.Void[])>($u1#2);
+
+        return $u-1;
+    }
+
+    protected transient java.lang.Void doInBackground(java.lang.Void[])
+    {
+        androidx.core.app.JobIntentService$CommandProcessor this;
+        java.lang.Void[] $u4;
+        androidx.core.app.JobIntentService $u0;
+        androidx.core.app.JobIntentService$GenericWorkItem $u-1;
+        android.content.Intent $u-1#5;
+
+        this := @this: androidx.core.app.JobIntentService$CommandProcessor;
+
+        $u4 := @parameter0: java.lang.Void[];
+
+     label1:
+        $u0 = this.<androidx.core.app.JobIntentService$CommandProcessor: androidx.core.app.JobIntentService this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.core.app.JobIntentService: androidx.core.app.JobIntentService$GenericWorkItem dequeueWork()>();
+
+        if $u-1 == null goto label2;
+
+        $u0 = this.<androidx.core.app.JobIntentService$CommandProcessor: androidx.core.app.JobIntentService this$0>;
+
+        $u-1#5 = interfaceinvoke $u-1.<androidx.core.app.JobIntentService$GenericWorkItem: android.content.Intent getIntent()>();
+
+        virtualinvoke $u0.<androidx.core.app.JobIntentService: void onHandleWork(android.content.Intent)>($u-1#5);
+
+        interfaceinvoke $u-1.<androidx.core.app.JobIntentService$GenericWorkItem: void complete()>();
+
+        goto label1;
+
+     label2:
+        return null;
+    }
+
+    protected volatile void onCancelled(java.lang.Object)
+    {
+        androidx.core.app.JobIntentService$CommandProcessor this;
+        java.lang.Object $u1;
+        java.lang.Void $u1#2;
+
+        this := @this: androidx.core.app.JobIntentService$CommandProcessor;
+
+        $u1 := @parameter0: java.lang.Object;
+
+        $u1#2 = (java.lang.Void) $u1;
+
+        virtualinvoke this.<androidx.core.app.JobIntentService$CommandProcessor: void onCancelled(java.lang.Void)>($u1#2);
+
+        return;
+    }
+
+    protected void onCancelled(java.lang.Void)
+    {
+        androidx.core.app.JobIntentService$CommandProcessor this;
+        java.lang.Void $u2;
+        androidx.core.app.JobIntentService $u0;
+
+        this := @this: androidx.core.app.JobIntentService$CommandProcessor;
+
+        $u2 := @parameter0: java.lang.Void;
+
+        $u0 = this.<androidx.core.app.JobIntentService$CommandProcessor: androidx.core.app.JobIntentService this$0>;
+
+        virtualinvoke $u0.<androidx.core.app.JobIntentService: void processorFinished()>();
+
+        return;
+    }
+
+    protected volatile void onPostExecute(java.lang.Object)
+    {
+        androidx.core.app.JobIntentService$CommandProcessor this;
+        java.lang.Object $u1;
+        java.lang.Void $u1#2;
+
+        this := @this: androidx.core.app.JobIntentService$CommandProcessor;
+
+        $u1 := @parameter0: java.lang.Object;
+
+        $u1#2 = (java.lang.Void) $u1;
+
+        virtualinvoke this.<androidx.core.app.JobIntentService$CommandProcessor: void onPostExecute(java.lang.Void)>($u1#2);
+
+        return;
+    }
+
+    protected void onPostExecute(java.lang.Void)
+    {
+        androidx.core.app.JobIntentService$CommandProcessor this;
+        java.lang.Void $u2;
+        androidx.core.app.JobIntentService $u0;
+
+        this := @this: androidx.core.app.JobIntentService$CommandProcessor;
+
+        $u2 := @parameter0: java.lang.Void;
+
+        $u0 = this.<androidx.core.app.JobIntentService$CommandProcessor: androidx.core.app.JobIntentService this$0>;
+
+        virtualinvoke $u0.<androidx.core.app.JobIntentService: void processorFinished()>();
+
+        return;
+    }
+}

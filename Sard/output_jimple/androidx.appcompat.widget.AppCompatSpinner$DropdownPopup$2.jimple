@@ -1,0 +1,55 @@
+class androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$2 extends java.lang.Object implements android.view.ViewTreeObserver$OnGlobalLayoutListener
+{
+    final androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this$1;
+
+    void <init>(androidx.appcompat.widget.AppCompatSpinner$DropdownPopup)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$2 this;
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup $u1;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$2;
+
+        $u1 := @parameter0: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup;
+
+        this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$2: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this$1> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onGlobalLayout()
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$2 this;
+        androidx.appcompat.widget.AppCompatSpinner $u1;
+        boolean $u-1;
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$2;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$2: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this$1>;
+
+        $u1 = $u0.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: boolean isVisibleToUser(android.view.View)>($u1);
+
+        if $u-1 != 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$2: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this$1>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void dismiss()>();
+
+        return;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$2: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this$1>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void computeContentWidth()>();
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$2: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this$1>;
+
+        staticinvoke <androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void access$001(androidx.appcompat.widget.AppCompatSpinner$DropdownPopup)>($u0);
+
+        return;
+    }
+}

@@ -1,0 +1,110 @@
+public abstract class androidx.constraintlayout.motion.utils.CurveFit extends java.lang.Object
+{
+    public static final int CONSTANT;
+    public static final int LINEAR;
+    public static final int SPLINE;
+
+    public void <init>()
+    {
+        androidx.constraintlayout.motion.utils.CurveFit this;
+
+        this := @this: androidx.constraintlayout.motion.utils.CurveFit;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.constraintlayout.motion.utils.CurveFit get(int, double[], double[][])
+    {
+        double[] $u5;
+        double[][] $u6;
+        double $u2;
+        int $u4, $u0;
+        androidx.constraintlayout.motion.utils.LinearCurveFit $u0#5;
+        androidx.constraintlayout.motion.utils.CurveFit$Constant $u0#6;
+        androidx.constraintlayout.motion.utils.MonotonicCurveFit $u0#9;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: double[];
+
+        $u6 := @parameter2: double[][];
+
+        $u0 = lengthof $u5;
+
+        if $u0 != 1 goto label1;
+
+        $u4 = 2;
+
+     label1:
+        if $u4 == 0 goto label3;
+
+        if $u4 == 2 goto label2;
+
+        $u0#5 = new androidx.constraintlayout.motion.utils.LinearCurveFit;
+
+        specialinvoke $u0#5.<androidx.constraintlayout.motion.utils.LinearCurveFit: void <init>(double[],double[][])>($u5, $u6);
+
+        return $u0#5;
+
+     label2:
+        $u0#6 = new androidx.constraintlayout.motion.utils.CurveFit$Constant;
+
+        $u2 = $u5[0];
+
+        $u5 = $u6[0];
+
+        specialinvoke $u0#6.<androidx.constraintlayout.motion.utils.CurveFit$Constant: void <init>(double,double[])>($u2, $u5);
+
+        return $u0#6;
+
+     label3:
+        $u0#9 = new androidx.constraintlayout.motion.utils.MonotonicCurveFit;
+
+        specialinvoke $u0#9.<androidx.constraintlayout.motion.utils.MonotonicCurveFit: void <init>(double[],double[][])>($u5, $u6);
+
+        return $u0#9;
+    }
+
+    public static androidx.constraintlayout.motion.utils.CurveFit getArc(int[], double[], double[][])
+    {
+        int[] $u1;
+        double[] $u2;
+        double[][] $u3;
+        androidx.constraintlayout.motion.utils.ArcCurveFit $u0;
+
+        $u1 := @parameter0: int[];
+
+        $u2 := @parameter1: double[];
+
+        $u3 := @parameter2: double[][];
+
+        $u0 = new androidx.constraintlayout.motion.utils.ArcCurveFit;
+
+        specialinvoke $u0.<androidx.constraintlayout.motion.utils.ArcCurveFit: void <init>(int[],double[],double[][])>($u1, $u2, $u3);
+
+        return $u0;
+    }
+
+    public abstract double getPos(double, int);
+
+    public abstract void getPos(double, double[]);
+
+    public abstract void getPos(double, float[]);
+
+    public abstract double getSlope(double, int);
+
+    public abstract void getSlope(double, double[]);
+
+    public abstract double[] getTimePoints();
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.motion.utils.CurveFit: int LINEAR> = 1;
+
+        <androidx.constraintlayout.motion.utils.CurveFit: int CONSTANT> = 2;
+
+        return;
+    }
+}

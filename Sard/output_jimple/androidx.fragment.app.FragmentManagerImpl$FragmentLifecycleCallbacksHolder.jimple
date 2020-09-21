@@ -1,0 +1,26 @@
+final class androidx.fragment.app.FragmentManagerImpl$FragmentLifecycleCallbacksHolder extends java.lang.Object
+{
+    final androidx.fragment.app.FragmentManager$FragmentLifecycleCallbacks mCallback;
+    final boolean mRecursive;
+
+    void <init>(androidx.fragment.app.FragmentManager$FragmentLifecycleCallbacks, boolean)
+    {
+        androidx.fragment.app.FragmentManagerImpl$FragmentLifecycleCallbacksHolder this;
+        androidx.fragment.app.FragmentManager$FragmentLifecycleCallbacks $u1;
+        boolean $u2;
+
+        this := @this: androidx.fragment.app.FragmentManagerImpl$FragmentLifecycleCallbacksHolder;
+
+        $u1 := @parameter0: androidx.fragment.app.FragmentManager$FragmentLifecycleCallbacks;
+
+        $u2 := @parameter1: boolean;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.fragment.app.FragmentManagerImpl$FragmentLifecycleCallbacksHolder: androidx.fragment.app.FragmentManager$FragmentLifecycleCallbacks mCallback> = $u1;
+
+        this.<androidx.fragment.app.FragmentManagerImpl$FragmentLifecycleCallbacksHolder: boolean mRecursive> = $u2;
+
+        return;
+    }
+}

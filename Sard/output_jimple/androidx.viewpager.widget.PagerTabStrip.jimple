@@ -1,0 +1,788 @@
+public class androidx.viewpager.widget.PagerTabStrip extends androidx.viewpager.widget.PagerTitleStrip
+{
+    private static final int FULL_UNDERLINE_HEIGHT;
+    private static final int INDICATOR_HEIGHT;
+    private static final int MIN_PADDING_BOTTOM;
+    private static final int MIN_STRIP_HEIGHT;
+    private static final int MIN_TEXT_SPACING;
+    private static final int TAB_PADDING;
+    private static final int TAB_SPACING;
+    private static final java.lang.String TAG;
+    private boolean mDrawFullUnderline;
+    private boolean mDrawFullUnderlineSet;
+    private int mFullUnderlineHeight;
+    private boolean mIgnoreTap;
+    private int mIndicatorColor;
+    private int mIndicatorHeight;
+    private float mInitialMotionX;
+    private float mInitialMotionY;
+    private int mMinPaddingBottom;
+    private int mMinStripHeight;
+    private int mMinTextSpacing;
+    private int mTabAlpha;
+    private int mTabPadding;
+    private final android.graphics.Paint mTabPaint;
+    private final android.graphics.Rect mTempRect;
+    private int mTouchSlop;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        android.content.Context $u2;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.viewpager.widget.PagerTabStrip: void <init>(android.content.Context,android.util.AttributeSet)>($u2, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        android.content.Context $u7;
+        android.util.AttributeSet $u8;
+        android.graphics.Paint $u0;
+        android.graphics.Rect $u0#2;
+        int density, $u-1#42, $u-1#44, $u-1#45;
+        android.content.res.Resources $u-1;
+        android.util.DisplayMetrics $u-1#9;
+        float density#11, $u2;
+        android.view.ViewConfiguration $u-1#36;
+        android.widget.TextView $u0#48;
+        androidx.viewpager.widget.PagerTabStrip$1 $u3;
+        androidx.viewpager.widget.PagerTabStrip$2 $u3#54;
+        android.graphics.drawable.Drawable $u-1#55;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u7 := @parameter0: android.content.Context;
+
+        $u8 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.viewpager.widget.PagerTitleStrip: void <init>(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u0 = new android.graphics.Paint;
+
+        specialinvoke $u0.<android.graphics.Paint: void <init>()>();
+
+        this.<androidx.viewpager.widget.PagerTabStrip: android.graphics.Paint mTabPaint> = $u0;
+
+        $u0#2 = new android.graphics.Rect;
+
+        specialinvoke $u0#2.<android.graphics.Rect: void <init>()>();
+
+        this.<androidx.viewpager.widget.PagerTabStrip: android.graphics.Rect mTempRect> = $u0#2;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: int mTabAlpha> = 255;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: boolean mDrawFullUnderline> = 0;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: boolean mDrawFullUnderlineSet> = 0;
+
+        density = this.<androidx.viewpager.widget.PagerTabStrip: int mTextColor>;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: int mIndicatorColor> = density;
+
+        $u0 = this.<androidx.viewpager.widget.PagerTabStrip: android.graphics.Paint mTabPaint>;
+
+        virtualinvoke $u0.<android.graphics.Paint: void setColor(int)>(density);
+
+        $u-1 = virtualinvoke $u7.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#9 = virtualinvoke $u-1.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        density#11 = $u-1#9.<android.util.DisplayMetrics: float density>;
+
+        $u2 = 3.0F * density#11;
+
+        $u2 = $u2 + 0.5F;
+
+        density = (int) $u2;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: int mIndicatorHeight> = density;
+
+        $u2 = 6.0F * density#11;
+
+        $u2 = $u2 + 0.5F;
+
+        density = (int) $u2;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: int mMinPaddingBottom> = density;
+
+        $u2 = 64.0F * density#11;
+
+        density = (int) $u2;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: int mMinTextSpacing> = density;
+
+        $u2 = 16.0F * density#11;
+
+        $u2 = $u2 + 0.5F;
+
+        density = (int) $u2;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: int mTabPadding> = density;
+
+        $u2 = 1.0F * density#11;
+
+        $u2 = $u2 + 0.5F;
+
+        density = (int) $u2;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: int mFullUnderlineHeight> = density;
+
+        density#11 = 32.0F * density#11;
+
+        density#11 = density#11 + 0.5F;
+
+        density = (int) density#11;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: int mMinStripHeight> = density;
+
+        $u-1#36 = staticinvoke <android.view.ViewConfiguration: android.view.ViewConfiguration get(android.content.Context)>($u7);
+
+        density = virtualinvoke $u-1#36.<android.view.ViewConfiguration: int getScaledTouchSlop()>();
+
+        this.<androidx.viewpager.widget.PagerTabStrip: int mTouchSlop> = density;
+
+        density = virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: int getPaddingLeft()>();
+
+        $u-1#42 = virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: int getPaddingTop()>();
+
+        $u-1#44 = virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: int getPaddingRight()>();
+
+        $u-1#45 = virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: int getPaddingBottom()>();
+
+        virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: void setPadding(int,int,int,int)>(density, $u-1#42, $u-1#44, $u-1#45);
+
+        density = virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: int getTextSpacing()>();
+
+        virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: void setTextSpacing(int)>(density);
+
+        virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: void setWillNotDraw(boolean)>(0);
+
+        $u0#48 = this.<androidx.viewpager.widget.PagerTabStrip: android.widget.TextView mPrevText>;
+
+        virtualinvoke $u0#48.<android.widget.TextView: void setFocusable(boolean)>(1);
+
+        $u0#48 = this.<androidx.viewpager.widget.PagerTabStrip: android.widget.TextView mPrevText>;
+
+        $u3 = new androidx.viewpager.widget.PagerTabStrip$1;
+
+        specialinvoke $u3.<androidx.viewpager.widget.PagerTabStrip$1: void <init>(androidx.viewpager.widget.PagerTabStrip)>(this);
+
+        virtualinvoke $u0#48.<android.widget.TextView: void setOnClickListener(android.view.View$OnClickListener)>($u3);
+
+        $u0#48 = this.<androidx.viewpager.widget.PagerTabStrip: android.widget.TextView mNextText>;
+
+        virtualinvoke $u0#48.<android.widget.TextView: void setFocusable(boolean)>(1);
+
+        $u0#48 = this.<androidx.viewpager.widget.PagerTabStrip: android.widget.TextView mNextText>;
+
+        $u3#54 = new androidx.viewpager.widget.PagerTabStrip$2;
+
+        specialinvoke $u3#54.<androidx.viewpager.widget.PagerTabStrip$2: void <init>(androidx.viewpager.widget.PagerTabStrip)>(this);
+
+        virtualinvoke $u0#48.<android.widget.TextView: void setOnClickListener(android.view.View$OnClickListener)>($u3#54);
+
+        $u-1#55 = virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: android.graphics.drawable.Drawable getBackground()>();
+
+        if $u-1#55 != null goto label1;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: boolean mDrawFullUnderline> = 1;
+
+     label1:
+        return;
+    }
+
+    public boolean getDrawFullUnderline()
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        boolean ret0;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        ret0 = this.<androidx.viewpager.widget.PagerTabStrip: boolean mDrawFullUnderline>;
+
+        return ret0;
+    }
+
+    int getMinHeight()
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        int $u1, $u-1;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u-1 = specialinvoke this.<androidx.viewpager.widget.PagerTitleStrip: int getMinHeight()>();
+
+        $u1 = this.<androidx.viewpager.widget.PagerTabStrip: int mMinStripHeight>;
+
+        $u1 = staticinvoke <java.lang.Math: int max(int,int)>($u-1, $u1);
+
+        return $u1;
+    }
+
+    public int getTabIndicatorColor()
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        int ret0;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        ret0 = this.<androidx.viewpager.widget.PagerTabStrip: int mIndicatorColor>;
+
+        return ret0;
+    }
+
+    protected void onDraw(android.graphics.Canvas)
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        android.graphics.Canvas $u17;
+        float $u13, $u14, $u11, $u12;
+        android.graphics.Paint $u15;
+        int $u-1, $u-1#3, right, top, $u7, $u8;
+        android.widget.TextView left;
+        boolean $u6;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u17 := @parameter0: android.graphics.Canvas;
+
+        specialinvoke this.<androidx.viewpager.widget.PagerTitleStrip: void onDraw(android.graphics.Canvas)>($u17);
+
+        $u-1 = virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: int getHeight()>();
+
+        left = this.<androidx.viewpager.widget.PagerTabStrip: android.widget.TextView mCurrText>;
+
+        $u-1#3 = virtualinvoke left.<android.widget.TextView: int getLeft()>();
+
+        right = this.<androidx.viewpager.widget.PagerTabStrip: int mTabPadding>;
+
+        $u-1#3 = $u-1#3 - right;
+
+        left = this.<androidx.viewpager.widget.PagerTabStrip: android.widget.TextView mCurrText>;
+
+        right = virtualinvoke left.<android.widget.TextView: int getRight()>();
+
+        top = this.<androidx.viewpager.widget.PagerTabStrip: int mTabPadding>;
+
+        right = right + top;
+
+        top = this.<androidx.viewpager.widget.PagerTabStrip: int mIndicatorHeight>;
+
+        top = $u-1 - top;
+
+        $u15 = this.<androidx.viewpager.widget.PagerTabStrip: android.graphics.Paint mTabPaint>;
+
+        $u7 = this.<androidx.viewpager.widget.PagerTabStrip: int mTabAlpha>;
+
+        $u7 = $u7 << 24;
+
+        $u8 = this.<androidx.viewpager.widget.PagerTabStrip: int mIndicatorColor>;
+
+        $u8 = $u8 & 16777215;
+
+        $u7 = $u7 | $u8;
+
+        virtualinvoke $u15.<android.graphics.Paint: void setColor(int)>($u7);
+
+        $u11 = (float) $u-1#3;
+
+        $u12 = (float) top;
+
+        $u13 = (float) right;
+
+        $u14 = (float) $u-1;
+
+        $u15 = this.<androidx.viewpager.widget.PagerTabStrip: android.graphics.Paint mTabPaint>;
+
+        virtualinvoke $u17.<android.graphics.Canvas: void drawRect(float,float,float,float,android.graphics.Paint)>($u11, $u12, $u13, $u14, $u15);
+
+        $u6 = this.<androidx.viewpager.widget.PagerTabStrip: boolean mDrawFullUnderline>;
+
+        if $u6 == 0 goto label1;
+
+        $u15 = this.<androidx.viewpager.widget.PagerTabStrip: android.graphics.Paint mTabPaint>;
+
+        $u-1#3 = this.<androidx.viewpager.widget.PagerTabStrip: int mIndicatorColor>;
+
+        $u-1#3 = $u-1#3 & 16777215;
+
+        $u-1#3 = -16777216 | $u-1#3;
+
+        virtualinvoke $u15.<android.graphics.Paint: void setColor(int)>($u-1#3);
+
+        $u-1#3 = virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: int getPaddingLeft()>();
+
+        $u13 = (float) $u-1#3;
+
+        $u-1#3 = this.<androidx.viewpager.widget.PagerTabStrip: int mFullUnderlineHeight>;
+
+        $u-1#3 = $u-1 - $u-1#3;
+
+        $u14 = (float) $u-1#3;
+
+        $u-1#3 = virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: int getWidth()>();
+
+        right = virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: int getPaddingRight()>();
+
+        $u-1#3 = $u-1#3 - right;
+
+        $u11 = (float) $u-1#3;
+
+        $u12 = (float) $u-1;
+
+        $u15 = this.<androidx.viewpager.widget.PagerTabStrip: android.graphics.Paint mTabPaint>;
+
+        virtualinvoke $u17.<android.graphics.Canvas: void drawRect(float,float,float,float,android.graphics.Paint)>($u13, $u14, $u11, $u12, $u15);
+
+     label1:
+        return;
+    }
+
+    public boolean onTouchEvent(android.view.MotionEvent)
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        android.view.MotionEvent $u7;
+        int $u-1, $u5;
+        boolean x;
+        float $u-1#4, $u-1#6, $u1;
+        byte $u1#14;
+        android.widget.TextView $u1#22;
+        androidx.viewpager.widget.ViewPager $u1#29, $u5#30;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u7 := @parameter0: android.view.MotionEvent;
+
+        $u-1 = virtualinvoke $u7.<android.view.MotionEvent: int getAction()>();
+
+        if $u-1 == 0 goto label1;
+
+        x = this.<androidx.viewpager.widget.PagerTabStrip: boolean mIgnoreTap>;
+
+        if x == 0 goto label1;
+
+        return 0;
+
+     label1:
+        $u-1#4 = virtualinvoke $u7.<android.view.MotionEvent: float getX()>();
+
+        $u-1#6 = virtualinvoke $u7.<android.view.MotionEvent: float getY()>();
+
+        if $u-1 == 0 goto label6;
+
+        if $u-1 == 1 goto label4;
+
+        if $u-1 == 2 goto label2;
+
+        return 1;
+
+     label2:
+        $u1 = this.<androidx.viewpager.widget.PagerTabStrip: float mInitialMotionX>;
+
+        $u-1#4 = $u-1#4 - $u1;
+
+        $u-1#4 = staticinvoke <java.lang.Math: float abs(float)>($u-1#4);
+
+        $u-1 = this.<androidx.viewpager.widget.PagerTabStrip: int mTouchSlop>;
+
+        $u1 = (float) $u-1;
+
+        $u1#14 = $u-1#4 cmpl $u1;
+
+        if $u1#14 > 0 goto label3;
+
+        $u-1#4 = this.<androidx.viewpager.widget.PagerTabStrip: float mInitialMotionY>;
+
+        $u-1#6 = $u-1#6 - $u-1#4;
+
+        $u-1#6 = staticinvoke <java.lang.Math: float abs(float)>($u-1#6);
+
+        $u-1 = this.<androidx.viewpager.widget.PagerTabStrip: int mTouchSlop>;
+
+        $u-1#4 = (float) $u-1;
+
+        $u1#14 = $u-1#6 cmpl $u-1#4;
+
+        if $u1#14 <= 0 goto label7;
+
+     label3:
+        this.<androidx.viewpager.widget.PagerTabStrip: boolean mIgnoreTap> = 1;
+
+        return 1;
+
+     label4:
+        $u1#22 = this.<androidx.viewpager.widget.PagerTabStrip: android.widget.TextView mCurrText>;
+
+        $u-1 = virtualinvoke $u1#22.<android.widget.TextView: int getLeft()>();
+
+        $u5 = this.<androidx.viewpager.widget.PagerTabStrip: int mTabPadding>;
+
+        $u-1 = $u-1 - $u5;
+
+        $u-1#6 = (float) $u-1;
+
+        $u1#14 = $u-1#4 cmpg $u-1#6;
+
+        if $u1#14 >= 0 goto label5;
+
+        $u1#29 = this.<androidx.viewpager.widget.PagerTabStrip: androidx.viewpager.widget.ViewPager mPager>;
+
+        $u5#30 = this.<androidx.viewpager.widget.PagerTabStrip: androidx.viewpager.widget.ViewPager mPager>;
+
+        $u-1 = virtualinvoke $u5#30.<androidx.viewpager.widget.ViewPager: int getCurrentItem()>();
+
+        $u-1 = $u-1 - 1;
+
+        virtualinvoke $u1#29.<androidx.viewpager.widget.ViewPager: void setCurrentItem(int)>($u-1);
+
+        return 1;
+
+     label5:
+        $u1#22 = this.<androidx.viewpager.widget.PagerTabStrip: android.widget.TextView mCurrText>;
+
+        $u-1 = virtualinvoke $u1#22.<android.widget.TextView: int getRight()>();
+
+        $u5 = this.<androidx.viewpager.widget.PagerTabStrip: int mTabPadding>;
+
+        $u-1 = $u-1 + $u5;
+
+        $u-1#6 = (float) $u-1;
+
+        $u1#14 = $u-1#4 cmpl $u-1#6;
+
+        if $u1#14 <= 0 goto label7;
+
+        $u1#29 = this.<androidx.viewpager.widget.PagerTabStrip: androidx.viewpager.widget.ViewPager mPager>;
+
+        $u5#30 = this.<androidx.viewpager.widget.PagerTabStrip: androidx.viewpager.widget.ViewPager mPager>;
+
+        $u-1 = virtualinvoke $u5#30.<androidx.viewpager.widget.ViewPager: int getCurrentItem()>();
+
+        $u-1 = $u-1 + 1;
+
+        virtualinvoke $u1#29.<androidx.viewpager.widget.ViewPager: void setCurrentItem(int)>($u-1);
+
+        return 1;
+
+     label6:
+        this.<androidx.viewpager.widget.PagerTabStrip: float mInitialMotionX> = $u-1#4;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: float mInitialMotionY> = $u-1#6;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: boolean mIgnoreTap> = 0;
+
+     label7:
+        return 1;
+    }
+
+    public void setBackgroundColor(int)
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        int $u2;
+        boolean $u0;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u2 := @parameter0: int;
+
+        specialinvoke this.<androidx.viewpager.widget.PagerTitleStrip: void setBackgroundColor(int)>($u2);
+
+        $u0 = this.<androidx.viewpager.widget.PagerTabStrip: boolean mDrawFullUnderlineSet>;
+
+        if $u0 != 0 goto label3;
+
+        $u2 = -16777216 & $u2;
+
+        if $u2 != 0 goto label1;
+
+        $u0 = 1;
+
+        goto label2;
+
+     label1:
+        $u0 = 0;
+
+     label2:
+        this.<androidx.viewpager.widget.PagerTabStrip: boolean mDrawFullUnderline> = $u0;
+
+     label3:
+        return;
+    }
+
+    public void setBackgroundDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        android.graphics.drawable.Drawable $u2;
+        boolean $u0;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        specialinvoke this.<androidx.viewpager.widget.PagerTitleStrip: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($u2);
+
+        $u0 = this.<androidx.viewpager.widget.PagerTabStrip: boolean mDrawFullUnderlineSet>;
+
+        if $u0 != 0 goto label3;
+
+        if $u2 != null goto label1;
+
+        $u0 = 1;
+
+        goto label2;
+
+     label1:
+        $u0 = 0;
+
+     label2:
+        this.<androidx.viewpager.widget.PagerTabStrip: boolean mDrawFullUnderline> = $u0;
+
+     label3:
+        return;
+    }
+
+    public void setBackgroundResource(int)
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        int $u2;
+        boolean $u0;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u2 := @parameter0: int;
+
+        specialinvoke this.<androidx.viewpager.widget.PagerTitleStrip: void setBackgroundResource(int)>($u2);
+
+        $u0 = this.<androidx.viewpager.widget.PagerTabStrip: boolean mDrawFullUnderlineSet>;
+
+        if $u0 != 0 goto label3;
+
+        if $u2 != 0 goto label1;
+
+        $u0 = 1;
+
+        goto label2;
+
+     label1:
+        $u0 = 0;
+
+     label2:
+        this.<androidx.viewpager.widget.PagerTabStrip: boolean mDrawFullUnderline> = $u0;
+
+     label3:
+        return;
+    }
+
+    public void setDrawFullUnderline(boolean)
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        boolean $u2;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u2 := @parameter0: boolean;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: boolean mDrawFullUnderline> = $u2;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: boolean mDrawFullUnderlineSet> = 1;
+
+        virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: void invalidate()>();
+
+        return;
+    }
+
+    public void setPadding(int, int, int, int)
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        int $u2, $u3, $u4, $u0, $u5;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        $u0 = this.<androidx.viewpager.widget.PagerTabStrip: int mMinPaddingBottom>;
+
+        if $u5 >= $u0 goto label1;
+
+        $u5 = this.<androidx.viewpager.widget.PagerTabStrip: int mMinPaddingBottom>;
+
+     label1:
+        specialinvoke this.<androidx.viewpager.widget.PagerTitleStrip: void setPadding(int,int,int,int)>($u2, $u3, $u4, $u5);
+
+        return;
+    }
+
+    public void setTabIndicatorColor(int)
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        int $u2;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u2 := @parameter0: int;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: int mIndicatorColor> = $u2;
+
+        $u0 = this.<androidx.viewpager.widget.PagerTabStrip: android.graphics.Paint mTabPaint>;
+
+        virtualinvoke $u0.<android.graphics.Paint: void setColor(int)>($u2);
+
+        virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: void invalidate()>();
+
+        return;
+    }
+
+    public void setTabIndicatorColorResource(int)
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        int $u2;
+        android.content.Context $u-1;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u2 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: android.content.Context getContext()>();
+
+        $u2 = staticinvoke <androidx.core.content.ContextCompat: int getColor(android.content.Context,int)>($u-1, $u2);
+
+        virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: void setTabIndicatorColor(int)>($u2);
+
+        return;
+    }
+
+    public void setTextSpacing(int)
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        int $u0, $u2;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.viewpager.widget.PagerTabStrip: int mMinTextSpacing>;
+
+        if $u2 >= $u0 goto label1;
+
+        $u2 = this.<androidx.viewpager.widget.PagerTabStrip: int mMinTextSpacing>;
+
+     label1:
+        specialinvoke this.<androidx.viewpager.widget.PagerTitleStrip: void setTextSpacing(int)>($u2);
+
+        return;
+    }
+
+    void updateTextPositions(int, float, boolean)
+    {
+        androidx.viewpager.widget.PagerTabStrip this;
+        int $u8, $u-1, $u-1#3, right, top;
+        float $u9;
+        boolean $u10;
+        android.graphics.Rect r;
+        android.widget.TextView left;
+
+        this := @this: androidx.viewpager.widget.PagerTabStrip;
+
+        $u8 := @parameter0: int;
+
+        $u9 := @parameter1: float;
+
+        $u10 := @parameter2: boolean;
+
+        r = this.<androidx.viewpager.widget.PagerTabStrip: android.graphics.Rect mTempRect>;
+
+        $u-1 = virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: int getHeight()>();
+
+        left = this.<androidx.viewpager.widget.PagerTabStrip: android.widget.TextView mCurrText>;
+
+        $u-1#3 = virtualinvoke left.<android.widget.TextView: int getLeft()>();
+
+        right = this.<androidx.viewpager.widget.PagerTabStrip: int mTabPadding>;
+
+        right = $u-1#3 - right;
+
+        left = this.<androidx.viewpager.widget.PagerTabStrip: android.widget.TextView mCurrText>;
+
+        $u-1#3 = virtualinvoke left.<android.widget.TextView: int getRight()>();
+
+        top = this.<androidx.viewpager.widget.PagerTabStrip: int mTabPadding>;
+
+        top = $u-1#3 + top;
+
+        $u-1#3 = this.<androidx.viewpager.widget.PagerTabStrip: int mIndicatorHeight>;
+
+        $u-1#3 = $u-1 - $u-1#3;
+
+        virtualinvoke r.<android.graphics.Rect: void set(int,int,int,int)>(right, $u-1#3, top, $u-1);
+
+        specialinvoke this.<androidx.viewpager.widget.PagerTitleStrip: void updateTextPositions(int,float,boolean)>($u8, $u9, $u10);
+
+        $u9 = $u9 - 0.5F;
+
+        $u9 = staticinvoke <java.lang.Math: float abs(float)>($u9);
+
+        $u9 = $u9 * 2.0F;
+
+        $u9 = $u9 * 255.0F;
+
+        $u8 = (int) $u9;
+
+        this.<androidx.viewpager.widget.PagerTabStrip: int mTabAlpha> = $u8;
+
+        left = this.<androidx.viewpager.widget.PagerTabStrip: android.widget.TextView mCurrText>;
+
+        $u8 = virtualinvoke left.<android.widget.TextView: int getLeft()>();
+
+        right = this.<androidx.viewpager.widget.PagerTabStrip: int mTabPadding>;
+
+        $u8 = $u8 - right;
+
+        left = this.<androidx.viewpager.widget.PagerTabStrip: android.widget.TextView mCurrText>;
+
+        right = virtualinvoke left.<android.widget.TextView: int getRight()>();
+
+        top = this.<androidx.viewpager.widget.PagerTabStrip: int mTabPadding>;
+
+        right = right + top;
+
+        virtualinvoke r.<android.graphics.Rect: void union(int,int,int,int)>($u8, $u-1#3, right, $u-1);
+
+        virtualinvoke this.<androidx.viewpager.widget.PagerTabStrip: void invalidate(android.graphics.Rect)>(r);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.viewpager.widget.PagerTabStrip: java.lang.String TAG> = "PagerTabStrip";
+
+        <androidx.viewpager.widget.PagerTabStrip: int TAB_SPACING> = 32;
+
+        <androidx.viewpager.widget.PagerTabStrip: int TAB_PADDING> = 16;
+
+        <androidx.viewpager.widget.PagerTabStrip: int MIN_TEXT_SPACING> = 64;
+
+        <androidx.viewpager.widget.PagerTabStrip: int MIN_STRIP_HEIGHT> = 32;
+
+        <androidx.viewpager.widget.PagerTabStrip: int MIN_PADDING_BOTTOM> = 6;
+
+        <androidx.viewpager.widget.PagerTabStrip: int INDICATOR_HEIGHT> = 3;
+
+        <androidx.viewpager.widget.PagerTabStrip: int FULL_UNDERLINE_HEIGHT> = 1;
+
+        return;
+    }
+}

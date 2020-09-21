@@ -1,0 +1,44 @@
+public final class androidx.core.view.accessibility.AccessibilityViewCommand$SetSelectionArguments extends androidx.core.view.accessibility.AccessibilityViewCommand$CommandArguments
+{
+
+    public void <init>()
+    {
+        androidx.core.view.accessibility.AccessibilityViewCommand$SetSelectionArguments this;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityViewCommand$SetSelectionArguments;
+
+        specialinvoke this.<androidx.core.view.accessibility.AccessibilityViewCommand$CommandArguments: void <init>()>();
+
+        return;
+    }
+
+    public int getEnd()
+    {
+        androidx.core.view.accessibility.AccessibilityViewCommand$SetSelectionArguments this;
+        int $u-1;
+        android.os.Bundle $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityViewCommand$SetSelectionArguments;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityViewCommand$SetSelectionArguments: android.os.Bundle mBundle>;
+
+        $u-1 = virtualinvoke $u0.<android.os.Bundle: int getInt(java.lang.String)>("ACTION_ARGUMENT_SELECTION_END_INT");
+
+        return $u-1;
+    }
+
+    public int getStart()
+    {
+        androidx.core.view.accessibility.AccessibilityViewCommand$SetSelectionArguments this;
+        int $u-1;
+        android.os.Bundle $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityViewCommand$SetSelectionArguments;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityViewCommand$SetSelectionArguments: android.os.Bundle mBundle>;
+
+        $u-1 = virtualinvoke $u0.<android.os.Bundle: int getInt(java.lang.String)>("ACTION_ARGUMENT_SELECTION_START_INT");
+
+        return $u-1;
+    }
+}

@@ -1,0 +1,26 @@
+final class androidx.core.provider.FontsContractCompat$TypefaceResult extends java.lang.Object
+{
+    final int mResult;
+    final android.graphics.Typeface mTypeface;
+
+    void <init>(android.graphics.Typeface, int)
+    {
+        androidx.core.provider.FontsContractCompat$TypefaceResult this;
+        android.graphics.Typeface $u1;
+        int $u2;
+
+        this := @this: androidx.core.provider.FontsContractCompat$TypefaceResult;
+
+        $u1 := @parameter0: android.graphics.Typeface;
+
+        $u2 := @parameter1: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.provider.FontsContractCompat$TypefaceResult: android.graphics.Typeface mTypeface> = $u1;
+
+        this.<androidx.core.provider.FontsContractCompat$TypefaceResult: int mResult> = $u2;
+
+        return;
+    }
+}

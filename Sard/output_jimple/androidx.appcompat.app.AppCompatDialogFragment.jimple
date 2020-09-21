@@ -1,0 +1,83 @@
+public class androidx.appcompat.app.AppCompatDialogFragment extends androidx.fragment.app.DialogFragment
+{
+
+    public void <init>()
+    {
+        androidx.appcompat.app.AppCompatDialogFragment this;
+
+        this := @this: androidx.appcompat.app.AppCompatDialogFragment;
+
+        specialinvoke this.<androidx.fragment.app.DialogFragment: void <init>()>();
+
+        return;
+    }
+
+    public android.app.Dialog onCreateDialog(android.os.Bundle)
+    {
+        androidx.appcompat.app.AppCompatDialogFragment this;
+        android.os.Bundle $u4;
+        androidx.appcompat.app.AppCompatDialog $u0;
+        android.content.Context $u-1;
+        int $u-1#2;
+
+        this := @this: androidx.appcompat.app.AppCompatDialogFragment;
+
+        $u4 := @parameter0: android.os.Bundle;
+
+        $u0 = new androidx.appcompat.app.AppCompatDialog;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialogFragment: android.content.Context getContext()>();
+
+        $u-1#2 = virtualinvoke this.<androidx.appcompat.app.AppCompatDialogFragment: int getTheme()>();
+
+        specialinvoke $u0.<androidx.appcompat.app.AppCompatDialog: void <init>(android.content.Context,int)>($u-1, $u-1#2);
+
+        return $u0;
+    }
+
+    public void setupDialog(android.app.Dialog, int)
+    {
+        androidx.appcompat.app.AppCompatDialogFragment this;
+        android.app.Dialog $u5;
+        int $u6;
+        android.view.Window $u-1;
+        boolean acd;
+        androidx.appcompat.app.AppCompatDialog acd#3;
+
+        this := @this: androidx.appcompat.app.AppCompatDialogFragment;
+
+        $u5 := @parameter0: android.app.Dialog;
+
+        $u6 := @parameter1: int;
+
+        acd = $u5 instanceof androidx.appcompat.app.AppCompatDialog;
+
+        if acd == 0 goto label4;
+
+        acd#3 = (androidx.appcompat.app.AppCompatDialog) $u5;
+
+        if $u6 == 1 goto label2;
+
+        if $u6 == 2 goto label2;
+
+        if $u6 == 3 goto label1;
+
+        goto label3;
+
+     label1:
+        $u-1 = virtualinvoke $u5.<android.app.Dialog: android.view.Window getWindow()>();
+
+        virtualinvoke $u-1.<android.view.Window: void addFlags(int)>(24);
+
+     label2:
+        virtualinvoke acd#3.<androidx.appcompat.app.AppCompatDialog: boolean supportRequestWindowFeature(int)>(1);
+
+     label3:
+        return;
+
+     label4:
+        specialinvoke this.<androidx.fragment.app.DialogFragment: void setupDialog(android.app.Dialog,int)>($u5, $u6);
+
+        return;
+    }
+}

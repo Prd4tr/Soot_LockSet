@@ -1,0 +1,268 @@
+class androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper extends java.net.SocketImpl
+{
+
+    void <init>(java.net.DatagramSocket, java.io.FileDescriptor)
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        java.net.DatagramSocket $u2;
+        java.io.FileDescriptor $u3;
+        int $u-1;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u2 := @parameter0: java.net.DatagramSocket;
+
+        $u3 := @parameter1: java.io.FileDescriptor;
+
+        specialinvoke this.<java.net.SocketImpl: void <init>()>();
+
+        $u-1 = virtualinvoke $u2.<java.net.DatagramSocket: int getLocalPort()>();
+
+        this.<androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper: int localport> = $u-1;
+
+        this.<androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper: java.io.FileDescriptor fd> = $u3;
+
+        return;
+    }
+
+    protected void accept(java.net.SocketImpl) throws java.io.IOException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        java.net.SocketImpl $u2;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u2 := @parameter0: java.net.SocketImpl;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    protected int available() throws java.io.IOException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    protected void bind(java.net.InetAddress, int) throws java.io.IOException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        java.net.InetAddress $u2;
+        int $u3;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u2 := @parameter0: java.net.InetAddress;
+
+        $u3 := @parameter1: int;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    protected void close() throws java.io.IOException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    protected void connect(java.lang.String, int) throws java.io.IOException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        java.lang.String $u2;
+        int $u3;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u3 := @parameter1: int;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    protected void connect(java.net.InetAddress, int) throws java.io.IOException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        java.net.InetAddress $u2;
+        int $u3;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u2 := @parameter0: java.net.InetAddress;
+
+        $u3 := @parameter1: int;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    protected void connect(java.net.SocketAddress, int) throws java.io.IOException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        java.net.SocketAddress $u2;
+        int $u3;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u2 := @parameter0: java.net.SocketAddress;
+
+        $u3 := @parameter1: int;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    protected void create(boolean) throws java.io.IOException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        boolean $u2;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    protected java.io.InputStream getInputStream() throws java.io.IOException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public java.lang.Object getOption(int) throws java.net.SocketException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        int $u2;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    protected java.io.OutputStream getOutputStream() throws java.io.IOException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    protected void listen(int) throws java.io.IOException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        int $u2;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    protected void sendUrgentData(int) throws java.io.IOException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        int $u2;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public void setOption(int, java.lang.Object) throws java.net.SocketException
+    {
+        androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper this;
+        int $u2;
+        java.lang.Object $u3;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: java.lang.Object;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+}

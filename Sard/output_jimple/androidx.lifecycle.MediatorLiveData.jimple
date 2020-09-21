@@ -1,0 +1,180 @@
+public class androidx.lifecycle.MediatorLiveData extends androidx.lifecycle.MutableLiveData
+{
+    private androidx.arch.core.internal.SafeIterableMap mSources;
+
+    public void <init>()
+    {
+        androidx.lifecycle.MediatorLiveData this;
+        androidx.arch.core.internal.SafeIterableMap $u0;
+
+        this := @this: androidx.lifecycle.MediatorLiveData;
+
+        specialinvoke this.<androidx.lifecycle.MutableLiveData: void <init>()>();
+
+        $u0 = new androidx.arch.core.internal.SafeIterableMap;
+
+        specialinvoke $u0.<androidx.arch.core.internal.SafeIterableMap: void <init>()>();
+
+        this.<androidx.lifecycle.MediatorLiveData: androidx.arch.core.internal.SafeIterableMap mSources> = $u0;
+
+        return;
+    }
+
+    public void addSource(androidx.lifecycle.LiveData, androidx.lifecycle.Observer)
+    {
+        androidx.lifecycle.MediatorLiveData this;
+        androidx.lifecycle.LiveData source;
+        androidx.lifecycle.Observer onChanged, $u2;
+        androidx.lifecycle.MediatorLiveData$Source e, existing#4;
+        androidx.arch.core.internal.SafeIterableMap existing;
+        java.lang.Object $u-1;
+        java.lang.IllegalArgumentException $u2#6;
+        boolean $u-1#7;
+
+        this := @this: androidx.lifecycle.MediatorLiveData;
+
+        source := @parameter0: androidx.lifecycle.LiveData;
+
+        onChanged := @parameter1: androidx.lifecycle.Observer;
+
+        e = new androidx.lifecycle.MediatorLiveData$Source;
+
+        specialinvoke e.<androidx.lifecycle.MediatorLiveData$Source: void <init>(androidx.lifecycle.LiveData,androidx.lifecycle.Observer)>(source, onChanged);
+
+        existing = this.<androidx.lifecycle.MediatorLiveData: androidx.arch.core.internal.SafeIterableMap mSources>;
+
+        $u-1 = virtualinvoke existing.<androidx.arch.core.internal.SafeIterableMap: java.lang.Object putIfAbsent(java.lang.Object,java.lang.Object)>(source, e);
+
+        existing#4 = (androidx.lifecycle.MediatorLiveData$Source) $u-1;
+
+        if existing#4 == null goto label2;
+
+        $u2 = existing#4.<androidx.lifecycle.MediatorLiveData$Source: androidx.lifecycle.Observer mObserver>;
+
+        if $u2 != onChanged goto label1;
+
+        goto label2;
+
+     label1:
+        $u2#6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u2#6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("This source was already added with the different observer");
+
+        throw $u2#6;
+
+     label2:
+        if existing#4 == null goto label3;
+
+        return;
+
+     label3:
+        $u-1#7 = virtualinvoke this.<androidx.lifecycle.MediatorLiveData: boolean hasActiveObservers()>();
+
+        if $u-1#7 == 0 goto label4;
+
+        virtualinvoke e.<androidx.lifecycle.MediatorLiveData$Source: void plug()>();
+
+     label4:
+        return;
+    }
+
+    protected void onActive()
+    {
+        androidx.lifecycle.MediatorLiveData this;
+        androidx.arch.core.internal.SafeIterableMap $u0;
+        java.util.Iterator $u-1;
+        boolean $u-1#4;
+        java.lang.Object $u-1#6;
+        java.util.Map$Entry source;
+        androidx.lifecycle.MediatorLiveData$Source $u2;
+
+        this := @this: androidx.lifecycle.MediatorLiveData;
+
+        $u0 = this.<androidx.lifecycle.MediatorLiveData: androidx.arch.core.internal.SafeIterableMap mSources>;
+
+        $u-1 = virtualinvoke $u0.<androidx.arch.core.internal.SafeIterableMap: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label2;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        source = (java.util.Map$Entry) $u-1#6;
+
+        $u-1#6 = interfaceinvoke source.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $u2 = (androidx.lifecycle.MediatorLiveData$Source) $u-1#6;
+
+        virtualinvoke $u2.<androidx.lifecycle.MediatorLiveData$Source: void plug()>();
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    protected void onInactive()
+    {
+        androidx.lifecycle.MediatorLiveData this;
+        androidx.arch.core.internal.SafeIterableMap $u0;
+        java.util.Iterator $u-1;
+        boolean $u-1#4;
+        java.lang.Object $u-1#6;
+        java.util.Map$Entry source;
+        androidx.lifecycle.MediatorLiveData$Source $u2;
+
+        this := @this: androidx.lifecycle.MediatorLiveData;
+
+        $u0 = this.<androidx.lifecycle.MediatorLiveData: androidx.arch.core.internal.SafeIterableMap mSources>;
+
+        $u-1 = virtualinvoke $u0.<androidx.arch.core.internal.SafeIterableMap: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label2;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        source = (java.util.Map$Entry) $u-1#6;
+
+        $u-1#6 = interfaceinvoke source.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $u2 = (androidx.lifecycle.MediatorLiveData$Source) $u-1#6;
+
+        virtualinvoke $u2.<androidx.lifecycle.MediatorLiveData$Source: void unplug()>();
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void removeSource(androidx.lifecycle.LiveData)
+    {
+        androidx.lifecycle.MediatorLiveData this;
+        androidx.lifecycle.LiveData toRemote;
+        java.lang.Object $u-1;
+        androidx.arch.core.internal.SafeIterableMap source;
+        androidx.lifecycle.MediatorLiveData$Source source#3;
+
+        this := @this: androidx.lifecycle.MediatorLiveData;
+
+        toRemote := @parameter0: androidx.lifecycle.LiveData;
+
+        source = this.<androidx.lifecycle.MediatorLiveData: androidx.arch.core.internal.SafeIterableMap mSources>;
+
+        $u-1 = virtualinvoke source.<androidx.arch.core.internal.SafeIterableMap: java.lang.Object remove(java.lang.Object)>(toRemote);
+
+        source#3 = (androidx.lifecycle.MediatorLiveData$Source) $u-1;
+
+        if source#3 == null goto label1;
+
+        virtualinvoke source#3.<androidx.lifecycle.MediatorLiveData$Source: void unplug()>();
+
+     label1:
+        return;
+    }
+}

@@ -1,0 +1,121 @@
+public class androidx.core.math.MathUtils extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.math.MathUtils this;
+
+        this := @this: androidx.core.math.MathUtils;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static double clamp(double, double, double)
+    {
+        double $u1, $u3, $u5;
+        byte $u0;
+
+        $u1 := @parameter0: double;
+
+        $u3 := @parameter1: double;
+
+        $u5 := @parameter2: double;
+
+        $u0 = $u1 cmpg $u3;
+
+        if $u0 >= 0 goto label1;
+
+        return $u3;
+
+     label1:
+        $u0 = $u1 cmpl $u5;
+
+        if $u0 <= 0 goto label2;
+
+        return $u5;
+
+     label2:
+        return $u1;
+    }
+
+    public static float clamp(float, float, float)
+    {
+        float $u1, $u2, $u3;
+        byte $u0;
+
+        $u1 := @parameter0: float;
+
+        $u2 := @parameter1: float;
+
+        $u3 := @parameter2: float;
+
+        $u0 = $u1 cmpg $u2;
+
+        if $u0 >= 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u0 = $u1 cmpl $u3;
+
+        if $u0 <= 0 goto label2;
+
+        return $u3;
+
+     label2:
+        return $u1;
+    }
+
+    public static int clamp(int, int, int)
+    {
+        int $u0, $u1, $u2;
+
+        $u0 := @parameter0: int;
+
+        $u1 := @parameter1: int;
+
+        $u2 := @parameter2: int;
+
+        if $u0 >= $u1 goto label1;
+
+        return $u1;
+
+     label1:
+        if $u0 <= $u2 goto label2;
+
+        return $u2;
+
+     label2:
+        return $u0;
+    }
+
+    public static long clamp(long, long, long)
+    {
+        long $u1, $u3, $u5;
+        byte $u0;
+
+        $u1 := @parameter0: long;
+
+        $u3 := @parameter1: long;
+
+        $u5 := @parameter2: long;
+
+        $u0 = $u1 cmp $u3;
+
+        if $u0 >= 0 goto label1;
+
+        return $u3;
+
+     label1:
+        $u0 = $u1 cmp $u5;
+
+        if $u0 <= 0 goto label2;
+
+        return $u5;
+
+     label2:
+        return $u1;
+    }
+}

@@ -1,0 +1,66 @@
+public final class androidx.core.app.BundleCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.app.BundleCompat this;
+
+        this := @this: androidx.core.app.BundleCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.os.IBinder getBinder(android.os.Bundle, java.lang.String)
+    {
+        android.os.Bundle $u2;
+        java.lang.String $u3;
+        int $u0;
+        android.os.IBinder $u-1;
+
+        $u2 := @parameter0: android.os.Bundle;
+
+        $u3 := @parameter1: java.lang.String;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 18 goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.os.Bundle: android.os.IBinder getBinder(java.lang.String)>($u3);
+
+        return $u-1;
+
+     label1:
+        $u-1 = staticinvoke <androidx.core.app.BundleCompat$BundleCompatBaseImpl: android.os.IBinder getBinder(android.os.Bundle,java.lang.String)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public static void putBinder(android.os.Bundle, java.lang.String, android.os.IBinder)
+    {
+        android.os.Bundle $u2;
+        java.lang.String $u3;
+        android.os.IBinder $u4;
+        int $u0;
+
+        $u2 := @parameter0: android.os.Bundle;
+
+        $u3 := @parameter1: java.lang.String;
+
+        $u4 := @parameter2: android.os.IBinder;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 18 goto label1;
+
+        virtualinvoke $u2.<android.os.Bundle: void putBinder(java.lang.String,android.os.IBinder)>($u3, $u4);
+
+        return;
+
+     label1:
+        staticinvoke <androidx.core.app.BundleCompat$BundleCompatBaseImpl: void putBinder(android.os.Bundle,java.lang.String,android.os.IBinder)>($u2, $u3, $u4);
+
+        return;
+    }
+}

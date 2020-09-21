@@ -1,0 +1,3714 @@
+public class androidx.constraintlayout.motion.widget.MotionScene extends java.lang.Object
+{
+    static final int ANTICIPATE;
+    static final int BOUNCE;
+    private static final boolean DEBUG;
+    static final int EASE_IN;
+    static final int EASE_IN_OUT;
+    static final int EASE_OUT;
+    private static final int INTERPOLATOR_REFRENCE_ID;
+    public static final int LAYOUT_HONOR_REQUEST;
+    public static final int LAYOUT_IGNORE_REQUEST;
+    static final int LINEAR;
+    private static final int SPLINE_STRING;
+    public static final java.lang.String TAG;
+    static final int TRANSITION_BACKWARD;
+    static final int TRANSITION_FORWARD;
+    public static final int UNSET;
+    private boolean DEBUG_DESKTOP;
+    private java.util.ArrayList mAbstractTransitionList;
+    private java.util.HashMap mConstraintSetIdMap;
+    private android.util.SparseArray mConstraintSetMap;
+    androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition;
+    private int mDefaultDuration;
+    private androidx.constraintlayout.motion.widget.MotionScene$Transition mDefaultTransition;
+    private android.util.SparseIntArray mDeriveMap;
+    private boolean mDisableAutoTransition;
+    private android.view.MotionEvent mLastTouchDown;
+    float mLastTouchX;
+    float mLastTouchY;
+    private int mLayoutDuringTransition;
+    private final androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout;
+    private boolean mMotionOutsideRegion;
+    private boolean mRtl;
+    androidx.constraintlayout.widget.StateSet mStateSet;
+    private java.util.ArrayList mTransitionList;
+    private androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker mVelocityTracker;
+
+    void <init>(android.content.Context, androidx.constraintlayout.motion.widget.MotionLayout, int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        android.content.Context $u4;
+        androidx.constraintlayout.motion.widget.MotionLayout $u5;
+        int $u6;
+        java.lang.Integer $u-1;
+        java.util.ArrayList $u2;
+        android.util.SparseArray $u0;
+        java.util.HashMap $u0#6;
+        android.util.SparseIntArray $u0#7;
+        androidx.constraintlayout.widget.ConstraintSet $u2#11;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        $u6 := @parameter2: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.widget.StateSet mStateSet> = null;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition> = null;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mDisableAutoTransition> = 0;
+
+        $u2 = new java.util.ArrayList;
+
+        specialinvoke $u2.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList> = $u2;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mDefaultTransition> = null;
+
+        $u2 = new java.util.ArrayList;
+
+        specialinvoke $u2.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mAbstractTransitionList> = $u2;
+
+        $u0 = new android.util.SparseArray;
+
+        specialinvoke $u0.<android.util.SparseArray: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap> = $u0;
+
+        $u0#6 = new java.util.HashMap;
+
+        specialinvoke $u0#6.<java.util.HashMap: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.HashMap mConstraintSetIdMap> = $u0#6;
+
+        $u0#7 = new android.util.SparseIntArray;
+
+        specialinvoke $u0#7.<android.util.SparseIntArray: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseIntArray mDeriveMap> = $u0#7;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: boolean DEBUG_DESKTOP> = 0;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: int mDefaultDuration> = 400;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: int mLayoutDuringTransition> = 0;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mMotionOutsideRegion> = 0;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout> = $u5;
+
+        specialinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: void load(android.content.Context,int)>($u4, $u6);
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u6 = <androidx.constraintlayout.widget.R$id: int motion_base>;
+
+        $u2#11 = new androidx.constraintlayout.widget.ConstraintSet;
+
+        specialinvoke $u2#11.<androidx.constraintlayout.widget.ConstraintSet: void <init>()>();
+
+        virtualinvoke $u0.<android.util.SparseArray: void put(int,java.lang.Object)>($u6, $u2#11);
+
+        $u0#6 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.HashMap mConstraintSetIdMap>;
+
+        $u6 = <androidx.constraintlayout.widget.R$id: int motion_base>;
+
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u6);
+
+        virtualinvoke $u0#6.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("motion_base", $u-1);
+
+        return;
+    }
+
+    public void <init>(androidx.constraintlayout.motion.widget.MotionLayout)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionLayout $u4;
+        java.util.ArrayList $u2;
+        android.util.SparseArray $u0;
+        java.util.HashMap $u0#4;
+        android.util.SparseIntArray $u0#5;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u4 := @parameter0: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.widget.StateSet mStateSet> = null;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition> = null;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mDisableAutoTransition> = 0;
+
+        $u2 = new java.util.ArrayList;
+
+        specialinvoke $u2.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList> = $u2;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mDefaultTransition> = null;
+
+        $u2 = new java.util.ArrayList;
+
+        specialinvoke $u2.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mAbstractTransitionList> = $u2;
+
+        $u0 = new android.util.SparseArray;
+
+        specialinvoke $u0.<android.util.SparseArray: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap> = $u0;
+
+        $u0#4 = new java.util.HashMap;
+
+        specialinvoke $u0#4.<java.util.HashMap: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.HashMap mConstraintSetIdMap> = $u0#4;
+
+        $u0#5 = new android.util.SparseIntArray;
+
+        specialinvoke $u0#5.<android.util.SparseIntArray: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseIntArray mDeriveMap> = $u0#5;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: boolean DEBUG_DESKTOP> = 0;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: int mDefaultDuration> = 400;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: int mLayoutDuringTransition> = 0;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mMotionOutsideRegion> = 0;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout> = $u4;
+
+        return;
+    }
+
+    static int access$1000(androidx.constraintlayout.motion.widget.MotionScene)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene $u1;
+        int ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.motion.widget.MotionScene;
+
+        ret0 = $u1.<androidx.constraintlayout.motion.widget.MotionScene: int mLayoutDuringTransition>;
+
+        return ret0;
+    }
+
+    static android.util.SparseArray access$1100(androidx.constraintlayout.motion.widget.MotionScene)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene $u1;
+        android.util.SparseArray ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.motion.widget.MotionScene;
+
+        ret0 = $u1.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        return ret0;
+    }
+
+    static androidx.constraintlayout.motion.widget.MotionLayout access$800(androidx.constraintlayout.motion.widget.MotionScene)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene $u1;
+        androidx.constraintlayout.motion.widget.MotionLayout ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.motion.widget.MotionScene;
+
+        ret0 = $u1.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout>;
+
+        return ret0;
+    }
+
+    static int access$900(androidx.constraintlayout.motion.widget.MotionScene)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene $u1;
+        int ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.motion.widget.MotionScene;
+
+        ret0 = $u1.<androidx.constraintlayout.motion.widget.MotionScene: int mDefaultDuration>;
+
+        return ret0;
+    }
+
+    private int getId(android.content.Context, java.lang.String)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        android.content.Context $u7;
+        java.lang.String $u8, $u-1#10, $u-1#14;
+        int id, $u-1#17;
+        boolean $u-1;
+        android.content.res.Resources $u-1#12;
+        java.io.PrintStream $u3;
+        java.lang.StringBuilder $u4;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u7 := @parameter0: android.content.Context;
+
+        $u8 := @parameter1: java.lang.String;
+
+        id = -1;
+
+        $u-1 = virtualinvoke $u8.<java.lang.String: boolean contains(java.lang.CharSequence)>("/");
+
+        if $u-1 == 0 goto label1;
+
+        id = virtualinvoke $u8.<java.lang.String: int indexOf(int)>(47);
+
+        id = id + 1;
+
+        $u-1#10 = virtualinvoke $u8.<java.lang.String: java.lang.String substring(int)>(id);
+
+        $u-1#12 = virtualinvoke $u7.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#14 = virtualinvoke $u7.<android.content.Context: java.lang.String getPackageName()>();
+
+        $u-1#17 = virtualinvoke $u-1#12.<android.content.res.Resources: int getIdentifier(java.lang.String,java.lang.String,java.lang.String)>($u-1#10, "id", $u-1#14);
+
+        id = $u-1#17;
+
+        $u-1 = this.<androidx.constraintlayout.motion.widget.MotionScene: boolean DEBUG_DESKTOP>;
+
+        if $u-1 == 0 goto label1;
+
+        $u3 = <java.lang.System: java.io.PrintStream out>;
+
+        $u4 = new java.lang.StringBuilder;
+
+        specialinvoke $u4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("id getMap res = ");
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u-1#17);
+
+        $u-1#10 = virtualinvoke $u4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $u3.<java.io.PrintStream: void println(java.lang.String)>($u-1#10);
+
+     label1:
+        if id != -1 goto label3;
+
+        if $u8 == null goto label2;
+
+        $u-1#17 = virtualinvoke $u8.<java.lang.String: int length()>();
+
+        if $u-1#17 <= 1 goto label2;
+
+        $u8 = virtualinvoke $u8.<java.lang.String: java.lang.String substring(int)>(1);
+
+        id = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($u8);
+
+        return id;
+
+     label2:
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("MotionScene", "error in parsing id");
+
+     label3:
+        return id;
+    }
+
+    private int getIndex(androidx.constraintlayout.motion.widget.MotionScene$Transition)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u5;
+        int $u-1, index, $u-1#5;
+        java.util.ArrayList $u3;
+        java.lang.Object $u-1#8;
+        java.lang.IllegalArgumentException $u1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u5 := @parameter0: androidx.constraintlayout.motion.widget.MotionScene$Transition;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$300(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u5);
+
+        if $u-1 == -1 goto label4;
+
+        index = 0;
+
+     label1:
+        $u3 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        $u-1#5 = virtualinvoke $u3.<java.util.ArrayList: int size()>();
+
+        if index >= $u-1#5 goto label3;
+
+        $u3 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        $u-1#8 = virtualinvoke $u3.<java.util.ArrayList: java.lang.Object get(int)>(index);
+
+        $u5 = (androidx.constraintlayout.motion.widget.MotionScene$Transition) $u-1#8;
+
+        $u-1#5 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$300(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u5);
+
+        if $u-1#5 != $u-1 goto label2;
+
+        return index;
+
+     label2:
+        index = index + 1;
+
+        goto label1;
+
+     label3:
+        return -1;
+
+     label4:
+        $u1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("The transition must have an id");
+
+        goto label5;
+
+     label5:
+        throw $u1;
+    }
+
+    private int getRealID(int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u3, $u-1;
+        androidx.constraintlayout.widget.StateSet tmp;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u3 := @parameter0: int;
+
+        tmp = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.widget.StateSet mStateSet>;
+
+        if tmp == null goto label1;
+
+        $u-1 = virtualinvoke tmp.<androidx.constraintlayout.widget.StateSet: int stateGetConstraintID(int,int,int)>($u3, -1, -1);
+
+        if $u-1 == -1 goto label1;
+
+        return $u-1;
+
+     label1:
+        return $u3;
+    }
+
+    private boolean hasCycleDependency(int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u5, derived#3, len;
+        android.util.SparseIntArray derived;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u5 := @parameter0: int;
+
+        derived = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseIntArray mDeriveMap>;
+
+        derived#3 = virtualinvoke derived.<android.util.SparseIntArray: int get(int)>($u5);
+
+        derived = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseIntArray mDeriveMap>;
+
+        len = virtualinvoke derived.<android.util.SparseIntArray: int size()>();
+
+     label1:
+        if derived#3 <= 0 goto label4;
+
+        if derived#3 != $u5 goto label2;
+
+        return 1;
+
+     label2:
+        if len >= 0 goto label3;
+
+        return 1;
+
+     label3:
+        derived = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseIntArray mDeriveMap>;
+
+        derived#3 = virtualinvoke derived.<android.util.SparseIntArray: int get(int)>(derived#3);
+
+        len = len + -1;
+
+        goto label1;
+
+     label4:
+        return 0;
+    }
+
+    private boolean isProcessingTouch()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker $u0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker mVelocityTracker>;
+
+        if $u0 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private void load(android.content.Context, int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        android.content.Context $u13;
+        int $u14, $u-1#6;
+        android.content.res.Resources $u-1;
+        android.content.res.XmlResourceParser $u-1#2;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition transition, line#64, keyFrames#65;
+        byte keyFrames;
+        java.lang.String $u-1#12, $u-1#19;
+        boolean $u9;
+        java.io.PrintStream $u9#16;
+        java.lang.StringBuilder $u10;
+        androidx.constraintlayout.motion.widget.KeyFrames keyFrames#45;
+        java.util.ArrayList $u-1#46;
+        androidx.constraintlayout.widget.StateSet keyFrames#48;
+        androidx.constraintlayout.motion.widget.TouchResponse keyFrames#61;
+        androidx.constraintlayout.motion.widget.MotionLayout line;
+        java.io.IOException transition#89;
+        org.xmlpull.v1.XmlPullParserException transition#90;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u13 := @parameter0: android.content.Context;
+
+        $u14 := @parameter1: int;
+
+        $u-1 = virtualinvoke $u13.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#2 = virtualinvoke $u-1.<android.content.res.Resources: android.content.res.XmlResourceParser getXml(int)>($u14);
+
+        transition = null;
+
+     label01:
+        $u-1#6 = interfaceinvoke $u-1#2.<org.xmlpull.v1.XmlPullParser: int getEventType()>();
+
+     label02:
+        keyFrames = 1;
+
+        if $u-1#6 == 1 goto label73;
+
+        if $u-1#6 == 0 goto label70;
+
+        if $u-1#6 == 2 goto label04;
+
+        if $u-1#6 == 3 goto label03;
+
+        goto label71;
+
+     label03:
+        goto label71;
+
+     label04:
+        $u-1#12 = interfaceinvoke $u-1#2.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+     label05:
+        $u9 = this.<androidx.constraintlayout.motion.widget.MotionScene: boolean DEBUG_DESKTOP>;
+
+        if $u9 == 0 goto label07;
+
+        $u9#16 = <java.lang.System: java.io.PrintStream out>;
+
+        $u10 = new java.lang.StringBuilder;
+
+     label06:
+        specialinvoke $u10.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("parsing = ");
+
+        virtualinvoke $u10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#12);
+
+        $u-1#19 = virtualinvoke $u10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $u9#16.<java.io.PrintStream: void println(java.lang.String)>($u-1#19);
+
+     label07:
+        $u-1#6 = virtualinvoke $u-1#12.<java.lang.String: int hashCode()>();
+
+     label08:
+        lookupswitch($u-1#6)
+        {
+            case -1349929691: goto label22;
+            case -1239391468: goto label20;
+            case 269306229: goto label18;
+            case 312750793: goto label16;
+            case 327855227: goto label14;
+            case 793277014: goto label12;
+            case 1382829617: goto label10;
+            default: goto label09;
+        };
+
+     label09:
+        goto label24;
+
+     label10:
+        $u9 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("StateSet");
+
+     label11:
+        if $u9 == 0 goto label09;
+
+        keyFrames = 4;
+
+        goto label25;
+
+     label12:
+        $u9 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("MotionScene");
+
+     label13:
+        if $u9 == 0 goto label09;
+
+        keyFrames = 0;
+
+        goto label25;
+
+     label14:
+        $u9 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("OnSwipe");
+
+     label15:
+        if $u9 == 0 goto label09;
+
+        keyFrames = 2;
+
+        goto label25;
+
+     label16:
+        $u9 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("OnClick");
+
+     label17:
+        if $u9 == 0 goto label09;
+
+        keyFrames = 3;
+
+        goto label25;
+
+     label18:
+        $u9 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("Transition");
+
+     label19:
+        if $u9 == 0 goto label09;
+
+        goto label25;
+
+     label20:
+        $u9 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("KeyFrameSet");
+
+     label21:
+        if $u9 == 0 goto label09;
+
+        keyFrames = 6;
+
+        goto label25;
+
+     label22:
+        $u9 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("ConstraintSet");
+
+     label23:
+        if $u9 == 0 goto label09;
+
+        keyFrames = 5;
+
+        goto label25;
+
+     label24:
+        keyFrames = -1;
+
+     label25:
+        lookupswitch(keyFrames)
+        {
+            case 0: goto label65;
+            case 1: goto label44;
+            case 2: goto label37;
+            case 3: goto label35;
+            case 4: goto label32;
+            case 5: goto label30;
+            case 6: goto label27;
+            default: goto label26;
+        };
+
+     label26:
+        goto label67;
+
+     label27:
+        keyFrames#45 = new androidx.constraintlayout.motion.widget.KeyFrames;
+
+     label28:
+        specialinvoke keyFrames#45.<androidx.constraintlayout.motion.widget.KeyFrames: void <init>(android.content.Context,org.xmlpull.v1.XmlPullParser)>($u13, $u-1#2);
+
+        $u-1#46 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$1300(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        virtualinvoke $u-1#46.<java.util.ArrayList: boolean add(java.lang.Object)>(keyFrames#45);
+
+     label29:
+        goto label69;
+
+     label30:
+        specialinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: void parseConstraintSet(android.content.Context,org.xmlpull.v1.XmlPullParser)>($u13, $u-1#2);
+
+     label31:
+        goto label69;
+
+     label32:
+        keyFrames#48 = new androidx.constraintlayout.widget.StateSet;
+
+     label33:
+        specialinvoke keyFrames#48.<androidx.constraintlayout.widget.StateSet: void <init>(android.content.Context,org.xmlpull.v1.XmlPullParser)>($u13, $u-1#2);
+
+     label34:
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.widget.StateSet mStateSet> = keyFrames#48;
+
+        goto label69;
+
+     label35:
+        virtualinvoke transition.<androidx.constraintlayout.motion.widget.MotionScene$Transition: void addOnClick(android.content.Context,org.xmlpull.v1.XmlPullParser)>($u13, $u-1#2);
+
+     label36:
+        goto label69;
+
+     label37:
+        if transition != null goto label41;
+
+     label38:
+        $u-1 = virtualinvoke $u13.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#12 = virtualinvoke $u-1.<android.content.res.Resources: java.lang.String getResourceEntryName(int)>($u14);
+
+        $u-1#6 = interfaceinvoke $u-1#2.<org.xmlpull.v1.XmlPullParser: int getLineNumber()>();
+
+     label39:
+        $u10 = new java.lang.StringBuilder;
+
+     label40:
+        specialinvoke $u10.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" OnSwipe (");
+
+        virtualinvoke $u10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#12);
+
+        virtualinvoke $u10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".xml:");
+
+        virtualinvoke $u10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u-1#6);
+
+        virtualinvoke $u10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $u-1#12 = virtualinvoke $u10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("MotionScene", $u-1#12);
+
+     label41:
+        keyFrames#61 = new androidx.constraintlayout.motion.widget.TouchResponse;
+
+        line = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout>;
+
+     label42:
+        specialinvoke keyFrames#61.<androidx.constraintlayout.motion.widget.TouchResponse: void <init>(android.content.Context,androidx.constraintlayout.motion.widget.MotionLayout,org.xmlpull.v1.XmlPullParser)>($u13, line, $u-1#2);
+
+        staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$202(androidx.constraintlayout.motion.widget.MotionScene$Transition,androidx.constraintlayout.motion.widget.TouchResponse)>(transition, keyFrames#61);
+
+     label43:
+        goto label69;
+
+     label44:
+        $u-1#46 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        line#64 = new androidx.constraintlayout.motion.widget.MotionScene$Transition;
+
+     label45:
+        specialinvoke line#64.<androidx.constraintlayout.motion.widget.MotionScene$Transition: void <init>(androidx.constraintlayout.motion.widget.MotionScene,android.content.Context,org.xmlpull.v1.XmlPullParser)>(this, $u13, $u-1#2);
+
+     label46:
+        transition = line#64;
+
+     label47:
+        virtualinvoke $u-1#46.<java.util.ArrayList: boolean add(java.lang.Object)>(line#64);
+
+     label48:
+        keyFrames#65 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if keyFrames#65 != null goto label56;
+
+     label49:
+        $u9 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: boolean access$1200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(line#64);
+
+     label50:
+        if $u9 != 0 goto label56;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition> = line#64;
+
+        if line#64 == null goto label56;
+
+     label51:
+        keyFrames#61 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(line#64);
+
+     label52:
+        if keyFrames#61 == null goto label56;
+
+        keyFrames#65 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+     label53:
+        keyFrames#61 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(keyFrames#65);
+
+     label54:
+        $u9 = this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mRtl>;
+
+     label55:
+        virtualinvoke keyFrames#61.<androidx.constraintlayout.motion.widget.TouchResponse: void setRTL(boolean)>($u9);
+
+     label56:
+        $u9 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: boolean access$1200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(line#64);
+
+     label57:
+        if $u9 == 0 goto label69;
+
+     label58:
+        $u-1#6 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$000(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(line#64);
+
+     label59:
+        if $u-1#6 != -1 goto label60;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mDefaultTransition> = line#64;
+
+        goto label62;
+
+     label60:
+        $u-1#46 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mAbstractTransitionList>;
+
+     label61:
+        virtualinvoke $u-1#46.<java.util.ArrayList: boolean add(java.lang.Object)>(line#64);
+
+     label62:
+        $u-1#46 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+     label63:
+        virtualinvoke $u-1#46.<java.util.ArrayList: boolean remove(java.lang.Object)>(line#64);
+
+     label64:
+        goto label69;
+
+     label65:
+        specialinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: void parseMotionSceneTags(android.content.Context,org.xmlpull.v1.XmlPullParser)>($u13, $u-1#2);
+
+     label66:
+        goto label69;
+
+     label67:
+        $u10 = new java.lang.StringBuilder;
+
+     label68:
+        specialinvoke $u10.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("WARNING UNKNOWN ATTRIBUTE ");
+
+        virtualinvoke $u10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#12);
+
+        $u-1#12 = virtualinvoke $u10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("MotionScene", $u-1#12);
+
+     label69:
+        goto label71;
+
+     label70:
+        interfaceinvoke $u-1#2.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+     label71:
+        $u-1#6 = interfaceinvoke $u-1#2.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+     label72:
+        goto label02;
+
+     label73:
+        goto label76;
+
+     label74:
+        transition#89 := @caughtexception;
+
+        virtualinvoke transition#89.<java.io.IOException: void printStackTrace()>();
+
+        return;
+
+     label75:
+        transition#90 := @caughtexception;
+
+        virtualinvoke transition#90.<org.xmlpull.v1.XmlPullParserException: void printStackTrace()>();
+
+     label76:
+        return;
+
+        catch org.xmlpull.v1.XmlPullParserException from label01 to label02 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label04 to label05 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label06 to label08 with label75;
+        catch java.io.IOException from label01 to label02 with label74;
+        catch java.io.IOException from label04 to label05 with label74;
+        catch java.io.IOException from label06 to label08 with label74;
+        catch org.xmlpull.v1.XmlPullParserException from label10 to label11 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label12 to label13 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label14 to label15 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label16 to label17 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label18 to label19 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label20 to label21 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label22 to label23 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label28 to label29 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label30 to label31 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label33 to label34 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label35 to label36 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label38 to label39 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label40 to label41 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label42 to label43 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label45 to label46 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label47 to label48 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label49 to label50 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label51 to label52 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label53 to label54 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label55 to label57 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label58 to label59 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label61 to label62 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label63 to label64 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label65 to label66 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label68 to label69 with label75;
+        catch org.xmlpull.v1.XmlPullParserException from label70 to label72 with label75;
+        catch java.io.IOException from label10 to label11 with label74;
+        catch java.io.IOException from label12 to label13 with label74;
+        catch java.io.IOException from label14 to label15 with label74;
+        catch java.io.IOException from label16 to label17 with label74;
+        catch java.io.IOException from label18 to label19 with label74;
+        catch java.io.IOException from label20 to label21 with label74;
+        catch java.io.IOException from label22 to label23 with label74;
+        catch java.io.IOException from label28 to label29 with label74;
+        catch java.io.IOException from label30 to label31 with label74;
+        catch java.io.IOException from label33 to label34 with label74;
+        catch java.io.IOException from label35 to label36 with label74;
+        catch java.io.IOException from label38 to label39 with label74;
+        catch java.io.IOException from label40 to label41 with label74;
+        catch java.io.IOException from label42 to label43 with label74;
+        catch java.io.IOException from label45 to label46 with label74;
+        catch java.io.IOException from label47 to label48 with label74;
+        catch java.io.IOException from label49 to label50 with label74;
+        catch java.io.IOException from label51 to label52 with label74;
+        catch java.io.IOException from label53 to label54 with label74;
+        catch java.io.IOException from label55 to label57 with label74;
+        catch java.io.IOException from label58 to label59 with label74;
+        catch java.io.IOException from label61 to label62 with label74;
+        catch java.io.IOException from label63 to label64 with label74;
+        catch java.io.IOException from label65 to label66 with label74;
+        catch java.io.IOException from label68 to label69 with label74;
+        catch java.io.IOException from label70 to label72 with label74;
+    }
+
+    private void parseConstraintSet(android.content.Context, org.xmlpull.v1.XmlPullParser)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        android.content.Context $u14;
+        org.xmlpull.v1.XmlPullParser $u15;
+        androidx.constraintlayout.widget.ConstraintSet set;
+        int $u-1, id, derivedId, i, $u-1#15;
+        byte $u6;
+        java.lang.String $u-1#8, $u-1#9, $u-1#13;
+        boolean $u10;
+        java.io.PrintStream $u10#11;
+        java.lang.StringBuilder $u11;
+        java.util.HashMap $u6#27;
+        java.lang.Integer $u-1#30;
+        androidx.constraintlayout.motion.widget.MotionLayout $u1;
+        android.util.SparseIntArray $u1#34;
+        android.util.SparseArray $u1#35;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u14 := @parameter0: android.content.Context;
+
+        $u15 := @parameter1: org.xmlpull.v1.XmlPullParser;
+
+        set = new androidx.constraintlayout.widget.ConstraintSet;
+
+        specialinvoke set.<androidx.constraintlayout.widget.ConstraintSet: void <init>()>();
+
+        virtualinvoke set.<androidx.constraintlayout.widget.ConstraintSet: void setForceId(boolean)>(0);
+
+        $u-1 = interfaceinvoke $u15.<org.xmlpull.v1.XmlPullParser: int getAttributeCount()>();
+
+        id = -1;
+
+        derivedId = -1;
+
+        i = 0;
+
+     label01:
+        $u6 = -1;
+
+        if i >= $u-1 goto label10;
+
+        $u-1#8 = interfaceinvoke $u15.<org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeName(int)>(i);
+
+        $u-1#9 = interfaceinvoke $u15.<org.xmlpull.v1.XmlPullParser: java.lang.String getAttributeValue(int)>(i);
+
+        $u10 = this.<androidx.constraintlayout.motion.widget.MotionScene: boolean DEBUG_DESKTOP>;
+
+        if $u10 == 0 goto label02;
+
+        $u10#11 = <java.lang.System: java.io.PrintStream out>;
+
+        $u11 = new java.lang.StringBuilder;
+
+        specialinvoke $u11.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("id string = ");
+
+        virtualinvoke $u11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#9);
+
+        $u-1#13 = virtualinvoke $u11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $u10#11.<java.io.PrintStream: void println(java.lang.String)>($u-1#13);
+
+     label02:
+        $u-1#15 = virtualinvoke $u-1#8.<java.lang.String: int hashCode()>();
+
+        if $u-1#15 == -1496482599 goto label05;
+
+        if $u-1#15 == 3355 goto label04;
+
+     label03:
+        goto label06;
+
+     label04:
+        $u10 = virtualinvoke $u-1#8.<java.lang.String: boolean equals(java.lang.Object)>("id");
+
+        if $u10 == 0 goto label03;
+
+        $u6 = 0;
+
+        goto label06;
+
+     label05:
+        $u10 = virtualinvoke $u-1#8.<java.lang.String: boolean equals(java.lang.Object)>("deriveConstraintsFrom");
+
+        if $u10 == 0 goto label03;
+
+        $u6 = 1;
+
+     label06:
+        if $u6 == 0 goto label08;
+
+        if $u6 == 1 goto label07;
+
+        goto label09;
+
+     label07:
+        derivedId = specialinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: int getId(android.content.Context,java.lang.String)>($u14, $u-1#9);
+
+        goto label09;
+
+     label08:
+        $u-1#15 = specialinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: int getId(android.content.Context,java.lang.String)>($u14, $u-1#9);
+
+        id = $u-1#15;
+
+        $u6#27 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.HashMap mConstraintSetIdMap>;
+
+        $u-1#8 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene: java.lang.String stripID(java.lang.String)>($u-1#9);
+
+        $u-1#30 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1#15);
+
+        virtualinvoke $u6#27.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u-1#8, $u-1#30);
+
+     label09:
+        i = i + 1;
+
+        goto label01;
+
+     label10:
+        if id == -1 goto label13;
+
+        $u1 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout>;
+
+        $u-1 = $u1.<androidx.constraintlayout.motion.widget.MotionLayout: int mDebugPath>;
+
+        if $u-1 == 0 goto label11;
+
+        virtualinvoke set.<androidx.constraintlayout.widget.ConstraintSet: void setValidateOnParse(boolean)>(1);
+
+     label11:
+        virtualinvoke set.<androidx.constraintlayout.widget.ConstraintSet: void load(android.content.Context,org.xmlpull.v1.XmlPullParser)>($u14, $u15);
+
+        if derivedId == -1 goto label12;
+
+        $u1#34 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseIntArray mDeriveMap>;
+
+        virtualinvoke $u1#34.<android.util.SparseIntArray: void put(int,int)>(id, derivedId);
+
+     label12:
+        $u1#35 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        virtualinvoke $u1#35.<android.util.SparseArray: void put(int,java.lang.Object)>(id, set);
+
+     label13:
+        return;
+    }
+
+    private void parseMotionSceneTags(android.content.Context, org.xmlpull.v1.XmlPullParser)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        android.content.Context $u7;
+        org.xmlpull.v1.XmlPullParser $u8;
+        android.util.AttributeSet $u-1;
+        int[] a;
+        android.content.res.TypedArray $u-1#3;
+        int $u-1#5, i, $u-1#7, $u5;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u7 := @parameter0: android.content.Context;
+
+        $u8 := @parameter1: org.xmlpull.v1.XmlPullParser;
+
+        $u-1 = staticinvoke <android.util.Xml: android.util.AttributeSet asAttributeSet(org.xmlpull.v1.XmlPullParser)>($u8);
+
+        a = <androidx.constraintlayout.widget.R$styleable: int[] MotionScene>;
+
+        $u-1#3 = virtualinvoke $u7.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[])>($u-1, a);
+
+        $u-1#5 = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getIndexCount()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1#5 goto label4;
+
+        $u-1#7 = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getIndex(int)>(i);
+
+        $u5 = <androidx.constraintlayout.widget.R$styleable: int MotionScene_defaultDuration>;
+
+        if $u-1#7 != $u5 goto label2;
+
+        $u5 = this.<androidx.constraintlayout.motion.widget.MotionScene: int mDefaultDuration>;
+
+        $u-1#7 = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getInt(int,int)>($u-1#7, $u5);
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: int mDefaultDuration> = $u-1#7;
+
+        goto label3;
+
+     label2:
+        $u5 = <androidx.constraintlayout.widget.R$styleable: int MotionScene_layoutDuringTransition>;
+
+        if $u-1#7 != $u5 goto label3;
+
+        $u-1#7 = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getInteger(int,int)>($u-1#7, 0);
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: int mLayoutDuringTransition> = $u-1#7;
+
+     label3:
+        i = i + 1;
+
+        goto label1;
+
+     label4:
+        virtualinvoke $u-1#3.<android.content.res.TypedArray: void recycle()>();
+
+        return;
+    }
+
+    private void readConstraintChain(int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u6, $u-1, $u-1#5;
+        android.util.SparseIntArray derivedFromId;
+        android.util.SparseArray cs;
+        java.lang.Object $u-1#8;
+        androidx.constraintlayout.widget.ConstraintSet cs#10, derivedFrom;
+        java.lang.StringBuilder $u3;
+        androidx.constraintlayout.motion.widget.MotionLayout $u4;
+        android.content.Context $u-1#18;
+        java.lang.String $u-1#20;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u6 := @parameter0: int;
+
+        derivedFromId = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseIntArray mDeriveMap>;
+
+        $u-1 = virtualinvoke derivedFromId.<android.util.SparseIntArray: int get(int)>($u6);
+
+        if $u-1 <= 0 goto label2;
+
+        derivedFromId = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseIntArray mDeriveMap>;
+
+        $u-1#5 = virtualinvoke derivedFromId.<android.util.SparseIntArray: int get(int)>($u6);
+
+        specialinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: void readConstraintChain(int)>($u-1#5);
+
+        cs = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1#8 = virtualinvoke cs.<android.util.SparseArray: java.lang.Object get(int)>($u6);
+
+        cs#10 = (androidx.constraintlayout.widget.ConstraintSet) $u-1#8;
+
+        cs = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1#8 = virtualinvoke cs.<android.util.SparseArray: java.lang.Object get(int)>($u-1);
+
+        derivedFrom = (androidx.constraintlayout.widget.ConstraintSet) $u-1#8;
+
+        if derivedFrom != null goto label1;
+
+        $u3 = new java.lang.StringBuilder;
+
+        specialinvoke $u3.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ERROR! invalid deriveConstraintsFrom: @id/");
+
+        $u4 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout>;
+
+        $u-1#18 = virtualinvoke $u4.<androidx.constraintlayout.motion.widget.MotionLayout: android.content.Context getContext()>();
+
+        $u-1#20 = staticinvoke <androidx.constraintlayout.motion.widget.Debug: java.lang.String getName(android.content.Context,int)>($u-1#18, $u-1);
+
+        virtualinvoke $u3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#20);
+
+        $u-1#20 = virtualinvoke $u3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("MotionScene", $u-1#20);
+
+        return;
+
+     label1:
+        virtualinvoke cs#10.<androidx.constraintlayout.widget.ConstraintSet: void readFallback(androidx.constraintlayout.widget.ConstraintSet)>(derivedFrom);
+
+        derivedFromId = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseIntArray mDeriveMap>;
+
+        virtualinvoke derivedFromId.<android.util.SparseIntArray: void put(int,int)>($u6, -1);
+
+     label2:
+        return;
+    }
+
+    public static java.lang.String stripID(java.lang.String)
+    {
+        java.lang.String $u2;
+        int $u-1;
+
+        $u2 := @parameter0: java.lang.String;
+
+        if $u2 != null goto label1;
+
+        return "";
+
+     label1:
+        $u-1 = virtualinvoke $u2.<java.lang.String: int indexOf(int)>(47);
+
+        if $u-1 >= 0 goto label2;
+
+        return $u2;
+
+     label2:
+        $u-1 = $u-1 + 1;
+
+        $u2 = virtualinvoke $u2.<java.lang.String: java.lang.String substring(int)>($u-1);
+
+        return $u2;
+    }
+
+    public void addOnClickListeners(androidx.constraintlayout.motion.widget.MotionLayout, int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionLayout $u5;
+        int $u6, $u-1#11;
+        java.util.ArrayList $u0;
+        java.util.Iterator $u-1, $u-1#15;
+        boolean $u-1#4;
+        java.lang.Object $u-1#6;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition transition;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick onClick;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u5 := @parameter0: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        $u6 := @parameter1: int;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        $u-1 = virtualinvoke $u0.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label01:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label03;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        transition = (androidx.constraintlayout.motion.widget.MotionScene$Transition) $u-1#6;
+
+        $u0 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$400(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        $u-1#11 = virtualinvoke $u0.<java.util.ArrayList: int size()>();
+
+        if $u-1#11 <= 0 goto label01;
+
+        $u0 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$400(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        $u-1#15 = virtualinvoke $u0.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label02:
+        $u-1#4 = interfaceinvoke $u-1#15.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label01;
+
+        $u-1#6 = interfaceinvoke $u-1#15.<java.util.Iterator: java.lang.Object next()>();
+
+        onClick = (androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick) $u-1#6;
+
+        virtualinvoke onClick.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: void removeOnClickListeners(androidx.constraintlayout.motion.widget.MotionLayout)>($u5);
+
+        goto label02;
+
+     label03:
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mAbstractTransitionList>;
+
+        $u-1 = virtualinvoke $u0.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label04:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label06;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        transition = (androidx.constraintlayout.motion.widget.MotionScene$Transition) $u-1#6;
+
+        $u0 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$400(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        $u-1#11 = virtualinvoke $u0.<java.util.ArrayList: int size()>();
+
+        if $u-1#11 <= 0 goto label04;
+
+        $u0 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$400(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        $u-1#15 = virtualinvoke $u0.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label05:
+        $u-1#4 = interfaceinvoke $u-1#15.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label04;
+
+        $u-1#6 = interfaceinvoke $u-1#15.<java.util.Iterator: java.lang.Object next()>();
+
+        onClick = (androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick) $u-1#6;
+
+        virtualinvoke onClick.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: void removeOnClickListeners(androidx.constraintlayout.motion.widget.MotionLayout)>($u5);
+
+        goto label05;
+
+     label06:
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        $u-1 = virtualinvoke $u0.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label07:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label09;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        transition = (androidx.constraintlayout.motion.widget.MotionScene$Transition) $u-1#6;
+
+        $u0 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$400(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        $u-1#11 = virtualinvoke $u0.<java.util.ArrayList: int size()>();
+
+        if $u-1#11 <= 0 goto label07;
+
+        $u0 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$400(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        $u-1#15 = virtualinvoke $u0.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label08:
+        $u-1#4 = interfaceinvoke $u-1#15.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label07;
+
+        $u-1#6 = interfaceinvoke $u-1#15.<java.util.Iterator: java.lang.Object next()>();
+
+        onClick = (androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick) $u-1#6;
+
+        virtualinvoke onClick.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: void addOnClickListeners(androidx.constraintlayout.motion.widget.MotionLayout,int,androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u5, $u6, transition);
+
+        goto label08;
+
+     label09:
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mAbstractTransitionList>;
+
+        $u-1 = virtualinvoke $u0.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label10:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label12;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        transition = (androidx.constraintlayout.motion.widget.MotionScene$Transition) $u-1#6;
+
+        $u0 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$400(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        $u-1#11 = virtualinvoke $u0.<java.util.ArrayList: int size()>();
+
+        if $u-1#11 <= 0 goto label10;
+
+        $u0 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$400(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        $u-1#15 = virtualinvoke $u0.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label11:
+        $u-1#4 = interfaceinvoke $u-1#15.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label10;
+
+        $u-1#6 = interfaceinvoke $u-1#15.<java.util.Iterator: java.lang.Object next()>();
+
+        onClick = (androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick) $u-1#6;
+
+        virtualinvoke onClick.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: void addOnClickListeners(androidx.constraintlayout.motion.widget.MotionLayout,int,androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u5, $u6, transition);
+
+        goto label11;
+
+     label12:
+        return;
+    }
+
+    public void addTransition(androidx.constraintlayout.motion.widget.MotionScene$Transition)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u3;
+        int $u-1;
+        java.util.ArrayList $u1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u3 := @parameter0: androidx.constraintlayout.motion.widget.MotionScene$Transition;
+
+        $u-1 = specialinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: int getIndex(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u3);
+
+        if $u-1 != -1 goto label1;
+
+        $u1 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        virtualinvoke $u1.<java.util.ArrayList: boolean add(java.lang.Object)>($u3);
+
+        return;
+
+     label1:
+        $u1 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        virtualinvoke $u1.<java.util.ArrayList: java.lang.Object set(int,java.lang.Object)>($u-1, $u3);
+
+        return;
+    }
+
+    boolean autoTransition(androidx.constraintlayout.motion.widget.MotionLayout, int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionLayout $u8;
+        int $u9, $u-1#12;
+        boolean $u-1;
+        java.util.ArrayList $u0;
+        java.util.Iterator $u-1#5;
+        java.lang.Object $u-1#9;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition transition;
+        androidx.constraintlayout.motion.widget.MotionLayout$TransitionState $u0#21;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u8 := @parameter0: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        $u9 := @parameter1: int;
+
+        $u-1 = specialinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: boolean isProcessingTouch()>();
+
+        if $u-1 == 0 goto label01;
+
+        return 0;
+
+     label01:
+        $u-1 = this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mDisableAutoTransition>;
+
+        if $u-1 == 0 goto label02;
+
+        return 0;
+
+     label02:
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        $u-1#5 = virtualinvoke $u0.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label03:
+        $u-1 = interfaceinvoke $u-1#5.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1 == 0 goto label10;
+
+        $u-1#9 = interfaceinvoke $u-1#5.<java.util.Iterator: java.lang.Object next()>();
+
+        transition = (androidx.constraintlayout.motion.widget.MotionScene$Transition) $u-1#9;
+
+        $u-1#12 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$600(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#12 != 0 goto label04;
+
+        goto label03;
+
+     label04:
+        $u-1#12 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$100(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u9 != $u-1#12 goto label07;
+
+        $u-1#12 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$600(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#12 == 4 goto label05;
+
+        $u-1#12 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$600(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#12 != 2 goto label07;
+
+     label05:
+        $u0#21 = <androidx.constraintlayout.motion.widget.MotionLayout$TransitionState: androidx.constraintlayout.motion.widget.MotionLayout$TransitionState FINISHED>;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(androidx.constraintlayout.motion.widget.MotionLayout$TransitionState)>($u0#21);
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setTransition(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        $u9 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$600(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u9 != 4 goto label06;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void transitionToEnd()>();
+
+        $u0#21 = <androidx.constraintlayout.motion.widget.MotionLayout$TransitionState: androidx.constraintlayout.motion.widget.MotionLayout$TransitionState SETUP>;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(androidx.constraintlayout.motion.widget.MotionLayout$TransitionState)>($u0#21);
+
+        $u0#21 = <androidx.constraintlayout.motion.widget.MotionLayout$TransitionState: androidx.constraintlayout.motion.widget.MotionLayout$TransitionState MOVING>;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(androidx.constraintlayout.motion.widget.MotionLayout$TransitionState)>($u0#21);
+
+        return 1;
+
+     label06:
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setProgress(float)>(1.0F);
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void evaluate(boolean)>(1);
+
+        $u0#21 = <androidx.constraintlayout.motion.widget.MotionLayout$TransitionState: androidx.constraintlayout.motion.widget.MotionLayout$TransitionState SETUP>;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(androidx.constraintlayout.motion.widget.MotionLayout$TransitionState)>($u0#21);
+
+        $u0#21 = <androidx.constraintlayout.motion.widget.MotionLayout$TransitionState: androidx.constraintlayout.motion.widget.MotionLayout$TransitionState MOVING>;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(androidx.constraintlayout.motion.widget.MotionLayout$TransitionState)>($u0#21);
+
+        $u0#21 = <androidx.constraintlayout.motion.widget.MotionLayout$TransitionState: androidx.constraintlayout.motion.widget.MotionLayout$TransitionState FINISHED>;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(androidx.constraintlayout.motion.widget.MotionLayout$TransitionState)>($u0#21);
+
+        return 1;
+
+     label07:
+        $u-1#12 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$000(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u9 != $u-1#12 goto label03;
+
+        $u-1#12 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$600(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#12 == 3 goto label08;
+
+        $u-1#12 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$600(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#12 != 1 goto label03;
+
+     label08:
+        $u0#21 = <androidx.constraintlayout.motion.widget.MotionLayout$TransitionState: androidx.constraintlayout.motion.widget.MotionLayout$TransitionState FINISHED>;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(androidx.constraintlayout.motion.widget.MotionLayout$TransitionState)>($u0#21);
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setTransition(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        $u9 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$600(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u9 != 3 goto label09;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void transitionToStart()>();
+
+        $u0#21 = <androidx.constraintlayout.motion.widget.MotionLayout$TransitionState: androidx.constraintlayout.motion.widget.MotionLayout$TransitionState SETUP>;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(androidx.constraintlayout.motion.widget.MotionLayout$TransitionState)>($u0#21);
+
+        $u0#21 = <androidx.constraintlayout.motion.widget.MotionLayout$TransitionState: androidx.constraintlayout.motion.widget.MotionLayout$TransitionState MOVING>;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(androidx.constraintlayout.motion.widget.MotionLayout$TransitionState)>($u0#21);
+
+        return 1;
+
+     label09:
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setProgress(float)>(0.0F);
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void evaluate(boolean)>(1);
+
+        $u0#21 = <androidx.constraintlayout.motion.widget.MotionLayout$TransitionState: androidx.constraintlayout.motion.widget.MotionLayout$TransitionState SETUP>;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(androidx.constraintlayout.motion.widget.MotionLayout$TransitionState)>($u0#21);
+
+        $u0#21 = <androidx.constraintlayout.motion.widget.MotionLayout$TransitionState: androidx.constraintlayout.motion.widget.MotionLayout$TransitionState MOVING>;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(androidx.constraintlayout.motion.widget.MotionLayout$TransitionState)>($u0#21);
+
+        $u0#21 = <androidx.constraintlayout.motion.widget.MotionLayout$TransitionState: androidx.constraintlayout.motion.widget.MotionLayout$TransitionState FINISHED>;
+
+        virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(androidx.constraintlayout.motion.widget.MotionLayout$TransitionState)>($u0#21);
+
+        return 1;
+
+     label10:
+        return 0;
+    }
+
+    public androidx.constraintlayout.motion.widget.MotionScene$Transition bestTransitionFor(int, float, float, android.view.MotionEvent)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u10, $u-1#46;
+        float $u11, $u12, max, $u-1#25, $u-1#27;
+        android.view.MotionEvent $u13;
+        android.graphics.RectF cache, $u-1#23;
+        java.util.List $u-1;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition best, transition;
+        java.util.Iterator $u-1#7;
+        boolean $u-1#8;
+        java.lang.Object $u-1#10;
+        androidx.constraintlayout.motion.widget.TouchResponse $u-1#15;
+        androidx.constraintlayout.motion.widget.MotionLayout val;
+        byte $u8;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u10 := @parameter0: int;
+
+        $u11 := @parameter1: float;
+
+        $u12 := @parameter2: float;
+
+        $u13 := @parameter3: android.view.MotionEvent;
+
+        if $u10 == -1 goto label8;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.List getTransitionsWithState(int)>($u10);
+
+        max = 0.0F;
+
+        best = null;
+
+        cache = new android.graphics.RectF;
+
+        specialinvoke cache.<android.graphics.RectF: void <init>()>();
+
+        $u-1#7 = interfaceinvoke $u-1.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#8 = interfaceinvoke $u-1#7.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#8 == 0 goto label7;
+
+        $u-1#10 = interfaceinvoke $u-1#7.<java.util.Iterator: java.lang.Object next()>();
+
+        transition = (androidx.constraintlayout.motion.widget.MotionScene$Transition) $u-1#10;
+
+        $u-1#8 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: boolean access$500(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#8 == 0 goto label2;
+
+        goto label1;
+
+     label2:
+        $u-1#15 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#15 == null goto label1;
+
+        $u-1#15 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        $u-1#8 = this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mRtl>;
+
+        virtualinvoke $u-1#15.<androidx.constraintlayout.motion.widget.TouchResponse: void setRTL(boolean)>($u-1#8);
+
+        $u-1#15 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        val = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout>;
+
+        $u-1#23 = virtualinvoke $u-1#15.<androidx.constraintlayout.motion.widget.TouchResponse: android.graphics.RectF getTouchRegion(android.view.ViewGroup,android.graphics.RectF)>(val, cache);
+
+        if $u-1#23 == null goto label3;
+
+        if $u13 == null goto label3;
+
+        $u-1#25 = virtualinvoke $u13.<android.view.MotionEvent: float getX()>();
+
+        $u-1#27 = virtualinvoke $u13.<android.view.MotionEvent: float getY()>();
+
+        $u-1#8 = virtualinvoke $u-1#23.<android.graphics.RectF: boolean contains(float,float)>($u-1#25, $u-1#27);
+
+        if $u-1#8 != 0 goto label3;
+
+        goto label1;
+
+     label3:
+        $u-1#15 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        val = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout>;
+
+        $u-1#23 = virtualinvoke $u-1#15.<androidx.constraintlayout.motion.widget.TouchResponse: android.graphics.RectF getTouchRegion(android.view.ViewGroup,android.graphics.RectF)>(val, cache);
+
+        if $u-1#23 == null goto label4;
+
+        if $u13 == null goto label4;
+
+        $u-1#25 = virtualinvoke $u13.<android.view.MotionEvent: float getX()>();
+
+        $u-1#27 = virtualinvoke $u13.<android.view.MotionEvent: float getY()>();
+
+        $u-1#8 = virtualinvoke $u-1#23.<android.graphics.RectF: boolean contains(float,float)>($u-1#25, $u-1#27);
+
+        if $u-1#8 != 0 goto label4;
+
+        goto label1;
+
+     label4:
+        $u-1#15 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        $u-1#25 = virtualinvoke $u-1#15.<androidx.constraintlayout.motion.widget.TouchResponse: float dot(float,float)>($u11, $u12);
+
+        $u-1#46 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$000(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#46 != $u10 goto label5;
+
+        $u-1#25 = $u-1#25 * -1.0F;
+
+        goto label6;
+
+     label5:
+        $u-1#25 = $u-1#25 * 1.1F;
+
+     label6:
+        $u8 = $u-1#25 cmpl max;
+
+        if $u8 <= 0 goto label1;
+
+        max = $u-1#25;
+
+        best = transition;
+
+        goto label1;
+
+     label7:
+        return best;
+
+     label8:
+        best = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        return best;
+    }
+
+    public void disableAutoTransition(boolean)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        boolean $u1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u1 := @parameter0: boolean;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mDisableAutoTransition> = $u1;
+
+        return;
+    }
+
+    public int gatPathMotionArc()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u-1;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$1800(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        return $u-1;
+
+     label1:
+        return -1;
+    }
+
+    androidx.constraintlayout.widget.ConstraintSet getConstraintSet(int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u2;
+        androidx.constraintlayout.widget.ConstraintSet $u-1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u2 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.widget.ConstraintSet getConstraintSet(int,int,int)>($u2, -1, -1);
+
+        return $u-1;
+    }
+
+    androidx.constraintlayout.widget.ConstraintSet getConstraintSet(int, int, int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u5, $u6, $u4, $u-1#12;
+        boolean cid;
+        java.io.PrintStream cid#3;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1;
+        android.util.SparseArray $u2;
+        androidx.constraintlayout.widget.StateSet cid#16;
+        java.lang.Object $u-1#21;
+        androidx.constraintlayout.motion.widget.MotionLayout $u1#25;
+        android.content.Context $u-1#26;
+        androidx.constraintlayout.widget.ConstraintSet cid#40;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: int;
+
+        $u6 := @parameter2: int;
+
+        cid = this.<androidx.constraintlayout.motion.widget.MotionScene: boolean DEBUG_DESKTOP>;
+
+        if cid == 0 goto label1;
+
+        cid#3 = <java.lang.System: java.io.PrintStream out>;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("id ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u4);
+
+        $u-1 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke cid#3.<java.io.PrintStream: void println(java.lang.String)>($u-1);
+
+        cid#3 = <java.lang.System: java.io.PrintStream out>;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("size ");
+
+        $u2 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1#12 = virtualinvoke $u2.<android.util.SparseArray: int size()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u-1#12);
+
+        $u-1 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke cid#3.<java.io.PrintStream: void println(java.lang.String)>($u-1);
+
+     label1:
+        cid#16 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.widget.StateSet mStateSet>;
+
+        if cid#16 == null goto label2;
+
+        $u5 = virtualinvoke cid#16.<androidx.constraintlayout.widget.StateSet: int stateGetConstraintID(int,int,int)>($u4, $u5, $u6);
+
+        if $u5 == -1 goto label2;
+
+        $u4 = $u5;
+
+     label2:
+        $u2 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1#21 = virtualinvoke $u2.<android.util.SparseArray: java.lang.Object get(int)>($u4);
+
+        if $u-1#21 != null goto label3;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Warning could not find ConstraintSet id/");
+
+        $u1#25 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout>;
+
+        $u-1#26 = virtualinvoke $u1#25.<androidx.constraintlayout.motion.widget.MotionLayout: android.content.Context getContext()>();
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.Debug: java.lang.String getName(android.content.Context,int)>($u-1#26, $u4);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" In MotionScene");
+
+        $u-1 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("MotionScene", $u-1);
+
+        $u2 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u4 = virtualinvoke $u2.<android.util.SparseArray: int keyAt(int)>(0);
+
+        $u-1#21 = virtualinvoke $u2.<android.util.SparseArray: java.lang.Object get(int)>($u4);
+
+        cid#40 = (androidx.constraintlayout.widget.ConstraintSet) $u-1#21;
+
+        return cid#40;
+
+     label3:
+        $u2 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1#21 = virtualinvoke $u2.<android.util.SparseArray: java.lang.Object get(int)>($u4);
+
+        cid#40 = (androidx.constraintlayout.widget.ConstraintSet) $u-1#21;
+
+        return cid#40;
+    }
+
+    public androidx.constraintlayout.widget.ConstraintSet getConstraintSet(android.content.Context, java.lang.String)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        android.content.Context $u7;
+        java.lang.String $u8, $u-1, $u-1#33;
+        boolean i;
+        java.io.PrintStream i#2;
+        java.lang.StringBuilder key;
+        android.util.SparseArray IdAsString;
+        int $u-1#11, $u-1#17;
+        android.content.res.Resources $u-1#22;
+        java.lang.Object $u-1#38;
+        androidx.constraintlayout.widget.ConstraintSet $u3;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u7 := @parameter0: android.content.Context;
+
+        $u8 := @parameter1: java.lang.String;
+
+        i = this.<androidx.constraintlayout.motion.widget.MotionScene: boolean DEBUG_DESKTOP>;
+
+        if i == 0 goto label1;
+
+        i#2 = <java.lang.System: java.io.PrintStream out>;
+
+        key = new java.lang.StringBuilder;
+
+        specialinvoke key.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("id ");
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u8);
+
+        $u-1 = virtualinvoke key.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke i#2.<java.io.PrintStream: void println(java.lang.String)>($u-1);
+
+        i#2 = <java.lang.System: java.io.PrintStream out>;
+
+        key = new java.lang.StringBuilder;
+
+        specialinvoke key.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("size ");
+
+        IdAsString = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1#11 = virtualinvoke IdAsString.<android.util.SparseArray: int size()>();
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u-1#11);
+
+        $u-1 = virtualinvoke key.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke i#2.<java.io.PrintStream: void println(java.lang.String)>($u-1);
+
+     label1:
+        $u-1#11 = 0;
+
+     label2:
+        IdAsString = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1#17 = virtualinvoke IdAsString.<android.util.SparseArray: int size()>();
+
+        if $u-1#11 >= $u-1#17 goto label5;
+
+        IdAsString = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1#17 = virtualinvoke IdAsString.<android.util.SparseArray: int keyAt(int)>($u-1#11);
+
+        $u-1#22 = virtualinvoke $u7.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1 = virtualinvoke $u-1#22.<android.content.res.Resources: java.lang.String getResourceName(int)>($u-1#17);
+
+        i = this.<androidx.constraintlayout.motion.widget.MotionScene: boolean DEBUG_DESKTOP>;
+
+        if i == 0 goto label3;
+
+        i#2 = <java.lang.System: java.io.PrintStream out>;
+
+        key = new java.lang.StringBuilder;
+
+        specialinvoke key.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Id for <");
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u-1#11);
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("> is <");
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("> looking for <");
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u8);
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(">");
+
+        $u-1#33 = virtualinvoke key.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke i#2.<java.io.PrintStream: void println(java.lang.String)>($u-1#33);
+
+     label3:
+        i = virtualinvoke $u8.<java.lang.String: boolean equals(java.lang.Object)>($u-1);
+
+        if i == 0 goto label4;
+
+        IdAsString = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1#38 = virtualinvoke IdAsString.<android.util.SparseArray: java.lang.Object get(int)>($u-1#17);
+
+        $u3 = (androidx.constraintlayout.widget.ConstraintSet) $u-1#38;
+
+        return $u3;
+
+     label4:
+        $u-1#11 = $u-1#11 + 1;
+
+        goto label2;
+
+     label5:
+        return null;
+    }
+
+    public int[] getConstraintSetIds()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        android.util.SparseArray ids;
+        int $u-1, $u2;
+        int[] ids#4;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        ids = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1 = virtualinvoke ids.<android.util.SparseArray: int size()>();
+
+        ids#4 = newarray (int)[$u-1];
+
+        $u-1 = 0;
+
+     label1:
+        $u2 = lengthof ids#4;
+
+        if $u-1 >= $u2 goto label2;
+
+        ids = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u2 = virtualinvoke ids.<android.util.SparseArray: int keyAt(int)>($u-1);
+
+        ids#4[$u-1] = $u2;
+
+        $u-1 = $u-1 + 1;
+
+        goto label1;
+
+     label2:
+        return ids#4;
+    }
+
+    public java.util.ArrayList getDefinedTransitions()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        java.util.ArrayList ret0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        ret0 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        return ret0;
+    }
+
+    public int getDuration()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u-1;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$1700(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        return $u-1;
+
+     label1:
+        $u-1 = this.<androidx.constraintlayout.motion.widget.MotionScene: int mDefaultDuration>;
+
+        return $u-1;
+    }
+
+    int getEndId()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u-1;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 != null goto label1;
+
+        return -1;
+
+     label1:
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$000(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        return $u-1;
+    }
+
+    public android.view.animation.Interpolator getInterpolator()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition easing;
+        int $u-1;
+        android.view.animation.BounceInterpolator easing#11;
+        android.view.animation.AnticipateInterpolator easing#12;
+        android.view.animation.DecelerateInterpolator easing#13;
+        android.view.animation.AccelerateInterpolator easing#14;
+        android.view.animation.AccelerateDecelerateInterpolator easing#15;
+        java.lang.String $u-1#17;
+        androidx.constraintlayout.motion.utils.Easing $u-1#19;
+        androidx.constraintlayout.motion.widget.MotionScene$1 $u1;
+        androidx.constraintlayout.motion.widget.MotionLayout easing#22;
+        android.content.Context $u-1#23;
+        android.view.animation.Interpolator $u-1#28;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        easing = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$1400(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(easing);
+
+        if $u-1 == -2 goto label7;
+
+        if $u-1 == -1 goto label6;
+
+        if $u-1 == 0 goto label5;
+
+        if $u-1 == 1 goto label4;
+
+        if $u-1 == 2 goto label3;
+
+        if $u-1 == 4 goto label2;
+
+        if $u-1 == 5 goto label1;
+
+        return null;
+
+     label1:
+        easing#11 = new android.view.animation.BounceInterpolator;
+
+        specialinvoke easing#11.<android.view.animation.BounceInterpolator: void <init>()>();
+
+        return easing#11;
+
+     label2:
+        easing#12 = new android.view.animation.AnticipateInterpolator;
+
+        specialinvoke easing#12.<android.view.animation.AnticipateInterpolator: void <init>()>();
+
+        return easing#12;
+
+     label3:
+        easing#13 = new android.view.animation.DecelerateInterpolator;
+
+        specialinvoke easing#13.<android.view.animation.DecelerateInterpolator: void <init>()>();
+
+        return easing#13;
+
+     label4:
+        easing#14 = new android.view.animation.AccelerateInterpolator;
+
+        specialinvoke easing#14.<android.view.animation.AccelerateInterpolator: void <init>()>();
+
+        return easing#14;
+
+     label5:
+        easing#15 = new android.view.animation.AccelerateDecelerateInterpolator;
+
+        specialinvoke easing#15.<android.view.animation.AccelerateDecelerateInterpolator: void <init>()>();
+
+        return easing#15;
+
+     label6:
+        easing = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1#17 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.lang.String access$1500(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(easing);
+
+        $u-1#19 = staticinvoke <androidx.constraintlayout.motion.utils.Easing: androidx.constraintlayout.motion.utils.Easing getInterpolator(java.lang.String)>($u-1#17);
+
+        $u1 = new androidx.constraintlayout.motion.widget.MotionScene$1;
+
+        specialinvoke $u1.<androidx.constraintlayout.motion.widget.MotionScene$1: void <init>(androidx.constraintlayout.motion.widget.MotionScene,androidx.constraintlayout.motion.utils.Easing)>(this, $u-1#19);
+
+        return $u1;
+
+     label7:
+        easing#22 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout>;
+
+        $u-1#23 = virtualinvoke easing#22.<androidx.constraintlayout.motion.widget.MotionLayout: android.content.Context getContext()>();
+
+        easing = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$1600(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(easing);
+
+        $u-1#28 = staticinvoke <android.view.animation.AnimationUtils: android.view.animation.Interpolator loadInterpolator(android.content.Context,int)>($u-1#23, $u-1);
+
+        return $u-1#28;
+    }
+
+    androidx.constraintlayout.motion.widget.Key getKeyFrame(android.content.Context, int, int, int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        android.content.Context $u10;
+        int $u11, $u12, $u13, $u-1#20;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+        java.util.ArrayList $u-1;
+        java.util.Iterator $u-1#4, $u-1#13, $u-1#26;
+        boolean $u-1#6;
+        java.lang.Object $u-1#8;
+        androidx.constraintlayout.motion.widget.KeyFrames keyFrames;
+        java.util.Set $u-1#11;
+        java.lang.Integer integer;
+        androidx.constraintlayout.motion.widget.Key key;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u10 := @parameter0: android.content.Context;
+
+        $u11 := @parameter1: int;
+
+        $u12 := @parameter2: int;
+
+        $u13 := @parameter3: int;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 != null goto label1;
+
+        return null;
+
+     label1:
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$1300(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        $u-1#4 = virtualinvoke $u-1.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label2:
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#6 == 0 goto label5;
+
+        $u-1#8 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        keyFrames = (androidx.constraintlayout.motion.widget.KeyFrames) $u-1#8;
+
+        $u-1#11 = virtualinvoke keyFrames.<androidx.constraintlayout.motion.widget.KeyFrames: java.util.Set getKeys()>();
+
+        $u-1#13 = interfaceinvoke $u-1#11.<java.util.Set: java.util.Iterator iterator()>();
+
+     label3:
+        $u-1#6 = interfaceinvoke $u-1#13.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#6 == 0 goto label2;
+
+        $u-1#8 = interfaceinvoke $u-1#13.<java.util.Iterator: java.lang.Object next()>();
+
+        integer = (java.lang.Integer) $u-1#8;
+
+        $u-1#20 = virtualinvoke integer.<java.lang.Integer: int intValue()>();
+
+        if $u12 != $u-1#20 goto label3;
+
+        $u-1#20 = virtualinvoke integer.<java.lang.Integer: int intValue()>();
+
+        $u-1 = virtualinvoke keyFrames.<androidx.constraintlayout.motion.widget.KeyFrames: java.util.ArrayList getKeyFramesForView(int)>($u-1#20);
+
+        $u-1#26 = virtualinvoke $u-1.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label4:
+        $u-1#6 = interfaceinvoke $u-1#26.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#6 == 0 goto label3;
+
+        $u-1#8 = interfaceinvoke $u-1#26.<java.util.Iterator: java.lang.Object next()>();
+
+        key = (androidx.constraintlayout.motion.widget.Key) $u-1#8;
+
+        $u-1#20 = key.<androidx.constraintlayout.motion.widget.Key: int mFramePosition>;
+
+        if $u-1#20 != $u13 goto label4;
+
+        $u-1#20 = key.<androidx.constraintlayout.motion.widget.Key: int mType>;
+
+        if $u-1#20 != $u11 goto label4;
+
+        return key;
+
+     label5:
+        return null;
+    }
+
+    public void getKeyFrames(androidx.constraintlayout.motion.widget.MotionController)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionController $u3;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+        java.util.ArrayList $u-1;
+        java.util.Iterator $u-1#5;
+        boolean $u-1#7;
+        java.lang.Object $u-1#9;
+        androidx.constraintlayout.motion.widget.KeyFrames keyFrames;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u3 := @parameter0: androidx.constraintlayout.motion.widget.MotionController;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 != null goto label3;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mDefaultTransition>;
+
+        if $u0 == null goto label2;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$1300(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        $u-1#5 = virtualinvoke $u-1.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#7 = interfaceinvoke $u-1#5.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#7 == 0 goto label5;
+
+        $u-1#9 = interfaceinvoke $u-1#5.<java.util.Iterator: java.lang.Object next()>();
+
+        keyFrames = (androidx.constraintlayout.motion.widget.KeyFrames) $u-1#9;
+
+        virtualinvoke keyFrames.<androidx.constraintlayout.motion.widget.KeyFrames: void addFrames(androidx.constraintlayout.motion.widget.MotionController)>($u3);
+
+        goto label1;
+
+     label2:
+        return;
+
+     label3:
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$1300(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        $u-1#5 = virtualinvoke $u-1.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label4:
+        $u-1#7 = interfaceinvoke $u-1#5.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#7 == 0 goto label5;
+
+        $u-1#9 = interfaceinvoke $u-1#5.<java.util.Iterator: java.lang.Object next()>();
+
+        keyFrames = (androidx.constraintlayout.motion.widget.KeyFrames) $u-1#9;
+
+        virtualinvoke keyFrames.<androidx.constraintlayout.motion.widget.KeyFrames: void addFrames(androidx.constraintlayout.motion.widget.MotionController)>($u3);
+
+        goto label4;
+
+     label5:
+        return;
+    }
+
+    float getMaxAcceleration()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+        androidx.constraintlayout.motion.widget.TouchResponse $u-1;
+        float $u-1#7;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        if $u-1 == null goto label1;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        $u-1#7 = virtualinvoke $u-1.<androidx.constraintlayout.motion.widget.TouchResponse: float getMaxAcceleration()>();
+
+        return $u-1#7;
+
+     label1:
+        return 0.0F;
+    }
+
+    float getMaxVelocity()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+        androidx.constraintlayout.motion.widget.TouchResponse $u-1;
+        float $u-1#7;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        if $u-1 == null goto label1;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        $u-1#7 = virtualinvoke $u-1.<androidx.constraintlayout.motion.widget.TouchResponse: float getMaxVelocity()>();
+
+        return $u-1#7;
+
+     label1:
+        return 0.0F;
+    }
+
+    boolean getMoveWhenScrollAtTop()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+        androidx.constraintlayout.motion.widget.TouchResponse $u-1;
+        boolean $u-1#7;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        if $u-1 == null goto label1;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        $u-1#7 = virtualinvoke $u-1.<androidx.constraintlayout.motion.widget.TouchResponse: boolean getMoveWhenScrollAtTop()>();
+
+        return $u-1#7;
+
+     label1:
+        return 0;
+    }
+
+    public float getPathPercent(android.view.View, int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        android.view.View $u2;
+        int $u3;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: int;
+
+        return 0.0F;
+    }
+
+    float getProgressDirection(float, float)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        float $u2, $u3;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+        androidx.constraintlayout.motion.widget.TouchResponse $u-1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u2 := @parameter0: float;
+
+        $u3 := @parameter1: float;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        if $u-1 == null goto label1;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        $u2 = virtualinvoke $u-1.<androidx.constraintlayout.motion.widget.TouchResponse: float getProgressDirection(float,float)>($u2, $u3);
+
+        return $u2;
+
+     label1:
+        return 0.0F;
+    }
+
+    public float getStaggered()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        float $u-1;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: float access$1900(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        return $u-1;
+
+     label1:
+        return 0.0F;
+    }
+
+    int getStartId()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u-1;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 != null goto label1;
+
+        return -1;
+
+     label1:
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$100(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        return $u-1;
+    }
+
+    public androidx.constraintlayout.motion.widget.MotionScene$Transition getTransitionById(int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u4, $u-1#9;
+        java.util.ArrayList $u0;
+        java.util.Iterator $u-1;
+        boolean $u-1#4;
+        java.lang.Object $u-1#6;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition transition;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u4 := @parameter0: int;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        $u-1 = virtualinvoke $u0.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label2;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        transition = (androidx.constraintlayout.motion.widget.MotionScene$Transition) $u-1#6;
+
+        $u-1#9 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$300(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#9 != $u4 goto label1;
+
+        return transition;
+
+     label2:
+        return null;
+    }
+
+    int getTransitionDirection(int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u4, $u-1#9;
+        java.util.ArrayList $u0;
+        java.util.Iterator $u-1;
+        boolean $u-1#4;
+        java.lang.Object $u-1#6;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition transition;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u4 := @parameter0: int;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        $u-1 = virtualinvoke $u0.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label2;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        transition = (androidx.constraintlayout.motion.widget.MotionScene$Transition) $u-1#6;
+
+        $u-1#9 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$100(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#9 != $u4 goto label1;
+
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    public java.util.List getTransitionsWithState(int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        java.util.ArrayList 'ret', $u1;
+        int $u5, $u-1#12;
+        java.util.Iterator $u-1;
+        boolean $u-1#7;
+        java.lang.Object $u-1#9;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition transition;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u5 := @parameter0: int;
+
+        $u5 = specialinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: int getRealID(int)>($u5);
+
+        'ret' = new java.util.ArrayList;
+
+        specialinvoke 'ret'.<java.util.ArrayList: void <init>()>();
+
+        $u1 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        $u-1 = virtualinvoke $u1.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#7 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#7 == 0 goto label3;
+
+        $u-1#9 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        transition = (androidx.constraintlayout.motion.widget.MotionScene$Transition) $u-1#9;
+
+        $u-1#12 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$100(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#12 == $u5 goto label2;
+
+        $u-1#12 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$000(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#12 != $u5 goto label1;
+
+     label2:
+        virtualinvoke 'ret'.<java.util.ArrayList: boolean add(java.lang.Object)>(transition);
+
+        goto label1;
+
+     label3:
+        return 'ret';
+    }
+
+    boolean hasKeyFramePosition(android.view.View, int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        android.view.View $u8;
+        int $u9, $u6;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+        java.util.ArrayList $u-1;
+        java.util.Iterator $u-1#4, $u-1#15;
+        boolean $u-1#6;
+        java.lang.Object $u-1#8;
+        androidx.constraintlayout.motion.widget.KeyFrames keyFrames;
+        androidx.constraintlayout.motion.widget.Key framePoint;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u8 := @parameter0: android.view.View;
+
+        $u9 := @parameter1: int;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 != null goto label1;
+
+        return 0;
+
+     label1:
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$1300(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        $u-1#4 = virtualinvoke $u-1.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label2:
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#6 == 0 goto label4;
+
+        $u-1#8 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        keyFrames = (androidx.constraintlayout.motion.widget.KeyFrames) $u-1#8;
+
+        $u6 = virtualinvoke $u8.<android.view.View: int getId()>();
+
+        $u-1 = virtualinvoke keyFrames.<androidx.constraintlayout.motion.widget.KeyFrames: java.util.ArrayList getKeyFramesForView(int)>($u6);
+
+        $u-1#15 = virtualinvoke $u-1.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label3:
+        $u-1#6 = interfaceinvoke $u-1#15.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#6 == 0 goto label2;
+
+        $u-1#8 = interfaceinvoke $u-1#15.<java.util.Iterator: java.lang.Object next()>();
+
+        framePoint = (androidx.constraintlayout.motion.widget.Key) $u-1#8;
+
+        $u6 = framePoint.<androidx.constraintlayout.motion.widget.Key: int mFramePosition>;
+
+        if $u6 != $u9 goto label3;
+
+        return 1;
+
+     label4:
+        return 0;
+    }
+
+    public int lookUpConstraintId(java.lang.String)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        java.lang.String $u2;
+        java.util.HashMap $u0;
+        java.lang.Object $u-1;
+        java.lang.Integer $u0#4;
+        int $u-1#5;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.HashMap mConstraintSetIdMap>;
+
+        $u-1 = virtualinvoke $u0.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($u2);
+
+        $u0#4 = (java.lang.Integer) $u-1;
+
+        $u-1#5 = virtualinvoke $u0#4.<java.lang.Integer: int intValue()>();
+
+        return $u-1#5;
+    }
+
+    public java.lang.String lookUpConstraintName(int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u4, $u-1#14;
+        java.util.HashMap $u0;
+        java.util.Set $u-1;
+        java.util.Iterator $u-1#4;
+        boolean $u-1#6;
+        java.lang.Object $u-1#8;
+        java.util.Map$Entry entry;
+        java.lang.Integer $u2;
+        java.lang.String $u0#18;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u4 := @parameter0: int;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.HashMap mConstraintSetIdMap>;
+
+        $u-1 = virtualinvoke $u0.<java.util.HashMap: java.util.Set entrySet()>();
+
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#6 == 0 goto label2;
+
+        $u-1#8 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        entry = (java.util.Map$Entry) $u-1#8;
+
+        $u-1#8 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $u2 = (java.lang.Integer) $u-1#8;
+
+        $u-1#14 = virtualinvoke $u2.<java.lang.Integer: int intValue()>();
+
+        if $u-1#14 != $u4 goto label1;
+
+        $u-1#8 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $u0#18 = (java.lang.String) $u-1#8;
+
+        return $u0#18;
+
+     label2:
+        return null;
+    }
+
+    protected void onLayout(boolean, int, int, int, int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        boolean $u1;
+        int $u2, $u3, $u4, $u5;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u1 := @parameter0: boolean;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: int;
+
+        $u4 := @parameter3: int;
+
+        $u5 := @parameter4: int;
+
+        return;
+    }
+
+    void processScrollMove(float, float)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        float $u2, $u3;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+        androidx.constraintlayout.motion.widget.TouchResponse $u-1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u2 := @parameter0: float;
+
+        $u3 := @parameter1: float;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        if $u-1 == null goto label1;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        virtualinvoke $u-1.<androidx.constraintlayout.motion.widget.TouchResponse: void scrollMove(float,float)>($u2, $u3);
+
+     label1:
+        return;
+    }
+
+    void processScrollUp(float, float)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        float $u2, $u3;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+        androidx.constraintlayout.motion.widget.TouchResponse $u-1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u2 := @parameter0: float;
+
+        $u3 := @parameter1: float;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        if $u-1 == null goto label1;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        virtualinvoke $u-1.<androidx.constraintlayout.motion.widget.TouchResponse: void scrollUp(float,float)>($u2, $u3);
+
+     label1:
+        return;
+    }
+
+    void processTouchEvent(android.view.MotionEvent, int, androidx.constraintlayout.motion.widget.MotionLayout)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        android.view.MotionEvent $u13, transition#26;
+        int $u14, $u-1;
+        androidx.constraintlayout.motion.widget.MotionLayout $u15, region#2;
+        android.graphics.RectF cache, $u-1#59;
+        androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker region;
+        boolean $u5, $u-1#41;
+        float $u-1#13, dx, transition;
+        double transition#21;
+        byte $u11;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u-1#27;
+        androidx.constraintlayout.motion.widget.TouchResponse $u-1#30;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u13 := @parameter0: android.view.MotionEvent;
+
+        $u14 := @parameter1: int;
+
+        $u15 := @parameter2: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        cache = new android.graphics.RectF;
+
+        specialinvoke cache.<android.graphics.RectF: void <init>()>();
+
+        region = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker mVelocityTracker>;
+
+        if region != null goto label01;
+
+        region#2 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout>;
+
+        region = virtualinvoke region#2.<androidx.constraintlayout.motion.widget.MotionLayout: androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker obtainVelocityTracker()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker mVelocityTracker> = region;
+
+     label01:
+        region = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker mVelocityTracker>;
+
+        interfaceinvoke region.<androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker: void addMovement(android.view.MotionEvent)>($u13);
+
+        if $u14 == -1 goto label10;
+
+        $u-1 = virtualinvoke $u13.<android.view.MotionEvent: int getAction()>();
+
+        $u5 = 0;
+
+        if $u-1 == 0 goto label06;
+
+        if $u-1 == 2 goto label02;
+
+        goto label10;
+
+     label02:
+        $u-1#13 = virtualinvoke $u13.<android.view.MotionEvent: float getRawY()>();
+
+        dx = this.<androidx.constraintlayout.motion.widget.MotionScene: float mLastTouchY>;
+
+        $u-1#13 = $u-1#13 - dx;
+
+        dx = virtualinvoke $u13.<android.view.MotionEvent: float getRawX()>();
+
+        transition = this.<androidx.constraintlayout.motion.widget.MotionScene: float mLastTouchX>;
+
+        dx = dx - transition;
+
+        transition#21 = (double) dx;
+
+        $u11 = transition#21 cmpl 0.0;
+
+        if $u11 != 0 goto label03;
+
+        transition#21 = (double) $u-1#13;
+
+        $u11 = transition#21 cmpl 0.0;
+
+        if $u11 == 0 goto label12;
+
+     label03:
+        transition#26 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.view.MotionEvent mLastTouchDown>;
+
+        if transition#26 != null goto label04;
+
+        return;
+
+     label04:
+        $u-1#27 = virtualinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition bestTransitionFor(int,float,float,android.view.MotionEvent)>($u14, dx, $u-1#13, transition#26);
+
+        if $u-1#27 == null goto label10;
+
+        virtualinvoke $u15.<androidx.constraintlayout.motion.widget.MotionLayout: void setTransition(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u-1#27);
+
+        $u-1#27 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1#30 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u-1#27);
+
+        region#2 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout>;
+
+        cache = virtualinvoke $u-1#30.<androidx.constraintlayout.motion.widget.TouchResponse: android.graphics.RectF getTouchRegion(android.view.ViewGroup,android.graphics.RectF)>(region#2, cache);
+
+        if cache == null goto label05;
+
+        transition#26 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.view.MotionEvent mLastTouchDown>;
+
+        $u-1#13 = virtualinvoke transition#26.<android.view.MotionEvent: float getX()>();
+
+        transition#26 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.view.MotionEvent mLastTouchDown>;
+
+        dx = virtualinvoke transition#26.<android.view.MotionEvent: float getY()>();
+
+        $u-1#41 = virtualinvoke cache.<android.graphics.RectF: boolean contains(float,float)>($u-1#13, dx);
+
+        if $u-1#41 != 0 goto label05;
+
+        $u5 = 1;
+
+        goto label05;
+
+     label05:
+        this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mMotionOutsideRegion> = $u5;
+
+        $u-1#27 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1#30 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u-1#27);
+
+        $u-1#13 = this.<androidx.constraintlayout.motion.widget.MotionScene: float mLastTouchX>;
+
+        dx = this.<androidx.constraintlayout.motion.widget.MotionScene: float mLastTouchY>;
+
+        virtualinvoke $u-1#30.<androidx.constraintlayout.motion.widget.TouchResponse: void setUpTouchEvent(float,float)>($u-1#13, dx);
+
+        goto label10;
+
+     label06:
+        $u-1#13 = virtualinvoke $u13.<android.view.MotionEvent: float getRawX()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: float mLastTouchX> = $u-1#13;
+
+        $u-1#13 = virtualinvoke $u13.<android.view.MotionEvent: float getRawY()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: float mLastTouchY> = $u-1#13;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: android.view.MotionEvent mLastTouchDown> = $u13;
+
+        $u-1#27 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1#30 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u-1#27);
+
+        if $u-1#30 == null goto label12;
+
+        $u-1#27 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1#30 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u-1#27);
+
+        $u15 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout>;
+
+        $u-1#59 = virtualinvoke $u-1#30.<androidx.constraintlayout.motion.widget.TouchResponse: android.graphics.RectF getLimitBoundsTo(android.view.ViewGroup,android.graphics.RectF)>($u15, cache);
+
+        if $u-1#59 == null goto label07;
+
+        $u13 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.view.MotionEvent mLastTouchDown>;
+
+        $u-1#13 = virtualinvoke $u13.<android.view.MotionEvent: float getX()>();
+
+        $u13 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.view.MotionEvent mLastTouchDown>;
+
+        dx = virtualinvoke $u13.<android.view.MotionEvent: float getY()>();
+
+        $u5 = virtualinvoke $u-1#59.<android.graphics.RectF: boolean contains(float,float)>($u-1#13, dx);
+
+        if $u5 != 0 goto label07;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: android.view.MotionEvent mLastTouchDown> = null;
+
+        return;
+
+     label07:
+        $u-1#27 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1#30 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u-1#27);
+
+        $u15 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout>;
+
+        cache = virtualinvoke $u-1#30.<androidx.constraintlayout.motion.widget.TouchResponse: android.graphics.RectF getTouchRegion(android.view.ViewGroup,android.graphics.RectF)>($u15, cache);
+
+        if cache == null goto label08;
+
+        $u13 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.view.MotionEvent mLastTouchDown>;
+
+        $u-1#13 = virtualinvoke $u13.<android.view.MotionEvent: float getX()>();
+
+        $u13 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.view.MotionEvent mLastTouchDown>;
+
+        dx = virtualinvoke $u13.<android.view.MotionEvent: float getY()>();
+
+        $u5 = virtualinvoke cache.<android.graphics.RectF: boolean contains(float,float)>($u-1#13, dx);
+
+        if $u5 != 0 goto label08;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mMotionOutsideRegion> = 1;
+
+        goto label09;
+
+     label08:
+        this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mMotionOutsideRegion> = 0;
+
+     label09:
+        $u-1#27 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1#30 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u-1#27);
+
+        $u-1#13 = this.<androidx.constraintlayout.motion.widget.MotionScene: float mLastTouchX>;
+
+        dx = this.<androidx.constraintlayout.motion.widget.MotionScene: float mLastTouchY>;
+
+        virtualinvoke $u-1#30.<androidx.constraintlayout.motion.widget.TouchResponse: void setDown(float,float)>($u-1#13, dx);
+
+        return;
+
+     label10:
+        $u-1#27 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u-1#27 == null goto label11;
+
+        $u-1#30 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u-1#27);
+
+        if $u-1#30 == null goto label11;
+
+        $u5 = this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mMotionOutsideRegion>;
+
+        if $u5 != 0 goto label11;
+
+        $u-1#27 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1#30 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u-1#27);
+
+        region = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker mVelocityTracker>;
+
+        virtualinvoke $u-1#30.<androidx.constraintlayout.motion.widget.TouchResponse: void processTouchEvent(android.view.MotionEvent,androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker,int,androidx.constraintlayout.motion.widget.MotionScene)>($u13, region, $u14, this);
+
+     label11:
+        $u-1#13 = virtualinvoke $u13.<android.view.MotionEvent: float getRawX()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: float mLastTouchX> = $u-1#13;
+
+        $u-1#13 = virtualinvoke $u13.<android.view.MotionEvent: float getRawY()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: float mLastTouchY> = $u-1#13;
+
+        $u14 = virtualinvoke $u13.<android.view.MotionEvent: int getAction()>();
+
+        if $u14 != 1 goto label12;
+
+        region = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker mVelocityTracker>;
+
+        if region == null goto label12;
+
+        interfaceinvoke region.<androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker: void recycle()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout$MotionTracker mVelocityTracker> = null;
+
+        $u14 = $u15.<androidx.constraintlayout.motion.widget.MotionLayout: int mCurrentState>;
+
+        if $u14 == -1 goto label12;
+
+        $u14 = $u15.<androidx.constraintlayout.motion.widget.MotionLayout: int mCurrentState>;
+
+        virtualinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: boolean autoTransition(androidx.constraintlayout.motion.widget.MotionLayout,int)>($u15, $u14);
+
+     label12:
+        return;
+    }
+
+    void readFallback(androidx.constraintlayout.motion.widget.MotionLayout)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionLayout $u5;
+        int i, $u-1;
+        android.util.SparseArray key;
+        boolean $u-1#8;
+        java.lang.Object $u-1#16;
+        androidx.constraintlayout.widget.ConstraintSet key#18;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u5 := @parameter0: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        i = 0;
+
+     label1:
+        key = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1 = virtualinvoke key.<android.util.SparseArray: int size()>();
+
+        if i >= $u-1 goto label3;
+
+        key = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1 = virtualinvoke key.<android.util.SparseArray: int keyAt(int)>(i);
+
+        $u-1#8 = specialinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: boolean hasCycleDependency(int)>($u-1);
+
+        if $u-1#8 == 0 goto label2;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("MotionScene", "Cannot be derived from yourself");
+
+        return;
+
+     label2:
+        specialinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: void readConstraintChain(int)>($u-1);
+
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        i = 0;
+
+     label4:
+        key = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1 = virtualinvoke key.<android.util.SparseArray: int size()>();
+
+        if i >= $u-1 goto label5;
+
+        key = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        $u-1#16 = virtualinvoke key.<android.util.SparseArray: java.lang.Object valueAt(int)>(i);
+
+        key#18 = (androidx.constraintlayout.widget.ConstraintSet) $u-1#16;
+
+        virtualinvoke key#18.<androidx.constraintlayout.widget.ConstraintSet: void readFallback(androidx.constraintlayout.widget.ConstraintLayout)>($u5);
+
+        i = i + 1;
+
+        goto label4;
+
+     label5:
+        return;
+    }
+
+    public void removeTransition(androidx.constraintlayout.motion.widget.MotionScene$Transition)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u3;
+        int $u-1;
+        java.util.ArrayList $u1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u3 := @parameter0: androidx.constraintlayout.motion.widget.MotionScene$Transition;
+
+        $u-1 = specialinvoke this.<androidx.constraintlayout.motion.widget.MotionScene: int getIndex(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u3);
+
+        if $u-1 == -1 goto label1;
+
+        $u1 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        virtualinvoke $u1.<java.util.ArrayList: java.lang.Object remove(int)>($u-1);
+
+     label1:
+        return;
+    }
+
+    public void setConstraintSet(int, androidx.constraintlayout.widget.ConstraintSet)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u2;
+        androidx.constraintlayout.widget.ConstraintSet $u3;
+        android.util.SparseArray $u0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: androidx.constraintlayout.widget.ConstraintSet;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: android.util.SparseArray mConstraintSetMap>;
+
+        virtualinvoke $u0.<android.util.SparseArray: void put(int,java.lang.Object)>($u2, $u3);
+
+        return;
+    }
+
+    public void setDuration(int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u2;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.constraintlayout.motion.widget.MotionScene$Transition: void setDuration(int)>($u2);
+
+        return;
+
+     label1:
+        this.<androidx.constraintlayout.motion.widget.MotionScene: int mDefaultDuration> = $u2;
+
+        return;
+    }
+
+    public void setKeyframe(android.view.View, int, java.lang.String, java.lang.Object)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        android.view.View $u8;
+        int $u9, $u-1#11;
+        java.lang.String $u10;
+        java.lang.Object $u11, $u-1#8;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+        java.util.ArrayList $u-1;
+        java.util.Iterator $u-1#4, $u-1#15;
+        boolean $u-1#6;
+        androidx.constraintlayout.motion.widget.KeyFrames keyFrames;
+        androidx.constraintlayout.motion.widget.Key framePoint;
+        float v;
+        java.lang.Float $u6;
+        byte $u6#27;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u8 := @parameter0: android.view.View;
+
+        $u9 := @parameter1: int;
+
+        $u10 := @parameter2: java.lang.String;
+
+        $u11 := @parameter3: java.lang.Object;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 != null goto label1;
+
+        return;
+
+     label1:
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: java.util.ArrayList access$1300(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        $u-1#4 = virtualinvoke $u-1.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label2:
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#6 == 0 goto label6;
+
+        $u-1#8 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        keyFrames = (androidx.constraintlayout.motion.widget.KeyFrames) $u-1#8;
+
+        $u-1#11 = virtualinvoke $u8.<android.view.View: int getId()>();
+
+        $u-1 = virtualinvoke keyFrames.<androidx.constraintlayout.motion.widget.KeyFrames: java.util.ArrayList getKeyFramesForView(int)>($u-1#11);
+
+        $u-1#15 = virtualinvoke $u-1.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label3:
+        $u-1#6 = interfaceinvoke $u-1#15.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#6 == 0 goto label2;
+
+        $u-1#8 = interfaceinvoke $u-1#15.<java.util.Iterator: java.lang.Object next()>();
+
+        framePoint = (androidx.constraintlayout.motion.widget.Key) $u-1#8;
+
+        $u-1#11 = framePoint.<androidx.constraintlayout.motion.widget.Key: int mFramePosition>;
+
+        if $u-1#11 != $u9 goto label3;
+
+        v = 0.0F;
+
+        if $u11 == null goto label4;
+
+        $u6 = (java.lang.Float) $u11;
+
+        v = virtualinvoke $u6.<java.lang.Float: float floatValue()>();
+
+     label4:
+        $u6#27 = v cmpl 0.0F;
+
+        if $u6#27 != 0 goto label5;
+
+     label5:
+        virtualinvoke $u10.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("app:PerpendicularPath_percent");
+
+        goto label3;
+
+     label6:
+        return;
+    }
+
+    public void setRtl(boolean)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        boolean $u3;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+        androidx.constraintlayout.motion.widget.TouchResponse $u-1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u3 := @parameter0: boolean;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mRtl> = $u3;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        if $u-1 == null goto label1;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        $u3 = this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mRtl>;
+
+        virtualinvoke $u-1.<androidx.constraintlayout.motion.widget.TouchResponse: void setRTL(boolean)>($u3);
+
+     label1:
+        return;
+    }
+
+    void setTransition(int, int)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        int $u8, $u9, start, end, $u-1;
+        androidx.constraintlayout.widget.StateSet tmp;
+        java.util.ArrayList tmp#10;
+        java.util.Iterator $u-1#11;
+        boolean $u-1#13;
+        java.lang.Object $u-1#15;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition transition, transition1;
+        androidx.constraintlayout.motion.widget.TouchResponse $u-1#26;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u8 := @parameter0: int;
+
+        $u9 := @parameter1: int;
+
+        start = $u8;
+
+        end = $u9;
+
+        tmp = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.widget.StateSet mStateSet>;
+
+        if tmp == null goto label02;
+
+        $u-1 = virtualinvoke tmp.<androidx.constraintlayout.widget.StateSet: int stateGetConstraintID(int,int,int)>($u8, -1, -1);
+
+        if $u-1 == -1 goto label01;
+
+        start = $u-1;
+
+     label01:
+        tmp = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.widget.StateSet mStateSet>;
+
+        $u-1 = virtualinvoke tmp.<androidx.constraintlayout.widget.StateSet: int stateGetConstraintID(int,int,int)>($u9, -1, -1);
+
+        if $u-1 == -1 goto label02;
+
+        end = $u-1;
+
+     label02:
+        tmp#10 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        $u-1#11 = virtualinvoke tmp#10.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label03:
+        $u-1#13 = interfaceinvoke $u-1#11.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#13 == 0 goto label06;
+
+        $u-1#15 = interfaceinvoke $u-1#11.<java.util.Iterator: java.lang.Object next()>();
+
+        transition = (androidx.constraintlayout.motion.widget.MotionScene$Transition) $u-1#15;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$000(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1 != end goto label04;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$100(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1 == start goto label05;
+
+     label04:
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$000(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1 != $u9 goto label03;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$100(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1 != $u8 goto label03;
+
+     label05:
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition> = transition;
+
+        if transition == null goto label10;
+
+        $u-1#26 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#26 == null goto label10;
+
+        transition = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1#26 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        $u-1#13 = this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mRtl>;
+
+        virtualinvoke $u-1#26.<androidx.constraintlayout.motion.widget.TouchResponse: void setRTL(boolean)>($u-1#13);
+
+        return;
+
+     label06:
+        transition = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mDefaultTransition>;
+
+        tmp#10 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mAbstractTransitionList>;
+
+        $u-1#11 = virtualinvoke tmp#10.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label07:
+        $u-1#13 = interfaceinvoke $u-1#11.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#13 == 0 goto label08;
+
+        $u-1#15 = interfaceinvoke $u-1#11.<java.util.Iterator: java.lang.Object next()>();
+
+        transition1 = (androidx.constraintlayout.motion.widget.MotionScene$Transition) $u-1#15;
+
+        $u8 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$000(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition1);
+
+        if $u8 != $u9 goto label07;
+
+        transition = transition1;
+
+        goto label07;
+
+     label08:
+        transition1 = new androidx.constraintlayout.motion.widget.MotionScene$Transition;
+
+        specialinvoke transition1.<androidx.constraintlayout.motion.widget.MotionScene$Transition: void <init>(androidx.constraintlayout.motion.widget.MotionScene,androidx.constraintlayout.motion.widget.MotionScene$Transition)>(this, transition);
+
+        staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$102(androidx.constraintlayout.motion.widget.MotionScene$Transition,int)>(transition1, start);
+
+        staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$002(androidx.constraintlayout.motion.widget.MotionScene$Transition,int)>(transition1, end);
+
+        if start == -1 goto label09;
+
+        tmp#10 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        virtualinvoke tmp#10.<java.util.ArrayList: boolean add(java.lang.Object)>(transition1);
+
+     label09:
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition> = transition1;
+
+     label10:
+        return;
+    }
+
+    public void setTransition(androidx.constraintlayout.motion.widget.MotionScene$Transition)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u3;
+        boolean $u1;
+        androidx.constraintlayout.motion.widget.TouchResponse $u-1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u3 := @parameter0: androidx.constraintlayout.motion.widget.MotionScene$Transition;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition> = $u3;
+
+        if $u3 == null goto label1;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u3);
+
+        if $u-1 == null goto label1;
+
+        $u3 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u3);
+
+        $u1 = this.<androidx.constraintlayout.motion.widget.MotionScene: boolean mRtl>;
+
+        virtualinvoke $u-1.<androidx.constraintlayout.motion.widget.TouchResponse: void setRTL(boolean)>($u1);
+
+     label1:
+        return;
+    }
+
+    void setupTouch()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u0;
+        androidx.constraintlayout.motion.widget.TouchResponse $u-1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        if $u-1 == null goto label1;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u0);
+
+        virtualinvoke $u-1.<androidx.constraintlayout.motion.widget.TouchResponse: void setupTouch()>();
+
+     label1:
+        return;
+    }
+
+    boolean supportTouch()
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this;
+        java.util.ArrayList $u0;
+        java.util.Iterator $u-1;
+        boolean $u-1#4;
+        java.lang.Object $u-1#7;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition transition;
+        androidx.constraintlayout.motion.widget.TouchResponse $u-1#10;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: java.util.ArrayList mTransitionList>;
+
+        $u-1 = virtualinvoke $u0.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label2;
+
+        $u-1#7 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        transition = (androidx.constraintlayout.motion.widget.MotionScene$Transition) $u-1#7;
+
+        $u-1#10 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#10 == null goto label1;
+
+        return 1;
+
+     label2:
+        transition = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        if transition == null goto label3;
+
+        $u-1#10 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.TouchResponse access$200(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(transition);
+
+        if $u-1#10 == null goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public boolean validateLayout(androidx.constraintlayout.motion.widget.MotionLayout)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene this, $u0#2;
+        androidx.constraintlayout.motion.widget.MotionLayout $u2, $u0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene;
+
+        $u2 := @parameter0: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout mMotionLayout>;
+
+        if $u2 != $u0 goto label1;
+
+        $u0#2 = $u2.<androidx.constraintlayout.motion.widget.MotionLayout: androidx.constraintlayout.motion.widget.MotionScene mScene>;
+
+        if $u0#2 != this goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.motion.widget.MotionScene: int UNSET> = -1;
+
+        <androidx.constraintlayout.motion.widget.MotionScene: int TRANSITION_FORWARD> = 1;
+
+        <androidx.constraintlayout.motion.widget.MotionScene: int TRANSITION_BACKWARD> = 0;
+
+        <androidx.constraintlayout.motion.widget.MotionScene: java.lang.String TAG> = "MotionScene";
+
+        <androidx.constraintlayout.motion.widget.MotionScene: int SPLINE_STRING> = -1;
+
+        <androidx.constraintlayout.motion.widget.MotionScene: int LINEAR> = 3;
+
+        <androidx.constraintlayout.motion.widget.MotionScene: int LAYOUT_IGNORE_REQUEST> = 0;
+
+        <androidx.constraintlayout.motion.widget.MotionScene: int LAYOUT_HONOR_REQUEST> = 1;
+
+        <androidx.constraintlayout.motion.widget.MotionScene: int INTERPOLATOR_REFRENCE_ID> = -2;
+
+        <androidx.constraintlayout.motion.widget.MotionScene: int EASE_OUT> = 2;
+
+        <androidx.constraintlayout.motion.widget.MotionScene: int EASE_IN_OUT> = 0;
+
+        <androidx.constraintlayout.motion.widget.MotionScene: int EASE_IN> = 1;
+
+        <androidx.constraintlayout.motion.widget.MotionScene: boolean DEBUG> = 0;
+
+        <androidx.constraintlayout.motion.widget.MotionScene: int BOUNCE> = 5;
+
+        <androidx.constraintlayout.motion.widget.MotionScene: int ANTICIPATE> = 4;
+
+        return;
+    }
+}

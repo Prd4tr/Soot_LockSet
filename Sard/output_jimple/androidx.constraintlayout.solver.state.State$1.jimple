@@ -1,0 +1,102 @@
+class androidx.constraintlayout.solver.state.State$1 extends java.lang.Object
+{
+    static final int[] $SwitchMap$androidx$constraintlayout$solver$state$State$Helper;
+
+    static void <clinit>()
+    {
+        androidx.constraintlayout.solver.state.State$Helper[] $u-1;
+        int $u0;
+        int[] $u0#4;
+        androidx.constraintlayout.solver.state.State$Helper $u1;
+        java.lang.NoSuchFieldError $u0#9, $u0#15, $u0#21, $u0#27, $u0#33;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.solver.state.State$Helper: androidx.constraintlayout.solver.state.State$Helper[] values()>();
+
+        $u0 = lengthof $u-1;
+
+        $u0#4 = newarray (int)[$u0];
+
+        <androidx.constraintlayout.solver.state.State$1: int[] $SwitchMap$androidx$constraintlayout$solver$state$State$Helper> = $u0#4;
+
+     label01:
+        $u1 = <androidx.constraintlayout.solver.state.State$Helper: androidx.constraintlayout.solver.state.State$Helper HORIZONTAL_CHAIN>;
+
+        $u0 = virtualinvoke $u1.<androidx.constraintlayout.solver.state.State$Helper: int ordinal()>();
+
+     label02:
+        $u0#4[$u0] = 1;
+
+        goto label04;
+
+     label03:
+        $u0#9 := @caughtexception;
+
+     label04:
+        $u0#4 = <androidx.constraintlayout.solver.state.State$1: int[] $SwitchMap$androidx$constraintlayout$solver$state$State$Helper>;
+
+        $u1 = <androidx.constraintlayout.solver.state.State$Helper: androidx.constraintlayout.solver.state.State$Helper VERTICAL_CHAIN>;
+
+        $u0 = virtualinvoke $u1.<androidx.constraintlayout.solver.state.State$Helper: int ordinal()>();
+
+     label05:
+        $u0#4[$u0] = 2;
+
+        goto label07;
+
+     label06:
+        $u0#15 := @caughtexception;
+
+     label07:
+        $u0#4 = <androidx.constraintlayout.solver.state.State$1: int[] $SwitchMap$androidx$constraintlayout$solver$state$State$Helper>;
+
+        $u1 = <androidx.constraintlayout.solver.state.State$Helper: androidx.constraintlayout.solver.state.State$Helper ALIGN_HORIZONTALLY>;
+
+        $u0 = virtualinvoke $u1.<androidx.constraintlayout.solver.state.State$Helper: int ordinal()>();
+
+     label08:
+        $u0#4[$u0] = 3;
+
+        goto label10;
+
+     label09:
+        $u0#21 := @caughtexception;
+
+     label10:
+        $u0#4 = <androidx.constraintlayout.solver.state.State$1: int[] $SwitchMap$androidx$constraintlayout$solver$state$State$Helper>;
+
+        $u1 = <androidx.constraintlayout.solver.state.State$Helper: androidx.constraintlayout.solver.state.State$Helper ALIGN_VERTICALLY>;
+
+        $u0 = virtualinvoke $u1.<androidx.constraintlayout.solver.state.State$Helper: int ordinal()>();
+
+     label11:
+        $u0#4[$u0] = 4;
+
+        goto label13;
+
+     label12:
+        $u0#27 := @caughtexception;
+
+     label13:
+        $u0#4 = <androidx.constraintlayout.solver.state.State$1: int[] $SwitchMap$androidx$constraintlayout$solver$state$State$Helper>;
+
+        $u1 = <androidx.constraintlayout.solver.state.State$Helper: androidx.constraintlayout.solver.state.State$Helper BARRIER>;
+
+        $u0 = virtualinvoke $u1.<androidx.constraintlayout.solver.state.State$Helper: int ordinal()>();
+
+     label14:
+        $u0#4[$u0] = 5;
+
+        return;
+
+     label15:
+        $u0#33 := @caughtexception;
+
+        return;
+
+        catch java.lang.NoSuchFieldError from label01 to label02 with label03;
+        catch java.lang.NoSuchFieldError from label04 to label05 with label06;
+        catch java.lang.NoSuchFieldError from label07 to label08 with label09;
+        catch java.lang.NoSuchFieldError from label10 to label11 with label12;
+        catch java.lang.NoSuchFieldError from label13 to label14 with label15;
+    }
+}

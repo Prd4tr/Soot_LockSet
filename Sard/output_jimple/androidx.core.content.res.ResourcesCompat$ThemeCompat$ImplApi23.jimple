@@ -1,0 +1,137 @@
+class androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23 extends java.lang.Object
+{
+    private static java.lang.reflect.Method sRebaseMethod;
+    private static boolean sRebaseMethodFetched;
+    private static final java.lang.Object sRebaseMethodLock;
+
+    static void <clinit>()
+    {
+        java.lang.Object $u0;
+
+        $u0 = new java.lang.Object;
+
+        specialinvoke $u0.<java.lang.Object: void <init>()>();
+
+        <androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23: java.lang.Object sRebaseMethodLock> = $u0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23 this;
+
+        this := @this: androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static void rebase(android.content.res.Resources$Theme)
+    {
+        android.content.res.Resources$Theme $u6;
+        java.lang.Object $u0;
+        java.lang.reflect.Method $u-1;
+        boolean e;
+        java.lang.Class e1;
+        java.lang.Class[] $u5;
+        java.lang.NoSuchMethodException e1#8;
+        java.lang.Object[] $u2;
+        java.lang.ReflectiveOperationException e#14;
+        java.lang.Throwable e#18;
+
+        $u6 := @parameter0: android.content.res.Resources$Theme;
+
+        $u0 = <androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23: java.lang.Object sRebaseMethodLock>;
+
+        entermonitor $u0;
+
+     label01:
+        e = <androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23: boolean sRebaseMethodFetched>;
+
+     label02:
+        if e != 0 goto label11;
+
+     label03:
+        e1 = class "Landroid/content/res/Resources$Theme;";
+
+        $u5 = newarray (java.lang.Class)[0];
+
+     label04:
+        $u-1 = virtualinvoke e1.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("rebase", $u5);
+
+     label05:
+        <androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23: java.lang.reflect.Method sRebaseMethod> = $u-1;
+
+     label06:
+        virtualinvoke $u-1.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label07:
+        goto label10;
+
+     label08:
+        e1#8 := @caughtexception;
+
+     label09:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesCompat", "Failed to retrieve rebase() method", e1#8);
+
+     label10:
+        <androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23: boolean sRebaseMethodFetched> = 1;
+
+     label11:
+        $u-1 = <androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23: java.lang.reflect.Method sRebaseMethod>;
+
+     label12:
+        if $u-1 == null goto label19;
+
+     label13:
+        $u-1 = <androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23: java.lang.reflect.Method sRebaseMethod>;
+
+        $u2 = newarray (java.lang.Object)[0];
+
+     label14:
+        virtualinvoke $u-1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u6, $u2);
+
+     label15:
+        goto label19;
+
+     label16:
+        e#14 := @caughtexception;
+
+        goto label18;
+
+     label17:
+        e#14 := @caughtexception;
+
+     label18:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesCompat", "Failed to invoke rebase() method via reflection", e#14);
+
+        <androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23: java.lang.reflect.Method sRebaseMethod> = null;
+
+     label19:
+        exitmonitor $u0;
+
+     label20:
+        return;
+
+     label21:
+        e#18 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label22:
+        throw e#18;
+
+        catch java.lang.Throwable from label01 to label02 with label21;
+        catch java.lang.NoSuchMethodException from label04 to label05 with label08;
+        catch java.lang.NoSuchMethodException from label06 to label07 with label08;
+        catch java.lang.Throwable from label03 to label07 with label21;
+        catch java.lang.Throwable from label09 to label12 with label21;
+        catch java.lang.IllegalAccessException from label14 to label15 with label17;
+        catch java.lang.reflect.InvocationTargetException from label14 to label15 with label16;
+        catch java.lang.Throwable from label13 to label15 with label21;
+        catch java.lang.Throwable from label18 to label20 with label21;
+        catch java.lang.Throwable from label21 to label22 with label21;
+    }
+}

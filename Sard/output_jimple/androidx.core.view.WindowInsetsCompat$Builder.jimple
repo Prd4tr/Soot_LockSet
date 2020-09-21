@@ -1,0 +1,218 @@
+public final class androidx.core.view.WindowInsetsCompat$Builder extends java.lang.Object
+{
+    private final androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl;
+
+    public void <init>()
+    {
+        androidx.core.view.WindowInsetsCompat$Builder this;
+        int $u0;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl29 $u0#3;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl20 $u0#6;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl $u0#7;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Builder;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 29 goto label1;
+
+        $u0#3 = new androidx.core.view.WindowInsetsCompat$BuilderImpl29;
+
+        specialinvoke $u0#3.<androidx.core.view.WindowInsetsCompat$BuilderImpl29: void <init>()>();
+
+        this.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl> = $u0#3;
+
+        return;
+
+     label1:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 20 goto label2;
+
+        $u0#6 = new androidx.core.view.WindowInsetsCompat$BuilderImpl20;
+
+        specialinvoke $u0#6.<androidx.core.view.WindowInsetsCompat$BuilderImpl20: void <init>()>();
+
+        this.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl> = $u0#6;
+
+        return;
+
+     label2:
+        $u0#7 = new androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        specialinvoke $u0#7.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void <init>()>();
+
+        this.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl> = $u0#7;
+
+        return;
+    }
+
+    public void <init>(androidx.core.view.WindowInsetsCompat)
+    {
+        androidx.core.view.WindowInsetsCompat$Builder this;
+        androidx.core.view.WindowInsetsCompat $u3;
+        int $u0;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl29 $u0#3;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl20 $u0#6;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl $u0#7;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Builder;
+
+        $u3 := @parameter0: androidx.core.view.WindowInsetsCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 29 goto label1;
+
+        $u0#3 = new androidx.core.view.WindowInsetsCompat$BuilderImpl29;
+
+        specialinvoke $u0#3.<androidx.core.view.WindowInsetsCompat$BuilderImpl29: void <init>(androidx.core.view.WindowInsetsCompat)>($u3);
+
+        this.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl> = $u0#3;
+
+        return;
+
+     label1:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 20 goto label2;
+
+        $u0#6 = new androidx.core.view.WindowInsetsCompat$BuilderImpl20;
+
+        specialinvoke $u0#6.<androidx.core.view.WindowInsetsCompat$BuilderImpl20: void <init>(androidx.core.view.WindowInsetsCompat)>($u3);
+
+        this.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl> = $u0#6;
+
+        return;
+
+     label2:
+        $u0#7 = new androidx.core.view.WindowInsetsCompat$BuilderImpl;
+
+        specialinvoke $u0#7.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void <init>(androidx.core.view.WindowInsetsCompat)>($u3);
+
+        this.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl> = $u0#7;
+
+        return;
+    }
+
+    public androidx.core.view.WindowInsetsCompat build()
+    {
+        androidx.core.view.WindowInsetsCompat$Builder this;
+        androidx.core.view.WindowInsetsCompat $u-1;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl $u0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Builder;
+
+        $u0 = this.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl>;
+
+        $u-1 = virtualinvoke $u0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: androidx.core.view.WindowInsetsCompat build()>();
+
+        return $u-1;
+    }
+
+    public androidx.core.view.WindowInsetsCompat$Builder setDisplayCutout(androidx.core.view.DisplayCutoutCompat)
+    {
+        androidx.core.view.WindowInsetsCompat$Builder this;
+        androidx.core.view.DisplayCutoutCompat $u2;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl $u0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Builder;
+
+        $u2 := @parameter0: androidx.core.view.DisplayCutoutCompat;
+
+        $u0 = this.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl>;
+
+        virtualinvoke $u0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void setDisplayCutout(androidx.core.view.DisplayCutoutCompat)>($u2);
+
+        return this;
+    }
+
+    public androidx.core.view.WindowInsetsCompat$Builder setMandatorySystemGestureInsets(androidx.core.graphics.Insets)
+    {
+        androidx.core.view.WindowInsetsCompat$Builder this;
+        androidx.core.graphics.Insets $u2;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl $u0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Builder;
+
+        $u2 := @parameter0: androidx.core.graphics.Insets;
+
+        $u0 = this.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl>;
+
+        virtualinvoke $u0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void setMandatorySystemGestureInsets(androidx.core.graphics.Insets)>($u2);
+
+        return this;
+    }
+
+    public androidx.core.view.WindowInsetsCompat$Builder setStableInsets(androidx.core.graphics.Insets)
+    {
+        androidx.core.view.WindowInsetsCompat$Builder this;
+        androidx.core.graphics.Insets $u2;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl $u0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Builder;
+
+        $u2 := @parameter0: androidx.core.graphics.Insets;
+
+        $u0 = this.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl>;
+
+        virtualinvoke $u0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void setStableInsets(androidx.core.graphics.Insets)>($u2);
+
+        return this;
+    }
+
+    public androidx.core.view.WindowInsetsCompat$Builder setSystemGestureInsets(androidx.core.graphics.Insets)
+    {
+        androidx.core.view.WindowInsetsCompat$Builder this;
+        androidx.core.graphics.Insets $u2;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl $u0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Builder;
+
+        $u2 := @parameter0: androidx.core.graphics.Insets;
+
+        $u0 = this.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl>;
+
+        virtualinvoke $u0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void setSystemGestureInsets(androidx.core.graphics.Insets)>($u2);
+
+        return this;
+    }
+
+    public androidx.core.view.WindowInsetsCompat$Builder setSystemWindowInsets(androidx.core.graphics.Insets)
+    {
+        androidx.core.view.WindowInsetsCompat$Builder this;
+        androidx.core.graphics.Insets $u2;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl $u0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Builder;
+
+        $u2 := @parameter0: androidx.core.graphics.Insets;
+
+        $u0 = this.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl>;
+
+        virtualinvoke $u0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void setSystemWindowInsets(androidx.core.graphics.Insets)>($u2);
+
+        return this;
+    }
+
+    public androidx.core.view.WindowInsetsCompat$Builder setTappableElementInsets(androidx.core.graphics.Insets)
+    {
+        androidx.core.view.WindowInsetsCompat$Builder this;
+        androidx.core.graphics.Insets $u2;
+        androidx.core.view.WindowInsetsCompat$BuilderImpl $u0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Builder;
+
+        $u2 := @parameter0: androidx.core.graphics.Insets;
+
+        $u0 = this.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl>;
+
+        virtualinvoke $u0.<androidx.core.view.WindowInsetsCompat$BuilderImpl: void setTappableElementInsets(androidx.core.graphics.Insets)>($u2);
+
+        return this;
+    }
+}

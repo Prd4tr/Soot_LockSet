@@ -1,0 +1,84 @@
+class androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable extends java.lang.Object implements java.lang.Runnable
+{
+    private androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup mPopup;
+    final androidx.appcompat.widget.ActionMenuPresenter this$0;
+
+    public void <init>(androidx.appcompat.widget.ActionMenuPresenter, androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup)
+    {
+        androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable this;
+        androidx.appcompat.widget.ActionMenuPresenter $u1;
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup $u2;
+
+        this := @this: androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable;
+
+        $u1 := @parameter0: androidx.appcompat.widget.ActionMenuPresenter;
+
+        $u2 := @parameter1: androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup;
+
+        this.<androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable: androidx.appcompat.widget.ActionMenuPresenter this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable: androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup mPopup> = $u2;
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable this;
+        androidx.appcompat.widget.ActionMenuPresenter menuView;
+        androidx.appcompat.view.menu.MenuBuilder $u-1;
+        androidx.appcompat.view.menu.MenuView $u-1#8;
+        android.view.View menuView#10;
+        android.os.IBinder $u-1#11;
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup $u1;
+        boolean $u-1#14;
+
+        this := @this: androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable;
+
+        menuView = this.<androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.ActionMenuPresenter: androidx.appcompat.view.menu.MenuBuilder access$400(androidx.appcompat.widget.ActionMenuPresenter)>(menuView);
+
+        if $u-1 == null goto label1;
+
+        menuView = this.<androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.ActionMenuPresenter: androidx.appcompat.view.menu.MenuBuilder access$500(androidx.appcompat.widget.ActionMenuPresenter)>(menuView);
+
+        virtualinvoke $u-1.<androidx.appcompat.view.menu.MenuBuilder: void changeMenuMode()>();
+
+     label1:
+        menuView = this.<androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        $u-1#8 = staticinvoke <androidx.appcompat.widget.ActionMenuPresenter: androidx.appcompat.view.menu.MenuView access$600(androidx.appcompat.widget.ActionMenuPresenter)>(menuView);
+
+        menuView#10 = (android.view.View) $u-1#8;
+
+        if menuView#10 == null goto label2;
+
+        $u-1#11 = virtualinvoke menuView#10.<android.view.View: android.os.IBinder getWindowToken()>();
+
+        if $u-1#11 == null goto label2;
+
+        $u1 = this.<androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable: androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup mPopup>;
+
+        $u-1#14 = virtualinvoke $u1.<androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup: boolean tryShow()>();
+
+        if $u-1#14 == 0 goto label2;
+
+        menuView = this.<androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        $u1 = this.<androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable: androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup mPopup>;
+
+        menuView.<androidx.appcompat.widget.ActionMenuPresenter: androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup mOverflowPopup> = $u1;
+
+     label2:
+        menuView = this.<androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        menuView.<androidx.appcompat.widget.ActionMenuPresenter: androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable mPostedOpenRunnable> = null;
+
+        return;
+    }
+}

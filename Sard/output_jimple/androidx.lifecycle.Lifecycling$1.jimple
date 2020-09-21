@@ -1,0 +1,40 @@
+final class androidx.lifecycle.Lifecycling$1 extends java.lang.Object implements androidx.lifecycle.GenericLifecycleObserver
+{
+    final androidx.lifecycle.LifecycleEventObserver val$observer;
+
+    void <init>(androidx.lifecycle.LifecycleEventObserver)
+    {
+        androidx.lifecycle.Lifecycling$1 this;
+        androidx.lifecycle.LifecycleEventObserver $u1;
+
+        this := @this: androidx.lifecycle.Lifecycling$1;
+
+        $u1 := @parameter0: androidx.lifecycle.LifecycleEventObserver;
+
+        this.<androidx.lifecycle.Lifecycling$1: androidx.lifecycle.LifecycleEventObserver val$observer> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onStateChanged(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Lifecycle$Event)
+    {
+        androidx.lifecycle.Lifecycling$1 this;
+        androidx.lifecycle.LifecycleOwner $u2;
+        androidx.lifecycle.Lifecycle$Event $u3;
+        androidx.lifecycle.LifecycleEventObserver $u0;
+
+        this := @this: androidx.lifecycle.Lifecycling$1;
+
+        $u2 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        $u3 := @parameter1: androidx.lifecycle.Lifecycle$Event;
+
+        $u0 = this.<androidx.lifecycle.Lifecycling$1: androidx.lifecycle.LifecycleEventObserver val$observer>;
+
+        interfaceinvoke $u0.<androidx.lifecycle.LifecycleEventObserver: void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event)>($u2, $u3);
+
+        return;
+    }
+}

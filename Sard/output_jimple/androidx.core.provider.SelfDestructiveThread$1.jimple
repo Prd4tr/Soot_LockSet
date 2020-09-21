@@ -1,0 +1,60 @@
+class androidx.core.provider.SelfDestructiveThread$1 extends java.lang.Object implements android.os.Handler$Callback
+{
+    final androidx.core.provider.SelfDestructiveThread this$0;
+
+    void <init>(androidx.core.provider.SelfDestructiveThread)
+    {
+        androidx.core.provider.SelfDestructiveThread$1 this;
+        androidx.core.provider.SelfDestructiveThread $u1;
+
+        this := @this: androidx.core.provider.SelfDestructiveThread$1;
+
+        $u1 := @parameter0: androidx.core.provider.SelfDestructiveThread;
+
+        this.<androidx.core.provider.SelfDestructiveThread$1: androidx.core.provider.SelfDestructiveThread this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean handleMessage(android.os.Message)
+    {
+        androidx.core.provider.SelfDestructiveThread$1 this;
+        android.os.Message $u4;
+        int $u0;
+        androidx.core.provider.SelfDestructiveThread $u0#2;
+        java.lang.Object $u2;
+        java.lang.Runnable $u2#4;
+
+        this := @this: androidx.core.provider.SelfDestructiveThread$1;
+
+        $u4 := @parameter0: android.os.Message;
+
+        $u0 = $u4.<android.os.Message: int what>;
+
+        if $u0 == 0 goto label2;
+
+        if $u0 == 1 goto label1;
+
+        return 1;
+
+     label1:
+        $u0#2 = this.<androidx.core.provider.SelfDestructiveThread$1: androidx.core.provider.SelfDestructiveThread this$0>;
+
+        $u2 = $u4.<android.os.Message: java.lang.Object obj>;
+
+        $u2#4 = (java.lang.Runnable) $u2;
+
+        virtualinvoke $u0#2.<androidx.core.provider.SelfDestructiveThread: void onInvokeRunnable(java.lang.Runnable)>($u2#4);
+
+        return 1;
+
+     label2:
+        $u0#2 = this.<androidx.core.provider.SelfDestructiveThread$1: androidx.core.provider.SelfDestructiveThread this$0>;
+
+        virtualinvoke $u0#2.<androidx.core.provider.SelfDestructiveThread: void onDestruction()>();
+
+        return 1;
+    }
+}

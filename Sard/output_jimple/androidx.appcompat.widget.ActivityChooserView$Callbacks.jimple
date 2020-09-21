@@ -1,0 +1,320 @@
+class androidx.appcompat.widget.ActivityChooserView$Callbacks extends java.lang.Object implements android.widget.AdapterView$OnItemClickListener, android.view.View$OnClickListener, android.view.View$OnLongClickListener, android.widget.PopupWindow$OnDismissListener
+{
+    final androidx.appcompat.widget.ActivityChooserView this$0;
+
+    void <init>(androidx.appcompat.widget.ActivityChooserView)
+    {
+        androidx.appcompat.widget.ActivityChooserView$Callbacks this;
+        androidx.appcompat.widget.ActivityChooserView $u1;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserView$Callbacks;
+
+        $u1 := @parameter0: androidx.appcompat.widget.ActivityChooserView;
+
+        this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private void notifyOnDismissListener()
+    {
+        androidx.appcompat.widget.ActivityChooserView$Callbacks this;
+        androidx.appcompat.widget.ActivityChooserView $u0;
+        android.widget.PopupWindow$OnDismissListener $u0#2;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserView$Callbacks;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActivityChooserView: android.widget.PopupWindow$OnDismissListener mOnDismissListener>;
+
+        if $u0#2 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActivityChooserView: android.widget.PopupWindow$OnDismissListener mOnDismissListener>;
+
+        interfaceinvoke $u0#2.<android.widget.PopupWindow$OnDismissListener: void onDismiss()>();
+
+     label1:
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        androidx.appcompat.widget.ActivityChooserView$Callbacks this;
+        android.view.View $u5;
+        androidx.appcompat.widget.ActivityChooserView defaultActivity;
+        android.widget.FrameLayout defaultActivity#2;
+        androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter defaultActivity#5;
+        android.content.pm.ResolveInfo $u-1;
+        androidx.appcompat.widget.ActivityChooserModel $u-1#10;
+        int $u-1#12;
+        android.content.Intent $u-1#18;
+        android.content.Context $u-1#22;
+        java.lang.IllegalArgumentException defaultActivity#30;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserView$Callbacks;
+
+        $u5 := @parameter0: android.view.View;
+
+        defaultActivity = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        defaultActivity#2 = defaultActivity.<androidx.appcompat.widget.ActivityChooserView: android.widget.FrameLayout mDefaultActivityButton>;
+
+        if $u5 != defaultActivity#2 goto label2;
+
+        defaultActivity = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        virtualinvoke defaultActivity.<androidx.appcompat.widget.ActivityChooserView: boolean dismissPopup()>();
+
+        defaultActivity = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        defaultActivity#5 = defaultActivity.<androidx.appcompat.widget.ActivityChooserView: androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter mAdapter>;
+
+        $u-1 = virtualinvoke defaultActivity#5.<androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter: android.content.pm.ResolveInfo getDefaultActivity()>();
+
+        defaultActivity = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        defaultActivity#5 = defaultActivity.<androidx.appcompat.widget.ActivityChooserView: androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter mAdapter>;
+
+        $u-1#10 = virtualinvoke defaultActivity#5.<androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter: androidx.appcompat.widget.ActivityChooserModel getDataModel()>();
+
+        $u-1#12 = virtualinvoke $u-1#10.<androidx.appcompat.widget.ActivityChooserModel: int getActivityIndex(android.content.pm.ResolveInfo)>($u-1);
+
+        defaultActivity = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        defaultActivity#5 = defaultActivity.<androidx.appcompat.widget.ActivityChooserView: androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter mAdapter>;
+
+        $u-1#10 = virtualinvoke defaultActivity#5.<androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter: androidx.appcompat.widget.ActivityChooserModel getDataModel()>();
+
+        $u-1#18 = virtualinvoke $u-1#10.<androidx.appcompat.widget.ActivityChooserModel: android.content.Intent chooseActivity(int)>($u-1#12);
+
+        if $u-1#18 == null goto label1;
+
+        virtualinvoke $u-1#18.<android.content.Intent: android.content.Intent addFlags(int)>(524288);
+
+        defaultActivity = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        $u-1#22 = virtualinvoke defaultActivity.<androidx.appcompat.widget.ActivityChooserView: android.content.Context getContext()>();
+
+        virtualinvoke $u-1#22.<android.content.Context: void startActivity(android.content.Intent)>($u-1#18);
+
+     label1:
+        return;
+
+     label2:
+        defaultActivity = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        defaultActivity#2 = defaultActivity.<androidx.appcompat.widget.ActivityChooserView: android.widget.FrameLayout mExpandActivityOverflowButton>;
+
+        if $u5 != defaultActivity#2 goto label3;
+
+        defaultActivity = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        defaultActivity.<androidx.appcompat.widget.ActivityChooserView: boolean mIsSelectingDefaultActivity> = 0;
+
+        defaultActivity = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        $u-1#12 = defaultActivity.<androidx.appcompat.widget.ActivityChooserView: int mInitialActivityCount>;
+
+        virtualinvoke defaultActivity.<androidx.appcompat.widget.ActivityChooserView: void showPopupUnchecked(int)>($u-1#12);
+
+        return;
+
+     label3:
+        defaultActivity#30 = new java.lang.IllegalArgumentException;
+
+        specialinvoke defaultActivity#30.<java.lang.IllegalArgumentException: void <init>()>();
+
+        throw defaultActivity#30;
+    }
+
+    public void onDismiss()
+    {
+        androidx.appcompat.widget.ActivityChooserView$Callbacks this;
+        androidx.appcompat.widget.ActivityChooserView $u0;
+        androidx.core.view.ActionProvider $u0#2;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserView$Callbacks;
+
+        specialinvoke this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: void notifyOnDismissListener()>();
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActivityChooserView: androidx.core.view.ActionProvider mProvider>;
+
+        if $u0#2 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActivityChooserView: androidx.core.view.ActionProvider mProvider>;
+
+        virtualinvoke $u0#2.<androidx.core.view.ActionProvider: void subUiVisibilityChanged(boolean)>(0);
+
+     label1:
+        return;
+    }
+
+    public void onItemClick(android.widget.AdapterView, android.view.View, int, long)
+    {
+        androidx.appcompat.widget.ActivityChooserView$Callbacks this;
+        android.widget.AdapterView parent;
+        android.view.View $u6;
+        long $u8;
+        int $u7, $u-1#5;
+        android.widget.Adapter $u-1;
+        androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter adapter;
+        androidx.appcompat.widget.ActivityChooserView launchIntent;
+        java.lang.IllegalArgumentException launchIntent#9;
+        boolean launchIntent#12;
+        androidx.appcompat.widget.ActivityChooserModel $u-1#15;
+        android.content.Intent $u-1#27;
+        android.content.Context $u-1#31;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserView$Callbacks;
+
+        parent := @parameter0: android.widget.AdapterView;
+
+        $u6 := @parameter1: android.view.View;
+
+        $u7 := @parameter2: int;
+
+        $u8 := @parameter3: long;
+
+        $u-1 = virtualinvoke parent.<android.widget.AdapterView: android.widget.Adapter getAdapter()>();
+
+        adapter = (androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter) $u-1;
+
+        $u-1#5 = virtualinvoke adapter.<androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter: int getItemViewType(int)>($u7);
+
+        if $u-1#5 == 0 goto label2;
+
+        if $u-1#5 != 1 goto label1;
+
+        launchIntent = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        virtualinvoke launchIntent.<androidx.appcompat.widget.ActivityChooserView: void showPopupUnchecked(int)>(2147483647);
+
+        return;
+
+     label1:
+        launchIntent#9 = new java.lang.IllegalArgumentException;
+
+        specialinvoke launchIntent#9.<java.lang.IllegalArgumentException: void <init>()>();
+
+        throw launchIntent#9;
+
+     label2:
+        launchIntent = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        virtualinvoke launchIntent.<androidx.appcompat.widget.ActivityChooserView: boolean dismissPopup()>();
+
+        launchIntent = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        launchIntent#12 = launchIntent.<androidx.appcompat.widget.ActivityChooserView: boolean mIsSelectingDefaultActivity>;
+
+        if launchIntent#12 == 0 goto label3;
+
+        if $u7 <= 0 goto label6;
+
+        launchIntent = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        adapter = launchIntent.<androidx.appcompat.widget.ActivityChooserView: androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter mAdapter>;
+
+        $u-1#15 = virtualinvoke adapter.<androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter: androidx.appcompat.widget.ActivityChooserModel getDataModel()>();
+
+        virtualinvoke $u-1#15.<androidx.appcompat.widget.ActivityChooserModel: void setDefaultActivity(int)>($u7);
+
+        return;
+
+     label3:
+        launchIntent = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        adapter = launchIntent.<androidx.appcompat.widget.ActivityChooserView: androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter mAdapter>;
+
+        launchIntent#12 = virtualinvoke adapter.<androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter: boolean getShowDefaultActivity()>();
+
+        if launchIntent#12 == 0 goto label4;
+
+        goto label5;
+
+     label4:
+        $u7 = $u7 + 1;
+
+     label5:
+        launchIntent = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        adapter = launchIntent.<androidx.appcompat.widget.ActivityChooserView: androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter mAdapter>;
+
+        $u-1#15 = virtualinvoke adapter.<androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter: androidx.appcompat.widget.ActivityChooserModel getDataModel()>();
+
+        $u-1#27 = virtualinvoke $u-1#15.<androidx.appcompat.widget.ActivityChooserModel: android.content.Intent chooseActivity(int)>($u7);
+
+        if $u-1#27 == null goto label6;
+
+        virtualinvoke $u-1#27.<android.content.Intent: android.content.Intent addFlags(int)>(524288);
+
+        launchIntent = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        $u-1#31 = virtualinvoke launchIntent.<androidx.appcompat.widget.ActivityChooserView: android.content.Context getContext()>();
+
+        virtualinvoke $u-1#31.<android.content.Context: void startActivity(android.content.Intent)>($u-1#27);
+
+     label6:
+        return;
+    }
+
+    public boolean onLongClick(android.view.View)
+    {
+        androidx.appcompat.widget.ActivityChooserView$Callbacks this;
+        android.view.View $u4;
+        int $u2;
+        androidx.appcompat.widget.ActivityChooserView $u0;
+        android.widget.FrameLayout $u0#2;
+        androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter $u0#4;
+        java.lang.IllegalArgumentException $u0#8;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserView$Callbacks;
+
+        $u4 := @parameter0: android.view.View;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActivityChooserView: android.widget.FrameLayout mDefaultActivityButton>;
+
+        if $u4 != $u0#2 goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        $u0#4 = $u0.<androidx.appcompat.widget.ActivityChooserView: androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter mAdapter>;
+
+        $u2 = virtualinvoke $u0#4.<androidx.appcompat.widget.ActivityChooserView$ActivityChooserViewAdapter: int getCount()>();
+
+        if $u2 <= 0 goto label2;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        $u0.<androidx.appcompat.widget.ActivityChooserView: boolean mIsSelectingDefaultActivity> = 1;
+
+        $u0 = this.<androidx.appcompat.widget.ActivityChooserView$Callbacks: androidx.appcompat.widget.ActivityChooserView this$0>;
+
+        $u2 = $u0.<androidx.appcompat.widget.ActivityChooserView: int mInitialActivityCount>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.ActivityChooserView: void showPopupUnchecked(int)>($u2);
+
+        return 1;
+
+     label1:
+        $u0#8 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#8.<java.lang.IllegalArgumentException: void <init>()>();
+
+        throw $u0#8;
+
+     label2:
+        return 1;
+    }
+}

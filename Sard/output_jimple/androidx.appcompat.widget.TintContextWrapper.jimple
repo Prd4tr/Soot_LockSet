@@ -1,0 +1,327 @@
+public class androidx.appcompat.widget.TintContextWrapper extends android.content.ContextWrapper
+{
+    private static final java.lang.Object CACHE_LOCK;
+    private static java.util.ArrayList sCache;
+    private final android.content.res.Resources mResources;
+    private final android.content.res.Resources$Theme mTheme;
+
+    static void <clinit>()
+    {
+        java.lang.Object $u0;
+
+        $u0 = new java.lang.Object;
+
+        specialinvoke $u0.<java.lang.Object: void <init>()>();
+
+        <androidx.appcompat.widget.TintContextWrapper: java.lang.Object CACHE_LOCK> = $u0;
+
+        return;
+    }
+
+    private void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.TintContextWrapper this;
+        android.content.Context $u3;
+        boolean $u-1;
+        androidx.appcompat.widget.VectorEnabledTintResources $u0;
+        android.content.res.Resources $u-1#4;
+        android.content.res.Resources$Theme $u-1#6, $u-1#8;
+        androidx.appcompat.widget.TintResources $u0#10;
+
+        this := @this: androidx.appcompat.widget.TintContextWrapper;
+
+        $u3 := @parameter0: android.content.Context;
+
+        specialinvoke this.<android.content.ContextWrapper: void <init>(android.content.Context)>($u3);
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.VectorEnabledTintResources: boolean shouldBeUsed()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = new androidx.appcompat.widget.VectorEnabledTintResources;
+
+        $u-1#4 = virtualinvoke $u3.<android.content.Context: android.content.res.Resources getResources()>();
+
+        specialinvoke $u0.<androidx.appcompat.widget.VectorEnabledTintResources: void <init>(android.content.Context,android.content.res.Resources)>(this, $u-1#4);
+
+        this.<androidx.appcompat.widget.TintContextWrapper: android.content.res.Resources mResources> = $u0;
+
+        $u-1#6 = virtualinvoke $u0.<android.content.res.Resources: android.content.res.Resources$Theme newTheme()>();
+
+        this.<androidx.appcompat.widget.TintContextWrapper: android.content.res.Resources$Theme mTheme> = $u-1#6;
+
+        $u-1#8 = virtualinvoke $u3.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        virtualinvoke $u-1#6.<android.content.res.Resources$Theme: void setTo(android.content.res.Resources$Theme)>($u-1#8);
+
+        return;
+
+     label1:
+        $u0#10 = new androidx.appcompat.widget.TintResources;
+
+        $u-1#4 = virtualinvoke $u3.<android.content.Context: android.content.res.Resources getResources()>();
+
+        specialinvoke $u0#10.<androidx.appcompat.widget.TintResources: void <init>(android.content.Context,android.content.res.Resources)>(this, $u-1#4);
+
+        this.<androidx.appcompat.widget.TintContextWrapper: android.content.res.Resources mResources> = $u0#10;
+
+        this.<androidx.appcompat.widget.TintContextWrapper: android.content.res.Resources$Theme mTheme> = null;
+
+        return;
+    }
+
+    private static boolean shouldWrap(android.content.Context)
+    {
+        android.content.Context $u3;
+        boolean $u0;
+        android.content.res.Resources $u-1;
+        int $u0#9;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u0 = $u3 instanceof androidx.appcompat.widget.TintContextWrapper;
+
+        if $u0 != 0 goto label3;
+
+        $u-1 = virtualinvoke $u3.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u0 = $u-1 instanceof androidx.appcompat.widget.TintResources;
+
+        if $u0 != 0 goto label3;
+
+        $u-1 = virtualinvoke $u3.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u0 = $u-1 instanceof androidx.appcompat.widget.VectorEnabledTintResources;
+
+        if $u0 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        $u0#9 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0#9 < 21 goto label2;
+
+        $u0 = staticinvoke <androidx.appcompat.widget.VectorEnabledTintResources: boolean shouldBeUsed()>();
+
+        if $u0 == 0 goto label3;
+
+     label2:
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public static android.content.Context wrap(android.content.Context)
+    {
+        android.content.Context $u5, $u-1#28;
+        boolean $u-1;
+        java.lang.Object $u0, $u-1#11;
+        java.util.ArrayList i;
+        int $u-1#7;
+        java.lang.ref.WeakReference ref;
+        androidx.appcompat.widget.TintContextWrapper wrapper;
+        java.lang.Throwable i#32;
+
+        $u5 := @parameter0: android.content.Context;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.TintContextWrapper: boolean shouldWrap(android.content.Context)>($u5);
+
+        if $u-1 == 0 goto label16;
+
+        $u0 = <androidx.appcompat.widget.TintContextWrapper: java.lang.Object CACHE_LOCK>;
+
+        entermonitor $u0;
+
+     label01:
+        i = <androidx.appcompat.widget.TintContextWrapper: java.util.ArrayList sCache>;
+
+        if i != null goto label02;
+
+        i = new java.util.ArrayList;
+
+        specialinvoke i.<java.util.ArrayList: void <init>()>();
+
+        <androidx.appcompat.widget.TintContextWrapper: java.util.ArrayList sCache> = i;
+
+        goto label12;
+
+     label02:
+        i = <androidx.appcompat.widget.TintContextWrapper: java.util.ArrayList sCache>;
+
+        $u-1#7 = virtualinvoke i.<java.util.ArrayList: int size()>();
+
+        $u-1#7 = $u-1#7 + -1;
+
+     label03:
+        if $u-1#7 < 0 goto label06;
+
+        i = <androidx.appcompat.widget.TintContextWrapper: java.util.ArrayList sCache>;
+
+        $u-1#11 = virtualinvoke i.<java.util.ArrayList: java.lang.Object get(int)>($u-1#7);
+
+        ref = (java.lang.ref.WeakReference) $u-1#11;
+
+        if ref == null goto label04;
+
+        $u-1#11 = virtualinvoke ref.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        if $u-1#11 != null goto label05;
+
+     label04:
+        i = <androidx.appcompat.widget.TintContextWrapper: java.util.ArrayList sCache>;
+
+        virtualinvoke i.<java.util.ArrayList: java.lang.Object remove(int)>($u-1#7);
+
+     label05:
+        $u-1#7 = $u-1#7 + -1;
+
+        goto label03;
+
+     label06:
+        i = <androidx.appcompat.widget.TintContextWrapper: java.util.ArrayList sCache>;
+
+        $u-1#7 = virtualinvoke i.<java.util.ArrayList: int size()>();
+
+        $u-1#7 = $u-1#7 + -1;
+
+     label07:
+        if $u-1#7 < 0 goto label12;
+
+        i = <androidx.appcompat.widget.TintContextWrapper: java.util.ArrayList sCache>;
+
+        $u-1#11 = virtualinvoke i.<java.util.ArrayList: java.lang.Object get(int)>($u-1#7);
+
+        ref = (java.lang.ref.WeakReference) $u-1#11;
+
+        if ref == null goto label08;
+
+        $u-1#11 = virtualinvoke ref.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        wrapper = (androidx.appcompat.widget.TintContextWrapper) $u-1#11;
+
+        goto label09;
+
+     label08:
+        wrapper = null;
+
+     label09:
+        if wrapper == null goto label11;
+
+        $u-1#28 = virtualinvoke wrapper.<androidx.appcompat.widget.TintContextWrapper: android.content.Context getBaseContext()>();
+
+        if $u-1#28 != $u5 goto label11;
+
+        exitmonitor $u0;
+
+     label10:
+        return wrapper;
+
+     label11:
+        $u-1#7 = $u-1#7 + -1;
+
+        goto label07;
+
+     label12:
+        wrapper = new androidx.appcompat.widget.TintContextWrapper;
+
+        specialinvoke wrapper.<androidx.appcompat.widget.TintContextWrapper: void <init>(android.content.Context)>($u5);
+
+        i = <androidx.appcompat.widget.TintContextWrapper: java.util.ArrayList sCache>;
+
+        ref = new java.lang.ref.WeakReference;
+
+        specialinvoke ref.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>(wrapper);
+
+        virtualinvoke i.<java.util.ArrayList: boolean add(java.lang.Object)>(ref);
+
+        exitmonitor $u0;
+
+     label13:
+        return wrapper;
+
+     label14:
+        i#32 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label15:
+        throw i#32;
+
+     label16:
+        return $u5;
+
+        catch java.lang.Throwable from label01 to label10 with label14;
+        catch java.lang.Throwable from label11 to label13 with label14;
+        catch java.lang.Throwable from label14 to label15 with label14;
+    }
+
+    public android.content.res.AssetManager getAssets()
+    {
+        androidx.appcompat.widget.TintContextWrapper this;
+        android.content.res.AssetManager $u-1;
+        android.content.res.Resources $u0;
+
+        this := @this: androidx.appcompat.widget.TintContextWrapper;
+
+        $u0 = this.<androidx.appcompat.widget.TintContextWrapper: android.content.res.Resources mResources>;
+
+        $u-1 = virtualinvoke $u0.<android.content.res.Resources: android.content.res.AssetManager getAssets()>();
+
+        return $u-1;
+    }
+
+    public android.content.res.Resources getResources()
+    {
+        androidx.appcompat.widget.TintContextWrapper this;
+        android.content.res.Resources ret0;
+
+        this := @this: androidx.appcompat.widget.TintContextWrapper;
+
+        ret0 = this.<androidx.appcompat.widget.TintContextWrapper: android.content.res.Resources mResources>;
+
+        return ret0;
+    }
+
+    public android.content.res.Resources$Theme getTheme()
+    {
+        androidx.appcompat.widget.TintContextWrapper this;
+        android.content.res.Resources$Theme $u-1;
+
+        this := @this: androidx.appcompat.widget.TintContextWrapper;
+
+        $u-1 = this.<androidx.appcompat.widget.TintContextWrapper: android.content.res.Resources$Theme mTheme>;
+
+        if $u-1 != null goto label1;
+
+        $u-1 = specialinvoke this.<android.content.ContextWrapper: android.content.res.Resources$Theme getTheme()>();
+
+     label1:
+        return $u-1;
+    }
+
+    public void setTheme(int)
+    {
+        androidx.appcompat.widget.TintContextWrapper this;
+        int $u3;
+        android.content.res.Resources$Theme $u0;
+
+        this := @this: androidx.appcompat.widget.TintContextWrapper;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.TintContextWrapper: android.content.res.Resources$Theme mTheme>;
+
+        if $u0 != null goto label1;
+
+        specialinvoke this.<android.content.ContextWrapper: void setTheme(int)>($u3);
+
+        return;
+
+     label1:
+        virtualinvoke $u0.<android.content.res.Resources$Theme: void applyStyle(int,boolean)>($u3, 1);
+
+        return;
+    }
+}

@@ -1,0 +1,437 @@
+public class androidx.appcompat.view.StandaloneActionMode extends androidx.appcompat.view.ActionMode implements androidx.appcompat.view.menu.MenuBuilder$Callback
+{
+    private androidx.appcompat.view.ActionMode$Callback mCallback;
+    private android.content.Context mContext;
+    private androidx.appcompat.widget.ActionBarContextView mContextView;
+    private java.lang.ref.WeakReference mCustomView;
+    private boolean mFinished;
+    private boolean mFocusable;
+    private androidx.appcompat.view.menu.MenuBuilder mMenu;
+
+    public void <init>(android.content.Context, androidx.appcompat.widget.ActionBarContextView, androidx.appcompat.view.ActionMode$Callback, boolean)
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        android.content.Context $u3;
+        androidx.appcompat.widget.ActionBarContextView $u4;
+        androidx.appcompat.view.ActionMode$Callback $u5;
+        boolean $u6;
+        androidx.appcompat.view.menu.MenuBuilder $u0;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u4 := @parameter1: androidx.appcompat.widget.ActionBarContextView;
+
+        $u5 := @parameter2: androidx.appcompat.view.ActionMode$Callback;
+
+        $u6 := @parameter3: boolean;
+
+        specialinvoke this.<androidx.appcompat.view.ActionMode: void <init>()>();
+
+        this.<androidx.appcompat.view.StandaloneActionMode: android.content.Context mContext> = $u3;
+
+        this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.widget.ActionBarContextView mContextView> = $u4;
+
+        this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.view.ActionMode$Callback mCallback> = $u5;
+
+        $u0 = new androidx.appcompat.view.menu.MenuBuilder;
+
+        $u3 = virtualinvoke $u4.<androidx.appcompat.widget.ActionBarContextView: android.content.Context getContext()>();
+
+        specialinvoke $u0.<androidx.appcompat.view.menu.MenuBuilder: void <init>(android.content.Context)>($u3);
+
+        $u0 = virtualinvoke $u0.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuBuilder setDefaultShowAsAction(int)>(1);
+
+        this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.view.menu.MenuBuilder mMenu> = $u0;
+
+        virtualinvoke $u0.<androidx.appcompat.view.menu.MenuBuilder: void setCallback(androidx.appcompat.view.menu.MenuBuilder$Callback)>(this);
+
+        this.<androidx.appcompat.view.StandaloneActionMode: boolean mFocusable> = $u6;
+
+        return;
+    }
+
+    public void finish()
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        boolean $u0;
+        androidx.appcompat.widget.ActionBarContextView $u0#3;
+        androidx.appcompat.view.ActionMode$Callback $u0#4;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: boolean mFinished>;
+
+        if $u0 == 0 goto label1;
+
+        return;
+
+     label1:
+        this.<androidx.appcompat.view.StandaloneActionMode: boolean mFinished> = 1;
+
+        $u0#3 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.widget.ActionBarContextView mContextView>;
+
+        virtualinvoke $u0#3.<androidx.appcompat.widget.ActionBarContextView: void sendAccessibilityEvent(int)>(32);
+
+        $u0#4 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.view.ActionMode$Callback mCallback>;
+
+        interfaceinvoke $u0#4.<androidx.appcompat.view.ActionMode$Callback: void onDestroyActionMode(androidx.appcompat.view.ActionMode)>(this);
+
+        return;
+    }
+
+    public android.view.View getCustomView()
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        java.lang.Object $u-1;
+        java.lang.ref.WeakReference $u0;
+        android.view.View $u0#3;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: java.lang.ref.WeakReference mCustomView>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = virtualinvoke $u0.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $u0#3 = (android.view.View) $u-1;
+
+        return $u0#3;
+
+     label1:
+        return null;
+    }
+
+    public android.view.Menu getMenu()
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        androidx.appcompat.view.menu.MenuBuilder ret0;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        ret0 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.view.menu.MenuBuilder mMenu>;
+
+        return ret0;
+    }
+
+    public android.view.MenuInflater getMenuInflater()
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        androidx.appcompat.view.SupportMenuInflater $u0;
+        android.content.Context $u-1;
+        androidx.appcompat.widget.ActionBarContextView $u1;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u0 = new androidx.appcompat.view.SupportMenuInflater;
+
+        $u1 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.widget.ActionBarContextView mContextView>;
+
+        $u-1 = virtualinvoke $u1.<androidx.appcompat.widget.ActionBarContextView: android.content.Context getContext()>();
+
+        specialinvoke $u0.<androidx.appcompat.view.SupportMenuInflater: void <init>(android.content.Context)>($u-1);
+
+        return $u0;
+    }
+
+    public java.lang.CharSequence getSubtitle()
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        java.lang.CharSequence $u-1;
+        androidx.appcompat.widget.ActionBarContextView $u0;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.widget.ActionBarContextView mContextView>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.ActionBarContextView: java.lang.CharSequence getSubtitle()>();
+
+        return $u-1;
+    }
+
+    public java.lang.CharSequence getTitle()
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        java.lang.CharSequence $u-1;
+        androidx.appcompat.widget.ActionBarContextView $u0;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.widget.ActionBarContextView mContextView>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.ActionBarContextView: java.lang.CharSequence getTitle()>();
+
+        return $u-1;
+    }
+
+    public void invalidate()
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        androidx.appcompat.view.ActionMode$Callback $u0;
+        androidx.appcompat.view.menu.MenuBuilder $u1;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.view.ActionMode$Callback mCallback>;
+
+        $u1 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.view.menu.MenuBuilder mMenu>;
+
+        interfaceinvoke $u0.<androidx.appcompat.view.ActionMode$Callback: boolean onPrepareActionMode(androidx.appcompat.view.ActionMode,android.view.Menu)>(this, $u1);
+
+        return;
+    }
+
+    public boolean isTitleOptional()
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        boolean $u-1;
+        androidx.appcompat.widget.ActionBarContextView $u0;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.widget.ActionBarContextView mContextView>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.ActionBarContextView: boolean isTitleOptional()>();
+
+        return $u-1;
+    }
+
+    public boolean isUiFocusable()
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        ret0 = this.<androidx.appcompat.view.StandaloneActionMode: boolean mFocusable>;
+
+        return ret0;
+    }
+
+    public void onCloseMenu(androidx.appcompat.view.menu.MenuBuilder, boolean)
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        androidx.appcompat.view.menu.MenuBuilder $u1;
+        boolean $u2;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter1: boolean;
+
+        return;
+    }
+
+    public void onCloseSubMenu(androidx.appcompat.view.menu.SubMenuBuilder)
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        androidx.appcompat.view.menu.SubMenuBuilder $u1;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u1 := @parameter0: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        return;
+    }
+
+    public boolean onMenuItemSelected(androidx.appcompat.view.menu.MenuBuilder, android.view.MenuItem)
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        androidx.appcompat.view.menu.MenuBuilder $u2;
+        android.view.MenuItem $u3;
+        boolean $u-1;
+        androidx.appcompat.view.ActionMode$Callback $u0;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u2 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u3 := @parameter1: android.view.MenuItem;
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.view.ActionMode$Callback mCallback>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.appcompat.view.ActionMode$Callback: boolean onActionItemClicked(androidx.appcompat.view.ActionMode,android.view.MenuItem)>(this, $u3);
+
+        return $u-1;
+    }
+
+    public void onMenuModeChange(androidx.appcompat.view.menu.MenuBuilder)
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        androidx.appcompat.view.menu.MenuBuilder $u2;
+        androidx.appcompat.widget.ActionBarContextView $u0;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u2 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        virtualinvoke this.<androidx.appcompat.view.StandaloneActionMode: void invalidate()>();
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.widget.ActionBarContextView mContextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.ActionBarContextView: boolean showOverflowMenu()>();
+
+        return;
+    }
+
+    public boolean onSubMenuSelected(androidx.appcompat.view.menu.SubMenuBuilder)
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        androidx.appcompat.view.menu.SubMenuBuilder $u4;
+        boolean $u-1;
+        androidx.appcompat.view.menu.MenuPopupHelper $u0;
+        androidx.appcompat.widget.ActionBarContextView $u2;
+        android.content.Context $u-1#5;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u4 := @parameter0: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        $u-1 = virtualinvoke $u4.<androidx.appcompat.view.menu.SubMenuBuilder: boolean hasVisibleItems()>();
+
+        if $u-1 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        $u0 = new androidx.appcompat.view.menu.MenuPopupHelper;
+
+        $u2 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.widget.ActionBarContextView mContextView>;
+
+        $u-1#5 = virtualinvoke $u2.<androidx.appcompat.widget.ActionBarContextView: android.content.Context getContext()>();
+
+        specialinvoke $u0.<androidx.appcompat.view.menu.MenuPopupHelper: void <init>(android.content.Context,androidx.appcompat.view.menu.MenuBuilder)>($u-1#5, $u4);
+
+        virtualinvoke $u0.<androidx.appcompat.view.menu.MenuPopupHelper: void show()>();
+
+        return 1;
+    }
+
+    public void setCustomView(android.view.View)
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        android.view.View $u2;
+        androidx.appcompat.widget.ActionBarContextView $u0;
+        java.lang.ref.WeakReference $u0#2;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.widget.ActionBarContextView mContextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.ActionBarContextView: void setCustomView(android.view.View)>($u2);
+
+        if $u2 == null goto label1;
+
+        $u0#2 = new java.lang.ref.WeakReference;
+
+        specialinvoke $u0#2.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>($u2);
+
+        goto label2;
+
+     label1:
+        $u0#2 = null;
+
+     label2:
+        this.<androidx.appcompat.view.StandaloneActionMode: java.lang.ref.WeakReference mCustomView> = $u0#2;
+
+        return;
+    }
+
+    public void setSubtitle(int)
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        int $u2;
+        java.lang.String $u-1;
+        android.content.Context $u0;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: android.content.Context mContext>;
+
+        $u-1 = virtualinvoke $u0.<android.content.Context: java.lang.String getString(int)>($u2);
+
+        virtualinvoke this.<androidx.appcompat.view.StandaloneActionMode: void setSubtitle(java.lang.CharSequence)>($u-1);
+
+        return;
+    }
+
+    public void setSubtitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        java.lang.CharSequence $u2;
+        androidx.appcompat.widget.ActionBarContextView $u0;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.widget.ActionBarContextView mContextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.ActionBarContextView: void setSubtitle(java.lang.CharSequence)>($u2);
+
+        return;
+    }
+
+    public void setTitle(int)
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        int $u2;
+        java.lang.String $u-1;
+        android.content.Context $u0;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: android.content.Context mContext>;
+
+        $u-1 = virtualinvoke $u0.<android.content.Context: java.lang.String getString(int)>($u2);
+
+        virtualinvoke this.<androidx.appcompat.view.StandaloneActionMode: void setTitle(java.lang.CharSequence)>($u-1);
+
+        return;
+    }
+
+    public void setTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        java.lang.CharSequence $u2;
+        androidx.appcompat.widget.ActionBarContextView $u0;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.widget.ActionBarContextView mContextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.ActionBarContextView: void setTitle(java.lang.CharSequence)>($u2);
+
+        return;
+    }
+
+    public void setTitleOptionalHint(boolean)
+    {
+        androidx.appcompat.view.StandaloneActionMode this;
+        boolean $u2;
+        androidx.appcompat.widget.ActionBarContextView $u0;
+
+        this := @this: androidx.appcompat.view.StandaloneActionMode;
+
+        $u2 := @parameter0: boolean;
+
+        specialinvoke this.<androidx.appcompat.view.ActionMode: void setTitleOptionalHint(boolean)>($u2);
+
+        $u0 = this.<androidx.appcompat.view.StandaloneActionMode: androidx.appcompat.widget.ActionBarContextView mContextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.ActionBarContextView: void setTitleOptional(boolean)>($u2);
+
+        return;
+    }
+}

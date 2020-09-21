@@ -1,0 +1,115 @@
+class androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.core.widget.AutoScrollHelper this$0;
+
+    void <init>(androidx.core.widget.AutoScrollHelper)
+    {
+        androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable this;
+        androidx.core.widget.AutoScrollHelper $u1;
+
+        this := @this: androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable;
+
+        $u1 := @parameter0: androidx.core.widget.AutoScrollHelper;
+
+        this.<androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable: androidx.core.widget.AutoScrollHelper this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable this;
+        androidx.core.widget.AutoScrollHelper scroller;
+        boolean scroller#2;
+        androidx.core.widget.AutoScrollHelper$ClampedScroller scroller#8;
+        int $u-1, $u-1#22;
+        android.view.View $u3;
+
+        this := @this: androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable;
+
+        scroller = this.<androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable: androidx.core.widget.AutoScrollHelper this$0>;
+
+        scroller#2 = scroller.<androidx.core.widget.AutoScrollHelper: boolean mAnimating>;
+
+        if scroller#2 != 0 goto label1;
+
+        return;
+
+     label1:
+        scroller = this.<androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable: androidx.core.widget.AutoScrollHelper this$0>;
+
+        scroller#2 = scroller.<androidx.core.widget.AutoScrollHelper: boolean mNeedsReset>;
+
+        if scroller#2 == 0 goto label2;
+
+        scroller = this.<androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable: androidx.core.widget.AutoScrollHelper this$0>;
+
+        scroller.<androidx.core.widget.AutoScrollHelper: boolean mNeedsReset> = 0;
+
+        scroller = this.<androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable: androidx.core.widget.AutoScrollHelper this$0>;
+
+        scroller#8 = scroller.<androidx.core.widget.AutoScrollHelper: androidx.core.widget.AutoScrollHelper$ClampedScroller mScroller>;
+
+        virtualinvoke scroller#8.<androidx.core.widget.AutoScrollHelper$ClampedScroller: void start()>();
+
+     label2:
+        scroller = this.<androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable: androidx.core.widget.AutoScrollHelper this$0>;
+
+        scroller#8 = scroller.<androidx.core.widget.AutoScrollHelper: androidx.core.widget.AutoScrollHelper$ClampedScroller mScroller>;
+
+        scroller#2 = virtualinvoke scroller#8.<androidx.core.widget.AutoScrollHelper$ClampedScroller: boolean isFinished()>();
+
+        if scroller#2 != 0 goto label5;
+
+        scroller = this.<androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable: androidx.core.widget.AutoScrollHelper this$0>;
+
+        scroller#2 = virtualinvoke scroller.<androidx.core.widget.AutoScrollHelper: boolean shouldAnimate()>();
+
+        if scroller#2 != 0 goto label3;
+
+        goto label5;
+
+     label3:
+        scroller = this.<androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable: androidx.core.widget.AutoScrollHelper this$0>;
+
+        scroller#2 = scroller.<androidx.core.widget.AutoScrollHelper: boolean mNeedsCancel>;
+
+        if scroller#2 == 0 goto label4;
+
+        scroller = this.<androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable: androidx.core.widget.AutoScrollHelper this$0>;
+
+        scroller.<androidx.core.widget.AutoScrollHelper: boolean mNeedsCancel> = 0;
+
+        scroller = this.<androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable: androidx.core.widget.AutoScrollHelper this$0>;
+
+        virtualinvoke scroller.<androidx.core.widget.AutoScrollHelper: void cancelTargetTouch()>();
+
+     label4:
+        virtualinvoke scroller#8.<androidx.core.widget.AutoScrollHelper$ClampedScroller: void computeScrollDelta()>();
+
+        $u-1 = virtualinvoke scroller#8.<androidx.core.widget.AutoScrollHelper$ClampedScroller: int getDeltaX()>();
+
+        $u-1#22 = virtualinvoke scroller#8.<androidx.core.widget.AutoScrollHelper$ClampedScroller: int getDeltaY()>();
+
+        scroller = this.<androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable: androidx.core.widget.AutoScrollHelper this$0>;
+
+        virtualinvoke scroller.<androidx.core.widget.AutoScrollHelper: void scrollTargetBy(int,int)>($u-1, $u-1#22);
+
+        scroller = this.<androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable: androidx.core.widget.AutoScrollHelper this$0>;
+
+        $u3 = scroller.<androidx.core.widget.AutoScrollHelper: android.view.View mTarget>;
+
+        staticinvoke <androidx.core.view.ViewCompat: void postOnAnimation(android.view.View,java.lang.Runnable)>($u3, this);
+
+        return;
+
+     label5:
+        scroller = this.<androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable: androidx.core.widget.AutoScrollHelper this$0>;
+
+        scroller.<androidx.core.widget.AutoScrollHelper: boolean mAnimating> = 0;
+
+        return;
+    }
+}

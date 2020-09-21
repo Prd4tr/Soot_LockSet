@@ -1,0 +1,976 @@
+public class androidx.appcompat.view.menu.ListMenuItemView extends android.widget.LinearLayout implements androidx.appcompat.view.menu.MenuView$ItemView, android.widget.AbsListView$SelectionBoundsAdjuster
+{
+    private static final java.lang.String TAG;
+    private android.graphics.drawable.Drawable mBackground;
+    private android.widget.CheckBox mCheckBox;
+    private android.widget.LinearLayout mContent;
+    private boolean mForceShowIcon;
+    private android.widget.ImageView mGroupDivider;
+    private boolean mHasListDivider;
+    private android.widget.ImageView mIconView;
+    private android.view.LayoutInflater mInflater;
+    private androidx.appcompat.view.menu.MenuItemImpl mItemData;
+    private boolean mPreserveIconSpacing;
+    private android.widget.RadioButton mRadioButton;
+    private android.widget.TextView mShortcutView;
+    private android.graphics.drawable.Drawable mSubMenuArrow;
+    private android.widget.ImageView mSubMenuArrowView;
+    private int mTextAppearance;
+    private android.content.Context mTextAppearanceContext;
+    private android.widget.TextView mTitleView;
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        int $u0;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = <androidx.appcompat.R$attr: int listMenuViewStyle>;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, $u0);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        android.content.Context $u7, $u-1;
+        android.util.AttributeSet $u8;
+        int $u9;
+        int[] b;
+        androidx.appcompat.widget.TintTypedArray $u-1#5;
+        android.graphics.drawable.Drawable $u-1#8;
+        boolean $u-1#15;
+        android.content.res.Resources$Theme $u-1#20;
+        android.content.res.TypedArray $u-1#26;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u7 := @parameter0: android.content.Context;
+
+        $u8 := @parameter1: android.util.AttributeSet;
+
+        $u9 := @parameter2: int;
+
+        specialinvoke this.<android.widget.LinearLayout: void <init>(android.content.Context,android.util.AttributeSet)>($u7, $u8);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: android.content.Context getContext()>();
+
+        b = <androidx.appcompat.R$styleable: int[] MenuView>;
+
+        $u-1#5 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[],int,int)>($u-1, $u8, b, $u9, 0);
+
+        $u9 = <androidx.appcompat.R$styleable: int MenuView_android_itemBackground>;
+
+        $u-1#8 = virtualinvoke $u-1#5.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>($u9);
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: android.graphics.drawable.Drawable mBackground> = $u-1#8;
+
+        $u9 = <androidx.appcompat.R$styleable: int MenuView_android_itemTextAppearance>;
+
+        $u9 = virtualinvoke $u-1#5.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u9, -1);
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: int mTextAppearance> = $u9;
+
+        $u9 = <androidx.appcompat.R$styleable: int MenuView_preserveIconSpacing>;
+
+        $u-1#15 = virtualinvoke $u-1#5.<androidx.appcompat.widget.TintTypedArray: boolean getBoolean(int,boolean)>($u9, 0);
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: boolean mPreserveIconSpacing> = $u-1#15;
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: android.content.Context mTextAppearanceContext> = $u7;
+
+        $u9 = <androidx.appcompat.R$styleable: int MenuView_subMenuArrow>;
+
+        $u-1#8 = virtualinvoke $u-1#5.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>($u9);
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: android.graphics.drawable.Drawable mSubMenuArrow> = $u-1#8;
+
+        $u-1#20 = virtualinvoke $u7.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        b = newarray (int)[1];
+
+        b[0] = 16843049;
+
+        $u9 = <androidx.appcompat.R$attr: int dropDownListViewStyle>;
+
+        $u-1#26 = virtualinvoke $u-1#20.<android.content.res.Resources$Theme: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[],int,int)>(null, b, $u9, 0);
+
+        $u-1#15 = virtualinvoke $u-1#26.<android.content.res.TypedArray: boolean hasValue(int)>(0);
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: boolean mHasListDivider> = $u-1#15;
+
+        virtualinvoke $u-1#5.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        virtualinvoke $u-1#26.<android.content.res.TypedArray: void recycle()>();
+
+        return;
+    }
+
+    private void addContentView(android.view.View)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        android.view.View $u2;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u2 := @parameter0: android.view.View;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void addContentView(android.view.View,int)>($u2, -1);
+
+        return;
+    }
+
+    private void addContentView(android.view.View, int)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        android.view.View $u2;
+        int $u3;
+        android.widget.LinearLayout $u0;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.LinearLayout mContent>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.widget.LinearLayout: void addView(android.view.View,int)>($u2, $u3);
+
+        return;
+
+     label1:
+        virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void addView(android.view.View,int)>($u2, $u3);
+
+        return;
+    }
+
+    private android.view.LayoutInflater getInflater()
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        android.view.LayoutInflater $u0;
+        android.content.Context $u-1;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u0 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.view.LayoutInflater mInflater>;
+
+        if $u0 != null goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: android.content.Context getContext()>();
+
+        $u0 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($u-1);
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: android.view.LayoutInflater mInflater> = $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.view.LayoutInflater mInflater>;
+
+        return $u0;
+    }
+
+    private void insertCheckBox()
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        android.view.LayoutInflater $u-1;
+        int $u1;
+        android.view.View $u-1#3;
+        android.widget.CheckBox $u1#5;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: android.view.LayoutInflater getInflater()>();
+
+        $u1 = <androidx.appcompat.R$layout: int abc_list_menu_item_checkbox>;
+
+        $u-1#3 = virtualinvoke $u-1.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>($u1, this, 0);
+
+        $u1#5 = (android.widget.CheckBox) $u-1#3;
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.CheckBox mCheckBox> = $u1#5;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void addContentView(android.view.View)>($u1#5);
+
+        return;
+    }
+
+    private void insertIconView()
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        android.view.LayoutInflater $u-1;
+        int $u1;
+        android.view.View $u-1#3;
+        android.widget.ImageView $u1#5;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: android.view.LayoutInflater getInflater()>();
+
+        $u1 = <androidx.appcompat.R$layout: int abc_list_menu_item_icon>;
+
+        $u-1#3 = virtualinvoke $u-1.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>($u1, this, 0);
+
+        $u1#5 = (android.widget.ImageView) $u-1#3;
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mIconView> = $u1#5;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void addContentView(android.view.View,int)>($u1#5, 0);
+
+        return;
+    }
+
+    private void insertRadioButton()
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        android.view.LayoutInflater $u-1;
+        int $u1;
+        android.view.View $u-1#3;
+        android.widget.RadioButton $u1#5;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: android.view.LayoutInflater getInflater()>();
+
+        $u1 = <androidx.appcompat.R$layout: int abc_list_menu_item_radio>;
+
+        $u-1#3 = virtualinvoke $u-1.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>($u1, this, 0);
+
+        $u1#5 = (android.widget.RadioButton) $u-1#3;
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.RadioButton mRadioButton> = $u1#5;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void addContentView(android.view.View)>($u1#5);
+
+        return;
+    }
+
+    private void setSubMenuArrowVisible(boolean)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        boolean $u3;
+        android.widget.ImageView $u0;
+        byte $u1;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mSubMenuArrowView>;
+
+        if $u0 == null goto label3;
+
+        if $u3 == 0 goto label1;
+
+        $u1 = 0;
+
+        goto label2;
+
+     label1:
+        $u1 = 8;
+
+     label2:
+        virtualinvoke $u0.<android.widget.ImageView: void setVisibility(int)>($u1);
+
+     label3:
+        return;
+    }
+
+    public void adjustListItemSelectionBounds(android.graphics.Rect)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        android.graphics.Rect $u5;
+        android.widget.ImageView lp;
+        int $u-1, $u-1#10, $u3;
+        android.view.ViewGroup$LayoutParams $u-1#5;
+        android.widget.LinearLayout$LayoutParams lp#7;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u5 := @parameter0: android.graphics.Rect;
+
+        lp = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mGroupDivider>;
+
+        if lp == null goto label1;
+
+        $u-1 = virtualinvoke lp.<android.widget.ImageView: int getVisibility()>();
+
+        if $u-1 != 0 goto label1;
+
+        lp = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mGroupDivider>;
+
+        $u-1#5 = virtualinvoke lp.<android.widget.ImageView: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        lp#7 = (android.widget.LinearLayout$LayoutParams) $u-1#5;
+
+        $u-1 = $u5.<android.graphics.Rect: int top>;
+
+        lp = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mGroupDivider>;
+
+        $u-1#10 = virtualinvoke lp.<android.widget.ImageView: int getHeight()>();
+
+        $u3 = lp#7.<android.widget.LinearLayout$LayoutParams: int topMargin>;
+
+        $u-1#10 = $u-1#10 + $u3;
+
+        $u3 = lp#7.<android.widget.LinearLayout$LayoutParams: int bottomMargin>;
+
+        $u-1#10 = $u-1#10 + $u3;
+
+        $u-1 = $u-1 + $u-1#10;
+
+        $u5.<android.graphics.Rect: int top> = $u-1;
+
+     label1:
+        return;
+    }
+
+    public androidx.appcompat.view.menu.MenuItemImpl getItemData()
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        androidx.appcompat.view.menu.MenuItemImpl ret0;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        ret0 = this.<androidx.appcompat.view.menu.ListMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        return ret0;
+    }
+
+    public void initialize(androidx.appcompat.view.menu.MenuItemImpl, int)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        androidx.appcompat.view.menu.MenuItemImpl $u3;
+        int $u4;
+        boolean $u-1;
+        byte $u0;
+        java.lang.CharSequence $u-1#4;
+        char $u-1#10;
+        android.graphics.drawable.Drawable $u-1#11;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u3 := @parameter0: androidx.appcompat.view.menu.MenuItemImpl;
+
+        $u4 := @parameter1: int;
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData> = $u3;
+
+        $u-1 = virtualinvoke $u3.<androidx.appcompat.view.menu.MenuItemImpl: boolean isVisible()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = 0;
+
+        goto label2;
+
+     label1:
+        $u0 = 8;
+
+     label2:
+        virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void setVisibility(int)>($u0);
+
+        $u-1#4 = virtualinvoke $u3.<androidx.appcompat.view.menu.MenuItemImpl: java.lang.CharSequence getTitleForItemView(androidx.appcompat.view.menu.MenuView$ItemView)>(this);
+
+        virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void setTitle(java.lang.CharSequence)>($u-1#4);
+
+        $u-1 = virtualinvoke $u3.<androidx.appcompat.view.menu.MenuItemImpl: boolean isCheckable()>();
+
+        virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void setCheckable(boolean)>($u-1);
+
+        $u-1 = virtualinvoke $u3.<androidx.appcompat.view.menu.MenuItemImpl: boolean shouldShowShortcut()>();
+
+        $u-1#10 = virtualinvoke $u3.<androidx.appcompat.view.menu.MenuItemImpl: char getShortcut()>();
+
+        virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void setShortcut(boolean,char)>($u-1, $u-1#10);
+
+        $u-1#11 = virtualinvoke $u3.<androidx.appcompat.view.menu.MenuItemImpl: android.graphics.drawable.Drawable getIcon()>();
+
+        virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void setIcon(android.graphics.drawable.Drawable)>($u-1#11);
+
+        $u-1 = virtualinvoke $u3.<androidx.appcompat.view.menu.MenuItemImpl: boolean isEnabled()>();
+
+        virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void setEnabled(boolean)>($u-1);
+
+        $u-1 = virtualinvoke $u3.<androidx.appcompat.view.menu.MenuItemImpl: boolean hasSubMenu()>();
+
+        specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void setSubMenuArrowVisible(boolean)>($u-1);
+
+        $u-1#4 = virtualinvoke $u3.<androidx.appcompat.view.menu.MenuItemImpl: java.lang.CharSequence getContentDescription()>();
+
+        virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void setContentDescription(java.lang.CharSequence)>($u-1#4);
+
+        return;
+    }
+
+    protected void onFinishInflate()
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        android.graphics.drawable.Drawable $u0;
+        int $u0#2;
+        android.view.View $u-1;
+        android.widget.TextView $u0#5;
+        android.content.Context $u2;
+        android.widget.ImageView $u0#16;
+        android.widget.LinearLayout $u0#25;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        specialinvoke this.<android.widget.LinearLayout: void onFinishInflate()>();
+
+        $u0 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.graphics.drawable.Drawable mBackground>;
+
+        staticinvoke <androidx.core.view.ViewCompat: void setBackground(android.view.View,android.graphics.drawable.Drawable)>(this, $u0);
+
+        $u0#2 = <androidx.appcompat.R$id: int title>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: android.view.View findViewById(int)>($u0#2);
+
+        $u0#5 = (android.widget.TextView) $u-1;
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.TextView mTitleView> = $u0#5;
+
+        $u0#2 = this.<androidx.appcompat.view.menu.ListMenuItemView: int mTextAppearance>;
+
+        if $u0#2 == -1 goto label1;
+
+        $u2 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.content.Context mTextAppearanceContext>;
+
+        virtualinvoke $u0#5.<android.widget.TextView: void setTextAppearance(android.content.Context,int)>($u2, $u0#2);
+
+     label1:
+        $u0#2 = <androidx.appcompat.R$id: int shortcut>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: android.view.View findViewById(int)>($u0#2);
+
+        $u0#5 = (android.widget.TextView) $u-1;
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.TextView mShortcutView> = $u0#5;
+
+        $u0#2 = <androidx.appcompat.R$id: int submenuarrow>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: android.view.View findViewById(int)>($u0#2);
+
+        $u0#16 = (android.widget.ImageView) $u-1;
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mSubMenuArrowView> = $u0#16;
+
+        if $u0#16 == null goto label2;
+
+        $u0 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.graphics.drawable.Drawable mSubMenuArrow>;
+
+        virtualinvoke $u0#16.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($u0);
+
+     label2:
+        $u0#2 = <androidx.appcompat.R$id: int group_divider>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: android.view.View findViewById(int)>($u0#2);
+
+        $u0#16 = (android.widget.ImageView) $u-1;
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mGroupDivider> = $u0#16;
+
+        $u0#2 = <androidx.appcompat.R$id: int content>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: android.view.View findViewById(int)>($u0#2);
+
+        $u0#25 = (android.widget.LinearLayout) $u-1;
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.LinearLayout mContent> = $u0#25;
+
+        return;
+    }
+
+    protected void onMeasure(int, int)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        int $u4, $u5, $u2;
+        android.widget.ImageView lp;
+        boolean lp#2;
+        android.view.ViewGroup$LayoutParams $u-1, $u-1#6;
+        android.widget.LinearLayout$LayoutParams iconLp;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: int;
+
+        lp = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mIconView>;
+
+        if lp == null goto label1;
+
+        lp#2 = this.<androidx.appcompat.view.menu.ListMenuItemView: boolean mPreserveIconSpacing>;
+
+        if lp#2 == 0 goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        lp = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mIconView>;
+
+        $u-1#6 = virtualinvoke lp.<android.widget.ImageView: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        iconLp = (android.widget.LinearLayout$LayoutParams) $u-1#6;
+
+        $u2 = $u-1.<android.view.ViewGroup$LayoutParams: int height>;
+
+        if $u2 <= 0 goto label1;
+
+        $u2 = iconLp.<android.widget.LinearLayout$LayoutParams: int width>;
+
+        if $u2 > 0 goto label1;
+
+        $u2 = $u-1.<android.view.ViewGroup$LayoutParams: int height>;
+
+        iconLp.<android.widget.LinearLayout$LayoutParams: int width> = $u2;
+
+     label1:
+        specialinvoke this.<android.widget.LinearLayout: void onMeasure(int,int)>($u4, $u5);
+
+        return;
+    }
+
+    public boolean prefersCondensedTitle()
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        return 0;
+    }
+
+    public void setCheckable(boolean)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        boolean $u5, $u-1;
+        android.widget.RadioButton compoundButton;
+        android.widget.CheckBox compoundButton#2;
+        androidx.appcompat.view.menu.MenuItemImpl compoundButton#3;
+        android.widget.CompoundButton compoundButton#7, otherCompoundButton;
+        int $u-1#13;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u5 := @parameter0: boolean;
+
+        if $u5 != 0 goto label1;
+
+        compoundButton = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.RadioButton mRadioButton>;
+
+        if compoundButton != null goto label1;
+
+        compoundButton#2 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.CheckBox mCheckBox>;
+
+        if compoundButton#2 != null goto label1;
+
+        return;
+
+     label1:
+        compoundButton#3 = this.<androidx.appcompat.view.menu.ListMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        $u-1 = virtualinvoke compoundButton#3.<androidx.appcompat.view.menu.MenuItemImpl: boolean isExclusiveCheckable()>();
+
+        if $u-1 == 0 goto label3;
+
+        compoundButton = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.RadioButton mRadioButton>;
+
+        if compoundButton != null goto label2;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void insertRadioButton()>();
+
+     label2:
+        compoundButton#7 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.RadioButton mRadioButton>;
+
+        otherCompoundButton = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.CheckBox mCheckBox>;
+
+        goto label5;
+
+     label3:
+        compoundButton#2 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.CheckBox mCheckBox>;
+
+        if compoundButton#2 != null goto label4;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void insertCheckBox()>();
+
+     label4:
+        compoundButton#7 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.CheckBox mCheckBox>;
+
+        otherCompoundButton = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.RadioButton mRadioButton>;
+
+     label5:
+        if $u5 == 0 goto label7;
+
+        compoundButton#3 = this.<androidx.appcompat.view.menu.ListMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        $u5 = virtualinvoke compoundButton#3.<androidx.appcompat.view.menu.MenuItemImpl: boolean isChecked()>();
+
+        virtualinvoke compoundButton#7.<android.widget.CompoundButton: void setChecked(boolean)>($u5);
+
+        $u-1#13 = virtualinvoke compoundButton#7.<android.widget.CompoundButton: int getVisibility()>();
+
+        if $u-1#13 == 0 goto label6;
+
+        virtualinvoke compoundButton#7.<android.widget.CompoundButton: void setVisibility(int)>(0);
+
+     label6:
+        if otherCompoundButton == null goto label9;
+
+        $u-1#13 = virtualinvoke otherCompoundButton.<android.widget.CompoundButton: int getVisibility()>();
+
+        if $u-1#13 == 8 goto label9;
+
+        virtualinvoke otherCompoundButton.<android.widget.CompoundButton: void setVisibility(int)>(8);
+
+        return;
+
+     label7:
+        compoundButton#2 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.CheckBox mCheckBox>;
+
+        if compoundButton#2 == null goto label8;
+
+        virtualinvoke compoundButton#2.<android.widget.CheckBox: void setVisibility(int)>(8);
+
+     label8:
+        compoundButton = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.RadioButton mRadioButton>;
+
+        if compoundButton == null goto label9;
+
+        virtualinvoke compoundButton.<android.widget.RadioButton: void setVisibility(int)>(8);
+
+     label9:
+        return;
+    }
+
+    public void setChecked(boolean)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        boolean $u2, $u-1;
+        androidx.appcompat.view.menu.MenuItemImpl compoundButton;
+        android.widget.RadioButton compoundButton#3;
+        android.widget.CompoundButton compoundButton#4;
+        android.widget.CheckBox compoundButton#5;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u2 := @parameter0: boolean;
+
+        compoundButton = this.<androidx.appcompat.view.menu.ListMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        $u-1 = virtualinvoke compoundButton.<androidx.appcompat.view.menu.MenuItemImpl: boolean isExclusiveCheckable()>();
+
+        if $u-1 == 0 goto label2;
+
+        compoundButton#3 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.RadioButton mRadioButton>;
+
+        if compoundButton#3 != null goto label1;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void insertRadioButton()>();
+
+     label1:
+        compoundButton#4 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.RadioButton mRadioButton>;
+
+        goto label4;
+
+     label2:
+        compoundButton#5 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.CheckBox mCheckBox>;
+
+        if compoundButton#5 != null goto label3;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void insertCheckBox()>();
+
+     label3:
+        compoundButton#4 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.CheckBox mCheckBox>;
+
+     label4:
+        virtualinvoke compoundButton#4.<android.widget.CompoundButton: void setChecked(boolean)>($u2);
+
+        return;
+    }
+
+    public void setForceShowIcon(boolean)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        boolean $u1;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u1 := @parameter0: boolean;
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: boolean mForceShowIcon> = $u1;
+
+        this.<androidx.appcompat.view.menu.ListMenuItemView: boolean mPreserveIconSpacing> = $u1;
+
+        return;
+    }
+
+    public void setGroupDividerEnabled(boolean)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        boolean $u3, $u1;
+        android.widget.ImageView $u0;
+        byte $u1#2;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mGroupDivider>;
+
+        if $u0 == null goto label3;
+
+        $u1 = this.<androidx.appcompat.view.menu.ListMenuItemView: boolean mHasListDivider>;
+
+        if $u1 != 0 goto label1;
+
+        if $u3 == 0 goto label1;
+
+        $u1#2 = 0;
+
+        goto label2;
+
+     label1:
+        $u1#2 = 8;
+
+     label2:
+        virtualinvoke $u0.<android.widget.ImageView: void setVisibility(int)>($u1#2);
+
+     label3:
+        return;
+    }
+
+    public void setIcon(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        android.graphics.drawable.Drawable $u5;
+        androidx.appcompat.view.menu.MenuItemImpl showIcon;
+        boolean $u-1, $u2;
+        android.widget.ImageView $u2#8;
+        int $u-1#17;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u5 := @parameter0: android.graphics.drawable.Drawable;
+
+        showIcon = this.<androidx.appcompat.view.menu.ListMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        $u-1 = virtualinvoke showIcon.<androidx.appcompat.view.menu.MenuItemImpl: boolean shouldShowIcon()>();
+
+        if $u-1 != 0 goto label02;
+
+        $u-1 = this.<androidx.appcompat.view.menu.ListMenuItemView: boolean mForceShowIcon>;
+
+        if $u-1 == 0 goto label01;
+
+        goto label02;
+
+     label01:
+        $u-1 = 0;
+
+        goto label03;
+
+     label02:
+        $u-1 = 1;
+
+     label03:
+        if $u-1 != 0 goto label04;
+
+        $u2 = this.<androidx.appcompat.view.menu.ListMenuItemView: boolean mPreserveIconSpacing>;
+
+        if $u2 != 0 goto label04;
+
+        return;
+
+     label04:
+        $u2#8 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mIconView>;
+
+        if $u2#8 != null goto label05;
+
+        if $u5 != null goto label05;
+
+        $u2 = this.<androidx.appcompat.view.menu.ListMenuItemView: boolean mPreserveIconSpacing>;
+
+        if $u2 != 0 goto label05;
+
+        return;
+
+     label05:
+        $u2#8 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mIconView>;
+
+        if $u2#8 != null goto label06;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ListMenuItemView: void insertIconView()>();
+
+     label06:
+        if $u5 != null goto label08;
+
+        $u2 = this.<androidx.appcompat.view.menu.ListMenuItemView: boolean mPreserveIconSpacing>;
+
+        if $u2 == 0 goto label07;
+
+        goto label08;
+
+     label07:
+        $u2#8 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mIconView>;
+
+        virtualinvoke $u2#8.<android.widget.ImageView: void setVisibility(int)>(8);
+
+        return;
+
+     label08:
+        $u2#8 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mIconView>;
+
+        if $u-1 == 0 goto label09;
+
+        goto label10;
+
+     label09:
+        $u5 = null;
+
+     label10:
+        virtualinvoke $u2#8.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($u5);
+
+        $u2#8 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mIconView>;
+
+        $u-1#17 = virtualinvoke $u2#8.<android.widget.ImageView: int getVisibility()>();
+
+        if $u-1#17 == 0 goto label11;
+
+        $u2#8 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.ImageView mIconView>;
+
+        virtualinvoke $u2#8.<android.widget.ImageView: void setVisibility(int)>(0);
+
+     label11:
+        return;
+    }
+
+    public void setShortcut(boolean, char)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        boolean $u4;
+        char $u5;
+        androidx.appcompat.view.menu.MenuItemImpl newVisibility;
+        byte newVisibility#4;
+        android.widget.TextView $u1;
+        java.lang.String $u-1;
+        int $u-1#10;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u4 := @parameter0: boolean;
+
+        $u5 := @parameter1: char;
+
+        if $u4 == 0 goto label1;
+
+        newVisibility = this.<androidx.appcompat.view.menu.ListMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        $u4 = virtualinvoke newVisibility.<androidx.appcompat.view.menu.MenuItemImpl: boolean shouldShowShortcut()>();
+
+        if $u4 == 0 goto label1;
+
+        newVisibility#4 = 0;
+
+        goto label2;
+
+     label1:
+        newVisibility#4 = 8;
+
+     label2:
+        if newVisibility#4 != 0 goto label3;
+
+        $u1 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.TextView mShortcutView>;
+
+        newVisibility = this.<androidx.appcompat.view.menu.ListMenuItemView: androidx.appcompat.view.menu.MenuItemImpl mItemData>;
+
+        $u-1 = virtualinvoke newVisibility.<androidx.appcompat.view.menu.MenuItemImpl: java.lang.String getShortcutLabel()>();
+
+        virtualinvoke $u1.<android.widget.TextView: void setText(java.lang.CharSequence)>($u-1);
+
+     label3:
+        $u1 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.TextView mShortcutView>;
+
+        $u-1#10 = virtualinvoke $u1.<android.widget.TextView: int getVisibility()>();
+
+        if $u-1#10 == newVisibility#4 goto label4;
+
+        $u1 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.TextView mShortcutView>;
+
+        virtualinvoke $u1.<android.widget.TextView: void setVisibility(int)>(newVisibility#4);
+
+     label4:
+        return;
+    }
+
+    public void setTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        java.lang.CharSequence $u3;
+        android.widget.TextView $u0;
+        int $u-1;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        $u3 := @parameter0: java.lang.CharSequence;
+
+        if $u3 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.TextView mTitleView>;
+
+        virtualinvoke $u0.<android.widget.TextView: void setText(java.lang.CharSequence)>($u3);
+
+        $u0 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.TextView mTitleView>;
+
+        $u-1 = virtualinvoke $u0.<android.widget.TextView: int getVisibility()>();
+
+        if $u-1 == 0 goto label2;
+
+        $u0 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.TextView mTitleView>;
+
+        virtualinvoke $u0.<android.widget.TextView: void setVisibility(int)>(0);
+
+        return;
+
+     label1:
+        $u0 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.TextView mTitleView>;
+
+        $u-1 = virtualinvoke $u0.<android.widget.TextView: int getVisibility()>();
+
+        if $u-1 == 8 goto label2;
+
+        $u0 = this.<androidx.appcompat.view.menu.ListMenuItemView: android.widget.TextView mTitleView>;
+
+        virtualinvoke $u0.<android.widget.TextView: void setVisibility(int)>(8);
+
+     label2:
+        return;
+    }
+
+    public boolean showsIcon()
+    {
+        androidx.appcompat.view.menu.ListMenuItemView this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.view.menu.ListMenuItemView;
+
+        ret0 = this.<androidx.appcompat.view.menu.ListMenuItemView: boolean mForceShowIcon>;
+
+        return ret0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.view.menu.ListMenuItemView: java.lang.String TAG> = "ListMenuItemView";
+
+        return;
+    }
+}

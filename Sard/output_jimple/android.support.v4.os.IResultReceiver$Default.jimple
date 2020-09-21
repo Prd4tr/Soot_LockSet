@@ -1,0 +1,38 @@
+public class android.support.v4.os.IResultReceiver$Default extends java.lang.Object implements android.support.v4.os.IResultReceiver
+{
+
+    public void <init>()
+    {
+        android.support.v4.os.IResultReceiver$Default this;
+
+        this := @this: android.support.v4.os.IResultReceiver$Default;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public android.os.IBinder asBinder()
+    {
+        android.support.v4.os.IResultReceiver$Default this;
+
+        this := @this: android.support.v4.os.IResultReceiver$Default;
+
+        return null;
+    }
+
+    public void send(int, android.os.Bundle) throws android.os.RemoteException
+    {
+        android.support.v4.os.IResultReceiver$Default this;
+        int $u1;
+        android.os.Bundle $u2;
+
+        this := @this: android.support.v4.os.IResultReceiver$Default;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: android.os.Bundle;
+
+        return;
+    }
+}

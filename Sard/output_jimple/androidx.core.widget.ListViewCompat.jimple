@@ -1,0 +1,128 @@
+public final class androidx.core.widget.ListViewCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.widget.ListViewCompat this;
+
+        this := @this: androidx.core.widget.ListViewCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static boolean canScrollList(android.widget.ListView, int)
+    {
+        android.widget.ListView $u8;
+        int $u9, childCount, $u-1#5;
+        boolean $u-1;
+        android.view.View $u-1#10;
+
+        $u8 := @parameter0: android.widget.ListView;
+
+        $u9 := @parameter1: int;
+
+        childCount = <android.os.Build$VERSION: int SDK_INT>;
+
+        if childCount < 19 goto label1;
+
+        $u-1 = virtualinvoke $u8.<android.widget.ListView: boolean canScrollList(int)>($u9);
+
+        return $u-1;
+
+     label1:
+        $u-1#5 = virtualinvoke $u8.<android.widget.ListView: int getChildCount()>();
+
+        if $u-1#5 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        childCount = virtualinvoke $u8.<android.widget.ListView: int getFirstVisiblePosition()>();
+
+        if $u9 <= 0 goto label4;
+
+        $u9 = $u-1#5 + -1;
+
+        $u-1#10 = virtualinvoke $u8.<android.widget.ListView: android.view.View getChildAt(int)>($u9);
+
+        $u9 = virtualinvoke $u-1#10.<android.view.View: int getBottom()>();
+
+        childCount = childCount + $u-1#5;
+
+        $u-1#5 = virtualinvoke $u8.<android.widget.ListView: int getCount()>();
+
+        if childCount < $u-1#5 goto label3;
+
+        childCount = virtualinvoke $u8.<android.widget.ListView: int getHeight()>();
+
+        $u-1#5 = virtualinvoke $u8.<android.widget.ListView: int getListPaddingBottom()>();
+
+        childCount = childCount - $u-1#5;
+
+        if $u9 <= childCount goto label6;
+
+     label3:
+        return 1;
+
+     label4:
+        $u-1#10 = virtualinvoke $u8.<android.widget.ListView: android.view.View getChildAt(int)>(0);
+
+        $u9 = virtualinvoke $u-1#10.<android.view.View: int getTop()>();
+
+        if childCount > 0 goto label5;
+
+        childCount = virtualinvoke $u8.<android.widget.ListView: int getListPaddingTop()>();
+
+        if $u9 >= childCount goto label6;
+
+     label5:
+        return 1;
+
+     label6:
+        return 0;
+    }
+
+    public static void scrollListBy(android.widget.ListView, int)
+    {
+        android.widget.ListView $u3;
+        int $u4, firstPosition, $u-1#9;
+        android.view.View $u-1;
+
+        $u3 := @parameter0: android.widget.ListView;
+
+        $u4 := @parameter1: int;
+
+        firstPosition = <android.os.Build$VERSION: int SDK_INT>;
+
+        if firstPosition < 19 goto label1;
+
+        virtualinvoke $u3.<android.widget.ListView: void scrollListBy(int)>($u4);
+
+        return;
+
+     label1:
+        firstPosition = virtualinvoke $u3.<android.widget.ListView: int getFirstVisiblePosition()>();
+
+        if firstPosition != -1 goto label2;
+
+        return;
+
+     label2:
+        $u-1 = virtualinvoke $u3.<android.widget.ListView: android.view.View getChildAt(int)>(0);
+
+        if $u-1 != null goto label3;
+
+        return;
+
+     label3:
+        $u-1#9 = virtualinvoke $u-1.<android.view.View: int getTop()>();
+
+        $u4 = $u-1#9 - $u4;
+
+        virtualinvoke $u3.<android.widget.ListView: void setSelectionFromTop(int,int)>(firstPosition, $u4);
+
+        return;
+    }
+}

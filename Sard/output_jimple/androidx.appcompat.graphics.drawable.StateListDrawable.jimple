@@ -1,0 +1,682 @@
+class androidx.appcompat.graphics.drawable.StateListDrawable extends androidx.appcompat.graphics.drawable.DrawableContainer
+{
+    private static final boolean DEBUG;
+    private static final java.lang.String TAG;
+    private boolean mMutated;
+    private androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState;
+
+    void <init>()
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: void <init>(androidx.appcompat.graphics.drawable.StateListDrawable$StateListState,android.content.res.Resources)>(null, null);
+
+        return;
+    }
+
+    void <init>(androidx.appcompat.graphics.drawable.StateListDrawable$StateListState)
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState $u1;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u1 := @parameter0: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState;
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void <init>()>();
+
+        if $u1 == null goto label1;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: void setConstantState(androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState)>($u1);
+
+     label1:
+        return;
+    }
+
+    void <init>(androidx.appcompat.graphics.drawable.StateListDrawable$StateListState, android.content.res.Resources)
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState $u3, newState;
+        android.content.res.Resources $u4;
+        int[] $u-1;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u3 := @parameter0: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState;
+
+        $u4 := @parameter1: android.content.res.Resources;
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void <init>()>();
+
+        newState = new androidx.appcompat.graphics.drawable.StateListDrawable$StateListState;
+
+        specialinvoke newState.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: void <init>(androidx.appcompat.graphics.drawable.StateListDrawable$StateListState,androidx.appcompat.graphics.drawable.StateListDrawable,android.content.res.Resources)>($u3, this, $u4);
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: void setConstantState(androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState)>(newState);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: int[] getState()>();
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: boolean onStateChange(int[])>($u-1);
+
+        return;
+    }
+
+    private void inflateChildElements(android.content.Context, android.content.res.Resources, org.xmlpull.v1.XmlPullParser, android.util.AttributeSet, android.content.res.Resources$Theme) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        android.content.Context $u17;
+        android.content.res.Resources $u18;
+        org.xmlpull.v1.XmlPullParser $u19;
+        android.util.AttributeSet $u20;
+        android.content.res.Resources$Theme $u21;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState state;
+        int $u-1, $u-1#5, $u-1#8;
+        java.lang.String $u-1#15;
+        boolean $u-1#18;
+        int[] a;
+        android.content.res.TypedArray $u-1#23;
+        android.graphics.drawable.Drawable dr;
+        androidx.appcompat.widget.ResourceManagerInternal $u-1#30;
+        org.xmlpull.v1.XmlPullParserException $u4;
+        java.lang.StringBuilder $u5;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u17 := @parameter0: android.content.Context;
+
+        $u18 := @parameter1: android.content.res.Resources;
+
+        $u19 := @parameter2: org.xmlpull.v1.XmlPullParser;
+
+        $u20 := @parameter3: android.util.AttributeSet;
+
+        $u21 := @parameter4: android.content.res.Resources$Theme;
+
+        state = this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState>;
+
+        $u-1 = interfaceinvoke $u19.<org.xmlpull.v1.XmlPullParser: int getDepth()>();
+
+        $u-1 = $u-1 + 1;
+
+     label01:
+        $u-1#5 = interfaceinvoke $u19.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        if $u-1#5 == 1 goto label13;
+
+        $u-1#8 = interfaceinvoke $u19.<org.xmlpull.v1.XmlPullParser: int getDepth()>();
+
+        if $u-1#8 >= $u-1 goto label03;
+
+        if $u-1#5 == 3 goto label02;
+
+        goto label03;
+
+     label02:
+        return;
+
+     label03:
+        if $u-1#5 == 2 goto label04;
+
+        goto label01;
+
+     label04:
+        if $u-1#8 > $u-1 goto label12;
+
+        $u-1#15 = interfaceinvoke $u19.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+        $u-1#18 = virtualinvoke $u-1#15.<java.lang.String: boolean equals(java.lang.Object)>("item");
+
+        if $u-1#18 != 0 goto label05;
+
+        goto label01;
+
+     label05:
+        a = <androidx.appcompat.resources.R$styleable: int[] StateListDrawableItem>;
+
+        $u-1#23 = staticinvoke <androidx.core.content.res.TypedArrayUtils: android.content.res.TypedArray obtainAttributes(android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,int[])>($u18, $u21, $u20, a);
+
+        dr = null;
+
+        $u-1#5 = <androidx.appcompat.resources.R$styleable: int StateListDrawableItem_android_drawable>;
+
+        $u-1#5 = virtualinvoke $u-1#23.<android.content.res.TypedArray: int getResourceId(int,int)>($u-1#5, -1);
+
+        if $u-1#5 <= 0 goto label06;
+
+        $u-1#30 = staticinvoke <androidx.appcompat.widget.ResourceManagerInternal: androidx.appcompat.widget.ResourceManagerInternal get()>();
+
+        dr = virtualinvoke $u-1#30.<androidx.appcompat.widget.ResourceManagerInternal: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u17, $u-1#5);
+
+        goto label06;
+
+     label06:
+        virtualinvoke $u-1#23.<android.content.res.TypedArray: void recycle()>();
+
+        a = virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: int[] extractStateSet(android.util.AttributeSet)>($u20);
+
+        if dr != null goto label11;
+
+     label07:
+        $u-1#5 = interfaceinvoke $u19.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        if $u-1#5 != 4 goto label08;
+
+        goto label07;
+
+     label08:
+        if $u-1#5 != 2 goto label10;
+
+        $u-1#5 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1#5 < 21 goto label09;
+
+        dr = staticinvoke <android.graphics.drawable.Drawable: android.graphics.drawable.Drawable createFromXmlInner(android.content.res.Resources,org.xmlpull.v1.XmlPullParser,android.util.AttributeSet,android.content.res.Resources$Theme)>($u18, $u19, $u20, $u21);
+
+        goto label11;
+
+     label09:
+        dr = staticinvoke <android.graphics.drawable.Drawable: android.graphics.drawable.Drawable createFromXmlInner(android.content.res.Resources,org.xmlpull.v1.XmlPullParser,android.util.AttributeSet)>($u18, $u19, $u20);
+
+        goto label11;
+
+     label10:
+        $u4 = new org.xmlpull.v1.XmlPullParserException;
+
+        $u5 = new java.lang.StringBuilder;
+
+        specialinvoke $u5.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1#15 = interfaceinvoke $u19.<org.xmlpull.v1.XmlPullParser: java.lang.String getPositionDescription()>();
+
+        virtualinvoke $u5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#15);
+
+        virtualinvoke $u5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": <item> tag requires a \'drawable\' attribute or child tag defining a drawable");
+
+        $u-1#15 = virtualinvoke $u5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u4.<org.xmlpull.v1.XmlPullParserException: void <init>(java.lang.String)>($u-1#15);
+
+        throw $u4;
+
+     label11:
+        virtualinvoke state.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int addStateSet(int[],android.graphics.drawable.Drawable)>(a, dr);
+
+        goto label01;
+
+     label12:
+        goto label01;
+
+     label13:
+        return;
+    }
+
+    private void updateStateFromTypedArray(android.content.res.TypedArray)
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        android.content.res.TypedArray $u4;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState state;
+        int $u1, $u-1;
+        boolean $u2;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u4 := @parameter0: android.content.res.TypedArray;
+
+        state = this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState>;
+
+        $u1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u1 < 21 goto label1;
+
+        $u1 = state.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int mChangingConfigurations>;
+
+        $u-1 = virtualinvoke $u4.<android.content.res.TypedArray: int getChangingConfigurations()>();
+
+        $u1 = $u1 | $u-1;
+
+        state.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int mChangingConfigurations> = $u1;
+
+     label1:
+        $u1 = <androidx.appcompat.resources.R$styleable: int StateListDrawable_android_variablePadding>;
+
+        $u2 = state.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: boolean mVariablePadding>;
+
+        $u2 = virtualinvoke $u4.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($u1, $u2);
+
+        state.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: boolean mVariablePadding> = $u2;
+
+        $u1 = <androidx.appcompat.resources.R$styleable: int StateListDrawable_android_constantSize>;
+
+        $u2 = state.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: boolean mConstantSize>;
+
+        $u2 = virtualinvoke $u4.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($u1, $u2);
+
+        state.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: boolean mConstantSize> = $u2;
+
+        $u1 = <androidx.appcompat.resources.R$styleable: int StateListDrawable_android_enterFadeDuration>;
+
+        $u-1 = state.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int mEnterFadeDuration>;
+
+        $u1 = virtualinvoke $u4.<android.content.res.TypedArray: int getInt(int,int)>($u1, $u-1);
+
+        state.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int mEnterFadeDuration> = $u1;
+
+        $u1 = <androidx.appcompat.resources.R$styleable: int StateListDrawable_android_exitFadeDuration>;
+
+        $u-1 = state.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int mExitFadeDuration>;
+
+        $u1 = virtualinvoke $u4.<android.content.res.TypedArray: int getInt(int,int)>($u1, $u-1);
+
+        state.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int mExitFadeDuration> = $u1;
+
+        $u1 = <androidx.appcompat.resources.R$styleable: int StateListDrawable_android_dither>;
+
+        $u2 = state.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: boolean mDither>;
+
+        $u2 = virtualinvoke $u4.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($u1, $u2);
+
+        state.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: boolean mDither> = $u2;
+
+        return;
+    }
+
+    public void addState(int[], android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        int[] $u2;
+        android.graphics.drawable.Drawable $u3;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u2 := @parameter0: int[];
+
+        $u3 := @parameter1: android.graphics.drawable.Drawable;
+
+        if $u3 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState>;
+
+        virtualinvoke $u0.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int addStateSet(int[],android.graphics.drawable.Drawable)>($u2, $u3);
+
+        $u2 = virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: int[] getState()>();
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: boolean onStateChange(int[])>($u2);
+
+     label1:
+        return;
+    }
+
+    public void applyTheme(android.content.res.Resources$Theme)
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        android.content.res.Resources$Theme $u2;
+        int[] $u-1;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u2 := @parameter0: android.content.res.Resources$Theme;
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void applyTheme(android.content.res.Resources$Theme)>($u2);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: int[] getState()>();
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: boolean onStateChange(int[])>($u-1);
+
+        return;
+    }
+
+    void clearMutated()
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void clearMutated()>();
+
+        this.<androidx.appcompat.graphics.drawable.StateListDrawable: boolean mMutated> = 0;
+
+        return;
+    }
+
+    volatile androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState cloneConstantState()
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState $u-1;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState cloneConstantState()>();
+
+        return $u-1;
+    }
+
+    androidx.appcompat.graphics.drawable.StateListDrawable$StateListState cloneConstantState()
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState $u0, $u1;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u0 = new androidx.appcompat.graphics.drawable.StateListDrawable$StateListState;
+
+        $u1 = this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState>;
+
+        specialinvoke $u0.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: void <init>(androidx.appcompat.graphics.drawable.StateListDrawable$StateListState,androidx.appcompat.graphics.drawable.StateListDrawable,android.content.res.Resources)>($u1, this, null);
+
+        return $u0;
+    }
+
+    int[] extractStateSet(android.util.AttributeSet)
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        android.util.AttributeSet $u8;
+        int j, $u-1, i, $u-1#5, j1;
+        int[] states;
+        boolean $u-1#10;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u8 := @parameter0: android.util.AttributeSet;
+
+        j = 0;
+
+        $u-1 = interfaceinvoke $u8.<android.util.AttributeSet: int getAttributeCount()>();
+
+        states = newarray (int)[$u-1];
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label6;
+
+        $u-1#5 = interfaceinvoke $u8.<android.util.AttributeSet: int getAttributeNameResource(int)>(i);
+
+        if $u-1#5 == 0 goto label5;
+
+        if $u-1#5 == 16842960 goto label4;
+
+        if $u-1#5 == 16843161 goto label4;
+
+        j1 = j + 1;
+
+        $u-1#10 = interfaceinvoke $u8.<android.util.AttributeSet: boolean getAttributeBooleanValue(int,boolean)>(i, 0);
+
+        if $u-1#10 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        $u-1#5 = neg $u-1#5;
+
+     label3:
+        states[j] = $u-1#5;
+
+        j = j1;
+
+        goto label5;
+
+     label4:
+        goto label5;
+
+     label5:
+        i = i + 1;
+
+        goto label1;
+
+     label6:
+        states = staticinvoke <android.util.StateSet: int[] trimStateSet(int[],int)>(states, j);
+
+        return states;
+    }
+
+    int getStateCount()
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        int $u-1;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int getChildCount()>();
+
+        return $u-1;
+    }
+
+    android.graphics.drawable.Drawable getStateDrawable(int)
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        int $u2;
+        android.graphics.drawable.Drawable $u-1;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: android.graphics.drawable.Drawable getChild(int)>($u2);
+
+        return $u-1;
+    }
+
+    int getStateDrawableIndex(int[])
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        int[] $u2;
+        int $u-1;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u2 := @parameter0: int[];
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int indexOfStateSet(int[])>($u2);
+
+        return $u-1;
+    }
+
+    androidx.appcompat.graphics.drawable.StateListDrawable$StateListState getStateListState()
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState>;
+
+        return ret0;
+    }
+
+    int[] getStateSet(int)
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        int $u2;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState $u0;
+        int[][] $u0#2;
+        int[] $u0#3;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState>;
+
+        $u0#2 = $u0.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int[][] mStateSets>;
+
+        $u0#3 = $u0#2[$u2];
+
+        return $u0#3;
+    }
+
+    public void inflate(android.content.Context, android.content.res.Resources, org.xmlpull.v1.XmlPullParser, android.util.AttributeSet, android.content.res.Resources$Theme) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        android.content.Context $u4;
+        android.content.res.Resources $u5;
+        org.xmlpull.v1.XmlPullParser $u6;
+        android.util.AttributeSet $u7;
+        android.content.res.Resources$Theme $u8;
+        int[] a;
+        android.content.res.TypedArray $u-1;
+        int $u1;
+        boolean $u-1#5;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: android.content.res.Resources;
+
+        $u6 := @parameter2: org.xmlpull.v1.XmlPullParser;
+
+        $u7 := @parameter3: android.util.AttributeSet;
+
+        $u8 := @parameter4: android.content.res.Resources$Theme;
+
+        a = <androidx.appcompat.resources.R$styleable: int[] StateListDrawable>;
+
+        $u-1 = staticinvoke <androidx.core.content.res.TypedArrayUtils: android.content.res.TypedArray obtainAttributes(android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,int[])>($u5, $u8, $u7, a);
+
+        $u1 = <androidx.appcompat.resources.R$styleable: int StateListDrawable_android_visible>;
+
+        $u-1#5 = virtualinvoke $u-1.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($u1, 1);
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: boolean setVisible(boolean,boolean)>($u-1#5, 1);
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: void updateStateFromTypedArray(android.content.res.TypedArray)>($u-1);
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: void updateDensity(android.content.res.Resources)>($u5);
+
+        virtualinvoke $u-1.<android.content.res.TypedArray: void recycle()>();
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: void inflateChildElements(android.content.Context,android.content.res.Resources,org.xmlpull.v1.XmlPullParser,android.util.AttributeSet,android.content.res.Resources$Theme)>($u4, $u5, $u6, $u7, $u8);
+
+        a = virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: int[] getState()>();
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: boolean onStateChange(int[])>(a);
+
+        return;
+    }
+
+    public boolean isStateful()
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        return 1;
+    }
+
+    public android.graphics.drawable.Drawable mutate()
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        android.graphics.drawable.Drawable $u-1;
+        boolean $u0;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState $u0#3;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.StateListDrawable: boolean mMutated>;
+
+        if $u0 != 0 goto label1;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mutate()>();
+
+        if $u-1 != this goto label1;
+
+        $u0#3 = this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState>;
+
+        virtualinvoke $u0#3.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: void mutate()>();
+
+        this.<androidx.appcompat.graphics.drawable.StateListDrawable: boolean mMutated> = 1;
+
+     label1:
+        return this;
+    }
+
+    protected boolean onStateChange(int[])
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        int[] $u5;
+        boolean $u-1, $u-1#7;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState idx;
+        int $u-1#3, idx#4;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u5 := @parameter0: int[];
+
+        $u-1 = specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: boolean onStateChange(int[])>($u5);
+
+        idx = this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState>;
+
+        $u-1#3 = virtualinvoke idx.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int indexOfStateSet(int[])>($u5);
+
+        idx#4 = $u-1#3;
+
+        if $u-1#3 >= 0 goto label1;
+
+        idx = this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState>;
+
+        $u5 = <android.util.StateSet: int[] WILD_CARD>;
+
+        idx#4 = virtualinvoke idx.<androidx.appcompat.graphics.drawable.StateListDrawable$StateListState: int indexOfStateSet(int[])>($u5);
+
+     label1:
+        $u-1#7 = virtualinvoke this.<androidx.appcompat.graphics.drawable.StateListDrawable: boolean selectDrawable(int)>(idx#4);
+
+        if $u-1#7 != 0 goto label3;
+
+        if $u-1 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        return 0;
+
+     label3:
+        return 1;
+    }
+
+    void setConstantState(androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState)
+    {
+        androidx.appcompat.graphics.drawable.StateListDrawable this;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u2;
+        boolean $u0;
+        androidx.appcompat.graphics.drawable.StateListDrawable$StateListState $u0#3;
+
+        this := @this: androidx.appcompat.graphics.drawable.StateListDrawable;
+
+        $u2 := @parameter0: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void setConstantState(androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState)>($u2);
+
+        $u0 = $u2 instanceof androidx.appcompat.graphics.drawable.StateListDrawable$StateListState;
+
+        if $u0 == 0 goto label1;
+
+        $u0#3 = (androidx.appcompat.graphics.drawable.StateListDrawable$StateListState) $u2;
+
+        this.<androidx.appcompat.graphics.drawable.StateListDrawable: androidx.appcompat.graphics.drawable.StateListDrawable$StateListState mStateListState> = $u0#3;
+
+     label1:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.graphics.drawable.StateListDrawable: java.lang.String TAG> = "StateListDrawable";
+
+        <androidx.appcompat.graphics.drawable.StateListDrawable: boolean DEBUG> = 0;
+
+        return;
+    }
+}

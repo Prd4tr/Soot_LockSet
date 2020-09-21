@@ -1,0 +1,176 @@
+class androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator extends java.lang.Object implements android.animation.TimeInterpolator
+{
+    private int[] mFrameTimes;
+    private int mFrames;
+    private int mTotalDuration;
+
+    void <init>(android.graphics.drawable.AnimationDrawable, boolean)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator this;
+        android.graphics.drawable.AnimationDrawable $u1;
+        boolean $u2;
+
+        this := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator;
+
+        $u1 := @parameter0: android.graphics.drawable.AnimationDrawable;
+
+        $u2 := @parameter1: boolean;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int updateFrames(android.graphics.drawable.AnimationDrawable,boolean)>($u1, $u2);
+
+        return;
+    }
+
+    public float getInterpolation(float)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator this;
+        float $u9, $u7, $u6;
+        int[] frameTimes;
+        int elapsed, elapsed#6, remaining, frameElapsed;
+
+        this := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator;
+
+        $u9 := @parameter0: float;
+
+        elapsed = this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int mTotalDuration>;
+
+        $u7 = (float) elapsed;
+
+        $u9 = $u7 * $u9;
+
+        $u9 = $u9 + 0.5F;
+
+        elapsed = this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int mFrames>;
+
+        frameTimes = this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int[] mFrameTimes>;
+
+        remaining = (int) $u9;
+
+        elapsed#6 = 0;
+
+     label1:
+        if elapsed#6 >= elapsed goto label2;
+
+        frameElapsed = frameTimes[elapsed#6];
+
+        if remaining < frameElapsed goto label2;
+
+        frameElapsed = frameTimes[elapsed#6];
+
+        remaining = remaining - frameElapsed;
+
+        elapsed#6 = elapsed#6 + 1;
+
+        goto label1;
+
+     label2:
+        if elapsed#6 >= elapsed goto label3;
+
+        $u9 = (float) remaining;
+
+        remaining = this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int mTotalDuration>;
+
+        $u7 = (float) remaining;
+
+        $u9 = $u9 / $u7;
+
+        goto label4;
+
+     label3:
+        $u9 = 0.0F;
+
+     label4:
+        $u6 = (float) elapsed#6;
+
+        $u7 = (float) elapsed;
+
+        $u7 = $u6 / $u7;
+
+        $u9 = $u7 + $u9;
+
+        return $u9;
+    }
+
+    int getTotalDuration()
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator this;
+        int ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int mTotalDuration>;
+
+        return ret0;
+    }
+
+    int updateFrames(android.graphics.drawable.AnimationDrawable, boolean)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator this;
+        android.graphics.drawable.AnimationDrawable $u6;
+        boolean $u7;
+        int $u-1, frameTimes#3, i, duration;
+        int[] frameTimes;
+
+        this := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator;
+
+        $u6 := @parameter0: android.graphics.drawable.AnimationDrawable;
+
+        $u7 := @parameter1: boolean;
+
+        $u-1 = virtualinvoke $u6.<android.graphics.drawable.AnimationDrawable: int getNumberOfFrames()>();
+
+        this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int mFrames> = $u-1;
+
+        frameTimes = this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int[] mFrameTimes>;
+
+        if frameTimes == null goto label1;
+
+        frameTimes#3 = lengthof frameTimes;
+
+        if frameTimes#3 >= $u-1 goto label2;
+
+     label1:
+        frameTimes = newarray (int)[$u-1];
+
+        this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int[] mFrameTimes> = frameTimes;
+
+     label2:
+        frameTimes = this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int[] mFrameTimes>;
+
+        frameTimes#3 = 0;
+
+        i = 0;
+
+     label3:
+        if i >= $u-1 goto label6;
+
+        if $u7 == 0 goto label4;
+
+        duration = $u-1 - i;
+
+        duration = duration + -1;
+
+        goto label5;
+
+     label4:
+        duration = i;
+
+     label5:
+        duration = virtualinvoke $u6.<android.graphics.drawable.AnimationDrawable: int getDuration(int)>(duration);
+
+        frameTimes[i] = duration;
+
+        frameTimes#3 = frameTimes#3 + duration;
+
+        i = i + 1;
+
+        goto label3;
+
+     label6:
+        this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$FrameInterpolator: int mTotalDuration> = frameTimes#3;
+
+        return frameTimes#3;
+    }
+}

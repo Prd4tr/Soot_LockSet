@@ -1,0 +1,144 @@
+public class androidx.core.graphics.TypefaceCompatApi28Impl extends androidx.core.graphics.TypefaceCompatApi26Impl
+{
+    private static final java.lang.String CREATE_FROM_FAMILIES_WITH_DEFAULT_METHOD;
+    private static final java.lang.String DEFAULT_FAMILY;
+    private static final int RESOLVE_BY_FONT_TABLE;
+
+    public void <init>()
+    {
+        androidx.core.graphics.TypefaceCompatApi28Impl this;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi28Impl;
+
+        specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: void <init>()>();
+
+        return;
+    }
+
+    protected android.graphics.Typeface createFromFamiliesWithDefault(java.lang.Object)
+    {
+        androidx.core.graphics.TypefaceCompatApi28Impl this;
+        java.lang.Object $u8, $u-1;
+        java.lang.reflect.Method $u3;
+        java.lang.Class familyArray;
+        java.lang.Object[] $u5;
+        java.lang.Integer $u-1#11;
+        android.graphics.Typeface $u1;
+        java.lang.ReflectiveOperationException familyArray#18;
+        java.lang.RuntimeException $u1#19;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi28Impl;
+
+        $u8 := @parameter0: java.lang.Object;
+
+        familyArray = this.<androidx.core.graphics.TypefaceCompatApi28Impl: java.lang.Class mFontFamily>;
+
+     label01:
+        $u-1 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int)>(familyArray, 1);
+
+        staticinvoke <java.lang.reflect.Array: void set(java.lang.Object,int,java.lang.Object)>($u-1, 0, $u8);
+
+     label02:
+        $u3 = this.<androidx.core.graphics.TypefaceCompatApi28Impl: java.lang.reflect.Method mCreateFromFamiliesWithDefault>;
+
+        $u5 = newarray (java.lang.Object)[4];
+
+        $u5[0] = $u-1;
+
+        $u5[1] = "sans-serif";
+
+     label03:
+        $u-1#11 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-1);
+
+     label04:
+        $u5[2] = $u-1#11;
+
+     label05:
+        $u-1#11 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-1);
+
+     label06:
+        $u5[3] = $u-1#11;
+
+     label07:
+        $u8 = virtualinvoke $u3.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $u5);
+
+     label08:
+        $u1 = (android.graphics.Typeface) $u8;
+
+        return $u1;
+
+     label09:
+        familyArray#18 := @caughtexception;
+
+        goto label11;
+
+     label10:
+        familyArray#18 := @caughtexception;
+
+     label11:
+        $u1#19 = new java.lang.RuntimeException;
+
+        specialinvoke $u1#19.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>(familyArray#18);
+
+        throw $u1#19;
+
+        catch java.lang.IllegalAccessException from label01 to label02 with label10;
+        catch java.lang.IllegalAccessException from label03 to label04 with label10;
+        catch java.lang.IllegalAccessException from label05 to label06 with label10;
+        catch java.lang.IllegalAccessException from label07 to label08 with label10;
+        catch java.lang.reflect.InvocationTargetException from label01 to label02 with label09;
+        catch java.lang.reflect.InvocationTargetException from label03 to label04 with label09;
+        catch java.lang.reflect.InvocationTargetException from label05 to label06 with label09;
+        catch java.lang.reflect.InvocationTargetException from label07 to label08 with label09;
+    }
+
+    protected java.lang.reflect.Method obtainCreateFromFamiliesWithDefaultMethod(java.lang.Class) throws java.lang.NoSuchMethodException
+    {
+        androidx.core.graphics.TypefaceCompatApi28Impl this;
+        java.lang.Class fontFamily, $u-1#5;
+        java.lang.Object $u-1;
+        java.lang.Class[] $u3;
+        java.lang.reflect.Method $u-1#14;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi28Impl;
+
+        fontFamily := @parameter0: java.lang.Class;
+
+        $u-1 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int)>(fontFamily, 1);
+
+        fontFamily = class "Landroid/graphics/Typeface;";
+
+        $u3 = newarray (java.lang.Class)[4];
+
+        $u-1#5 = virtualinvoke $u-1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u3[0] = $u-1#5;
+
+        $u3[1] = class "Ljava/lang/String;";
+
+        $u-1#5 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $u3[2] = $u-1#5;
+
+        $u-1#5 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $u3[3] = $u-1#5;
+
+        $u-1#14 = virtualinvoke fontFamily.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("createFromFamiliesWithDefault", $u3);
+
+        virtualinvoke $u-1#14.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+        return $u-1#14;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.graphics.TypefaceCompatApi28Impl: int RESOLVE_BY_FONT_TABLE> = -1;
+
+        <androidx.core.graphics.TypefaceCompatApi28Impl: java.lang.String DEFAULT_FAMILY> = "sans-serif";
+
+        <androidx.core.graphics.TypefaceCompatApi28Impl: java.lang.String CREATE_FROM_FAMILIES_WITH_DEFAULT_METHOD> = "createFromFamiliesWithDefault";
+
+        return;
+    }
+}

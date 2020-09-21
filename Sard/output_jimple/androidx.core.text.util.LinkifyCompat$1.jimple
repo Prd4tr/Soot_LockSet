@@ -1,0 +1,87 @@
+class androidx.core.text.util.LinkifyCompat$1 extends java.lang.Object implements java.util.Comparator
+{
+
+    void <init>()
+    {
+        androidx.core.text.util.LinkifyCompat$1 this;
+
+        this := @this: androidx.core.text.util.LinkifyCompat$1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public int compare(androidx.core.text.util.LinkifyCompat$LinkSpec, androidx.core.text.util.LinkifyCompat$LinkSpec)
+    {
+        androidx.core.text.util.LinkifyCompat$1 this;
+        androidx.core.text.util.LinkifyCompat$LinkSpec $u5, $u6;
+        int $u0, $u1;
+
+        this := @this: androidx.core.text.util.LinkifyCompat$1;
+
+        $u5 := @parameter0: androidx.core.text.util.LinkifyCompat$LinkSpec;
+
+        $u6 := @parameter1: androidx.core.text.util.LinkifyCompat$LinkSpec;
+
+        $u0 = $u5.<androidx.core.text.util.LinkifyCompat$LinkSpec: int start>;
+
+        $u1 = $u6.<androidx.core.text.util.LinkifyCompat$LinkSpec: int start>;
+
+        if $u0 >= $u1 goto label1;
+
+        return -1;
+
+     label1:
+        $u0 = $u5.<androidx.core.text.util.LinkifyCompat$LinkSpec: int start>;
+
+        $u1 = $u6.<androidx.core.text.util.LinkifyCompat$LinkSpec: int start>;
+
+        if $u0 <= $u1 goto label2;
+
+        return 1;
+
+     label2:
+        $u0 = $u5.<androidx.core.text.util.LinkifyCompat$LinkSpec: int end>;
+
+        $u1 = $u6.<androidx.core.text.util.LinkifyCompat$LinkSpec: int end>;
+
+        if $u0 >= $u1 goto label3;
+
+        return 1;
+
+     label3:
+        $u0 = $u5.<androidx.core.text.util.LinkifyCompat$LinkSpec: int end>;
+
+        $u1 = $u6.<androidx.core.text.util.LinkifyCompat$LinkSpec: int end>;
+
+        if $u0 <= $u1 goto label4;
+
+        return -1;
+
+     label4:
+        return 0;
+    }
+
+    public volatile int compare(java.lang.Object, java.lang.Object)
+    {
+        androidx.core.text.util.LinkifyCompat$1 this;
+        int $u-1;
+        java.lang.Object $u1, $u2;
+        androidx.core.text.util.LinkifyCompat$LinkSpec $u1#3, $u2#4;
+
+        this := @this: androidx.core.text.util.LinkifyCompat$1;
+
+        $u1 := @parameter0: java.lang.Object;
+
+        $u2 := @parameter1: java.lang.Object;
+
+        $u1#3 = (androidx.core.text.util.LinkifyCompat$LinkSpec) $u1;
+
+        $u2#4 = (androidx.core.text.util.LinkifyCompat$LinkSpec) $u2;
+
+        $u-1 = virtualinvoke this.<androidx.core.text.util.LinkifyCompat$1: int compare(androidx.core.text.util.LinkifyCompat$LinkSpec,androidx.core.text.util.LinkifyCompat$LinkSpec)>($u1#3, $u2#4);
+
+        return $u-1;
+    }
+}

@@ -1,0 +1,3618 @@
+public abstract class androidx.versionedparcelable.VersionedParcel extends java.lang.Object
+{
+    private static final int EX_BAD_PARCELABLE;
+    private static final int EX_ILLEGAL_ARGUMENT;
+    private static final int EX_ILLEGAL_STATE;
+    private static final int EX_NETWORK_MAIN_THREAD;
+    private static final int EX_NULL_POINTER;
+    private static final int EX_PARCELABLE;
+    private static final int EX_SECURITY;
+    private static final int EX_UNSUPPORTED_OPERATION;
+    private static final java.lang.String TAG;
+    private static final int TYPE_BINDER;
+    private static final int TYPE_FLOAT;
+    private static final int TYPE_INTEGER;
+    private static final int TYPE_PARCELABLE;
+    private static final int TYPE_SERIALIZABLE;
+    private static final int TYPE_STRING;
+    private static final int TYPE_VERSIONED_PARCELABLE;
+    protected final androidx.collection.ArrayMap mParcelizerCache;
+    protected final androidx.collection.ArrayMap mReadCache;
+    protected final androidx.collection.ArrayMap mWriteCache;
+
+    public void <init>(androidx.collection.ArrayMap, androidx.collection.ArrayMap, androidx.collection.ArrayMap)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        androidx.collection.ArrayMap readCache, writeCache, parcelizerCache;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        readCache := @parameter0: androidx.collection.ArrayMap;
+
+        writeCache := @parameter1: androidx.collection.ArrayMap;
+
+        parcelizerCache := @parameter2: androidx.collection.ArrayMap;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.versionedparcelable.VersionedParcel: androidx.collection.ArrayMap mReadCache> = readCache;
+
+        this.<androidx.versionedparcelable.VersionedParcel: androidx.collection.ArrayMap mWriteCache> = writeCache;
+
+        this.<androidx.versionedparcelable.VersionedParcel: androidx.collection.ArrayMap mParcelizerCache> = parcelizerCache;
+
+        return;
+    }
+
+    private java.lang.Exception createException(int, java.lang.String)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        int $u4;
+        java.lang.String $u5;
+        java.lang.RuntimeException $u0;
+        java.lang.StringBuilder $u1;
+        java.lang.SecurityException $u0#7;
+        android.os.BadParcelableException $u0#8;
+        java.lang.IllegalArgumentException $u0#9;
+        java.lang.NullPointerException $u0#10;
+        java.lang.IllegalStateException $u0#11;
+        android.os.NetworkOnMainThreadException $u0#12;
+        java.lang.UnsupportedOperationException $u0#13;
+        android.os.Parcelable $u-1;
+        java.lang.Exception $u0#16;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: java.lang.String;
+
+        lookupswitch($u4)
+        {
+            case -9: goto label9;
+            case -8: goto label1;
+            case -7: goto label8;
+            case -6: goto label7;
+            case -5: goto label6;
+            case -4: goto label5;
+            case -3: goto label4;
+            case -2: goto label3;
+            case -1: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        $u0 = new java.lang.RuntimeException;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unknown exception code: ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u4);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" msg ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u5);
+
+        $u5 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0.<java.lang.RuntimeException: void <init>(java.lang.String)>($u5);
+
+        return $u0;
+
+     label2:
+        $u0#7 = new java.lang.SecurityException;
+
+        specialinvoke $u0#7.<java.lang.SecurityException: void <init>(java.lang.String)>($u5);
+
+        return $u0#7;
+
+     label3:
+        $u0#8 = new android.os.BadParcelableException;
+
+        specialinvoke $u0#8.<android.os.BadParcelableException: void <init>(java.lang.String)>($u5);
+
+        return $u0#8;
+
+     label4:
+        $u0#9 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#9.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u5);
+
+        return $u0#9;
+
+     label5:
+        $u0#10 = new java.lang.NullPointerException;
+
+        specialinvoke $u0#10.<java.lang.NullPointerException: void <init>(java.lang.String)>($u5);
+
+        return $u0#10;
+
+     label6:
+        $u0#11 = new java.lang.IllegalStateException;
+
+        specialinvoke $u0#11.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u5);
+
+        return $u0#11;
+
+     label7:
+        $u0#12 = new android.os.NetworkOnMainThreadException;
+
+        specialinvoke $u0#12.<android.os.NetworkOnMainThreadException: void <init>()>();
+
+        return $u0#12;
+
+     label8:
+        $u0#13 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0#13.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>($u5);
+
+        return $u0#13;
+
+     label9:
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: android.os.Parcelable readParcelable()>();
+
+        $u0#16 = (java.lang.Exception) $u-1;
+
+        return $u0#16;
+    }
+
+    private java.lang.Class findParcelClass(java.lang.Class) throws java.lang.ClassNotFoundException
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.Class 'cls', ret#6;
+        androidx.collection.ArrayMap 'ret';
+        java.lang.String $u-1;
+        java.lang.Object $u-1#4;
+        java.lang.Package $u-1#7;
+        java.lang.Object[] c;
+        java.lang.ClassLoader $u-1#19;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        'cls' := @parameter0: java.lang.Class;
+
+        'ret' = this.<androidx.versionedparcelable.VersionedParcel: androidx.collection.ArrayMap mParcelizerCache>;
+
+        $u-1 = virtualinvoke 'cls'.<java.lang.Class: java.lang.String getName()>();
+
+        $u-1#4 = virtualinvoke 'ret'.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>($u-1);
+
+        ret#6 = (java.lang.Class) $u-1#4;
+
+        if ret#6 != null goto label1;
+
+        $u-1#7 = virtualinvoke 'cls'.<java.lang.Class: java.lang.Package getPackage()>();
+
+        $u-1 = virtualinvoke $u-1#7.<java.lang.Package: java.lang.String getName()>();
+
+        c = newarray (java.lang.Object)[2];
+
+        c[0] = $u-1;
+
+        $u-1 = virtualinvoke 'cls'.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        c[1] = $u-1;
+
+        $u-1 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("%s.%sParcelizer", c);
+
+        $u-1#19 = virtualinvoke 'cls'.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        ret#6 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String,boolean,java.lang.ClassLoader)>($u-1, 0, $u-1#19);
+
+        'ret' = this.<androidx.versionedparcelable.VersionedParcel: androidx.collection.ArrayMap mParcelizerCache>;
+
+        $u-1 = virtualinvoke 'cls'.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke 'ret'.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u-1, ret#6);
+
+     label1:
+        return ret#6;
+    }
+
+    private java.lang.reflect.Method getReadMethod(java.lang.String) throws java.lang.IllegalAccessException, java.lang.NoSuchMethodException, java.lang.ClassNotFoundException
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.String $u8;
+        java.lang.Class $u0;
+        androidx.collection.ArrayMap m;
+        java.lang.Object $u-1;
+        java.lang.reflect.Method m#5;
+        java.lang.ClassLoader $u-1#7;
+        java.lang.Class[] $u5;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u8 := @parameter0: java.lang.String;
+
+        $u0 = class "Landroidx/versionedparcelable/VersionedParcel;";
+
+        m = this.<androidx.versionedparcelable.VersionedParcel: androidx.collection.ArrayMap mReadCache>;
+
+        $u-1 = virtualinvoke m.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>($u8);
+
+        m#5 = (java.lang.reflect.Method) $u-1;
+
+        if m#5 != null goto label1;
+
+        staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $u-1#7 = virtualinvoke $u0.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        $u0 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String,boolean,java.lang.ClassLoader)>($u8, 1, $u-1#7);
+
+        $u5 = newarray (java.lang.Class)[1];
+
+        $u5[0] = class "Landroidx/versionedparcelable/VersionedParcel;";
+
+        m#5 = virtualinvoke $u0.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("read", $u5);
+
+        m = this.<androidx.versionedparcelable.VersionedParcel: androidx.collection.ArrayMap mReadCache>;
+
+        virtualinvoke m.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u8, m#5);
+
+     label1:
+        return m#5;
+    }
+
+    protected static java.lang.Throwable getRootCause(java.lang.Throwable)
+    {
+        java.lang.Throwable $u1, $u-1;
+
+        $u1 := @parameter0: java.lang.Throwable;
+
+     label1:
+        $u-1 = virtualinvoke $u1.<java.lang.Throwable: java.lang.Throwable getCause()>();
+
+        if $u-1 == null goto label2;
+
+        $u1 = virtualinvoke $u1.<java.lang.Throwable: java.lang.Throwable getCause()>();
+
+        goto label1;
+
+     label2:
+        return $u1;
+    }
+
+    private int getType(java.lang.Object)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.Object t;
+        boolean $u0;
+        java.lang.IllegalArgumentException $u0#15;
+        java.lang.StringBuilder $u1;
+        java.lang.Class $u-1;
+        java.lang.String $u-1#19;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        t := @parameter0: java.lang.Object;
+
+        $u0 = t instanceof java.lang.String;
+
+        if $u0 == 0 goto label1;
+
+        return 4;
+
+     label1:
+        $u0 = t instanceof android.os.Parcelable;
+
+        if $u0 == 0 goto label2;
+
+        return 2;
+
+     label2:
+        $u0 = t instanceof androidx.versionedparcelable.VersionedParcelable;
+
+        if $u0 == 0 goto label3;
+
+        return 1;
+
+     label3:
+        $u0 = t instanceof java.io.Serializable;
+
+        if $u0 == 0 goto label4;
+
+        return 3;
+
+     label4:
+        $u0 = t instanceof android.os.IBinder;
+
+        if $u0 == 0 goto label5;
+
+        return 5;
+
+     label5:
+        $u0 = t instanceof java.lang.Integer;
+
+        if $u0 == 0 goto label6;
+
+        return 7;
+
+     label6:
+        $u0 = t instanceof java.lang.Float;
+
+        if $u0 == 0 goto label7;
+
+        return 8;
+
+     label7:
+        $u0#15 = new java.lang.IllegalArgumentException;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1 = virtualinvoke t.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#19 = virtualinvoke $u-1.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#19);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" cannot be VersionedParcelled");
+
+        $u-1#19 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0#15.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1#19);
+
+        throw $u0#15;
+    }
+
+    private java.lang.reflect.Method getWriteMethod(java.lang.Class) throws java.lang.IllegalAccessException, java.lang.NoSuchMethodException, java.lang.ClassNotFoundException
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.Class $u8, $u-1#7;
+        androidx.collection.ArrayMap m;
+        java.lang.String $u-1;
+        java.lang.Object $u-1#4;
+        java.lang.reflect.Method m#6;
+        java.lang.Class[] $u4;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u8 := @parameter0: java.lang.Class;
+
+        m = this.<androidx.versionedparcelable.VersionedParcel: androidx.collection.ArrayMap mWriteCache>;
+
+        $u-1 = virtualinvoke $u8.<java.lang.Class: java.lang.String getName()>();
+
+        $u-1#4 = virtualinvoke m.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>($u-1);
+
+        m#6 = (java.lang.reflect.Method) $u-1#4;
+
+        if m#6 != null goto label1;
+
+        $u-1#7 = specialinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.Class findParcelClass(java.lang.Class)>($u8);
+
+        staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $u4 = newarray (java.lang.Class)[2];
+
+        $u4[0] = $u8;
+
+        $u4[1] = class "Landroidx/versionedparcelable/VersionedParcel;";
+
+        m#6 = virtualinvoke $u-1#7.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("write", $u4);
+
+        m = this.<androidx.versionedparcelable.VersionedParcel: androidx.collection.ArrayMap mWriteCache>;
+
+        $u-1 = virtualinvoke $u8.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke m.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u-1, m#6);
+
+     label1:
+        return m#6;
+    }
+
+    private java.util.Collection readCollection(java.util.Collection)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.util.Collection list;
+        int $u-1, n, $u-1#4;
+        android.os.IBinder $u-1#10;
+        java.lang.String $u-1#12;
+        java.io.Serializable $u-1#14;
+        android.os.Parcelable $u-1#16;
+        androidx.versionedparcelable.VersionedParcelable $u-1#18;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        list := @parameter0: java.util.Collection;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        n = $u-1;
+
+        if $u-1 >= 0 goto label1;
+
+        return null;
+
+     label1:
+        if $u-1 == 0 goto label8;
+
+        $u-1#4 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        if $u-1 >= 0 goto label2;
+
+        return null;
+
+     label2:
+        if $u-1#4 == 1 goto label7;
+
+        if $u-1#4 == 2 goto label6;
+
+        if $u-1#4 == 3 goto label5;
+
+        if $u-1#4 == 4 goto label4;
+
+        if $u-1#4 == 5 goto label3;
+
+        return list;
+
+     label3:
+        if n <= 0 goto label8;
+
+        $u-1#10 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: android.os.IBinder readStrongBinder()>();
+
+        interfaceinvoke list.<java.util.Collection: boolean add(java.lang.Object)>($u-1#10);
+
+        n = n + -1;
+
+        goto label3;
+
+     label4:
+        if n <= 0 goto label8;
+
+        $u-1#12 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.String readString()>();
+
+        interfaceinvoke list.<java.util.Collection: boolean add(java.lang.Object)>($u-1#12);
+
+        n = n + -1;
+
+        goto label4;
+
+     label5:
+        if n <= 0 goto label8;
+
+        $u-1#14 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: java.io.Serializable readSerializable()>();
+
+        interfaceinvoke list.<java.util.Collection: boolean add(java.lang.Object)>($u-1#14);
+
+        n = n + -1;
+
+        goto label5;
+
+     label6:
+        if n <= 0 goto label8;
+
+        $u-1#16 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: android.os.Parcelable readParcelable()>();
+
+        interfaceinvoke list.<java.util.Collection: boolean add(java.lang.Object)>($u-1#16);
+
+        n = n + -1;
+
+        goto label6;
+
+     label7:
+        if n <= 0 goto label8;
+
+        $u-1#18 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: androidx.versionedparcelable.VersionedParcelable readVersionedParcelable()>();
+
+        interfaceinvoke list.<java.util.Collection: boolean add(java.lang.Object)>($u-1#18);
+
+        n = n + -1;
+
+        goto label7;
+
+     label8:
+        return list;
+    }
+
+    private java.lang.Exception readException(int, java.lang.String)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        int $u2;
+        java.lang.String $u3;
+        java.lang.Exception $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: java.lang.String;
+
+        $u-1 = specialinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.Exception createException(int,java.lang.String)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    private int readExceptionCode()
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        int $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        return $u-1;
+    }
+
+    private void writeCollection(java.util.Collection)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.util.Collection val;
+        int $u-1;
+        java.util.Iterator $u-1#4;
+        java.lang.Object $u-1#6;
+        boolean $u-1#12;
+        java.lang.Float $u4;
+        float $u-1#18;
+        java.lang.Integer $u4#27;
+        android.os.IBinder $u4#37;
+        java.lang.String $u4#45;
+        java.io.Serializable $u4#53;
+        android.os.Parcelable $u4#61;
+        androidx.versionedparcelable.VersionedParcelable $u4#69;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        val := @parameter0: java.util.Collection;
+
+        if val != null goto label01;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(-1);
+
+        return;
+
+     label01:
+        $u-1 = interfaceinvoke val.<java.util.Collection: int size()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u-1);
+
+        if $u-1 <= 0 goto label22;
+
+        $u-1#4 = interfaceinvoke val.<java.util.Collection: java.util.Iterator iterator()>();
+
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        $u-1 = specialinvoke this.<androidx.versionedparcelable.VersionedParcel: int getType(java.lang.Object)>($u-1#6);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u-1);
+
+        lookupswitch($u-1)
+        {
+            case 1: goto label20;
+            case 2: goto label17;
+            case 3: goto label14;
+            case 4: goto label11;
+            case 5: goto label08;
+            case 6: goto label02;
+            case 7: goto label05;
+            case 8: goto label03;
+            default: goto label02;
+        };
+
+     label02:
+        return;
+
+     label03:
+        $u-1#4 = interfaceinvoke val.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label04:
+        $u-1#12 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#12 == 0 goto label22;
+
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        $u4 = (java.lang.Float) $u-1#6;
+
+        $u-1#18 = virtualinvoke $u4.<java.lang.Float: float floatValue()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeFloat(float)>($u-1#18);
+
+        goto label04;
+
+     label05:
+        $u-1#4 = interfaceinvoke val.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label06:
+        $u-1#12 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#12 == 0 goto label07;
+
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        $u4#27 = (java.lang.Integer) $u-1#6;
+
+        $u-1 = virtualinvoke $u4#27.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u-1);
+
+        goto label06;
+
+     label07:
+        return;
+
+     label08:
+        $u-1#4 = interfaceinvoke val.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label09:
+        $u-1#12 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#12 == 0 goto label10;
+
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        $u4#37 = (android.os.IBinder) $u-1#6;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeStrongBinder(android.os.IBinder)>($u4#37);
+
+        goto label09;
+
+     label10:
+        return;
+
+     label11:
+        $u-1#4 = interfaceinvoke val.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label12:
+        $u-1#12 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#12 == 0 goto label13;
+
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        $u4#45 = (java.lang.String) $u-1#6;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeString(java.lang.String)>($u4#45);
+
+        goto label12;
+
+     label13:
+        return;
+
+     label14:
+        $u-1#4 = interfaceinvoke val.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label15:
+        $u-1#12 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#12 == 0 goto label16;
+
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        $u4#53 = (java.io.Serializable) $u-1#6;
+
+        specialinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeSerializable(java.io.Serializable)>($u4#53);
+
+        goto label15;
+
+     label16:
+        return;
+
+     label17:
+        $u-1#4 = interfaceinvoke val.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label18:
+        $u-1#12 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#12 == 0 goto label19;
+
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        $u4#61 = (android.os.Parcelable) $u-1#6;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeParcelable(android.os.Parcelable)>($u4#61);
+
+        goto label18;
+
+     label19:
+        return;
+
+     label20:
+        $u-1#4 = interfaceinvoke val.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label21:
+        $u-1#12 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#12 == 0 goto label22;
+
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        $u4#69 = (androidx.versionedparcelable.VersionedParcelable) $u-1#6;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeVersionedParcelable(androidx.versionedparcelable.VersionedParcelable)>($u4#69);
+
+        goto label21;
+
+     label22:
+        return;
+    }
+
+    private void writeCollection(java.util.Collection, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.util.Collection val;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        val := @parameter0: java.util.Collection;
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        specialinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeCollection(java.util.Collection)>(val);
+
+        return;
+    }
+
+    private void writeSerializable(java.io.Serializable)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.io.Serializable $u7;
+        java.io.ByteArrayOutputStream baos;
+        java.lang.Class $u-1;
+        java.lang.String $u-1#4;
+        java.io.ObjectOutputStream oos;
+        byte[] $u-1#7;
+        java.io.IOException oos#9;
+        java.lang.RuntimeException $u3;
+        java.lang.StringBuilder $u4;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u7 := @parameter0: java.io.Serializable;
+
+        if $u7 != null goto label1;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeString(java.lang.String)>(null);
+
+        return;
+
+     label1:
+        $u-1 = virtualinvoke $u7.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#4 = virtualinvoke $u-1.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeString(java.lang.String)>($u-1#4);
+
+        baos = new java.io.ByteArrayOutputStream;
+
+        specialinvoke baos.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        oos = new java.io.ObjectOutputStream;
+
+     label2:
+        specialinvoke oos.<java.io.ObjectOutputStream: void <init>(java.io.OutputStream)>(baos);
+
+        virtualinvoke oos.<java.io.ObjectOutputStream: void writeObject(java.lang.Object)>($u7);
+
+        virtualinvoke oos.<java.io.ObjectOutputStream: void close()>();
+
+        $u-1#7 = virtualinvoke baos.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeByteArray(byte[])>($u-1#7);
+
+     label3:
+        return;
+
+     label4:
+        oos#9 := @caughtexception;
+
+        $u3 = new java.lang.RuntimeException;
+
+        $u4 = new java.lang.StringBuilder;
+
+        specialinvoke $u4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("VersionedParcelable encountered IOException writing serializable object (name = ");
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#4);
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $u-1#4 = virtualinvoke $u4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u3.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($u-1#4, oos#9);
+
+        throw $u3;
+
+        catch java.io.IOException from label2 to label3 with label4;
+    }
+
+    private void writeVersionedParcelableCreator(androidx.versionedparcelable.VersionedParcelable)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        androidx.versionedparcelable.VersionedParcelable $u6;
+        java.lang.RuntimeException $u2;
+        java.lang.Class $u-1;
+        java.lang.String $u-1#7;
+        java.lang.ClassNotFoundException e;
+        java.lang.StringBuilder $u3;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u6 := @parameter0: androidx.versionedparcelable.VersionedParcelable;
+
+     label1:
+        $u-1 = virtualinvoke $u6.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1 = specialinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.Class findParcelClass(java.lang.Class)>($u-1);
+
+     label2:
+        $u-1#7 = virtualinvoke $u-1.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeString(java.lang.String)>($u-1#7);
+
+        return;
+
+     label3:
+        e := @caughtexception;
+
+        $u2 = new java.lang.RuntimeException;
+
+        $u3 = new java.lang.StringBuilder;
+
+        specialinvoke $u3.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1 = virtualinvoke $u6.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#7 = virtualinvoke $u-1.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        virtualinvoke $u3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#7);
+
+        virtualinvoke $u3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not have a Parcelizer");
+
+        $u-1#7 = virtualinvoke $u3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u2.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($u-1#7, e);
+
+        throw $u2;
+
+        catch java.lang.ClassNotFoundException from label1 to label2 with label3;
+    }
+
+    protected abstract void closeField();
+
+    protected abstract androidx.versionedparcelable.VersionedParcel createSubParcel();
+
+    public boolean isStream()
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        return 0;
+    }
+
+    protected java.lang.Object[] readArray(java.lang.Object[])
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.Object[] def;
+        java.util.ArrayList list;
+        int $u-1, n, $u-1#4;
+        android.os.IBinder $u-1#10;
+        java.lang.String $u-1#12;
+        java.io.Serializable $u-1#14;
+        android.os.Parcelable $u-1#16;
+        androidx.versionedparcelable.VersionedParcelable $u-1#18;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        def := @parameter0: java.lang.Object[];
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        n = $u-1;
+
+        if $u-1 >= 0 goto label1;
+
+        return null;
+
+     label1:
+        list = new java.util.ArrayList;
+
+        specialinvoke list.<java.util.ArrayList: void <init>(int)>($u-1);
+
+        if $u-1 == 0 goto label8;
+
+        $u-1#4 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        if $u-1 >= 0 goto label2;
+
+        return null;
+
+     label2:
+        if $u-1#4 == 1 goto label7;
+
+        if $u-1#4 == 2 goto label6;
+
+        if $u-1#4 == 3 goto label5;
+
+        if $u-1#4 == 4 goto label4;
+
+        if $u-1#4 == 5 goto label3;
+
+        goto label8;
+
+     label3:
+        if n <= 0 goto label8;
+
+        $u-1#10 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: android.os.IBinder readStrongBinder()>();
+
+        virtualinvoke list.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1#10);
+
+        n = n + -1;
+
+        goto label3;
+
+     label4:
+        if n <= 0 goto label8;
+
+        $u-1#12 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.String readString()>();
+
+        virtualinvoke list.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1#12);
+
+        n = n + -1;
+
+        goto label4;
+
+     label5:
+        if n <= 0 goto label8;
+
+        $u-1#14 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: java.io.Serializable readSerializable()>();
+
+        virtualinvoke list.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1#14);
+
+        n = n + -1;
+
+        goto label5;
+
+     label6:
+        if n <= 0 goto label8;
+
+        $u-1#16 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: android.os.Parcelable readParcelable()>();
+
+        virtualinvoke list.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1#16);
+
+        n = n + -1;
+
+        goto label6;
+
+     label7:
+        if n <= 0 goto label8;
+
+        $u-1#18 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: androidx.versionedparcelable.VersionedParcelable readVersionedParcelable()>();
+
+        virtualinvoke list.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1#18);
+
+        n = n + -1;
+
+        goto label7;
+
+     label8:
+        def = virtualinvoke list.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>(def);
+
+        return def;
+    }
+
+    public java.lang.Object[] readArray(java.lang.Object[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.Object[] def;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        def := @parameter0: java.lang.Object[];
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return def;
+
+     label1:
+        def = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.Object[] readArray(java.lang.Object[])>(def);
+
+        return def;
+    }
+
+    protected abstract boolean readBoolean();
+
+    public boolean readBoolean(boolean, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        boolean $u2, $u-1;
+        int $u3;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: boolean;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u2 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readBoolean()>();
+
+        return $u2;
+    }
+
+    protected boolean[] readBooleanArray()
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        int $u-1, i, $u-1#5;
+        boolean[] val;
+        boolean $u3;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        if $u-1 >= 0 goto label1;
+
+        return null;
+
+     label1:
+        val = newarray (boolean)[$u-1];
+
+        i = 0;
+
+     label2:
+        if i >= $u-1 goto label5;
+
+        $u-1#5 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        if $u-1#5 == 0 goto label3;
+
+        $u3 = 1;
+
+        goto label4;
+
+     label3:
+        $u3 = 0;
+
+     label4:
+        val[i] = $u3;
+
+        i = i + 1;
+
+        goto label2;
+
+     label5:
+        return val;
+    }
+
+    public boolean[] readBooleanArray(boolean[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        boolean[] $u2;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: boolean[];
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u2 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean[] readBooleanArray()>();
+
+        return $u2;
+    }
+
+    protected abstract android.os.Bundle readBundle();
+
+    public android.os.Bundle readBundle(android.os.Bundle, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        android.os.Bundle $u2;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: android.os.Bundle;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u2 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: android.os.Bundle readBundle()>();
+
+        return $u2;
+    }
+
+    public byte readByte(byte, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        byte $u2;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: byte;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u3 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        $u3 = $u3 & 255;
+
+        $u2 = (byte) $u3;
+
+        return $u2;
+    }
+
+    protected abstract byte[] readByteArray();
+
+    public byte[] readByteArray(byte[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        byte[] $u2;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: byte[];
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u2 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: byte[] readByteArray()>();
+
+        return $u2;
+    }
+
+    public char[] readCharArray(char[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        char[] $u5;
+        int $u6, i, $u-1#8;
+        boolean $u-1;
+        char $u3;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u5 := @parameter0: char[];
+
+        $u6 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u6);
+
+        if $u-1 != 0 goto label1;
+
+        return $u5;
+
+     label1:
+        $u6 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        if $u6 >= 0 goto label2;
+
+        return null;
+
+     label2:
+        $u5 = newarray (char)[$u6];
+
+        i = 0;
+
+     label3:
+        if i >= $u6 goto label4;
+
+        $u-1#8 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        $u3 = (char) $u-1#8;
+
+        $u5[i] = $u3;
+
+        i = i + 1;
+
+        goto label3;
+
+     label4:
+        return $u5;
+    }
+
+    protected abstract java.lang.CharSequence readCharSequence();
+
+    public java.lang.CharSequence readCharSequence(java.lang.CharSequence, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.CharSequence $u2;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u2 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.CharSequence readCharSequence()>();
+
+        return $u2;
+    }
+
+    protected abstract double readDouble();
+
+    public double readDouble(double, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        double $u3;
+        int $u5;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u3 := @parameter0: double;
+
+        $u5 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u5);
+
+        if $u-1 != 0 goto label1;
+
+        return $u3;
+
+     label1:
+        $u3 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: double readDouble()>();
+
+        return $u3;
+    }
+
+    protected double[] readDoubleArray()
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        int $u-1, i;
+        double[] val;
+        double $u-1#5;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        if $u-1 >= 0 goto label1;
+
+        return null;
+
+     label1:
+        val = newarray (double)[$u-1];
+
+        i = 0;
+
+     label2:
+        if i >= $u-1 goto label3;
+
+        $u-1#5 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: double readDouble()>();
+
+        val[i] = $u-1#5;
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        return val;
+    }
+
+    public double[] readDoubleArray(double[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        double[] $u2;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: double[];
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u2 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: double[] readDoubleArray()>();
+
+        return $u2;
+    }
+
+    public java.lang.Exception readException(java.lang.Exception, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.Exception $u4;
+        int $u5;
+        boolean $u-1;
+        java.lang.String $u-1#5;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u4 := @parameter0: java.lang.Exception;
+
+        $u5 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u5);
+
+        if $u-1 != 0 goto label1;
+
+        return $u4;
+
+     label1:
+        $u5 = specialinvoke this.<androidx.versionedparcelable.VersionedParcel: int readExceptionCode()>();
+
+        if $u5 == 0 goto label2;
+
+        $u-1#5 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.String readString()>();
+
+        $u4 = specialinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.Exception readException(int,java.lang.String)>($u5, $u-1#5);
+
+     label2:
+        return $u4;
+    }
+
+    protected abstract boolean readField(int);
+
+    protected abstract float readFloat();
+
+    public float readFloat(float, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        float $u2;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: float;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u2 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: float readFloat()>();
+
+        return $u2;
+    }
+
+    protected float[] readFloatArray()
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        int $u-1, i;
+        float[] val;
+        float $u-1#5;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        if $u-1 >= 0 goto label1;
+
+        return null;
+
+     label1:
+        val = newarray (float)[$u-1];
+
+        i = 0;
+
+     label2:
+        if i >= $u-1 goto label3;
+
+        $u-1#5 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: float readFloat()>();
+
+        val[i] = $u-1#5;
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        return val;
+    }
+
+    public float[] readFloatArray(float[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        float[] $u2;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: float[];
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u2 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: float[] readFloatArray()>();
+
+        return $u2;
+    }
+
+    protected androidx.versionedparcelable.VersionedParcelable readFromParcel(java.lang.String, androidx.versionedparcelable.VersionedParcel)
+    {
+        androidx.versionedparcelable.VersionedParcel this, $u6;
+        java.lang.String $u5;
+        java.lang.reflect.Method $u-1;
+        java.lang.Object[] $u2;
+        java.lang.Object $u-1#6;
+        androidx.versionedparcelable.VersionedParcelable $u1;
+        java.lang.ClassNotFoundException m;
+        java.lang.RuntimeException $u1#10;
+        java.lang.NoSuchMethodException m#12;
+        java.lang.reflect.InvocationTargetException m#15;
+        java.lang.Throwable $u-1#16;
+        boolean $u1#18;
+        java.lang.IllegalAccessException m#24;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u5 := @parameter0: java.lang.String;
+
+        $u6 := @parameter1: androidx.versionedparcelable.VersionedParcel;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.reflect.Method getReadMethod(java.lang.String)>($u5);
+
+     label2:
+        $u2 = newarray (java.lang.Object)[1];
+
+        $u2[0] = $u6;
+
+     label3:
+        $u-1#6 = virtualinvoke $u-1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $u2);
+
+     label4:
+        $u1 = (androidx.versionedparcelable.VersionedParcelable) $u-1#6;
+
+        return $u1;
+
+     label5:
+        m := @caughtexception;
+
+        $u1#10 = new java.lang.RuntimeException;
+
+        specialinvoke $u1#10.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("VersionedParcel encountered ClassNotFoundException", m);
+
+        throw $u1#10;
+
+     label6:
+        m#12 := @caughtexception;
+
+        $u1#10 = new java.lang.RuntimeException;
+
+        specialinvoke $u1#10.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("VersionedParcel encountered NoSuchMethodException", m#12);
+
+        throw $u1#10;
+
+     label7:
+        m#15 := @caughtexception;
+
+        $u-1#16 = virtualinvoke m#15.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getCause()>();
+
+        $u1#18 = $u-1#16 instanceof java.lang.RuntimeException;
+
+        if $u1#18 == 0 goto label8;
+
+        $u-1#16 = virtualinvoke m#15.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getCause()>();
+
+        $u1#10 = (java.lang.RuntimeException) $u-1#16;
+
+        throw $u1#10;
+
+     label8:
+        $u1#10 = new java.lang.RuntimeException;
+
+        specialinvoke $u1#10.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("VersionedParcel encountered InvocationTargetException", m#15);
+
+        throw $u1#10;
+
+     label9:
+        m#24 := @caughtexception;
+
+        $u1#10 = new java.lang.RuntimeException;
+
+        specialinvoke $u1#10.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("VersionedParcel encountered IllegalAccessException", m#24);
+
+        throw $u1#10;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label9;
+        catch java.lang.IllegalAccessException from label3 to label4 with label9;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label7;
+        catch java.lang.reflect.InvocationTargetException from label3 to label4 with label7;
+        catch java.lang.NoSuchMethodException from label1 to label2 with label6;
+        catch java.lang.NoSuchMethodException from label3 to label4 with label6;
+        catch java.lang.ClassNotFoundException from label1 to label2 with label5;
+        catch java.lang.ClassNotFoundException from label3 to label4 with label5;
+    }
+
+    protected abstract int readInt();
+
+    public int readInt(int, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        int $u2, $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u2 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        return $u2;
+    }
+
+    protected int[] readIntArray()
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        int $u-1, i, $u-1#5;
+        int[] val;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        if $u-1 >= 0 goto label1;
+
+        return null;
+
+     label1:
+        val = newarray (int)[$u-1];
+
+        i = 0;
+
+     label2:
+        if i >= $u-1 goto label3;
+
+        $u-1#5 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        val[i] = $u-1#5;
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        return val;
+    }
+
+    public int[] readIntArray(int[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        int[] $u2;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: int[];
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u2 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int[] readIntArray()>();
+
+        return $u2;
+    }
+
+    public java.util.List readList(java.util.List, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.util.List def;
+        int $u3;
+        boolean $u-1;
+        java.util.ArrayList $u0;
+        java.util.Collection $u-1#4;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        def := @parameter0: java.util.List;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return def;
+
+     label1:
+        $u0 = new java.util.ArrayList;
+
+        specialinvoke $u0.<java.util.ArrayList: void <init>()>();
+
+        $u-1#4 = specialinvoke this.<androidx.versionedparcelable.VersionedParcel: java.util.Collection readCollection(java.util.Collection)>($u0);
+
+        def = (java.util.List) $u-1#4;
+
+        return def;
+    }
+
+    protected abstract long readLong();
+
+    public long readLong(long, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        long $u3;
+        int $u5;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u3 := @parameter0: long;
+
+        $u5 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u5);
+
+        if $u-1 != 0 goto label1;
+
+        return $u3;
+
+     label1:
+        $u3 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: long readLong()>();
+
+        return $u3;
+    }
+
+    protected long[] readLongArray()
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        int $u-1, i;
+        long[] val;
+        long $u-1#5;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        if $u-1 >= 0 goto label1;
+
+        return null;
+
+     label1:
+        val = newarray (long)[$u-1];
+
+        i = 0;
+
+     label2:
+        if i >= $u-1 goto label3;
+
+        $u-1#5 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: long readLong()>();
+
+        val[i] = $u-1#5;
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        return val;
+    }
+
+    public long[] readLongArray(long[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        long[] $u2;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: long[];
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u2 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: long[] readLongArray()>();
+
+        return $u2;
+    }
+
+    public java.util.Map readMap(java.util.Map, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.util.Map def;
+        int $u9, i;
+        java.util.ArrayList keyList, valueList;
+        boolean $u-1;
+        androidx.collection.ArrayMap map;
+        java.lang.Object $u-1#8, $u-1#9;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        def := @parameter0: java.util.Map;
+
+        $u9 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u9);
+
+        if $u-1 != 0 goto label1;
+
+        return def;
+
+     label1:
+        $u9 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        if $u9 >= 0 goto label2;
+
+        return null;
+
+     label2:
+        map = new androidx.collection.ArrayMap;
+
+        specialinvoke map.<androidx.collection.ArrayMap: void <init>()>();
+
+        if $u9 != 0 goto label3;
+
+        return map;
+
+     label3:
+        keyList = new java.util.ArrayList;
+
+        specialinvoke keyList.<java.util.ArrayList: void <init>()>();
+
+        valueList = new java.util.ArrayList;
+
+        specialinvoke valueList.<java.util.ArrayList: void <init>()>();
+
+        specialinvoke this.<androidx.versionedparcelable.VersionedParcel: java.util.Collection readCollection(java.util.Collection)>(keyList);
+
+        specialinvoke this.<androidx.versionedparcelable.VersionedParcel: java.util.Collection readCollection(java.util.Collection)>(valueList);
+
+        i = 0;
+
+     label4:
+        if i >= $u9 goto label5;
+
+        $u-1#8 = interfaceinvoke keyList.<java.util.List: java.lang.Object get(int)>(i);
+
+        $u-1#9 = interfaceinvoke valueList.<java.util.List: java.lang.Object get(int)>(i);
+
+        interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($u-1#8, $u-1#9);
+
+        i = i + 1;
+
+        goto label4;
+
+     label5:
+        return map;
+    }
+
+    protected abstract android.os.Parcelable readParcelable();
+
+    public android.os.Parcelable readParcelable(android.os.Parcelable, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        android.os.Parcelable def;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        def := @parameter0: android.os.Parcelable;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return def;
+
+     label1:
+        def = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: android.os.Parcelable readParcelable()>();
+
+        return def;
+    }
+
+    protected java.io.Serializable readSerializable()
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.io.ByteArrayInputStream bais;
+        java.lang.String $u-1;
+        byte[] $u-1#4;
+        androidx.versionedparcelable.VersionedParcel$1 ois;
+        java.lang.Object $u-1#6;
+        java.io.Serializable $u5;
+        java.lang.ClassNotFoundException ois#9;
+        java.lang.RuntimeException $u5#10;
+        java.lang.StringBuilder $u6;
+        java.io.IOException ois#15;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.String readString()>();
+
+        if $u-1 != null goto label1;
+
+        return null;
+
+     label1:
+        $u-1#4 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: byte[] readByteArray()>();
+
+        bais = new java.io.ByteArrayInputStream;
+
+        specialinvoke bais.<java.io.ByteArrayInputStream: void <init>(byte[])>($u-1#4);
+
+        ois = new androidx.versionedparcelable.VersionedParcel$1;
+
+     label2:
+        specialinvoke ois.<androidx.versionedparcelable.VersionedParcel$1: void <init>(androidx.versionedparcelable.VersionedParcel,java.io.InputStream)>(this, bais);
+
+        $u-1#6 = virtualinvoke ois.<java.io.ObjectInputStream: java.lang.Object readObject()>();
+
+     label3:
+        $u5 = (java.io.Serializable) $u-1#6;
+
+        return $u5;
+
+     label4:
+        ois#9 := @caughtexception;
+
+        $u5#10 = new java.lang.RuntimeException;
+
+        $u6 = new java.lang.StringBuilder;
+
+        specialinvoke $u6.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("VersionedParcelable encountered ClassNotFoundException reading a Serializable object (name = ");
+
+        virtualinvoke $u6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke $u6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $u-1 = virtualinvoke $u6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u5#10.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($u-1, ois#9);
+
+        throw $u5#10;
+
+     label5:
+        ois#15 := @caughtexception;
+
+        $u5#10 = new java.lang.RuntimeException;
+
+        $u6 = new java.lang.StringBuilder;
+
+        specialinvoke $u6.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("VersionedParcelable encountered IOException reading a Serializable object (name = ");
+
+        virtualinvoke $u6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke $u6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $u-1 = virtualinvoke $u6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u5#10.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($u-1, ois#15);
+
+        throw $u5#10;
+
+        catch java.io.IOException from label2 to label3 with label5;
+        catch java.lang.ClassNotFoundException from label2 to label3 with label4;
+    }
+
+    public java.util.Set readSet(java.util.Set, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.util.Set def;
+        int $u3;
+        boolean $u-1;
+        androidx.collection.ArraySet $u0;
+        java.util.Collection $u-1#4;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        def := @parameter0: java.util.Set;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return def;
+
+     label1:
+        $u0 = new androidx.collection.ArraySet;
+
+        specialinvoke $u0.<androidx.collection.ArraySet: void <init>()>();
+
+        $u-1#4 = specialinvoke this.<androidx.versionedparcelable.VersionedParcel: java.util.Collection readCollection(java.util.Collection)>($u0);
+
+        def = (java.util.Set) $u-1#4;
+
+        return def;
+    }
+
+    public android.util.Size readSize(android.util.Size, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        android.util.Size $u4;
+        int $u5, $u-1#7;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u4 := @parameter0: android.util.Size;
+
+        $u5 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u5);
+
+        if $u-1 != 0 goto label1;
+
+        return $u4;
+
+     label1:
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readBoolean()>();
+
+        if $u-1 == 0 goto label2;
+
+        $u5 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        $u-1#7 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        $u4 = new android.util.Size;
+
+        specialinvoke $u4.<android.util.Size: void <init>(int,int)>($u5, $u-1#7);
+
+        return $u4;
+
+     label2:
+        return null;
+    }
+
+    public android.util.SizeF readSizeF(android.util.SizeF, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        android.util.SizeF $u4;
+        int $u5;
+        boolean $u-1;
+        float $u-1#5, $u-1#7;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u4 := @parameter0: android.util.SizeF;
+
+        $u5 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u5);
+
+        if $u-1 != 0 goto label1;
+
+        return $u4;
+
+     label1:
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readBoolean()>();
+
+        if $u-1 == 0 goto label2;
+
+        $u-1#5 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: float readFloat()>();
+
+        $u-1#7 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: float readFloat()>();
+
+        $u4 = new android.util.SizeF;
+
+        specialinvoke $u4.<android.util.SizeF: void <init>(float,float)>($u-1#5, $u-1#7);
+
+        return $u4;
+
+     label2:
+        return null;
+    }
+
+    public android.util.SparseBooleanArray readSparseBooleanArray(android.util.SparseBooleanArray, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        android.util.SparseBooleanArray $u6;
+        int $u7, i, $u-1#8;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u6 := @parameter0: android.util.SparseBooleanArray;
+
+        $u7 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u7);
+
+        if $u-1 != 0 goto label1;
+
+        return $u6;
+
+     label1:
+        $u7 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        if $u7 >= 0 goto label2;
+
+        return null;
+
+     label2:
+        $u6 = new android.util.SparseBooleanArray;
+
+        specialinvoke $u6.<android.util.SparseBooleanArray: void <init>(int)>($u7);
+
+        i = 0;
+
+     label3:
+        if i >= $u7 goto label4;
+
+        $u-1#8 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: int readInt()>();
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readBoolean()>();
+
+        virtualinvoke $u6.<android.util.SparseBooleanArray: void put(int,boolean)>($u-1#8, $u-1);
+
+        i = i + 1;
+
+        goto label3;
+
+     label4:
+        return $u6;
+    }
+
+    protected abstract java.lang.String readString();
+
+    public java.lang.String readString(java.lang.String, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.String $u2;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u2 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.String readString()>();
+
+        return $u2;
+    }
+
+    protected abstract android.os.IBinder readStrongBinder();
+
+    public android.os.IBinder readStrongBinder(android.os.IBinder, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        android.os.IBinder $u2;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: android.os.IBinder;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u2 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: android.os.IBinder readStrongBinder()>();
+
+        return $u2;
+    }
+
+    protected androidx.versionedparcelable.VersionedParcelable readVersionedParcelable()
+    {
+        androidx.versionedparcelable.VersionedParcel this, $u-1#3;
+        java.lang.String $u-1;
+        androidx.versionedparcelable.VersionedParcelable $u-1#5;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.String readString()>();
+
+        if $u-1 != null goto label1;
+
+        return null;
+
+     label1:
+        $u-1#3 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: androidx.versionedparcelable.VersionedParcel createSubParcel()>();
+
+        $u-1#5 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: androidx.versionedparcelable.VersionedParcelable readFromParcel(java.lang.String,androidx.versionedparcelable.VersionedParcel)>($u-1, $u-1#3);
+
+        return $u-1#5;
+    }
+
+    public androidx.versionedparcelable.VersionedParcelable readVersionedParcelable(androidx.versionedparcelable.VersionedParcelable, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        androidx.versionedparcelable.VersionedParcelable def;
+        int $u3;
+        boolean $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        def := @parameter0: androidx.versionedparcelable.VersionedParcelable;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: boolean readField(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return def;
+
+     label1:
+        def = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: androidx.versionedparcelable.VersionedParcelable readVersionedParcelable()>();
+
+        return def;
+    }
+
+    protected abstract void setOutputField(int);
+
+    public void setSerializationFlags(boolean, boolean)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        boolean $u1, $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: boolean;
+
+        $u2 := @parameter1: boolean;
+
+        return;
+    }
+
+    protected void writeArray(java.lang.Object[])
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.Object[] val;
+        int $u-1, n, i;
+        java.lang.Object type;
+        android.os.IBinder $u3;
+        java.lang.String $u3#15;
+        java.io.Serializable $u3#17;
+        android.os.Parcelable $u3#19;
+        androidx.versionedparcelable.VersionedParcelable $u3#21;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        val := @parameter0: java.lang.Object[];
+
+        if val != null goto label1;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(-1);
+
+        return;
+
+     label1:
+        n = lengthof val;
+
+        i = 0;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(n);
+
+        if n <= 0 goto label7;
+
+        type = val[0];
+
+        $u-1 = specialinvoke this.<androidx.versionedparcelable.VersionedParcel: int getType(java.lang.Object)>(type);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u-1);
+
+        if $u-1 == 1 goto label6;
+
+        if $u-1 == 2 goto label5;
+
+        if $u-1 == 3 goto label4;
+
+        if $u-1 == 4 goto label3;
+
+        if $u-1 == 5 goto label2;
+
+        return;
+
+     label2:
+        if i >= n goto label7;
+
+        type = val[i];
+
+        $u3 = (android.os.IBinder) type;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeStrongBinder(android.os.IBinder)>($u3);
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        if i >= n goto label7;
+
+        type = val[i];
+
+        $u3#15 = (java.lang.String) type;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeString(java.lang.String)>($u3#15);
+
+        i = i + 1;
+
+        goto label3;
+
+     label4:
+        if i >= n goto label7;
+
+        type = val[i];
+
+        $u3#17 = (java.io.Serializable) type;
+
+        specialinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeSerializable(java.io.Serializable)>($u3#17);
+
+        i = i + 1;
+
+        goto label4;
+
+     label5:
+        if i >= n goto label7;
+
+        type = val[i];
+
+        $u3#19 = (android.os.Parcelable) type;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeParcelable(android.os.Parcelable)>($u3#19);
+
+        i = i + 1;
+
+        goto label5;
+
+     label6:
+        if i >= n goto label7;
+
+        type = val[i];
+
+        $u3#21 = (androidx.versionedparcelable.VersionedParcelable) type;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeVersionedParcelable(androidx.versionedparcelable.VersionedParcelable)>($u3#21);
+
+        i = i + 1;
+
+        goto label6;
+
+     label7:
+        return;
+    }
+
+    public void writeArray(java.lang.Object[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.Object[] val;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        val := @parameter0: java.lang.Object[];
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeArray(java.lang.Object[])>(val);
+
+        return;
+    }
+
+    protected abstract void writeBoolean(boolean);
+
+    public void writeBoolean(boolean, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        boolean $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: boolean;
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeBoolean(boolean)>($u1);
+
+        return;
+    }
+
+    protected void writeBooleanArray(boolean[])
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        boolean[] $u4;
+        boolean $u2;
+        int n, i, tmp;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u4 := @parameter0: boolean[];
+
+        if $u4 == null goto label3;
+
+        n = lengthof $u4;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(n);
+
+        i = 0;
+
+     label1:
+        if i >= n goto label2;
+
+        $u2 = $u4[i];
+
+        tmp = (int) $u2;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(tmp);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return;
+
+     label3:
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(-1);
+
+        return;
+    }
+
+    public void writeBooleanArray(boolean[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        boolean[] $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: boolean[];
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeBooleanArray(boolean[])>($u1);
+
+        return;
+    }
+
+    protected abstract void writeBundle(android.os.Bundle);
+
+    public void writeBundle(android.os.Bundle, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        android.os.Bundle $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: android.os.Bundle;
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeBundle(android.os.Bundle)>($u1);
+
+        return;
+    }
+
+    public void writeByte(byte, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        byte $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: byte;
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u1);
+
+        return;
+    }
+
+    protected abstract void writeByteArray(byte[]);
+
+    public void writeByteArray(byte[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        byte[] $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: byte[];
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeByteArray(byte[])>($u1);
+
+        return;
+    }
+
+    protected abstract void writeByteArray(byte[], int, int);
+
+    public void writeByteArray(byte[], int, int, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        byte[] $u1;
+        int $u2, $u3, $u4;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: byte[];
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: int;
+
+        $u4 := @parameter3: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u4);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeByteArray(byte[],int,int)>($u1, $u2, $u3);
+
+        return;
+    }
+
+    public void writeCharArray(char[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        char[] $u4;
+        int $u5, i;
+        char $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u4 := @parameter0: char[];
+
+        $u5 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u5);
+
+        if $u4 == null goto label3;
+
+        $u5 = lengthof $u4;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u5);
+
+        i = 0;
+
+     label1:
+        if i >= $u5 goto label2;
+
+        $u2 = $u4[i];
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u2);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return;
+
+     label3:
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(-1);
+
+        return;
+    }
+
+    protected abstract void writeCharSequence(java.lang.CharSequence);
+
+    public void writeCharSequence(java.lang.CharSequence, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.CharSequence $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeCharSequence(java.lang.CharSequence)>($u1);
+
+        return;
+    }
+
+    protected abstract void writeDouble(double);
+
+    public void writeDouble(double, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        double $u1;
+        int $u3;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: double;
+
+        $u3 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u3);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeDouble(double)>($u1);
+
+        return;
+    }
+
+    protected void writeDoubleArray(double[])
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        double[] $u5;
+        double $u2;
+        int n, i;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u5 := @parameter0: double[];
+
+        if $u5 == null goto label3;
+
+        n = lengthof $u5;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(n);
+
+        i = 0;
+
+     label1:
+        if i >= n goto label2;
+
+        $u2 = $u5[i];
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeDouble(double)>($u2);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return;
+
+     label3:
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(-1);
+
+        return;
+    }
+
+    public void writeDoubleArray(double[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        double[] $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: double[];
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeDoubleArray(double[])>($u1);
+
+        return;
+    }
+
+    public void writeException(java.lang.Exception, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.Exception $u4;
+        int $u5;
+        byte code;
+        boolean $u1;
+        java.lang.Class $u-1;
+        java.lang.ClassLoader $u-1#5, $u-1#8;
+        java.lang.RuntimeException $u1#19;
+        java.lang.String $u-1#21;
+        android.os.Parcelable $u1#25;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u4 := @parameter0: java.lang.Exception;
+
+        $u5 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u5);
+
+        if $u4 != null goto label01;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeNoException()>();
+
+        return;
+
+     label01:
+        code = 0;
+
+        $u1 = $u4 instanceof android.os.Parcelable;
+
+        if $u1 == 0 goto label02;
+
+        $u-1 = virtualinvoke $u4.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#5 = virtualinvoke $u-1.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        $u-1 = class "Landroid/os/Parcelable;";
+
+        $u-1#8 = virtualinvoke $u-1.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        if $u-1#5 != $u-1#8 goto label02;
+
+        code = -9;
+
+        goto label09;
+
+     label02:
+        $u1 = $u4 instanceof java.lang.SecurityException;
+
+        if $u1 == 0 goto label03;
+
+        code = -1;
+
+        goto label09;
+
+     label03:
+        $u1 = $u4 instanceof android.os.BadParcelableException;
+
+        if $u1 == 0 goto label04;
+
+        code = -2;
+
+        goto label09;
+
+     label04:
+        $u1 = $u4 instanceof java.lang.IllegalArgumentException;
+
+        if $u1 == 0 goto label05;
+
+        code = -3;
+
+        goto label09;
+
+     label05:
+        $u1 = $u4 instanceof java.lang.NullPointerException;
+
+        if $u1 == 0 goto label06;
+
+        code = -4;
+
+        goto label09;
+
+     label06:
+        $u1 = $u4 instanceof java.lang.IllegalStateException;
+
+        if $u1 == 0 goto label07;
+
+        code = -5;
+
+        goto label09;
+
+     label07:
+        $u1 = $u4 instanceof android.os.NetworkOnMainThreadException;
+
+        if $u1 == 0 goto label08;
+
+        code = -6;
+
+        goto label09;
+
+     label08:
+        $u1 = $u4 instanceof java.lang.UnsupportedOperationException;
+
+        if $u1 == 0 goto label09;
+
+        code = -7;
+
+     label09:
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(code);
+
+        if code != 0 goto label11;
+
+        $u1 = $u4 instanceof java.lang.RuntimeException;
+
+        if $u1 == 0 goto label10;
+
+        $u1#19 = (java.lang.RuntimeException) $u4;
+
+        throw $u1#19;
+
+     label10:
+        $u1#19 = new java.lang.RuntimeException;
+
+        specialinvoke $u1#19.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>($u4);
+
+        throw $u1#19;
+
+     label11:
+        $u-1#21 = virtualinvoke $u4.<java.lang.Exception: java.lang.String getMessage()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeString(java.lang.String)>($u-1#21);
+
+        if code == -9 goto label12;
+
+        return;
+
+     label12:
+        $u1#25 = (android.os.Parcelable) $u4;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeParcelable(android.os.Parcelable)>($u1#25);
+
+        return;
+    }
+
+    protected abstract void writeFloat(float);
+
+    public void writeFloat(float, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        float $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: float;
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeFloat(float)>($u1);
+
+        return;
+    }
+
+    protected void writeFloatArray(float[])
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        float[] $u4;
+        float $u2;
+        int n, i;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u4 := @parameter0: float[];
+
+        if $u4 == null goto label3;
+
+        n = lengthof $u4;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(n);
+
+        i = 0;
+
+     label1:
+        if i >= n goto label2;
+
+        $u2 = $u4[i];
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeFloat(float)>($u2);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return;
+
+     label3:
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(-1);
+
+        return;
+    }
+
+    public void writeFloatArray(float[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        float[] $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: float[];
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeFloatArray(float[])>($u1);
+
+        return;
+    }
+
+    protected abstract void writeInt(int);
+
+    public void writeInt(int, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        int $u1, $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u1);
+
+        return;
+    }
+
+    protected void writeIntArray(int[])
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        int[] $u4;
+        int $u2, n, i;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u4 := @parameter0: int[];
+
+        if $u4 == null goto label3;
+
+        n = lengthof $u4;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(n);
+
+        i = 0;
+
+     label1:
+        if i >= n goto label2;
+
+        $u2 = $u4[i];
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u2);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return;
+
+     label3:
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(-1);
+
+        return;
+    }
+
+    public void writeIntArray(int[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        int[] $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: int[];
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeIntArray(int[])>($u1);
+
+        return;
+    }
+
+    public void writeList(java.util.List, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.util.List val;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        val := @parameter0: java.util.List;
+
+        $u2 := @parameter1: int;
+
+        specialinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeCollection(java.util.Collection,int)>(val, $u2);
+
+        return;
+    }
+
+    protected abstract void writeLong(long);
+
+    public void writeLong(long, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        long $u1;
+        int $u3;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: long;
+
+        $u3 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u3);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeLong(long)>($u1);
+
+        return;
+    }
+
+    protected void writeLongArray(long[])
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        long[] $u5;
+        long $u2;
+        int n, i;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u5 := @parameter0: long[];
+
+        if $u5 == null goto label3;
+
+        n = lengthof $u5;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(n);
+
+        i = 0;
+
+     label1:
+        if i >= n goto label2;
+
+        $u2 = $u5[i];
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeLong(long)>($u2);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return;
+
+     label3:
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(-1);
+
+        return;
+    }
+
+    public void writeLongArray(long[], int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        long[] $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: long[];
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeLongArray(long[])>($u1);
+
+        return;
+    }
+
+    public void writeMap(java.util.Map, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.util.Map val;
+        int $u8;
+        java.util.ArrayList keySet, valueSet;
+        java.util.Set $u-1;
+        java.util.Iterator $u-1#6;
+        boolean $u-1#8;
+        java.lang.Object $u-1#10;
+        java.util.Map$Entry entry;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        val := @parameter0: java.util.Map;
+
+        $u8 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u8);
+
+        if val != null goto label1;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(-1);
+
+        return;
+
+     label1:
+        $u8 = interfaceinvoke val.<java.util.Map: int size()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u8);
+
+        if $u8 != 0 goto label2;
+
+        return;
+
+     label2:
+        keySet = new java.util.ArrayList;
+
+        specialinvoke keySet.<java.util.ArrayList: void <init>()>();
+
+        valueSet = new java.util.ArrayList;
+
+        specialinvoke valueSet.<java.util.ArrayList: void <init>()>();
+
+        $u-1 = interfaceinvoke val.<java.util.Map: java.util.Set entrySet()>();
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Set: java.util.Iterator iterator()>();
+
+     label3:
+        $u-1#8 = interfaceinvoke $u-1#6.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#8 == 0 goto label4;
+
+        $u-1#10 = interfaceinvoke $u-1#6.<java.util.Iterator: java.lang.Object next()>();
+
+        entry = (java.util.Map$Entry) $u-1#10;
+
+        $u-1#10 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        interfaceinvoke keySet.<java.util.List: boolean add(java.lang.Object)>($u-1#10);
+
+        $u-1#10 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        interfaceinvoke valueSet.<java.util.List: boolean add(java.lang.Object)>($u-1#10);
+
+        goto label3;
+
+     label4:
+        specialinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeCollection(java.util.Collection)>(keySet);
+
+        specialinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeCollection(java.util.Collection)>(valueSet);
+
+        return;
+    }
+
+    protected void writeNoException()
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(0);
+
+        return;
+    }
+
+    protected abstract void writeParcelable(android.os.Parcelable);
+
+    public void writeParcelable(android.os.Parcelable, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        android.os.Parcelable $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: android.os.Parcelable;
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeParcelable(android.os.Parcelable)>($u1);
+
+        return;
+    }
+
+    public void writeSerializable(java.io.Serializable, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.io.Serializable $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: java.io.Serializable;
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        specialinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeSerializable(java.io.Serializable)>($u1);
+
+        return;
+    }
+
+    public void writeSet(java.util.Set, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.util.Set val;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        val := @parameter0: java.util.Set;
+
+        $u2 := @parameter1: int;
+
+        specialinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeCollection(java.util.Collection,int)>(val, $u2);
+
+        return;
+    }
+
+    public void writeSize(android.util.Size, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        android.util.Size $u2;
+        int $u3;
+        boolean $u0;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: android.util.Size;
+
+        $u3 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u3);
+
+        if $u2 == null goto label1;
+
+        $u0 = 1;
+
+        goto label2;
+
+     label1:
+        $u0 = 0;
+
+     label2:
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeBoolean(boolean)>($u0);
+
+        if $u2 == null goto label3;
+
+        $u3 = virtualinvoke $u2.<android.util.Size: int getWidth()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u3);
+
+        $u3 = virtualinvoke $u2.<android.util.Size: int getHeight()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u3);
+
+     label3:
+        return;
+    }
+
+    public void writeSizeF(android.util.SizeF, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        android.util.SizeF $u2;
+        int $u3;
+        boolean $u0;
+        float $u-1;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: android.util.SizeF;
+
+        $u3 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u3);
+
+        if $u2 == null goto label1;
+
+        $u0 = 1;
+
+        goto label2;
+
+     label1:
+        $u0 = 0;
+
+     label2:
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeBoolean(boolean)>($u0);
+
+        if $u2 == null goto label3;
+
+        $u-1 = virtualinvoke $u2.<android.util.SizeF: float getWidth()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeFloat(float)>($u-1);
+
+        $u-1 = virtualinvoke $u2.<android.util.SizeF: float getHeight()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeFloat(float)>($u-1);
+
+     label3:
+        return;
+    }
+
+    public void writeSparseBooleanArray(android.util.SparseBooleanArray, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        android.util.SparseBooleanArray $u4;
+        int $u5, i, $u-1;
+        boolean $u-1#7;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u4 := @parameter0: android.util.SparseBooleanArray;
+
+        $u5 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u5);
+
+        if $u4 != null goto label1;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>(-1);
+
+        return;
+
+     label1:
+        $u5 = virtualinvoke $u4.<android.util.SparseBooleanArray: int size()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u5);
+
+        i = 0;
+
+     label2:
+        if i >= $u5 goto label3;
+
+        $u-1 = virtualinvoke $u4.<android.util.SparseBooleanArray: int keyAt(int)>(i);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeInt(int)>($u-1);
+
+        $u-1#7 = virtualinvoke $u4.<android.util.SparseBooleanArray: boolean valueAt(int)>(i);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeBoolean(boolean)>($u-1#7);
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    protected abstract void writeString(java.lang.String);
+
+    public void writeString(java.lang.String, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        java.lang.String $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: java.lang.String;
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeString(java.lang.String)>($u1);
+
+        return;
+    }
+
+    protected abstract void writeStrongBinder(android.os.IBinder);
+
+    public void writeStrongBinder(android.os.IBinder, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        android.os.IBinder $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: android.os.IBinder;
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeStrongBinder(android.os.IBinder)>($u1);
+
+        return;
+    }
+
+    protected abstract void writeStrongInterface(android.os.IInterface);
+
+    public void writeStrongInterface(android.os.IInterface, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        android.os.IInterface $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: android.os.IInterface;
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeStrongInterface(android.os.IInterface)>($u1);
+
+        return;
+    }
+
+    protected void writeToParcel(androidx.versionedparcelable.VersionedParcelable, androidx.versionedparcelable.VersionedParcel)
+    {
+        androidx.versionedparcelable.VersionedParcel this, $u6;
+        androidx.versionedparcelable.VersionedParcelable val;
+        java.lang.Class $u-1;
+        java.lang.reflect.Method $u-1#3;
+        java.lang.Object[] $u2;
+        java.lang.ClassNotFoundException m;
+        java.lang.RuntimeException $u1;
+        java.lang.NoSuchMethodException m#13;
+        java.lang.reflect.InvocationTargetException m#16;
+        java.lang.Throwable $u-1#17;
+        boolean $u1#19;
+        java.lang.IllegalAccessException m#25;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        val := @parameter0: androidx.versionedparcelable.VersionedParcelable;
+
+        $u6 := @parameter1: androidx.versionedparcelable.VersionedParcel;
+
+     label1:
+        $u-1 = virtualinvoke val.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#3 = specialinvoke this.<androidx.versionedparcelable.VersionedParcel: java.lang.reflect.Method getWriteMethod(java.lang.Class)>($u-1);
+
+     label2:
+        $u2 = newarray (java.lang.Object)[2];
+
+        $u2[0] = val;
+
+        $u2[1] = $u6;
+
+     label3:
+        virtualinvoke $u-1#3.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $u2);
+
+     label4:
+        return;
+
+     label5:
+        m := @caughtexception;
+
+        $u1 = new java.lang.RuntimeException;
+
+        specialinvoke $u1.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("VersionedParcel encountered ClassNotFoundException", m);
+
+        throw $u1;
+
+     label6:
+        m#13 := @caughtexception;
+
+        $u1 = new java.lang.RuntimeException;
+
+        specialinvoke $u1.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("VersionedParcel encountered NoSuchMethodException", m#13);
+
+        throw $u1;
+
+     label7:
+        m#16 := @caughtexception;
+
+        $u-1#17 = virtualinvoke m#16.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getCause()>();
+
+        $u1#19 = $u-1#17 instanceof java.lang.RuntimeException;
+
+        if $u1#19 == 0 goto label8;
+
+        $u-1#17 = virtualinvoke m#16.<java.lang.reflect.InvocationTargetException: java.lang.Throwable getCause()>();
+
+        $u1 = (java.lang.RuntimeException) $u-1#17;
+
+        throw $u1;
+
+     label8:
+        $u1 = new java.lang.RuntimeException;
+
+        specialinvoke $u1.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("VersionedParcel encountered InvocationTargetException", m#16);
+
+        throw $u1;
+
+     label9:
+        m#25 := @caughtexception;
+
+        $u1 = new java.lang.RuntimeException;
+
+        specialinvoke $u1.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("VersionedParcel encountered IllegalAccessException", m#25);
+
+        throw $u1;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label9;
+        catch java.lang.IllegalAccessException from label3 to label4 with label9;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label7;
+        catch java.lang.reflect.InvocationTargetException from label3 to label4 with label7;
+        catch java.lang.NoSuchMethodException from label1 to label2 with label6;
+        catch java.lang.NoSuchMethodException from label3 to label4 with label6;
+        catch java.lang.ClassNotFoundException from label1 to label2 with label5;
+        catch java.lang.ClassNotFoundException from label3 to label4 with label5;
+    }
+
+    protected void writeVersionedParcelable(androidx.versionedparcelable.VersionedParcelable)
+    {
+        androidx.versionedparcelable.VersionedParcel this, $u-1;
+        androidx.versionedparcelable.VersionedParcelable $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u2 := @parameter0: androidx.versionedparcelable.VersionedParcelable;
+
+        if $u2 != null goto label1;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeString(java.lang.String)>(null);
+
+        return;
+
+     label1:
+        specialinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeVersionedParcelableCreator(androidx.versionedparcelable.VersionedParcelable)>($u2);
+
+        $u-1 = virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: androidx.versionedparcelable.VersionedParcel createSubParcel()>();
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeToParcel(androidx.versionedparcelable.VersionedParcelable,androidx.versionedparcelable.VersionedParcel)>($u2, $u-1);
+
+        virtualinvoke $u-1.<androidx.versionedparcelable.VersionedParcel: void closeField()>();
+
+        return;
+    }
+
+    public void writeVersionedParcelable(androidx.versionedparcelable.VersionedParcelable, int)
+    {
+        androidx.versionedparcelable.VersionedParcel this;
+        androidx.versionedparcelable.VersionedParcelable $u1;
+        int $u2;
+
+        this := @this: androidx.versionedparcelable.VersionedParcel;
+
+        $u1 := @parameter0: androidx.versionedparcelable.VersionedParcelable;
+
+        $u2 := @parameter1: int;
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void setOutputField(int)>($u2);
+
+        virtualinvoke this.<androidx.versionedparcelable.VersionedParcel: void writeVersionedParcelable(androidx.versionedparcelable.VersionedParcelable)>($u1);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.versionedparcelable.VersionedParcel: int TYPE_VERSIONED_PARCELABLE> = 1;
+
+        <androidx.versionedparcelable.VersionedParcel: int TYPE_STRING> = 4;
+
+        <androidx.versionedparcelable.VersionedParcel: int TYPE_SERIALIZABLE> = 3;
+
+        <androidx.versionedparcelable.VersionedParcel: int TYPE_PARCELABLE> = 2;
+
+        <androidx.versionedparcelable.VersionedParcel: int TYPE_INTEGER> = 7;
+
+        <androidx.versionedparcelable.VersionedParcel: int TYPE_FLOAT> = 8;
+
+        <androidx.versionedparcelable.VersionedParcel: int TYPE_BINDER> = 5;
+
+        <androidx.versionedparcelable.VersionedParcel: java.lang.String TAG> = "VersionedParcel";
+
+        <androidx.versionedparcelable.VersionedParcel: int EX_UNSUPPORTED_OPERATION> = -7;
+
+        <androidx.versionedparcelable.VersionedParcel: int EX_SECURITY> = -1;
+
+        <androidx.versionedparcelable.VersionedParcel: int EX_PARCELABLE> = -9;
+
+        <androidx.versionedparcelable.VersionedParcel: int EX_NULL_POINTER> = -4;
+
+        <androidx.versionedparcelable.VersionedParcel: int EX_NETWORK_MAIN_THREAD> = -6;
+
+        <androidx.versionedparcelable.VersionedParcel: int EX_ILLEGAL_STATE> = -5;
+
+        <androidx.versionedparcelable.VersionedParcel: int EX_ILLEGAL_ARGUMENT> = -3;
+
+        <androidx.versionedparcelable.VersionedParcel: int EX_BAD_PARCELABLE> = -2;
+
+        return;
+    }
+}

@@ -1,0 +1,126 @@
+public final enum class androidx.'annotation'.RestrictTo$Scope extends java.lang.Enum
+{
+    private static final androidx.'annotation'.RestrictTo$Scope[] $VALUES;
+    public static final enum androidx.'annotation'.RestrictTo$Scope GROUP_ID;
+    public static final enum androidx.'annotation'.RestrictTo$Scope LIBRARY;
+    public static final enum androidx.'annotation'.RestrictTo$Scope LIBRARY_GROUP;
+    public static final enum androidx.'annotation'.RestrictTo$Scope LIBRARY_GROUP_PREFIX;
+    public static final enum androidx.'annotation'.RestrictTo$Scope SUBCLASSES;
+    public static final enum androidx.'annotation'.RestrictTo$Scope TESTS;
+
+    static void <clinit>()
+    {
+        androidx.'annotation'.RestrictTo$Scope $u8, $u0;
+        androidx.'annotation'.RestrictTo$Scope[] $u1;
+
+        $u0 = new androidx.'annotation'.RestrictTo$Scope;
+
+        specialinvoke $u0.<androidx.'annotation'.RestrictTo$Scope: void <init>(java.lang.String,int)>("LIBRARY", 0);
+
+        <androidx.'annotation'.RestrictTo$Scope: androidx.'annotation'.RestrictTo$Scope LIBRARY> = $u0;
+
+        $u0 = new androidx.'annotation'.RestrictTo$Scope;
+
+        specialinvoke $u0.<androidx.'annotation'.RestrictTo$Scope: void <init>(java.lang.String,int)>("LIBRARY_GROUP", 1);
+
+        <androidx.'annotation'.RestrictTo$Scope: androidx.'annotation'.RestrictTo$Scope LIBRARY_GROUP> = $u0;
+
+        $u0 = new androidx.'annotation'.RestrictTo$Scope;
+
+        specialinvoke $u0.<androidx.'annotation'.RestrictTo$Scope: void <init>(java.lang.String,int)>("LIBRARY_GROUP_PREFIX", 2);
+
+        <androidx.'annotation'.RestrictTo$Scope: androidx.'annotation'.RestrictTo$Scope LIBRARY_GROUP_PREFIX> = $u0;
+
+        $u0 = new androidx.'annotation'.RestrictTo$Scope;
+
+        specialinvoke $u0.<androidx.'annotation'.RestrictTo$Scope: void <init>(java.lang.String,int)>("GROUP_ID", 3);
+
+        <androidx.'annotation'.RestrictTo$Scope: androidx.'annotation'.RestrictTo$Scope GROUP_ID> = $u0;
+
+        $u0 = new androidx.'annotation'.RestrictTo$Scope;
+
+        specialinvoke $u0.<androidx.'annotation'.RestrictTo$Scope: void <init>(java.lang.String,int)>("TESTS", 4);
+
+        <androidx.'annotation'.RestrictTo$Scope: androidx.'annotation'.RestrictTo$Scope TESTS> = $u0;
+
+        $u0 = new androidx.'annotation'.RestrictTo$Scope;
+
+        specialinvoke $u0.<androidx.'annotation'.RestrictTo$Scope: void <init>(java.lang.String,int)>("SUBCLASSES", 5);
+
+        <androidx.'annotation'.RestrictTo$Scope: androidx.'annotation'.RestrictTo$Scope SUBCLASSES> = $u0;
+
+        $u1 = newarray (androidx.'annotation'.RestrictTo$Scope)[6];
+
+        $u8 = <androidx.'annotation'.RestrictTo$Scope: androidx.'annotation'.RestrictTo$Scope LIBRARY>;
+
+        $u1[0] = $u8;
+
+        $u8 = <androidx.'annotation'.RestrictTo$Scope: androidx.'annotation'.RestrictTo$Scope LIBRARY_GROUP>;
+
+        $u1[1] = $u8;
+
+        $u8 = <androidx.'annotation'.RestrictTo$Scope: androidx.'annotation'.RestrictTo$Scope LIBRARY_GROUP_PREFIX>;
+
+        $u1[2] = $u8;
+
+        $u8 = <androidx.'annotation'.RestrictTo$Scope: androidx.'annotation'.RestrictTo$Scope GROUP_ID>;
+
+        $u1[3] = $u8;
+
+        $u8 = <androidx.'annotation'.RestrictTo$Scope: androidx.'annotation'.RestrictTo$Scope TESTS>;
+
+        $u1[4] = $u8;
+
+        $u1[5] = $u0;
+
+        <androidx.'annotation'.RestrictTo$Scope: androidx.'annotation'.RestrictTo$Scope[] $VALUES> = $u1;
+
+        return;
+    }
+
+    private void <init>(java.lang.String, int)
+    {
+        androidx.'annotation'.RestrictTo$Scope this;
+        java.lang.String $u1;
+        int $u2;
+
+        this := @this: androidx.'annotation'.RestrictTo$Scope;
+
+        $u1 := @parameter0: java.lang.String;
+
+        $u2 := @parameter1: int;
+
+        specialinvoke this.<java.lang.Enum: void <init>(java.lang.String,int)>($u1, $u2);
+
+        return;
+    }
+
+    public static androidx.'annotation'.RestrictTo$Scope valueOf(java.lang.String)
+    {
+        java.lang.String $u1;
+        java.lang.Enum $u-1;
+        androidx.'annotation'.RestrictTo$Scope $u0;
+
+        $u1 := @parameter0: java.lang.String;
+
+        $u-1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Landroidx/annotation/RestrictTo$Scope;", $u1);
+
+        $u0 = (androidx.'annotation'.RestrictTo$Scope) $u-1;
+
+        return $u0;
+    }
+
+    public static androidx.'annotation'.RestrictTo$Scope[] values()
+    {
+        java.lang.Object $u-1;
+        androidx.'annotation'.RestrictTo$Scope[] $u0;
+
+        $u0 = <androidx.'annotation'.RestrictTo$Scope: androidx.'annotation'.RestrictTo$Scope[] $VALUES>;
+
+        $u-1 = virtualinvoke $u0.<java.lang.Object: java.lang.Object clone()>();
+
+        $u0 = (androidx.'annotation'.RestrictTo$Scope[]) $u-1;
+
+        return $u0;
+    }
+}

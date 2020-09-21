@@ -1,0 +1,89 @@
+final class androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback extends java.lang.Object implements androidx.appcompat.view.menu.MenuBuilder$Callback
+{
+    final androidx.appcompat.app.ToolbarActionBar this$0;
+
+    void <init>(androidx.appcompat.app.ToolbarActionBar)
+    {
+        androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback this;
+        androidx.appcompat.app.ToolbarActionBar $u1;
+
+        this := @this: androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback;
+
+        $u1 := @parameter0: androidx.appcompat.app.ToolbarActionBar;
+
+        this.<androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback: androidx.appcompat.app.ToolbarActionBar this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean onMenuItemSelected(androidx.appcompat.view.menu.MenuBuilder, android.view.MenuItem)
+    {
+        androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback this;
+        androidx.appcompat.view.menu.MenuBuilder $u2;
+        android.view.MenuItem $u3;
+
+        this := @this: androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback;
+
+        $u2 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u3 := @parameter1: android.view.MenuItem;
+
+        return 0;
+    }
+
+    public void onMenuModeChange(androidx.appcompat.view.menu.MenuBuilder)
+    {
+        androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback this;
+        androidx.appcompat.view.menu.MenuBuilder $u5;
+        androidx.appcompat.app.ToolbarActionBar $u0;
+        android.view.Window$Callback $u0#2;
+        androidx.appcompat.widget.DecorToolbar $u0#4;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback;
+
+        $u5 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u0 = this.<androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback: androidx.appcompat.app.ToolbarActionBar this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback mWindowCallback>;
+
+        if $u0#2 == null goto label2;
+
+        $u0 = this.<androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback: androidx.appcompat.app.ToolbarActionBar this$0>;
+
+        $u0#4 = $u0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        $u-1 = interfaceinvoke $u0#4.<androidx.appcompat.widget.DecorToolbar: boolean isOverflowMenuShowing()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback: androidx.appcompat.app.ToolbarActionBar this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback mWindowCallback>;
+
+        interfaceinvoke $u0#2.<android.view.Window$Callback: void onPanelClosed(int,android.view.Menu)>(108, $u5);
+
+        return;
+
+     label1:
+        $u0 = this.<androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback: androidx.appcompat.app.ToolbarActionBar this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback mWindowCallback>;
+
+        $u-1 = interfaceinvoke $u0#2.<android.view.Window$Callback: boolean onPreparePanel(int,android.view.View,android.view.Menu)>(0, null, $u5);
+
+        if $u-1 == 0 goto label2;
+
+        $u0 = this.<androidx.appcompat.app.ToolbarActionBar$MenuBuilderCallback: androidx.appcompat.app.ToolbarActionBar this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback mWindowCallback>;
+
+        interfaceinvoke $u0#2.<android.view.Window$Callback: boolean onMenuOpened(int,android.view.Menu)>(108, $u5);
+
+     label2:
+        return;
+    }
+}

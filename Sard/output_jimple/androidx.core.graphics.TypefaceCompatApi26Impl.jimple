@@ -1,0 +1,1119 @@
+public class androidx.core.graphics.TypefaceCompatApi26Impl extends androidx.core.graphics.TypefaceCompatApi21Impl
+{
+    private static final java.lang.String ABORT_CREATION_METHOD;
+    private static final java.lang.String ADD_FONT_FROM_ASSET_MANAGER_METHOD;
+    private static final java.lang.String ADD_FONT_FROM_BUFFER_METHOD;
+    private static final java.lang.String CREATE_FROM_FAMILIES_WITH_DEFAULT_METHOD;
+    private static final java.lang.String FONT_FAMILY_CLASS;
+    private static final java.lang.String FREEZE_METHOD;
+    private static final int RESOLVE_BY_FONT_TABLE;
+    private static final java.lang.String TAG;
+    protected final java.lang.reflect.Method mAbortCreation;
+    protected final java.lang.reflect.Method mAddFontFromAssetManager;
+    protected final java.lang.reflect.Method mAddFontFromBuffer;
+    protected final java.lang.reflect.Method mCreateFromFamiliesWithDefault;
+    protected final java.lang.Class mFontFamily;
+    protected final java.lang.reflect.Constructor mFontFamilyCtor;
+    protected final java.lang.reflect.Method mFreeze;
+
+    public void <init>()
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.Class $u-1, fontFamily;
+        java.lang.reflect.Constructor $u-1#3;
+        java.lang.reflect.Method $u-1#5, $u-1#7, $u-1#9, $u-1#11, $u-1#13;
+        java.lang.ReflectiveOperationException fontFamily#15;
+        java.lang.StringBuilder fontFamilyCtor;
+        java.lang.String $u-1#20;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        specialinvoke this.<androidx.core.graphics.TypefaceCompatApi21Impl: void <init>()>();
+
+     label01:
+        $u-1 = virtualinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.Class obtainFontFamily()>();
+
+     label02:
+        fontFamily = $u-1;
+
+     label03:
+        $u-1#3 = virtualinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Constructor obtainFontFamilyCtor(java.lang.Class)>($u-1);
+
+     label04:
+        $u-1#5 = virtualinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method obtainAddFontFromAssetManagerMethod(java.lang.Class)>($u-1);
+
+     label05:
+        $u-1#7 = virtualinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method obtainAddFontFromBufferMethod(java.lang.Class)>($u-1);
+
+     label06:
+        $u-1#9 = virtualinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method obtainFreezeMethod(java.lang.Class)>($u-1);
+
+     label07:
+        $u-1#11 = virtualinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method obtainAbortCreationMethod(java.lang.Class)>($u-1);
+
+     label08:
+        $u-1#13 = virtualinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method obtainCreateFromFamiliesWithDefaultMethod(java.lang.Class)>($u-1);
+
+     label09:
+        goto label13;
+
+     label10:
+        fontFamily#15 := @caughtexception;
+
+        goto label12;
+
+     label11:
+        fontFamily#15 := @caughtexception;
+
+     label12:
+        fontFamilyCtor = new java.lang.StringBuilder;
+
+        specialinvoke fontFamilyCtor.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke fontFamilyCtor.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to collect necessary methods for class ");
+
+        $u-1 = virtualinvoke fontFamily#15.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#20 = virtualinvoke $u-1.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke fontFamilyCtor.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#20);
+
+        $u-1#20 = virtualinvoke fontFamilyCtor.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("TypefaceCompatApi26Impl", $u-1#20, fontFamily#15);
+
+        fontFamily = null;
+
+        $u-1#3 = null;
+
+        $u-1#5 = null;
+
+        $u-1#7 = null;
+
+        $u-1#9 = null;
+
+        $u-1#11 = null;
+
+        $u-1#13 = null;
+
+     label13:
+        this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.Class mFontFamily> = fontFamily;
+
+        this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Constructor mFontFamilyCtor> = $u-1#3;
+
+        this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method mAddFontFromAssetManager> = $u-1#5;
+
+        this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method mAddFontFromBuffer> = $u-1#7;
+
+        this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method mFreeze> = $u-1#9;
+
+        this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method mAbortCreation> = $u-1#11;
+
+        this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method mCreateFromFamiliesWithDefault> = $u-1#13;
+
+        return;
+
+        catch java.lang.ClassNotFoundException from label01 to label02 with label11;
+        catch java.lang.ClassNotFoundException from label03 to label04 with label11;
+        catch java.lang.ClassNotFoundException from label04 to label05 with label11;
+        catch java.lang.ClassNotFoundException from label05 to label06 with label11;
+        catch java.lang.ClassNotFoundException from label06 to label07 with label11;
+        catch java.lang.ClassNotFoundException from label07 to label08 with label11;
+        catch java.lang.ClassNotFoundException from label08 to label09 with label11;
+        catch java.lang.NoSuchMethodException from label01 to label02 with label10;
+        catch java.lang.NoSuchMethodException from label03 to label04 with label10;
+        catch java.lang.NoSuchMethodException from label04 to label05 with label10;
+        catch java.lang.NoSuchMethodException from label05 to label06 with label10;
+        catch java.lang.NoSuchMethodException from label06 to label07 with label10;
+        catch java.lang.NoSuchMethodException from label07 to label08 with label10;
+        catch java.lang.NoSuchMethodException from label08 to label09 with label10;
+    }
+
+    private void abortCreation(java.lang.Object)
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.Object $u3;
+        java.lang.reflect.Method $u0;
+        java.lang.Object[] $u1;
+        java.lang.reflect.InvocationTargetException $u0#4;
+        java.lang.IllegalAccessException $u0#5;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        $u3 := @parameter0: java.lang.Object;
+
+        $u0 = this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method mAbortCreation>;
+
+        $u1 = newarray (java.lang.Object)[0];
+
+     label1:
+        virtualinvoke $u0.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u3, $u1);
+
+     label2:
+        goto label5;
+
+     label3:
+        $u0#4 := @caughtexception;
+
+        goto label5;
+
+     label4:
+        $u0#5 := @caughtexception;
+
+     label5:
+        return;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label4;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label3;
+    }
+
+    private boolean addFontFromAssetManager(android.content.Context, java.lang.Object, java.lang.String, int, int, int, android.graphics.fonts.FontVariationAxis[])
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        android.content.Context $u6;
+        java.lang.Object $u7;
+        java.lang.String $u8;
+        int $u9, $u10, $u11;
+        android.graphics.fonts.FontVariationAxis[] $u12;
+        java.lang.reflect.Method e;
+        java.lang.Object[] $u2;
+        android.content.res.AssetManager $u-1;
+        java.lang.Integer $u-1#9;
+        java.lang.Boolean $u-1#12;
+        boolean $u-1#27;
+        java.lang.reflect.InvocationTargetException e#29;
+        java.lang.IllegalAccessException e#30;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        $u6 := @parameter0: android.content.Context;
+
+        $u7 := @parameter1: java.lang.Object;
+
+        $u8 := @parameter2: java.lang.String;
+
+        $u9 := @parameter3: int;
+
+        $u10 := @parameter4: int;
+
+        $u11 := @parameter5: int;
+
+        $u12 := @parameter6: android.graphics.fonts.FontVariationAxis[];
+
+        e = this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method mAddFontFromAssetManager>;
+
+        $u2 = newarray (java.lang.Object)[8];
+
+     label01:
+        $u-1 = virtualinvoke $u6.<android.content.Context: android.content.res.AssetManager getAssets()>();
+
+     label02:
+        $u2[0] = $u-1;
+
+        $u2[1] = $u8;
+
+     label03:
+        $u-1#9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+
+     label04:
+        $u2[2] = $u-1#9;
+
+     label05:
+        $u-1#12 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+     label06:
+        $u2[3] = $u-1#12;
+
+     label07:
+        $u-1#9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u9);
+
+     label08:
+        $u2[4] = $u-1#9;
+
+     label09:
+        $u-1#9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u10);
+
+     label10:
+        $u2[5] = $u-1#9;
+
+     label11:
+        $u-1#9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u11);
+
+     label12:
+        $u2[6] = $u-1#9;
+
+        $u2[7] = $u12;
+
+     label13:
+        $u7 = virtualinvoke e.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u7, $u2);
+
+     label14:
+        $u-1#12 = (java.lang.Boolean) $u7;
+
+     label15:
+        $u-1#27 = virtualinvoke $u-1#12.<java.lang.Boolean: boolean booleanValue()>();
+
+     label16:
+        return $u-1#27;
+
+     label17:
+        e#29 := @caughtexception;
+
+        return 0;
+
+     label18:
+        e#30 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.IllegalAccessException from label01 to label02 with label18;
+        catch java.lang.IllegalAccessException from label03 to label04 with label18;
+        catch java.lang.IllegalAccessException from label05 to label06 with label18;
+        catch java.lang.IllegalAccessException from label07 to label08 with label18;
+        catch java.lang.IllegalAccessException from label09 to label10 with label18;
+        catch java.lang.IllegalAccessException from label11 to label12 with label18;
+        catch java.lang.IllegalAccessException from label13 to label14 with label18;
+        catch java.lang.IllegalAccessException from label15 to label16 with label18;
+        catch java.lang.reflect.InvocationTargetException from label01 to label02 with label17;
+        catch java.lang.reflect.InvocationTargetException from label03 to label04 with label17;
+        catch java.lang.reflect.InvocationTargetException from label05 to label06 with label17;
+        catch java.lang.reflect.InvocationTargetException from label07 to label08 with label17;
+        catch java.lang.reflect.InvocationTargetException from label09 to label10 with label17;
+        catch java.lang.reflect.InvocationTargetException from label11 to label12 with label17;
+        catch java.lang.reflect.InvocationTargetException from label13 to label14 with label17;
+        catch java.lang.reflect.InvocationTargetException from label15 to label16 with label17;
+    }
+
+    private boolean addFontFromBuffer(java.lang.Object, java.nio.ByteBuffer, int, int, int)
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.Object $u6;
+        java.nio.ByteBuffer $u7;
+        int $u8, $u9, $u10;
+        java.lang.reflect.Method e;
+        java.lang.Object[] $u2;
+        java.lang.Integer $u-1;
+        java.lang.Boolean e#18;
+        boolean $u-1#19;
+        java.lang.reflect.InvocationTargetException e#21;
+        java.lang.IllegalAccessException e#22;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        $u6 := @parameter0: java.lang.Object;
+
+        $u7 := @parameter1: java.nio.ByteBuffer;
+
+        $u8 := @parameter2: int;
+
+        $u9 := @parameter3: int;
+
+        $u10 := @parameter4: int;
+
+        e = this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method mAddFontFromBuffer>;
+
+        $u2 = newarray (java.lang.Object)[5];
+
+        $u2[0] = $u7;
+
+     label01:
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u8);
+
+     label02:
+        $u2[1] = $u-1;
+
+        $u2[2] = null;
+
+     label03:
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u9);
+
+     label04:
+        $u2[3] = $u-1;
+
+     label05:
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u10);
+
+     label06:
+        $u2[4] = $u-1;
+
+     label07:
+        $u6 = virtualinvoke e.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u6, $u2);
+
+     label08:
+        e#18 = (java.lang.Boolean) $u6;
+
+     label09:
+        $u-1#19 = virtualinvoke e#18.<java.lang.Boolean: boolean booleanValue()>();
+
+     label10:
+        return $u-1#19;
+
+     label11:
+        e#21 := @caughtexception;
+
+        return 0;
+
+     label12:
+        e#22 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.IllegalAccessException from label01 to label02 with label12;
+        catch java.lang.IllegalAccessException from label03 to label04 with label12;
+        catch java.lang.IllegalAccessException from label05 to label06 with label12;
+        catch java.lang.IllegalAccessException from label07 to label08 with label12;
+        catch java.lang.IllegalAccessException from label09 to label10 with label12;
+        catch java.lang.reflect.InvocationTargetException from label01 to label02 with label11;
+        catch java.lang.reflect.InvocationTargetException from label03 to label04 with label11;
+        catch java.lang.reflect.InvocationTargetException from label05 to label06 with label11;
+        catch java.lang.reflect.InvocationTargetException from label07 to label08 with label11;
+        catch java.lang.reflect.InvocationTargetException from label09 to label10 with label11;
+    }
+
+    private boolean freeze(java.lang.Object)
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.Object $u4;
+        java.lang.Object[] $u2;
+        java.lang.reflect.Method e;
+        java.lang.Boolean e#5;
+        boolean $u-1;
+        java.lang.reflect.InvocationTargetException e#8;
+        java.lang.IllegalAccessException e#9;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        $u4 := @parameter0: java.lang.Object;
+
+        e = this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method mFreeze>;
+
+        $u2 = newarray (java.lang.Object)[0];
+
+     label1:
+        $u4 = virtualinvoke e.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u4, $u2);
+
+     label2:
+        e#5 = (java.lang.Boolean) $u4;
+
+     label3:
+        $u-1 = virtualinvoke e#5.<java.lang.Boolean: boolean booleanValue()>();
+
+     label4:
+        return $u-1;
+
+     label5:
+        e#8 := @caughtexception;
+
+        return 0;
+
+     label6:
+        e#9 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label6;
+        catch java.lang.IllegalAccessException from label3 to label4 with label6;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label5;
+        catch java.lang.reflect.InvocationTargetException from label3 to label4 with label5;
+    }
+
+    private boolean isFontFamilyPrivateAPIAvailable()
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.reflect.Method $u0;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        $u0 = this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method mAddFontFromAssetManager>;
+
+        if $u0 != null goto label1;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("TypefaceCompatApi26Impl", "Unable to collect necessary private methods. Fallback to legacy implementation.");
+
+     label1:
+        $u0 = this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method mAddFontFromAssetManager>;
+
+        if $u0 == null goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    private java.lang.Object newFamily()
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.Object $u-1;
+        java.lang.reflect.Constructor e;
+        java.lang.Object[] $u1;
+        java.lang.reflect.InvocationTargetException e#5;
+        java.lang.InstantiationException e#6;
+        java.lang.IllegalAccessException e#7;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        e = this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Constructor mFontFamilyCtor>;
+
+        $u1 = newarray (java.lang.Object)[0];
+
+     label1:
+        $u-1 = virtualinvoke e.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($u1);
+
+     label2:
+        return $u-1;
+
+     label3:
+        e#5 := @caughtexception;
+
+        goto label6;
+
+     label4:
+        e#6 := @caughtexception;
+
+        goto label6;
+
+     label5:
+        e#7 := @caughtexception;
+
+     label6:
+        return null;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label5;
+        catch java.lang.InstantiationException from label1 to label2 with label4;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label3;
+    }
+
+    protected android.graphics.Typeface createFromFamiliesWithDefault(java.lang.Object)
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.Object $u8, $u-1;
+        java.lang.reflect.Method $u4;
+        java.lang.Class familyArray;
+        java.lang.Object[] $u5;
+        java.lang.Integer $u-1#9;
+        android.graphics.Typeface $u2;
+        java.lang.reflect.InvocationTargetException familyArray#16;
+        java.lang.IllegalAccessException familyArray#17;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        $u8 := @parameter0: java.lang.Object;
+
+        familyArray = this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.Class mFontFamily>;
+
+     label01:
+        $u-1 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int)>(familyArray, 1);
+
+        staticinvoke <java.lang.reflect.Array: void set(java.lang.Object,int,java.lang.Object)>($u-1, 0, $u8);
+
+     label02:
+        $u4 = this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.reflect.Method mCreateFromFamiliesWithDefault>;
+
+        $u5 = newarray (java.lang.Object)[3];
+
+        $u5[0] = $u-1;
+
+     label03:
+        $u-1#9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-1);
+
+     label04:
+        $u5[1] = $u-1#9;
+
+     label05:
+        $u-1#9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-1);
+
+     label06:
+        $u5[2] = $u-1#9;
+
+     label07:
+        $u8 = virtualinvoke $u4.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $u5);
+
+     label08:
+        $u2 = (android.graphics.Typeface) $u8;
+
+        return $u2;
+
+     label09:
+        familyArray#16 := @caughtexception;
+
+        return null;
+
+     label10:
+        familyArray#17 := @caughtexception;
+
+        return null;
+
+        catch java.lang.IllegalAccessException from label01 to label02 with label10;
+        catch java.lang.IllegalAccessException from label03 to label04 with label10;
+        catch java.lang.IllegalAccessException from label05 to label06 with label10;
+        catch java.lang.IllegalAccessException from label07 to label08 with label10;
+        catch java.lang.reflect.InvocationTargetException from label01 to label02 with label09;
+        catch java.lang.reflect.InvocationTargetException from label03 to label04 with label09;
+        catch java.lang.reflect.InvocationTargetException from label05 to label06 with label09;
+        catch java.lang.reflect.InvocationTargetException from label07 to label08 with label09;
+    }
+
+    public android.graphics.Typeface createFromFontFamilyFilesResourceEntry(android.content.Context, androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry, android.content.res.Resources, int)
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        android.content.Context $u16;
+        androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry $u17;
+        android.content.res.Resources $u18;
+        int $u19, $u13, $u-1#10, $u-1#11, tmp;
+        androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry fontFile;
+        boolean $u-1;
+        android.graphics.Typeface $u-1#3;
+        java.lang.Object $u-1#5;
+        androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry[] $u-1#6;
+        java.lang.String $u-1#9, $u-1#13;
+        android.graphics.fonts.FontVariationAxis[] $u-1#15;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        $u16 := @parameter0: android.content.Context;
+
+        $u17 := @parameter1: androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry;
+
+        $u18 := @parameter2: android.content.res.Resources;
+
+        $u19 := @parameter3: int;
+
+        $u-1 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: boolean isFontFamilyPrivateAPIAvailable()>();
+
+        if $u-1 != 0 goto label1;
+
+        $u-1#3 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi21Impl: android.graphics.Typeface createFromFontFamilyFilesResourceEntry(android.content.Context,androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry,android.content.res.Resources,int)>($u16, $u17, $u18, $u19);
+
+        return $u-1#3;
+
+     label1:
+        $u-1#5 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.Object newFamily()>();
+
+        if $u-1#5 != null goto label2;
+
+        return null;
+
+     label2:
+        $u-1#6 = virtualinvoke $u17.<androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry: androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry[] getEntries()>();
+
+        $u19 = lengthof $u-1#6;
+
+        $u13 = 0;
+
+     label3:
+        if $u13 >= $u19 goto label5;
+
+        fontFile = $u-1#6[$u13];
+
+        $u-1#9 = virtualinvoke fontFile.<androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry: java.lang.String getFileName()>();
+
+        $u-1#10 = virtualinvoke fontFile.<androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry: int getTtcIndex()>();
+
+        $u-1#11 = virtualinvoke fontFile.<androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry: int getWeight()>();
+
+        $u-1 = virtualinvoke fontFile.<androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry: boolean isItalic()>();
+
+        $u-1#13 = virtualinvoke fontFile.<androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry: java.lang.String getVariationSettings()>();
+
+        $u-1#15 = staticinvoke <android.graphics.fonts.FontVariationAxis: android.graphics.fonts.FontVariationAxis[] fromFontVariationSettings(java.lang.String)>($u-1#13);
+
+        tmp = (int) $u-1;
+
+        $u-1 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: boolean addFontFromAssetManager(android.content.Context,java.lang.Object,java.lang.String,int,int,int,android.graphics.fonts.FontVariationAxis[])>($u16, $u-1#5, $u-1#9, $u-1#10, $u-1#11, tmp, $u-1#15);
+
+        if $u-1 != 0 goto label4;
+
+        specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: void abortCreation(java.lang.Object)>($u-1#5);
+
+        return null;
+
+     label4:
+        $u13 = $u13 + 1;
+
+        goto label3;
+
+     label5:
+        $u-1 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: boolean freeze(java.lang.Object)>($u-1#5);
+
+        if $u-1 != 0 goto label6;
+
+        return null;
+
+     label6:
+        $u-1#3 = virtualinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: android.graphics.Typeface createFromFamiliesWithDefault(java.lang.Object)>($u-1#5);
+
+        return $u-1#3;
+    }
+
+    public android.graphics.Typeface createFromFontInfo(android.content.Context, android.os.CancellationSignal, androidx.core.provider.FontsContractCompat$FontInfo[], int)
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        android.content.Context $u21;
+        android.os.CancellationSignal $u22;
+        androidx.core.provider.FontsContractCompat$FontInfo[] $u23;
+        int $u24, $u14, $u6, $u-1#47, $u-1#49, tmp;
+        androidx.core.provider.FontsContractCompat$FontInfo font;
+        boolean $u-1;
+        android.content.ContentResolver $u-1#7;
+        android.net.Uri $u-1#9;
+        android.os.ParcelFileDescriptor $u-1#12;
+        android.graphics.Typeface$Builder e;
+        java.io.FileDescriptor $u-1#16;
+        android.graphics.Typeface $u-1#26;
+        java.lang.Throwable e#28, e#30;
+        java.io.IOException e#32;
+        java.util.Map $u-1#33;
+        java.lang.Object $u-1#35, $u-1#42;
+        java.nio.ByteBuffer fontBuffer;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        $u21 := @parameter0: android.content.Context;
+
+        $u22 := @parameter1: android.os.CancellationSignal;
+
+        $u23 := @parameter2: androidx.core.provider.FontsContractCompat$FontInfo[];
+
+        $u24 := @parameter3: int;
+
+        $u14 = lengthof $u23;
+
+        if $u14 >= 1 goto label01;
+
+        return null;
+
+     label01:
+        $u-1 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: boolean isFontFamilyPrivateAPIAvailable()>();
+
+        if $u-1 != 0 goto label17;
+
+        font = virtualinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: androidx.core.provider.FontsContractCompat$FontInfo findBestInfo(androidx.core.provider.FontsContractCompat$FontInfo[],int)>($u23, $u24);
+
+        $u-1#7 = virtualinvoke $u21.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+     label02:
+        $u-1#9 = virtualinvoke font.<androidx.core.provider.FontsContractCompat$FontInfo: android.net.Uri getUri()>();
+
+        $u-1#12 = virtualinvoke $u-1#7.<android.content.ContentResolver: android.os.ParcelFileDescriptor openFileDescriptor(android.net.Uri,java.lang.String,android.os.CancellationSignal)>($u-1#9, "r", $u22);
+
+     label03:
+        if $u-1#12 != null goto label06;
+
+        if $u-1#12 == null goto label27;
+
+     label04:
+        virtualinvoke $u-1#12.<android.os.ParcelFileDescriptor: void close()>();
+
+     label05:
+        return null;
+
+     label06:
+        e = new android.graphics.Typeface$Builder;
+
+        $u-1#16 = virtualinvoke $u-1#12.<android.os.ParcelFileDescriptor: java.io.FileDescriptor getFileDescriptor()>();
+
+        specialinvoke e.<android.graphics.Typeface$Builder: void <init>(java.io.FileDescriptor)>($u-1#16);
+
+        $u24 = virtualinvoke font.<androidx.core.provider.FontsContractCompat$FontInfo: int getWeight()>();
+
+        e = virtualinvoke e.<android.graphics.Typeface$Builder: android.graphics.Typeface$Builder setWeight(int)>($u24);
+
+        $u-1 = virtualinvoke font.<androidx.core.provider.FontsContractCompat$FontInfo: boolean isItalic()>();
+
+        e = virtualinvoke e.<android.graphics.Typeface$Builder: android.graphics.Typeface$Builder setItalic(boolean)>($u-1);
+
+        $u-1#26 = virtualinvoke e.<android.graphics.Typeface$Builder: android.graphics.Typeface build()>();
+
+     label07:
+        if $u-1#12 == null goto label28;
+
+     label08:
+        virtualinvoke $u-1#12.<android.os.ParcelFileDescriptor: void close()>();
+
+     label09:
+        return $u-1#26;
+
+     label10:
+        e#28 := @caughtexception;
+
+        if $u-1#12 == null goto label15;
+
+     label11:
+        virtualinvoke $u-1#12.<android.os.ParcelFileDescriptor: void close()>();
+
+     label12:
+        goto label15;
+
+     label13:
+        e#30 := @caughtexception;
+
+     label14:
+        virtualinvoke e#28.<java.lang.Throwable: void addSuppressed(java.lang.Throwable)>(e#30);
+
+     label15:
+        throw e#28;
+
+     label16:
+        e#32 := @caughtexception;
+
+        return null;
+
+     label17:
+        $u-1#33 = staticinvoke <androidx.core.provider.FontsContractCompat: java.util.Map prepareFontData(android.content.Context,androidx.core.provider.FontsContractCompat$FontInfo[],android.os.CancellationSignal)>($u21, $u23, $u22);
+
+        $u-1#35 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.Object newFamily()>();
+
+        if $u-1#35 != null goto label18;
+
+        return null;
+
+     label18:
+        $u14 = lengthof $u23;
+
+        $u-1 = 0;
+
+        $u6 = 0;
+
+     label19:
+        if $u6 >= $u14 goto label23;
+
+        font = $u23[$u6];
+
+        $u-1#9 = virtualinvoke font.<androidx.core.provider.FontsContractCompat$FontInfo: android.net.Uri getUri()>();
+
+        $u-1#42 = interfaceinvoke $u-1#33.<java.util.Map: java.lang.Object get(java.lang.Object)>($u-1#9);
+
+        fontBuffer = (java.nio.ByteBuffer) $u-1#42;
+
+        if fontBuffer != null goto label20;
+
+        goto label22;
+
+     label20:
+        $u-1#47 = virtualinvoke font.<androidx.core.provider.FontsContractCompat$FontInfo: int getTtcIndex()>();
+
+        $u-1#49 = virtualinvoke font.<androidx.core.provider.FontsContractCompat$FontInfo: int getWeight()>();
+
+        $u-1 = virtualinvoke font.<androidx.core.provider.FontsContractCompat$FontInfo: boolean isItalic()>();
+
+        tmp = (int) $u-1;
+
+        $u-1 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: boolean addFontFromBuffer(java.lang.Object,java.nio.ByteBuffer,int,int,int)>($u-1#35, fontBuffer, $u-1#47, $u-1#49, tmp);
+
+        if $u-1 != 0 goto label21;
+
+        specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: void abortCreation(java.lang.Object)>($u-1#35);
+
+        return null;
+
+     label21:
+        $u-1 = 1;
+
+     label22:
+        $u6 = $u6 + 1;
+
+        goto label19;
+
+     label23:
+        if $u-1 != 0 goto label24;
+
+        specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: void abortCreation(java.lang.Object)>($u-1#35);
+
+        return null;
+
+     label24:
+        $u-1 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: boolean freeze(java.lang.Object)>($u-1#35);
+
+        if $u-1 != 0 goto label25;
+
+        return null;
+
+     label25:
+        $u-1#26 = virtualinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: android.graphics.Typeface createFromFamiliesWithDefault(java.lang.Object)>($u-1#35);
+
+        if $u-1#26 != null goto label26;
+
+        return null;
+
+     label26:
+        $u-1#26 = staticinvoke <android.graphics.Typeface: android.graphics.Typeface create(android.graphics.Typeface,int)>($u-1#26, $u24);
+
+        return $u-1#26;
+
+     label27:
+        return null;
+
+     label28:
+        return $u-1#26;
+
+        catch java.io.IOException from label02 to label03 with label16;
+        catch java.io.IOException from label04 to label05 with label16;
+        catch java.lang.Throwable from label06 to label07 with label10;
+        catch java.io.IOException from label08 to label09 with label16;
+        catch java.lang.Throwable from label11 to label12 with label13;
+        catch java.io.IOException from label14 to label16 with label16;
+    }
+
+    public android.graphics.Typeface createFromResourcesFontFile(android.content.Context, android.content.res.Resources, int, java.lang.String, int)
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        android.content.Context $u11;
+        android.content.res.Resources $u12;
+        int $u13, $u15;
+        java.lang.String $u14;
+        boolean $u-1;
+        android.graphics.Typeface $u-1#3;
+        java.lang.Object $u-1#5;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        $u11 := @parameter0: android.content.Context;
+
+        $u12 := @parameter1: android.content.res.Resources;
+
+        $u13 := @parameter2: int;
+
+        $u14 := @parameter3: java.lang.String;
+
+        $u15 := @parameter4: int;
+
+        $u-1 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: boolean isFontFamilyPrivateAPIAvailable()>();
+
+        if $u-1 != 0 goto label1;
+
+        $u-1#3 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi21Impl: android.graphics.Typeface createFromResourcesFontFile(android.content.Context,android.content.res.Resources,int,java.lang.String,int)>($u11, $u12, $u13, $u14, $u15);
+
+        return $u-1#3;
+
+     label1:
+        $u-1#5 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.Object newFamily()>();
+
+        if $u-1#5 != null goto label2;
+
+        return null;
+
+     label2:
+        $u-1 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: boolean addFontFromAssetManager(android.content.Context,java.lang.Object,java.lang.String,int,int,int,android.graphics.fonts.FontVariationAxis[])>($u11, $u-1#5, $u14, 0, -1, -1, null);
+
+        if $u-1 != 0 goto label3;
+
+        specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: void abortCreation(java.lang.Object)>($u-1#5);
+
+        return null;
+
+     label3:
+        $u-1 = specialinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: boolean freeze(java.lang.Object)>($u-1#5);
+
+        if $u-1 != 0 goto label4;
+
+        return null;
+
+     label4:
+        $u-1#3 = virtualinvoke this.<androidx.core.graphics.TypefaceCompatApi26Impl: android.graphics.Typeface createFromFamiliesWithDefault(java.lang.Object)>($u-1#5);
+
+        return $u-1#3;
+    }
+
+    protected java.lang.reflect.Method obtainAbortCreationMethod(java.lang.Class) throws java.lang.NoSuchMethodException
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.Class fontFamily;
+        java.lang.reflect.Method $u-1;
+        java.lang.Class[] $u0;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        fontFamily := @parameter0: java.lang.Class;
+
+        $u0 = newarray (java.lang.Class)[0];
+
+        $u-1 = virtualinvoke fontFamily.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("abortCreation", $u0);
+
+        return $u-1;
+    }
+
+    protected java.lang.reflect.Method obtainAddFontFromAssetManagerMethod(java.lang.Class) throws java.lang.NoSuchMethodException
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.Class fontFamily, $u1;
+        java.lang.reflect.Method $u-1;
+        java.lang.Class[] $u0;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        fontFamily := @parameter0: java.lang.Class;
+
+        $u0 = newarray (java.lang.Class)[8];
+
+        $u0[0] = class "Landroid/content/res/AssetManager;";
+
+        $u0[1] = class "Ljava/lang/String;";
+
+        $u1 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $u0[2] = $u1;
+
+        $u1 = <java.lang.Boolean: java.lang.Class TYPE>;
+
+        $u0[3] = $u1;
+
+        $u1 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $u0[4] = $u1;
+
+        $u1 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $u0[5] = $u1;
+
+        $u1 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $u0[6] = $u1;
+
+        $u0[7] = class "[Landroid/graphics/fonts/FontVariationAxis;";
+
+        $u-1 = virtualinvoke fontFamily.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("addFontFromAssetManager", $u0);
+
+        return $u-1;
+    }
+
+    protected java.lang.reflect.Method obtainAddFontFromBufferMethod(java.lang.Class) throws java.lang.NoSuchMethodException
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.Class fontFamily, $u1;
+        java.lang.reflect.Method $u-1;
+        java.lang.Class[] $u0;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        fontFamily := @parameter0: java.lang.Class;
+
+        $u0 = newarray (java.lang.Class)[5];
+
+        $u0[0] = class "Ljava/nio/ByteBuffer;";
+
+        $u1 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $u0[1] = $u1;
+
+        $u0[2] = class "[Landroid/graphics/fonts/FontVariationAxis;";
+
+        $u1 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $u0[3] = $u1;
+
+        $u1 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $u0[4] = $u1;
+
+        $u-1 = virtualinvoke fontFamily.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("addFontFromBuffer", $u0);
+
+        return $u-1;
+    }
+
+    protected java.lang.reflect.Method obtainCreateFromFamiliesWithDefaultMethod(java.lang.Class) throws java.lang.NoSuchMethodException
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.Class fontFamily, $u-1#5;
+        java.lang.Object $u-1;
+        java.lang.Class[] $u3;
+        java.lang.reflect.Method $u-1#12;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        fontFamily := @parameter0: java.lang.Class;
+
+        $u-1 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int)>(fontFamily, 1);
+
+        fontFamily = class "Landroid/graphics/Typeface;";
+
+        $u3 = newarray (java.lang.Class)[3];
+
+        $u-1#5 = virtualinvoke $u-1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u3[0] = $u-1#5;
+
+        $u-1#5 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $u3[1] = $u-1#5;
+
+        $u-1#5 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $u3[2] = $u-1#5;
+
+        $u-1#12 = virtualinvoke fontFamily.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("createFromFamiliesWithDefault", $u3);
+
+        virtualinvoke $u-1#12.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+        return $u-1#12;
+    }
+
+    protected java.lang.Class obtainFontFamily() throws java.lang.ClassNotFoundException
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.Class $u-1;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        $u-1 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("android.graphics.FontFamily");
+
+        return $u-1;
+    }
+
+    protected java.lang.reflect.Constructor obtainFontFamilyCtor(java.lang.Class) throws java.lang.NoSuchMethodException
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.Class fontFamily;
+        java.lang.reflect.Constructor $u-1;
+        java.lang.Class[] $u0;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        fontFamily := @parameter0: java.lang.Class;
+
+        $u0 = newarray (java.lang.Class)[0];
+
+        $u-1 = virtualinvoke fontFamily.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>($u0);
+
+        return $u-1;
+    }
+
+    protected java.lang.reflect.Method obtainFreezeMethod(java.lang.Class) throws java.lang.NoSuchMethodException
+    {
+        androidx.core.graphics.TypefaceCompatApi26Impl this;
+        java.lang.Class fontFamily;
+        java.lang.reflect.Method $u-1;
+        java.lang.Class[] $u0;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        fontFamily := @parameter0: java.lang.Class;
+
+        $u0 = newarray (java.lang.Class)[0];
+
+        $u-1 = virtualinvoke fontFamily.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("freeze", $u0);
+
+        return $u-1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.String TAG> = "TypefaceCompatApi26Impl";
+
+        <androidx.core.graphics.TypefaceCompatApi26Impl: int RESOLVE_BY_FONT_TABLE> = -1;
+
+        <androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.String FREEZE_METHOD> = "freeze";
+
+        <androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.String FONT_FAMILY_CLASS> = "android.graphics.FontFamily";
+
+        <androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.String CREATE_FROM_FAMILIES_WITH_DEFAULT_METHOD> = "createFromFamiliesWithDefault";
+
+        <androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.String ADD_FONT_FROM_BUFFER_METHOD> = "addFontFromBuffer";
+
+        <androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.String ADD_FONT_FROM_ASSET_MANAGER_METHOD> = "addFontFromAssetManager";
+
+        <androidx.core.graphics.TypefaceCompatApi26Impl: java.lang.String ABORT_CREATION_METHOD> = "abortCreation";
+
+        return;
+    }
+}

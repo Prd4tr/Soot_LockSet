@@ -1,0 +1,146 @@
+abstract class androidx.lifecycle.LiveData$ObserverWrapper extends java.lang.Object
+{
+    boolean mActive;
+    int mLastVersion;
+    final androidx.lifecycle.Observer mObserver;
+    final androidx.lifecycle.LiveData this$0;
+
+    void <init>(androidx.lifecycle.LiveData, androidx.lifecycle.Observer)
+    {
+        androidx.lifecycle.LiveData$ObserverWrapper this;
+        androidx.lifecycle.Observer observer;
+        androidx.lifecycle.LiveData $u1;
+
+        this := @this: androidx.lifecycle.LiveData$ObserverWrapper;
+
+        $u1 := @parameter0: androidx.lifecycle.LiveData;
+
+        observer := @parameter1: androidx.lifecycle.Observer;
+
+        this.<androidx.lifecycle.LiveData$ObserverWrapper: androidx.lifecycle.LiveData this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.lifecycle.LiveData$ObserverWrapper: int mLastVersion> = -1;
+
+        this.<androidx.lifecycle.LiveData$ObserverWrapper: androidx.lifecycle.Observer mObserver> = observer;
+
+        return;
+    }
+
+    void activeStateChanged(boolean)
+    {
+        androidx.lifecycle.LiveData$ObserverWrapper this;
+        boolean $u6, wasInactive;
+        androidx.lifecycle.LiveData $u2;
+        int wasInactive#3;
+        byte $u1;
+
+        this := @this: androidx.lifecycle.LiveData$ObserverWrapper;
+
+        $u6 := @parameter0: boolean;
+
+        wasInactive = this.<androidx.lifecycle.LiveData$ObserverWrapper: boolean mActive>;
+
+        if $u6 != wasInactive goto label1;
+
+        return;
+
+     label1:
+        this.<androidx.lifecycle.LiveData$ObserverWrapper: boolean mActive> = $u6;
+
+        $u2 = this.<androidx.lifecycle.LiveData$ObserverWrapper: androidx.lifecycle.LiveData this$0>;
+
+        wasInactive#3 = $u2.<androidx.lifecycle.LiveData: int mActiveCount>;
+
+        $u1 = 1;
+
+        if wasInactive#3 != 0 goto label2;
+
+        wasInactive = 1;
+
+        goto label3;
+
+     label2:
+        wasInactive = 0;
+
+     label3:
+        $u2 = this.<androidx.lifecycle.LiveData$ObserverWrapper: androidx.lifecycle.LiveData this$0>;
+
+        wasInactive#3 = $u2.<androidx.lifecycle.LiveData: int mActiveCount>;
+
+        $u6 = this.<androidx.lifecycle.LiveData$ObserverWrapper: boolean mActive>;
+
+        if $u6 == 0 goto label4;
+
+        goto label5;
+
+     label4:
+        $u1 = -1;
+
+     label5:
+        wasInactive#3 = wasInactive#3 + $u1;
+
+        $u2.<androidx.lifecycle.LiveData: int mActiveCount> = wasInactive#3;
+
+        if wasInactive == 0 goto label6;
+
+        $u6 = this.<androidx.lifecycle.LiveData$ObserverWrapper: boolean mActive>;
+
+        if $u6 == 0 goto label6;
+
+        $u2 = this.<androidx.lifecycle.LiveData$ObserverWrapper: androidx.lifecycle.LiveData this$0>;
+
+        virtualinvoke $u2.<androidx.lifecycle.LiveData: void onActive()>();
+
+     label6:
+        $u2 = this.<androidx.lifecycle.LiveData$ObserverWrapper: androidx.lifecycle.LiveData this$0>;
+
+        wasInactive#3 = $u2.<androidx.lifecycle.LiveData: int mActiveCount>;
+
+        if wasInactive#3 != 0 goto label7;
+
+        $u6 = this.<androidx.lifecycle.LiveData$ObserverWrapper: boolean mActive>;
+
+        if $u6 != 0 goto label7;
+
+        $u2 = this.<androidx.lifecycle.LiveData$ObserverWrapper: androidx.lifecycle.LiveData this$0>;
+
+        virtualinvoke $u2.<androidx.lifecycle.LiveData: void onInactive()>();
+
+     label7:
+        $u6 = this.<androidx.lifecycle.LiveData$ObserverWrapper: boolean mActive>;
+
+        if $u6 == 0 goto label8;
+
+        $u2 = this.<androidx.lifecycle.LiveData$ObserverWrapper: androidx.lifecycle.LiveData this$0>;
+
+        virtualinvoke $u2.<androidx.lifecycle.LiveData: void dispatchingValue(androidx.lifecycle.LiveData$ObserverWrapper)>(this);
+
+     label8:
+        return;
+    }
+
+    void detachObserver()
+    {
+        androidx.lifecycle.LiveData$ObserverWrapper this;
+
+        this := @this: androidx.lifecycle.LiveData$ObserverWrapper;
+
+        return;
+    }
+
+    boolean isAttachedTo(androidx.lifecycle.LifecycleOwner)
+    {
+        androidx.lifecycle.LiveData$ObserverWrapper this;
+        androidx.lifecycle.LifecycleOwner $u2;
+
+        this := @this: androidx.lifecycle.LiveData$ObserverWrapper;
+
+        $u2 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        return 0;
+    }
+
+    abstract boolean shouldBeActive();
+}

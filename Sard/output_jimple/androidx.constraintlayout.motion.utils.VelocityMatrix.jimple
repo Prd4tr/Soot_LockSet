@@ -1,0 +1,375 @@
+public class androidx.constraintlayout.motion.utils.VelocityMatrix extends java.lang.Object
+{
+    private static java.lang.String TAG;
+    float mDRotate;
+    float mDScaleX;
+    float mDScaleY;
+    float mDTranslateX;
+    float mDTranslateY;
+    float mRotate;
+
+    static void <clinit>()
+    {
+        <androidx.constraintlayout.motion.utils.VelocityMatrix: java.lang.String TAG> = "VelocityMatrix";
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.constraintlayout.motion.utils.VelocityMatrix this;
+
+        this := @this: androidx.constraintlayout.motion.utils.VelocityMatrix;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void applyTransform(float, float, int, int, float[])
+    {
+        androidx.constraintlayout.motion.utils.VelocityMatrix this;
+        float $u17, $u18, dx, dy, r, dx#17, $u11#32;
+        int $u19, $u20, $u11;
+        float[] $u21;
+        double r#22, $u13, $u5;
+
+        this := @this: androidx.constraintlayout.motion.utils.VelocityMatrix;
+
+        $u17 := @parameter0: float;
+
+        $u18 := @parameter1: float;
+
+        $u19 := @parameter2: int;
+
+        $u20 := @parameter3: int;
+
+        $u21 := @parameter4: float[];
+
+        dx = $u21[0];
+
+        dy = $u21[1];
+
+        $u17 = $u17 - 0.5F;
+
+        $u17 = $u17 * 2.0F;
+
+        $u18 = $u18 - 0.5F;
+
+        $u18 = $u18 * 2.0F;
+
+        r = this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDTranslateX>;
+
+        dx = dx + r;
+
+        r = this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDTranslateY>;
+
+        dy = dy + r;
+
+        r = this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDScaleX>;
+
+        r = r * $u17;
+
+        dx#17 = dx + r;
+
+        dx = this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDScaleY>;
+
+        dx = dx * $u18;
+
+        dy = dy + dx;
+
+        dx = this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mRotate>;
+
+        r#22 = (double) dx;
+
+        r#22 = staticinvoke <java.lang.Math: double toRadians(double)>(r#22);
+
+        dx = (float) r#22;
+
+        r = this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDRotate>;
+
+        r#22 = (double) r;
+
+        r#22 = staticinvoke <java.lang.Math: double toRadians(double)>(r#22);
+
+        r = (float) r#22;
+
+        $u11 = neg $u19;
+
+        $u11#32 = (float) $u11;
+
+        $u11#32 = $u11#32 * $u17;
+
+        r#22 = (double) $u11#32;
+
+        $u13 = (double) dx;
+
+        $u13 = staticinvoke <java.lang.Math: double sin(double)>($u13);
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(r#22);
+
+        r#22 = r#22 * $u13;
+
+        $u11#32 = (float) $u20;
+
+        $u11#32 = $u11#32 * $u18;
+
+        $u13 = (double) $u11#32;
+
+        $u5 = (double) dx;
+
+        $u5 = staticinvoke <java.lang.Math: double cos(double)>($u5);
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($u13);
+
+        $u13 = $u13 * $u5;
+
+        r#22 = r#22 - $u13;
+
+        $u11#32 = (float) r#22;
+
+        $u11#32 = $u11#32 * r;
+
+        dx#17 = dx#17 + $u11#32;
+
+        $u11#32 = (float) $u19;
+
+        $u17 = $u11#32 * $u17;
+
+        r#22 = (double) $u17;
+
+        $u13 = (double) dx;
+
+        $u13 = staticinvoke <java.lang.Math: double cos(double)>($u13);
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(r#22);
+
+        r#22 = r#22 * $u13;
+
+        $u17 = (float) $u20;
+
+        $u17 = $u17 * $u18;
+
+        $u13 = (double) $u17;
+
+        $u5 = (double) dx;
+
+        $u5 = staticinvoke <java.lang.Math: double sin(double)>($u5);
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($u13);
+
+        $u13 = $u13 * $u5;
+
+        r#22 = r#22 - $u13;
+
+        $u17 = (float) r#22;
+
+        $u17 = $u17 * r;
+
+        $u17 = dy + $u17;
+
+        $u21[0] = dx#17;
+
+        $u21[1] = $u17;
+
+        return;
+    }
+
+    public void clear()
+    {
+        androidx.constraintlayout.motion.utils.VelocityMatrix this;
+
+        this := @this: androidx.constraintlayout.motion.utils.VelocityMatrix;
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDRotate> = 0.0F;
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDTranslateY> = 0.0F;
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDTranslateX> = 0.0F;
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDScaleY> = 0.0F;
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDScaleX> = 0.0F;
+
+        return;
+    }
+
+    public void setRotationVelocity(androidx.constraintlayout.motion.widget.KeyCycleOscillator, float)
+    {
+        androidx.constraintlayout.motion.utils.VelocityMatrix this;
+        androidx.constraintlayout.motion.widget.KeyCycleOscillator $u2;
+        float $u3;
+
+        this := @this: androidx.constraintlayout.motion.utils.VelocityMatrix;
+
+        $u2 := @parameter0: androidx.constraintlayout.motion.widget.KeyCycleOscillator;
+
+        $u3 := @parameter1: float;
+
+        if $u2 == null goto label1;
+
+        $u3 = virtualinvoke $u2.<androidx.constraintlayout.motion.widget.KeyCycleOscillator: float getSlope(float)>($u3);
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDRotate> = $u3;
+
+     label1:
+        return;
+    }
+
+    public void setRotationVelocity(androidx.constraintlayout.motion.widget.SplineSet, float)
+    {
+        androidx.constraintlayout.motion.utils.VelocityMatrix this;
+        androidx.constraintlayout.motion.widget.SplineSet $u2;
+        float $u3, $u-1;
+
+        this := @this: androidx.constraintlayout.motion.utils.VelocityMatrix;
+
+        $u2 := @parameter0: androidx.constraintlayout.motion.widget.SplineSet;
+
+        $u3 := @parameter1: float;
+
+        if $u2 == null goto label1;
+
+        $u-1 = virtualinvoke $u2.<androidx.constraintlayout.motion.widget.SplineSet: float getSlope(float)>($u3);
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDRotate> = $u-1;
+
+        $u3 = virtualinvoke $u2.<androidx.constraintlayout.motion.widget.SplineSet: float get(float)>($u3);
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mRotate> = $u3;
+
+     label1:
+        return;
+    }
+
+    public void setScaleVelocity(androidx.constraintlayout.motion.widget.KeyCycleOscillator, androidx.constraintlayout.motion.widget.KeyCycleOscillator, float)
+    {
+        androidx.constraintlayout.motion.utils.VelocityMatrix this;
+        androidx.constraintlayout.motion.widget.KeyCycleOscillator $u2, $u3;
+        float $u4, $u-1;
+
+        this := @this: androidx.constraintlayout.motion.utils.VelocityMatrix;
+
+        $u2 := @parameter0: androidx.constraintlayout.motion.widget.KeyCycleOscillator;
+
+        $u3 := @parameter1: androidx.constraintlayout.motion.widget.KeyCycleOscillator;
+
+        $u4 := @parameter2: float;
+
+        if $u2 != null goto label1;
+
+        if $u3 != null goto label1;
+
+        return;
+
+     label1:
+        if $u2 != null goto label2;
+
+        $u-1 = virtualinvoke $u2.<androidx.constraintlayout.motion.widget.KeyCycleOscillator: float getSlope(float)>($u4);
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDScaleX> = $u-1;
+
+     label2:
+        if $u3 != null goto label3;
+
+        $u4 = virtualinvoke $u3.<androidx.constraintlayout.motion.widget.KeyCycleOscillator: float getSlope(float)>($u4);
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDScaleY> = $u4;
+
+     label3:
+        return;
+    }
+
+    public void setScaleVelocity(androidx.constraintlayout.motion.widget.SplineSet, androidx.constraintlayout.motion.widget.SplineSet, float)
+    {
+        androidx.constraintlayout.motion.utils.VelocityMatrix this;
+        androidx.constraintlayout.motion.widget.SplineSet $u2, $u3;
+        float $u4, $u-1;
+
+        this := @this: androidx.constraintlayout.motion.utils.VelocityMatrix;
+
+        $u2 := @parameter0: androidx.constraintlayout.motion.widget.SplineSet;
+
+        $u3 := @parameter1: androidx.constraintlayout.motion.widget.SplineSet;
+
+        $u4 := @parameter2: float;
+
+        if $u2 == null goto label1;
+
+        $u-1 = virtualinvoke $u2.<androidx.constraintlayout.motion.widget.SplineSet: float getSlope(float)>($u4);
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDScaleX> = $u-1;
+
+     label1:
+        if $u3 == null goto label2;
+
+        $u4 = virtualinvoke $u3.<androidx.constraintlayout.motion.widget.SplineSet: float getSlope(float)>($u4);
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDScaleY> = $u4;
+
+     label2:
+        return;
+    }
+
+    public void setTranslationVelocity(androidx.constraintlayout.motion.widget.KeyCycleOscillator, androidx.constraintlayout.motion.widget.KeyCycleOscillator, float)
+    {
+        androidx.constraintlayout.motion.utils.VelocityMatrix this;
+        androidx.constraintlayout.motion.widget.KeyCycleOscillator $u2, $u3;
+        float $u4, $u-1;
+
+        this := @this: androidx.constraintlayout.motion.utils.VelocityMatrix;
+
+        $u2 := @parameter0: androidx.constraintlayout.motion.widget.KeyCycleOscillator;
+
+        $u3 := @parameter1: androidx.constraintlayout.motion.widget.KeyCycleOscillator;
+
+        $u4 := @parameter2: float;
+
+        if $u2 == null goto label1;
+
+        $u-1 = virtualinvoke $u2.<androidx.constraintlayout.motion.widget.KeyCycleOscillator: float getSlope(float)>($u4);
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDTranslateX> = $u-1;
+
+     label1:
+        if $u3 == null goto label2;
+
+        $u4 = virtualinvoke $u3.<androidx.constraintlayout.motion.widget.KeyCycleOscillator: float getSlope(float)>($u4);
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDTranslateY> = $u4;
+
+     label2:
+        return;
+    }
+
+    public void setTranslationVelocity(androidx.constraintlayout.motion.widget.SplineSet, androidx.constraintlayout.motion.widget.SplineSet, float)
+    {
+        androidx.constraintlayout.motion.utils.VelocityMatrix this;
+        androidx.constraintlayout.motion.widget.SplineSet $u2, $u3;
+        float $u4, $u-1;
+
+        this := @this: androidx.constraintlayout.motion.utils.VelocityMatrix;
+
+        $u2 := @parameter0: androidx.constraintlayout.motion.widget.SplineSet;
+
+        $u3 := @parameter1: androidx.constraintlayout.motion.widget.SplineSet;
+
+        $u4 := @parameter2: float;
+
+        if $u2 == null goto label1;
+
+        $u-1 = virtualinvoke $u2.<androidx.constraintlayout.motion.widget.SplineSet: float getSlope(float)>($u4);
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDTranslateX> = $u-1;
+
+     label1:
+        if $u3 == null goto label2;
+
+        $u4 = virtualinvoke $u3.<androidx.constraintlayout.motion.widget.SplineSet: float getSlope(float)>($u4);
+
+        this.<androidx.constraintlayout.motion.utils.VelocityMatrix: float mDTranslateY> = $u4;
+
+     label2:
+        return;
+    }
+}

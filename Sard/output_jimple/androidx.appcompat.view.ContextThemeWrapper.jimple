@@ -1,0 +1,389 @@
+public class androidx.appcompat.view.ContextThemeWrapper extends android.content.ContextWrapper
+{
+    private android.view.LayoutInflater mInflater;
+    private android.content.res.Configuration mOverrideConfiguration;
+    private android.content.res.Resources mResources;
+    private android.content.res.Resources$Theme mTheme;
+    private int mThemeResource;
+
+    public void <init>()
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        specialinvoke this.<android.content.ContextWrapper: void <init>(android.content.Context)>(null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, int)
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+        android.content.Context $u1;
+        int $u2;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: int;
+
+        specialinvoke this.<android.content.ContextWrapper: void <init>(android.content.Context)>($u1);
+
+        this.<androidx.appcompat.view.ContextThemeWrapper: int mThemeResource> = $u2;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.content.res.Resources$Theme)
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+        android.content.Context $u1;
+        android.content.res.Resources$Theme $u2;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: android.content.res.Resources$Theme;
+
+        specialinvoke this.<android.content.ContextWrapper: void <init>(android.content.Context)>($u1);
+
+        this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources$Theme mTheme> = $u2;
+
+        return;
+    }
+
+    private android.content.res.Resources getResourcesInternal()
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+        android.content.res.Resources resContext, $u2;
+        android.content.res.Configuration resContext#2, $u-1#15;
+        int resContext#5;
+        android.content.Context $u-1;
+        android.content.res.AssetManager $u-1#19;
+        android.util.DisplayMetrics $u-1#20;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        resContext = this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources mResources>;
+
+        if resContext != null goto label3;
+
+        resContext#2 = this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Configuration mOverrideConfiguration>;
+
+        if resContext#2 != null goto label1;
+
+        resContext = specialinvoke this.<android.content.ContextWrapper: android.content.res.Resources getResources()>();
+
+        this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources mResources> = resContext;
+
+        goto label3;
+
+     label1:
+        resContext#5 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if resContext#5 < 17 goto label2;
+
+        resContext#2 = this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Configuration mOverrideConfiguration>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.ContextThemeWrapper: android.content.Context createConfigurationContext(android.content.res.Configuration)>(resContext#2);
+
+        resContext = virtualinvoke $u-1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources mResources> = resContext;
+
+        goto label3;
+
+     label2:
+        resContext = specialinvoke this.<android.content.ContextWrapper: android.content.res.Resources getResources()>();
+
+        resContext#2 = new android.content.res.Configuration;
+
+        $u-1#15 = virtualinvoke resContext.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        specialinvoke resContext#2.<android.content.res.Configuration: void <init>(android.content.res.Configuration)>($u-1#15);
+
+        $u-1#15 = this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Configuration mOverrideConfiguration>;
+
+        virtualinvoke resContext#2.<android.content.res.Configuration: int updateFrom(android.content.res.Configuration)>($u-1#15);
+
+        $u2 = new android.content.res.Resources;
+
+        $u-1#19 = virtualinvoke resContext.<android.content.res.Resources: android.content.res.AssetManager getAssets()>();
+
+        $u-1#20 = virtualinvoke resContext.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        specialinvoke $u2.<android.content.res.Resources: void <init>(android.content.res.AssetManager,android.util.DisplayMetrics,android.content.res.Configuration)>($u-1#19, $u-1#20, resContext#2);
+
+        this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources mResources> = $u2;
+
+     label3:
+        resContext = this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources mResources>;
+
+        return resContext;
+    }
+
+    private void initializeTheme()
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+        android.content.res.Resources$Theme first, $u2;
+        boolean first#2;
+        android.content.res.Resources $u-1;
+        android.content.Context $u-1#7;
+        int $u2#13;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        first = this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources$Theme mTheme>;
+
+        if first != null goto label1;
+
+        first#2 = 1;
+
+        goto label2;
+
+     label1:
+        first#2 = 0;
+
+     label2:
+        if first#2 == 0 goto label3;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources getResources()>();
+
+        first = virtualinvoke $u-1.<android.content.res.Resources: android.content.res.Resources$Theme newTheme()>();
+
+        this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources$Theme mTheme> = first;
+
+        $u-1#7 = virtualinvoke this.<androidx.appcompat.view.ContextThemeWrapper: android.content.Context getBaseContext()>();
+
+        first = virtualinvoke $u-1#7.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        if first == null goto label3;
+
+        $u2 = this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources$Theme mTheme>;
+
+        virtualinvoke $u2.<android.content.res.Resources$Theme: void setTo(android.content.res.Resources$Theme)>(first);
+
+     label3:
+        first = this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources$Theme mTheme>;
+
+        $u2#13 = this.<androidx.appcompat.view.ContextThemeWrapper: int mThemeResource>;
+
+        virtualinvoke this.<androidx.appcompat.view.ContextThemeWrapper: void onApplyThemeResource(android.content.res.Resources$Theme,int,boolean)>(first, $u2#13, first#2);
+
+        return;
+    }
+
+    public void applyOverrideConfiguration(android.content.res.Configuration)
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+        android.content.res.Configuration $u3, $u0#2;
+        android.content.res.Resources $u0;
+        java.lang.IllegalStateException $u0#4;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        $u3 := @parameter0: android.content.res.Configuration;
+
+        $u0 = this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources mResources>;
+
+        if $u0 != null goto label2;
+
+        $u0#2 = this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Configuration mOverrideConfiguration>;
+
+        if $u0#2 != null goto label1;
+
+        $u0#2 = new android.content.res.Configuration;
+
+        specialinvoke $u0#2.<android.content.res.Configuration: void <init>(android.content.res.Configuration)>($u3);
+
+        this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Configuration mOverrideConfiguration> = $u0#2;
+
+        return;
+
+     label1:
+        $u0#4 = new java.lang.IllegalStateException;
+
+        specialinvoke $u0#4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Override configuration has already been set");
+
+        throw $u0#4;
+
+     label2:
+        $u0#4 = new java.lang.IllegalStateException;
+
+        specialinvoke $u0#4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("getResources() or getAssets() has already been called");
+
+        throw $u0#4;
+    }
+
+    protected void attachBaseContext(android.content.Context)
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+        android.content.Context $u1;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        $u1 := @parameter0: android.content.Context;
+
+        specialinvoke this.<android.content.ContextWrapper: void attachBaseContext(android.content.Context)>($u1);
+
+        return;
+    }
+
+    public android.content.res.AssetManager getAssets()
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+        android.content.res.Resources $u-1;
+        android.content.res.AssetManager $u-1#3;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources getResources()>();
+
+        $u-1#3 = virtualinvoke $u-1.<android.content.res.Resources: android.content.res.AssetManager getAssets()>();
+
+        return $u-1#3;
+    }
+
+    public android.content.res.Resources getResources()
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+        android.content.res.Resources $u-1;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources getResourcesInternal()>();
+
+        return $u-1;
+    }
+
+    public java.lang.Object getSystemService(java.lang.String)
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+        java.lang.String $u2, $u0;
+        boolean $u-1;
+        android.view.LayoutInflater $u0#4;
+        android.content.Context $u-1#5;
+        java.lang.Object $u-1#14;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u0 = "layout_inflater";
+
+        $u-1 = virtualinvoke $u0.<java.lang.String: boolean equals(java.lang.Object)>($u2);
+
+        if $u-1 == 0 goto label2;
+
+        $u0#4 = this.<androidx.appcompat.view.ContextThemeWrapper: android.view.LayoutInflater mInflater>;
+
+        if $u0#4 != null goto label1;
+
+        $u-1#5 = virtualinvoke this.<androidx.appcompat.view.ContextThemeWrapper: android.content.Context getBaseContext()>();
+
+        $u0#4 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($u-1#5);
+
+        $u0#4 = virtualinvoke $u0#4.<android.view.LayoutInflater: android.view.LayoutInflater cloneInContext(android.content.Context)>(this);
+
+        this.<androidx.appcompat.view.ContextThemeWrapper: android.view.LayoutInflater mInflater> = $u0#4;
+
+     label1:
+        $u0#4 = this.<androidx.appcompat.view.ContextThemeWrapper: android.view.LayoutInflater mInflater>;
+
+        return $u0#4;
+
+     label2:
+        $u-1#5 = virtualinvoke this.<androidx.appcompat.view.ContextThemeWrapper: android.content.Context getBaseContext()>();
+
+        $u-1#14 = virtualinvoke $u-1#5.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>($u2);
+
+        return $u-1#14;
+    }
+
+    public android.content.res.Resources$Theme getTheme()
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+        android.content.res.Resources$Theme $u0;
+        int $u0#2;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        $u0 = this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources$Theme mTheme>;
+
+        if $u0 == null goto label1;
+
+        return $u0;
+
+     label1:
+        $u0#2 = this.<androidx.appcompat.view.ContextThemeWrapper: int mThemeResource>;
+
+        if $u0#2 != 0 goto label2;
+
+        $u0#2 = <androidx.appcompat.R$style: int Theme_AppCompat_Light>;
+
+        this.<androidx.appcompat.view.ContextThemeWrapper: int mThemeResource> = $u0#2;
+
+     label2:
+        specialinvoke this.<androidx.appcompat.view.ContextThemeWrapper: void initializeTheme()>();
+
+        $u0 = this.<androidx.appcompat.view.ContextThemeWrapper: android.content.res.Resources$Theme mTheme>;
+
+        return $u0;
+    }
+
+    public int getThemeResId()
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+        int ret0;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        ret0 = this.<androidx.appcompat.view.ContextThemeWrapper: int mThemeResource>;
+
+        return ret0;
+    }
+
+    protected void onApplyThemeResource(android.content.res.Resources$Theme, int, boolean)
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+        android.content.res.Resources$Theme $u2;
+        int $u3;
+        boolean $u4;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        $u2 := @parameter0: android.content.res.Resources$Theme;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: boolean;
+
+        virtualinvoke $u2.<android.content.res.Resources$Theme: void applyStyle(int,boolean)>($u3, 1);
+
+        return;
+    }
+
+    public void setTheme(int)
+    {
+        androidx.appcompat.view.ContextThemeWrapper this;
+        int $u2, $u0;
+
+        this := @this: androidx.appcompat.view.ContextThemeWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.ContextThemeWrapper: int mThemeResource>;
+
+        if $u0 == $u2 goto label1;
+
+        this.<androidx.appcompat.view.ContextThemeWrapper: int mThemeResource> = $u2;
+
+        specialinvoke this.<androidx.appcompat.view.ContextThemeWrapper: void initializeTheme()>();
+
+     label1:
+        return;
+    }
+}

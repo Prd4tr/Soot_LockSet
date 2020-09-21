@@ -1,0 +1,38 @@
+public class androidx.constraintlayout.solver.GoalRow extends androidx.constraintlayout.solver.ArrayRow
+{
+
+    public void <init>(androidx.constraintlayout.solver.Cache)
+    {
+        androidx.constraintlayout.solver.GoalRow this;
+        androidx.constraintlayout.solver.Cache $u1;
+
+        this := @this: androidx.constraintlayout.solver.GoalRow;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.Cache;
+
+        specialinvoke this.<androidx.constraintlayout.solver.ArrayRow: void <init>(androidx.constraintlayout.solver.Cache)>($u1);
+
+        return;
+    }
+
+    public void addError(androidx.constraintlayout.solver.SolverVariable)
+    {
+        androidx.constraintlayout.solver.GoalRow this;
+        androidx.constraintlayout.solver.SolverVariable $u2;
+        int $u0;
+
+        this := @this: androidx.constraintlayout.solver.GoalRow;
+
+        $u2 := @parameter0: androidx.constraintlayout.solver.SolverVariable;
+
+        specialinvoke this.<androidx.constraintlayout.solver.ArrayRow: void addError(androidx.constraintlayout.solver.SolverVariable)>($u2);
+
+        $u0 = $u2.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount>;
+
+        $u0 = $u0 + -1;
+
+        $u2.<androidx.constraintlayout.solver.SolverVariable: int usageInRowCount> = $u0;
+
+        return;
+    }
+}

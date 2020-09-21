@@ -1,0 +1,110 @@
+class androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1 extends java.lang.Object implements android.os.Parcelable$ClassLoaderCreator
+{
+
+    void <init>()
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1 this;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState createFromParcel(android.os.Parcel)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1 this;
+        android.os.Parcel $u2;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1;
+
+        $u2 := @parameter0: android.os.Parcel;
+
+        $u-1 = staticinvoke <androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState readFromParcel(android.os.Parcel,java.lang.ClassLoader)>($u2, null);
+
+        return $u-1;
+    }
+
+    public androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState createFromParcel(android.os.Parcel, java.lang.ClassLoader)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1 this;
+        android.os.Parcel $u2;
+        java.lang.ClassLoader $u3;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState $u-1;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1;
+
+        $u2 := @parameter0: android.os.Parcel;
+
+        $u3 := @parameter1: java.lang.ClassLoader;
+
+        $u-1 = staticinvoke <androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState readFromParcel(android.os.Parcel,java.lang.ClassLoader)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public volatile java.lang.Object createFromParcel(android.os.Parcel)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1 this;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState $u-1;
+        android.os.Parcel $u1;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1;
+
+        $u1 := @parameter0: android.os.Parcel;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState createFromParcel(android.os.Parcel)>($u1);
+
+        return $u-1;
+    }
+
+    public volatile java.lang.Object createFromParcel(android.os.Parcel, java.lang.ClassLoader)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1 this;
+        java.lang.ClassLoader $u2;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState $u-1;
+        android.os.Parcel $u1;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1;
+
+        $u1 := @parameter0: android.os.Parcel;
+
+        $u2 := @parameter1: java.lang.ClassLoader;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState createFromParcel(android.os.Parcel,java.lang.ClassLoader)>($u1, $u2);
+
+        return $u-1;
+    }
+
+    public androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState[] newArray(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1 this;
+        int $u2;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState[] $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1;
+
+        $u2 := @parameter0: int;
+
+        $u0 = newarray (androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState)[$u2];
+
+        return $u0;
+    }
+
+    public volatile java.lang.Object[] newArray(int)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1 this;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState[] $u-1;
+        int $u1;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1;
+
+        $u1 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState$1: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState$SavedState[] newArray(int)>($u1);
+
+        return $u-1;
+    }
+}

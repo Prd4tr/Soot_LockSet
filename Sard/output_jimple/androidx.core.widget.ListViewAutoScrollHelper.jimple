@@ -1,0 +1,116 @@
+public class androidx.core.widget.ListViewAutoScrollHelper extends androidx.core.widget.AutoScrollHelper
+{
+    private final android.widget.ListView mTarget;
+
+    public void <init>(android.widget.ListView)
+    {
+        androidx.core.widget.ListViewAutoScrollHelper this;
+        android.widget.ListView $u1;
+
+        this := @this: androidx.core.widget.ListViewAutoScrollHelper;
+
+        $u1 := @parameter0: android.widget.ListView;
+
+        specialinvoke this.<androidx.core.widget.AutoScrollHelper: void <init>(android.view.View)>($u1);
+
+        this.<androidx.core.widget.ListViewAutoScrollHelper: android.widget.ListView mTarget> = $u1;
+
+        return;
+    }
+
+    public boolean canTargetScrollHorizontally(int)
+    {
+        androidx.core.widget.ListViewAutoScrollHelper this;
+        int $u2;
+
+        this := @this: androidx.core.widget.ListViewAutoScrollHelper;
+
+        $u2 := @parameter0: int;
+
+        return 0;
+    }
+
+    public boolean canTargetScrollVertically(int)
+    {
+        androidx.core.widget.ListViewAutoScrollHelper this;
+        int $u10, lastPosition, $u-1, $u-1#3, $u-1#4;
+        android.widget.ListView target;
+        android.view.View $u-1#6;
+
+        this := @this: androidx.core.widget.ListViewAutoScrollHelper;
+
+        $u10 := @parameter0: int;
+
+        target = this.<androidx.core.widget.ListViewAutoScrollHelper: android.widget.ListView mTarget>;
+
+        $u-1 = virtualinvoke target.<android.widget.ListView: int getCount()>();
+
+        if $u-1 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        $u-1#3 = virtualinvoke target.<android.widget.ListView: int getChildCount()>();
+
+        $u-1#4 = virtualinvoke target.<android.widget.ListView: int getFirstVisiblePosition()>();
+
+        lastPosition = $u-1#4 + $u-1#3;
+
+        if $u10 <= 0 goto label3;
+
+        if lastPosition < $u-1 goto label4;
+
+        $u10 = $u-1#3 + -1;
+
+        $u-1#6 = virtualinvoke target.<android.widget.ListView: android.view.View getChildAt(int)>($u10);
+
+        $u10 = virtualinvoke $u-1#6.<android.view.View: int getBottom()>();
+
+        lastPosition = virtualinvoke target.<android.widget.ListView: int getHeight()>();
+
+        if $u10 > lastPosition goto label2;
+
+        return 0;
+
+     label2:
+        goto label4;
+
+     label3:
+        if $u10 >= 0 goto label5;
+
+        if $u-1#4 > 0 goto label4;
+
+        $u-1#6 = virtualinvoke target.<android.widget.ListView: android.view.View getChildAt(int)>(0);
+
+        $u10 = virtualinvoke $u-1#6.<android.view.View: int getTop()>();
+
+        if $u10 < 0 goto label4;
+
+        return 0;
+
+     label4:
+        return 1;
+
+     label5:
+        return 0;
+    }
+
+    public void scrollTargetBy(int, int)
+    {
+        androidx.core.widget.ListViewAutoScrollHelper this;
+        int $u2, $u3;
+        android.widget.ListView $u0;
+
+        this := @this: androidx.core.widget.ListViewAutoScrollHelper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.core.widget.ListViewAutoScrollHelper: android.widget.ListView mTarget>;
+
+        staticinvoke <androidx.core.widget.ListViewCompat: void scrollListBy(android.widget.ListView,int)>($u0, $u3);
+
+        return;
+    }
+}

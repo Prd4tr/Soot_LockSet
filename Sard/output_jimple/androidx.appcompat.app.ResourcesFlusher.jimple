@@ -1,0 +1,448 @@
+class androidx.appcompat.app.ResourcesFlusher extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    private static java.lang.reflect.Field sDrawableCacheField;
+    private static boolean sDrawableCacheFieldFetched;
+    private static java.lang.reflect.Field sResourcesImplField;
+    private static boolean sResourcesImplFieldFetched;
+    private static java.lang.Class sThemedResourceCacheClazz;
+    private static boolean sThemedResourceCacheClazzFetched;
+    private static java.lang.reflect.Field sThemedResourceCache_mUnthemedEntriesField;
+    private static boolean sThemedResourceCache_mUnthemedEntriesFieldFetched;
+
+    private void <init>()
+    {
+        androidx.appcompat.app.ResourcesFlusher this;
+
+        this := @this: androidx.appcompat.app.ResourcesFlusher;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static void flush(android.content.res.Resources)
+    {
+        android.content.res.Resources $u2;
+        int $u0;
+
+        $u2 := @parameter0: android.content.res.Resources;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 28 goto label1;
+
+        return;
+
+     label1:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 24 goto label2;
+
+        staticinvoke <androidx.appcompat.app.ResourcesFlusher: void flushNougats(android.content.res.Resources)>($u2);
+
+        return;
+
+     label2:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 23 goto label3;
+
+        staticinvoke <androidx.appcompat.app.ResourcesFlusher: void flushMarshmallows(android.content.res.Resources)>($u2);
+
+        return;
+
+     label3:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label4;
+
+        staticinvoke <androidx.appcompat.app.ResourcesFlusher: void flushLollipops(android.content.res.Resources)>($u2);
+
+     label4:
+        return;
+    }
+
+    private static void flushLollipops(android.content.res.Resources)
+    {
+        android.content.res.Resources $u4;
+        boolean e;
+        java.lang.Class e1;
+        java.lang.reflect.Field $u-1;
+        java.lang.NoSuchFieldException e1#7;
+        java.util.Map e1#10;
+        java.lang.Object $u-1#11;
+        java.lang.IllegalAccessException e#14;
+
+        $u4 := @parameter0: android.content.res.Resources;
+
+        e = <androidx.appcompat.app.ResourcesFlusher: boolean sDrawableCacheFieldFetched>;
+
+        if e != 0 goto label07;
+
+        e1 = class "Landroid/content/res/Resources;";
+
+     label01:
+        $u-1 = virtualinvoke e1.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mDrawableCache");
+
+     label02:
+        <androidx.appcompat.app.ResourcesFlusher: java.lang.reflect.Field sDrawableCacheField> = $u-1;
+
+     label03:
+        virtualinvoke $u-1.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label04:
+        goto label06;
+
+     label05:
+        e1#7 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesFlusher", "Could not retrieve Resources#mDrawableCache field", e1#7);
+
+     label06:
+        <androidx.appcompat.app.ResourcesFlusher: boolean sDrawableCacheFieldFetched> = 1;
+
+     label07:
+        $u-1 = <androidx.appcompat.app.ResourcesFlusher: java.lang.reflect.Field sDrawableCacheField>;
+
+        if $u-1 == null goto label12;
+
+        e1#10 = null;
+
+     label08:
+        $u-1#11 = virtualinvoke $u-1.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($u4);
+
+     label09:
+        e1#10 = (java.util.Map) $u-1#11;
+
+        goto label11;
+
+     label10:
+        e#14 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesFlusher", "Could not retrieve value from Resources#mDrawableCache", e#14);
+
+     label11:
+        if e1#10 == null goto label12;
+
+        interfaceinvoke e1#10.<java.util.Map: void clear()>();
+
+     label12:
+        return;
+
+        catch java.lang.NoSuchFieldException from label01 to label02 with label05;
+        catch java.lang.NoSuchFieldException from label03 to label04 with label05;
+        catch java.lang.IllegalAccessException from label08 to label09 with label10;
+    }
+
+    private static void flushMarshmallows(android.content.res.Resources)
+    {
+        android.content.res.Resources $u4;
+        boolean drawableCache;
+        java.lang.Class e;
+        java.lang.reflect.Field $u-1;
+        java.lang.NoSuchFieldException e#8;
+        java.lang.Object drawableCache#10, $u-1#12;
+        java.lang.IllegalAccessException e#14;
+
+        $u4 := @parameter0: android.content.res.Resources;
+
+        drawableCache = <androidx.appcompat.app.ResourcesFlusher: boolean sDrawableCacheFieldFetched>;
+
+        if drawableCache != 0 goto label07;
+
+        e = class "Landroid/content/res/Resources;";
+
+     label01:
+        $u-1 = virtualinvoke e.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mDrawableCache");
+
+     label02:
+        <androidx.appcompat.app.ResourcesFlusher: java.lang.reflect.Field sDrawableCacheField> = $u-1;
+
+     label03:
+        virtualinvoke $u-1.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label04:
+        goto label06;
+
+     label05:
+        e#8 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesFlusher", "Could not retrieve Resources#mDrawableCache field", e#8);
+
+     label06:
+        <androidx.appcompat.app.ResourcesFlusher: boolean sDrawableCacheFieldFetched> = 1;
+
+     label07:
+        drawableCache#10 = null;
+
+        $u-1 = <androidx.appcompat.app.ResourcesFlusher: java.lang.reflect.Field sDrawableCacheField>;
+
+        if $u-1 == null goto label11;
+
+     label08:
+        $u-1#12 = virtualinvoke $u-1.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($u4);
+
+     label09:
+        drawableCache#10 = $u-1#12;
+
+        goto label11;
+
+     label10:
+        e#14 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesFlusher", "Could not retrieve value from Resources#mDrawableCache", e#14);
+
+     label11:
+        if drawableCache#10 != null goto label12;
+
+        return;
+
+     label12:
+        staticinvoke <androidx.appcompat.app.ResourcesFlusher: void flushThemedResourcesCache(java.lang.Object)>(drawableCache#10);
+
+        return;
+
+        catch java.lang.NoSuchFieldException from label01 to label02 with label05;
+        catch java.lang.NoSuchFieldException from label03 to label04 with label05;
+        catch java.lang.IllegalAccessException from label08 to label09 with label10;
+    }
+
+    private static void flushNougats(android.content.res.Resources)
+    {
+        android.content.res.Resources $u5;
+        boolean e;
+        java.lang.Class e#3;
+        java.lang.reflect.Field $u-1;
+        java.lang.NoSuchFieldException e#7, e#21;
+        java.lang.Object resourcesImpl, $u-1#11;
+        java.lang.IllegalAccessException e#13, e1;
+
+        $u5 := @parameter0: android.content.res.Resources;
+
+        e = <androidx.appcompat.app.ResourcesFlusher: boolean sResourcesImplFieldFetched>;
+
+        if e != 0 goto label07;
+
+        e#3 = class "Landroid/content/res/Resources;";
+
+     label01:
+        $u-1 = virtualinvoke e#3.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mResourcesImpl");
+
+     label02:
+        <androidx.appcompat.app.ResourcesFlusher: java.lang.reflect.Field sResourcesImplField> = $u-1;
+
+     label03:
+        virtualinvoke $u-1.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label04:
+        goto label06;
+
+     label05:
+        e#7 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesFlusher", "Could not retrieve Resources#mResourcesImpl field", e#7);
+
+     label06:
+        <androidx.appcompat.app.ResourcesFlusher: boolean sResourcesImplFieldFetched> = 1;
+
+     label07:
+        $u-1 = <androidx.appcompat.app.ResourcesFlusher: java.lang.reflect.Field sResourcesImplField>;
+
+        if $u-1 != null goto label08;
+
+        return;
+
+     label08:
+        resourcesImpl = null;
+
+     label09:
+        $u-1#11 = virtualinvoke $u-1.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($u5);
+
+     label10:
+        resourcesImpl = $u-1#11;
+
+        goto label12;
+
+     label11:
+        e#13 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesFlusher", "Could not retrieve value from Resources#mResourcesImpl", e#13);
+
+     label12:
+        if resourcesImpl != null goto label13;
+
+        return;
+
+     label13:
+        e = <androidx.appcompat.app.ResourcesFlusher: boolean sDrawableCacheFieldFetched>;
+
+        if e != 0 goto label20;
+
+     label14:
+        e#3 = virtualinvoke resourcesImpl.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1 = virtualinvoke e#3.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mDrawableCache");
+
+     label15:
+        <androidx.appcompat.app.ResourcesFlusher: java.lang.reflect.Field sDrawableCacheField> = $u-1;
+
+     label16:
+        virtualinvoke $u-1.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label17:
+        goto label19;
+
+     label18:
+        e#21 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesFlusher", "Could not retrieve ResourcesImpl#mDrawableCache field", e#21);
+
+     label19:
+        <androidx.appcompat.app.ResourcesFlusher: boolean sDrawableCacheFieldFetched> = 1;
+
+     label20:
+        $u-1#11 = null;
+
+        $u-1 = <androidx.appcompat.app.ResourcesFlusher: java.lang.reflect.Field sDrawableCacheField>;
+
+        if $u-1 == null goto label24;
+
+     label21:
+        resourcesImpl = virtualinvoke $u-1.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>(resourcesImpl);
+
+     label22:
+        $u-1#11 = resourcesImpl;
+
+        goto label24;
+
+     label23:
+        e1 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesFlusher", "Could not retrieve value from ResourcesImpl#mDrawableCache", e1);
+
+     label24:
+        if $u-1#11 == null goto label25;
+
+        staticinvoke <androidx.appcompat.app.ResourcesFlusher: void flushThemedResourcesCache(java.lang.Object)>($u-1#11);
+
+     label25:
+        return;
+
+        catch java.lang.NoSuchFieldException from label01 to label02 with label05;
+        catch java.lang.NoSuchFieldException from label03 to label04 with label05;
+        catch java.lang.IllegalAccessException from label09 to label10 with label11;
+        catch java.lang.NoSuchFieldException from label14 to label15 with label18;
+        catch java.lang.NoSuchFieldException from label16 to label17 with label18;
+        catch java.lang.IllegalAccessException from label21 to label22 with label23;
+    }
+
+    private static void flushThemedResourcesCache(java.lang.Object)
+    {
+        java.lang.Object $u4;
+        boolean e;
+        java.lang.Class $u-1;
+        java.lang.ClassNotFoundException e#6;
+        java.lang.reflect.Field $u-1#11;
+        java.lang.NoSuchFieldException e#13;
+        android.util.LongSparseArray unthemedEntries;
+        java.lang.IllegalAccessException e#20;
+
+        $u4 := @parameter0: java.lang.Object;
+
+        e = <androidx.appcompat.app.ResourcesFlusher: boolean sThemedResourceCacheClazzFetched>;
+
+        if e != 0 goto label05;
+
+     label01:
+        $u-1 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("android.content.res.ThemedResourceCache");
+
+     label02:
+        <androidx.appcompat.app.ResourcesFlusher: java.lang.Class sThemedResourceCacheClazz> = $u-1;
+
+        goto label04;
+
+     label03:
+        e#6 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesFlusher", "Could not find ThemedResourceCache class", e#6);
+
+     label04:
+        <androidx.appcompat.app.ResourcesFlusher: boolean sThemedResourceCacheClazzFetched> = 1;
+
+     label05:
+        $u-1 = <androidx.appcompat.app.ResourcesFlusher: java.lang.Class sThemedResourceCacheClazz>;
+
+        if $u-1 != null goto label06;
+
+        return;
+
+     label06:
+        e = <androidx.appcompat.app.ResourcesFlusher: boolean sThemedResourceCache_mUnthemedEntriesFieldFetched>;
+
+        if e != 0 goto label13;
+
+     label07:
+        $u-1#11 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mUnthemedEntries");
+
+     label08:
+        <androidx.appcompat.app.ResourcesFlusher: java.lang.reflect.Field sThemedResourceCache_mUnthemedEntriesField> = $u-1#11;
+
+     label09:
+        virtualinvoke $u-1#11.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label10:
+        goto label12;
+
+     label11:
+        e#13 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesFlusher", "Could not retrieve ThemedResourceCache#mUnthemedEntries field", e#13);
+
+     label12:
+        <androidx.appcompat.app.ResourcesFlusher: boolean sThemedResourceCache_mUnthemedEntriesFieldFetched> = 1;
+
+     label13:
+        $u-1#11 = <androidx.appcompat.app.ResourcesFlusher: java.lang.reflect.Field sThemedResourceCache_mUnthemedEntriesField>;
+
+        if $u-1#11 != null goto label14;
+
+        return;
+
+     label14:
+        unthemedEntries = null;
+
+     label15:
+        $u4 = virtualinvoke $u-1#11.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($u4);
+
+     label16:
+        unthemedEntries = (android.util.LongSparseArray) $u4;
+
+        goto label18;
+
+     label17:
+        e#20 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesFlusher", "Could not retrieve value from ThemedResourceCache#mUnthemedEntries", e#20);
+
+     label18:
+        if unthemedEntries == null goto label19;
+
+        virtualinvoke unthemedEntries.<android.util.LongSparseArray: void clear()>();
+
+     label19:
+        return;
+
+        catch java.lang.ClassNotFoundException from label01 to label02 with label03;
+        catch java.lang.NoSuchFieldException from label07 to label08 with label11;
+        catch java.lang.NoSuchFieldException from label09 to label10 with label11;
+        catch java.lang.IllegalAccessException from label15 to label16 with label17;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.app.ResourcesFlusher: java.lang.String TAG> = "ResourcesFlusher";
+
+        return;
+    }
+}

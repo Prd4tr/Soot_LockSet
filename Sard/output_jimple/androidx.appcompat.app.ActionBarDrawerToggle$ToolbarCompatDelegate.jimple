@@ -1,0 +1,119 @@
+class androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate extends java.lang.Object implements androidx.appcompat.app.ActionBarDrawerToggle$Delegate
+{
+    final java.lang.CharSequence mDefaultContentDescription;
+    final android.graphics.drawable.Drawable mDefaultUpIndicator;
+    final androidx.appcompat.widget.Toolbar mToolbar;
+
+    void <init>(androidx.appcompat.widget.Toolbar)
+    {
+        androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate this;
+        androidx.appcompat.widget.Toolbar $u2;
+        android.graphics.drawable.Drawable $u-1;
+        java.lang.CharSequence $u-1#3;
+
+        this := @this: androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate;
+
+        $u2 := @parameter0: androidx.appcompat.widget.Toolbar;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate: androidx.appcompat.widget.Toolbar mToolbar> = $u2;
+
+        $u-1 = virtualinvoke $u2.<androidx.appcompat.widget.Toolbar: android.graphics.drawable.Drawable getNavigationIcon()>();
+
+        this.<androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate: android.graphics.drawable.Drawable mDefaultUpIndicator> = $u-1;
+
+        $u-1#3 = virtualinvoke $u2.<androidx.appcompat.widget.Toolbar: java.lang.CharSequence getNavigationContentDescription()>();
+
+        this.<androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate: java.lang.CharSequence mDefaultContentDescription> = $u-1#3;
+
+        return;
+    }
+
+    public android.content.Context getActionBarThemedContext()
+    {
+        androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate this;
+        android.content.Context $u-1;
+        androidx.appcompat.widget.Toolbar $u0;
+
+        this := @this: androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate;
+
+        $u0 = this.<androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate: androidx.appcompat.widget.Toolbar mToolbar>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.Toolbar: android.content.Context getContext()>();
+
+        return $u-1;
+    }
+
+    public android.graphics.drawable.Drawable getThemeUpIndicator()
+    {
+        androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate this;
+        android.graphics.drawable.Drawable ret0;
+
+        this := @this: androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate;
+
+        ret0 = this.<androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate: android.graphics.drawable.Drawable mDefaultUpIndicator>;
+
+        return ret0;
+    }
+
+    public boolean isNavigationVisible()
+    {
+        androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate this;
+
+        this := @this: androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate;
+
+        return 1;
+    }
+
+    public void setActionBarDescription(int)
+    {
+        androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate this;
+        int $u3;
+        java.lang.CharSequence $u1;
+        androidx.appcompat.widget.Toolbar $u0;
+
+        this := @this: androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate;
+
+        $u3 := @parameter0: int;
+
+        if $u3 != 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate: androidx.appcompat.widget.Toolbar mToolbar>;
+
+        $u1 = this.<androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate: java.lang.CharSequence mDefaultContentDescription>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.Toolbar: void setNavigationContentDescription(java.lang.CharSequence)>($u1);
+
+        return;
+
+     label1:
+        $u0 = this.<androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate: androidx.appcompat.widget.Toolbar mToolbar>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.Toolbar: void setNavigationContentDescription(int)>($u3);
+
+        return;
+    }
+
+    public void setActionBarUpIndicator(android.graphics.drawable.Drawable, int)
+    {
+        androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate this;
+        android.graphics.drawable.Drawable $u2;
+        int $u3;
+        androidx.appcompat.widget.Toolbar $u0;
+
+        this := @this: androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate: androidx.appcompat.widget.Toolbar mToolbar>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.Toolbar: void setNavigationIcon(android.graphics.drawable.Drawable)>($u2);
+
+        virtualinvoke this.<androidx.appcompat.app.ActionBarDrawerToggle$ToolbarCompatDelegate: void setActionBarDescription(int)>($u3);
+
+        return;
+    }
+}

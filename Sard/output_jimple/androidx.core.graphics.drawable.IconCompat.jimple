@@ -1,0 +1,2915 @@
+public class androidx.core.graphics.drawable.IconCompat extends androidx.versionedparcelable.CustomVersionedParcelable
+{
+    private static final float ADAPTIVE_ICON_INSET_FACTOR;
+    private static final int AMBIENT_SHADOW_ALPHA;
+    private static final float BLUR_FACTOR;
+    static final android.graphics.PorterDuff$Mode DEFAULT_TINT_MODE;
+    private static final float DEFAULT_VIEW_PORT_SCALE;
+    private static final java.lang.String EXTRA_INT1;
+    private static final java.lang.String EXTRA_INT2;
+    private static final java.lang.String EXTRA_OBJ;
+    private static final java.lang.String EXTRA_TINT_LIST;
+    private static final java.lang.String EXTRA_TINT_MODE;
+    private static final java.lang.String EXTRA_TYPE;
+    private static final float ICON_DIAMETER_FACTOR;
+    private static final int KEY_SHADOW_ALPHA;
+    private static final float KEY_SHADOW_OFFSET_FACTOR;
+    private static final java.lang.String TAG;
+    public static final int TYPE_ADAPTIVE_BITMAP;
+    public static final int TYPE_BITMAP;
+    public static final int TYPE_DATA;
+    public static final int TYPE_RESOURCE;
+    public static final int TYPE_UNKNOWN;
+    public static final int TYPE_URI;
+    public static final int TYPE_URI_ADAPTIVE_BITMAP;
+    public byte[] mData;
+    public int mInt1;
+    public int mInt2;
+    java.lang.Object mObj1;
+    public android.os.Parcelable mParcelable;
+    public android.content.res.ColorStateList mTintList;
+    android.graphics.PorterDuff$Mode mTintMode;
+    public java.lang.String mTintModeStr;
+    public int mType;
+
+    static void <clinit>()
+    {
+        android.graphics.PorterDuff$Mode $u0;
+
+        <androidx.core.graphics.drawable.IconCompat: int TYPE_URI_ADAPTIVE_BITMAP> = 6;
+
+        <androidx.core.graphics.drawable.IconCompat: int TYPE_URI> = 4;
+
+        <androidx.core.graphics.drawable.IconCompat: int TYPE_UNKNOWN> = -1;
+
+        <androidx.core.graphics.drawable.IconCompat: int TYPE_RESOURCE> = 2;
+
+        <androidx.core.graphics.drawable.IconCompat: int TYPE_DATA> = 3;
+
+        <androidx.core.graphics.drawable.IconCompat: int TYPE_BITMAP> = 1;
+
+        <androidx.core.graphics.drawable.IconCompat: int TYPE_ADAPTIVE_BITMAP> = 5;
+
+        <androidx.core.graphics.drawable.IconCompat: java.lang.String TAG> = "IconCompat";
+
+        <androidx.core.graphics.drawable.IconCompat: float KEY_SHADOW_OFFSET_FACTOR> = 0.020833334F;
+
+        <androidx.core.graphics.drawable.IconCompat: int KEY_SHADOW_ALPHA> = 61;
+
+        <androidx.core.graphics.drawable.IconCompat: float ICON_DIAMETER_FACTOR> = 0.9166667F;
+
+        <androidx.core.graphics.drawable.IconCompat: java.lang.String EXTRA_TYPE> = "type";
+
+        <androidx.core.graphics.drawable.IconCompat: java.lang.String EXTRA_TINT_MODE> = "tint_mode";
+
+        <androidx.core.graphics.drawable.IconCompat: java.lang.String EXTRA_TINT_LIST> = "tint_list";
+
+        <androidx.core.graphics.drawable.IconCompat: java.lang.String EXTRA_OBJ> = "obj";
+
+        <androidx.core.graphics.drawable.IconCompat: java.lang.String EXTRA_INT2> = "int2";
+
+        <androidx.core.graphics.drawable.IconCompat: java.lang.String EXTRA_INT1> = "int1";
+
+        <androidx.core.graphics.drawable.IconCompat: float DEFAULT_VIEW_PORT_SCALE> = 0.6666667F;
+
+        <androidx.core.graphics.drawable.IconCompat: float BLUR_FACTOR> = 0.010416667F;
+
+        <androidx.core.graphics.drawable.IconCompat: int AMBIENT_SHADOW_ALPHA> = 30;
+
+        <androidx.core.graphics.drawable.IconCompat: float ADAPTIVE_ICON_INSET_FACTOR> = 0.25F;
+
+        $u0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode SRC_IN>;
+
+        <androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode DEFAULT_TINT_MODE> = $u0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        android.graphics.PorterDuff$Mode $u1;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        specialinvoke this.<androidx.versionedparcelable.CustomVersionedParcelable: void <init>()>();
+
+        this.<androidx.core.graphics.drawable.IconCompat: int mType> = -1;
+
+        this.<androidx.core.graphics.drawable.IconCompat: byte[] mData> = null;
+
+        this.<androidx.core.graphics.drawable.IconCompat: android.os.Parcelable mParcelable> = null;
+
+        this.<androidx.core.graphics.drawable.IconCompat: int mInt1> = 0;
+
+        this.<androidx.core.graphics.drawable.IconCompat: int mInt2> = 0;
+
+        this.<androidx.core.graphics.drawable.IconCompat: android.content.res.ColorStateList mTintList> = null;
+
+        $u1 = <androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode DEFAULT_TINT_MODE>;
+
+        this.<androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode mTintMode> = $u1;
+
+        this.<androidx.core.graphics.drawable.IconCompat: java.lang.String mTintModeStr> = null;
+
+        return;
+    }
+
+    private void <init>(int)
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        int $u3;
+        android.graphics.PorterDuff$Mode $u1;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u3 := @parameter0: int;
+
+        specialinvoke this.<androidx.versionedparcelable.CustomVersionedParcelable: void <init>()>();
+
+        this.<androidx.core.graphics.drawable.IconCompat: int mType> = -1;
+
+        this.<androidx.core.graphics.drawable.IconCompat: byte[] mData> = null;
+
+        this.<androidx.core.graphics.drawable.IconCompat: android.os.Parcelable mParcelable> = null;
+
+        this.<androidx.core.graphics.drawable.IconCompat: int mInt1> = 0;
+
+        this.<androidx.core.graphics.drawable.IconCompat: int mInt2> = 0;
+
+        this.<androidx.core.graphics.drawable.IconCompat: android.content.res.ColorStateList mTintList> = null;
+
+        $u1 = <androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode DEFAULT_TINT_MODE>;
+
+        this.<androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode mTintMode> = $u1;
+
+        this.<androidx.core.graphics.drawable.IconCompat: java.lang.String mTintModeStr> = null;
+
+        this.<androidx.core.graphics.drawable.IconCompat: int mType> = $u3;
+
+        return;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat createFromBundle(android.os.Bundle)
+    {
+        android.os.Bundle $u4;
+        androidx.core.graphics.drawable.IconCompat icon;
+        int $u-1, $u-1#5;
+        boolean $u-1#11;
+        android.os.Parcelable $u-1#13;
+        android.content.res.ColorStateList $u2;
+        java.lang.String $u-1#19;
+        android.graphics.PorterDuff$Mode $u-1#21;
+        java.lang.StringBuilder $u2#24;
+        byte[] $u-1#30;
+
+        $u4 := @parameter0: android.os.Bundle;
+
+        $u-1 = virtualinvoke $u4.<android.os.Bundle: int getInt(java.lang.String)>("type");
+
+        icon = new androidx.core.graphics.drawable.IconCompat;
+
+        specialinvoke icon.<androidx.core.graphics.drawable.IconCompat: void <init>(int)>($u-1);
+
+        $u-1#5 = virtualinvoke $u4.<android.os.Bundle: int getInt(java.lang.String)>("int1");
+
+        icon.<androidx.core.graphics.drawable.IconCompat: int mInt1> = $u-1#5;
+
+        $u-1#5 = virtualinvoke $u4.<android.os.Bundle: int getInt(java.lang.String)>("int2");
+
+        icon.<androidx.core.graphics.drawable.IconCompat: int mInt2> = $u-1#5;
+
+        $u-1#11 = virtualinvoke $u4.<android.os.Bundle: boolean containsKey(java.lang.String)>("tint_list");
+
+        if $u-1#11 == 0 goto label1;
+
+        $u-1#13 = virtualinvoke $u4.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>("tint_list");
+
+        $u2 = (android.content.res.ColorStateList) $u-1#13;
+
+        icon.<androidx.core.graphics.drawable.IconCompat: android.content.res.ColorStateList mTintList> = $u2;
+
+     label1:
+        $u-1#11 = virtualinvoke $u4.<android.os.Bundle: boolean containsKey(java.lang.String)>("tint_mode");
+
+        if $u-1#11 == 0 goto label2;
+
+        $u-1#19 = virtualinvoke $u4.<android.os.Bundle: java.lang.String getString(java.lang.String)>("tint_mode");
+
+        $u-1#21 = staticinvoke <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode valueOf(java.lang.String)>($u-1#19);
+
+        icon.<androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode mTintMode> = $u-1#21;
+
+     label2:
+        lookupswitch($u-1)
+        {
+            case -1: goto label6;
+            case 0: goto label3;
+            case 1: goto label6;
+            case 2: goto label5;
+            case 3: goto label4;
+            case 4: goto label5;
+            case 5: goto label6;
+            case 6: goto label5;
+            default: goto label3;
+        };
+
+     label3:
+        $u2#24 = new java.lang.StringBuilder;
+
+        specialinvoke $u2#24.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2#24.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unknown type ");
+
+        virtualinvoke $u2#24.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u-1);
+
+        $u-1#19 = virtualinvoke $u2#24.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("IconCompat", $u-1#19);
+
+        return null;
+
+     label4:
+        $u-1#30 = virtualinvoke $u4.<android.os.Bundle: byte[] getByteArray(java.lang.String)>("obj");
+
+        icon.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u-1#30;
+
+        return icon;
+
+     label5:
+        $u-1#19 = virtualinvoke $u4.<android.os.Bundle: java.lang.String getString(java.lang.String)>("obj");
+
+        icon.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u-1#19;
+
+        return icon;
+
+     label6:
+        $u-1#13 = virtualinvoke $u4.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>("obj");
+
+        icon.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u-1#13;
+
+        return icon;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat createFromIcon(android.content.Context, android.graphics.drawable.Icon)
+    {
+        android.content.Context $u4;
+        android.graphics.drawable.Icon $u5;
+        int $u-1;
+        androidx.core.graphics.drawable.IconCompat iconCompat;
+        android.net.Uri $u-1#8;
+        java.lang.String $u-1#16;
+        android.content.res.Resources $u-1#18;
+        android.content.res.Resources$NotFoundException e;
+        java.lang.IllegalArgumentException $u2;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: android.graphics.drawable.Icon;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($u5);
+
+        $u-1 = staticinvoke <androidx.core.graphics.drawable.IconCompat: int getType(android.graphics.drawable.Icon)>($u5);
+
+        if $u-1 == 2 goto label3;
+
+        if $u-1 == 4 goto label2;
+
+        if $u-1 == 6 goto label1;
+
+        iconCompat = new androidx.core.graphics.drawable.IconCompat;
+
+        specialinvoke iconCompat.<androidx.core.graphics.drawable.IconCompat: void <init>(int)>(-1);
+
+        iconCompat.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u5;
+
+        return iconCompat;
+
+     label1:
+        $u-1#8 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.net.Uri getUri(android.graphics.drawable.Icon)>($u5);
+
+        iconCompat = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createWithAdaptiveBitmapContentUri(android.net.Uri)>($u-1#8);
+
+        return iconCompat;
+
+     label2:
+        $u-1#8 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.net.Uri getUri(android.graphics.drawable.Icon)>($u5);
+
+        iconCompat = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createWithContentUri(android.net.Uri)>($u-1#8);
+
+        return iconCompat;
+
+     label3:
+        $u-1#16 = staticinvoke <androidx.core.graphics.drawable.IconCompat: java.lang.String getResPackage(android.graphics.drawable.Icon)>($u5);
+
+     label4:
+        $u-1#18 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.content.res.Resources getResources(android.content.Context,java.lang.String)>($u4, $u-1#16);
+
+        $u-1 = staticinvoke <androidx.core.graphics.drawable.IconCompat: int getResId(android.graphics.drawable.Icon)>($u5);
+
+        iconCompat = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createWithResource(android.content.res.Resources,java.lang.String,int)>($u-1#18, $u-1#16, $u-1);
+
+     label5:
+        return iconCompat;
+
+     label6:
+        e := @caughtexception;
+
+        $u2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Icon resource cannot be found");
+
+        throw $u2;
+
+        catch android.content.res.Resources$NotFoundException from label4 to label5 with label6;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat createFromIcon(android.graphics.drawable.Icon)
+    {
+        android.graphics.drawable.Icon $u3;
+        int $u-1;
+        androidx.core.graphics.drawable.IconCompat iconCompat;
+        android.net.Uri $u-1#8;
+        java.lang.String $u-1#17;
+
+        $u3 := @parameter0: android.graphics.drawable.Icon;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($u3);
+
+        $u-1 = staticinvoke <androidx.core.graphics.drawable.IconCompat: int getType(android.graphics.drawable.Icon)>($u3);
+
+        if $u-1 == 2 goto label3;
+
+        if $u-1 == 4 goto label2;
+
+        if $u-1 == 6 goto label1;
+
+        iconCompat = new androidx.core.graphics.drawable.IconCompat;
+
+        specialinvoke iconCompat.<androidx.core.graphics.drawable.IconCompat: void <init>(int)>(-1);
+
+        iconCompat.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u3;
+
+        return iconCompat;
+
+     label1:
+        $u-1#8 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.net.Uri getUri(android.graphics.drawable.Icon)>($u3);
+
+        iconCompat = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createWithAdaptiveBitmapContentUri(android.net.Uri)>($u-1#8);
+
+        return iconCompat;
+
+     label2:
+        $u-1#8 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.net.Uri getUri(android.graphics.drawable.Icon)>($u3);
+
+        iconCompat = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createWithContentUri(android.net.Uri)>($u-1#8);
+
+        return iconCompat;
+
+     label3:
+        $u-1#17 = staticinvoke <androidx.core.graphics.drawable.IconCompat: java.lang.String getResPackage(android.graphics.drawable.Icon)>($u3);
+
+        $u-1 = staticinvoke <androidx.core.graphics.drawable.IconCompat: int getResId(android.graphics.drawable.Icon)>($u3);
+
+        iconCompat = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createWithResource(android.content.res.Resources,java.lang.String,int)>(null, $u-1#17, $u-1);
+
+        return iconCompat;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat createFromIconOrNullIfZeroResId(android.graphics.drawable.Icon)
+    {
+        android.graphics.drawable.Icon $u2;
+        int $u-1;
+        androidx.core.graphics.drawable.IconCompat $u-1#6;
+
+        $u2 := @parameter0: android.graphics.drawable.Icon;
+
+        $u-1 = staticinvoke <androidx.core.graphics.drawable.IconCompat: int getType(android.graphics.drawable.Icon)>($u2);
+
+        if $u-1 != 2 goto label1;
+
+        $u-1 = staticinvoke <androidx.core.graphics.drawable.IconCompat: int getResId(android.graphics.drawable.Icon)>($u2);
+
+        if $u-1 != 0 goto label1;
+
+        return null;
+
+     label1:
+        $u-1#6 = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createFromIcon(android.graphics.drawable.Icon)>($u2);
+
+        return $u-1#6;
+    }
+
+    static android.graphics.Bitmap createLegacyIconFromAdaptiveIcon(android.graphics.Bitmap, boolean)
+    {
+        android.graphics.Bitmap $u10, $u-1#12;
+        boolean $u11;
+        android.graphics.Canvas canvas;
+        android.graphics.Paint paint;
+        int $u-1, $u-1#3;
+        float size, radius, blur, $u8;
+        android.graphics.Bitmap$Config icon;
+        android.graphics.BitmapShader shader;
+        android.graphics.Shader$TileMode blur#32, $u8#33;
+        android.graphics.Matrix blur#34;
+
+        $u10 := @parameter0: android.graphics.Bitmap;
+
+        $u11 := @parameter1: boolean;
+
+        $u-1 = virtualinvoke $u10.<android.graphics.Bitmap: int getWidth()>();
+
+        $u-1#3 = virtualinvoke $u10.<android.graphics.Bitmap: int getHeight()>();
+
+        $u-1 = staticinvoke <java.lang.Math: int min(int,int)>($u-1, $u-1#3);
+
+        size = (float) $u-1;
+
+        size = size * 0.6666667F;
+
+        $u-1 = (int) size;
+
+        icon = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config ARGB_8888>;
+
+        $u-1#12 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createBitmap(int,int,android.graphics.Bitmap$Config)>($u-1, $u-1, icon);
+
+        canvas = new android.graphics.Canvas;
+
+        specialinvoke canvas.<android.graphics.Canvas: void <init>(android.graphics.Bitmap)>($u-1#12);
+
+        paint = new android.graphics.Paint;
+
+        specialinvoke paint.<android.graphics.Paint: void <init>(int)>(3);
+
+        size = (float) $u-1;
+
+        size = size * 0.5F;
+
+        radius = 0.9166667F * size;
+
+        if $u11 == 0 goto label1;
+
+        blur = (float) $u-1;
+
+        blur = blur * 0.010416667F;
+
+        virtualinvoke paint.<android.graphics.Paint: void setColor(int)>(0);
+
+        $u8 = (float) $u-1;
+
+        $u8 = $u8 * 0.020833334F;
+
+        virtualinvoke paint.<android.graphics.Paint: void setShadowLayer(float,float,float,int)>(blur, 0.0F, $u8, 1023410176);
+
+        virtualinvoke canvas.<android.graphics.Canvas: void drawCircle(float,float,float,android.graphics.Paint)>(size, size, radius, paint);
+
+        virtualinvoke paint.<android.graphics.Paint: void setShadowLayer(float,float,float,int)>(blur, 0.0F, 0.0F, 503316480);
+
+        virtualinvoke canvas.<android.graphics.Canvas: void drawCircle(float,float,float,android.graphics.Paint)>(size, size, radius, paint);
+
+        virtualinvoke paint.<android.graphics.Paint: void clearShadowLayer()>();
+
+     label1:
+        virtualinvoke paint.<android.graphics.Paint: void setColor(int)>(-16777216);
+
+        shader = new android.graphics.BitmapShader;
+
+        blur#32 = <android.graphics.Shader$TileMode: android.graphics.Shader$TileMode CLAMP>;
+
+        $u8#33 = <android.graphics.Shader$TileMode: android.graphics.Shader$TileMode CLAMP>;
+
+        specialinvoke shader.<android.graphics.BitmapShader: void <init>(android.graphics.Bitmap,android.graphics.Shader$TileMode,android.graphics.Shader$TileMode)>($u10, blur#32, $u8#33);
+
+        blur#34 = new android.graphics.Matrix;
+
+        specialinvoke blur#34.<android.graphics.Matrix: void <init>()>();
+
+        $u-1#3 = virtualinvoke $u10.<android.graphics.Bitmap: int getWidth()>();
+
+        $u-1#3 = $u-1#3 - $u-1;
+
+        $u-1#3 = neg $u-1#3;
+
+        $u-1#3 = $u-1#3 / 2;
+
+        blur = (float) $u-1#3;
+
+        $u-1#3 = virtualinvoke $u10.<android.graphics.Bitmap: int getHeight()>();
+
+        $u-1 = $u-1#3 - $u-1;
+
+        $u-1 = neg $u-1;
+
+        $u-1 = $u-1 / 2;
+
+        $u8 = (float) $u-1;
+
+        virtualinvoke blur#34.<android.graphics.Matrix: void setTranslate(float,float)>(blur, $u8);
+
+        virtualinvoke shader.<android.graphics.BitmapShader: void setLocalMatrix(android.graphics.Matrix)>(blur#34);
+
+        virtualinvoke paint.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>(shader);
+
+        virtualinvoke canvas.<android.graphics.Canvas: void drawCircle(float,float,float,android.graphics.Paint)>(size, size, radius, paint);
+
+        virtualinvoke canvas.<android.graphics.Canvas: void setBitmap(android.graphics.Bitmap)>(null);
+
+        return $u-1#12;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat createWithAdaptiveBitmap(android.graphics.Bitmap)
+    {
+        android.graphics.Bitmap $u2;
+        androidx.core.graphics.drawable.IconCompat rep;
+        java.lang.IllegalArgumentException rep#3;
+
+        $u2 := @parameter0: android.graphics.Bitmap;
+
+        if $u2 == null goto label1;
+
+        rep = new androidx.core.graphics.drawable.IconCompat;
+
+        specialinvoke rep.<androidx.core.graphics.drawable.IconCompat: void <init>(int)>(5);
+
+        rep.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u2;
+
+        return rep;
+
+     label1:
+        rep#3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke rep#3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Bitmap must not be null.");
+
+        throw rep#3;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat createWithAdaptiveBitmapContentUri(android.net.Uri)
+    {
+        android.net.Uri $u2;
+        java.lang.String $u-1;
+        androidx.core.graphics.drawable.IconCompat $u-1#3;
+        java.lang.IllegalArgumentException $u0;
+
+        $u2 := @parameter0: android.net.Uri;
+
+        if $u2 == null goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.net.Uri: java.lang.String toString()>();
+
+        $u-1#3 = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createWithAdaptiveBitmapContentUri(java.lang.String)>($u-1);
+
+        return $u-1#3;
+
+     label1:
+        $u0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Uri must not be null.");
+
+        throw $u0;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat createWithAdaptiveBitmapContentUri(java.lang.String)
+    {
+        java.lang.String $u2;
+        androidx.core.graphics.drawable.IconCompat rep;
+        java.lang.IllegalArgumentException rep#3;
+
+        $u2 := @parameter0: java.lang.String;
+
+        if $u2 == null goto label1;
+
+        rep = new androidx.core.graphics.drawable.IconCompat;
+
+        specialinvoke rep.<androidx.core.graphics.drawable.IconCompat: void <init>(int)>(6);
+
+        rep.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u2;
+
+        return rep;
+
+     label1:
+        rep#3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke rep#3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Uri must not be null.");
+
+        throw rep#3;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat createWithBitmap(android.graphics.Bitmap)
+    {
+        android.graphics.Bitmap $u2;
+        androidx.core.graphics.drawable.IconCompat rep;
+        java.lang.IllegalArgumentException rep#3;
+
+        $u2 := @parameter0: android.graphics.Bitmap;
+
+        if $u2 == null goto label1;
+
+        rep = new androidx.core.graphics.drawable.IconCompat;
+
+        specialinvoke rep.<androidx.core.graphics.drawable.IconCompat: void <init>(int)>(1);
+
+        rep.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u2;
+
+        return rep;
+
+     label1:
+        rep#3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke rep#3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Bitmap must not be null.");
+
+        throw rep#3;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat createWithContentUri(android.net.Uri)
+    {
+        android.net.Uri $u2;
+        java.lang.String $u-1;
+        androidx.core.graphics.drawable.IconCompat $u-1#3;
+        java.lang.IllegalArgumentException $u0;
+
+        $u2 := @parameter0: android.net.Uri;
+
+        if $u2 == null goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.net.Uri: java.lang.String toString()>();
+
+        $u-1#3 = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createWithContentUri(java.lang.String)>($u-1);
+
+        return $u-1#3;
+
+     label1:
+        $u0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Uri must not be null.");
+
+        throw $u0;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat createWithContentUri(java.lang.String)
+    {
+        java.lang.String $u2;
+        androidx.core.graphics.drawable.IconCompat rep;
+        java.lang.IllegalArgumentException rep#3;
+
+        $u2 := @parameter0: java.lang.String;
+
+        if $u2 == null goto label1;
+
+        rep = new androidx.core.graphics.drawable.IconCompat;
+
+        specialinvoke rep.<androidx.core.graphics.drawable.IconCompat: void <init>(int)>(4);
+
+        rep.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u2;
+
+        return rep;
+
+     label1:
+        rep#3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke rep#3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Uri must not be null.");
+
+        throw rep#3;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat createWithData(byte[], int, int)
+    {
+        byte[] $u2;
+        int $u3, $u4;
+        androidx.core.graphics.drawable.IconCompat rep;
+        java.lang.IllegalArgumentException rep#3;
+
+        $u2 := @parameter0: byte[];
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        if $u2 == null goto label1;
+
+        rep = new androidx.core.graphics.drawable.IconCompat;
+
+        specialinvoke rep.<androidx.core.graphics.drawable.IconCompat: void <init>(int)>(3);
+
+        rep.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u2;
+
+        rep.<androidx.core.graphics.drawable.IconCompat: int mInt1> = $u3;
+
+        rep.<androidx.core.graphics.drawable.IconCompat: int mInt2> = $u4;
+
+        return rep;
+
+     label1:
+        rep#3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke rep#3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Data must not be null.");
+
+        throw rep#3;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat createWithResource(android.content.Context, int)
+    {
+        android.content.Context $u2;
+        int $u3;
+        android.content.res.Resources $u-1;
+        java.lang.String $u-1#3;
+        androidx.core.graphics.drawable.IconCompat $u-1#5;
+        java.lang.IllegalArgumentException $u0;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: int;
+
+        if $u2 == null goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#3 = virtualinvoke $u2.<android.content.Context: java.lang.String getPackageName()>();
+
+        $u-1#5 = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createWithResource(android.content.res.Resources,java.lang.String,int)>($u-1, $u-1#3, $u3);
+
+        return $u-1#5;
+
+     label1:
+        $u0 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Context must not be null.");
+
+        throw $u0;
+    }
+
+    public static androidx.core.graphics.drawable.IconCompat createWithResource(android.content.res.Resources, java.lang.String, int)
+    {
+        android.content.res.Resources $u4;
+        java.lang.String $u5;
+        int $u6;
+        java.lang.IllegalArgumentException $u2;
+        androidx.core.graphics.drawable.IconCompat rep;
+        android.content.res.Resources$NotFoundException e;
+
+        $u4 := @parameter0: android.content.res.Resources;
+
+        $u5 := @parameter1: java.lang.String;
+
+        $u6 := @parameter2: int;
+
+        if $u5 == null goto label6;
+
+        if $u6 == 0 goto label5;
+
+        rep = new androidx.core.graphics.drawable.IconCompat;
+
+        specialinvoke rep.<androidx.core.graphics.drawable.IconCompat: void <init>(int)>(2);
+
+        rep.<androidx.core.graphics.drawable.IconCompat: int mInt1> = $u6;
+
+        if $u4 == null goto label4;
+
+     label1:
+        $u5 = virtualinvoke $u4.<android.content.res.Resources: java.lang.String getResourceName(int)>($u6);
+
+     label2:
+        rep.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u5;
+
+        return rep;
+
+     label3:
+        e := @caughtexception;
+
+        $u2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Icon resource cannot be found");
+
+        throw $u2;
+
+     label4:
+        rep.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u5;
+
+        return rep;
+
+     label5:
+        $u2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Drawable resource ID must not be 0");
+
+        throw $u2;
+
+     label6:
+        $u2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Package must not be null.");
+
+        throw $u2;
+
+        catch android.content.res.Resources$NotFoundException from label1 to label2 with label3;
+    }
+
+    private static int getResId(android.graphics.drawable.Icon)
+    {
+        android.graphics.drawable.Icon $u6;
+        java.lang.Class[] $u5;
+        int $u2;
+        java.lang.Class $u-1;
+        java.lang.reflect.Method $u-1#10;
+        java.lang.Object[] $u4;
+        java.lang.Object $u-1#13;
+        java.lang.Integer e;
+        java.lang.NoSuchMethodException e#18;
+        java.lang.reflect.InvocationTargetException e#19;
+        java.lang.IllegalAccessException e#20;
+
+        $u6 := @parameter0: android.graphics.drawable.Icon;
+
+        $u2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u2 < 28 goto label01;
+
+        $u2 = virtualinvoke $u6.<android.graphics.drawable.Icon: int getResId()>();
+
+        return $u2;
+
+     label01:
+        $u-1 = virtualinvoke $u6.<java.lang.Object: java.lang.Class getClass()>();
+
+     label02:
+        $u5 = newarray (java.lang.Class)[0];
+
+     label03:
+        $u-1#10 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getResId", $u5);
+
+     label04:
+        $u4 = newarray (java.lang.Object)[0];
+
+     label05:
+        $u-1#13 = virtualinvoke $u-1#10.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u6, $u4);
+
+     label06:
+        e = (java.lang.Integer) $u-1#13;
+
+     label07:
+        $u2 = virtualinvoke e.<java.lang.Integer: int intValue()>();
+
+     label08:
+        return $u2;
+
+     label09:
+        e#18 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", "Unable to get icon resource", e#18);
+
+        return 0;
+
+     label10:
+        e#19 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", "Unable to get icon resource", e#19);
+
+        return 0;
+
+     label11:
+        e#20 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", "Unable to get icon resource", e#20);
+
+        return 0;
+
+        catch java.lang.IllegalAccessException from label01 to label02 with label11;
+        catch java.lang.IllegalAccessException from label03 to label04 with label11;
+        catch java.lang.IllegalAccessException from label05 to label06 with label11;
+        catch java.lang.IllegalAccessException from label07 to label08 with label11;
+        catch java.lang.reflect.InvocationTargetException from label01 to label02 with label10;
+        catch java.lang.reflect.InvocationTargetException from label03 to label04 with label10;
+        catch java.lang.reflect.InvocationTargetException from label05 to label06 with label10;
+        catch java.lang.reflect.InvocationTargetException from label07 to label08 with label10;
+        catch java.lang.NoSuchMethodException from label01 to label02 with label09;
+        catch java.lang.NoSuchMethodException from label03 to label04 with label09;
+        catch java.lang.NoSuchMethodException from label05 to label06 with label09;
+        catch java.lang.NoSuchMethodException from label07 to label08 with label09;
+    }
+
+    private static java.lang.String getResPackage(android.graphics.drawable.Icon)
+    {
+        android.graphics.drawable.Icon $u7;
+        java.lang.Class[] $u6;
+        int $u2;
+        java.lang.String $u-1;
+        java.lang.Class $u-1#7;
+        java.lang.reflect.Method $u-1#10;
+        java.lang.Object[] $u4;
+        java.lang.Object $u-1#13;
+        java.lang.NoSuchMethodException e;
+        java.lang.reflect.InvocationTargetException e#17;
+        java.lang.IllegalAccessException e#18;
+
+        $u7 := @parameter0: android.graphics.drawable.Icon;
+
+        $u2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u2 < 28 goto label1;
+
+        $u-1 = virtualinvoke $u7.<android.graphics.drawable.Icon: java.lang.String getResPackage()>();
+
+        return $u-1;
+
+     label1:
+        $u-1#7 = virtualinvoke $u7.<java.lang.Object: java.lang.Class getClass()>();
+
+     label2:
+        $u6 = newarray (java.lang.Class)[0];
+
+     label3:
+        $u-1#10 = virtualinvoke $u-1#7.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getResPackage", $u6);
+
+     label4:
+        $u4 = newarray (java.lang.Object)[0];
+
+     label5:
+        $u-1#13 = virtualinvoke $u-1#10.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u7, $u4);
+
+     label6:
+        $u-1 = (java.lang.String) $u-1#13;
+
+        return $u-1;
+
+     label7:
+        e := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", "Unable to get icon package", e);
+
+        return null;
+
+     label8:
+        e#17 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", "Unable to get icon package", e#17);
+
+        return null;
+
+     label9:
+        e#18 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", "Unable to get icon package", e#18);
+
+        return null;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label9;
+        catch java.lang.IllegalAccessException from label3 to label4 with label9;
+        catch java.lang.IllegalAccessException from label5 to label6 with label9;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label8;
+        catch java.lang.reflect.InvocationTargetException from label3 to label4 with label8;
+        catch java.lang.reflect.InvocationTargetException from label5 to label6 with label8;
+        catch java.lang.NoSuchMethodException from label1 to label2 with label7;
+        catch java.lang.NoSuchMethodException from label3 to label4 with label7;
+        catch java.lang.NoSuchMethodException from label5 to label6 with label7;
+    }
+
+    private static android.content.res.Resources getResources(android.content.Context, java.lang.String)
+    {
+        android.content.Context $u5;
+        java.lang.String $u6, pm;
+        boolean $u-1;
+        android.content.res.Resources $u-1#4;
+        android.content.pm.PackageManager $u-1#6;
+        android.content.pm.ApplicationInfo $u-1#10;
+        android.content.pm.PackageManager$NameNotFoundException ai;
+        java.lang.Object[] $u3;
+
+        $u5 := @parameter0: android.content.Context;
+
+        $u6 := @parameter1: java.lang.String;
+
+        pm = "android";
+
+        $u-1 = virtualinvoke pm.<java.lang.String: boolean equals(java.lang.Object)>($u6);
+
+        if $u-1 == 0 goto label1;
+
+        $u-1#4 = staticinvoke <android.content.res.Resources: android.content.res.Resources getSystem()>();
+
+        return $u-1#4;
+
+     label1:
+        $u-1#6 = virtualinvoke $u5.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+     label2:
+        $u-1#10 = virtualinvoke $u-1#6.<android.content.pm.PackageManager: android.content.pm.ApplicationInfo getApplicationInfo(java.lang.String,int)>($u6, 8192);
+
+     label3:
+        if $u-1#10 == null goto label6;
+
+     label4:
+        $u-1#4 = virtualinvoke $u-1#6.<android.content.pm.PackageManager: android.content.res.Resources getResourcesForApplication(android.content.pm.ApplicationInfo)>($u-1#10);
+
+     label5:
+        return $u-1#4;
+
+     label6:
+        return null;
+
+     label7:
+        ai := @caughtexception;
+
+        $u3 = newarray (java.lang.Object)[1];
+
+        $u3[0] = $u6;
+
+        $u6 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Unable to find pkg=%s for icon", $u3);
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", $u6, ai);
+
+        return null;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label2 to label3 with label7;
+        catch android.content.pm.PackageManager$NameNotFoundException from label4 to label5 with label7;
+    }
+
+    private static int getType(android.graphics.drawable.Icon)
+    {
+        android.graphics.drawable.Icon $u7;
+        java.lang.Class[] $u6;
+        int $u2;
+        java.lang.Class $u-1;
+        java.lang.reflect.Method $u-1#10;
+        java.lang.Object[] $u4;
+        java.lang.Object $u-1#13;
+        java.lang.Integer e;
+        java.lang.NoSuchMethodException e#18;
+        java.lang.StringBuilder $u4#19;
+        java.lang.String $u-1#20;
+        java.lang.reflect.InvocationTargetException e#22;
+        java.lang.IllegalAccessException e#26;
+
+        $u7 := @parameter0: android.graphics.drawable.Icon;
+
+        $u2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u2 < 28 goto label01;
+
+        $u2 = virtualinvoke $u7.<android.graphics.drawable.Icon: int getType()>();
+
+        return $u2;
+
+     label01:
+        $u-1 = virtualinvoke $u7.<java.lang.Object: java.lang.Class getClass()>();
+
+     label02:
+        $u6 = newarray (java.lang.Class)[0];
+
+     label03:
+        $u-1#10 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getType", $u6);
+
+     label04:
+        $u4 = newarray (java.lang.Object)[0];
+
+     label05:
+        $u-1#13 = virtualinvoke $u-1#10.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u7, $u4);
+
+     label06:
+        e = (java.lang.Integer) $u-1#13;
+
+     label07:
+        $u2 = virtualinvoke e.<java.lang.Integer: int intValue()>();
+
+     label08:
+        return $u2;
+
+     label09:
+        e#18 := @caughtexception;
+
+        $u4#19 = new java.lang.StringBuilder;
+
+        specialinvoke $u4#19.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4#19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to get icon type ");
+
+        virtualinvoke $u4#19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u7);
+
+        $u-1#20 = virtualinvoke $u4#19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", $u-1#20, e#18);
+
+        return -1;
+
+     label10:
+        e#22 := @caughtexception;
+
+        $u4#19 = new java.lang.StringBuilder;
+
+        specialinvoke $u4#19.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4#19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to get icon type ");
+
+        virtualinvoke $u4#19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u7);
+
+        $u-1#20 = virtualinvoke $u4#19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", $u-1#20, e#22);
+
+        return -1;
+
+     label11:
+        e#26 := @caughtexception;
+
+        $u4#19 = new java.lang.StringBuilder;
+
+        specialinvoke $u4#19.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4#19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to get icon type ");
+
+        virtualinvoke $u4#19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u7);
+
+        $u-1#20 = virtualinvoke $u4#19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", $u-1#20, e#26);
+
+        return -1;
+
+        catch java.lang.IllegalAccessException from label01 to label02 with label11;
+        catch java.lang.IllegalAccessException from label03 to label04 with label11;
+        catch java.lang.IllegalAccessException from label05 to label06 with label11;
+        catch java.lang.IllegalAccessException from label07 to label08 with label11;
+        catch java.lang.reflect.InvocationTargetException from label01 to label02 with label10;
+        catch java.lang.reflect.InvocationTargetException from label03 to label04 with label10;
+        catch java.lang.reflect.InvocationTargetException from label05 to label06 with label10;
+        catch java.lang.reflect.InvocationTargetException from label07 to label08 with label10;
+        catch java.lang.NoSuchMethodException from label01 to label02 with label09;
+        catch java.lang.NoSuchMethodException from label03 to label04 with label09;
+        catch java.lang.NoSuchMethodException from label05 to label06 with label09;
+        catch java.lang.NoSuchMethodException from label07 to label08 with label09;
+    }
+
+    private static android.net.Uri getUri(android.graphics.drawable.Icon)
+    {
+        android.graphics.drawable.Icon $u7;
+        java.lang.Class[] $u6;
+        int $u2;
+        android.net.Uri $u-1;
+        java.lang.Class $u-1#7;
+        java.lang.reflect.Method $u-1#10;
+        java.lang.Object[] $u4;
+        java.lang.Object $u-1#13;
+        java.lang.NoSuchMethodException e;
+        java.lang.reflect.InvocationTargetException e#17;
+        java.lang.IllegalAccessException e#18;
+
+        $u7 := @parameter0: android.graphics.drawable.Icon;
+
+        $u2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u2 < 28 goto label1;
+
+        $u-1 = virtualinvoke $u7.<android.graphics.drawable.Icon: android.net.Uri getUri()>();
+
+        return $u-1;
+
+     label1:
+        $u-1#7 = virtualinvoke $u7.<java.lang.Object: java.lang.Class getClass()>();
+
+     label2:
+        $u6 = newarray (java.lang.Class)[0];
+
+     label3:
+        $u-1#10 = virtualinvoke $u-1#7.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getUri", $u6);
+
+     label4:
+        $u4 = newarray (java.lang.Object)[0];
+
+     label5:
+        $u-1#13 = virtualinvoke $u-1#10.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u7, $u4);
+
+     label6:
+        $u-1 = (android.net.Uri) $u-1#13;
+
+        return $u-1;
+
+     label7:
+        e := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", "Unable to get icon uri", e);
+
+        return null;
+
+     label8:
+        e#17 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", "Unable to get icon uri", e#17);
+
+        return null;
+
+     label9:
+        e#18 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", "Unable to get icon uri", e#18);
+
+        return null;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label9;
+        catch java.lang.IllegalAccessException from label3 to label4 with label9;
+        catch java.lang.IllegalAccessException from label5 to label6 with label9;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label8;
+        catch java.lang.reflect.InvocationTargetException from label3 to label4 with label8;
+        catch java.lang.reflect.InvocationTargetException from label5 to label6 with label8;
+        catch java.lang.NoSuchMethodException from label1 to label2 with label7;
+        catch java.lang.NoSuchMethodException from label3 to label4 with label7;
+        catch java.lang.NoSuchMethodException from label5 to label6 with label7;
+    }
+
+    private java.io.InputStream getUriInputStream(android.content.Context)
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        android.content.Context $u7;
+        android.net.Uri $u-1;
+        java.lang.String $u-1#2, e;
+        boolean $u-1#4;
+        java.io.FileInputStream e#9;
+        java.io.File $u4;
+        java.lang.Object $u5;
+        java.io.FileNotFoundException e#13;
+        java.lang.StringBuilder $u4#14;
+        android.content.ContentResolver $u-1#18;
+        java.io.InputStream $u-1#20;
+        java.lang.Exception e#22;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u7 := @parameter0: android.content.Context;
+
+        $u-1 = virtualinvoke this.<androidx.core.graphics.drawable.IconCompat: android.net.Uri getUri()>();
+
+        $u-1#2 = virtualinvoke $u-1.<android.net.Uri: java.lang.String getScheme()>();
+
+        e = "content";
+
+        $u-1#4 = virtualinvoke e.<java.lang.String: boolean equals(java.lang.Object)>($u-1#2);
+
+        if $u-1#4 != 0 goto label5;
+
+        e = "file";
+
+        $u-1#4 = virtualinvoke e.<java.lang.String: boolean equals(java.lang.Object)>($u-1#2);
+
+        if $u-1#4 == 0 goto label1;
+
+        goto label5;
+
+     label1:
+        e#9 = new java.io.FileInputStream;
+
+        $u4 = new java.io.File;
+
+        $u5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1#2 = (java.lang.String) $u5;
+
+     label2:
+        specialinvoke $u4.<java.io.File: void <init>(java.lang.String)>($u-1#2);
+
+        specialinvoke e#9.<java.io.FileInputStream: void <init>(java.io.File)>($u4);
+
+     label3:
+        return e#9;
+
+     label4:
+        e#13 := @caughtexception;
+
+        $u4#14 = new java.lang.StringBuilder;
+
+        specialinvoke $u4#14.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4#14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to load image from path: ");
+
+        virtualinvoke $u4#14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u-1);
+
+        $u-1#2 = virtualinvoke $u4#14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", $u-1#2, e#13);
+
+        goto label8;
+
+     label5:
+        $u-1#18 = virtualinvoke $u7.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        $u-1#20 = virtualinvoke $u-1#18.<android.content.ContentResolver: java.io.InputStream openInputStream(android.net.Uri)>($u-1);
+
+     label6:
+        return $u-1#20;
+
+     label7:
+        e#22 := @caughtexception;
+
+        $u4#14 = new java.lang.StringBuilder;
+
+        specialinvoke $u4#14.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4#14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to load image from URI: ");
+
+        virtualinvoke $u4#14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u-1);
+
+        $u-1#2 = virtualinvoke $u4#14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", $u-1#2, e#22);
+
+     label8:
+        return null;
+
+        catch java.io.FileNotFoundException from label2 to label3 with label4;
+        catch java.lang.Exception from label5 to label6 with label7;
+    }
+
+    private android.graphics.drawable.Drawable loadDrawableInner(android.content.Context)
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        android.content.Context $u8;
+        int is, e;
+        java.io.InputStream $u-1;
+        android.graphics.drawable.AdaptiveIconDrawable $u2;
+        android.graphics.drawable.BitmapDrawable res;
+        android.content.res.Resources $u-1#10;
+        android.graphics.Bitmap $u-1#12;
+        java.lang.Object res#24;
+        byte[] $u2#39;
+        java.lang.String $u-1#44, is#45;
+        boolean $u-1#46;
+        android.content.res.Resources$Theme $u-1#52;
+        android.graphics.drawable.Drawable $u-1#54;
+        java.lang.RuntimeException e#56;
+        java.lang.Object[] $u5;
+        java.lang.Integer $u-1#60;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u8 := @parameter0: android.content.Context;
+
+        is = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        lookupswitch(is)
+        {
+            case 1: goto label12;
+            case 2: goto label07;
+            case 3: goto label06;
+            case 4: goto label05;
+            case 5: goto label04;
+            case 6: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        return null;
+
+     label02:
+        $u-1 = specialinvoke this.<androidx.core.graphics.drawable.IconCompat: java.io.InputStream getUriInputStream(android.content.Context)>($u8);
+
+        if $u-1 == null goto label13;
+
+        is = <android.os.Build$VERSION: int SDK_INT>;
+
+        if is < 26 goto label03;
+
+        $u2 = new android.graphics.drawable.AdaptiveIconDrawable;
+
+        res = new android.graphics.drawable.BitmapDrawable;
+
+        $u-1#10 = virtualinvoke $u8.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#12 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeStream(java.io.InputStream)>($u-1);
+
+        specialinvoke res.<android.graphics.drawable.BitmapDrawable: void <init>(android.content.res.Resources,android.graphics.Bitmap)>($u-1#10, $u-1#12);
+
+        specialinvoke $u2.<android.graphics.drawable.AdaptiveIconDrawable: void <init>(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>(null, res);
+
+        return $u2;
+
+     label03:
+        res = new android.graphics.drawable.BitmapDrawable;
+
+        $u-1#10 = virtualinvoke $u8.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#12 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeStream(java.io.InputStream)>($u-1);
+
+        $u-1#12 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.graphics.Bitmap createLegacyIconFromAdaptiveIcon(android.graphics.Bitmap,boolean)>($u-1#12, 0);
+
+        specialinvoke res.<android.graphics.drawable.BitmapDrawable: void <init>(android.content.res.Resources,android.graphics.Bitmap)>($u-1#10, $u-1#12);
+
+        return res;
+
+     label04:
+        res = new android.graphics.drawable.BitmapDrawable;
+
+        $u-1#10 = virtualinvoke $u8.<android.content.Context: android.content.res.Resources getResources()>();
+
+        res#24 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1#12 = (android.graphics.Bitmap) res#24;
+
+        $u-1#12 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.graphics.Bitmap createLegacyIconFromAdaptiveIcon(android.graphics.Bitmap,boolean)>($u-1#12, 0);
+
+        specialinvoke res.<android.graphics.drawable.BitmapDrawable: void <init>(android.content.res.Resources,android.graphics.Bitmap)>($u-1#10, $u-1#12);
+
+        return res;
+
+     label05:
+        $u-1 = specialinvoke this.<androidx.core.graphics.drawable.IconCompat: java.io.InputStream getUriInputStream(android.content.Context)>($u8);
+
+        if $u-1 == null goto label13;
+
+        res = new android.graphics.drawable.BitmapDrawable;
+
+        $u-1#10 = virtualinvoke $u8.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#12 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeStream(java.io.InputStream)>($u-1);
+
+        specialinvoke res.<android.graphics.drawable.BitmapDrawable: void <init>(android.content.res.Resources,android.graphics.Bitmap)>($u-1#10, $u-1#12);
+
+        return res;
+
+     label06:
+        res = new android.graphics.drawable.BitmapDrawable;
+
+        $u-1#10 = virtualinvoke $u8.<android.content.Context: android.content.res.Resources getResources()>();
+
+        res#24 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u2#39 = (byte[]) res#24;
+
+        is = this.<androidx.core.graphics.drawable.IconCompat: int mInt1>;
+
+        e = this.<androidx.core.graphics.drawable.IconCompat: int mInt2>;
+
+        $u-1#12 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeByteArray(byte[],int,int)>($u2#39, is, e);
+
+        specialinvoke res.<android.graphics.drawable.BitmapDrawable: void <init>(android.content.res.Resources,android.graphics.Bitmap)>($u-1#10, $u-1#12);
+
+        return res;
+
+     label07:
+        $u-1#44 = virtualinvoke this.<androidx.core.graphics.drawable.IconCompat: java.lang.String getResPackage()>();
+
+        is#45 = $u-1#44;
+
+        $u-1#46 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u-1#44);
+
+        if $u-1#46 == 0 goto label08;
+
+        is#45 = virtualinvoke $u8.<android.content.Context: java.lang.String getPackageName()>();
+
+     label08:
+        $u-1#10 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.content.res.Resources getResources(android.content.Context,java.lang.String)>($u8, is#45);
+
+     label09:
+        is = this.<androidx.core.graphics.drawable.IconCompat: int mInt1>;
+
+        $u-1#52 = virtualinvoke $u8.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        $u-1#54 = staticinvoke <androidx.core.content.res.ResourcesCompat: android.graphics.drawable.Drawable getDrawable(android.content.res.Resources,int,android.content.res.Resources$Theme)>($u-1#10, is, $u-1#52);
+
+     label10:
+        return $u-1#54;
+
+     label11:
+        e#56 := @caughtexception;
+
+        $u5 = newarray (java.lang.Object)[2];
+
+        is = this.<androidx.core.graphics.drawable.IconCompat: int mInt1>;
+
+        $u-1#60 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(is);
+
+        $u5[0] = $u-1#60;
+
+        res#24 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u5[1] = res#24;
+
+        $u-1#44 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Unable to load resource 0x%08x from pkg=%s", $u5);
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("IconCompat", $u-1#44, e#56);
+
+        return null;
+
+     label12:
+        res = new android.graphics.drawable.BitmapDrawable;
+
+        $u-1#10 = virtualinvoke $u8.<android.content.Context: android.content.res.Resources getResources()>();
+
+        res#24 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1#12 = (android.graphics.Bitmap) res#24;
+
+        specialinvoke res.<android.graphics.drawable.BitmapDrawable: void <init>(android.content.res.Resources,android.graphics.Bitmap)>($u-1#10, $u-1#12);
+
+        return res;
+
+     label13:
+        return null;
+
+        catch java.lang.RuntimeException from label09 to label10 with label11;
+    }
+
+    private static java.lang.String typeToString(int)
+    {
+        int $u1;
+
+        $u1 := @parameter0: int;
+
+        lookupswitch($u1)
+        {
+            case 1: goto label7;
+            case 2: goto label6;
+            case 3: goto label5;
+            case 4: goto label4;
+            case 5: goto label3;
+            case 6: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return "UNKNOWN";
+
+     label2:
+        return "URI_MASKABLE";
+
+     label3:
+        return "BITMAP_MASKABLE";
+
+     label4:
+        return "URI";
+
+     label5:
+        return "DATA";
+
+     label6:
+        return "RESOURCE";
+
+     label7:
+        return "BITMAP";
+    }
+
+    public void addToShortcutIntent(android.content.Intent, android.graphics.drawable.Drawable, android.content.Context)
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        android.content.Intent $u7;
+        android.graphics.drawable.Drawable $u8, $u-1#21;
+        android.content.Context $u9;
+        int icon, $u-1#29, icon1#63, $u4;
+        java.lang.Object icon#5;
+        android.graphics.Bitmap icon#6;
+        java.lang.IllegalArgumentException icon#9;
+        java.lang.String $u-1;
+        android.content.Intent$ShortcutIconResource $u-1#18;
+        android.graphics.Bitmap$Config $u5;
+        android.app.ActivityManager icon1;
+        android.graphics.Canvas w;
+        android.content.pm.PackageManager$NameNotFoundException icon#48;
+        java.lang.StringBuilder dr;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u7 := @parameter0: android.content.Intent;
+
+        $u8 := @parameter1: android.graphics.drawable.Drawable;
+
+        $u9 := @parameter2: android.content.Context;
+
+        virtualinvoke this.<androidx.core.graphics.drawable.IconCompat: void checkResource(android.content.Context)>($u9);
+
+        icon = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        if icon == 1 goto label25;
+
+        if icon == 2 goto label02;
+
+        if icon != 5 goto label01;
+
+        icon#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        icon#6 = (android.graphics.Bitmap) icon#5;
+
+        icon#6 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.graphics.Bitmap createLegacyIconFromAdaptiveIcon(android.graphics.Bitmap,boolean)>(icon#6, 1);
+
+        goto label26;
+
+     label01:
+        icon#9 = new java.lang.IllegalArgumentException;
+
+        specialinvoke icon#9.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Icon type not supported for intent shortcuts");
+
+        throw icon#9;
+
+     label02:
+        $u-1 = virtualinvoke this.<androidx.core.graphics.drawable.IconCompat: java.lang.String getResPackage()>();
+
+        $u9 = virtualinvoke $u9.<android.content.Context: android.content.Context createPackageContext(java.lang.String,int)>($u-1, 0);
+
+     label03:
+        if $u8 != null goto label06;
+
+        icon = this.<androidx.core.graphics.drawable.IconCompat: int mInt1>;
+
+     label04:
+        $u-1#18 = staticinvoke <android.content.Intent$ShortcutIconResource: android.content.Intent$ShortcutIconResource fromContext(android.content.Context,int)>($u9, icon);
+
+        virtualinvoke $u7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.ICON_RESOURCE", $u-1#18);
+
+     label05:
+        return;
+
+     label06:
+        icon = this.<androidx.core.graphics.drawable.IconCompat: int mInt1>;
+
+     label07:
+        $u-1#21 = staticinvoke <androidx.core.content.ContextCompat: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u9, icon);
+
+        icon = virtualinvoke $u-1#21.<android.graphics.drawable.Drawable: int getIntrinsicWidth()>();
+
+     label08:
+        if icon <= 0 goto label15;
+
+     label09:
+        icon = virtualinvoke $u-1#21.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+     label10:
+        if icon > 0 goto label11;
+
+        goto label15;
+
+     label11:
+        icon = virtualinvoke $u-1#21.<android.graphics.drawable.Drawable: int getIntrinsicWidth()>();
+
+        $u-1#29 = virtualinvoke $u-1#21.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+     label12:
+        $u5 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config ARGB_8888>;
+
+     label13:
+        icon#6 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createBitmap(int,int,android.graphics.Bitmap$Config)>(icon, $u-1#29, $u5);
+
+     label14:
+        goto label20;
+
+     label15:
+        icon#5 = virtualinvoke $u9.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("activity");
+
+     label16:
+        icon1 = (android.app.ActivityManager) icon#5;
+
+     label17:
+        icon = virtualinvoke icon1.<android.app.ActivityManager: int getLauncherLargeIconSize()>();
+
+     label18:
+        $u5 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config ARGB_8888>;
+
+     label19:
+        icon#6 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createBitmap(int,int,android.graphics.Bitmap$Config)>(icon, icon, $u5);
+
+     label20:
+        icon = virtualinvoke icon#6.<android.graphics.Bitmap: int getWidth()>();
+
+        $u-1#29 = virtualinvoke icon#6.<android.graphics.Bitmap: int getHeight()>();
+
+        virtualinvoke $u-1#21.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>(0, 0, icon, $u-1#29);
+
+     label21:
+        w = new android.graphics.Canvas;
+
+     label22:
+        specialinvoke w.<android.graphics.Canvas: void <init>(android.graphics.Bitmap)>(icon#6);
+
+        virtualinvoke $u-1#21.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>(w);
+
+     label23:
+        goto label26;
+
+     label24:
+        icon#48 := @caughtexception;
+
+        icon#9 = new java.lang.IllegalArgumentException;
+
+        dr = new java.lang.StringBuilder;
+
+        specialinvoke dr.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke dr.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can\'t find package ");
+
+        icon#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        virtualinvoke dr.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(icon#5);
+
+        $u-1 = virtualinvoke dr.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke icon#9.<java.lang.IllegalArgumentException: void <init>(java.lang.String,java.lang.Throwable)>($u-1, icon#48);
+
+        throw icon#9;
+
+     label25:
+        icon#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        icon#6 = (android.graphics.Bitmap) icon#5;
+
+        if $u8 == null goto label26;
+
+        $u5 = virtualinvoke icon#6.<android.graphics.Bitmap: android.graphics.Bitmap$Config getConfig()>();
+
+        icon#6 = virtualinvoke icon#6.<android.graphics.Bitmap: android.graphics.Bitmap copy(android.graphics.Bitmap$Config,boolean)>($u5, 1);
+
+     label26:
+        if $u8 == null goto label27;
+
+        icon = virtualinvoke icon#6.<android.graphics.Bitmap: int getWidth()>();
+
+        $u-1#29 = virtualinvoke icon#6.<android.graphics.Bitmap: int getHeight()>();
+
+        icon1#63 = icon / 2;
+
+        $u4 = $u-1#29 / 2;
+
+        virtualinvoke $u8.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>(icon1#63, $u4, icon, $u-1#29);
+
+        w = new android.graphics.Canvas;
+
+        specialinvoke w.<android.graphics.Canvas: void <init>(android.graphics.Bitmap)>(icon#6);
+
+        virtualinvoke $u8.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>(w);
+
+     label27:
+        virtualinvoke $u7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.ICON", icon#6);
+
+        return;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label02 to label03 with label24;
+        catch android.content.pm.PackageManager$NameNotFoundException from label04 to label05 with label24;
+        catch android.content.pm.PackageManager$NameNotFoundException from label07 to label08 with label24;
+        catch android.content.pm.PackageManager$NameNotFoundException from label09 to label10 with label24;
+        catch android.content.pm.PackageManager$NameNotFoundException from label11 to label12 with label24;
+        catch android.content.pm.PackageManager$NameNotFoundException from label13 to label14 with label24;
+        catch android.content.pm.PackageManager$NameNotFoundException from label15 to label16 with label24;
+        catch android.content.pm.PackageManager$NameNotFoundException from label17 to label18 with label24;
+        catch android.content.pm.PackageManager$NameNotFoundException from label19 to label20 with label24;
+        catch android.content.pm.PackageManager$NameNotFoundException from label20 to label21 with label24;
+        catch android.content.pm.PackageManager$NameNotFoundException from label22 to label23 with label24;
+    }
+
+    public void checkResource(android.content.Context)
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        android.content.Context $u10;
+        int resPackage, $u4;
+        java.lang.Object resPackage#3;
+        java.lang.String resPackage#4, resName, resType;
+        boolean $u-1;
+        java.lang.String[] $u-1#9;
+        android.content.res.Resources $u-1#23;
+        java.lang.StringBuilder $u4#28;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u10 := @parameter0: android.content.Context;
+
+        resPackage = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        if resPackage != 2 goto label2;
+
+        resPackage#3 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        resPackage#4 = (java.lang.String) resPackage#3;
+
+        $u-1 = virtualinvoke resPackage#4.<java.lang.String: boolean contains(java.lang.CharSequence)>(":");
+
+        if $u-1 != 0 goto label1;
+
+        return;
+
+     label1:
+        $u-1#9 = virtualinvoke resPackage#4.<java.lang.String: java.lang.String[] split(java.lang.String,int)>(":", -1);
+
+        resName = $u-1#9[1];
+
+        $u-1#9 = virtualinvoke resName.<java.lang.String: java.lang.String[] split(java.lang.String,int)>("/", -1);
+
+        resType = $u-1#9[0];
+
+        $u-1#9 = virtualinvoke resName.<java.lang.String: java.lang.String[] split(java.lang.String,int)>("/", -1);
+
+        resName = $u-1#9[1];
+
+        $u-1#9 = virtualinvoke resPackage#4.<java.lang.String: java.lang.String[] split(java.lang.String,int)>(":", -1);
+
+        resPackage#4 = $u-1#9[0];
+
+        $u-1#23 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.content.res.Resources getResources(android.content.Context,java.lang.String)>($u10, resPackage#4);
+
+        resPackage = virtualinvoke $u-1#23.<android.content.res.Resources: int getIdentifier(java.lang.String,java.lang.String,java.lang.String)>(resName, resType, resPackage#4);
+
+        $u4 = this.<androidx.core.graphics.drawable.IconCompat: int mInt1>;
+
+        if $u4 == resPackage goto label2;
+
+        $u4#28 = new java.lang.StringBuilder;
+
+        specialinvoke $u4#28.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4#28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Id has changed for ");
+
+        virtualinvoke $u4#28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(resPackage#4);
+
+        virtualinvoke $u4#28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        virtualinvoke $u4#28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(resName);
+
+        resType = virtualinvoke $u4#28.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("IconCompat", resType);
+
+        this.<androidx.core.graphics.drawable.IconCompat: int mInt1> = resPackage;
+
+     label2:
+        return;
+    }
+
+    public android.graphics.Bitmap getBitmap()
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        int $u0;
+        java.lang.Object $u0#5;
+        boolean $u1;
+        android.graphics.Bitmap $u0#7;
+        java.lang.IllegalStateException $u0#18;
+        java.lang.StringBuilder $u1#19;
+        java.lang.String $u-1;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u0 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        if $u0 != -1 goto label2;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 23 goto label2;
+
+        $u0#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u1 = $u0#5 instanceof android.graphics.Bitmap;
+
+        if $u1 == 0 goto label1;
+
+        $u0#7 = (android.graphics.Bitmap) $u0#5;
+
+        return $u0#7;
+
+     label1:
+        return null;
+
+     label2:
+        $u0 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        if $u0 != 1 goto label3;
+
+        $u0#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u0#7 = (android.graphics.Bitmap) $u0#5;
+
+        return $u0#7;
+
+     label3:
+        if $u0 != 5 goto label4;
+
+        $u0#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u0#7 = (android.graphics.Bitmap) $u0#5;
+
+        $u0#7 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.graphics.Bitmap createLegacyIconFromAdaptiveIcon(android.graphics.Bitmap,boolean)>($u0#7, 1);
+
+        return $u0#7;
+
+     label4:
+        $u0#18 = new java.lang.IllegalStateException;
+
+        $u1#19 = new java.lang.StringBuilder;
+
+        specialinvoke $u1#19.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1#19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("called getBitmap() on ");
+
+        virtualinvoke $u1#19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(this);
+
+        $u-1 = virtualinvoke $u1#19.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0#18.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u-1);
+
+        throw $u0#18;
+    }
+
+    public int getResId()
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        int $u0;
+        java.lang.Object $u0#5;
+        android.graphics.drawable.Icon $u0#6;
+        java.lang.IllegalStateException $u0#12;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u0 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        if $u0 != -1 goto label1;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 23 goto label1;
+
+        $u0#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u0#6 = (android.graphics.drawable.Icon) $u0#5;
+
+        $u0 = staticinvoke <androidx.core.graphics.drawable.IconCompat: int getResId(android.graphics.drawable.Icon)>($u0#6);
+
+        return $u0;
+
+     label1:
+        $u0 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        if $u0 != 2 goto label2;
+
+        $u0 = this.<androidx.core.graphics.drawable.IconCompat: int mInt1>;
+
+        return $u0;
+
+     label2:
+        $u0#12 = new java.lang.IllegalStateException;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("called getResId() on ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(this);
+
+        $u-1 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0#12.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u-1);
+
+        throw $u0#12;
+    }
+
+    public java.lang.String getResPackage()
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        int $u0;
+        java.lang.Object $u0#5;
+        android.graphics.drawable.Icon $u0#6;
+        java.lang.String $u-1;
+        java.lang.String[] $u-1#14;
+        java.lang.IllegalStateException $u0#18;
+        java.lang.StringBuilder $u1;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u0 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        if $u0 != -1 goto label1;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 23 goto label1;
+
+        $u0#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u0#6 = (android.graphics.drawable.Icon) $u0#5;
+
+        $u-1 = staticinvoke <androidx.core.graphics.drawable.IconCompat: java.lang.String getResPackage(android.graphics.drawable.Icon)>($u0#6);
+
+        return $u-1;
+
+     label1:
+        $u0 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        if $u0 != 2 goto label2;
+
+        $u0#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1 = (java.lang.String) $u0#5;
+
+        $u-1#14 = virtualinvoke $u-1.<java.lang.String: java.lang.String[] split(java.lang.String,int)>(":", -1);
+
+        $u-1 = $u-1#14[0];
+
+        return $u-1;
+
+     label2:
+        $u0#18 = new java.lang.IllegalStateException;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("called getResPackage() on ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(this);
+
+        $u-1 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0#18.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u-1);
+
+        throw $u0#18;
+    }
+
+    public int getType()
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        int $u-1;
+        java.lang.Object $u0;
+        android.graphics.drawable.Icon $u0#6;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u-1 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        if $u-1 != -1 goto label1;
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 23 goto label1;
+
+        $u0 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u0#6 = (android.graphics.drawable.Icon) $u0;
+
+        $u-1 = staticinvoke <androidx.core.graphics.drawable.IconCompat: int getType(android.graphics.drawable.Icon)>($u0#6);
+
+        return $u-1;
+
+     label1:
+        $u-1 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        return $u-1;
+    }
+
+    public android.net.Uri getUri()
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        int $u0;
+        java.lang.Object $u0#5;
+        android.graphics.drawable.Icon $u0#6;
+        android.net.Uri $u-1;
+        java.lang.IllegalStateException $u0#12;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1#14;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u0 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        if $u0 != -1 goto label1;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 23 goto label1;
+
+        $u0#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u0#6 = (android.graphics.drawable.Icon) $u0#5;
+
+        $u-1 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.net.Uri getUri(android.graphics.drawable.Icon)>($u0#6);
+
+        return $u-1;
+
+     label1:
+        $u0 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        if $u0 == 4 goto label3;
+
+        if $u0 != 6 goto label2;
+
+        goto label3;
+
+     label2:
+        $u0#12 = new java.lang.IllegalStateException;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("called getUri() on ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(this);
+
+        $u-1#14 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0#12.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u-1#14);
+
+        throw $u0#12;
+
+     label3:
+        $u0#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1#14 = (java.lang.String) $u0#5;
+
+        $u-1 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($u-1#14);
+
+        return $u-1;
+    }
+
+    public android.graphics.drawable.Drawable loadDrawable(android.content.Context)
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        android.content.Context $u4;
+        android.graphics.PorterDuff$Mode $u2, $u1#10;
+        int result;
+        android.graphics.drawable.Icon $u-1;
+        android.graphics.drawable.Drawable $u-1#5;
+        android.content.res.ColorStateList $u1;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u4 := @parameter0: android.content.Context;
+
+        virtualinvoke this.<androidx.core.graphics.drawable.IconCompat: void checkResource(android.content.Context)>($u4);
+
+        result = <android.os.Build$VERSION: int SDK_INT>;
+
+        if result < 23 goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.core.graphics.drawable.IconCompat: android.graphics.drawable.Icon toIcon(android.content.Context)>($u4);
+
+        $u-1#5 = virtualinvoke $u-1.<android.graphics.drawable.Icon: android.graphics.drawable.Drawable loadDrawable(android.content.Context)>($u4);
+
+        return $u-1#5;
+
+     label1:
+        $u-1#5 = specialinvoke this.<androidx.core.graphics.drawable.IconCompat: android.graphics.drawable.Drawable loadDrawableInner(android.content.Context)>($u4);
+
+        if $u-1#5 == null goto label3;
+
+        $u1 = this.<androidx.core.graphics.drawable.IconCompat: android.content.res.ColorStateList mTintList>;
+
+        if $u1 != null goto label2;
+
+        $u1#10 = this.<androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode mTintMode>;
+
+        $u2 = <androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode DEFAULT_TINT_MODE>;
+
+        if $u1#10 == $u2 goto label3;
+
+     label2:
+        virtualinvoke $u-1#5.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable mutate()>();
+
+        $u1 = this.<androidx.core.graphics.drawable.IconCompat: android.content.res.ColorStateList mTintList>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintList(android.graphics.drawable.Drawable,android.content.res.ColorStateList)>($u-1#5, $u1);
+
+        $u2 = this.<androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode mTintMode>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintMode(android.graphics.drawable.Drawable,android.graphics.PorterDuff$Mode)>($u-1#5, $u2);
+
+     label3:
+        return $u-1#5;
+    }
+
+    public void onPostParceling()
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        java.lang.String $u0;
+        android.graphics.PorterDuff$Mode $u-1;
+        int $u0#4;
+        byte[] $u0#5;
+        java.nio.charset.Charset $u-1#9;
+        android.os.Parcelable $u0#11;
+        java.lang.IllegalArgumentException $u0#17;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u0 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.String mTintModeStr>;
+
+        $u-1 = staticinvoke <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode valueOf(java.lang.String)>($u0);
+
+        this.<androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode mTintMode> = $u-1;
+
+        $u0#4 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        lookupswitch($u0#4)
+        {
+            case -1: goto label6;
+            case 0: goto label1;
+            case 1: goto label4;
+            case 2: goto label3;
+            case 3: goto label2;
+            case 4: goto label3;
+            case 5: goto label4;
+            case 6: goto label3;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        $u0#5 = this.<androidx.core.graphics.drawable.IconCompat: byte[] mData>;
+
+        this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u0#5;
+
+        return;
+
+     label3:
+        $u0 = new java.lang.String;
+
+        $u0#5 = this.<androidx.core.graphics.drawable.IconCompat: byte[] mData>;
+
+        $u-1#9 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("UTF-16");
+
+        specialinvoke $u0.<java.lang.String: void <init>(byte[],java.nio.charset.Charset)>($u0#5, $u-1#9);
+
+        this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u0;
+
+        return;
+
+     label4:
+        $u0#11 = this.<androidx.core.graphics.drawable.IconCompat: android.os.Parcelable mParcelable>;
+
+        if $u0#11 == null goto label5;
+
+        this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u0#11;
+
+        return;
+
+     label5:
+        $u0#5 = this.<androidx.core.graphics.drawable.IconCompat: byte[] mData>;
+
+        this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u0#5;
+
+        this.<androidx.core.graphics.drawable.IconCompat: int mType> = 3;
+
+        this.<androidx.core.graphics.drawable.IconCompat: int mInt1> = 0;
+
+        $u0#4 = lengthof $u0#5;
+
+        this.<androidx.core.graphics.drawable.IconCompat: int mInt2> = $u0#4;
+
+        return;
+
+     label6:
+        $u0#11 = this.<androidx.core.graphics.drawable.IconCompat: android.os.Parcelable mParcelable>;
+
+        if $u0#11 == null goto label7;
+
+        this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1> = $u0#11;
+
+        return;
+
+     label7:
+        $u0#17 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#17.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Invalid icon");
+
+        throw $u0#17;
+    }
+
+    public void onPreParceling(boolean)
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        boolean $u5;
+        android.graphics.PorterDuff$Mode bitmap;
+        java.lang.String $u-1;
+        int bitmap#4;
+        java.lang.Object bitmap#6;
+        java.nio.charset.Charset $u-1#9;
+        byte[] $u-1#11;
+        android.graphics.Bitmap bitmap#22;
+        java.io.ByteArrayOutputStream data;
+        android.graphics.Bitmap$CompressFormat $u2;
+        android.os.Parcelable bitmap#28;
+        java.lang.IllegalArgumentException bitmap#31;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u5 := @parameter0: boolean;
+
+        bitmap = this.<androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode mTintMode>;
+
+        $u-1 = virtualinvoke bitmap.<android.graphics.PorterDuff$Mode: java.lang.String name()>();
+
+        this.<androidx.core.graphics.drawable.IconCompat: java.lang.String mTintModeStr> = $u-1;
+
+        bitmap#4 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        lookupswitch(bitmap#4)
+        {
+            case -1: goto label7;
+            case 0: goto label1;
+            case 1: goto label5;
+            case 2: goto label4;
+            case 3: goto label3;
+            case 4: goto label2;
+            case 5: goto label5;
+            case 6: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        bitmap#6 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1 = virtualinvoke bitmap#6.<java.lang.Object: java.lang.String toString()>();
+
+        $u-1#9 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("UTF-16");
+
+        $u-1#11 = virtualinvoke $u-1.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($u-1#9);
+
+        this.<androidx.core.graphics.drawable.IconCompat: byte[] mData> = $u-1#11;
+
+        return;
+
+     label3:
+        bitmap#6 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1#11 = (byte[]) bitmap#6;
+
+        this.<androidx.core.graphics.drawable.IconCompat: byte[] mData> = $u-1#11;
+
+        return;
+
+     label4:
+        bitmap#6 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1 = (java.lang.String) bitmap#6;
+
+        $u-1#9 = staticinvoke <java.nio.charset.Charset: java.nio.charset.Charset forName(java.lang.String)>("UTF-16");
+
+        $u-1#11 = virtualinvoke $u-1.<java.lang.String: byte[] getBytes(java.nio.charset.Charset)>($u-1#9);
+
+        this.<androidx.core.graphics.drawable.IconCompat: byte[] mData> = $u-1#11;
+
+        return;
+
+     label5:
+        if $u5 == 0 goto label6;
+
+        bitmap#6 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        bitmap#22 = (android.graphics.Bitmap) bitmap#6;
+
+        data = new java.io.ByteArrayOutputStream;
+
+        specialinvoke data.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $u2 = <android.graphics.Bitmap$CompressFormat: android.graphics.Bitmap$CompressFormat PNG>;
+
+        virtualinvoke bitmap#22.<android.graphics.Bitmap: boolean compress(android.graphics.Bitmap$CompressFormat,int,java.io.OutputStream)>($u2, 90, data);
+
+        $u-1#11 = virtualinvoke data.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        this.<androidx.core.graphics.drawable.IconCompat: byte[] mData> = $u-1#11;
+
+        return;
+
+     label6:
+        bitmap#6 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        bitmap#28 = (android.os.Parcelable) bitmap#6;
+
+        this.<androidx.core.graphics.drawable.IconCompat: android.os.Parcelable mParcelable> = bitmap#28;
+
+        return;
+
+     label7:
+        if $u5 != 0 goto label8;
+
+        bitmap#6 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        bitmap#28 = (android.os.Parcelable) bitmap#6;
+
+        this.<androidx.core.graphics.drawable.IconCompat: android.os.Parcelable mParcelable> = bitmap#28;
+
+        return;
+
+     label8:
+        bitmap#31 = new java.lang.IllegalArgumentException;
+
+        specialinvoke bitmap#31.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Can\'t serialize Icon created with IconCompat#createFromIcon");
+
+        throw bitmap#31;
+    }
+
+    public androidx.core.graphics.drawable.IconCompat setTint(int)
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        int $u2;
+        android.content.res.ColorStateList $u-1;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u2 := @parameter0: int;
+
+        $u-1 = staticinvoke <android.content.res.ColorStateList: android.content.res.ColorStateList valueOf(int)>($u2);
+
+        this = virtualinvoke this.<androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat setTintList(android.content.res.ColorStateList)>($u-1);
+
+        return this;
+    }
+
+    public androidx.core.graphics.drawable.IconCompat setTintList(android.content.res.ColorStateList)
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        android.content.res.ColorStateList $u1;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u1 := @parameter0: android.content.res.ColorStateList;
+
+        this.<androidx.core.graphics.drawable.IconCompat: android.content.res.ColorStateList mTintList> = $u1;
+
+        return this;
+    }
+
+    public androidx.core.graphics.drawable.IconCompat setTintMode(android.graphics.PorterDuff$Mode)
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        android.graphics.PorterDuff$Mode $u1;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u1 := @parameter0: android.graphics.PorterDuff$Mode;
+
+        this.<androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode mTintMode> = $u1;
+
+        return this;
+    }
+
+    public android.os.Bundle toBundle()
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        android.os.Bundle bundle;
+        java.lang.String $u-1;
+        int $u1;
+        java.lang.IllegalArgumentException $u1#3;
+        java.lang.Object $u1#5;
+        byte[] $u1#6;
+        android.graphics.Bitmap $u1#10;
+        android.os.Parcelable $u1#12;
+        android.content.res.ColorStateList $u1#19;
+        android.graphics.PorterDuff$Mode $u1#21, $u2;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        bundle = new android.os.Bundle;
+
+        specialinvoke bundle.<android.os.Bundle: void <init>()>();
+
+        $u1 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        lookupswitch($u1)
+        {
+            case -1: goto label5;
+            case 0: goto label1;
+            case 1: goto label4;
+            case 2: goto label3;
+            case 3: goto label2;
+            case 4: goto label3;
+            case 5: goto label4;
+            case 6: goto label3;
+            default: goto label1;
+        };
+
+     label1:
+        $u1#3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u1#3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Invalid icon");
+
+        throw $u1#3;
+
+     label2:
+        $u1#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u1#6 = (byte[]) $u1#5;
+
+        virtualinvoke bundle.<android.os.Bundle: void putByteArray(java.lang.String,byte[])>("obj", $u1#6);
+
+        goto label6;
+
+     label3:
+        $u1#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1 = (java.lang.String) $u1#5;
+
+        virtualinvoke bundle.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("obj", $u-1);
+
+        goto label6;
+
+     label4:
+        $u1#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u1#10 = (android.graphics.Bitmap) $u1#5;
+
+        virtualinvoke bundle.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("obj", $u1#10);
+
+        goto label6;
+
+     label5:
+        $u1#5 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u1#12 = (android.os.Parcelable) $u1#5;
+
+        virtualinvoke bundle.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("obj", $u1#12);
+
+     label6:
+        $u1 = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        virtualinvoke bundle.<android.os.Bundle: void putInt(java.lang.String,int)>("type", $u1);
+
+        $u1 = this.<androidx.core.graphics.drawable.IconCompat: int mInt1>;
+
+        virtualinvoke bundle.<android.os.Bundle: void putInt(java.lang.String,int)>("int1", $u1);
+
+        $u1 = this.<androidx.core.graphics.drawable.IconCompat: int mInt2>;
+
+        virtualinvoke bundle.<android.os.Bundle: void putInt(java.lang.String,int)>("int2", $u1);
+
+        $u1#19 = this.<androidx.core.graphics.drawable.IconCompat: android.content.res.ColorStateList mTintList>;
+
+        if $u1#19 == null goto label7;
+
+        virtualinvoke bundle.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("tint_list", $u1#19);
+
+     label7:
+        $u1#21 = this.<androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode mTintMode>;
+
+        $u2 = <androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode DEFAULT_TINT_MODE>;
+
+        if $u1#21 == $u2 goto label8;
+
+        $u-1 = virtualinvoke $u1#21.<android.graphics.PorterDuff$Mode: java.lang.String name()>();
+
+        virtualinvoke bundle.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("tint_mode", $u-1);
+
+     label8:
+        return bundle;
+    }
+
+    public android.graphics.drawable.Icon toIcon()
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        android.graphics.drawable.Icon $u-1;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u-1 = virtualinvoke this.<androidx.core.graphics.drawable.IconCompat: android.graphics.drawable.Icon toIcon(android.content.Context)>(null);
+
+        return $u-1;
+    }
+
+    public android.graphics.drawable.Icon toIcon(android.content.Context)
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        android.content.Context $u5;
+        int is, $u2#47;
+        java.lang.IllegalArgumentException is#4;
+        java.io.InputStream $u-1;
+        android.graphics.Bitmap $u-1#9;
+        android.graphics.drawable.Icon $u-1#11;
+        java.lang.IllegalStateException icon;
+        java.lang.StringBuilder $u2;
+        android.net.Uri $u-1#21;
+        java.lang.String $u-1#23;
+        java.lang.Object is#33;
+        byte[] is#45;
+        android.content.res.ColorStateList is#56;
+        android.graphics.PorterDuff$Mode is#57, $u2#58;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        $u5 := @parameter0: android.content.Context;
+
+        is = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        lookupswitch(is)
+        {
+            case -1: goto label14;
+            case 0: goto label01;
+            case 1: goto label11;
+            case 2: goto label10;
+            case 3: goto label09;
+            case 4: goto label08;
+            case 5: goto label06;
+            case 6: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        is#4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke is#4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Unknown type");
+
+        throw is#4;
+
+     label02:
+        if $u5 == null goto label05;
+
+        $u-1 = specialinvoke this.<androidx.core.graphics.drawable.IconCompat: java.io.InputStream getUriInputStream(android.content.Context)>($u5);
+
+        if $u-1 == null goto label04;
+
+        is = <android.os.Build$VERSION: int SDK_INT>;
+
+        if is < 26 goto label03;
+
+        $u-1#9 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeStream(java.io.InputStream)>($u-1);
+
+        $u-1#11 = staticinvoke <android.graphics.drawable.Icon: android.graphics.drawable.Icon createWithAdaptiveBitmap(android.graphics.Bitmap)>($u-1#9);
+
+        goto label12;
+
+     label03:
+        $u-1#9 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeStream(java.io.InputStream)>($u-1);
+
+        $u-1#9 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.graphics.Bitmap createLegacyIconFromAdaptiveIcon(android.graphics.Bitmap,boolean)>($u-1#9, 0);
+
+        $u-1#11 = staticinvoke <android.graphics.drawable.Icon: android.graphics.drawable.Icon createWithBitmap(android.graphics.Bitmap)>($u-1#9);
+
+        goto label12;
+
+     label04:
+        icon = new java.lang.IllegalStateException;
+
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Cannot load adaptive icon from uri: ");
+
+        $u-1#21 = virtualinvoke this.<androidx.core.graphics.drawable.IconCompat: android.net.Uri getUri()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u-1#21);
+
+        $u-1#23 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke icon.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u-1#23);
+
+        throw icon;
+
+     label05:
+        is#4 = new java.lang.IllegalArgumentException;
+
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Context is required to resolve the file uri of the icon: ");
+
+        $u-1#21 = virtualinvoke this.<androidx.core.graphics.drawable.IconCompat: android.net.Uri getUri()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u-1#21);
+
+        $u-1#23 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke is#4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1#23);
+
+        throw is#4;
+
+     label06:
+        is = <android.os.Build$VERSION: int SDK_INT>;
+
+        if is < 26 goto label07;
+
+        is#33 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1#9 = (android.graphics.Bitmap) is#33;
+
+        $u-1#11 = staticinvoke <android.graphics.drawable.Icon: android.graphics.drawable.Icon createWithAdaptiveBitmap(android.graphics.Bitmap)>($u-1#9);
+
+        goto label12;
+
+     label07:
+        is#33 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1#9 = (android.graphics.Bitmap) is#33;
+
+        $u-1#9 = staticinvoke <androidx.core.graphics.drawable.IconCompat: android.graphics.Bitmap createLegacyIconFromAdaptiveIcon(android.graphics.Bitmap,boolean)>($u-1#9, 0);
+
+        $u-1#11 = staticinvoke <android.graphics.drawable.Icon: android.graphics.drawable.Icon createWithBitmap(android.graphics.Bitmap)>($u-1#9);
+
+        goto label12;
+
+     label08:
+        is#33 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1#23 = (java.lang.String) is#33;
+
+        $u-1#11 = staticinvoke <android.graphics.drawable.Icon: android.graphics.drawable.Icon createWithContentUri(java.lang.String)>($u-1#23);
+
+        goto label12;
+
+     label09:
+        is#33 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        is#45 = (byte[]) is#33;
+
+        is = this.<androidx.core.graphics.drawable.IconCompat: int mInt1>;
+
+        $u2#47 = this.<androidx.core.graphics.drawable.IconCompat: int mInt2>;
+
+        $u-1#11 = staticinvoke <android.graphics.drawable.Icon: android.graphics.drawable.Icon createWithData(byte[],int,int)>(is#45, is, $u2#47);
+
+        goto label12;
+
+     label10:
+        $u-1#23 = virtualinvoke this.<androidx.core.graphics.drawable.IconCompat: java.lang.String getResPackage()>();
+
+        is = this.<androidx.core.graphics.drawable.IconCompat: int mInt1>;
+
+        $u-1#11 = staticinvoke <android.graphics.drawable.Icon: android.graphics.drawable.Icon createWithResource(java.lang.String,int)>($u-1#23, is);
+
+        goto label12;
+
+     label11:
+        is#33 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1#9 = (android.graphics.Bitmap) is#33;
+
+        $u-1#11 = staticinvoke <android.graphics.drawable.Icon: android.graphics.drawable.Icon createWithBitmap(android.graphics.Bitmap)>($u-1#9);
+
+     label12:
+        is#56 = this.<androidx.core.graphics.drawable.IconCompat: android.content.res.ColorStateList mTintList>;
+
+        if is#56 == null goto label13;
+
+        virtualinvoke $u-1#11.<android.graphics.drawable.Icon: android.graphics.drawable.Icon setTintList(android.content.res.ColorStateList)>(is#56);
+
+     label13:
+        is#57 = this.<androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode mTintMode>;
+
+        $u2#58 = <androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode DEFAULT_TINT_MODE>;
+
+        if is#57 == $u2#58 goto label15;
+
+        virtualinvoke $u-1#11.<android.graphics.drawable.Icon: android.graphics.drawable.Icon setTintMode(android.graphics.PorterDuff$Mode)>(is#57);
+
+        return $u-1#11;
+
+     label14:
+        is#33 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1#11 = (android.graphics.drawable.Icon) is#33;
+
+     label15:
+        return $u-1#11;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.core.graphics.drawable.IconCompat this;
+        int sb;
+        java.lang.Object sb#3;
+        java.lang.String $u-1;
+        java.lang.StringBuilder sb#6;
+        java.lang.Object[] $u1;
+        java.lang.Integer $u-1#30;
+        android.graphics.Bitmap $u1#37;
+        android.content.res.ColorStateList $u1#45;
+        android.graphics.PorterDuff$Mode $u1#48, $u2;
+
+        this := @this: androidx.core.graphics.drawable.IconCompat;
+
+        sb = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        if sb != -1 goto label1;
+
+        sb#3 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u-1 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(sb#3);
+
+        return $u-1;
+
+     label1:
+        sb#6 = new java.lang.StringBuilder;
+
+        specialinvoke sb#6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Icon(typ=");
+
+        sb = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        $u-1 = staticinvoke <androidx.core.graphics.drawable.IconCompat: java.lang.String typeToString(int)>(sb);
+
+        sb#6 = virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        sb = this.<androidx.core.graphics.drawable.IconCompat: int mType>;
+
+        lookupswitch(sb)
+        {
+            case 1: goto label6;
+            case 2: goto label5;
+            case 3: goto label4;
+            case 4: goto label3;
+            case 5: goto label6;
+            case 6: goto label3;
+            default: goto label2;
+        };
+
+     label2:
+        goto label7;
+
+     label3:
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" uri=");
+
+        sb#3 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(sb#3);
+
+        goto label7;
+
+     label4:
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" len=");
+
+        sb = this.<androidx.core.graphics.drawable.IconCompat: int mInt1>;
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(sb);
+
+        sb = this.<androidx.core.graphics.drawable.IconCompat: int mInt2>;
+
+        if sb == 0 goto label7;
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" off=");
+
+        sb = this.<androidx.core.graphics.drawable.IconCompat: int mInt2>;
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(sb);
+
+        goto label7;
+
+     label5:
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" pkg=");
+
+        $u-1 = virtualinvoke this.<androidx.core.graphics.drawable.IconCompat: java.lang.String getResPackage()>();
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" id=");
+
+        $u1 = newarray (java.lang.Object)[1];
+
+        sb = virtualinvoke this.<androidx.core.graphics.drawable.IconCompat: int getResId()>();
+
+        $u-1#30 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(sb);
+
+        $u1[0] = $u-1#30;
+
+        $u-1 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("0x%08x", $u1);
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        goto label7;
+
+     label6:
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" size=");
+
+        sb#3 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u1#37 = (android.graphics.Bitmap) sb#3;
+
+        sb = virtualinvoke $u1#37.<android.graphics.Bitmap: int getWidth()>();
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(sb);
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("x");
+
+        sb#3 = this.<androidx.core.graphics.drawable.IconCompat: java.lang.Object mObj1>;
+
+        $u1#37 = (android.graphics.Bitmap) sb#3;
+
+        sb = virtualinvoke $u1#37.<android.graphics.Bitmap: int getHeight()>();
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(sb);
+
+     label7:
+        $u1#45 = this.<androidx.core.graphics.drawable.IconCompat: android.content.res.ColorStateList mTintList>;
+
+        if $u1#45 == null goto label8;
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" tint=");
+
+        $u1#45 = this.<androidx.core.graphics.drawable.IconCompat: android.content.res.ColorStateList mTintList>;
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u1#45);
+
+     label8:
+        $u1#48 = this.<androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode mTintMode>;
+
+        $u2 = <androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode DEFAULT_TINT_MODE>;
+
+        if $u1#48 == $u2 goto label9;
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" mode=");
+
+        $u1#48 = this.<androidx.core.graphics.drawable.IconCompat: android.graphics.PorterDuff$Mode mTintMode>;
+
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u1#48);
+
+     label9:
+        virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $u-1 = virtualinvoke sb#6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1;
+    }
+}

@@ -1,0 +1,114 @@
+public final class androidx.appcompat.widget.ThemedSpinnerAdapter$Helper extends java.lang.Object
+{
+    private final android.content.Context mContext;
+    private android.view.LayoutInflater mDropDownInflater;
+    private final android.view.LayoutInflater mInflater;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.ThemedSpinnerAdapter$Helper this;
+        android.content.Context $u2;
+        android.view.LayoutInflater $u-1;
+
+        this := @this: androidx.appcompat.widget.ThemedSpinnerAdapter$Helper;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.widget.ThemedSpinnerAdapter$Helper: android.content.Context mContext> = $u2;
+
+        $u-1 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($u2);
+
+        this.<androidx.appcompat.widget.ThemedSpinnerAdapter$Helper: android.view.LayoutInflater mInflater> = $u-1;
+
+        return;
+    }
+
+    public android.view.LayoutInflater getDropDownViewInflater()
+    {
+        androidx.appcompat.widget.ThemedSpinnerAdapter$Helper this;
+        android.view.LayoutInflater $u0;
+
+        this := @this: androidx.appcompat.widget.ThemedSpinnerAdapter$Helper;
+
+        $u0 = this.<androidx.appcompat.widget.ThemedSpinnerAdapter$Helper: android.view.LayoutInflater mDropDownInflater>;
+
+        if $u0 == null goto label1;
+
+        return $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.ThemedSpinnerAdapter$Helper: android.view.LayoutInflater mInflater>;
+
+        return $u0;
+    }
+
+    public android.content.res.Resources$Theme getDropDownViewTheme()
+    {
+        androidx.appcompat.widget.ThemedSpinnerAdapter$Helper this;
+        android.view.LayoutInflater $u0;
+        android.content.Context $u-1;
+        android.content.res.Resources$Theme $u-1#5;
+
+        this := @this: androidx.appcompat.widget.ThemedSpinnerAdapter$Helper;
+
+        $u0 = this.<androidx.appcompat.widget.ThemedSpinnerAdapter$Helper: android.view.LayoutInflater mDropDownInflater>;
+
+        if $u0 != null goto label1;
+
+        return null;
+
+     label1:
+        $u-1 = virtualinvoke $u0.<android.view.LayoutInflater: android.content.Context getContext()>();
+
+        $u-1#5 = virtualinvoke $u-1.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        return $u-1#5;
+    }
+
+    public void setDropDownViewTheme(android.content.res.Resources$Theme)
+    {
+        androidx.appcompat.widget.ThemedSpinnerAdapter$Helper this;
+        android.content.res.Resources$Theme $u3, $u-1;
+        android.content.Context context;
+        android.view.LayoutInflater context#5;
+        androidx.appcompat.view.ContextThemeWrapper context#6;
+
+        this := @this: androidx.appcompat.widget.ThemedSpinnerAdapter$Helper;
+
+        $u3 := @parameter0: android.content.res.Resources$Theme;
+
+        if $u3 != null goto label1;
+
+        this.<androidx.appcompat.widget.ThemedSpinnerAdapter$Helper: android.view.LayoutInflater mDropDownInflater> = null;
+
+        return;
+
+     label1:
+        context = this.<androidx.appcompat.widget.ThemedSpinnerAdapter$Helper: android.content.Context mContext>;
+
+        $u-1 = virtualinvoke context.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        if $u3 != $u-1 goto label2;
+
+        context#5 = this.<androidx.appcompat.widget.ThemedSpinnerAdapter$Helper: android.view.LayoutInflater mInflater>;
+
+        this.<androidx.appcompat.widget.ThemedSpinnerAdapter$Helper: android.view.LayoutInflater mDropDownInflater> = context#5;
+
+        return;
+
+     label2:
+        context#6 = new androidx.appcompat.view.ContextThemeWrapper;
+
+        context = this.<androidx.appcompat.widget.ThemedSpinnerAdapter$Helper: android.content.Context mContext>;
+
+        specialinvoke context#6.<androidx.appcompat.view.ContextThemeWrapper: void <init>(android.content.Context,android.content.res.Resources$Theme)>(context, $u3);
+
+        context#5 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>(context#6);
+
+        this.<androidx.appcompat.widget.ThemedSpinnerAdapter$Helper: android.view.LayoutInflater mDropDownInflater> = context#5;
+
+        return;
+    }
+}

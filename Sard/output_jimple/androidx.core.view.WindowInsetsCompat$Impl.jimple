@@ -1,0 +1,275 @@
+class androidx.core.view.WindowInsetsCompat$Impl extends java.lang.Object
+{
+    final androidx.core.view.WindowInsetsCompat mHost;
+
+    void <init>(androidx.core.view.WindowInsetsCompat)
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+        androidx.core.view.WindowInsetsCompat $u1;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        $u1 := @parameter0: androidx.core.view.WindowInsetsCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.view.WindowInsetsCompat mHost> = $u1;
+
+        return;
+    }
+
+    androidx.core.view.WindowInsetsCompat consumeDisplayCutout()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+        androidx.core.view.WindowInsetsCompat ret0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        ret0 = this.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.view.WindowInsetsCompat mHost>;
+
+        return ret0;
+    }
+
+    androidx.core.view.WindowInsetsCompat consumeStableInsets()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+        androidx.core.view.WindowInsetsCompat ret0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        ret0 = this.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.view.WindowInsetsCompat mHost>;
+
+        return ret0;
+    }
+
+    androidx.core.view.WindowInsetsCompat consumeSystemWindowInsets()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+        androidx.core.view.WindowInsetsCompat ret0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        ret0 = this.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.view.WindowInsetsCompat mHost>;
+
+        return ret0;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this, impl#4;
+        java.lang.Object $u6;
+        boolean impl, $u-1;
+        androidx.core.graphics.Insets $u-1#13, $u-1#15;
+        androidx.core.view.DisplayCutoutCompat $u-1#25, $u-1#27;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        $u6 := @parameter0: java.lang.Object;
+
+        if this != $u6 goto label1;
+
+        return 1;
+
+     label1:
+        impl = $u6 instanceof androidx.core.view.WindowInsetsCompat$Impl;
+
+        if impl != 0 goto label2;
+
+        return 0;
+
+     label2:
+        impl#4 = (androidx.core.view.WindowInsetsCompat$Impl) $u6;
+
+        impl = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: boolean isRound()>();
+
+        $u-1 = virtualinvoke impl#4.<androidx.core.view.WindowInsetsCompat$Impl: boolean isRound()>();
+
+        if impl != $u-1 goto label3;
+
+        impl = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: boolean isConsumed()>();
+
+        $u-1 = virtualinvoke impl#4.<androidx.core.view.WindowInsetsCompat$Impl: boolean isConsumed()>();
+
+        if impl != $u-1 goto label3;
+
+        $u-1#13 = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.graphics.Insets getSystemWindowInsets()>();
+
+        $u-1#15 = virtualinvoke impl#4.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.graphics.Insets getSystemWindowInsets()>();
+
+        impl = staticinvoke <androidx.core.util.ObjectsCompat: boolean equals(java.lang.Object,java.lang.Object)>($u-1#13, $u-1#15);
+
+        if impl == 0 goto label3;
+
+        $u-1#13 = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.graphics.Insets getStableInsets()>();
+
+        $u-1#15 = virtualinvoke impl#4.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.graphics.Insets getStableInsets()>();
+
+        impl = staticinvoke <androidx.core.util.ObjectsCompat: boolean equals(java.lang.Object,java.lang.Object)>($u-1#13, $u-1#15);
+
+        if impl == 0 goto label3;
+
+        $u-1#25 = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.view.DisplayCutoutCompat getDisplayCutout()>();
+
+        $u-1#27 = virtualinvoke impl#4.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.view.DisplayCutoutCompat getDisplayCutout()>();
+
+        impl = staticinvoke <androidx.core.util.ObjectsCompat: boolean equals(java.lang.Object,java.lang.Object)>($u-1#25, $u-1#27);
+
+        if impl == 0 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    androidx.core.view.DisplayCutoutCompat getDisplayCutout()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        return null;
+    }
+
+    androidx.core.graphics.Insets getMandatorySystemGestureInsets()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+        androidx.core.graphics.Insets $u-1;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.graphics.Insets getSystemWindowInsets()>();
+
+        return $u-1;
+    }
+
+    androidx.core.graphics.Insets getStableInsets()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+        androidx.core.graphics.Insets ret0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        ret0 = <androidx.core.graphics.Insets: androidx.core.graphics.Insets NONE>;
+
+        return ret0;
+    }
+
+    androidx.core.graphics.Insets getSystemGestureInsets()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+        androidx.core.graphics.Insets $u-1;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.graphics.Insets getSystemWindowInsets()>();
+
+        return $u-1;
+    }
+
+    androidx.core.graphics.Insets getSystemWindowInsets()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+        androidx.core.graphics.Insets ret0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        ret0 = <androidx.core.graphics.Insets: androidx.core.graphics.Insets NONE>;
+
+        return ret0;
+    }
+
+    androidx.core.graphics.Insets getTappableElementInsets()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+        androidx.core.graphics.Insets $u-1;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.graphics.Insets getSystemWindowInsets()>();
+
+        return $u-1;
+    }
+
+    public int hashCode()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+        java.lang.Object[] $u0;
+        boolean $u-1;
+        java.lang.Boolean $u-1#5;
+        androidx.core.graphics.Insets $u-1#13;
+        androidx.core.view.DisplayCutoutCompat $u-1#19;
+        int $u-1#22;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        $u0 = newarray (java.lang.Object)[5];
+
+        $u-1 = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: boolean isRound()>();
+
+        $u-1#5 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($u-1);
+
+        $u0[0] = $u-1#5;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: boolean isConsumed()>();
+
+        $u-1#5 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($u-1);
+
+        $u0[1] = $u-1#5;
+
+        $u-1#13 = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.graphics.Insets getSystemWindowInsets()>();
+
+        $u0[2] = $u-1#13;
+
+        $u-1#13 = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.graphics.Insets getStableInsets()>();
+
+        $u0[3] = $u-1#13;
+
+        $u-1#19 = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: androidx.core.view.DisplayCutoutCompat getDisplayCutout()>();
+
+        $u0[4] = $u-1#19;
+
+        $u-1#22 = staticinvoke <androidx.core.util.ObjectsCompat: int hash(java.lang.Object[])>($u0);
+
+        return $u-1#22;
+    }
+
+    androidx.core.view.WindowInsetsCompat inset(int, int, int, int)
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+        int $u2, $u3, $u4, $u5;
+        androidx.core.view.WindowInsetsCompat ret0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        ret0 = <androidx.core.view.WindowInsetsCompat: androidx.core.view.WindowInsetsCompat CONSUMED>;
+
+        return ret0;
+    }
+
+    boolean isConsumed()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        return 0;
+    }
+
+    boolean isRound()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl this;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl;
+
+        return 0;
+    }
+}

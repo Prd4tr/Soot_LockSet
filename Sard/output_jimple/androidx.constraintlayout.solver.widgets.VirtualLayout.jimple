@@ -1,0 +1,648 @@
+public class androidx.constraintlayout.solver.widgets.VirtualLayout extends androidx.constraintlayout.solver.widgets.HelperWidget
+{
+    protected androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure;
+    private int mMeasuredHeight;
+    private int mMeasuredWidth;
+    androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measurer mMeasurer;
+    private boolean mNeedsCallFromSolver;
+    private int mPaddingBottom;
+    private int mPaddingEnd;
+    private int mPaddingLeft;
+    private int mPaddingRight;
+    private int mPaddingStart;
+    private int mPaddingTop;
+    private int mResolvedPaddingLeft;
+    private int mResolvedPaddingRight;
+
+    public void <init>()
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure $u0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.HelperWidget: void <init>()>();
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingTop> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingBottom> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingLeft> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingRight> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingStart> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingEnd> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mResolvedPaddingLeft> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mResolvedPaddingRight> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: boolean mNeedsCallFromSolver> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mMeasuredWidth> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mMeasuredHeight> = 0;
+
+        $u0 = new androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure;
+
+        specialinvoke $u0.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: void <init>()>();
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure> = $u0;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measurer mMeasurer> = null;
+
+        return;
+    }
+
+    public void applyRtl(boolean)
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        boolean $u2;
+        int $u0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingStart>;
+
+        if $u0 > 0 goto label1;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingEnd>;
+
+        if $u0 <= 0 goto label3;
+
+     label1:
+        if $u2 == 0 goto label2;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingEnd>;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mResolvedPaddingLeft> = $u0;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingStart>;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mResolvedPaddingRight> = $u0;
+
+        return;
+
+     label2:
+        $u0 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingStart>;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mResolvedPaddingLeft> = $u0;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingEnd>;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mResolvedPaddingRight> = $u0;
+
+     label3:
+        return;
+    }
+
+    public void captureWidgets()
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int i, widget;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] widget#3;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget widget#4;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        i = 0;
+
+     label1:
+        widget = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mWidgetsCount>;
+
+        if i >= widget goto label3;
+
+        widget#3 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        widget#4 = widget#3[i];
+
+        if widget#4 == null goto label2;
+
+        virtualinvoke widget#4.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setInVirtualLayout(boolean)>(1);
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    public int getMeasuredHeight()
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mMeasuredHeight>;
+
+        return ret0;
+    }
+
+    public int getMeasuredWidth()
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mMeasuredWidth>;
+
+        return ret0;
+    }
+
+    public int getPaddingBottom()
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingBottom>;
+
+        return ret0;
+    }
+
+    public int getPaddingLeft()
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mResolvedPaddingLeft>;
+
+        return ret0;
+    }
+
+    public int getPaddingRight()
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mResolvedPaddingRight>;
+
+        return ret0;
+    }
+
+    public int getPaddingTop()
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingTop>;
+
+        return ret0;
+    }
+
+    public void measure(int, int, int, int)
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int $u1, $u2, $u3, $u4;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: int;
+
+        $u4 := @parameter3: int;
+
+        return;
+    }
+
+    protected void measure(androidx.constraintlayout.solver.widgets.ConstraintWidget, androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour, int, androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour, int)
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u3, $u-1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour $u4, $u6;
+        int $u5, $u7;
+        androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measurer parent;
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer parent#6;
+        androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure parent#9;
+        boolean parent#20;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        $u3 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $u4 := @parameter1: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour;
+
+        $u5 := @parameter2: int;
+
+        $u6 := @parameter3: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour;
+
+        $u7 := @parameter4: int;
+
+     label1:
+        parent = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measurer mMeasurer>;
+
+        if parent != null goto label2;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.ConstraintWidget getParent()>();
+
+        if $u-1 == null goto label2;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.ConstraintWidget getParent()>();
+
+        parent#6 = (androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer) $u-1;
+
+        parent = virtualinvoke parent#6.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measurer getMeasurer()>();
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measurer mMeasurer> = parent;
+
+        goto label1;
+
+     label2:
+        parent#9 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        parent#9.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour horizontalBehavior> = $u4;
+
+        parent#9 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        parent#9.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour verticalBehavior> = $u6;
+
+        parent#9 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        parent#9.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int horizontalDimension> = $u5;
+
+        parent#9 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        parent#9.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int verticalDimension> = $u7;
+
+        parent = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measurer mMeasurer>;
+
+        parent#9 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        interfaceinvoke parent.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measurer: void measure(androidx.constraintlayout.solver.widgets.ConstraintWidget,androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure)>($u3, parent#9);
+
+        parent#9 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        $u5 = parent#9.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int measuredWidth>;
+
+        virtualinvoke $u3.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setWidth(int)>($u5);
+
+        parent#9 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        $u5 = parent#9.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int measuredHeight>;
+
+        virtualinvoke $u3.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setHeight(int)>($u5);
+
+        parent#9 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        parent#20 = parent#9.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: boolean measuredHasBaseline>;
+
+        virtualinvoke $u3.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setHasBaseline(boolean)>(parent#20);
+
+        parent#9 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        $u5 = parent#9.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int measuredBaseline>;
+
+        virtualinvoke $u3.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setBaselineDistance(int)>($u5);
+
+        return;
+    }
+
+    protected boolean measureChildren()
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measurer measurer;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $u1#4;
+        int i, widget;
+        boolean skip, widthBehavior;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] widget#10;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour $u-1, widthBehavior#14, $u-1#15, heightBehavior, $u7;
+        androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure $u7#23;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        measurer = null;
+
+        $u1 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.ConstraintWidget mParent>;
+
+        if $u1 == null goto label01;
+
+        $u1 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.ConstraintWidget mParent>;
+
+        $u1#4 = (androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer) $u1;
+
+        measurer = virtualinvoke $u1#4.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measurer getMeasurer()>();
+
+     label01:
+        if measurer != null goto label02;
+
+        return 0;
+
+     label02:
+        i = 0;
+
+     label03:
+        widget = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mWidgetsCount>;
+
+        skip = 1;
+
+        if i >= widget goto label12;
+
+        widget#10 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        $u1 = widget#10[i];
+
+        if $u1 != null goto label04;
+
+        goto label11;
+
+     label04:
+        widthBehavior = $u1 instanceof androidx.constraintlayout.solver.widgets.Guideline;
+
+        if widthBehavior == 0 goto label05;
+
+        goto label11;
+
+     label05:
+        $u-1 = virtualinvoke $u1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getDimensionBehaviour(int)>(0);
+
+        widthBehavior#14 = $u-1;
+
+        $u-1#15 = virtualinvoke $u1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getDimensionBehaviour(int)>(1);
+
+        heightBehavior = $u-1#15;
+
+        $u7 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $u-1 != $u7 goto label06;
+
+        widget = $u1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultWidth>;
+
+        if widget == 1 goto label06;
+
+        $u7 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $u-1#15 != $u7 goto label06;
+
+        widget = $u1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultHeight>;
+
+        if widget == 1 goto label06;
+
+        goto label07;
+
+     label06:
+        skip = 0;
+
+     label07:
+        if skip == 0 goto label08;
+
+        goto label11;
+
+     label08:
+        $u7 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $u-1 != $u7 goto label09;
+
+        widthBehavior#14 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+     label09:
+        $u-1 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $u-1#15 != $u-1 goto label10;
+
+        heightBehavior = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+     label10:
+        $u7#23 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        $u7#23.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour horizontalBehavior> = widthBehavior#14;
+
+        $u7#23 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        $u7#23.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour verticalBehavior> = heightBehavior;
+
+        $u7#23 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        widget = virtualinvoke $u1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        $u7#23.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int horizontalDimension> = widget;
+
+        $u7#23 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        widget = virtualinvoke $u1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        $u7#23.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int verticalDimension> = widget;
+
+        $u7#23 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        interfaceinvoke measurer.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measurer: void measure(androidx.constraintlayout.solver.widgets.ConstraintWidget,androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure)>($u1, $u7#23);
+
+        $u7#23 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        widget = $u7#23.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int measuredWidth>;
+
+        virtualinvoke $u1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setWidth(int)>(widget);
+
+        $u7#23 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        widget = $u7#23.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int measuredHeight>;
+
+        virtualinvoke $u1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setHeight(int)>(widget);
+
+        $u7#23 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure mMeasure>;
+
+        widget = $u7#23.<androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure: int measuredBaseline>;
+
+        virtualinvoke $u1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setBaselineDistance(int)>(widget);
+
+     label11:
+        i = i + 1;
+
+        goto label03;
+
+     label12:
+        return 1;
+    }
+
+    public boolean needSolverPass()
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        boolean ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.VirtualLayout: boolean mNeedsCallFromSolver>;
+
+        return ret0;
+    }
+
+    protected void needsCallbackFromSolver(boolean)
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        boolean $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        $u1 := @parameter0: boolean;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: boolean mNeedsCallFromSolver> = $u1;
+
+        return;
+    }
+
+    public void setMeasure(int, int)
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int $u1, $u2;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: int;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mMeasuredWidth> = $u1;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mMeasuredHeight> = $u2;
+
+        return;
+    }
+
+    public void setPadding(int)
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingLeft> = $u1;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingTop> = $u1;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingRight> = $u1;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingBottom> = $u1;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingStart> = $u1;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingEnd> = $u1;
+
+        return;
+    }
+
+    public void setPaddingBottom(int)
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingBottom> = $u1;
+
+        return;
+    }
+
+    public void setPaddingEnd(int)
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingEnd> = $u1;
+
+        return;
+    }
+
+    public void setPaddingLeft(int)
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingLeft> = $u1;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mResolvedPaddingLeft> = $u1;
+
+        return;
+    }
+
+    public void setPaddingRight(int)
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingRight> = $u1;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mResolvedPaddingRight> = $u1;
+
+        return;
+    }
+
+    public void setPaddingStart(int)
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingStart> = $u1;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mResolvedPaddingLeft> = $u1;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mResolvedPaddingRight> = $u1;
+
+        return;
+    }
+
+    public void setPaddingTop(int)
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.VirtualLayout: int mPaddingTop> = $u1;
+
+        return;
+    }
+
+    public void updateConstraints(androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer)
+    {
+        androidx.constraintlayout.solver.widgets.VirtualLayout this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.VirtualLayout;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer;
+
+        virtualinvoke this.<androidx.constraintlayout.solver.widgets.VirtualLayout: void captureWidgets()>();
+
+        return;
+    }
+}

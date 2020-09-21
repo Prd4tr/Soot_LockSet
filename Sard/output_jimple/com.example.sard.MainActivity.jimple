@@ -1,0 +1,79 @@
+public class com.example.sard.MainActivity extends androidx.appcompat.app.AppCompatActivity
+{
+    java.lang.Runnable a;
+    java.lang.Runnable b;
+    java.lang.Runnable c;
+    java.lang.Integer p;
+
+    public void <init>()
+    {
+        com.example.sard.MainActivity this;
+        java.lang.Integer $u0;
+        com.example.sard.MainActivity$1 $u0#2;
+        com.example.sard.MainActivity$2 $u0#3;
+        com.example.sard.MainActivity$3 $u0#4;
+
+        this := @this: com.example.sard.MainActivity;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatActivity: void <init>()>();
+
+        $u0 = new java.lang.Integer;
+
+        specialinvoke $u0.<java.lang.Integer: void <init>(int)>(1);
+
+        this.<com.example.sard.MainActivity: java.lang.Integer p> = $u0;
+
+        $u0#2 = new com.example.sard.MainActivity$1;
+
+        specialinvoke $u0#2.<com.example.sard.MainActivity$1: void <init>(com.example.sard.MainActivity)>(this);
+
+        this.<com.example.sard.MainActivity: java.lang.Runnable a> = $u0#2;
+
+        $u0#3 = new com.example.sard.MainActivity$2;
+
+        specialinvoke $u0#3.<com.example.sard.MainActivity$2: void <init>(com.example.sard.MainActivity)>(this);
+
+        this.<com.example.sard.MainActivity: java.lang.Runnable c> = $u0#3;
+
+        $u0#4 = new com.example.sard.MainActivity$3;
+
+        specialinvoke $u0#4.<com.example.sard.MainActivity$3: void <init>(com.example.sard.MainActivity)>(this);
+
+        this.<com.example.sard.MainActivity: java.lang.Runnable b> = $u0#4;
+
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.example.sard.MainActivity this;
+        android.os.Bundle $u3;
+        android.os.Looper $u-1;
+        android.os.Handler handler;
+        java.lang.Runnable $u1;
+
+        this := @this: com.example.sard.MainActivity;
+
+        $u3 := @parameter0: android.os.Bundle;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatActivity: void onCreate(android.os.Bundle)>($u3);
+
+        virtualinvoke this.<com.example.sard.MainActivity: void setContentView(int)>(2131361820);
+
+        handler = new android.os.Handler;
+
+        $u-1 = virtualinvoke this.<com.example.sard.MainActivity: android.os.Looper getMainLooper()>();
+
+        specialinvoke handler.<android.os.Handler: void <init>(android.os.Looper)>($u-1);
+
+        $u1 = this.<com.example.sard.MainActivity: java.lang.Runnable a>;
+
+        virtualinvoke handler.<android.os.Handler: boolean post(java.lang.Runnable)>($u1);
+
+        $u1 = this.<com.example.sard.MainActivity: java.lang.Runnable b>;
+
+        virtualinvoke handler.<android.os.Handler: boolean post(java.lang.Runnable)>($u1);
+
+        return;
+    }
+}

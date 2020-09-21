@@ -1,0 +1,107 @@
+class androidx.fragment.app.FragmentTabHost$SavedState extends android.view.View$BaseSavedState
+{
+    public static final android.os.Parcelable$Creator CREATOR;
+    java.lang.String curTab;
+
+    static void <clinit>()
+    {
+        androidx.fragment.app.FragmentTabHost$SavedState$1 $u0;
+
+        $u0 = new androidx.fragment.app.FragmentTabHost$SavedState$1;
+
+        specialinvoke $u0.<androidx.fragment.app.FragmentTabHost$SavedState$1: void <init>()>();
+
+        <androidx.fragment.app.FragmentTabHost$SavedState: android.os.Parcelable$Creator CREATOR> = $u0;
+
+        return;
+    }
+
+    void <init>(android.os.Parcel)
+    {
+        androidx.fragment.app.FragmentTabHost$SavedState this;
+        android.os.Parcel $u2;
+        java.lang.String $u-1;
+
+        this := @this: androidx.fragment.app.FragmentTabHost$SavedState;
+
+        $u2 := @parameter0: android.os.Parcel;
+
+        specialinvoke this.<android.view.View$BaseSavedState: void <init>(android.os.Parcel)>($u2);
+
+        $u-1 = virtualinvoke $u2.<android.os.Parcel: java.lang.String readString()>();
+
+        this.<androidx.fragment.app.FragmentTabHost$SavedState: java.lang.String curTab> = $u-1;
+
+        return;
+    }
+
+    void <init>(android.os.Parcelable)
+    {
+        androidx.fragment.app.FragmentTabHost$SavedState this;
+        android.os.Parcelable $u1;
+
+        this := @this: androidx.fragment.app.FragmentTabHost$SavedState;
+
+        $u1 := @parameter0: android.os.Parcelable;
+
+        specialinvoke this.<android.view.View$BaseSavedState: void <init>(android.os.Parcelable)>($u1);
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.fragment.app.FragmentTabHost$SavedState this;
+        java.lang.StringBuilder $u0;
+        int $u-1;
+        java.lang.String $u-1#5;
+
+        this := @this: androidx.fragment.app.FragmentTabHost$SavedState;
+
+        $u0 = new java.lang.StringBuilder;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("FragmentTabHost.SavedState{");
+
+        $u-1 = staticinvoke <java.lang.System: int identityHashCode(java.lang.Object)>(this);
+
+        $u-1#5 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($u-1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#5);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" curTab=");
+
+        $u-1#5 = this.<androidx.fragment.app.FragmentTabHost$SavedState: java.lang.String curTab>;
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#5);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("}");
+
+        $u-1#5 = virtualinvoke $u0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1#5;
+    }
+
+    public void writeToParcel(android.os.Parcel, int)
+    {
+        androidx.fragment.app.FragmentTabHost$SavedState this;
+        android.os.Parcel $u2;
+        int $u3;
+        java.lang.String $u0;
+
+        this := @this: androidx.fragment.app.FragmentTabHost$SavedState;
+
+        $u2 := @parameter0: android.os.Parcel;
+
+        $u3 := @parameter1: int;
+
+        specialinvoke this.<android.view.View$BaseSavedState: void writeToParcel(android.os.Parcel,int)>($u2, $u3);
+
+        $u0 = this.<androidx.fragment.app.FragmentTabHost$SavedState: java.lang.String curTab>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeString(java.lang.String)>($u0);
+
+        return;
+    }
+}

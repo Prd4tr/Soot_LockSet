@@ -1,0 +1,205 @@
+public final class androidx.core.app.RemoteInput$Builder extends java.lang.Object
+{
+    private boolean mAllowFreeFormTextInput;
+    private final java.util.Set mAllowedDataTypes;
+    private java.lang.CharSequence[] mChoices;
+    private int mEditChoicesBeforeSending;
+    private final android.os.Bundle mExtras;
+    private java.lang.CharSequence mLabel;
+    private final java.lang.String mResultKey;
+
+    public void <init>(java.lang.String)
+    {
+        androidx.core.app.RemoteInput$Builder this;
+        java.lang.String $u3;
+        java.util.HashSet $u0;
+        android.os.Bundle $u0#2;
+        java.lang.IllegalArgumentException $u0#5;
+
+        this := @this: androidx.core.app.RemoteInput$Builder;
+
+        $u3 := @parameter0: java.lang.String;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new java.util.HashSet;
+
+        specialinvoke $u0.<java.util.HashSet: void <init>()>();
+
+        this.<androidx.core.app.RemoteInput$Builder: java.util.Set mAllowedDataTypes> = $u0;
+
+        $u0#2 = new android.os.Bundle;
+
+        specialinvoke $u0#2.<android.os.Bundle: void <init>()>();
+
+        this.<androidx.core.app.RemoteInput$Builder: android.os.Bundle mExtras> = $u0#2;
+
+        this.<androidx.core.app.RemoteInput$Builder: boolean mAllowFreeFormTextInput> = 1;
+
+        this.<androidx.core.app.RemoteInput$Builder: int mEditChoicesBeforeSending> = 0;
+
+        if $u3 == null goto label1;
+
+        this.<androidx.core.app.RemoteInput$Builder: java.lang.String mResultKey> = $u3;
+
+        return;
+
+     label1:
+        $u0#5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Result key can\'t be null");
+
+        throw $u0#5;
+    }
+
+    public androidx.core.app.RemoteInput$Builder addExtras(android.os.Bundle)
+    {
+        androidx.core.app.RemoteInput$Builder this;
+        android.os.Bundle $u2, $u0;
+
+        this := @this: androidx.core.app.RemoteInput$Builder;
+
+        $u2 := @parameter0: android.os.Bundle;
+
+        if $u2 == null goto label1;
+
+        $u0 = this.<androidx.core.app.RemoteInput$Builder: android.os.Bundle mExtras>;
+
+        virtualinvoke $u0.<android.os.Bundle: void putAll(android.os.Bundle)>($u2);
+
+     label1:
+        return this;
+    }
+
+    public androidx.core.app.RemoteInput build()
+    {
+        androidx.core.app.RemoteInput$Builder this;
+        java.lang.String $u1;
+        java.lang.CharSequence $u2;
+        java.lang.CharSequence[] $u3;
+        boolean $u4;
+        int $u5;
+        android.os.Bundle $u6;
+        java.util.Set $u7;
+        androidx.core.app.RemoteInput $u8;
+
+        this := @this: androidx.core.app.RemoteInput$Builder;
+
+        $u8 = new androidx.core.app.RemoteInput;
+
+        $u1 = this.<androidx.core.app.RemoteInput$Builder: java.lang.String mResultKey>;
+
+        $u2 = this.<androidx.core.app.RemoteInput$Builder: java.lang.CharSequence mLabel>;
+
+        $u3 = this.<androidx.core.app.RemoteInput$Builder: java.lang.CharSequence[] mChoices>;
+
+        $u4 = this.<androidx.core.app.RemoteInput$Builder: boolean mAllowFreeFormTextInput>;
+
+        $u5 = this.<androidx.core.app.RemoteInput$Builder: int mEditChoicesBeforeSending>;
+
+        $u6 = this.<androidx.core.app.RemoteInput$Builder: android.os.Bundle mExtras>;
+
+        $u7 = this.<androidx.core.app.RemoteInput$Builder: java.util.Set mAllowedDataTypes>;
+
+        specialinvoke $u8.<androidx.core.app.RemoteInput: void <init>(java.lang.String,java.lang.CharSequence,java.lang.CharSequence[],boolean,int,android.os.Bundle,java.util.Set)>($u1, $u2, $u3, $u4, $u5, $u6, $u7);
+
+        return $u8;
+    }
+
+    public android.os.Bundle getExtras()
+    {
+        androidx.core.app.RemoteInput$Builder this;
+        android.os.Bundle ret0;
+
+        this := @this: androidx.core.app.RemoteInput$Builder;
+
+        ret0 = this.<androidx.core.app.RemoteInput$Builder: android.os.Bundle mExtras>;
+
+        return ret0;
+    }
+
+    public androidx.core.app.RemoteInput$Builder setAllowDataType(java.lang.String, boolean)
+    {
+        androidx.core.app.RemoteInput$Builder this;
+        java.lang.String $u2;
+        boolean $u3;
+        java.util.Set $u0;
+
+        this := @this: androidx.core.app.RemoteInput$Builder;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u3 := @parameter1: boolean;
+
+        if $u3 == 0 goto label1;
+
+        $u0 = this.<androidx.core.app.RemoteInput$Builder: java.util.Set mAllowedDataTypes>;
+
+        interfaceinvoke $u0.<java.util.Set: boolean add(java.lang.Object)>($u2);
+
+        return this;
+
+     label1:
+        $u0 = this.<androidx.core.app.RemoteInput$Builder: java.util.Set mAllowedDataTypes>;
+
+        interfaceinvoke $u0.<java.util.Set: boolean remove(java.lang.Object)>($u2);
+
+        return this;
+    }
+
+    public androidx.core.app.RemoteInput$Builder setAllowFreeFormInput(boolean)
+    {
+        androidx.core.app.RemoteInput$Builder this;
+        boolean $u1;
+
+        this := @this: androidx.core.app.RemoteInput$Builder;
+
+        $u1 := @parameter0: boolean;
+
+        this.<androidx.core.app.RemoteInput$Builder: boolean mAllowFreeFormTextInput> = $u1;
+
+        return this;
+    }
+
+    public androidx.core.app.RemoteInput$Builder setChoices(java.lang.CharSequence[])
+    {
+        androidx.core.app.RemoteInput$Builder this;
+        java.lang.CharSequence[] $u1;
+
+        this := @this: androidx.core.app.RemoteInput$Builder;
+
+        $u1 := @parameter0: java.lang.CharSequence[];
+
+        this.<androidx.core.app.RemoteInput$Builder: java.lang.CharSequence[] mChoices> = $u1;
+
+        return this;
+    }
+
+    public androidx.core.app.RemoteInput$Builder setEditChoicesBeforeSending(int)
+    {
+        androidx.core.app.RemoteInput$Builder this;
+        int $u1;
+
+        this := @this: androidx.core.app.RemoteInput$Builder;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.core.app.RemoteInput$Builder: int mEditChoicesBeforeSending> = $u1;
+
+        return this;
+    }
+
+    public androidx.core.app.RemoteInput$Builder setLabel(java.lang.CharSequence)
+    {
+        androidx.core.app.RemoteInput$Builder this;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.core.app.RemoteInput$Builder;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        this.<androidx.core.app.RemoteInput$Builder: java.lang.CharSequence mLabel> = $u1;
+
+        return this;
+    }
+}

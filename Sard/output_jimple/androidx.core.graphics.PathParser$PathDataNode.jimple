@@ -1,0 +1,1551 @@
+public class androidx.core.graphics.PathParser$PathDataNode extends java.lang.Object
+{
+    public float[] mParams;
+    public char mType;
+
+    void <init>(char, float[])
+    {
+        androidx.core.graphics.PathParser$PathDataNode this;
+        char $u1;
+        float[] $u2;
+
+        this := @this: androidx.core.graphics.PathParser$PathDataNode;
+
+        $u1 := @parameter0: char;
+
+        $u2 := @parameter1: float[];
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.graphics.PathParser$PathDataNode: char mType> = $u1;
+
+        this.<androidx.core.graphics.PathParser$PathDataNode: float[] mParams> = $u2;
+
+        return;
+    }
+
+    void <init>(androidx.core.graphics.PathParser$PathDataNode)
+    {
+        androidx.core.graphics.PathParser$PathDataNode this, $u4;
+        int $u1;
+        float[] $u-1;
+        char $u0;
+
+        this := @this: androidx.core.graphics.PathParser$PathDataNode;
+
+        $u4 := @parameter0: androidx.core.graphics.PathParser$PathDataNode;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = $u4.<androidx.core.graphics.PathParser$PathDataNode: char mType>;
+
+        this.<androidx.core.graphics.PathParser$PathDataNode: char mType> = $u0;
+
+        $u-1 = $u4.<androidx.core.graphics.PathParser$PathDataNode: float[] mParams>;
+
+        $u1 = lengthof $u-1;
+
+        $u-1 = staticinvoke <androidx.core.graphics.PathParser: float[] copyOfRange(float[],int,int)>($u-1, 0, $u1);
+
+        this.<androidx.core.graphics.PathParser$PathDataNode: float[] mParams> = $u-1;
+
+        return;
+    }
+
+    private static void addCommand(android.graphics.Path, float[], char, char, float[])
+    {
+        android.graphics.Path $u25;
+        float[] $u26, $u29;
+        char $u28, $u27, currentX2;
+        float currentX, currentY, ctrlPointX, ctrlPointY, currentSegmentStartX, currentSegmentStartY, incr#51, currentX#52, currentSegmentStartX#75, reflectiveCtrlPointY1;
+        byte incr1, incr#270;
+        int k, incr, k#284;
+        boolean reflectiveCtrlPointY1#271, $u24;
+
+        $u25 := @parameter0: android.graphics.Path;
+
+        $u26 := @parameter1: float[];
+
+        $u27 := @parameter2: char;
+
+        $u28 := @parameter3: char;
+
+        $u29 := @parameter4: float[];
+
+        currentX2 = $u28;
+
+        currentX = $u26[0];
+
+        currentY = $u26[1];
+
+        ctrlPointX = $u26[2];
+
+        ctrlPointY = $u26[3];
+
+        currentSegmentStartX = $u26[4];
+
+        currentSegmentStartY = $u26[5];
+
+        lookupswitch($u28)
+        {
+            case 65: goto label07;
+            case 67: goto label06;
+            case 72: goto label05;
+            case 76: goto label04;
+            case 77: goto label04;
+            case 81: goto label03;
+            case 83: goto label03;
+            case 84: goto label04;
+            case 86: goto label05;
+            case 90: goto label02;
+            case 97: goto label07;
+            case 99: goto label06;
+            case 104: goto label05;
+            case 108: goto label04;
+            case 109: goto label04;
+            case 113: goto label03;
+            case 115: goto label03;
+            case 116: goto label04;
+            case 118: goto label05;
+            case 122: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        incr1 = 2;
+
+        goto label08;
+
+     label02:
+        virtualinvoke $u25.<android.graphics.Path: void close()>();
+
+        currentX = currentSegmentStartX;
+
+        currentY = currentSegmentStartY;
+
+        ctrlPointX = currentSegmentStartX;
+
+        ctrlPointY = currentSegmentStartY;
+
+        virtualinvoke $u25.<android.graphics.Path: void moveTo(float,float)>(currentSegmentStartX, currentSegmentStartY);
+
+        incr1 = 2;
+
+        goto label08;
+
+     label03:
+        incr1 = 4;
+
+        goto label08;
+
+     label04:
+        incr1 = 2;
+
+        goto label08;
+
+     label05:
+        incr1 = 1;
+
+        goto label08;
+
+     label06:
+        incr1 = 6;
+
+        goto label08;
+
+     label07:
+        incr1 = 7;
+
+     label08:
+        k = 0;
+
+     label09:
+        incr = lengthof $u29;
+
+        if k >= incr goto label49;
+
+        if currentX2 == 65 goto label43;
+
+        if currentX2 == 67 goto label42;
+
+        if currentX2 == 72 goto label41;
+
+        if currentX2 == 81 goto label40;
+
+        if currentX2 == 86 goto label39;
+
+        if currentX2 == 97 goto label34;
+
+        if currentX2 == 99 goto label33;
+
+        if currentX2 == 104 goto label32;
+
+        if currentX2 == 113 goto label31;
+
+        if currentX2 == 118 goto label30;
+
+        if currentX2 == 76 goto label29;
+
+        if currentX2 == 77 goto label27;
+
+        if currentX2 == 83 goto label23;
+
+        if currentX2 == 84 goto label20;
+
+        if currentX2 == 108 goto label19;
+
+        if currentX2 == 109 goto label17;
+
+        if currentX2 == 115 goto label13;
+
+        if currentX2 == 116 goto label10;
+
+        incr = k;
+
+        goto label48;
+
+     label10:
+        incr#51 = 0.0F;
+
+        currentX#52 = 0.0F;
+
+        if $u27 == 113 goto label11;
+
+        if $u27 == 116 goto label11;
+
+        if $u27 == 81 goto label11;
+
+        if $u27 != 84 goto label12;
+
+     label11:
+        incr#51 = currentX - ctrlPointX;
+
+        currentX#52 = currentY - ctrlPointY;
+
+     label12:
+        ctrlPointX = $u29[k];
+
+        incr = k + 1;
+
+        ctrlPointY = $u29[incr];
+
+        virtualinvoke $u25.<android.graphics.Path: void rQuadTo(float,float,float,float)>(incr#51, currentX#52, ctrlPointX, ctrlPointY);
+
+        ctrlPointX = currentX + incr#51;
+
+        ctrlPointY = currentY + currentX#52;
+
+        currentX#52 = $u29[k];
+
+        currentX = currentX + currentX#52;
+
+        incr = k + 1;
+
+        currentX#52 = $u29[incr];
+
+        currentY = currentY + currentX#52;
+
+        incr = k;
+
+        goto label48;
+
+     label13:
+        if $u27 == 99 goto label15;
+
+        if $u27 == 115 goto label15;
+
+        if $u27 == 67 goto label15;
+
+        if $u27 != 83 goto label14;
+
+        goto label15;
+
+     label14:
+        ctrlPointX = 0.0F;
+
+        ctrlPointY = 0.0F;
+
+        goto label16;
+
+     label15:
+        ctrlPointX = currentX - ctrlPointX;
+
+        ctrlPointY = currentY - ctrlPointY;
+
+     label16:
+        currentX#52 = $u29[k];
+
+        incr = k + 1;
+
+        incr#51 = $u29[incr];
+
+        incr = k + 2;
+
+        currentSegmentStartX#75 = $u29[incr];
+
+        incr = k + 3;
+
+        reflectiveCtrlPointY1 = $u29[incr];
+
+        virtualinvoke $u25.<android.graphics.Path: void rCubicTo(float,float,float,float,float,float)>(ctrlPointX, ctrlPointY, currentX#52, incr#51, currentSegmentStartX#75, reflectiveCtrlPointY1);
+
+        ctrlPointX = $u29[k];
+
+        ctrlPointX = ctrlPointX + currentX;
+
+        incr = k + 1;
+
+        ctrlPointY = $u29[incr];
+
+        incr = k + 2;
+
+        currentX#52 = $u29[incr];
+
+        currentX = currentX + currentX#52;
+
+        incr = k + 3;
+
+        currentX#52 = $u29[incr];
+
+        ctrlPointY = currentY + ctrlPointY;
+
+        incr = k;
+
+        currentY = currentX#52 + currentY;
+
+        goto label48;
+
+     label17:
+        currentX#52 = $u29[k];
+
+        currentX = currentX + currentX#52;
+
+        incr = k + 1;
+
+        currentX#52 = $u29[incr];
+
+        currentY = currentY + currentX#52;
+
+        if k <= 0 goto label18;
+
+        currentX#52 = $u29[k];
+
+        incr = k + 1;
+
+        incr#51 = $u29[incr];
+
+        virtualinvoke $u25.<android.graphics.Path: void rLineTo(float,float)>(currentX#52, incr#51);
+
+        incr = k;
+
+        goto label48;
+
+     label18:
+        currentSegmentStartX = $u29[k];
+
+        incr = k + 1;
+
+        currentSegmentStartY = $u29[incr];
+
+        virtualinvoke $u25.<android.graphics.Path: void rMoveTo(float,float)>(currentSegmentStartX, currentSegmentStartY);
+
+        currentSegmentStartX = currentX;
+
+        currentSegmentStartY = currentY;
+
+        incr = k;
+
+        goto label48;
+
+     label19:
+        currentX#52 = $u29[k];
+
+        incr = k + 1;
+
+        incr#51 = $u29[incr];
+
+        virtualinvoke $u25.<android.graphics.Path: void rLineTo(float,float)>(currentX#52, incr#51);
+
+        currentX#52 = $u29[k];
+
+        currentX = currentX + currentX#52;
+
+        incr = k + 1;
+
+        currentX#52 = $u29[incr];
+
+        currentY = currentY + currentX#52;
+
+        incr = k;
+
+        goto label48;
+
+     label20:
+        incr#51 = currentY;
+
+        currentX#52 = currentX;
+
+        if $u27 == 113 goto label21;
+
+        if $u27 == 116 goto label21;
+
+        if $u27 == 81 goto label21;
+
+        if $u27 != 84 goto label22;
+
+     label21:
+        currentX = currentX * 2.0F;
+
+        currentX#52 = currentX - ctrlPointX;
+
+        currentX = incr#51 * 2.0F;
+
+        currentY = currentX - ctrlPointY;
+
+     label22:
+        currentX = $u29[k];
+
+        incr = k + 1;
+
+        ctrlPointX = $u29[incr];
+
+        virtualinvoke $u25.<android.graphics.Path: void quadTo(float,float,float,float)>(currentX#52, currentY, currentX, ctrlPointX);
+
+        currentX = $u29[k];
+
+        incr = k + 1;
+
+        ctrlPointX = currentX#52;
+
+        ctrlPointY = currentY;
+
+        currentY = $u29[incr];
+
+        incr = k;
+
+        goto label48;
+
+     label23:
+        currentX#52 = currentY;
+
+        if $u27 == 99 goto label25;
+
+        if $u27 == 115 goto label25;
+
+        if $u27 == 67 goto label25;
+
+        if $u27 != 83 goto label24;
+
+        goto label25;
+
+     label24:
+        goto label26;
+
+     label25:
+        currentX = currentX * 2.0F;
+
+        currentY = currentX#52 * 2.0F;
+
+        currentX = currentX - ctrlPointX;
+
+        currentY = currentY - ctrlPointY;
+
+     label26:
+        ctrlPointX = $u29[k];
+
+        incr = k + 1;
+
+        ctrlPointY = $u29[incr];
+
+        incr = k + 2;
+
+        currentX#52 = $u29[incr];
+
+        incr = k + 3;
+
+        incr#51 = $u29[incr];
+
+        virtualinvoke $u25.<android.graphics.Path: void cubicTo(float,float,float,float,float,float)>(currentX, currentY, ctrlPointX, ctrlPointY, currentX#52, incr#51);
+
+        ctrlPointX = $u29[k];
+
+        incr = k + 1;
+
+        ctrlPointY = $u29[incr];
+
+        incr = k + 2;
+
+        currentX = $u29[incr];
+
+        incr = k + 3;
+
+        currentY = $u29[incr];
+
+        incr = k;
+
+        goto label48;
+
+     label27:
+        currentX#52 = $u29[k];
+
+        incr = k + 1;
+
+        incr#51 = $u29[incr];
+
+        if k <= 0 goto label28;
+
+        currentX = $u29[k];
+
+        incr = k + 1;
+
+        currentY = $u29[incr];
+
+        virtualinvoke $u25.<android.graphics.Path: void lineTo(float,float)>(currentX, currentY);
+
+        currentX = currentX#52;
+
+        currentY = incr#51;
+
+        incr = k;
+
+        goto label48;
+
+     label28:
+        currentSegmentStartX = $u29[k];
+
+        incr = k + 1;
+
+        currentSegmentStartY = $u29[incr];
+
+        virtualinvoke $u25.<android.graphics.Path: void moveTo(float,float)>(currentSegmentStartX, currentSegmentStartY);
+
+        currentX = currentX#52;
+
+        currentY = incr#51;
+
+        currentSegmentStartX = currentX#52;
+
+        currentSegmentStartY = incr#51;
+
+        incr = k;
+
+        goto label48;
+
+     label29:
+        currentX = $u29[k];
+
+        incr = k + 1;
+
+        currentY = $u29[incr];
+
+        virtualinvoke $u25.<android.graphics.Path: void lineTo(float,float)>(currentX, currentY);
+
+        currentX = $u29[k];
+
+        incr = k + 1;
+
+        currentY = $u29[incr];
+
+        incr = k;
+
+        goto label48;
+
+     label30:
+        currentX#52 = $u29[k];
+
+        virtualinvoke $u25.<android.graphics.Path: void rLineTo(float,float)>(0.0F, currentX#52);
+
+        currentX#52 = $u29[k];
+
+        currentY = currentY + currentX#52;
+
+        incr = k;
+
+        goto label48;
+
+     label31:
+        ctrlPointX = $u29[k];
+
+        incr = k + 1;
+
+        ctrlPointY = $u29[incr];
+
+        incr = k + 2;
+
+        currentX#52 = $u29[incr];
+
+        incr = k + 3;
+
+        incr#51 = $u29[incr];
+
+        virtualinvoke $u25.<android.graphics.Path: void rQuadTo(float,float,float,float)>(ctrlPointX, ctrlPointY, currentX#52, incr#51);
+
+        ctrlPointX = $u29[k];
+
+        ctrlPointX = ctrlPointX + currentX;
+
+        incr = k + 1;
+
+        ctrlPointY = $u29[incr];
+
+        incr = k + 2;
+
+        currentX#52 = $u29[incr];
+
+        currentX = currentX + currentX#52;
+
+        incr = k + 3;
+
+        currentX#52 = $u29[incr];
+
+        ctrlPointY = currentY + ctrlPointY;
+
+        incr = k;
+
+        currentY = currentX#52 + currentY;
+
+        goto label48;
+
+     label32:
+        currentX#52 = $u29[k];
+
+        virtualinvoke $u25.<android.graphics.Path: void rLineTo(float,float)>(currentX#52, 0.0F);
+
+        currentX#52 = $u29[k];
+
+        currentX = currentX + currentX#52;
+
+        incr = k;
+
+        goto label48;
+
+     label33:
+        ctrlPointX = $u29[k];
+
+        incr = k + 1;
+
+        ctrlPointY = $u29[incr];
+
+        incr = k + 2;
+
+        currentX#52 = $u29[incr];
+
+        incr = k + 3;
+
+        incr#51 = $u29[incr];
+
+        incr = k + 4;
+
+        currentSegmentStartX#75 = $u29[incr];
+
+        incr = k + 5;
+
+        reflectiveCtrlPointY1 = $u29[incr];
+
+        virtualinvoke $u25.<android.graphics.Path: void rCubicTo(float,float,float,float,float,float)>(ctrlPointX, ctrlPointY, currentX#52, incr#51, currentSegmentStartX#75, reflectiveCtrlPointY1);
+
+        incr = k + 2;
+
+        ctrlPointX = $u29[incr];
+
+        ctrlPointX = ctrlPointX + currentX;
+
+        incr = k + 3;
+
+        ctrlPointY = $u29[incr];
+
+        incr = k + 4;
+
+        currentX#52 = $u29[incr];
+
+        currentX = currentX + currentX#52;
+
+        incr = k + 5;
+
+        currentX#52 = $u29[incr];
+
+        ctrlPointY = currentY + ctrlPointY;
+
+        incr = k;
+
+        currentY = currentX#52 + currentY;
+
+        goto label48;
+
+     label34:
+        ctrlPointX = currentY;
+
+        incr = k + 5;
+
+        ctrlPointY = $u29[incr];
+
+        ctrlPointY = ctrlPointY + currentX;
+
+        incr = k + 6;
+
+        currentX#52 = $u29[incr];
+
+        currentY = currentX#52 + currentY;
+
+        currentX#52 = $u29[k];
+
+        incr = k + 1;
+
+        incr#51 = $u29[incr];
+
+        incr = k + 2;
+
+        currentSegmentStartX#75 = $u29[incr];
+
+        incr = k + 3;
+
+        reflectiveCtrlPointY1 = $u29[incr];
+
+        incr#270 = reflectiveCtrlPointY1 cmpl 0.0F;
+
+        if incr#270 == 0 goto label35;
+
+        reflectiveCtrlPointY1#271 = 1;
+
+        goto label36;
+
+     label35:
+        reflectiveCtrlPointY1#271 = 0;
+
+     label36:
+        incr = k + 4;
+
+        reflectiveCtrlPointY1 = $u29[incr];
+
+        incr#270 = reflectiveCtrlPointY1 cmpl 0.0F;
+
+        if incr#270 == 0 goto label37;
+
+        $u24 = 1;
+
+        goto label38;
+
+     label37:
+        $u24 = 0;
+
+     label38:
+        incr = k;
+
+        staticinvoke <androidx.core.graphics.PathParser$PathDataNode: void drawArc(android.graphics.Path,float,float,float,float,float,float,float,boolean,boolean)>($u25, currentX, ctrlPointX, ctrlPointY, currentY, currentX#52, incr#51, currentSegmentStartX#75, reflectiveCtrlPointY1#271, $u24);
+
+        k#284 = k + 5;
+
+        currentY = $u29[k#284];
+
+        currentX = currentX + currentY;
+
+        k = k + 6;
+
+        currentY = $u29[k];
+
+        currentY = ctrlPointX + currentY;
+
+        ctrlPointX = currentX;
+
+        ctrlPointY = currentY;
+
+        goto label48;
+
+     label39:
+        incr = k;
+
+        currentY = $u29[k];
+
+        virtualinvoke $u25.<android.graphics.Path: void lineTo(float,float)>(currentX, currentY);
+
+        currentY = $u29[k];
+
+        goto label48;
+
+     label40:
+        incr = k;
+
+        currentX = $u29[k];
+
+        k#284 = k + 1;
+
+        currentY = $u29[k#284];
+
+        k#284 = k + 2;
+
+        ctrlPointX = $u29[k#284];
+
+        k#284 = k + 3;
+
+        ctrlPointY = $u29[k#284];
+
+        virtualinvoke $u25.<android.graphics.Path: void quadTo(float,float,float,float)>(currentX, currentY, ctrlPointX, ctrlPointY);
+
+        ctrlPointX = $u29[k];
+
+        k#284 = k + 1;
+
+        ctrlPointY = $u29[k#284];
+
+        k#284 = k + 2;
+
+        k = k + 3;
+
+        currentX = $u29[k#284];
+
+        currentY = $u29[k];
+
+        goto label48;
+
+     label41:
+        incr = k;
+
+        currentX = $u29[k];
+
+        virtualinvoke $u25.<android.graphics.Path: void lineTo(float,float)>(currentX, currentY);
+
+        currentX = $u29[k];
+
+        goto label48;
+
+     label42:
+        incr = k;
+
+        currentX = $u29[k];
+
+        k#284 = k + 1;
+
+        currentY = $u29[k#284];
+
+        k#284 = k + 2;
+
+        ctrlPointX = $u29[k#284];
+
+        k#284 = k + 3;
+
+        ctrlPointY = $u29[k#284];
+
+        k#284 = k + 4;
+
+        currentX#52 = $u29[k#284];
+
+        k#284 = k + 5;
+
+        incr#51 = $u29[k#284];
+
+        virtualinvoke $u25.<android.graphics.Path: void cubicTo(float,float,float,float,float,float)>(currentX, currentY, ctrlPointX, ctrlPointY, currentX#52, incr#51);
+
+        k#284 = k + 4;
+
+        currentX = $u29[k#284];
+
+        k#284 = k + 5;
+
+        currentY = $u29[k#284];
+
+        k#284 = k + 2;
+
+        k = k + 3;
+
+        ctrlPointX = $u29[k#284];
+
+        ctrlPointY = $u29[k];
+
+        goto label48;
+
+     label43:
+        incr = k;
+
+        k#284 = k + 5;
+
+        ctrlPointX = $u29[k#284];
+
+        k#284 = k + 6;
+
+        ctrlPointY = $u29[k#284];
+
+        currentX#52 = $u29[k];
+
+        k#284 = k + 1;
+
+        incr#51 = $u29[k#284];
+
+        k#284 = k + 2;
+
+        currentSegmentStartX#75 = $u29[k#284];
+
+        k = k + 3;
+
+        reflectiveCtrlPointY1 = $u29[k];
+
+        incr#270 = reflectiveCtrlPointY1 cmpl 0.0F;
+
+        if incr#270 == 0 goto label44;
+
+        reflectiveCtrlPointY1#271 = 1;
+
+        goto label45;
+
+     label44:
+        reflectiveCtrlPointY1#271 = 0;
+
+     label45:
+        k = incr + 4;
+
+        reflectiveCtrlPointY1 = $u29[k];
+
+        incr#270 = reflectiveCtrlPointY1 cmpl 0.0F;
+
+        if incr#270 == 0 goto label46;
+
+        $u24 = 1;
+
+        goto label47;
+
+     label46:
+        $u24 = 0;
+
+     label47:
+        staticinvoke <androidx.core.graphics.PathParser$PathDataNode: void drawArc(android.graphics.Path,float,float,float,float,float,float,float,boolean,boolean)>($u25, currentX, currentY, ctrlPointX, ctrlPointY, currentX#52, incr#51, currentSegmentStartX#75, reflectiveCtrlPointY1#271, $u24);
+
+        k = incr + 5;
+
+        ctrlPointX = $u29[k];
+
+        k = incr + 6;
+
+        ctrlPointY = $u29[k];
+
+        currentX = ctrlPointX;
+
+        currentY = ctrlPointY;
+
+     label48:
+        $u27 = $u28;
+
+        k = incr + incr1;
+
+        currentX2 = $u28;
+
+        goto label09;
+
+     label49:
+        $u26[0] = currentX;
+
+        $u26[1] = currentY;
+
+        $u26[2] = ctrlPointX;
+
+        $u26[3] = ctrlPointY;
+
+        $u26[4] = currentSegmentStartX;
+
+        $u26[5] = currentSegmentStartY;
+
+        return;
+    }
+
+    private static void arcToBezier(android.graphics.Path, double, double, double, double, double, double, double, double, double)
+    {
+        android.graphics.Path $u62;
+        double $u63, $u65, $u67, $u69, $u75, $u77, $u79, eta2, $u73, q1x, numSegments, $u-1, $u-1#16, $u-1#18, $u-1#20, ep1x, ep1x1, $u-1#44, $u-1#45, tanDiff2;
+        float $u1, $u10, q1x#105, numSegments#106, eta1, q2y;
+        int numSegments#12, i;
+
+        $u62 := @parameter0: android.graphics.Path;
+
+        $u63 := @parameter1: double;
+
+        $u65 := @parameter2: double;
+
+        $u67 := @parameter3: double;
+
+        $u69 := @parameter4: double;
+
+        eta2 := @parameter5: double;
+
+        $u73 := @parameter6: double;
+
+        $u75 := @parameter7: double;
+
+        $u77 := @parameter8: double;
+
+        $u79 := @parameter9: double;
+
+        q1x = $u67;
+
+        numSegments = $u79 * 4.0;
+
+        numSegments = numSegments / 3.141592653589793;
+
+        numSegments = staticinvoke <java.lang.Math: double abs(double)>(numSegments);
+
+        numSegments = staticinvoke <java.lang.Math: double ceil(double)>(numSegments);
+
+        numSegments#12 = (int) numSegments;
+
+        $u-1 = staticinvoke <java.lang.Math: double cos(double)>($u75);
+
+        numSegments = $u-1;
+
+        $u-1#16 = staticinvoke <java.lang.Math: double sin(double)>($u75);
+
+        $u75 = $u-1#16;
+
+        $u-1#18 = staticinvoke <java.lang.Math: double cos(double)>($u77);
+
+        $u-1#20 = staticinvoke <java.lang.Math: double sin(double)>($u77);
+
+        ep1x = neg $u67;
+
+        ep1x = ep1x * $u-1;
+
+        ep1x = ep1x * $u-1#20;
+
+        ep1x1 = $u69 * $u-1#16;
+
+        ep1x1 = ep1x1 * $u-1#18;
+
+        ep1x = ep1x - ep1x1;
+
+        ep1x1 = neg $u67;
+
+        $u-1#16 = ep1x1 * $u-1#16;
+
+        $u-1#20 = $u-1#16 * $u-1#20;
+
+        $u-1 = $u69 * $u-1;
+
+        $u-1 = $u-1 * $u-1#18;
+
+        $u-1 = $u-1#20 + $u-1;
+
+        $u-1#18 = (double) numSegments#12;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($u-1#18);
+
+        $u79 = $u79 / $u-1#18;
+
+        $u-1#16 = $u77;
+
+        i = 0;
+
+        $u77 = eta2;
+
+        $u-1#18 = ep1x;
+
+     label1:
+        if i >= numSegments#12 goto label2;
+
+        eta2 = $u-1#16 + $u79;
+
+        $u-1#44 = staticinvoke <java.lang.Math: double sin(double)>(eta2);
+
+        $u-1#45 = staticinvoke <java.lang.Math: double cos(double)>(eta2);
+
+        ep1x = q1x * numSegments;
+
+        ep1x = ep1x * $u-1#45;
+
+        ep1x = $u63 + ep1x;
+
+        $u-1#20 = $u69 * $u75;
+
+        $u-1#20 = $u-1#20 * $u-1#44;
+
+        ep1x = ep1x - $u-1#20;
+
+        $u-1#20 = q1x * $u75;
+
+        $u-1#20 = $u-1#20 * $u-1#45;
+
+        $u-1#20 = $u65 + $u-1#20;
+
+        ep1x1 = $u69 * numSegments;
+
+        ep1x1 = ep1x1 * $u-1#44;
+
+        $u-1#20 = $u-1#20 + ep1x1;
+
+        ep1x1 = neg q1x;
+
+        ep1x1 = ep1x1 * numSegments;
+
+        ep1x1 = ep1x1 * $u-1#44;
+
+        tanDiff2 = $u69 * $u75;
+
+        tanDiff2 = tanDiff2 * $u-1#45;
+
+        ep1x1 = ep1x1 - tanDiff2;
+
+        q1x = neg q1x;
+
+        q1x = q1x * $u75;
+
+        q1x = q1x * $u-1#44;
+
+        $u-1#44 = $u69 * numSegments;
+
+        $u-1#45 = $u-1#44 * $u-1#45;
+
+        q1x = q1x + $u-1#45;
+
+        $u-1#45 = eta2 - $u-1#16;
+
+        $u-1#45 = $u-1#45 / 2.0;
+
+        $u-1#45 = staticinvoke <java.lang.Math: double tan(double)>($u-1#45);
+
+        $u-1#16 = eta2 - $u-1#16;
+
+        $u-1#16 = staticinvoke <java.lang.Math: double sin(double)>($u-1#16);
+
+        $u-1#44 = $u-1#45 * 3.0;
+
+        $u-1#45 = $u-1#44 * $u-1#45;
+
+        $u-1#45 = $u-1#45 + 4.0;
+
+        $u-1#45 = staticinvoke <java.lang.Math: double sqrt(double)>($u-1#45);
+
+        $u-1#45 = $u-1#45 - 1.0;
+
+        $u-1#16 = $u-1#16 * $u-1#45;
+
+        $u-1#16 = $u-1#16 / 3.0;
+
+        $u-1#18 = $u-1#16 * $u-1#18;
+
+        $u77 = $u77 + $u-1#18;
+
+        $u-1 = $u-1#16 * $u-1;
+
+        $u73 = $u73 + $u-1;
+
+        $u-1 = $u-1#16 * ep1x1;
+
+        $u-1 = ep1x - $u-1;
+
+        $u-1#18 = $u-1#16 * q1x;
+
+        $u-1#18 = $u-1#20 - $u-1#18;
+
+        virtualinvoke $u62.<android.graphics.Path: void rLineTo(float,float)>(0.0F, 0.0F);
+
+        $u10 = (float) $u77;
+
+        q1x#105 = (float) $u73;
+
+        $u1 = (float) $u-1;
+
+        numSegments#106 = (float) $u-1#18;
+
+        eta1 = (float) ep1x;
+
+        q2y = (float) $u-1#20;
+
+        virtualinvoke $u62.<android.graphics.Path: void cubicTo(float,float,float,float,float,float)>($u10, q1x#105, $u1, numSegments#106, eta1, q2y);
+
+        $u-1#16 = eta2;
+
+        $u73 = $u-1#20;
+
+        $u-1#18 = ep1x1;
+
+        $u-1 = q1x;
+
+        $u77 = ep1x;
+
+        i = i + 1;
+
+        q1x = $u67;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    private static void drawArc(android.graphics.Path, float, float, float, float, float, float, float, boolean, boolean)
+    {
+        android.graphics.Path $u73;
+        float $u74, $u75, $u76, $u77, $u78, $u79, $u80, $u0#14;
+        boolean $u81, $u82;
+        double x0p, y0p, x1p, y1p, dx, dy, xm, ym, disc, $u0, $u-1, $u-1#7, $u0#37;
+        byte s;
+        java.lang.StringBuilder eta0;
+        java.lang.String $u-1#50;
+
+        $u73 := @parameter0: android.graphics.Path;
+
+        $u74 := @parameter1: float;
+
+        $u75 := @parameter2: float;
+
+        $u76 := @parameter3: float;
+
+        $u77 := @parameter4: float;
+
+        $u78 := @parameter5: float;
+
+        $u79 := @parameter6: float;
+
+        $u80 := @parameter7: float;
+
+        $u81 := @parameter8: boolean;
+
+        $u82 := @parameter9: boolean;
+
+        $u0 = (double) $u80;
+
+        $u0 = staticinvoke <java.lang.Math: double toRadians(double)>($u0);
+
+        $u-1 = staticinvoke <java.lang.Math: double cos(double)>($u0);
+
+        $u-1#7 = staticinvoke <java.lang.Math: double sin(double)>($u0);
+
+        x0p = (double) $u74;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(x0p);
+
+        x0p = x0p * $u-1;
+
+        y0p = (double) $u75;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(y0p);
+
+        y0p = y0p * $u-1#7;
+
+        x0p = x0p + y0p;
+
+        y0p = (double) $u78;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(y0p);
+
+        x0p = x0p / y0p;
+
+        $u0#14 = neg $u74;
+
+        y0p = (double) $u0#14;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(y0p);
+
+        y0p = y0p * $u-1#7;
+
+        x1p = (double) $u75;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(x1p);
+
+        x1p = x1p * $u-1;
+
+        y0p = y0p + x1p;
+
+        x1p = (double) $u79;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(x1p);
+
+        y0p = y0p / x1p;
+
+        x1p = (double) $u76;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(x1p);
+
+        x1p = x1p * $u-1;
+
+        y1p = (double) $u77;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(y1p);
+
+        y1p = y1p * $u-1#7;
+
+        x1p = x1p + y1p;
+
+        y1p = (double) $u78;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(y1p);
+
+        x1p = x1p / y1p;
+
+        $u0#14 = neg $u76;
+
+        y1p = (double) $u0#14;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(y1p);
+
+        y1p = y1p * $u-1#7;
+
+        dy = (double) $u77;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(dy);
+
+        dy = dy * $u-1;
+
+        y1p = y1p + dy;
+
+        dy = (double) $u79;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(dy);
+
+        y1p = y1p / dy;
+
+        dx = x0p - x1p;
+
+        dy = y0p - y1p;
+
+        xm = x0p + x1p;
+
+        xm = xm / 2.0;
+
+        ym = y0p + y1p;
+
+        ym = ym / 2.0;
+
+        $u0#37 = dx * dx;
+
+        disc = dy * dy;
+
+        $u0#37 = $u0#37 + disc;
+
+        s = $u0#37 cmpl 0.0;
+
+        if s != 0 goto label1;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("PathParser", " Points are coincident");
+
+        return;
+
+     label1:
+        disc = 1.0 / $u0#37;
+
+        disc = disc - 0.25;
+
+        s = disc cmpg 0.0;
+
+        if s >= 0 goto label2;
+
+        eta0 = new java.lang.StringBuilder;
+
+        specialinvoke eta0.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke eta0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Points are too far apart ");
+
+        virtualinvoke eta0.<java.lang.StringBuilder: java.lang.StringBuilder append(double)>($u0#37);
+
+        $u-1#50 = virtualinvoke eta0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("PathParser", $u-1#50);
+
+        $u0 = staticinvoke <java.lang.Math: double sqrt(double)>($u0#37);
+
+        $u0 = $u0 / 1.99999;
+
+        $u0#14 = (float) $u0;
+
+        $u78 = $u78 * $u0#14;
+
+        $u79 = $u79 * $u0#14;
+
+        staticinvoke <androidx.core.graphics.PathParser$PathDataNode: void drawArc(android.graphics.Path,float,float,float,float,float,float,float,boolean,boolean)>($u73, $u74, $u75, $u76, $u77, $u78, $u79, $u80, $u81, $u82);
+
+        return;
+
+     label2:
+        $u0#37 = staticinvoke <java.lang.Math: double sqrt(double)>(disc);
+
+        dx = $u0#37 * dx;
+
+        dy = $u0#37 * dy;
+
+        if $u81 != $u82 goto label3;
+
+        dy = xm - dy;
+
+        xm = ym + dx;
+
+        goto label4;
+
+     label3:
+        dy = xm + dy;
+
+        xm = ym - dx;
+
+     label4:
+        y0p = y0p - xm;
+
+        x0p = x0p - dy;
+
+        x0p = staticinvoke <java.lang.Math: double atan2(double,double)>(y0p, x0p);
+
+        y0p = y1p - xm;
+
+        x1p = x1p - dy;
+
+        y0p = staticinvoke <java.lang.Math: double atan2(double,double)>(y0p, x1p);
+
+        y0p = y0p - x0p;
+
+        s = y0p cmpl 0.0;
+
+        if s < 0 goto label5;
+
+        $u81 = 1;
+
+        goto label6;
+
+     label5:
+        $u81 = 0;
+
+     label6:
+        if $u82 == $u81 goto label8;
+
+        s = y0p cmpl 0.0;
+
+        if s <= 0 goto label7;
+
+        y0p = y0p - 6.283185307179586;
+
+        goto label8;
+
+     label7:
+        y0p = y0p + 6.283185307179586;
+
+     label8:
+        x1p = (double) $u78;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(x1p);
+
+        y1p = dy * x1p;
+
+        x1p = (double) $u79;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(x1p);
+
+        dy = x1p * xm;
+
+        x1p = y1p * $u-1;
+
+        xm = dy * $u-1#7;
+
+        x1p = x1p - xm;
+
+        $u-1#7 = y1p * $u-1#7;
+
+        $u-1 = dy * $u-1;
+
+        $u-1 = $u-1#7 + $u-1;
+
+        $u-1#7 = (double) $u78;
+
+        y1p = (double) $u79;
+
+        dy = (double) $u74;
+
+        xm = (double) $u75;
+
+        staticinvoke <androidx.core.graphics.PathParser$PathDataNode: void arcToBezier(android.graphics.Path,double,double,double,double,double,double,double,double,double)>($u73, x1p, $u-1, $u-1#7, y1p, dy, xm, $u0, x0p, y0p);
+
+        return;
+    }
+
+    public static void nodesToPath(androidx.core.graphics.PathParser$PathDataNode[], android.graphics.Path)
+    {
+        androidx.core.graphics.PathParser$PathDataNode[] $u5;
+        android.graphics.Path $u6;
+        float[] current, $u4;
+        char previousCommand, $u3#7;
+        int i, $u3;
+        androidx.core.graphics.PathParser$PathDataNode $u3#6;
+
+        $u5 := @parameter0: androidx.core.graphics.PathParser$PathDataNode[];
+
+        $u6 := @parameter1: android.graphics.Path;
+
+        current = newarray (float)[6];
+
+        previousCommand = 109;
+
+        i = 0;
+
+     label1:
+        $u3 = lengthof $u5;
+
+        if i >= $u3 goto label2;
+
+        $u3#6 = $u5[i];
+
+        $u3#7 = $u3#6.<androidx.core.graphics.PathParser$PathDataNode: char mType>;
+
+        $u3#6 = $u5[i];
+
+        $u4 = $u3#6.<androidx.core.graphics.PathParser$PathDataNode: float[] mParams>;
+
+        staticinvoke <androidx.core.graphics.PathParser$PathDataNode: void addCommand(android.graphics.Path,float[],char,char,float[])>($u6, current, previousCommand, $u3#7, $u4);
+
+        $u3#6 = $u5[i];
+
+        previousCommand = $u3#6.<androidx.core.graphics.PathParser$PathDataNode: char mType>;
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void interpolatePathDataNode(androidx.core.graphics.PathParser$PathDataNode, androidx.core.graphics.PathParser$PathDataNode, float)
+    {
+        androidx.core.graphics.PathParser$PathDataNode this, $u5, $u6;
+        float $u7, $u1#6, $u3;
+        char i;
+        int i#2, $u2;
+        float[] $u1, $u2#5;
+
+        this := @this: androidx.core.graphics.PathParser$PathDataNode;
+
+        $u5 := @parameter0: androidx.core.graphics.PathParser$PathDataNode;
+
+        $u6 := @parameter1: androidx.core.graphics.PathParser$PathDataNode;
+
+        $u7 := @parameter2: float;
+
+        i = $u5.<androidx.core.graphics.PathParser$PathDataNode: char mType>;
+
+        this.<androidx.core.graphics.PathParser$PathDataNode: char mType> = i;
+
+        i#2 = 0;
+
+     label1:
+        $u1 = $u5.<androidx.core.graphics.PathParser$PathDataNode: float[] mParams>;
+
+        $u2 = lengthof $u1;
+
+        if i#2 >= $u2 goto label2;
+
+        $u2#5 = this.<androidx.core.graphics.PathParser$PathDataNode: float[] mParams>;
+
+        $u1#6 = $u1[i#2];
+
+        $u3 = 1.0F - $u7;
+
+        $u1#6 = $u1#6 * $u3;
+
+        $u1 = $u6.<androidx.core.graphics.PathParser$PathDataNode: float[] mParams>;
+
+        $u3 = $u1[i#2];
+
+        $u3 = $u3 * $u7;
+
+        $u1#6 = $u1#6 + $u3;
+
+        $u2#5[i#2] = $u1#6;
+
+        i#2 = i#2 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+}
