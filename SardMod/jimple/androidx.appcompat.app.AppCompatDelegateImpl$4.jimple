@@ -1,0 +1,40 @@
+class androidx.appcompat.app.AppCompatDelegateImpl$4 extends java.lang.Object implements androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener
+{
+    final androidx.appcompat.app.AppCompatDelegateImpl this$0;
+
+    void <init>(androidx.appcompat.app.AppCompatDelegateImpl)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$4 this;
+        androidx.appcompat.app.AppCompatDelegateImpl $u1;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegateImpl$4;
+
+        $u1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        this.<androidx.appcompat.app.AppCompatDelegateImpl$4: androidx.appcompat.app.AppCompatDelegateImpl this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onFitSystemWindows(android.graphics.Rect)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$4 this;
+        android.graphics.Rect $u3;
+        int $u-1;
+        androidx.appcompat.app.AppCompatDelegateImpl $u0;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegateImpl$4;
+
+        $u3 := @parameter0: android.graphics.Rect;
+
+        $u0 = this.<androidx.appcompat.app.AppCompatDelegateImpl$4: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.app.AppCompatDelegateImpl: int updateStatusGuard(androidx.core.view.WindowInsetsCompat,android.graphics.Rect)>(null, $u3);
+
+        $u3.<android.graphics.Rect: int top> = $u-1;
+
+        return;
+    }
+}

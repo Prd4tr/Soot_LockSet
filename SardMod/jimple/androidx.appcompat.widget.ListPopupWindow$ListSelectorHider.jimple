@@ -1,0 +1,34 @@
+class androidx.appcompat.widget.ListPopupWindow$ListSelectorHider extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.appcompat.widget.ListPopupWindow this$0;
+
+    void <init>(androidx.appcompat.widget.ListPopupWindow)
+    {
+        androidx.appcompat.widget.ListPopupWindow$ListSelectorHider this;
+        androidx.appcompat.widget.ListPopupWindow $u1;
+
+        this := @this: androidx.appcompat.widget.ListPopupWindow$ListSelectorHider;
+
+        $u1 := @parameter0: androidx.appcompat.widget.ListPopupWindow;
+
+        this.<androidx.appcompat.widget.ListPopupWindow$ListSelectorHider: androidx.appcompat.widget.ListPopupWindow this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.appcompat.widget.ListPopupWindow$ListSelectorHider this;
+        androidx.appcompat.widget.ListPopupWindow $u0;
+
+        this := @this: androidx.appcompat.widget.ListPopupWindow$ListSelectorHider;
+
+        $u0 = this.<androidx.appcompat.widget.ListPopupWindow$ListSelectorHider: androidx.appcompat.widget.ListPopupWindow this$0>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.ListPopupWindow: void clearListSelection()>();
+
+        return;
+    }
+}

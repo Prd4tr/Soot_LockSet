@@ -1,0 +1,114 @@
+final class androidx.viewpager.widget.ViewPager$SavedState$1 extends java.lang.Object implements android.os.Parcelable$ClassLoaderCreator
+{
+
+    void <init>()
+    {
+        androidx.viewpager.widget.ViewPager$SavedState$1 this;
+
+        this := @this: androidx.viewpager.widget.ViewPager$SavedState$1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public androidx.viewpager.widget.ViewPager$SavedState createFromParcel(android.os.Parcel)
+    {
+        androidx.viewpager.widget.ViewPager$SavedState$1 this;
+        android.os.Parcel $u3;
+        androidx.viewpager.widget.ViewPager$SavedState $u0;
+
+        this := @this: androidx.viewpager.widget.ViewPager$SavedState$1;
+
+        $u3 := @parameter0: android.os.Parcel;
+
+        $u0 = new androidx.viewpager.widget.ViewPager$SavedState;
+
+        specialinvoke $u0.<androidx.viewpager.widget.ViewPager$SavedState: void <init>(android.os.Parcel,java.lang.ClassLoader)>($u3, null);
+
+        return $u0;
+    }
+
+    public androidx.viewpager.widget.ViewPager$SavedState createFromParcel(android.os.Parcel, java.lang.ClassLoader)
+    {
+        androidx.viewpager.widget.ViewPager$SavedState$1 this;
+        android.os.Parcel $u2;
+        java.lang.ClassLoader $u3;
+        androidx.viewpager.widget.ViewPager$SavedState $u0;
+
+        this := @this: androidx.viewpager.widget.ViewPager$SavedState$1;
+
+        $u2 := @parameter0: android.os.Parcel;
+
+        $u3 := @parameter1: java.lang.ClassLoader;
+
+        $u0 = new androidx.viewpager.widget.ViewPager$SavedState;
+
+        specialinvoke $u0.<androidx.viewpager.widget.ViewPager$SavedState: void <init>(android.os.Parcel,java.lang.ClassLoader)>($u2, $u3);
+
+        return $u0;
+    }
+
+    public volatile java.lang.Object createFromParcel(android.os.Parcel)
+    {
+        androidx.viewpager.widget.ViewPager$SavedState$1 this;
+        androidx.viewpager.widget.ViewPager$SavedState $u-1;
+        android.os.Parcel $u1;
+
+        this := @this: androidx.viewpager.widget.ViewPager$SavedState$1;
+
+        $u1 := @parameter0: android.os.Parcel;
+
+        $u-1 = virtualinvoke this.<androidx.viewpager.widget.ViewPager$SavedState$1: androidx.viewpager.widget.ViewPager$SavedState createFromParcel(android.os.Parcel)>($u1);
+
+        return $u-1;
+    }
+
+    public volatile java.lang.Object createFromParcel(android.os.Parcel, java.lang.ClassLoader)
+    {
+        androidx.viewpager.widget.ViewPager$SavedState$1 this;
+        java.lang.ClassLoader $u2;
+        androidx.viewpager.widget.ViewPager$SavedState $u-1;
+        android.os.Parcel $u1;
+
+        this := @this: androidx.viewpager.widget.ViewPager$SavedState$1;
+
+        $u1 := @parameter0: android.os.Parcel;
+
+        $u2 := @parameter1: java.lang.ClassLoader;
+
+        $u-1 = virtualinvoke this.<androidx.viewpager.widget.ViewPager$SavedState$1: androidx.viewpager.widget.ViewPager$SavedState createFromParcel(android.os.Parcel,java.lang.ClassLoader)>($u1, $u2);
+
+        return $u-1;
+    }
+
+    public androidx.viewpager.widget.ViewPager$SavedState[] newArray(int)
+    {
+        androidx.viewpager.widget.ViewPager$SavedState$1 this;
+        int $u2;
+        androidx.viewpager.widget.ViewPager$SavedState[] $u0;
+
+        this := @this: androidx.viewpager.widget.ViewPager$SavedState$1;
+
+        $u2 := @parameter0: int;
+
+        $u0 = newarray (androidx.viewpager.widget.ViewPager$SavedState)[$u2];
+
+        return $u0;
+    }
+
+    public volatile java.lang.Object[] newArray(int)
+    {
+        androidx.viewpager.widget.ViewPager$SavedState$1 this;
+        androidx.viewpager.widget.ViewPager$SavedState[] $u-1;
+        int $u1;
+
+        this := @this: androidx.viewpager.widget.ViewPager$SavedState$1;
+
+        $u1 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.viewpager.widget.ViewPager$SavedState$1: androidx.viewpager.widget.ViewPager$SavedState[] newArray(int)>($u1);
+
+        return $u-1;
+    }
+}

@@ -1,0 +1,9 @@
+public interface  androidx.constraintlayout.solver.widgets.Helper extends java.lang.Object
+{
+
+    public abstract void add(androidx.constraintlayout.solver.widgets.ConstraintWidget);
+
+    public abstract void removeAllIds();
+
+    public abstract void updateConstraints(androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer);
+}

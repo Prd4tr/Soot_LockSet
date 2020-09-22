@@ -1,0 +1,1006 @@
+public class androidx.constraintlayout.motion.utils.LinearCurveFit extends androidx.constraintlayout.motion.utils.CurveFit
+{
+    private static final java.lang.String TAG;
+    private double[] mT;
+    private double mTotalLength;
+    private double[][] mY;
+
+    public void <init>(double[], double[][])
+    {
+        androidx.constraintlayout.motion.utils.LinearCurveFit this;
+        double[] $u22, dim;
+        double[][] $u23;
+        double px, py, lastx, lasty;
+        int dim#5, $u13;
+
+        this := @this: androidx.constraintlayout.motion.utils.LinearCurveFit;
+
+        $u22 := @parameter0: double[];
+
+        $u23 := @parameter1: double[][];
+
+        specialinvoke this.<androidx.constraintlayout.motion.utils.CurveFit: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double mTotalLength> = #NaN;
+
+        dim = $u23[0];
+
+        dim#5 = lengthof dim;
+
+        this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT> = $u22;
+
+        this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY> = $u23;
+
+        if dim#5 <= 2 goto label4;
+
+        lastx = 0.0;
+
+        lasty = 0.0;
+
+        dim#5 = 0;
+
+     label1:
+        $u13 = lengthof $u22;
+
+        if dim#5 >= $u13 goto label3;
+
+        dim = $u23[dim#5];
+
+        px = dim[0];
+
+        dim = $u23[dim#5];
+
+        py = dim[0];
+
+        if dim#5 <= 0 goto label2;
+
+        lastx = px - lastx;
+
+        lasty = py - lasty;
+
+        staticinvoke <java.lang.Math: double hypot(double,double)>(lastx, lasty);
+
+        goto label2;
+
+     label2:
+        lastx = px;
+
+        lasty = py;
+
+        dim#5 = dim#5 + 1;
+
+        goto label1;
+
+     label3:
+        this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double mTotalLength> = 0.0;
+
+     label4:
+        return;
+    }
+
+    private double getLength2D(double)
+    {
+        androidx.constraintlayout.motion.utils.LinearCurveFit this;
+        double $u35, px, py, x1, y2, i, last_y, y1, x3;
+        boolean $u-1;
+        double[] i#5;
+        int n, sum, n1;
+        byte last_x;
+        double[][] n1#19;
+
+        this := @this: androidx.constraintlayout.motion.utils.LinearCurveFit;
+
+        $u35 := @parameter0: double;
+
+        i = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double mTotalLength>;
+
+        $u-1 = staticinvoke <java.lang.Double: boolean isNaN(double)>(i);
+
+        if $u-1 == 0 goto label1;
+
+        return 0.0;
+
+     label1:
+        i#5 = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        n = lengthof i#5;
+
+        i = i#5[0];
+
+        last_x = $u35 cmpg i;
+
+        if last_x > 0 goto label2;
+
+        return 0.0;
+
+     label2:
+        sum = n + -1;
+
+        i = i#5[sum];
+
+        last_x = $u35 cmpl i;
+
+        if last_x < 0 goto label3;
+
+        $u35 = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double mTotalLength>;
+
+        return $u35;
+
+     label3:
+        i = 0.0;
+
+        x1 = 0.0;
+
+        last_y = 0.0;
+
+        sum = 0;
+
+     label4:
+        n1 = n + -1;
+
+        if sum >= n1 goto label8;
+
+        n1#19 = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        i#5 = n1#19[sum];
+
+        px = i#5[0];
+
+        i#5 = n1#19[sum];
+
+        py = i#5[1];
+
+        if sum <= 0 goto label5;
+
+        x1 = px - x1;
+
+        last_y = py - last_y;
+
+        last_y = staticinvoke <java.lang.Math: double hypot(double,double)>(x1, last_y);
+
+        i = i + last_y;
+
+        goto label5;
+
+     label5:
+        x1 = px;
+
+        last_y = py;
+
+        i#5 = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        y2 = i#5[sum];
+
+        last_x = $u35 cmpl y2;
+
+        if last_x != 0 goto label6;
+
+        return i;
+
+     label6:
+        n1 = sum + 1;
+
+        y2 = i#5[n1];
+
+        last_x = $u35 cmpg y2;
+
+        if last_x >= 0 goto label7;
+
+        n = sum + 1;
+
+        last_y = i#5[n];
+
+        x1 = i#5[sum];
+
+        last_y = last_y - x1;
+
+        x1 = i#5[sum];
+
+        $u35 = $u35 - x1;
+
+        last_y = $u35 / last_y;
+
+        n1#19 = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        i#5 = n1#19[sum];
+
+        x1 = i#5[0];
+
+        n = sum + 1;
+
+        i#5 = n1#19[n];
+
+        $u35 = i#5[0];
+
+        i#5 = n1#19[sum];
+
+        y1 = i#5[1];
+
+        sum = sum + 1;
+
+        i#5 = n1#19[sum];
+
+        y2 = i#5[1];
+
+        x3 = 1.0 - last_y;
+
+        y1 = x3 * y1;
+
+        y2 = y2 * last_y;
+
+        y2 = y1 + y2;
+
+        py = py - y2;
+
+        y2 = 1.0 - last_y;
+
+        x1 = y2 * x1;
+
+        $u35 = $u35 * last_y;
+
+        $u35 = x1 + $u35;
+
+        $u35 = px - $u35;
+
+        $u35 = staticinvoke <java.lang.Math: double hypot(double,double)>(py, $u35);
+
+        $u35 = i + $u35;
+
+        return $u35;
+
+     label7:
+        sum = sum + 1;
+
+        goto label4;
+
+     label8:
+        return 0.0;
+    }
+
+    public double getPos(double, int)
+    {
+        androidx.constraintlayout.motion.utils.LinearCurveFit this;
+        double $u18, y1, h, $u13;
+        int $u20, n, $u3, $u3#16;
+        double[] i;
+        byte x;
+        double[][] i#5;
+
+        this := @this: androidx.constraintlayout.motion.utils.LinearCurveFit;
+
+        $u18 := @parameter0: double;
+
+        $u20 := @parameter1: int;
+
+        i = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        n = lengthof i;
+
+        h = i[0];
+
+        x = $u18 cmpg h;
+
+        if x > 0 goto label1;
+
+        i#5 = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        i = i#5[0];
+
+        $u18 = i[$u20];
+
+        return $u18;
+
+     label1:
+        $u3 = n + -1;
+
+        h = i[$u3];
+
+        x = $u18 cmpl h;
+
+        if x < 0 goto label2;
+
+        i#5 = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        n = n + -1;
+
+        i = i#5[n];
+
+        $u18 = i[$u20];
+
+        return $u18;
+
+     label2:
+        $u3 = 0;
+
+     label3:
+        $u3#16 = n + -1;
+
+        if $u3 >= $u3#16 goto label6;
+
+        i = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        h = i[$u3];
+
+        x = $u18 cmpl h;
+
+        if x != 0 goto label4;
+
+        i#5 = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        i = i#5[$u3];
+
+        $u18 = i[$u20];
+
+        return $u18;
+
+     label4:
+        $u3#16 = $u3 + 1;
+
+        h = i[$u3#16];
+
+        x = $u18 cmpg h;
+
+        if x >= 0 goto label5;
+
+        n = $u3 + 1;
+
+        h = i[n];
+
+        y1 = i[$u3];
+
+        h = h - y1;
+
+        y1 = i[$u3];
+
+        $u18 = $u18 - y1;
+
+        h = $u18 / h;
+
+        i#5 = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        i = i#5[$u3];
+
+        y1 = i[$u20];
+
+        n = $u3 + 1;
+
+        i = i#5[n];
+
+        $u18 = i[$u20];
+
+        $u13 = 1.0 - h;
+
+        y1 = $u13 * y1;
+
+        $u18 = $u18 * h;
+
+        $u18 = y1 + $u18;
+
+        return $u18;
+
+     label5:
+        $u3 = $u3 + 1;
+
+        goto label3;
+
+     label6:
+        return 0.0;
+    }
+
+    public void getPos(double, double[])
+    {
+        androidx.constraintlayout.motion.utils.LinearCurveFit this;
+        double $u18, y1, y2, $u9;
+        double[] $u20, j, dim#4;
+        int n, dim#5, j1, h;
+        double[][] dim;
+        byte x;
+
+        this := @this: androidx.constraintlayout.motion.utils.LinearCurveFit;
+
+        $u18 := @parameter0: double;
+
+        $u20 := @parameter1: double[];
+
+        j = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        n = lengthof j;
+
+        dim = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        dim#4 = dim[0];
+
+        dim#5 = lengthof dim#4;
+
+        y2 = j[0];
+
+        x = $u18 cmpg y2;
+
+        if x > 0 goto label03;
+
+        n = 0;
+
+     label01:
+        if n >= dim#5 goto label02;
+
+        dim = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        j = dim[0];
+
+        $u18 = j[n];
+
+        $u20[n] = $u18;
+
+        n = n + 1;
+
+        goto label01;
+
+     label02:
+        return;
+
+     label03:
+        j1 = n + -1;
+
+        y2 = j[j1];
+
+        x = $u18 cmpl y2;
+
+        if x < 0 goto label06;
+
+        j1 = 0;
+
+     label04:
+        if j1 >= dim#5 goto label05;
+
+        dim = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        h = n + -1;
+
+        j = dim[h];
+
+        $u18 = j[j1];
+
+        $u20[j1] = $u18;
+
+        j1 = j1 + 1;
+
+        goto label04;
+
+     label05:
+        return;
+
+     label06:
+        j1 = 0;
+
+     label07:
+        h = n + -1;
+
+        if j1 >= h goto label13;
+
+        j = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        y2 = j[j1];
+
+        x = $u18 cmpl y2;
+
+        if x != 0 goto label09;
+
+        h = 0;
+
+     label08:
+        if h >= dim#5 goto label09;
+
+        dim = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        j = dim[j1];
+
+        y2 = j[h];
+
+        $u20[h] = y2;
+
+        h = h + 1;
+
+        goto label08;
+
+     label09:
+        j = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        h = j1 + 1;
+
+        y2 = j[h];
+
+        x = $u18 cmpg y2;
+
+        if x >= 0 goto label12;
+
+        n = j1 + 1;
+
+        y2 = j[n];
+
+        y1 = j[j1];
+
+        y2 = y2 - y1;
+
+        y1 = j[j1];
+
+        $u18 = $u18 - y1;
+
+        $u18 = $u18 / y2;
+
+        n = 0;
+
+     label10:
+        if n >= dim#5 goto label11;
+
+        dim = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        j = dim[j1];
+
+        y1 = j[n];
+
+        h = j1 + 1;
+
+        j = dim[h];
+
+        y2 = j[n];
+
+        $u9 = 1.0 - $u18;
+
+        y1 = $u9 * y1;
+
+        y2 = y2 * $u18;
+
+        y2 = y1 + y2;
+
+        $u20[n] = y2;
+
+        n = n + 1;
+
+        goto label10;
+
+     label11:
+        return;
+
+     label12:
+        j1 = j1 + 1;
+
+        goto label07;
+
+     label13:
+        return;
+    }
+
+    public void getPos(double, float[])
+    {
+        androidx.constraintlayout.motion.utils.LinearCurveFit this;
+        double $u18, y1, y2, $u9;
+        float[] $u20;
+        int n, dim#5, j1, h#18;
+        double[] j, dim#4;
+        double[][] dim;
+        byte x;
+        float h;
+
+        this := @this: androidx.constraintlayout.motion.utils.LinearCurveFit;
+
+        $u18 := @parameter0: double;
+
+        $u20 := @parameter1: float[];
+
+        j = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        n = lengthof j;
+
+        dim = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        dim#4 = dim[0];
+
+        dim#5 = lengthof dim#4;
+
+        y2 = j[0];
+
+        x = $u18 cmpg y2;
+
+        if x > 0 goto label03;
+
+        n = 0;
+
+     label01:
+        if n >= dim#5 goto label02;
+
+        dim = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        j = dim[0];
+
+        $u18 = j[n];
+
+        h = (float) $u18;
+
+        $u20[n] = h;
+
+        n = n + 1;
+
+        goto label01;
+
+     label02:
+        return;
+
+     label03:
+        j1 = n + -1;
+
+        y2 = j[j1];
+
+        x = $u18 cmpl y2;
+
+        if x < 0 goto label06;
+
+        j1 = 0;
+
+     label04:
+        if j1 >= dim#5 goto label05;
+
+        dim = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        h#18 = n + -1;
+
+        j = dim[h#18];
+
+        $u18 = j[j1];
+
+        h = (float) $u18;
+
+        $u20[j1] = h;
+
+        j1 = j1 + 1;
+
+        goto label04;
+
+     label05:
+        return;
+
+     label06:
+        j1 = 0;
+
+     label07:
+        h#18 = n + -1;
+
+        if j1 >= h#18 goto label13;
+
+        j = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        y2 = j[j1];
+
+        x = $u18 cmpl y2;
+
+        if x != 0 goto label09;
+
+        h#18 = 0;
+
+     label08:
+        if h#18 >= dim#5 goto label09;
+
+        dim = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        j = dim[j1];
+
+        y2 = j[h#18];
+
+        h = (float) y2;
+
+        $u20[h#18] = h;
+
+        h#18 = h#18 + 1;
+
+        goto label08;
+
+     label09:
+        j = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        h#18 = j1 + 1;
+
+        y2 = j[h#18];
+
+        x = $u18 cmpg y2;
+
+        if x >= 0 goto label12;
+
+        n = j1 + 1;
+
+        y2 = j[n];
+
+        y1 = j[j1];
+
+        y2 = y2 - y1;
+
+        y1 = j[j1];
+
+        $u18 = $u18 - y1;
+
+        $u18 = $u18 / y2;
+
+        n = 0;
+
+     label10:
+        if n >= dim#5 goto label11;
+
+        dim = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        j = dim[j1];
+
+        y1 = j[n];
+
+        h#18 = j1 + 1;
+
+        j = dim[h#18];
+
+        y2 = j[n];
+
+        $u9 = 1.0 - $u18;
+
+        y1 = $u9 * y1;
+
+        y2 = y2 * $u18;
+
+        y2 = y1 + y2;
+
+        h = (float) y2;
+
+        $u20[n] = h;
+
+        n = n + 1;
+
+        goto label10;
+
+     label11:
+        return;
+
+     label12:
+        j1 = j1 + 1;
+
+        goto label07;
+
+     label13:
+        return;
+    }
+
+    public double getSlope(double, int)
+    {
+        androidx.constraintlayout.motion.utils.LinearCurveFit this;
+        double $u18, $u4, y2;
+        int $u20, n, t, $u5;
+        double[] i;
+        byte h;
+        double[][] $u5#22;
+
+        this := @this: androidx.constraintlayout.motion.utils.LinearCurveFit;
+
+        $u18 := @parameter0: double;
+
+        $u20 := @parameter1: int;
+
+        i = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        n = lengthof i;
+
+        $u4 = i[0];
+
+        h = $u18 cmpg $u4;
+
+        if h >= 0 goto label1;
+
+        $u4 = i[0];
+
+        goto label3;
+
+     label1:
+        t = n + -1;
+
+        $u4 = i[t];
+
+        h = $u18 cmpl $u4;
+
+        if h < 0 goto label2;
+
+        t = n + -1;
+
+        $u4 = i[t];
+
+        goto label3;
+
+     label2:
+        $u4 = $u18;
+
+     label3:
+        t = 0;
+
+     label4:
+        $u5 = n + -1;
+
+        if t >= $u5 goto label6;
+
+        i = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        $u5 = t + 1;
+
+        $u18 = i[$u5];
+
+        h = $u4 cmpg $u18;
+
+        if h > 0 goto label5;
+
+        n = t + 1;
+
+        $u18 = i[n];
+
+        y2 = i[t];
+
+        $u18 = $u18 - y2;
+
+        y2 = i[t];
+
+        $u5#22 = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        i = $u5#22[t];
+
+        $u4 = i[$u20];
+
+        n = t + 1;
+
+        i = $u5#22[n];
+
+        y2 = i[$u20];
+
+        $u4 = y2 - $u4;
+
+        $u18 = $u4 / $u18;
+
+        return $u18;
+
+     label5:
+        t = t + 1;
+
+        goto label4;
+
+     label6:
+        return 0.0;
+    }
+
+    public void getSlope(double, double[])
+    {
+        androidx.constraintlayout.motion.utils.LinearCurveFit this;
+        double $u18, $u5, y2;
+        double[] $u20, i, dim#4;
+        int n, dim#5, t, j;
+        double[][] dim;
+        byte h;
+
+        this := @this: androidx.constraintlayout.motion.utils.LinearCurveFit;
+
+        $u18 := @parameter0: double;
+
+        $u20 := @parameter1: double[];
+
+        i = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        n = lengthof i;
+
+        dim = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        dim#4 = dim[0];
+
+        dim#5 = lengthof dim#4;
+
+        $u5 = i[0];
+
+        h = $u18 cmpg $u5;
+
+        if h > 0 goto label1;
+
+        $u5 = i[0];
+
+        goto label3;
+
+     label1:
+        t = n + -1;
+
+        $u5 = i[t];
+
+        h = $u18 cmpl $u5;
+
+        if h < 0 goto label2;
+
+        t = n + -1;
+
+        $u5 = i[t];
+
+        goto label3;
+
+     label2:
+        $u5 = $u18;
+
+     label3:
+        t = 0;
+
+     label4:
+        j = n + -1;
+
+        if t >= j goto label8;
+
+        i = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        j = t + 1;
+
+        $u18 = i[j];
+
+        h = $u5 cmpg $u18;
+
+        if h > 0 goto label7;
+
+        n = t + 1;
+
+        $u18 = i[n];
+
+        y2 = i[t];
+
+        $u18 = $u18 - y2;
+
+        y2 = i[t];
+
+        n = 0;
+
+     label5:
+        if n >= dim#5 goto label6;
+
+        dim = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[][] mY>;
+
+        i = dim[t];
+
+        $u5 = i[n];
+
+        j = t + 1;
+
+        i = dim[j];
+
+        y2 = i[n];
+
+        $u5 = y2 - $u5;
+
+        $u5 = $u5 / $u18;
+
+        $u20[n] = $u5;
+
+        n = n + 1;
+
+        goto label5;
+
+     label6:
+        return;
+
+     label7:
+        t = t + 1;
+
+        goto label4;
+
+     label8:
+        return;
+    }
+
+    public double[] getTimePoints()
+    {
+        androidx.constraintlayout.motion.utils.LinearCurveFit this;
+        double[] ret0;
+
+        this := @this: androidx.constraintlayout.motion.utils.LinearCurveFit;
+
+        ret0 = this.<androidx.constraintlayout.motion.utils.LinearCurveFit: double[] mT>;
+
+        return ret0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.motion.utils.LinearCurveFit: java.lang.String TAG> = "LinearCurveFit";
+
+        return;
+    }
+}

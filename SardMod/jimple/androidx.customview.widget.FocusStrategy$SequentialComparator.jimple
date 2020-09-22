@@ -1,0 +1,168 @@
+class androidx.customview.widget.FocusStrategy$SequentialComparator extends java.lang.Object implements java.util.Comparator
+{
+    private final androidx.customview.widget.FocusStrategy$BoundsAdapter mAdapter;
+    private final boolean mIsLayoutRtl;
+    private final android.graphics.Rect mTemp1;
+    private final android.graphics.Rect mTemp2;
+
+    void <init>(boolean, androidx.customview.widget.FocusStrategy$BoundsAdapter)
+    {
+        androidx.customview.widget.FocusStrategy$SequentialComparator this;
+        boolean $u2;
+        androidx.customview.widget.FocusStrategy$BoundsAdapter adapter;
+        android.graphics.Rect $u0;
+
+        this := @this: androidx.customview.widget.FocusStrategy$SequentialComparator;
+
+        $u2 := @parameter0: boolean;
+
+        adapter := @parameter1: androidx.customview.widget.FocusStrategy$BoundsAdapter;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new android.graphics.Rect;
+
+        specialinvoke $u0.<android.graphics.Rect: void <init>()>();
+
+        this.<androidx.customview.widget.FocusStrategy$SequentialComparator: android.graphics.Rect mTemp1> = $u0;
+
+        $u0 = new android.graphics.Rect;
+
+        specialinvoke $u0.<android.graphics.Rect: void <init>()>();
+
+        this.<androidx.customview.widget.FocusStrategy$SequentialComparator: android.graphics.Rect mTemp2> = $u0;
+
+        this.<androidx.customview.widget.FocusStrategy$SequentialComparator: boolean mIsLayoutRtl> = $u2;
+
+        this.<androidx.customview.widget.FocusStrategy$SequentialComparator: androidx.customview.widget.FocusStrategy$BoundsAdapter mAdapter> = adapter;
+
+        return;
+    }
+
+    public int compare(java.lang.Object, java.lang.Object)
+    {
+        androidx.customview.widget.FocusStrategy$SequentialComparator this;
+        java.lang.Object first, second;
+        android.graphics.Rect firstRect, secondRect;
+        androidx.customview.widget.FocusStrategy$BoundsAdapter $u2;
+        int $u2#3, $u3;
+        boolean $u2#10;
+
+        this := @this: androidx.customview.widget.FocusStrategy$SequentialComparator;
+
+        first := @parameter0: java.lang.Object;
+
+        second := @parameter1: java.lang.Object;
+
+        firstRect = this.<androidx.customview.widget.FocusStrategy$SequentialComparator: android.graphics.Rect mTemp1>;
+
+        secondRect = this.<androidx.customview.widget.FocusStrategy$SequentialComparator: android.graphics.Rect mTemp2>;
+
+        $u2 = this.<androidx.customview.widget.FocusStrategy$SequentialComparator: androidx.customview.widget.FocusStrategy$BoundsAdapter mAdapter>;
+
+        interfaceinvoke $u2.<androidx.customview.widget.FocusStrategy$BoundsAdapter: void obtainBounds(java.lang.Object,android.graphics.Rect)>(first, firstRect);
+
+        $u2 = this.<androidx.customview.widget.FocusStrategy$SequentialComparator: androidx.customview.widget.FocusStrategy$BoundsAdapter mAdapter>;
+
+        interfaceinvoke $u2.<androidx.customview.widget.FocusStrategy$BoundsAdapter: void obtainBounds(java.lang.Object,android.graphics.Rect)>(second, secondRect);
+
+        $u2#3 = firstRect.<android.graphics.Rect: int top>;
+
+        $u3 = secondRect.<android.graphics.Rect: int top>;
+
+        if $u2#3 >= $u3 goto label01;
+
+        return -1;
+
+     label01:
+        $u2#3 = firstRect.<android.graphics.Rect: int top>;
+
+        $u3 = secondRect.<android.graphics.Rect: int top>;
+
+        if $u2#3 <= $u3 goto label02;
+
+        return 1;
+
+     label02:
+        $u2#3 = firstRect.<android.graphics.Rect: int left>;
+
+        $u3 = secondRect.<android.graphics.Rect: int left>;
+
+        if $u2#3 >= $u3 goto label03;
+
+        $u2#10 = this.<androidx.customview.widget.FocusStrategy$SequentialComparator: boolean mIsLayoutRtl>;
+
+        if $u2#10 == 0 goto label11;
+
+        return 1;
+
+     label03:
+        $u2#3 = firstRect.<android.graphics.Rect: int left>;
+
+        $u3 = secondRect.<android.graphics.Rect: int left>;
+
+        if $u2#3 <= $u3 goto label05;
+
+        $u2#10 = this.<androidx.customview.widget.FocusStrategy$SequentialComparator: boolean mIsLayoutRtl>;
+
+        if $u2#10 == 0 goto label04;
+
+        return -1;
+
+     label04:
+        return 1;
+
+     label05:
+        $u2#3 = firstRect.<android.graphics.Rect: int bottom>;
+
+        $u3 = secondRect.<android.graphics.Rect: int bottom>;
+
+        if $u2#3 >= $u3 goto label06;
+
+        return -1;
+
+     label06:
+        $u2#3 = firstRect.<android.graphics.Rect: int bottom>;
+
+        $u3 = secondRect.<android.graphics.Rect: int bottom>;
+
+        if $u2#3 <= $u3 goto label07;
+
+        return 1;
+
+     label07:
+        $u2#3 = firstRect.<android.graphics.Rect: int right>;
+
+        $u3 = secondRect.<android.graphics.Rect: int right>;
+
+        if $u2#3 >= $u3 goto label08;
+
+        $u2#10 = this.<androidx.customview.widget.FocusStrategy$SequentialComparator: boolean mIsLayoutRtl>;
+
+        if $u2#10 == 0 goto label11;
+
+        return 1;
+
+     label08:
+        $u2#3 = firstRect.<android.graphics.Rect: int right>;
+
+        $u3 = secondRect.<android.graphics.Rect: int right>;
+
+        if $u2#3 <= $u3 goto label10;
+
+        $u2#10 = this.<androidx.customview.widget.FocusStrategy$SequentialComparator: boolean mIsLayoutRtl>;
+
+        if $u2#10 == 0 goto label09;
+
+        return -1;
+
+     label09:
+        return 1;
+
+     label10:
+        return 0;
+
+     label11:
+        return -1;
+    }
+}

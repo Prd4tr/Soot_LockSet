@@ -1,0 +1,3208 @@
+public class androidx.customview.widget.ViewDragHelper extends java.lang.Object
+{
+    private static final int BASE_SETTLE_DURATION;
+    public static final int DIRECTION_ALL;
+    public static final int DIRECTION_HORIZONTAL;
+    public static final int DIRECTION_VERTICAL;
+    public static final int EDGE_ALL;
+    public static final int EDGE_BOTTOM;
+    public static final int EDGE_LEFT;
+    public static final int EDGE_RIGHT;
+    private static final int EDGE_SIZE;
+    public static final int EDGE_TOP;
+    public static final int INVALID_POINTER;
+    private static final int MAX_SETTLE_DURATION;
+    public static final int STATE_DRAGGING;
+    public static final int STATE_IDLE;
+    public static final int STATE_SETTLING;
+    private static final java.lang.String TAG;
+    private static final android.view.animation.Interpolator sInterpolator;
+    private int mActivePointerId;
+    private final androidx.customview.widget.ViewDragHelper$Callback mCallback;
+    private android.view.View mCapturedView;
+    private int mDragState;
+    private int[] mEdgeDragsInProgress;
+    private int[] mEdgeDragsLocked;
+    private int mEdgeSize;
+    private int[] mInitialEdgesTouched;
+    private float[] mInitialMotionX;
+    private float[] mInitialMotionY;
+    private float[] mLastMotionX;
+    private float[] mLastMotionY;
+    private float mMaxVelocity;
+    private float mMinVelocity;
+    private final android.view.ViewGroup mParentView;
+    private int mPointersDown;
+    private boolean mReleaseInProgress;
+    private android.widget.OverScroller mScroller;
+    private final java.lang.Runnable mSetIdleRunnable;
+    private int mTouchSlop;
+    private int mTrackingEdges;
+    private android.view.VelocityTracker mVelocityTracker;
+
+    static void <clinit>()
+    {
+        androidx.customview.widget.ViewDragHelper$1 $u0;
+
+        <androidx.customview.widget.ViewDragHelper: java.lang.String TAG> = "ViewDragHelper";
+
+        <androidx.customview.widget.ViewDragHelper: int STATE_SETTLING> = 2;
+
+        <androidx.customview.widget.ViewDragHelper: int STATE_IDLE> = 0;
+
+        <androidx.customview.widget.ViewDragHelper: int STATE_DRAGGING> = 1;
+
+        <androidx.customview.widget.ViewDragHelper: int MAX_SETTLE_DURATION> = 600;
+
+        <androidx.customview.widget.ViewDragHelper: int INVALID_POINTER> = -1;
+
+        <androidx.customview.widget.ViewDragHelper: int EDGE_TOP> = 4;
+
+        <androidx.customview.widget.ViewDragHelper: int EDGE_SIZE> = 20;
+
+        <androidx.customview.widget.ViewDragHelper: int EDGE_RIGHT> = 2;
+
+        <androidx.customview.widget.ViewDragHelper: int EDGE_LEFT> = 1;
+
+        <androidx.customview.widget.ViewDragHelper: int EDGE_BOTTOM> = 8;
+
+        <androidx.customview.widget.ViewDragHelper: int EDGE_ALL> = 15;
+
+        <androidx.customview.widget.ViewDragHelper: int DIRECTION_VERTICAL> = 2;
+
+        <androidx.customview.widget.ViewDragHelper: int DIRECTION_HORIZONTAL> = 1;
+
+        <androidx.customview.widget.ViewDragHelper: int DIRECTION_ALL> = 3;
+
+        <androidx.customview.widget.ViewDragHelper: int BASE_SETTLE_DURATION> = 256;
+
+        $u0 = new androidx.customview.widget.ViewDragHelper$1;
+
+        specialinvoke $u0.<androidx.customview.widget.ViewDragHelper$1: void <init>()>();
+
+        <androidx.customview.widget.ViewDragHelper: android.view.animation.Interpolator sInterpolator> = $u0;
+
+        return;
+    }
+
+    private void <init>(android.content.Context, android.view.ViewGroup, androidx.customview.widget.ViewDragHelper$Callback)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.content.Context $u5;
+        android.view.ViewGroup $u6;
+        androidx.customview.widget.ViewDragHelper$Callback $u7;
+        androidx.customview.widget.ViewDragHelper$2 vc;
+        android.view.ViewConfiguration $u-1;
+        android.content.res.Resources $u-1#5;
+        android.util.DisplayMetrics $u-1#7;
+        float density;
+        int $u2;
+        android.widget.OverScroller $u2#23;
+        android.view.animation.Interpolator $u3;
+        java.lang.IllegalArgumentException vc#25;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u5 := @parameter0: android.content.Context;
+
+        $u6 := @parameter1: android.view.ViewGroup;
+
+        $u7 := @parameter2: androidx.customview.widget.ViewDragHelper$Callback;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId> = -1;
+
+        vc = new androidx.customview.widget.ViewDragHelper$2;
+
+        specialinvoke vc.<androidx.customview.widget.ViewDragHelper$2: void <init>(androidx.customview.widget.ViewDragHelper)>(this);
+
+        this.<androidx.customview.widget.ViewDragHelper: java.lang.Runnable mSetIdleRunnable> = vc;
+
+        if $u6 == null goto label2;
+
+        if $u7 == null goto label1;
+
+        this.<androidx.customview.widget.ViewDragHelper: android.view.ViewGroup mParentView> = $u6;
+
+        this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback> = $u7;
+
+        $u-1 = staticinvoke <android.view.ViewConfiguration: android.view.ViewConfiguration get(android.content.Context)>($u5);
+
+        $u-1#5 = virtualinvoke $u5.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#7 = virtualinvoke $u-1#5.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        density = $u-1#7.<android.util.DisplayMetrics: float density>;
+
+        density = 20.0F * density;
+
+        density = density + 0.5F;
+
+        $u2 = (int) density;
+
+        this.<androidx.customview.widget.ViewDragHelper: int mEdgeSize> = $u2;
+
+        $u2 = virtualinvoke $u-1.<android.view.ViewConfiguration: int getScaledTouchSlop()>();
+
+        this.<androidx.customview.widget.ViewDragHelper: int mTouchSlop> = $u2;
+
+        $u2 = virtualinvoke $u-1.<android.view.ViewConfiguration: int getScaledMaximumFlingVelocity()>();
+
+        density = (float) $u2;
+
+        this.<androidx.customview.widget.ViewDragHelper: float mMaxVelocity> = density;
+
+        $u2 = virtualinvoke $u-1.<android.view.ViewConfiguration: int getScaledMinimumFlingVelocity()>();
+
+        density = (float) $u2;
+
+        this.<androidx.customview.widget.ViewDragHelper: float mMinVelocity> = density;
+
+        $u2#23 = new android.widget.OverScroller;
+
+        $u3 = <androidx.customview.widget.ViewDragHelper: android.view.animation.Interpolator sInterpolator>;
+
+        specialinvoke $u2#23.<android.widget.OverScroller: void <init>(android.content.Context,android.view.animation.Interpolator)>($u5, $u3);
+
+        this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller> = $u2#23;
+
+        return;
+
+     label1:
+        vc#25 = new java.lang.IllegalArgumentException;
+
+        specialinvoke vc#25.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Callback may not be null");
+
+        throw vc#25;
+
+     label2:
+        vc#25 = new java.lang.IllegalArgumentException;
+
+        specialinvoke vc#25.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Parent view may not be null");
+
+        throw vc#25;
+    }
+
+    private boolean checkNewEdgeDrag(float, float, int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        float $u6, $u7, $u4;
+        int $u8, $u9, $u2#4;
+        int[] $u2;
+        byte $u4#17;
+        androidx.customview.widget.ViewDragHelper$Callback $u2#23;
+        boolean $u-1;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u6 := @parameter0: float;
+
+        $u7 := @parameter1: float;
+
+        $u8 := @parameter2: int;
+
+        $u9 := @parameter3: int;
+
+        $u6 = staticinvoke <java.lang.Math: float abs(float)>($u6);
+
+        $u7 = staticinvoke <java.lang.Math: float abs(float)>($u7);
+
+        $u2 = this.<androidx.customview.widget.ViewDragHelper: int[] mInitialEdgesTouched>;
+
+        $u2#4 = $u2[$u8];
+
+        $u2#4 = $u2#4 & $u9;
+
+        if $u2#4 != $u9 goto label3;
+
+        $u2#4 = this.<androidx.customview.widget.ViewDragHelper: int mTrackingEdges>;
+
+        $u2#4 = $u2#4 & $u9;
+
+        if $u2#4 == 0 goto label3;
+
+        $u2 = this.<androidx.customview.widget.ViewDragHelper: int[] mEdgeDragsLocked>;
+
+        $u2#4 = $u2[$u8];
+
+        $u2#4 = $u2#4 & $u9;
+
+        if $u2#4 == $u9 goto label3;
+
+        $u2 = this.<androidx.customview.widget.ViewDragHelper: int[] mEdgeDragsInProgress>;
+
+        $u2#4 = $u2[$u8];
+
+        $u2#4 = $u2#4 & $u9;
+
+        if $u2#4 == $u9 goto label3;
+
+        $u2#4 = this.<androidx.customview.widget.ViewDragHelper: int mTouchSlop>;
+
+        $u4 = (float) $u2#4;
+
+        $u4#17 = $u6 cmpg $u4;
+
+        if $u4#17 > 0 goto label1;
+
+        $u4 = (float) $u2#4;
+
+        $u4#17 = $u7 cmpg $u4;
+
+        if $u4#17 > 0 goto label1;
+
+        return 0;
+
+     label1:
+        $u7 = 0.5F * $u7;
+
+        $u4#17 = $u6 cmpg $u7;
+
+        if $u4#17 >= 0 goto label2;
+
+        $u2#23 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u-1 = virtualinvoke $u2#23.<androidx.customview.widget.ViewDragHelper$Callback: boolean onEdgeLock(int)>($u9);
+
+        if $u-1 == 0 goto label2;
+
+        $u2 = this.<androidx.customview.widget.ViewDragHelper: int[] mEdgeDragsLocked>;
+
+        $u2#4 = $u2[$u8];
+
+        $u9 = $u2#4 | $u9;
+
+        $u2[$u8] = $u9;
+
+        return 0;
+
+     label2:
+        $u2 = this.<androidx.customview.widget.ViewDragHelper: int[] mEdgeDragsInProgress>;
+
+        $u8 = $u2[$u8];
+
+        $u8 = $u8 & $u9;
+
+        if $u8 != 0 goto label3;
+
+        $u8 = this.<androidx.customview.widget.ViewDragHelper: int mTouchSlop>;
+
+        $u7 = (float) $u8;
+
+        $u4#17 = $u6 cmpl $u7;
+
+        if $u4#17 <= 0 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    private boolean checkTouchSlop(android.view.View, float, float)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.view.View $u7;
+        float $u8, $u9;
+        androidx.customview.widget.ViewDragHelper$Callback checkHorizontal;
+        int $u-1;
+        boolean checkHorizontal#5, checkVertical;
+        byte $u4;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u7 := @parameter0: android.view.View;
+
+        $u8 := @parameter1: float;
+
+        $u9 := @parameter2: float;
+
+        if $u7 != null goto label1;
+
+        return 0;
+
+     label1:
+        checkHorizontal = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u-1 = virtualinvoke checkHorizontal.<androidx.customview.widget.ViewDragHelper$Callback: int getViewHorizontalDragRange(android.view.View)>($u7);
+
+        if $u-1 <= 0 goto label2;
+
+        checkHorizontal#5 = 1;
+
+        goto label3;
+
+     label2:
+        checkHorizontal#5 = 0;
+
+     label3:
+        checkHorizontal = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u-1 = virtualinvoke checkHorizontal.<androidx.customview.widget.ViewDragHelper$Callback: int getViewVerticalDragRange(android.view.View)>($u7);
+
+        if $u-1 <= 0 goto label4;
+
+        checkVertical = 1;
+
+        goto label5;
+
+     label4:
+        checkVertical = 0;
+
+     label5:
+        if checkHorizontal#5 == 0 goto label6;
+
+        if checkVertical == 0 goto label6;
+
+        $u8 = $u8 * $u8;
+
+        $u9 = $u9 * $u9;
+
+        $u8 = $u8 + $u9;
+
+        $u-1 = this.<androidx.customview.widget.ViewDragHelper: int mTouchSlop>;
+
+        $u-1 = $u-1 * $u-1;
+
+        $u9 = (float) $u-1;
+
+        $u4 = $u8 cmpl $u9;
+
+        if $u4 <= 0 goto label8;
+
+        return 1;
+
+     label6:
+        if checkHorizontal#5 == 0 goto label7;
+
+        $u8 = staticinvoke <java.lang.Math: float abs(float)>($u8);
+
+        $u-1 = this.<androidx.customview.widget.ViewDragHelper: int mTouchSlop>;
+
+        $u9 = (float) $u-1;
+
+        $u4 = $u8 cmpl $u9;
+
+        if $u4 <= 0 goto label8;
+
+        return 1;
+
+     label7:
+        if checkVertical == 0 goto label8;
+
+        $u8 = staticinvoke <java.lang.Math: float abs(float)>($u9);
+
+        $u-1 = this.<androidx.customview.widget.ViewDragHelper: int mTouchSlop>;
+
+        $u9 = (float) $u-1;
+
+        $u4 = $u8 cmpl $u9;
+
+        if $u4 <= 0 goto label8;
+
+        return 1;
+
+     label8:
+        return 0;
+    }
+
+    private float clampMag(float, float, float)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        float $u4, $u5, $u6, $u-1;
+        byte $u2;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u4 := @parameter0: float;
+
+        $u5 := @parameter1: float;
+
+        $u6 := @parameter2: float;
+
+        $u-1 = staticinvoke <java.lang.Math: float abs(float)>($u4);
+
+        $u2 = $u-1 cmpg $u5;
+
+        if $u2 >= 0 goto label1;
+
+        return 0.0F;
+
+     label1:
+        $u2 = $u-1 cmpl $u6;
+
+        if $u2 <= 0 goto label3;
+
+        $u2 = $u4 cmpl 0.0F;
+
+        if $u2 <= 0 goto label2;
+
+        return $u6;
+
+     label2:
+        $u4 = neg $u6;
+
+     label3:
+        return $u4;
+    }
+
+    private int clampMag(int, int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u3, $u4, $u5, $u-1;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u3 := @parameter0: int;
+
+        $u4 := @parameter1: int;
+
+        $u5 := @parameter2: int;
+
+        $u-1 = staticinvoke <java.lang.Math: int abs(int)>($u3);
+
+        if $u-1 >= $u4 goto label1;
+
+        return 0;
+
+     label1:
+        if $u-1 <= $u5 goto label3;
+
+        if $u3 <= 0 goto label2;
+
+        return $u5;
+
+     label2:
+        $u3 = neg $u5;
+
+     label3:
+        return $u3;
+    }
+
+    private void clearMotionHistory()
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        float[] $u0;
+        int[] $u0#6;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionX>;
+
+        if $u0 != null goto label1;
+
+        return;
+
+     label1:
+        staticinvoke <java.util.Arrays: void fill(float[],float)>($u0, 0.0F);
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionY>;
+
+        staticinvoke <java.util.Arrays: void fill(float[],float)>($u0, 0.0F);
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionX>;
+
+        staticinvoke <java.util.Arrays: void fill(float[],float)>($u0, 0.0F);
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionY>;
+
+        staticinvoke <java.util.Arrays: void fill(float[],float)>($u0, 0.0F);
+
+        $u0#6 = this.<androidx.customview.widget.ViewDragHelper: int[] mInitialEdgesTouched>;
+
+        staticinvoke <java.util.Arrays: void fill(int[],int)>($u0#6, 0);
+
+        $u0#6 = this.<androidx.customview.widget.ViewDragHelper: int[] mEdgeDragsInProgress>;
+
+        staticinvoke <java.util.Arrays: void fill(int[],int)>($u0#6, 0);
+
+        $u0#6 = this.<androidx.customview.widget.ViewDragHelper: int[] mEdgeDragsLocked>;
+
+        staticinvoke <java.util.Arrays: void fill(int[],int)>($u0#6, 0);
+
+        this.<androidx.customview.widget.ViewDragHelper: int mPointersDown> = 0;
+
+        return;
+    }
+
+    private void clearMotionHistory(int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u3, $u0#12;
+        boolean $u-1;
+        float[] $u0;
+        int[] $u0#8;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionX>;
+
+        if $u0 == null goto label2;
+
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean isPointerDown(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        return;
+
+     label1:
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionX>;
+
+        $u0[$u3] = 0.0F;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionY>;
+
+        $u0[$u3] = 0.0F;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionX>;
+
+        $u0[$u3] = 0.0F;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionY>;
+
+        $u0[$u3] = 0.0F;
+
+        $u0#8 = this.<androidx.customview.widget.ViewDragHelper: int[] mInitialEdgesTouched>;
+
+        $u0#8[$u3] = 0;
+
+        $u0#8 = this.<androidx.customview.widget.ViewDragHelper: int[] mEdgeDragsInProgress>;
+
+        $u0#8[$u3] = 0;
+
+        $u0#8 = this.<androidx.customview.widget.ViewDragHelper: int[] mEdgeDragsLocked>;
+
+        $u0#8[$u3] = 0;
+
+        $u0#12 = this.<androidx.customview.widget.ViewDragHelper: int mPointersDown>;
+
+        $u3 = 1 << $u3;
+
+        $u3 = $u3 ^ -1;
+
+        $u3 = $u0#12 & $u3;
+
+        this.<androidx.customview.widget.ViewDragHelper: int mPointersDown> = $u3;
+
+     label2:
+        return;
+    }
+
+    private int computeAxisDuration(int, int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u8, $u10, halfWidth, $u9, $u-1, $u-1#6;
+        android.view.ViewGroup width;
+        float distanceRatio, duration, $u-1#12;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u8 := @parameter0: int;
+
+        $u9 := @parameter1: int;
+
+        $u10 := @parameter2: int;
+
+        if $u8 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        width = this.<androidx.customview.widget.ViewDragHelper: android.view.ViewGroup mParentView>;
+
+        $u-1 = virtualinvoke width.<android.view.ViewGroup: int getWidth()>();
+
+        halfWidth = $u-1 / 2;
+
+        $u-1#6 = staticinvoke <java.lang.Math: int abs(int)>($u8);
+
+        distanceRatio = (float) $u-1#6;
+
+        duration = (float) $u-1;
+
+        distanceRatio = distanceRatio / duration;
+
+        $u-1#12 = staticinvoke <java.lang.Math: float min(float,float)>(1.0F, distanceRatio);
+
+        distanceRatio = (float) halfWidth;
+
+        duration = (float) halfWidth;
+
+        $u-1#12 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: float distanceInfluenceForSnapDuration(float)>($u-1#12);
+
+        duration = duration * $u-1#12;
+
+        distanceRatio = distanceRatio + duration;
+
+        $u9 = staticinvoke <java.lang.Math: int abs(int)>($u9);
+
+        if $u9 <= 0 goto label2;
+
+        duration = (float) $u9;
+
+        distanceRatio = distanceRatio / duration;
+
+        distanceRatio = staticinvoke <java.lang.Math: float abs(float)>(distanceRatio);
+
+        distanceRatio = distanceRatio * 1000.0F;
+
+        $u8 = staticinvoke <java.lang.Math: int round(float)>(distanceRatio);
+
+        $u8 = $u8 * 4;
+
+        goto label3;
+
+     label2:
+        $u8 = staticinvoke <java.lang.Math: int abs(int)>($u8);
+
+        distanceRatio = (float) $u8;
+
+        duration = (float) $u10;
+
+        distanceRatio = distanceRatio / duration;
+
+        distanceRatio = 1.0F + distanceRatio;
+
+        distanceRatio = distanceRatio * 256.0F;
+
+        $u8 = (int) distanceRatio;
+
+     label3:
+        $u8 = staticinvoke <java.lang.Math: int min(int,int)>($u8, 600);
+
+        return $u8;
+    }
+
+    private int computeSettleDuration(android.view.View, int, int, int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.view.View $u17;
+        int $u18, $u19, $u20, $u21, addedVel, addedDistance, $u-1, $u-1#19, $u-1#21, $u-1#22;
+        float xvel, yweight, xduration;
+        androidx.customview.widget.ViewDragHelper$Callback xduration#29;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u17 := @parameter0: android.view.View;
+
+        $u18 := @parameter1: int;
+
+        $u19 := @parameter2: int;
+
+        $u20 := @parameter3: int;
+
+        $u21 := @parameter4: int;
+
+        xvel = this.<androidx.customview.widget.ViewDragHelper: float mMinVelocity>;
+
+        addedVel = (int) xvel;
+
+        xvel = this.<androidx.customview.widget.ViewDragHelper: float mMaxVelocity>;
+
+        addedDistance = (int) xvel;
+
+        $u20 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: int clampMag(int,int,int)>($u20, addedVel, addedDistance);
+
+        xvel = this.<androidx.customview.widget.ViewDragHelper: float mMinVelocity>;
+
+        addedVel = (int) xvel;
+
+        xvel = this.<androidx.customview.widget.ViewDragHelper: float mMaxVelocity>;
+
+        addedDistance = (int) xvel;
+
+        $u21 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: int clampMag(int,int,int)>($u21, addedVel, addedDistance);
+
+        $u-1 = staticinvoke <java.lang.Math: int abs(int)>($u18);
+
+        $u-1#19 = staticinvoke <java.lang.Math: int abs(int)>($u19);
+
+        $u-1#21 = staticinvoke <java.lang.Math: int abs(int)>($u20);
+
+        $u-1#22 = staticinvoke <java.lang.Math: int abs(int)>($u21);
+
+        addedVel = $u-1#21 + $u-1#22;
+
+        addedDistance = $u-1 + $u-1#19;
+
+        if $u20 == 0 goto label1;
+
+        xvel = (float) $u-1#21;
+
+        yweight = (float) addedVel;
+
+        goto label2;
+
+     label1:
+        xvel = (float) $u-1;
+
+        yweight = (float) addedDistance;
+
+     label2:
+        xvel = xvel / yweight;
+
+        if $u21 == 0 goto label3;
+
+        yweight = (float) $u-1#22;
+
+        xduration = (float) addedVel;
+
+        goto label4;
+
+     label3:
+        yweight = (float) $u-1#19;
+
+        xduration = (float) addedDistance;
+
+     label4:
+        yweight = yweight / xduration;
+
+        xduration#29 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        addedVel = virtualinvoke xduration#29.<androidx.customview.widget.ViewDragHelper$Callback: int getViewHorizontalDragRange(android.view.View)>($u17);
+
+        $u18 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: int computeAxisDuration(int,int,int)>($u18, $u20, addedVel);
+
+        xduration#29 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u20 = virtualinvoke xduration#29.<androidx.customview.widget.ViewDragHelper$Callback: int getViewVerticalDragRange(android.view.View)>($u17);
+
+        $u19 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: int computeAxisDuration(int,int,int)>($u19, $u21, $u20);
+
+        xduration = (float) $u18;
+
+        xvel = xduration * xvel;
+
+        xduration = (float) $u19;
+
+        yweight = xduration * yweight;
+
+        xvel = xvel + yweight;
+
+        $u18 = (int) xvel;
+
+        return $u18;
+    }
+
+    public static androidx.customview.widget.ViewDragHelper create(android.view.ViewGroup, float, androidx.customview.widget.ViewDragHelper$Callback)
+    {
+        android.view.ViewGroup $u3;
+        float $u4, $u1#2;
+        androidx.customview.widget.ViewDragHelper$Callback $u5;
+        androidx.customview.widget.ViewDragHelper $u-1;
+        int $u1;
+
+        $u3 := @parameter0: android.view.ViewGroup;
+
+        $u4 := @parameter1: float;
+
+        $u5 := @parameter2: androidx.customview.widget.ViewDragHelper$Callback;
+
+        $u-1 = staticinvoke <androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper create(android.view.ViewGroup,androidx.customview.widget.ViewDragHelper$Callback)>($u3, $u5);
+
+        $u1 = $u-1.<androidx.customview.widget.ViewDragHelper: int mTouchSlop>;
+
+        $u1#2 = (float) $u1;
+
+        $u4 = 1.0F / $u4;
+
+        $u4 = $u1#2 * $u4;
+
+        $u1 = (int) $u4;
+
+        $u-1.<androidx.customview.widget.ViewDragHelper: int mTouchSlop> = $u1;
+
+        return $u-1;
+    }
+
+    public static androidx.customview.widget.ViewDragHelper create(android.view.ViewGroup, androidx.customview.widget.ViewDragHelper$Callback)
+    {
+        android.view.ViewGroup $u2;
+        androidx.customview.widget.ViewDragHelper$Callback $u3;
+        androidx.customview.widget.ViewDragHelper $u0;
+        android.content.Context $u-1;
+
+        $u2 := @parameter0: android.view.ViewGroup;
+
+        $u3 := @parameter1: androidx.customview.widget.ViewDragHelper$Callback;
+
+        $u0 = new androidx.customview.widget.ViewDragHelper;
+
+        $u-1 = virtualinvoke $u2.<android.view.ViewGroup: android.content.Context getContext()>();
+
+        specialinvoke $u0.<androidx.customview.widget.ViewDragHelper: void <init>(android.content.Context,android.view.ViewGroup,androidx.customview.widget.ViewDragHelper$Callback)>($u-1, $u2, $u3);
+
+        return $u0;
+    }
+
+    private void dispatchViewReleased(float, float)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        float $u4, $u5;
+        androidx.customview.widget.ViewDragHelper$Callback $u1;
+        android.view.View $u2;
+        int $u2#4;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u4 := @parameter0: float;
+
+        $u5 := @parameter1: float;
+
+        this.<androidx.customview.widget.ViewDragHelper: boolean mReleaseInProgress> = 1;
+
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u2 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        virtualinvoke $u1.<androidx.customview.widget.ViewDragHelper$Callback: void onViewReleased(android.view.View,float,float)>($u2, $u4, $u5);
+
+        this.<androidx.customview.widget.ViewDragHelper: boolean mReleaseInProgress> = 0;
+
+        $u2#4 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if $u2#4 != 1 goto label1;
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void setDragState(int)>(0);
+
+     label1:
+        return;
+    }
+
+    private float distanceInfluenceForSnapDuration(float)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        double $u-1;
+        float $u3;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u3 := @parameter0: float;
+
+        $u3 = $u3 - 0.5F;
+
+        $u3 = $u3 * 0.47123894F;
+
+        $u-1 = (double) $u3;
+
+        $u-1 = staticinvoke <java.lang.Math: double sin(double)>($u-1);
+
+        $u3 = (float) $u-1;
+
+        return $u3;
+    }
+
+    private void dragTo(int, int, int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u17, $u18, $u19, $u20, clampedX, clampedY, $u-1, $u-1#7;
+        androidx.customview.widget.ViewDragHelper$Callback $u10;
+        android.view.View $u11;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u17 := @parameter0: int;
+
+        $u18 := @parameter1: int;
+
+        $u19 := @parameter2: int;
+
+        $u20 := @parameter3: int;
+
+        clampedX = $u17;
+
+        clampedY = $u18;
+
+        $u11 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u-1 = virtualinvoke $u11.<android.view.View: int getLeft()>();
+
+        $u11 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u-1#7 = virtualinvoke $u11.<android.view.View: int getTop()>();
+
+        if $u19 == 0 goto label1;
+
+        $u10 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u11 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u17 = virtualinvoke $u10.<androidx.customview.widget.ViewDragHelper$Callback: int clampViewPositionHorizontal(android.view.View,int,int)>($u11, $u17, $u19);
+
+        clampedX = $u17;
+
+        $u11 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u17 = $u17 - $u-1;
+
+        staticinvoke <androidx.core.view.ViewCompat: void offsetLeftAndRight(android.view.View,int)>($u11, $u17);
+
+        goto label1;
+
+     label1:
+        if $u20 == 0 goto label2;
+
+        $u10 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u11 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u17 = virtualinvoke $u10.<androidx.customview.widget.ViewDragHelper$Callback: int clampViewPositionVertical(android.view.View,int,int)>($u11, $u18, $u20);
+
+        clampedY = $u17;
+
+        $u11 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u17 = $u17 - $u-1#7;
+
+        staticinvoke <androidx.core.view.ViewCompat: void offsetTopAndBottom(android.view.View,int)>($u11, $u17);
+
+        goto label2;
+
+     label2:
+        if $u19 != 0 goto label3;
+
+        if $u20 == 0 goto label4;
+
+     label3:
+        $u17 = clampedX - $u-1;
+
+        $u18 = clampedY - $u-1#7;
+
+        $u10 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u11 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        virtualinvoke $u10.<androidx.customview.widget.ViewDragHelper$Callback: void onViewPositionChanged(android.view.View,int,int,int,int)>($u11, clampedX, clampedY, $u17, $u18);
+
+     label4:
+        return;
+    }
+
+    private void ensureMotionHistorySizeForId(int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u11, imx#2;
+        float[] imx, imy, lmx, lmy, $u7;
+        int[] iit, edip, edl, $u7#25;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u11 := @parameter0: int;
+
+        imx = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionX>;
+
+        if imx == null goto label1;
+
+        imx#2 = lengthof imx;
+
+        if imx#2 > $u11 goto label3;
+
+     label1:
+        imx#2 = $u11 + 1;
+
+        imx = newarray (float)[imx#2];
+
+        imx#2 = $u11 + 1;
+
+        imy = newarray (float)[imx#2];
+
+        imx#2 = $u11 + 1;
+
+        lmx = newarray (float)[imx#2];
+
+        imx#2 = $u11 + 1;
+
+        lmy = newarray (float)[imx#2];
+
+        imx#2 = $u11 + 1;
+
+        iit = newarray (int)[imx#2];
+
+        imx#2 = $u11 + 1;
+
+        edip = newarray (int)[imx#2];
+
+        $u11 = $u11 + 1;
+
+        edl = newarray (int)[$u11];
+
+        $u7 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionX>;
+
+        if $u7 == null goto label2;
+
+        $u11 = lengthof $u7;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u7, 0, imx, 0, $u11);
+
+        $u7 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionY>;
+
+        $u11 = lengthof $u7;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u7, 0, imy, 0, $u11);
+
+        $u7 = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionX>;
+
+        $u11 = lengthof $u7;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u7, 0, lmx, 0, $u11);
+
+        $u7 = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionY>;
+
+        $u11 = lengthof $u7;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u7, 0, lmy, 0, $u11);
+
+        $u7#25 = this.<androidx.customview.widget.ViewDragHelper: int[] mInitialEdgesTouched>;
+
+        $u11 = lengthof $u7#25;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u7#25, 0, iit, 0, $u11);
+
+        $u7#25 = this.<androidx.customview.widget.ViewDragHelper: int[] mEdgeDragsInProgress>;
+
+        $u11 = lengthof $u7#25;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u7#25, 0, edip, 0, $u11);
+
+        $u7#25 = this.<androidx.customview.widget.ViewDragHelper: int[] mEdgeDragsLocked>;
+
+        $u11 = lengthof $u7#25;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u7#25, 0, edl, 0, $u11);
+
+     label2:
+        this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionX> = imx;
+
+        this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionY> = imy;
+
+        this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionX> = lmx;
+
+        this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionY> = lmy;
+
+        this.<androidx.customview.widget.ViewDragHelper: int[] mInitialEdgesTouched> = iit;
+
+        this.<androidx.customview.widget.ViewDragHelper: int[] mEdgeDragsInProgress> = edip;
+
+        this.<androidx.customview.widget.ViewDragHelper: int[] mEdgeDragsLocked> = edl;
+
+     label3:
+        return;
+    }
+
+    private boolean forceSettleCapturedViewAt(int, int, int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u12, $u13, $u14, $u15, $u-1, $u-1#5;
+        android.view.View startLeft;
+        android.widget.OverScroller $u1;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u12 := @parameter0: int;
+
+        $u13 := @parameter1: int;
+
+        $u14 := @parameter2: int;
+
+        $u15 := @parameter3: int;
+
+        startLeft = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u-1 = virtualinvoke startLeft.<android.view.View: int getLeft()>();
+
+        startLeft = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u-1#5 = virtualinvoke startLeft.<android.view.View: int getTop()>();
+
+        $u12 = $u12 - $u-1;
+
+        $u13 = $u13 - $u-1#5;
+
+        if $u12 != 0 goto label1;
+
+        if $u13 != 0 goto label1;
+
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        virtualinvoke $u1.<android.widget.OverScroller: void abortAnimation()>();
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void setDragState(int)>(0);
+
+        return 0;
+
+     label1:
+        startLeft = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u14 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: int computeSettleDuration(android.view.View,int,int,int,int)>(startLeft, $u12, $u13, $u14, $u15);
+
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        virtualinvoke $u1.<android.widget.OverScroller: void startScroll(int,int,int,int,int)>($u-1, $u-1#5, $u12, $u13, $u14);
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void setDragState(int)>(2);
+
+        return 1;
+    }
+
+    private int getEdgesTouched(int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u4, $u5, result, $u-1, $u2;
+        android.view.ViewGroup $u1;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: int;
+
+        result = 0;
+
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: android.view.ViewGroup mParentView>;
+
+        $u-1 = virtualinvoke $u1.<android.view.ViewGroup: int getLeft()>();
+
+        $u2 = this.<androidx.customview.widget.ViewDragHelper: int mEdgeSize>;
+
+        $u-1 = $u-1 + $u2;
+
+        if $u4 >= $u-1 goto label1;
+
+        result = 1;
+
+     label1:
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: android.view.ViewGroup mParentView>;
+
+        $u-1 = virtualinvoke $u1.<android.view.ViewGroup: int getTop()>();
+
+        $u2 = this.<androidx.customview.widget.ViewDragHelper: int mEdgeSize>;
+
+        $u-1 = $u-1 + $u2;
+
+        if $u5 >= $u-1 goto label2;
+
+        result = result | 4;
+
+     label2:
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: android.view.ViewGroup mParentView>;
+
+        $u-1 = virtualinvoke $u1.<android.view.ViewGroup: int getRight()>();
+
+        $u2 = this.<androidx.customview.widget.ViewDragHelper: int mEdgeSize>;
+
+        $u-1 = $u-1 - $u2;
+
+        if $u4 <= $u-1 goto label3;
+
+        result = result | 2;
+
+     label3:
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: android.view.ViewGroup mParentView>;
+
+        $u4 = virtualinvoke $u1.<android.view.ViewGroup: int getBottom()>();
+
+        $u-1 = this.<androidx.customview.widget.ViewDragHelper: int mEdgeSize>;
+
+        $u4 = $u4 - $u-1;
+
+        if $u5 <= $u4 goto label4;
+
+        $u4 = result | 8;
+
+        return $u4;
+
+     label4:
+        return result;
+    }
+
+    private boolean isValidPointerForActionMove(int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u3;
+        boolean $u-1;
+        java.lang.StringBuilder $u0;
+        java.lang.String $u-1#8;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u3 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean isPointerDown(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        $u0 = new java.lang.StringBuilder;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Ignoring pointerId=");
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u3);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" because ACTION_DOWN was not received ");
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("for this pointer before ACTION_MOVE. It likely happened because ");
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ViewDragHelper did not receive all the events in the event stream.");
+
+        $u-1#8 = virtualinvoke $u0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("ViewDragHelper", $u-1#8);
+
+        return 0;
+
+     label1:
+        return 1;
+    }
+
+    private void releaseViewForPointerUp()
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        float $u3, yvel, $u2, $u2#16;
+        android.view.VelocityTracker xvel;
+        int yvel#5;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        xvel = this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker>;
+
+        yvel = this.<androidx.customview.widget.ViewDragHelper: float mMaxVelocity>;
+
+        virtualinvoke xvel.<android.view.VelocityTracker: void computeCurrentVelocity(int,float)>(1000, yvel);
+
+        xvel = this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker>;
+
+        yvel#5 = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        yvel = virtualinvoke xvel.<android.view.VelocityTracker: float getXVelocity(int)>(yvel#5);
+
+        $u3 = this.<androidx.customview.widget.ViewDragHelper: float mMinVelocity>;
+
+        $u2 = this.<androidx.customview.widget.ViewDragHelper: float mMaxVelocity>;
+
+        yvel = specialinvoke this.<androidx.customview.widget.ViewDragHelper: float clampMag(float,float,float)>(yvel, $u3, $u2);
+
+        xvel = this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker>;
+
+        yvel#5 = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        $u2 = virtualinvoke xvel.<android.view.VelocityTracker: float getYVelocity(int)>(yvel#5);
+
+        $u2#16 = this.<androidx.customview.widget.ViewDragHelper: float mMinVelocity>;
+
+        $u3 = this.<androidx.customview.widget.ViewDragHelper: float mMaxVelocity>;
+
+        $u3 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: float clampMag(float,float,float)>($u2, $u2#16, $u3);
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void dispatchViewReleased(float,float)>(yvel, $u3);
+
+        return;
+    }
+
+    private void reportNewEdgeDrags(float, float, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        float $u4, $u5;
+        int $u6, dragsStarted, $u2;
+        boolean $u-1;
+        int[] $u1;
+        androidx.customview.widget.ViewDragHelper$Callback $u1#17;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u4 := @parameter0: float;
+
+        $u5 := @parameter1: float;
+
+        $u6 := @parameter2: int;
+
+        dragsStarted = 0;
+
+        $u-1 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: boolean checkNewEdgeDrag(float,float,int,int)>($u4, $u5, $u6, 1);
+
+        if $u-1 == 0 goto label1;
+
+        dragsStarted = 1;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: boolean checkNewEdgeDrag(float,float,int,int)>($u5, $u4, $u6, 4);
+
+        if $u-1 == 0 goto label2;
+
+        dragsStarted = dragsStarted | 4;
+
+     label2:
+        $u-1 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: boolean checkNewEdgeDrag(float,float,int,int)>($u4, $u5, $u6, 2);
+
+        if $u-1 == 0 goto label3;
+
+        dragsStarted = dragsStarted | 2;
+
+     label3:
+        $u-1 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: boolean checkNewEdgeDrag(float,float,int,int)>($u5, $u4, $u6, 8);
+
+        if $u-1 == 0 goto label4;
+
+        dragsStarted = dragsStarted | 8;
+
+     label4:
+        if dragsStarted == 0 goto label5;
+
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: int[] mEdgeDragsInProgress>;
+
+        $u2 = $u1[$u6];
+
+        $u2 = $u2 | dragsStarted;
+
+        $u1[$u6] = $u2;
+
+        $u1#17 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        virtualinvoke $u1#17.<androidx.customview.widget.ViewDragHelper$Callback: void onEdgeDragStarted(int,int)>(dragsStarted, $u6);
+
+     label5:
+        return;
+    }
+
+    private void saveInitialMotion(float, float, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        float $u4, $u5;
+        int $u6, $u2, $u1#6;
+        float[] $u0, $u1;
+        int[] $u0#5;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u4 := @parameter0: float;
+
+        $u5 := @parameter1: float;
+
+        $u6 := @parameter2: int;
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void ensureMotionHistorySizeForId(int)>($u6);
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionX>;
+
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionX>;
+
+        $u1[$u6] = $u4;
+
+        $u0[$u6] = $u4;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionY>;
+
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionY>;
+
+        $u1[$u6] = $u5;
+
+        $u0[$u6] = $u5;
+
+        $u0#5 = this.<androidx.customview.widget.ViewDragHelper: int[] mInitialEdgesTouched>;
+
+        $u1#6 = (int) $u4;
+
+        $u2 = (int) $u5;
+
+        $u2 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: int getEdgesTouched(int,int)>($u1#6, $u2);
+
+        $u0#5[$u6] = $u2;
+
+        $u2 = this.<androidx.customview.widget.ViewDragHelper: int mPointersDown>;
+
+        $u6 = 1 << $u6;
+
+        $u6 = $u2 | $u6;
+
+        this.<androidx.customview.widget.ViewDragHelper: int mPointersDown> = $u6;
+
+        return;
+    }
+
+    private void saveLastMotion(android.view.MotionEvent)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.view.MotionEvent $u7;
+        int $u-1, i, $u-1#3;
+        boolean $u-1#4;
+        float $u-1#6, $u-1#8;
+        float[] $u5;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u7 := @parameter0: android.view.MotionEvent;
+
+        $u-1 = virtualinvoke $u7.<android.view.MotionEvent: int getPointerCount()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label4;
+
+        $u-1#3 = virtualinvoke $u7.<android.view.MotionEvent: int getPointerId(int)>(i);
+
+        $u-1#4 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: boolean isValidPointerForActionMove(int)>($u-1#3);
+
+        if $u-1#4 != 0 goto label2;
+
+        goto label3;
+
+     label2:
+        $u-1#6 = virtualinvoke $u7.<android.view.MotionEvent: float getX(int)>(i);
+
+        $u-1#8 = virtualinvoke $u7.<android.view.MotionEvent: float getY(int)>(i);
+
+        $u5 = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionX>;
+
+        $u5[$u-1#3] = $u-1#6;
+
+        $u5 = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionY>;
+
+        $u5[$u-1#3] = $u-1#8;
+
+     label3:
+        i = i + 1;
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    public void abort()
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.view.View $u4;
+        int $u7, $u8, oldX, $u-1;
+        android.widget.OverScroller oldX#3;
+        androidx.customview.widget.ViewDragHelper$Callback $u3;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void cancel()>();
+
+        oldX = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if oldX != 2 goto label1;
+
+        oldX#3 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        $u7 = virtualinvoke oldX#3.<android.widget.OverScroller: int getCurrX()>();
+
+        oldX#3 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        $u8 = virtualinvoke oldX#3.<android.widget.OverScroller: int getCurrY()>();
+
+        oldX#3 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        virtualinvoke oldX#3.<android.widget.OverScroller: void abortAnimation()>();
+
+        oldX#3 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        oldX = virtualinvoke oldX#3.<android.widget.OverScroller: int getCurrX()>();
+
+        oldX#3 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        $u-1 = virtualinvoke oldX#3.<android.widget.OverScroller: int getCurrY()>();
+
+        $u3 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u4 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u7 = oldX - $u7;
+
+        $u8 = $u-1 - $u8;
+
+        virtualinvoke $u3.<androidx.customview.widget.ViewDragHelper$Callback: void onViewPositionChanged(android.view.View,int,int,int,int)>($u4, oldX, $u-1, $u7, $u8);
+
+     label1:
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void setDragState(int)>(0);
+
+        return;
+    }
+
+    protected boolean canScroll(android.view.View, boolean, int, int, int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.view.View $u16, $u-1#11;
+        boolean $u17, group;
+        int $u18, $u19, $u20, $u21, $u12, $u13, $u-1, $u-1#7, $u-1#9, $u-1#28;
+        android.view.ViewGroup group#4;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u16 := @parameter0: android.view.View;
+
+        $u17 := @parameter1: boolean;
+
+        $u18 := @parameter2: int;
+
+        $u19 := @parameter3: int;
+
+        $u20 := @parameter4: int;
+
+        $u21 := @parameter5: int;
+
+        group = $u16 instanceof android.view.ViewGroup;
+
+        if group == 0 goto label3;
+
+        group#4 = (android.view.ViewGroup) $u16;
+
+        $u-1 = virtualinvoke $u16.<android.view.View: int getScrollX()>();
+
+        $u-1#7 = virtualinvoke $u16.<android.view.View: int getScrollY()>();
+
+        $u-1#9 = virtualinvoke group#4.<android.view.ViewGroup: int getChildCount()>();
+
+        $u-1#9 = $u-1#9 + -1;
+
+     label1:
+        if $u-1#9 < 0 goto label3;
+
+        $u-1#11 = virtualinvoke group#4.<android.view.ViewGroup: android.view.View getChildAt(int)>($u-1#9);
+
+        $u12 = $u20 + $u-1;
+
+        $u13 = virtualinvoke $u-1#11.<android.view.View: int getLeft()>();
+
+        if $u12 < $u13 goto label2;
+
+        $u12 = $u20 + $u-1;
+
+        $u13 = virtualinvoke $u-1#11.<android.view.View: int getRight()>();
+
+        if $u12 >= $u13 goto label2;
+
+        $u12 = $u21 + $u-1#7;
+
+        $u13 = virtualinvoke $u-1#11.<android.view.View: int getTop()>();
+
+        if $u12 < $u13 goto label2;
+
+        $u12 = $u21 + $u-1#7;
+
+        $u13 = virtualinvoke $u-1#11.<android.view.View: int getBottom()>();
+
+        if $u12 >= $u13 goto label2;
+
+        $u12 = $u20 + $u-1;
+
+        $u13 = virtualinvoke $u-1#11.<android.view.View: int getLeft()>();
+
+        $u12 = $u12 - $u13;
+
+        $u13 = $u21 + $u-1#7;
+
+        $u-1#28 = virtualinvoke $u-1#11.<android.view.View: int getTop()>();
+
+        $u13 = $u13 - $u-1#28;
+
+        group = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean canScroll(android.view.View,boolean,int,int,int,int)>($u-1#11, 1, $u18, $u19, $u12, $u13);
+
+        if group == 0 goto label2;
+
+        return 1;
+
+     label2:
+        $u-1#9 = $u-1#9 + -1;
+
+        goto label1;
+
+     label3:
+        if $u17 == 0 goto label5;
+
+        $u18 = neg $u18;
+
+        $u17 = virtualinvoke $u16.<android.view.View: boolean canScrollHorizontally(int)>($u18);
+
+        if $u17 != 0 goto label4;
+
+        $u18 = neg $u19;
+
+        $u17 = virtualinvoke $u16.<android.view.View: boolean canScrollVertically(int)>($u18);
+
+        if $u17 == 0 goto label5;
+
+     label4:
+        return 1;
+
+     label5:
+        return 0;
+    }
+
+    public void cancel()
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.view.VelocityTracker $u0;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId> = -1;
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void clearMotionHistory()>();
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.view.VelocityTracker: void recycle()>();
+
+        this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker> = null;
+
+     label1:
+        return;
+    }
+
+    public void captureChildView(android.view.View, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.view.View $u4;
+        int $u5;
+        android.view.ViewParent $u-1;
+        android.view.ViewGroup $u1;
+        androidx.customview.widget.ViewDragHelper$Callback $u0;
+        java.lang.IllegalArgumentException $u0#6;
+        java.lang.StringBuilder $u1#7;
+        java.lang.String $u-1#11;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u4 := @parameter0: android.view.View;
+
+        $u5 := @parameter1: int;
+
+        $u-1 = virtualinvoke $u4.<android.view.View: android.view.ViewParent getParent()>();
+
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: android.view.ViewGroup mParentView>;
+
+        if $u-1 != $u1 goto label1;
+
+        this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView> = $u4;
+
+        this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId> = $u5;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        virtualinvoke $u0.<androidx.customview.widget.ViewDragHelper$Callback: void onViewCaptured(android.view.View,int)>($u4, $u5);
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void setDragState(int)>(1);
+
+        return;
+
+     label1:
+        $u0#6 = new java.lang.IllegalArgumentException;
+
+        $u1#7 = new java.lang.StringBuilder;
+
+        specialinvoke $u1#7.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1#7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("captureChildView: parameter must be a descendant of the ViewDragHelper\'s tracked parent view (");
+
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: android.view.ViewGroup mParentView>;
+
+        virtualinvoke $u1#7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u1);
+
+        virtualinvoke $u1#7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $u-1#11 = virtualinvoke $u1#7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0#6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1#11);
+
+        throw $u0#6;
+    }
+
+    public boolean checkTouchSlop(int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u4, count#2, i;
+        boolean $u-1;
+        float[] count;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u4 := @parameter0: int;
+
+        count = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionX>;
+
+        count#2 = lengthof count;
+
+        i = 0;
+
+     label1:
+        if i >= count#2 goto label3;
+
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean checkTouchSlop(int,int)>($u4, i);
+
+        if $u-1 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        return 0;
+    }
+
+    public boolean checkTouchSlop(int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u9, $u10, checkHorizontal;
+        boolean $u-1, checkVertical;
+        float[] dx;
+        float dx#10, dy, $u6;
+        byte $u6#25;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u9 := @parameter0: int;
+
+        $u10 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean isPointerDown(int)>($u10);
+
+        if $u-1 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        checkHorizontal = $u9 & 1;
+
+        if checkHorizontal != 1 goto label2;
+
+        $u-1 = 1;
+
+        goto label3;
+
+     label2:
+        $u-1 = 0;
+
+     label3:
+        $u9 = $u9 & 2;
+
+        if $u9 != 2 goto label4;
+
+        checkVertical = 1;
+
+        goto label5;
+
+     label4:
+        checkVertical = 0;
+
+     label5:
+        dx = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionX>;
+
+        dx#10 = dx[$u10];
+
+        dx = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionX>;
+
+        dy = dx[$u10];
+
+        dx#10 = dx#10 - dy;
+
+        dx = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionY>;
+
+        dy = dx[$u10];
+
+        dx = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionY>;
+
+        $u6 = dx[$u10];
+
+        dy = dy - $u6;
+
+        if $u-1 == 0 goto label6;
+
+        if checkVertical == 0 goto label6;
+
+        dx#10 = dx#10 * dx#10;
+
+        dy = dy * dy;
+
+        dx#10 = dx#10 + dy;
+
+        $u9 = this.<androidx.customview.widget.ViewDragHelper: int mTouchSlop>;
+
+        $u9 = $u9 * $u9;
+
+        dy = (float) $u9;
+
+        $u6#25 = dx#10 cmpl dy;
+
+        if $u6#25 <= 0 goto label8;
+
+        return 1;
+
+     label6:
+        if $u-1 == 0 goto label7;
+
+        dx#10 = staticinvoke <java.lang.Math: float abs(float)>(dx#10);
+
+        $u9 = this.<androidx.customview.widget.ViewDragHelper: int mTouchSlop>;
+
+        dy = (float) $u9;
+
+        $u6#25 = dx#10 cmpl dy;
+
+        if $u6#25 <= 0 goto label8;
+
+        return 1;
+
+     label7:
+        if checkVertical == 0 goto label8;
+
+        dx#10 = staticinvoke <java.lang.Math: float abs(float)>(dy);
+
+        $u9 = this.<androidx.customview.widget.ViewDragHelper: int mTouchSlop>;
+
+        dy = (float) $u9;
+
+        $u6#25 = dx#10 cmpl dy;
+
+        if $u6#25 <= 0 goto label8;
+
+        return 1;
+
+     label8:
+        return 0;
+    }
+
+    public boolean continueSettling(boolean)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        boolean $u14, $u-1, keepGoing#5;
+        int dx, dy, keepGoing, $u-1#7;
+        android.widget.OverScroller keepGoing#3;
+        android.view.View $u4;
+        androidx.customview.widget.ViewDragHelper$Callback $u4#19;
+        android.view.ViewGroup $u4#28;
+        java.lang.Runnable $u5;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u14 := @parameter0: boolean;
+
+        keepGoing = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if keepGoing != 2 goto label7;
+
+        keepGoing#3 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        $u-1 = virtualinvoke keepGoing#3.<android.widget.OverScroller: boolean computeScrollOffset()>();
+
+        keepGoing#5 = $u-1;
+
+        keepGoing#3 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        $u-1#7 = virtualinvoke keepGoing#3.<android.widget.OverScroller: int getCurrX()>();
+
+        keepGoing#3 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        keepGoing = virtualinvoke keepGoing#3.<android.widget.OverScroller: int getCurrY()>();
+
+        $u4 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        dx = virtualinvoke $u4.<android.view.View: int getLeft()>();
+
+        dx = $u-1#7 - dx;
+
+        $u4 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        dy = virtualinvoke $u4.<android.view.View: int getTop()>();
+
+        dy = keepGoing - dy;
+
+        if dx == 0 goto label1;
+
+        $u4 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        staticinvoke <androidx.core.view.ViewCompat: void offsetLeftAndRight(android.view.View,int)>($u4, dx);
+
+     label1:
+        if dy == 0 goto label2;
+
+        $u4 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        staticinvoke <androidx.core.view.ViewCompat: void offsetTopAndBottom(android.view.View,int)>($u4, dy);
+
+     label2:
+        if dx != 0 goto label3;
+
+        if dy == 0 goto label4;
+
+     label3:
+        $u4#19 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u4 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        virtualinvoke $u4#19.<androidx.customview.widget.ViewDragHelper$Callback: void onViewPositionChanged(android.view.View,int,int,int,int)>($u4, $u-1#7, keepGoing, dx, dy);
+
+     label4:
+        if $u-1 == 0 goto label5;
+
+        keepGoing#3 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        dx = virtualinvoke keepGoing#3.<android.widget.OverScroller: int getFinalX()>();
+
+        if $u-1#7 != dx goto label5;
+
+        keepGoing#3 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        $u-1#7 = virtualinvoke keepGoing#3.<android.widget.OverScroller: int getFinalY()>();
+
+        if keepGoing != $u-1#7 goto label5;
+
+        keepGoing#3 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        virtualinvoke keepGoing#3.<android.widget.OverScroller: void abortAnimation()>();
+
+        keepGoing#5 = 0;
+
+     label5:
+        if keepGoing#5 != 0 goto label7;
+
+        if $u14 == 0 goto label6;
+
+        $u4#28 = this.<androidx.customview.widget.ViewDragHelper: android.view.ViewGroup mParentView>;
+
+        $u5 = this.<androidx.customview.widget.ViewDragHelper: java.lang.Runnable mSetIdleRunnable>;
+
+        virtualinvoke $u4#28.<android.view.ViewGroup: boolean post(java.lang.Runnable)>($u5);
+
+        goto label7;
+
+     label6:
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void setDragState(int)>(0);
+
+     label7:
+        keepGoing = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if keepGoing != 2 goto label8;
+
+        return 1;
+
+     label8:
+        return 0;
+    }
+
+    public android.view.View findTopChildUnder(int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u5, $u6, $u-1, $u-1#7;
+        android.view.ViewGroup childCount;
+        androidx.customview.widget.ViewDragHelper$Callback $u3;
+        android.view.View $u-1#9;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u5 := @parameter0: int;
+
+        $u6 := @parameter1: int;
+
+        childCount = this.<androidx.customview.widget.ViewDragHelper: android.view.ViewGroup mParentView>;
+
+        $u-1 = virtualinvoke childCount.<android.view.ViewGroup: int getChildCount()>();
+
+        $u-1 = $u-1 + -1;
+
+     label1:
+        if $u-1 < 0 goto label3;
+
+        childCount = this.<androidx.customview.widget.ViewDragHelper: android.view.ViewGroup mParentView>;
+
+        $u3 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u-1#7 = virtualinvoke $u3.<androidx.customview.widget.ViewDragHelper$Callback: int getOrderedChildIndex(int)>($u-1);
+
+        $u-1#9 = virtualinvoke childCount.<android.view.ViewGroup: android.view.View getChildAt(int)>($u-1#7);
+
+        $u-1#7 = virtualinvoke $u-1#9.<android.view.View: int getLeft()>();
+
+        if $u5 < $u-1#7 goto label2;
+
+        $u-1#7 = virtualinvoke $u-1#9.<android.view.View: int getRight()>();
+
+        if $u5 >= $u-1#7 goto label2;
+
+        $u-1#7 = virtualinvoke $u-1#9.<android.view.View: int getTop()>();
+
+        if $u6 < $u-1#7 goto label2;
+
+        $u-1#7 = virtualinvoke $u-1#9.<android.view.View: int getBottom()>();
+
+        if $u6 >= $u-1#7 goto label2;
+
+        return $u-1#9;
+
+     label2:
+        $u-1 = $u-1 + -1;
+
+        goto label1;
+
+     label3:
+        return null;
+    }
+
+    public void flingCapturedView(int, int, int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u11, $u12, $u13, $u14, $u-1, $u-1#6, $u4, $u5;
+        boolean $u0;
+        android.widget.OverScroller $u1;
+        android.view.View $u0#3;
+        android.view.VelocityTracker $u0#7;
+        float $u-1#9;
+        java.lang.IllegalStateException $u0#18;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u11 := @parameter0: int;
+
+        $u12 := @parameter1: int;
+
+        $u13 := @parameter2: int;
+
+        $u14 := @parameter3: int;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: boolean mReleaseInProgress>;
+
+        if $u0 == 0 goto label1;
+
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: android.widget.OverScroller mScroller>;
+
+        $u0#3 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.View: int getLeft()>();
+
+        $u0#3 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u-1#6 = virtualinvoke $u0#3.<android.view.View: int getTop()>();
+
+        $u0#7 = this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker>;
+
+        $u4 = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        $u-1#9 = virtualinvoke $u0#7.<android.view.VelocityTracker: float getXVelocity(int)>($u4);
+
+        $u4 = (int) $u-1#9;
+
+        $u0#7 = this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker>;
+
+        $u5 = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        $u-1#9 = virtualinvoke $u0#7.<android.view.VelocityTracker: float getYVelocity(int)>($u5);
+
+        $u5 = (int) $u-1#9;
+
+        virtualinvoke $u1.<android.widget.OverScroller: void fling(int,int,int,int,int,int,int,int)>($u-1, $u-1#6, $u4, $u5, $u11, $u13, $u12, $u14);
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void setDragState(int)>(2);
+
+        return;
+
+     label1:
+        $u0#18 = new java.lang.IllegalStateException;
+
+        specialinvoke $u0#18.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Cannot flingCapturedView outside of a call to Callback#onViewReleased");
+
+        throw $u0#18;
+    }
+
+    public int getActivePointerId()
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int ret0;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        ret0 = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        return ret0;
+    }
+
+    public android.view.View getCapturedView()
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.view.View ret0;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        ret0 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        return ret0;
+    }
+
+    public int getEdgeSize()
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int ret0;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        ret0 = this.<androidx.customview.widget.ViewDragHelper: int mEdgeSize>;
+
+        return ret0;
+    }
+
+    public float getMinVelocity()
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        float ret0;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        ret0 = this.<androidx.customview.widget.ViewDragHelper: float mMinVelocity>;
+
+        return ret0;
+    }
+
+    public int getTouchSlop()
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int ret0;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        ret0 = this.<androidx.customview.widget.ViewDragHelper: int mTouchSlop>;
+
+        return ret0;
+    }
+
+    public int getViewDragState()
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int ret0;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        ret0 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        return ret0;
+    }
+
+    public boolean isCapturedViewUnder(int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u2, $u3;
+        boolean $u-1;
+        android.view.View $u0;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean isViewUnder(android.view.View,int,int)>($u0, $u2, $u3);
+
+        return $u-1;
+    }
+
+    public boolean isEdgeTouched(int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u4, count#2, i;
+        boolean $u-1;
+        int[] count;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u4 := @parameter0: int;
+
+        count = this.<androidx.customview.widget.ViewDragHelper: int[] mInitialEdgesTouched>;
+
+        count#2 = lengthof count;
+
+        i = 0;
+
+     label1:
+        if i >= count#2 goto label3;
+
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean isEdgeTouched(int,int)>($u4, i);
+
+        if $u-1 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        return 0;
+    }
+
+    public boolean isEdgeTouched(int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u2, $u3;
+        boolean $u-1;
+        int[] $u0;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean isPointerDown(int)>($u3);
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: int[] mInitialEdgesTouched>;
+
+        $u3 = $u0[$u3];
+
+        $u2 = $u3 & $u2;
+
+        if $u2 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isPointerDown(int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u4, $u0;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u4 := @parameter0: int;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: int mPointersDown>;
+
+        $u4 = 1 << $u4;
+
+        $u4 = $u0 & $u4;
+
+        if $u4 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isViewUnder(android.view.View, int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.view.View $u3;
+        int $u4, $u5, $u-1;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u4 := @parameter1: int;
+
+        $u5 := @parameter2: int;
+
+        if $u3 != null goto label1;
+
+        return 0;
+
+     label1:
+        $u-1 = virtualinvoke $u3.<android.view.View: int getLeft()>();
+
+        if $u4 < $u-1 goto label2;
+
+        $u-1 = virtualinvoke $u3.<android.view.View: int getRight()>();
+
+        if $u4 >= $u-1 goto label2;
+
+        $u4 = virtualinvoke $u3.<android.view.View: int getTop()>();
+
+        if $u5 < $u4 goto label2;
+
+        $u4 = virtualinvoke $u3.<android.view.View: int getBottom()>();
+
+        if $u5 >= $u4 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public void processTouchEvent(android.view.MotionEvent)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.view.MotionEvent $u13;
+        int $u-1, $u-1#2, $u-1#17, i, $u-1#20, x, toCapture;
+        android.view.VelocityTracker newActivePointer;
+        float $u-1#23, $u-1#25, i#72, dy;
+        android.view.View $u-1#29, toCapture#31;
+        boolean $u-1#32;
+        int[] id;
+        androidx.customview.widget.ViewDragHelper$Callback y;
+        float[] i#70;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u13 := @parameter0: android.view.MotionEvent;
+
+        $u-1 = virtualinvoke $u13.<android.view.MotionEvent: int getActionMasked()>();
+
+        $u-1#2 = virtualinvoke $u13.<android.view.MotionEvent: int getActionIndex()>();
+
+        if $u-1 != 0 goto label01;
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void cancel()>();
+
+     label01:
+        newActivePointer = this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker>;
+
+        if newActivePointer != null goto label02;
+
+        newActivePointer = staticinvoke <android.view.VelocityTracker: android.view.VelocityTracker obtain()>();
+
+        this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker> = newActivePointer;
+
+     label02:
+        newActivePointer = this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker>;
+
+        virtualinvoke newActivePointer.<android.view.VelocityTracker: void addMovement(android.view.MotionEvent)>($u13);
+
+        if $u-1 == 0 goto label24;
+
+        if $u-1 == 1 goto label22;
+
+        if $u-1 == 2 goto label14;
+
+        if $u-1 == 3 goto label12;
+
+        if $u-1 == 5 goto label09;
+
+        if $u-1 == 6 goto label03;
+
+        return;
+
+     label03:
+        $u-1 = virtualinvoke $u13.<android.view.MotionEvent: int getPointerId(int)>($u-1#2);
+
+        $u-1#2 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if $u-1#2 != 1 goto label08;
+
+        $u-1#2 = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        if $u-1 != $u-1#2 goto label08;
+
+        $u-1#2 = -1;
+
+        $u-1#17 = virtualinvoke $u13.<android.view.MotionEvent: int getPointerCount()>();
+
+        i = 0;
+
+     label04:
+        if i >= $u-1#17 goto label07;
+
+        $u-1#20 = virtualinvoke $u13.<android.view.MotionEvent: int getPointerId(int)>(i);
+
+        x = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        if $u-1#20 != x goto label05;
+
+        goto label06;
+
+     label05:
+        $u-1#23 = virtualinvoke $u13.<android.view.MotionEvent: float getX(int)>(i);
+
+        $u-1#25 = virtualinvoke $u13.<android.view.MotionEvent: float getY(int)>(i);
+
+        x = (int) $u-1#23;
+
+        toCapture = (int) $u-1#25;
+
+        $u-1#29 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: android.view.View findTopChildUnder(int,int)>(x, toCapture);
+
+        toCapture#31 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        if $u-1#29 != toCapture#31 goto label06;
+
+        $u-1#32 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean tryCaptureViewForDrag(android.view.View,int)>(toCapture#31, $u-1#20);
+
+        if $u-1#32 == 0 goto label06;
+
+        $u-1#2 = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        goto label07;
+
+     label06:
+        i = i + 1;
+
+        goto label04;
+
+     label07:
+        if $u-1#2 != -1 goto label08;
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void releaseViewForPointerUp()>();
+
+     label08:
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void clearMotionHistory(int)>($u-1);
+
+        return;
+
+     label09:
+        $u-1 = virtualinvoke $u13.<android.view.MotionEvent: int getPointerId(int)>($u-1#2);
+
+        $u-1#23 = virtualinvoke $u13.<android.view.MotionEvent: float getX(int)>($u-1#2);
+
+        $u-1#25 = virtualinvoke $u13.<android.view.MotionEvent: float getY(int)>($u-1#2);
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void saveInitialMotion(float,float,int)>($u-1#23, $u-1#25, $u-1);
+
+        $u-1#2 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if $u-1#2 != 0 goto label10;
+
+        $u-1#2 = (int) $u-1#23;
+
+        $u-1#17 = (int) $u-1#25;
+
+        $u-1#29 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: android.view.View findTopChildUnder(int,int)>($u-1#2, $u-1#17);
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean tryCaptureViewForDrag(android.view.View,int)>($u-1#29, $u-1);
+
+        id = this.<androidx.customview.widget.ViewDragHelper: int[] mInitialEdgesTouched>;
+
+        $u-1#2 = id[$u-1];
+
+        $u-1#17 = this.<androidx.customview.widget.ViewDragHelper: int mTrackingEdges>;
+
+        i = $u-1#2 & $u-1#17;
+
+        if i == 0 goto label11;
+
+        y = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u-1#2 = $u-1#17 & $u-1#2;
+
+        virtualinvoke y.<androidx.customview.widget.ViewDragHelper$Callback: void onEdgeTouched(int,int)>($u-1#2, $u-1);
+
+        goto label11;
+
+     label10:
+        $u-1#2 = (int) $u-1#23;
+
+        $u-1#17 = (int) $u-1#25;
+
+        $u-1#32 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean isCapturedViewUnder(int,int)>($u-1#2, $u-1#17);
+
+        if $u-1#32 == 0 goto label11;
+
+        $u-1#29 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean tryCaptureViewForDrag(android.view.View,int)>($u-1#29, $u-1);
+
+     label11:
+        return;
+
+     label12:
+        $u-1 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if $u-1 != 1 goto label13;
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void dispatchViewReleased(float,float)>(0.0F, 0.0F);
+
+     label13:
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void cancel()>();
+
+        return;
+
+     label14:
+        $u-1 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if $u-1 != 1 goto label16;
+
+        $u-1 = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        $u-1#32 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: boolean isValidPointerForActionMove(int)>($u-1);
+
+        if $u-1#32 != 0 goto label15;
+
+        return;
+
+     label15:
+        $u-1 = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        $u-1 = virtualinvoke $u13.<android.view.MotionEvent: int findPointerIndex(int)>($u-1);
+
+        $u-1#25 = virtualinvoke $u13.<android.view.MotionEvent: float getX(int)>($u-1);
+
+        $u-1#23 = virtualinvoke $u13.<android.view.MotionEvent: float getY(int)>($u-1);
+
+        i#70 = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionX>;
+
+        $u-1#2 = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        i#72 = i#70[$u-1#2];
+
+        $u-1#25 = $u-1#25 - i#72;
+
+        $u-1 = (int) $u-1#25;
+
+        i#70 = this.<androidx.customview.widget.ViewDragHelper: float[] mLastMotionY>;
+
+        $u-1#25 = i#70[$u-1#2];
+
+        $u-1#23 = $u-1#23 - $u-1#25;
+
+        $u-1#2 = (int) $u-1#23;
+
+        $u-1#29 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        $u-1#17 = virtualinvoke $u-1#29.<android.view.View: int getLeft()>();
+
+        $u-1#17 = $u-1#17 + $u-1;
+
+        $u-1#29 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        i = virtualinvoke $u-1#29.<android.view.View: int getTop()>();
+
+        i = i + $u-1#2;
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void dragTo(int,int,int,int)>($u-1#17, i, $u-1, $u-1#2);
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void saveLastMotion(android.view.MotionEvent)>($u13);
+
+        return;
+
+     label16:
+        $u-1 = virtualinvoke $u13.<android.view.MotionEvent: int getPointerCount()>();
+
+        $u-1#2 = 0;
+
+     label17:
+        if $u-1#2 >= $u-1 goto label21;
+
+        $u-1#17 = virtualinvoke $u13.<android.view.MotionEvent: int getPointerId(int)>($u-1#2);
+
+        $u-1#32 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: boolean isValidPointerForActionMove(int)>($u-1#17);
+
+        if $u-1#32 != 0 goto label18;
+
+        goto label20;
+
+     label18:
+        $u-1#23 = virtualinvoke $u13.<android.view.MotionEvent: float getX(int)>($u-1#2);
+
+        $u-1#25 = virtualinvoke $u13.<android.view.MotionEvent: float getY(int)>($u-1#2);
+
+        i#70 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionX>;
+
+        i#72 = i#70[$u-1#17];
+
+        i#72 = $u-1#23 - i#72;
+
+        i#70 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionY>;
+
+        dy = i#70[$u-1#17];
+
+        dy = $u-1#25 - dy;
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void reportNewEdgeDrags(float,float,int)>(i#72, dy, $u-1#17);
+
+        i = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if i != 1 goto label19;
+
+        goto label21;
+
+     label19:
+        i = (int) $u-1#23;
+
+        $u-1#20 = (int) $u-1#25;
+
+        $u-1#29 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: android.view.View findTopChildUnder(int,int)>(i, $u-1#20);
+
+        $u-1#32 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: boolean checkTouchSlop(android.view.View,float,float)>($u-1#29, i#72, dy);
+
+        if $u-1#32 == 0 goto label20;
+
+        $u-1#32 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean tryCaptureViewForDrag(android.view.View,int)>($u-1#29, $u-1#17);
+
+        if $u-1#32 == 0 goto label20;
+
+        goto label21;
+
+     label20:
+        $u-1#2 = $u-1#2 + 1;
+
+        goto label17;
+
+     label21:
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void saveLastMotion(android.view.MotionEvent)>($u13);
+
+        return;
+
+     label22:
+        $u-1 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if $u-1 != 1 goto label23;
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void releaseViewForPointerUp()>();
+
+     label23:
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void cancel()>();
+
+        return;
+
+     label24:
+        $u-1#23 = virtualinvoke $u13.<android.view.MotionEvent: float getX()>();
+
+        $u-1#25 = virtualinvoke $u13.<android.view.MotionEvent: float getY()>();
+
+        $u-1 = virtualinvoke $u13.<android.view.MotionEvent: int getPointerId(int)>(0);
+
+        $u-1#2 = (int) $u-1#23;
+
+        $u-1#17 = (int) $u-1#25;
+
+        $u-1#29 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: android.view.View findTopChildUnder(int,int)>($u-1#2, $u-1#17);
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void saveInitialMotion(float,float,int)>($u-1#23, $u-1#25, $u-1);
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean tryCaptureViewForDrag(android.view.View,int)>($u-1#29, $u-1);
+
+        id = this.<androidx.customview.widget.ViewDragHelper: int[] mInitialEdgesTouched>;
+
+        $u-1#2 = id[$u-1];
+
+        $u-1#17 = this.<androidx.customview.widget.ViewDragHelper: int mTrackingEdges>;
+
+        i = $u-1#2 & $u-1#17;
+
+        if i == 0 goto label25;
+
+        y = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u-1#2 = $u-1#17 & $u-1#2;
+
+        virtualinvoke y.<androidx.customview.widget.ViewDragHelper$Callback: void onEdgeTouched(int,int)>($u-1#2, $u-1);
+
+     label25:
+        return;
+    }
+
+    void setDragState(int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u3, $u0#2;
+        java.lang.Runnable $u1;
+        android.view.ViewGroup $u0;
+        androidx.customview.widget.ViewDragHelper$Callback $u0#3;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: android.view.ViewGroup mParentView>;
+
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: java.lang.Runnable mSetIdleRunnable>;
+
+        virtualinvoke $u0.<android.view.ViewGroup: boolean removeCallbacks(java.lang.Runnable)>($u1);
+
+        $u0#2 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if $u0#2 == $u3 goto label1;
+
+        this.<androidx.customview.widget.ViewDragHelper: int mDragState> = $u3;
+
+        $u0#3 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        virtualinvoke $u0#3.<androidx.customview.widget.ViewDragHelper$Callback: void onViewDragStateChanged(int)>($u3);
+
+        $u3 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if $u3 != 0 goto label1;
+
+        this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView> = null;
+
+     label1:
+        return;
+    }
+
+    public void setEdgeTrackingEnabled(int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u1;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.customview.widget.ViewDragHelper: int mTrackingEdges> = $u1;
+
+        return;
+    }
+
+    public void setMinVelocity(float)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        float $u1;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.customview.widget.ViewDragHelper: float mMinVelocity> = $u1;
+
+        return;
+    }
+
+    public boolean settleCapturedViewAt(int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        int $u4, $u5, $u2, $u1;
+        boolean $u0;
+        android.view.VelocityTracker $u0#2;
+        float $u-1;
+        java.lang.IllegalStateException $u0#13;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: int;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: boolean mReleaseInProgress>;
+
+        if $u0 == 0 goto label1;
+
+        $u0#2 = this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker>;
+
+        $u1 = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.VelocityTracker: float getXVelocity(int)>($u1);
+
+        $u1 = (int) $u-1;
+
+        $u0#2 = this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker>;
+
+        $u2 = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.VelocityTracker: float getYVelocity(int)>($u2);
+
+        $u2 = (int) $u-1;
+
+        $u0 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: boolean forceSettleCapturedViewAt(int,int,int,int)>($u4, $u5, $u1, $u2);
+
+        return $u0;
+
+     label1:
+        $u0#13 = new java.lang.IllegalStateException;
+
+        specialinvoke $u0#13.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Cannot settleCapturedViewAt outside of a call to Callback#onViewReleased");
+
+        throw $u0#13;
+    }
+
+    public boolean shouldInterceptTouchEvent(android.view.MotionEvent)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.view.MotionEvent $u22;
+        int $u-1, $u-1#3, y1, dx, pastSlop, action, actionIndex, pointerId#88, $u-1#95;
+        android.view.VelocityTracker targetLeft;
+        float $u-1#23, $u-1#25, dx#64, dy;
+        int[] pointerId;
+        androidx.customview.widget.ViewDragHelper$Callback dx#32;
+        android.view.View $u-1#36, y1#38;
+        float[] pointerId#45;
+        boolean $u-1#54;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u22 := @parameter0: android.view.MotionEvent;
+
+        $u-1 = virtualinvoke $u22.<android.view.MotionEvent: int getActionMasked()>();
+
+        $u-1#3 = virtualinvoke $u22.<android.view.MotionEvent: int getActionIndex()>();
+
+        if $u-1 != 0 goto label01;
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void cancel()>();
+
+     label01:
+        targetLeft = this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker>;
+
+        if targetLeft != null goto label02;
+
+        targetLeft = staticinvoke <android.view.VelocityTracker: android.view.VelocityTracker obtain()>();
+
+        this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker> = targetLeft;
+
+     label02:
+        targetLeft = this.<androidx.customview.widget.ViewDragHelper: android.view.VelocityTracker mVelocityTracker>;
+
+        virtualinvoke targetLeft.<android.view.VelocityTracker: void addMovement(android.view.MotionEvent)>($u22);
+
+        if $u-1 == 0 goto label22;
+
+        if $u-1 == 1 goto label21;
+
+        if $u-1 == 2 goto label09;
+
+        if $u-1 == 3 goto label08;
+
+        if $u-1 == 5 goto label04;
+
+        if $u-1 == 6 goto label03;
+
+        goto label24;
+
+     label03:
+        $u-1 = virtualinvoke $u22.<android.view.MotionEvent: int getPointerId(int)>($u-1#3);
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void clearMotionHistory(int)>($u-1);
+
+        goto label24;
+
+     label04:
+        $u-1 = virtualinvoke $u22.<android.view.MotionEvent: int getPointerId(int)>($u-1#3);
+
+        $u-1#23 = virtualinvoke $u22.<android.view.MotionEvent: float getX(int)>($u-1#3);
+
+        $u-1#25 = virtualinvoke $u22.<android.view.MotionEvent: float getY(int)>($u-1#3);
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void saveInitialMotion(float,float,int)>($u-1#23, $u-1#25, $u-1);
+
+        $u-1#3 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if $u-1#3 != 0 goto label05;
+
+        pointerId = this.<androidx.customview.widget.ViewDragHelper: int[] mInitialEdgesTouched>;
+
+        $u-1#3 = pointerId[$u-1];
+
+        y1 = this.<androidx.customview.widget.ViewDragHelper: int mTrackingEdges>;
+
+        dx = $u-1#3 & y1;
+
+        if dx == 0 goto label07;
+
+        dx#32 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u-1#3 = y1 & $u-1#3;
+
+        virtualinvoke dx#32.<androidx.customview.widget.ViewDragHelper$Callback: void onEdgeTouched(int,int)>($u-1#3, $u-1);
+
+        goto label07;
+
+     label05:
+        if $u-1#3 != 2 goto label07;
+
+        $u-1#3 = (int) $u-1#23;
+
+        y1 = (int) $u-1#25;
+
+        $u-1#36 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: android.view.View findTopChildUnder(int,int)>($u-1#3, y1);
+
+        y1#38 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        if $u-1#36 != y1#38 goto label06;
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean tryCaptureViewForDrag(android.view.View,int)>($u-1#36, $u-1);
+
+     label06:
+        goto label24;
+
+     label07:
+        goto label24;
+
+     label08:
+        goto label21;
+
+     label09:
+        pointerId#45 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionX>;
+
+        if pointerId#45 == null goto label20;
+
+        pointerId#45 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionY>;
+
+        if pointerId#45 != null goto label10;
+
+        goto label24;
+
+     label10:
+        dx = virtualinvoke $u22.<android.view.MotionEvent: int getPointerCount()>();
+
+        $u-1 = 0;
+
+     label11:
+        if $u-1 >= dx goto label19;
+
+        $u-1#3 = virtualinvoke $u22.<android.view.MotionEvent: int getPointerId(int)>($u-1);
+
+        $u-1#54 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: boolean isValidPointerForActionMove(int)>($u-1#3);
+
+        if $u-1#54 != 0 goto label12;
+
+        goto label18;
+
+     label12:
+        $u-1#23 = virtualinvoke $u22.<android.view.MotionEvent: float getX(int)>($u-1);
+
+        $u-1#25 = virtualinvoke $u22.<android.view.MotionEvent: float getY(int)>($u-1);
+
+        pointerId#45 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionX>;
+
+        dx#64 = pointerId#45[$u-1#3];
+
+        dx#64 = $u-1#23 - dx#64;
+
+        pointerId#45 = this.<androidx.customview.widget.ViewDragHelper: float[] mInitialMotionY>;
+
+        dy = pointerId#45[$u-1#3];
+
+        dy = $u-1#25 - dy;
+
+        y1 = (int) $u-1#23;
+
+        pastSlop = (int) $u-1#25;
+
+        $u-1#36 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: android.view.View findTopChildUnder(int,int)>(y1, pastSlop);
+
+        if $u-1#36 == null goto label13;
+
+        $u-1#54 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: boolean checkTouchSlop(android.view.View,float,float)>($u-1#36, dx#64, dy);
+
+        if $u-1#54 == 0 goto label13;
+
+        $u-1#54 = 1;
+
+        goto label14;
+
+     label13:
+        $u-1#54 = 0;
+
+     label14:
+        if $u-1#54 == 0 goto label16;
+
+        y1 = virtualinvoke $u-1#36.<android.view.View: int getLeft()>();
+
+        pastSlop = (int) dx#64;
+
+        pastSlop = pastSlop + y1;
+
+        dx#32 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        action = (int) dx#64;
+
+        pastSlop = virtualinvoke dx#32.<androidx.customview.widget.ViewDragHelper$Callback: int clampViewPositionHorizontal(android.view.View,int,int)>($u-1#36, pastSlop, action);
+
+        action = virtualinvoke $u-1#36.<android.view.View: int getTop()>();
+
+        actionIndex = (int) dy;
+
+        actionIndex = actionIndex + action;
+
+        dx#32 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        pointerId#88 = (int) dy;
+
+        actionIndex = virtualinvoke dx#32.<androidx.customview.widget.ViewDragHelper$Callback: int clampViewPositionVertical(android.view.View,int,int)>($u-1#36, actionIndex, pointerId#88);
+
+        dx#32 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        pointerId#88 = virtualinvoke dx#32.<androidx.customview.widget.ViewDragHelper$Callback: int getViewHorizontalDragRange(android.view.View)>($u-1#36);
+
+        dx#32 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u-1#95 = virtualinvoke dx#32.<androidx.customview.widget.ViewDragHelper$Callback: int getViewVerticalDragRange(android.view.View)>($u-1#36);
+
+        if pointerId#88 == 0 goto label15;
+
+        if pointerId#88 <= 0 goto label16;
+
+        if pastSlop != y1 goto label16;
+
+     label15:
+        if $u-1#95 == 0 goto label19;
+
+        if $u-1#95 <= 0 goto label16;
+
+        if actionIndex != action goto label16;
+
+        goto label19;
+
+     label16:
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void reportNewEdgeDrags(float,float,int)>(dx#64, dy, $u-1#3);
+
+        y1 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if y1 != 1 goto label17;
+
+        goto label19;
+
+     label17:
+        if $u-1#54 == 0 goto label18;
+
+        $u-1#54 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean tryCaptureViewForDrag(android.view.View,int)>($u-1#36, $u-1#3);
+
+        if $u-1#54 == 0 goto label18;
+
+        goto label19;
+
+     label18:
+        $u-1 = $u-1 + 1;
+
+        goto label11;
+
+     label19:
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void saveLastMotion(android.view.MotionEvent)>($u22);
+
+        goto label24;
+
+     label20:
+        goto label24;
+
+     label21:
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void cancel()>();
+
+        goto label24;
+
+     label22:
+        $u-1#23 = virtualinvoke $u22.<android.view.MotionEvent: float getX()>();
+
+        $u-1#25 = virtualinvoke $u22.<android.view.MotionEvent: float getY()>();
+
+        $u-1 = virtualinvoke $u22.<android.view.MotionEvent: int getPointerId(int)>(0);
+
+        specialinvoke this.<androidx.customview.widget.ViewDragHelper: void saveInitialMotion(float,float,int)>($u-1#23, $u-1#25, $u-1);
+
+        $u-1#3 = (int) $u-1#23;
+
+        y1 = (int) $u-1#25;
+
+        $u-1#36 = virtualinvoke this.<androidx.customview.widget.ViewDragHelper: android.view.View findTopChildUnder(int,int)>($u-1#3, y1);
+
+        y1#38 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        if $u-1#36 != y1#38 goto label23;
+
+        $u-1#3 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if $u-1#3 != 2 goto label23;
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: boolean tryCaptureViewForDrag(android.view.View,int)>($u-1#36, $u-1);
+
+     label23:
+        pointerId = this.<androidx.customview.widget.ViewDragHelper: int[] mInitialEdgesTouched>;
+
+        $u-1#3 = pointerId[$u-1];
+
+        y1 = this.<androidx.customview.widget.ViewDragHelper: int mTrackingEdges>;
+
+        dx = $u-1#3 & y1;
+
+        if dx == 0 goto label24;
+
+        dx#32 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u-1#3 = y1 & $u-1#3;
+
+        virtualinvoke dx#32.<androidx.customview.widget.ViewDragHelper$Callback: void onEdgeTouched(int,int)>($u-1#3, $u-1);
+
+     label24:
+        $u-1 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if $u-1 != 1 goto label25;
+
+        return 1;
+
+     label25:
+        return 0;
+    }
+
+    public boolean smoothSlideViewTo(android.view.View, int, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.view.View $u3;
+        int $u4, $u5;
+        boolean $u-1;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u4 := @parameter1: int;
+
+        $u5 := @parameter2: int;
+
+        this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView> = $u3;
+
+        this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId> = -1;
+
+        $u-1 = specialinvoke this.<androidx.customview.widget.ViewDragHelper: boolean forceSettleCapturedViewAt(int,int,int,int)>($u4, $u5, 0, 0);
+
+        if $u-1 != 0 goto label1;
+
+        $u4 = this.<androidx.customview.widget.ViewDragHelper: int mDragState>;
+
+        if $u4 != 0 goto label1;
+
+        $u3 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        if $u3 == null goto label1;
+
+        this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView> = null;
+
+     label1:
+        return $u-1;
+    }
+
+    boolean tryCaptureViewForDrag(android.view.View, int)
+    {
+        androidx.customview.widget.ViewDragHelper this;
+        android.view.View $u3, $u0;
+        int $u4, $u0#2;
+        boolean $u-1;
+        androidx.customview.widget.ViewDragHelper$Callback $u0#3;
+
+        this := @this: androidx.customview.widget.ViewDragHelper;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u4 := @parameter1: int;
+
+        $u0 = this.<androidx.customview.widget.ViewDragHelper: android.view.View mCapturedView>;
+
+        if $u3 != $u0 goto label1;
+
+        $u0#2 = this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId>;
+
+        if $u0#2 != $u4 goto label1;
+
+        return 1;
+
+     label1:
+        if $u3 == null goto label2;
+
+        $u0#3 = this.<androidx.customview.widget.ViewDragHelper: androidx.customview.widget.ViewDragHelper$Callback mCallback>;
+
+        $u-1 = virtualinvoke $u0#3.<androidx.customview.widget.ViewDragHelper$Callback: boolean tryCaptureView(android.view.View,int)>($u3, $u4);
+
+        if $u-1 == 0 goto label2;
+
+        this.<androidx.customview.widget.ViewDragHelper: int mActivePointerId> = $u4;
+
+        virtualinvoke this.<androidx.customview.widget.ViewDragHelper: void captureChildView(android.view.View,int)>($u3, $u4);
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+}

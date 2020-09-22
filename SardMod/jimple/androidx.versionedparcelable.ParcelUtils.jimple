@@ -1,0 +1,302 @@
+public class androidx.versionedparcelable.ParcelUtils extends java.lang.Object
+{
+    private static final java.lang.String INNER_BUNDLE_KEY;
+
+    private void <init>()
+    {
+        androidx.versionedparcelable.ParcelUtils this;
+
+        this := @this: androidx.versionedparcelable.ParcelUtils;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.versionedparcelable.VersionedParcelable fromInputStream(java.io.InputStream)
+    {
+        java.io.InputStream $u2;
+        androidx.versionedparcelable.VersionedParcelStream stream;
+        androidx.versionedparcelable.VersionedParcelable $u-1;
+
+        $u2 := @parameter0: java.io.InputStream;
+
+        stream = new androidx.versionedparcelable.VersionedParcelStream;
+
+        specialinvoke stream.<androidx.versionedparcelable.VersionedParcelStream: void <init>(java.io.InputStream,java.io.OutputStream)>($u2, null);
+
+        $u-1 = virtualinvoke stream.<androidx.versionedparcelable.VersionedParcelStream: androidx.versionedparcelable.VersionedParcelable readVersionedParcelable()>();
+
+        return $u-1;
+    }
+
+    public static androidx.versionedparcelable.VersionedParcelable fromParcelable(android.os.Parcelable)
+    {
+        android.os.Parcelable $u2;
+        androidx.versionedparcelable.VersionedParcelable $u-1;
+        boolean $u0;
+        androidx.versionedparcelable.ParcelImpl $u0#3;
+        java.lang.IllegalArgumentException $u0#5;
+
+        $u2 := @parameter0: android.os.Parcelable;
+
+        $u0 = $u2 instanceof androidx.versionedparcelable.ParcelImpl;
+
+        if $u0 == 0 goto label1;
+
+        $u0#3 = (androidx.versionedparcelable.ParcelImpl) $u2;
+
+        $u-1 = virtualinvoke $u0#3.<androidx.versionedparcelable.ParcelImpl: androidx.versionedparcelable.VersionedParcelable getVersionedParcel()>();
+
+        return $u-1;
+
+     label1:
+        $u0#5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Invalid parcel");
+
+        throw $u0#5;
+    }
+
+    public static androidx.versionedparcelable.VersionedParcelable getVersionedParcelable(android.os.Bundle, java.lang.String)
+    {
+        android.os.Bundle $u3;
+        java.lang.String $u4;
+        android.os.Parcelable $u-1;
+        java.lang.Class $u2;
+        java.lang.ClassLoader $u-1#6;
+        androidx.versionedparcelable.VersionedParcelable $u-1#11;
+        java.lang.RuntimeException innerBundle;
+
+        $u3 := @parameter0: android.os.Bundle;
+
+        $u4 := @parameter1: java.lang.String;
+
+     label1:
+        $u-1 = virtualinvoke $u3.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>($u4);
+
+        $u3 = (android.os.Bundle) $u-1;
+
+     label2:
+        if $u3 != null goto label3;
+
+        return null;
+
+     label3:
+        $u2 = class "Landroidx/versionedparcelable/ParcelUtils;";
+
+     label4:
+        $u-1#6 = virtualinvoke $u2.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        virtualinvoke $u3.<android.os.Bundle: void setClassLoader(java.lang.ClassLoader)>($u-1#6);
+
+        $u-1 = virtualinvoke $u3.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>("a");
+
+        $u-1#11 = staticinvoke <androidx.versionedparcelable.ParcelUtils: androidx.versionedparcelable.VersionedParcelable fromParcelable(android.os.Parcelable)>($u-1);
+
+     label5:
+        return $u-1#11;
+
+     label6:
+        innerBundle := @caughtexception;
+
+        return null;
+
+        catch java.lang.RuntimeException from label1 to label2 with label6;
+        catch java.lang.RuntimeException from label4 to label5 with label6;
+    }
+
+    public static java.util.List getVersionedParcelableList(android.os.Bundle, java.lang.String)
+    {
+        android.os.Bundle $u6;
+        java.lang.String $u7;
+        java.util.ArrayList resultList, $u-1#8;
+        android.os.Parcelable $u-1;
+        java.lang.Class parcelableArrayList;
+        java.lang.ClassLoader $u-1#5;
+        java.util.Iterator $u-1#10;
+        boolean $u-1#11;
+        java.lang.Object $u-1#13;
+        androidx.versionedparcelable.VersionedParcelable $u-1#16;
+        java.lang.RuntimeException innerBundle;
+
+        $u6 := @parameter0: android.os.Bundle;
+
+        $u7 := @parameter1: java.lang.String;
+
+        resultList = new java.util.ArrayList;
+
+        specialinvoke resultList.<java.util.ArrayList: void <init>()>();
+
+     label1:
+        $u-1 = virtualinvoke $u6.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>($u7);
+
+        $u6 = (android.os.Bundle) $u-1;
+
+     label2:
+        parcelableArrayList = class "Landroidx/versionedparcelable/ParcelUtils;";
+
+     label3:
+        $u-1#5 = virtualinvoke parcelableArrayList.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        virtualinvoke $u6.<android.os.Bundle: void setClassLoader(java.lang.ClassLoader)>($u-1#5);
+
+        $u-1#8 = virtualinvoke $u6.<android.os.Bundle: java.util.ArrayList getParcelableArrayList(java.lang.String)>("a");
+
+        $u-1#10 = virtualinvoke $u-1#8.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label4:
+        $u-1#11 = interfaceinvoke $u-1#10.<java.util.Iterator: boolean hasNext()>();
+
+     label5:
+        if $u-1#11 == 0 goto label8;
+
+     label6:
+        $u-1#13 = interfaceinvoke $u-1#10.<java.util.Iterator: java.lang.Object next()>();
+
+        $u-1 = (android.os.Parcelable) $u-1#13;
+
+        $u-1#16 = staticinvoke <androidx.versionedparcelable.ParcelUtils: androidx.versionedparcelable.VersionedParcelable fromParcelable(android.os.Parcelable)>($u-1);
+
+        interfaceinvoke resultList.<java.util.List: boolean add(java.lang.Object)>($u-1#16);
+
+     label7:
+        goto label4;
+
+     label8:
+        return resultList;
+
+     label9:
+        innerBundle := @caughtexception;
+
+        return null;
+
+        catch java.lang.RuntimeException from label1 to label2 with label9;
+        catch java.lang.RuntimeException from label3 to label5 with label9;
+        catch java.lang.RuntimeException from label6 to label7 with label9;
+    }
+
+    public static void putVersionedParcelable(android.os.Bundle, java.lang.String, androidx.versionedparcelable.VersionedParcelable)
+    {
+        android.os.Bundle $u3, innerBundle;
+        java.lang.String $u4;
+        androidx.versionedparcelable.VersionedParcelable $u5;
+        android.os.Parcelable $u-1;
+
+        $u3 := @parameter0: android.os.Bundle;
+
+        $u4 := @parameter1: java.lang.String;
+
+        $u5 := @parameter2: androidx.versionedparcelable.VersionedParcelable;
+
+        if $u5 != null goto label1;
+
+        return;
+
+     label1:
+        innerBundle = new android.os.Bundle;
+
+        specialinvoke innerBundle.<android.os.Bundle: void <init>()>();
+
+        $u-1 = staticinvoke <androidx.versionedparcelable.ParcelUtils: android.os.Parcelable toParcelable(androidx.versionedparcelable.VersionedParcelable)>($u5);
+
+        virtualinvoke innerBundle.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("a", $u-1);
+
+        virtualinvoke $u3.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>($u4, innerBundle);
+
+        return;
+    }
+
+    public static void putVersionedParcelableList(android.os.Bundle, java.lang.String, java.util.List)
+    {
+        android.os.Bundle $u5, innerBundle;
+        java.lang.String $u6;
+        java.util.List list;
+        java.util.ArrayList toWrite;
+        java.util.Iterator $u-1;
+        boolean $u-1#3;
+        java.lang.Object $u-1#5;
+        androidx.versionedparcelable.VersionedParcelable obj;
+        android.os.Parcelable $u-1#8;
+
+        $u5 := @parameter0: android.os.Bundle;
+
+        $u6 := @parameter1: java.lang.String;
+
+        list := @parameter2: java.util.List;
+
+        innerBundle = new android.os.Bundle;
+
+        specialinvoke innerBundle.<android.os.Bundle: void <init>()>();
+
+        toWrite = new java.util.ArrayList;
+
+        specialinvoke toWrite.<java.util.ArrayList: void <init>()>();
+
+        $u-1 = interfaceinvoke list.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#3 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#3 == 0 goto label2;
+
+        $u-1#5 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        obj = (androidx.versionedparcelable.VersionedParcelable) $u-1#5;
+
+        $u-1#8 = staticinvoke <androidx.versionedparcelable.ParcelUtils: android.os.Parcelable toParcelable(androidx.versionedparcelable.VersionedParcelable)>(obj);
+
+        virtualinvoke toWrite.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1#8);
+
+        goto label1;
+
+     label2:
+        virtualinvoke innerBundle.<android.os.Bundle: void putParcelableArrayList(java.lang.String,java.util.ArrayList)>("a", toWrite);
+
+        virtualinvoke $u5.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>($u6, innerBundle);
+
+        return;
+    }
+
+    public static void toOutputStream(androidx.versionedparcelable.VersionedParcelable, java.io.OutputStream)
+    {
+        androidx.versionedparcelable.VersionedParcelable $u2;
+        java.io.OutputStream $u3;
+        androidx.versionedparcelable.VersionedParcelStream stream;
+
+        $u2 := @parameter0: androidx.versionedparcelable.VersionedParcelable;
+
+        $u3 := @parameter1: java.io.OutputStream;
+
+        stream = new androidx.versionedparcelable.VersionedParcelStream;
+
+        specialinvoke stream.<androidx.versionedparcelable.VersionedParcelStream: void <init>(java.io.InputStream,java.io.OutputStream)>(null, $u3);
+
+        virtualinvoke stream.<androidx.versionedparcelable.VersionedParcelStream: void writeVersionedParcelable(androidx.versionedparcelable.VersionedParcelable)>($u2);
+
+        virtualinvoke stream.<androidx.versionedparcelable.VersionedParcelStream: void closeField()>();
+
+        return;
+    }
+
+    public static android.os.Parcelable toParcelable(androidx.versionedparcelable.VersionedParcelable)
+    {
+        androidx.versionedparcelable.VersionedParcelable $u1;
+        androidx.versionedparcelable.ParcelImpl $u0;
+
+        $u1 := @parameter0: androidx.versionedparcelable.VersionedParcelable;
+
+        $u0 = new androidx.versionedparcelable.ParcelImpl;
+
+        specialinvoke $u0.<androidx.versionedparcelable.ParcelImpl: void <init>(androidx.versionedparcelable.VersionedParcelable)>($u1);
+
+        return $u0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.versionedparcelable.ParcelUtils: java.lang.String INNER_BUNDLE_KEY> = "a";
+
+        return;
+    }
+}

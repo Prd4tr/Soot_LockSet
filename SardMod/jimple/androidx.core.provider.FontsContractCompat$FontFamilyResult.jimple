@@ -1,0 +1,64 @@
+public class androidx.core.provider.FontsContractCompat$FontFamilyResult extends java.lang.Object
+{
+    public static final int STATUS_OK;
+    public static final int STATUS_UNEXPECTED_DATA_PROVIDED;
+    public static final int STATUS_WRONG_CERTIFICATES;
+    private final androidx.core.provider.FontsContractCompat$FontInfo[] mFonts;
+    private final int mStatusCode;
+
+    public void <init>(int, androidx.core.provider.FontsContractCompat$FontInfo[])
+    {
+        androidx.core.provider.FontsContractCompat$FontFamilyResult this;
+        int $u1;
+        androidx.core.provider.FontsContractCompat$FontInfo[] $u2;
+
+        this := @this: androidx.core.provider.FontsContractCompat$FontFamilyResult;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: androidx.core.provider.FontsContractCompat$FontInfo[];
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.provider.FontsContractCompat$FontFamilyResult: int mStatusCode> = $u1;
+
+        this.<androidx.core.provider.FontsContractCompat$FontFamilyResult: androidx.core.provider.FontsContractCompat$FontInfo[] mFonts> = $u2;
+
+        return;
+    }
+
+    public androidx.core.provider.FontsContractCompat$FontInfo[] getFonts()
+    {
+        androidx.core.provider.FontsContractCompat$FontFamilyResult this;
+        androidx.core.provider.FontsContractCompat$FontInfo[] ret0;
+
+        this := @this: androidx.core.provider.FontsContractCompat$FontFamilyResult;
+
+        ret0 = this.<androidx.core.provider.FontsContractCompat$FontFamilyResult: androidx.core.provider.FontsContractCompat$FontInfo[] mFonts>;
+
+        return ret0;
+    }
+
+    public int getStatusCode()
+    {
+        androidx.core.provider.FontsContractCompat$FontFamilyResult this;
+        int ret0;
+
+        this := @this: androidx.core.provider.FontsContractCompat$FontFamilyResult;
+
+        ret0 = this.<androidx.core.provider.FontsContractCompat$FontFamilyResult: int mStatusCode>;
+
+        return ret0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.provider.FontsContractCompat$FontFamilyResult: int STATUS_WRONG_CERTIFICATES> = 1;
+
+        <androidx.core.provider.FontsContractCompat$FontFamilyResult: int STATUS_UNEXPECTED_DATA_PROVIDED> = 2;
+
+        <androidx.core.provider.FontsContractCompat$FontFamilyResult: int STATUS_OK> = 0;
+
+        return;
+    }
+}

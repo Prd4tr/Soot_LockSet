@@ -1,0 +1,92 @@
+public class androidx.core.util.Pools$SynchronizedPool extends androidx.core.util.Pools$SimplePool
+{
+    private final java.lang.Object mLock;
+
+    public void <init>(int)
+    {
+        androidx.core.util.Pools$SynchronizedPool this;
+        int $u2;
+        java.lang.Object $u0;
+
+        this := @this: androidx.core.util.Pools$SynchronizedPool;
+
+        $u2 := @parameter0: int;
+
+        specialinvoke this.<androidx.core.util.Pools$SimplePool: void <init>(int)>($u2);
+
+        $u0 = new java.lang.Object;
+
+        specialinvoke $u0.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.util.Pools$SynchronizedPool: java.lang.Object mLock> = $u0;
+
+        return;
+    }
+
+    public java.lang.Object acquire()
+    {
+        androidx.core.util.Pools$SynchronizedPool this;
+        java.lang.Object $u0, $u-1;
+        java.lang.Throwable $u1;
+
+        this := @this: androidx.core.util.Pools$SynchronizedPool;
+
+        $u0 = this.<androidx.core.util.Pools$SynchronizedPool: java.lang.Object mLock>;
+
+        entermonitor $u0;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.core.util.Pools$SimplePool: java.lang.Object acquire()>();
+
+        exitmonitor $u0;
+
+     label2:
+        return $u-1;
+
+     label3:
+        $u1 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label4:
+        throw $u1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public boolean release(java.lang.Object)
+    {
+        androidx.core.util.Pools$SynchronizedPool this;
+        java.lang.Object element, $u0;
+        boolean $u-1;
+        java.lang.Throwable $u1;
+
+        this := @this: androidx.core.util.Pools$SynchronizedPool;
+
+        element := @parameter0: java.lang.Object;
+
+        $u0 = this.<androidx.core.util.Pools$SynchronizedPool: java.lang.Object mLock>;
+
+        entermonitor $u0;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.core.util.Pools$SimplePool: boolean release(java.lang.Object)>(element);
+
+        exitmonitor $u0;
+
+     label2:
+        return $u-1;
+
+     label3:
+        $u1 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label4:
+        throw $u1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+}

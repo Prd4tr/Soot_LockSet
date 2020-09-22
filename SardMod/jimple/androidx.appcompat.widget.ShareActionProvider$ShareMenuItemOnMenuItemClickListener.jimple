@@ -1,0 +1,82 @@
+class androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener extends java.lang.Object implements android.view.MenuItem$OnMenuItemClickListener
+{
+    final androidx.appcompat.widget.ShareActionProvider this$0;
+
+    void <init>(androidx.appcompat.widget.ShareActionProvider)
+    {
+        androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener this;
+        androidx.appcompat.widget.ShareActionProvider $u1;
+
+        this := @this: androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener;
+
+        $u1 := @parameter0: androidx.appcompat.widget.ShareActionProvider;
+
+        this.<androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener: androidx.appcompat.widget.ShareActionProvider this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean onMenuItemClick(android.view.MenuItem)
+    {
+        androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener this;
+        android.view.MenuItem $u6;
+        androidx.appcompat.widget.ShareActionProvider dataModel;
+        android.content.Context dataModel#2;
+        java.lang.String itemId, $u4;
+        androidx.appcompat.widget.ActivityChooserModel $u-1;
+        int $u-1#7;
+        android.content.Intent $u-1#9;
+        boolean $u-1#13;
+
+        this := @this: androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener;
+
+        $u6 := @parameter0: android.view.MenuItem;
+
+        dataModel = this.<androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener: androidx.appcompat.widget.ShareActionProvider this$0>;
+
+        dataModel#2 = dataModel.<androidx.appcompat.widget.ShareActionProvider: android.content.Context mContext>;
+
+        dataModel = this.<androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener: androidx.appcompat.widget.ShareActionProvider this$0>;
+
+        itemId = dataModel.<androidx.appcompat.widget.ShareActionProvider: java.lang.String mShareHistoryFileName>;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.ActivityChooserModel: androidx.appcompat.widget.ActivityChooserModel get(android.content.Context,java.lang.String)>(dataModel#2, itemId);
+
+        $u-1#7 = interfaceinvoke $u6.<android.view.MenuItem: int getItemId()>();
+
+        $u-1#9 = virtualinvoke $u-1.<androidx.appcompat.widget.ActivityChooserModel: android.content.Intent chooseActivity(int)>($u-1#7);
+
+        if $u-1#9 == null goto label3;
+
+        itemId = virtualinvoke $u-1#9.<android.content.Intent: java.lang.String getAction()>();
+
+        $u4 = "android.intent.action.SEND";
+
+        $u-1#13 = virtualinvoke $u4.<java.lang.String: boolean equals(java.lang.Object)>(itemId);
+
+        if $u-1#13 != 0 goto label1;
+
+        $u4 = "android.intent.action.SEND_MULTIPLE";
+
+        $u-1#13 = virtualinvoke $u4.<java.lang.String: boolean equals(java.lang.Object)>(itemId);
+
+        if $u-1#13 == 0 goto label2;
+
+     label1:
+        dataModel = this.<androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener: androidx.appcompat.widget.ShareActionProvider this$0>;
+
+        virtualinvoke dataModel.<androidx.appcompat.widget.ShareActionProvider: void updateIntent(android.content.Intent)>($u-1#9);
+
+     label2:
+        dataModel = this.<androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener: androidx.appcompat.widget.ShareActionProvider this$0>;
+
+        dataModel#2 = dataModel.<androidx.appcompat.widget.ShareActionProvider: android.content.Context mContext>;
+
+        virtualinvoke dataModel#2.<android.content.Context: void startActivity(android.content.Intent)>($u-1#9);
+
+     label3:
+        return 1;
+    }
+}

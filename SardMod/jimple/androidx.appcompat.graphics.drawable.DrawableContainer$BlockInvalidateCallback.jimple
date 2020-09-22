@@ -1,0 +1,104 @@
+class androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback extends java.lang.Object implements android.graphics.drawable.Drawable$Callback
+{
+    private android.graphics.drawable.Drawable$Callback mCallback;
+
+    void <init>()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback this;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void invalidateDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback this;
+        android.graphics.drawable.Drawable $u1;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback;
+
+        $u1 := @parameter0: android.graphics.drawable.Drawable;
+
+        return;
+    }
+
+    public void scheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable, long)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback this;
+        android.graphics.drawable.Drawable $u2;
+        java.lang.Runnable $u3;
+        long $u4;
+        android.graphics.drawable.Drawable$Callback $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u3 := @parameter1: java.lang.Runnable;
+
+        $u4 := @parameter2: long;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback: android.graphics.drawable.Drawable$Callback mCallback>;
+
+        if $u0 == null goto label1;
+
+        interfaceinvoke $u0.<android.graphics.drawable.Drawable$Callback: void scheduleDrawable(android.graphics.drawable.Drawable,java.lang.Runnable,long)>($u2, $u3, $u4);
+
+     label1:
+        return;
+    }
+
+    public void unscheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback this;
+        android.graphics.drawable.Drawable $u2;
+        java.lang.Runnable $u3;
+        android.graphics.drawable.Drawable$Callback $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u3 := @parameter1: java.lang.Runnable;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback: android.graphics.drawable.Drawable$Callback mCallback>;
+
+        if $u0 == null goto label1;
+
+        interfaceinvoke $u0.<android.graphics.drawable.Drawable$Callback: void unscheduleDrawable(android.graphics.drawable.Drawable,java.lang.Runnable)>($u2, $u3);
+
+     label1:
+        return;
+    }
+
+    public android.graphics.drawable.Drawable$Callback unwrap()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback this;
+        android.graphics.drawable.Drawable$Callback ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback: android.graphics.drawable.Drawable$Callback mCallback>;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback: android.graphics.drawable.Drawable$Callback mCallback> = null;
+
+        return ret0;
+    }
+
+    public androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback wrap(android.graphics.drawable.Drawable$Callback)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback this;
+        android.graphics.drawable.Drawable$Callback $u1;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback;
+
+        $u1 := @parameter0: android.graphics.drawable.Drawable$Callback;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback: android.graphics.drawable.Drawable$Callback mCallback> = $u1;
+
+        return this;
+    }
+}

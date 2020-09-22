@@ -1,0 +1,2066 @@
+class androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper extends java.lang.Object
+{
+    private static final int DEFAULT_AUTO_SIZE_GRANULARITY_IN_PX;
+    private static final int DEFAULT_AUTO_SIZE_MAX_TEXT_SIZE_IN_SP;
+    private static final int DEFAULT_AUTO_SIZE_MIN_TEXT_SIZE_IN_SP;
+    private static final java.lang.String TAG;
+    private static final android.graphics.RectF TEMP_RECTF;
+    static final float UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE;
+    private static final int VERY_WIDE;
+    private static java.util.concurrent.ConcurrentHashMap sTextViewFieldByNameCache;
+    private static java.util.concurrent.ConcurrentHashMap sTextViewMethodByNameCache;
+    private float mAutoSizeMaxTextSizeInPx;
+    private float mAutoSizeMinTextSizeInPx;
+    private float mAutoSizeStepGranularityInPx;
+    private int[] mAutoSizeTextSizesInPx;
+    private int mAutoSizeTextType;
+    private final android.content.Context mContext;
+    private boolean mHasPresetAutoSizeValues;
+    private final androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl mImpl;
+    private boolean mNeedsAutoSizeText;
+    private android.text.TextPaint mTempTextPaint;
+    private final android.widget.TextView mTextView;
+
+    static void <clinit>()
+    {
+        android.graphics.RectF $u0;
+        java.util.concurrent.ConcurrentHashMap $u0#2;
+
+        <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int VERY_WIDE> = 1048576;
+
+        <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE> = -1.0F;
+
+        <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.lang.String TAG> = "ACTVAutoSizeHelper";
+
+        <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int DEFAULT_AUTO_SIZE_MIN_TEXT_SIZE_IN_SP> = 12;
+
+        <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int DEFAULT_AUTO_SIZE_MAX_TEXT_SIZE_IN_SP> = 112;
+
+        <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int DEFAULT_AUTO_SIZE_GRANULARITY_IN_PX> = 1;
+
+        $u0 = new android.graphics.RectF;
+
+        specialinvoke $u0.<android.graphics.RectF: void <init>()>();
+
+        <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.graphics.RectF TEMP_RECTF> = $u0;
+
+        $u0#2 = new java.util.concurrent.ConcurrentHashMap;
+
+        specialinvoke $u0#2.<java.util.concurrent.ConcurrentHashMap: void <init>()>();
+
+        <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.util.concurrent.ConcurrentHashMap sTextViewMethodByNameCache> = $u0#2;
+
+        $u0#2 = new java.util.concurrent.ConcurrentHashMap;
+
+        specialinvoke $u0#2.<java.util.concurrent.ConcurrentHashMap: void <init>()>();
+
+        <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.util.concurrent.ConcurrentHashMap sTextViewFieldByNameCache> = $u0#2;
+
+        return;
+    }
+
+    void <init>(android.widget.TextView)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        android.widget.TextView $u3;
+        android.content.Context $u-1;
+        int[] $u1;
+        int $u0;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl29 $u0#7;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl23 $u0#10;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl $u0#11;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u3 := @parameter0: android.widget.TextView;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int mAutoSizeTextType> = 0;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mNeedsAutoSizeText> = 0;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeStepGranularityInPx> = -1.0F;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeMinTextSizeInPx> = -1.0F;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeMaxTextSizeInPx> = -1.0F;
+
+        $u1 = newarray (int)[0];
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] mAutoSizeTextSizesInPx> = $u1;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mHasPresetAutoSizeValues> = 0;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView> = $u3;
+
+        $u-1 = virtualinvoke $u3.<android.widget.TextView: android.content.Context getContext()>();
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.content.Context mContext> = $u-1;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 29 goto label1;
+
+        $u0#7 = new androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl29;
+
+        specialinvoke $u0#7.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl29: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl mImpl> = $u0#7;
+
+        return;
+
+     label1:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 23 goto label2;
+
+        $u0#10 = new androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl23;
+
+        specialinvoke $u0#10.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl23: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl mImpl> = $u0#10;
+
+        return;
+
+     label2:
+        $u0#11 = new androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl;
+
+        specialinvoke $u0#11.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl mImpl> = $u0#11;
+
+        return;
+    }
+
+    private static java.lang.Object accessAndReturnWithDefault(java.lang.Object, java.lang.String, java.lang.Object)
+    {
+        java.lang.Object $u3, defaultValue;
+        java.lang.String $u4;
+        java.lang.reflect.Field $u-1;
+        java.lang.IllegalAccessException field;
+        java.lang.StringBuilder $u1;
+
+        $u3 := @parameter0: java.lang.Object;
+
+        $u4 := @parameter1: java.lang.String;
+
+        defaultValue := @parameter2: java.lang.Object;
+
+     label1:
+        $u-1 = staticinvoke <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.lang.reflect.Field getTextViewField(java.lang.String)>($u4);
+
+     label2:
+        if $u-1 != null goto label3;
+
+        return defaultValue;
+
+     label3:
+        $u3 = virtualinvoke $u-1.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($u3);
+
+     label4:
+        return $u3;
+
+     label5:
+        field := @caughtexception;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to access TextView#");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u4);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" member");
+
+        $u4 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("ACTVAutoSizeHelper", $u4, field);
+
+        return defaultValue;
+
+        catch java.lang.IllegalAccessException from label1 to label2 with label5;
+        catch java.lang.IllegalAccessException from label3 to label4 with label5;
+    }
+
+    private int[] cleanupAutoSizePresetSizes(int[])
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int[] $u7;
+        int presetValuesLength, i, currentPresetValue, $u-1#5;
+        java.util.ArrayList uniqueValidSizes;
+        java.lang.Integer $u-1;
+        java.lang.Object $u-1#15;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u7 := @parameter0: int[];
+
+        presetValuesLength = lengthof $u7;
+
+        if presetValuesLength != 0 goto label1;
+
+        return $u7;
+
+     label1:
+        staticinvoke <java.util.Arrays: void sort(int[])>($u7);
+
+        uniqueValidSizes = new java.util.ArrayList;
+
+        specialinvoke uniqueValidSizes.<java.util.ArrayList: void <init>()>();
+
+        i = 0;
+
+     label2:
+        if i >= presetValuesLength goto label4;
+
+        currentPresetValue = $u7[i];
+
+        if currentPresetValue <= 0 goto label3;
+
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(currentPresetValue);
+
+        $u-1#5 = staticinvoke <java.util.Collections: int binarySearch(java.util.List,java.lang.Object)>(uniqueValidSizes, $u-1);
+
+        if $u-1#5 >= 0 goto label3;
+
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(currentPresetValue);
+
+        interfaceinvoke uniqueValidSizes.<java.util.List: boolean add(java.lang.Object)>($u-1);
+
+     label3:
+        i = i + 1;
+
+        goto label2;
+
+     label4:
+        i = interfaceinvoke uniqueValidSizes.<java.util.List: int size()>();
+
+        if presetValuesLength != i goto label5;
+
+        return $u7;
+
+     label5:
+        presetValuesLength = interfaceinvoke uniqueValidSizes.<java.util.List: int size()>();
+
+        $u7 = newarray (int)[presetValuesLength];
+
+        i = 0;
+
+     label6:
+        if i >= presetValuesLength goto label7;
+
+        $u-1#15 = interfaceinvoke uniqueValidSizes.<java.util.List: java.lang.Object get(int)>(i);
+
+        $u-1 = (java.lang.Integer) $u-1#15;
+
+        currentPresetValue = virtualinvoke $u-1.<java.lang.Integer: int intValue()>();
+
+        $u7[i] = currentPresetValue;
+
+        i = i + 1;
+
+        goto label6;
+
+     label7:
+        return $u7;
+    }
+
+    private void clearAutoSizeConfiguration()
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int[] $u1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int mAutoSizeTextType> = 0;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeMinTextSizeInPx> = -1.0F;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeMaxTextSizeInPx> = -1.0F;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeStepGranularityInPx> = -1.0F;
+
+        $u1 = newarray (int)[0];
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] mAutoSizeTextSizesInPx> = $u1;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mNeedsAutoSizeText> = 0;
+
+        return;
+    }
+
+    private android.text.StaticLayout createStaticLayoutForMeasuring(java.lang.CharSequence, android.text.Layout$Alignment, int, int)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        java.lang.CharSequence $u5;
+        android.text.Layout$Alignment $u6;
+        int $u7, $u8, $u-1;
+        android.text.TextPaint e;
+        android.text.StaticLayout$Builder $u-1#5, $u-1#7;
+        android.widget.TextView $u2;
+        float $u-1#10, $u-1#13;
+        boolean $u-1#18;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl e#34;
+        java.lang.ClassCastException e#36;
+        android.text.StaticLayout $u-1#39;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u5 := @parameter0: java.lang.CharSequence;
+
+        $u6 := @parameter1: android.text.Layout$Alignment;
+
+        $u7 := @parameter2: int;
+
+        $u8 := @parameter3: int;
+
+        $u-1 = interfaceinvoke $u5.<java.lang.CharSequence: int length()>();
+
+        e = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.text.TextPaint mTempTextPaint>;
+
+        $u-1#5 = staticinvoke <android.text.StaticLayout$Builder: android.text.StaticLayout$Builder obtain(java.lang.CharSequence,int,int,android.text.TextPaint,int)>($u5, 0, $u-1, e, $u7);
+
+        $u-1#7 = virtualinvoke $u-1#5.<android.text.StaticLayout$Builder: android.text.StaticLayout$Builder setAlignment(android.text.Layout$Alignment)>($u6);
+
+        $u2 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#10 = virtualinvoke $u2.<android.widget.TextView: float getLineSpacingExtra()>();
+
+        $u2 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#13 = virtualinvoke $u2.<android.widget.TextView: float getLineSpacingMultiplier()>();
+
+        $u-1#7 = virtualinvoke $u-1#7.<android.text.StaticLayout$Builder: android.text.StaticLayout$Builder setLineSpacing(float,float)>($u-1#10, $u-1#13);
+
+        $u2 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#18 = virtualinvoke $u2.<android.widget.TextView: boolean getIncludeFontPadding()>();
+
+        $u-1#7 = virtualinvoke $u-1#7.<android.text.StaticLayout$Builder: android.text.StaticLayout$Builder setIncludePad(boolean)>($u-1#18);
+
+        $u2 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u7 = virtualinvoke $u2.<android.widget.TextView: int getBreakStrategy()>();
+
+        $u-1#7 = virtualinvoke $u-1#7.<android.text.StaticLayout$Builder: android.text.StaticLayout$Builder setBreakStrategy(int)>($u7);
+
+        $u2 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u7 = virtualinvoke $u2.<android.widget.TextView: int getHyphenationFrequency()>();
+
+        $u-1#7 = virtualinvoke $u-1#7.<android.text.StaticLayout$Builder: android.text.StaticLayout$Builder setHyphenationFrequency(int)>($u7);
+
+        if $u8 != -1 goto label1;
+
+        $u7 = 2147483647;
+
+        goto label2;
+
+     label1:
+        $u7 = $u8;
+
+     label2:
+        virtualinvoke $u-1#7.<android.text.StaticLayout$Builder: android.text.StaticLayout$Builder setMaxLines(int)>($u7);
+
+        e#34 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl mImpl>;
+
+        $u2 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+     label3:
+        virtualinvoke e#34.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl: void computeAndSetTextDirection(android.text.StaticLayout$Builder,android.widget.TextView)>($u-1#5, $u2);
+
+     label4:
+        goto label6;
+
+     label5:
+        e#36 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("ACTVAutoSizeHelper", "Failed to obtain TextDirectionHeuristic, auto size may be incorrect");
+
+     label6:
+        $u-1#39 = virtualinvoke $u-1#5.<android.text.StaticLayout$Builder: android.text.StaticLayout build()>();
+
+        return $u-1#39;
+
+        catch java.lang.ClassCastException from label3 to label4 with label5;
+    }
+
+    private android.text.StaticLayout createStaticLayoutForMeasuringPre16(java.lang.CharSequence, android.text.Layout$Alignment, int)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        java.lang.CharSequence $u13;
+        android.text.Layout$Alignment $u14;
+        int $u15;
+        android.text.StaticLayout $u11;
+        android.widget.TextView lineSpacingMultiplier;
+        java.lang.Float $u-1;
+        java.lang.Object $u-1#6;
+        float $u-1#9, $u-1#19;
+        java.lang.Boolean $u-1#22;
+        boolean $u-1#28;
+        android.text.TextPaint $u3;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u13 := @parameter0: java.lang.CharSequence;
+
+        $u14 := @parameter1: android.text.Layout$Alignment;
+
+        $u15 := @parameter2: int;
+
+        lineSpacingMultiplier = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>(1.0F);
+
+        $u-1#6 = staticinvoke <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.lang.Object accessAndReturnWithDefault(java.lang.Object,java.lang.String,java.lang.Object)>(lineSpacingMultiplier, "mSpacingMult", $u-1);
+
+        $u-1 = (java.lang.Float) $u-1#6;
+
+        $u-1#9 = virtualinvoke $u-1.<java.lang.Float: float floatValue()>();
+
+        lineSpacingMultiplier = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>(0.0F);
+
+        $u-1#6 = staticinvoke <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.lang.Object accessAndReturnWithDefault(java.lang.Object,java.lang.String,java.lang.Object)>(lineSpacingMultiplier, "mSpacingAdd", $u-1);
+
+        $u-1 = (java.lang.Float) $u-1#6;
+
+        $u-1#19 = virtualinvoke $u-1.<java.lang.Float: float floatValue()>();
+
+        lineSpacingMultiplier = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#22 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        $u-1#6 = staticinvoke <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.lang.Object accessAndReturnWithDefault(java.lang.Object,java.lang.String,java.lang.Object)>(lineSpacingMultiplier, "mIncludePad", $u-1#22);
+
+        $u-1#22 = (java.lang.Boolean) $u-1#6;
+
+        $u-1#28 = virtualinvoke $u-1#22.<java.lang.Boolean: boolean booleanValue()>();
+
+        $u11 = new android.text.StaticLayout;
+
+        $u3 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.text.TextPaint mTempTextPaint>;
+
+        specialinvoke $u11.<android.text.StaticLayout: void <init>(java.lang.CharSequence,android.text.TextPaint,int,android.text.Layout$Alignment,float,float,boolean)>($u13, $u3, $u15, $u14, $u-1#9, $u-1#19, $u-1#28);
+
+        return $u11;
+    }
+
+    private android.text.StaticLayout createStaticLayoutForMeasuringPre23(java.lang.CharSequence, android.text.Layout$Alignment, int)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        java.lang.CharSequence $u13;
+        android.text.Layout$Alignment $u14;
+        int $u15;
+        android.text.TextPaint $u3;
+        android.text.StaticLayout $u11;
+        android.widget.TextView lineSpacingMultiplier;
+        float $u-1, $u-1#5;
+        boolean $u-1#7;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u13 := @parameter0: java.lang.CharSequence;
+
+        $u14 := @parameter1: android.text.Layout$Alignment;
+
+        $u15 := @parameter2: int;
+
+        lineSpacingMultiplier = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1 = virtualinvoke lineSpacingMultiplier.<android.widget.TextView: float getLineSpacingMultiplier()>();
+
+        lineSpacingMultiplier = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#5 = virtualinvoke lineSpacingMultiplier.<android.widget.TextView: float getLineSpacingExtra()>();
+
+        lineSpacingMultiplier = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#7 = virtualinvoke lineSpacingMultiplier.<android.widget.TextView: boolean getIncludeFontPadding()>();
+
+        $u11 = new android.text.StaticLayout;
+
+        $u3 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.text.TextPaint mTempTextPaint>;
+
+        specialinvoke $u11.<android.text.StaticLayout: void <init>(java.lang.CharSequence,android.text.TextPaint,int,android.text.Layout$Alignment,float,float,boolean)>($u13, $u3, $u15, $u14, $u-1, $u-1#5, $u-1#7);
+
+        return $u11;
+    }
+
+    private int findLargestTextSizeWhichFits(android.graphics.RectF)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        android.graphics.RectF $u7;
+        boolean $u-1;
+        int[] sizesCount;
+        int sizesCount#2, bestSizeIndex, lowIndex, sizeToTryIndex;
+        java.lang.IllegalStateException bestSizeIndex#13;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u7 := @parameter0: android.graphics.RectF;
+
+        sizesCount = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] mAutoSizeTextSizesInPx>;
+
+        sizesCount#2 = lengthof sizesCount;
+
+        if sizesCount#2 == 0 goto label4;
+
+        bestSizeIndex = 0;
+
+        lowIndex = 1;
+
+        sizesCount#2 = sizesCount#2 + -1;
+
+     label1:
+        if lowIndex > sizesCount#2 goto label3;
+
+        bestSizeIndex = lowIndex + sizesCount#2;
+
+        sizeToTryIndex = bestSizeIndex / 2;
+
+        sizesCount = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] mAutoSizeTextSizesInPx>;
+
+        bestSizeIndex = sizesCount[sizeToTryIndex];
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean suggestedSizeFitsInSpace(int,android.graphics.RectF)>(bestSizeIndex, $u7);
+
+        if $u-1 == 0 goto label2;
+
+        bestSizeIndex = lowIndex;
+
+        lowIndex = sizeToTryIndex + 1;
+
+        goto label1;
+
+     label2:
+        sizesCount#2 = sizeToTryIndex + -1;
+
+        bestSizeIndex = sizesCount#2;
+
+        goto label1;
+
+     label3:
+        sizesCount = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] mAutoSizeTextSizesInPx>;
+
+        lowIndex = sizesCount[bestSizeIndex];
+
+        return lowIndex;
+
+     label4:
+        bestSizeIndex#13 = new java.lang.IllegalStateException;
+
+        specialinvoke bestSizeIndex#13.<java.lang.IllegalStateException: void <init>(java.lang.String)>("No available text sizes to choose from.");
+
+        goto label5;
+
+     label5:
+        throw bestSizeIndex#13;
+    }
+
+    private static java.lang.reflect.Field getTextViewField(java.lang.String)
+    {
+        java.lang.String $u3;
+        java.util.concurrent.ConcurrentHashMap field;
+        java.lang.Object $u-1;
+        java.lang.reflect.Field field#4;
+        java.lang.Class $u1;
+        java.lang.NoSuchFieldException field#11;
+        java.lang.StringBuilder $u1#12;
+
+        $u3 := @parameter0: java.lang.String;
+
+        field = <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.util.concurrent.ConcurrentHashMap sTextViewFieldByNameCache>;
+
+     label01:
+        $u-1 = virtualinvoke field.<java.util.concurrent.ConcurrentHashMap: java.lang.Object get(java.lang.Object)>($u3);
+
+     label02:
+        field#4 = (java.lang.reflect.Field) $u-1;
+
+        if field#4 != null goto label10;
+
+        $u1 = class "Landroid/widget/TextView;";
+
+     label03:
+        field#4 = virtualinvoke $u1.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>($u3);
+
+     label04:
+        if field#4 == null goto label10;
+
+     label05:
+        virtualinvoke field#4.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label06:
+        field = <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.util.concurrent.ConcurrentHashMap sTextViewFieldByNameCache>;
+
+     label07:
+        virtualinvoke field.<java.util.concurrent.ConcurrentHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u3, field#4);
+
+     label08:
+        return field#4;
+
+     label09:
+        field#11 := @caughtexception;
+
+        $u1#12 = new java.lang.StringBuilder;
+
+        specialinvoke $u1#12.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1#12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to access TextView#");
+
+        virtualinvoke $u1#12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u3);
+
+        virtualinvoke $u1#12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" member");
+
+        $u3 = virtualinvoke $u1#12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("ACTVAutoSizeHelper", $u3, field#11);
+
+        return null;
+
+     label10:
+        return field#4;
+
+        catch java.lang.NoSuchFieldException from label01 to label02 with label09;
+        catch java.lang.NoSuchFieldException from label03 to label04 with label09;
+        catch java.lang.NoSuchFieldException from label05 to label06 with label09;
+        catch java.lang.NoSuchFieldException from label07 to label08 with label09;
+    }
+
+    private static java.lang.reflect.Method getTextViewMethod(java.lang.String)
+    {
+        java.lang.String $u3;
+        java.util.concurrent.ConcurrentHashMap method;
+        java.lang.Object $u-1;
+        java.lang.reflect.Method method#4;
+        java.lang.Class $u1;
+        java.lang.Class[] $u2;
+        java.lang.Exception method#13;
+        java.lang.StringBuilder $u1#14;
+
+        $u3 := @parameter0: java.lang.String;
+
+        method = <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.util.concurrent.ConcurrentHashMap sTextViewMethodByNameCache>;
+
+     label01:
+        $u-1 = virtualinvoke method.<java.util.concurrent.ConcurrentHashMap: java.lang.Object get(java.lang.Object)>($u3);
+
+        method#4 = (java.lang.reflect.Method) $u-1;
+
+     label02:
+        if method#4 != null goto label10;
+
+        $u1 = class "Landroid/widget/TextView;";
+
+     label03:
+        $u2 = newarray (java.lang.Class)[0];
+
+        method#4 = virtualinvoke $u1.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>($u3, $u2);
+
+     label04:
+        if method#4 == null goto label10;
+
+     label05:
+        virtualinvoke method#4.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label06:
+        method = <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.util.concurrent.ConcurrentHashMap sTextViewMethodByNameCache>;
+
+     label07:
+        virtualinvoke method.<java.util.concurrent.ConcurrentHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u3, method#4);
+
+     label08:
+        return method#4;
+
+     label09:
+        method#13 := @caughtexception;
+
+        $u1#14 = new java.lang.StringBuilder;
+
+        specialinvoke $u1#14.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1#14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to retrieve TextView#");
+
+        virtualinvoke $u1#14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u3);
+
+        virtualinvoke $u1#14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("() method");
+
+        $u3 = virtualinvoke $u1#14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("ACTVAutoSizeHelper", $u3, method#13);
+
+        return null;
+
+     label10:
+        return method#4;
+
+        catch java.lang.Exception from label01 to label02 with label09;
+        catch java.lang.Exception from label03 to label04 with label09;
+        catch java.lang.Exception from label05 to label06 with label09;
+        catch java.lang.Exception from label07 to label08 with label09;
+    }
+
+    static java.lang.Object invokeAndReturnWithDefault(java.lang.Object, java.lang.String, java.lang.Object)
+    {
+        java.lang.Object $u6, defaultValue;
+        java.lang.String $u7;
+        boolean exceptionThrown;
+        java.lang.reflect.Method $u-1;
+        java.lang.Object[] $u3;
+        java.lang.Throwable method;
+        java.lang.Exception method#12;
+        java.lang.StringBuilder $u4;
+
+        $u6 := @parameter0: java.lang.Object;
+
+        $u7 := @parameter1: java.lang.String;
+
+        defaultValue := @parameter2: java.lang.Object;
+
+        exceptionThrown = 0;
+
+     label01:
+        $u-1 = staticinvoke <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.lang.reflect.Method getTextViewMethod(java.lang.String)>($u7);
+
+        $u3 = newarray (java.lang.Object)[0];
+
+        $u6 = virtualinvoke $u-1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u6, $u3);
+
+     label02:
+        if $u6 != null goto label08;
+
+        goto label12;
+
+     label03:
+        return defaultValue;
+
+     label04:
+        method := @caughtexception;
+
+        goto label09;
+
+     label05:
+        method#12 := @caughtexception;
+
+        exceptionThrown = 1;
+
+     label06:
+        $u4 = new java.lang.StringBuilder;
+
+        specialinvoke $u4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to invoke TextView#");
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u7);
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("() method");
+
+        $u7 = virtualinvoke $u4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("ACTVAutoSizeHelper", $u7, method#12);
+
+     label07:
+        goto label03;
+
+     label08:
+        return $u6;
+
+     label09:
+        if exceptionThrown == 0 goto label10;
+
+     label10:
+        goto label11;
+
+     label11:
+        throw method;
+
+     label12:
+        return $u6;
+
+        catch java.lang.Exception from label01 to label02 with label05;
+        catch java.lang.Throwable from label01 to label02 with label04;
+        catch java.lang.Throwable from label06 to label07 with label04;
+    }
+
+    private void setRawTextSize(float)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        float $u6, $u-1#4;
+        android.widget.TextView isInLayout;
+        android.text.TextPaint $u-1;
+        byte isInLayout#6;
+        boolean isInLayout#10;
+        int ex;
+        android.text.Layout $u-1#16;
+        java.lang.reflect.Method $u-1#21;
+        java.lang.Object[] ex#24;
+        java.lang.Exception ex#25;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u6 := @parameter0: float;
+
+        isInLayout = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1 = virtualinvoke isInLayout.<android.widget.TextView: android.text.TextPaint getPaint()>();
+
+        $u-1#4 = virtualinvoke $u-1.<android.text.TextPaint: float getTextSize()>();
+
+        isInLayout#6 = $u6 cmpl $u-1#4;
+
+        if isInLayout#6 == 0 goto label10;
+
+        isInLayout = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1 = virtualinvoke isInLayout.<android.widget.TextView: android.text.TextPaint getPaint()>();
+
+        virtualinvoke $u-1.<android.text.TextPaint: void setTextSize(float)>($u6);
+
+        isInLayout#10 = 0;
+
+        ex = <android.os.Build$VERSION: int SDK_INT>;
+
+        if ex < 18 goto label01;
+
+        isInLayout = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        isInLayout#10 = virtualinvoke isInLayout.<android.widget.TextView: boolean isInLayout()>();
+
+     label01:
+        isInLayout = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#16 = virtualinvoke isInLayout.<android.widget.TextView: android.text.Layout getLayout()>();
+
+        if $u-1#16 == null goto label10;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mNeedsAutoSizeText> = 0;
+
+     label02:
+        $u-1#21 = staticinvoke <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.lang.reflect.Method getTextViewMethod(java.lang.String)>("nullLayouts");
+
+     label03:
+        if $u-1#21 == null goto label05;
+
+     label04:
+        isInLayout = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        ex#24 = newarray (java.lang.Object)[0];
+
+        virtualinvoke $u-1#21.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(isInLayout, ex#24);
+
+     label05:
+        goto label07;
+
+     label06:
+        ex#25 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("ACTVAutoSizeHelper", "Failed to invoke TextView#nullLayouts() method", ex#25);
+
+     label07:
+        if isInLayout#10 != 0 goto label08;
+
+        isInLayout = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        virtualinvoke isInLayout.<android.widget.TextView: void requestLayout()>();
+
+        goto label09;
+
+     label08:
+        isInLayout = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        virtualinvoke isInLayout.<android.widget.TextView: void forceLayout()>();
+
+     label09:
+        isInLayout = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        virtualinvoke isInLayout.<android.widget.TextView: void invalidate()>();
+
+     label10:
+        return;
+
+        catch java.lang.Exception from label02 to label03 with label06;
+        catch java.lang.Exception from label04 to label05 with label06;
+    }
+
+    private boolean setupAutoSizeText()
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        float $u6, autoSizeValuesLength#7, $u5;
+        boolean $u-1;
+        int autoSizeValuesLength, i, $u-1#23;
+        int[] autoSizeValuesLength#5;
+        double autoSizeTextSizesInPx;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean supportsAutoSizeText()>();
+
+        if $u-1 == 0 goto label5;
+
+        autoSizeValuesLength = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int mAutoSizeTextType>;
+
+        if autoSizeValuesLength != 1 goto label5;
+
+        $u-1 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mHasPresetAutoSizeValues>;
+
+        if $u-1 == 0 goto label1;
+
+        autoSizeValuesLength#5 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] mAutoSizeTextSizesInPx>;
+
+        autoSizeValuesLength = lengthof autoSizeValuesLength#5;
+
+        if autoSizeValuesLength != 0 goto label4;
+
+     label1:
+        autoSizeValuesLength#7 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeMaxTextSizeInPx>;
+
+        $u6 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeMinTextSizeInPx>;
+
+        autoSizeValuesLength#7 = autoSizeValuesLength#7 - $u6;
+
+        $u6 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeStepGranularityInPx>;
+
+        autoSizeValuesLength#7 = autoSizeValuesLength#7 / $u6;
+
+        autoSizeTextSizesInPx = (double) autoSizeValuesLength#7;
+
+        autoSizeTextSizesInPx = staticinvoke <java.lang.Math: double floor(double)>(autoSizeTextSizesInPx);
+
+        autoSizeValuesLength = (int) autoSizeTextSizesInPx;
+
+        autoSizeValuesLength = autoSizeValuesLength + 1;
+
+        autoSizeValuesLength#5 = newarray (int)[autoSizeValuesLength];
+
+        i = 0;
+
+     label2:
+        if i >= autoSizeValuesLength goto label3;
+
+        autoSizeValuesLength#7 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeMinTextSizeInPx>;
+
+        $u5 = (float) i;
+
+        $u6 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeStepGranularityInPx>;
+
+        $u6 = $u5 * $u6;
+
+        autoSizeValuesLength#7 = autoSizeValuesLength#7 + $u6;
+
+        $u-1#23 = staticinvoke <java.lang.Math: int round(float)>(autoSizeValuesLength#7);
+
+        autoSizeValuesLength#5[i] = $u-1#23;
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        autoSizeValuesLength#5 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] cleanupAutoSizePresetSizes(int[])>(autoSizeValuesLength#5);
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] mAutoSizeTextSizesInPx> = autoSizeValuesLength#5;
+
+     label4:
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mNeedsAutoSizeText> = 1;
+
+        goto label6;
+
+     label5:
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mNeedsAutoSizeText> = 0;
+
+     label6:
+        $u-1 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mNeedsAutoSizeText>;
+
+        return $u-1;
+    }
+
+    private void setupAutoSizeUniformPresetSizes(android.content.res.TypedArray)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        android.content.res.TypedArray $u5;
+        int[] parsedSizes;
+        int $u-1, i, $u-1#4;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u5 := @parameter0: android.content.res.TypedArray;
+
+        $u-1 = virtualinvoke $u5.<android.content.res.TypedArray: int length()>();
+
+        parsedSizes = newarray (int)[$u-1];
+
+        if $u-1 <= 0 goto label3;
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label2;
+
+        $u-1#4 = virtualinvoke $u5.<android.content.res.TypedArray: int getDimensionPixelSize(int,int)>(i, -1);
+
+        parsedSizes[i] = $u-1#4;
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        parsedSizes = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] cleanupAutoSizePresetSizes(int[])>(parsedSizes);
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] mAutoSizeTextSizesInPx> = parsedSizes;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean setupAutoSizeUniformPresetSizesConfiguration()>();
+
+     label3:
+        return;
+    }
+
+    private boolean setupAutoSizeUniformPresetSizesConfiguration()
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int[] sizesLength;
+        int sizesLength#2, $u1;
+        boolean $u3;
+        float $u1#8;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        sizesLength = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] mAutoSizeTextSizesInPx>;
+
+        sizesLength#2 = lengthof sizesLength;
+
+        if sizesLength#2 <= 0 goto label1;
+
+        $u3 = 1;
+
+        goto label2;
+
+     label1:
+        $u3 = 0;
+
+     label2:
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mHasPresetAutoSizeValues> = $u3;
+
+        if $u3 == 0 goto label3;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int mAutoSizeTextType> = 1;
+
+        sizesLength = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] mAutoSizeTextSizesInPx>;
+
+        $u1 = sizesLength[0];
+
+        $u1#8 = (float) $u1;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeMinTextSizeInPx> = $u1#8;
+
+        sizesLength#2 = sizesLength#2 + -1;
+
+        sizesLength#2 = sizesLength[sizesLength#2];
+
+        $u1#8 = (float) sizesLength#2;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeMaxTextSizeInPx> = $u1#8;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeStepGranularityInPx> = -1.0F;
+
+     label3:
+        $u3 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mHasPresetAutoSizeValues>;
+
+        return $u3;
+    }
+
+    private boolean suggestedSizeFitsInSpace(int, android.graphics.RectF)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int $u10, transformedText;
+        android.graphics.RectF $u11;
+        android.widget.TextView text;
+        java.lang.CharSequence $u-1, text#3;
+        android.text.method.TransformationMethod $u-1#5;
+        android.text.Layout$Alignment layout;
+        java.lang.Object $u-1#19;
+        float layout#22, $u8;
+        android.text.StaticLayout $u-1#25;
+        byte $u4;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u10 := @parameter0: int;
+
+        $u11 := @parameter1: android.graphics.RectF;
+
+        text = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1 = virtualinvoke text.<android.widget.TextView: java.lang.CharSequence getText()>();
+
+        text#3 = $u-1;
+
+        text = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#5 = virtualinvoke text.<android.widget.TextView: android.text.method.TransformationMethod getTransformationMethod()>();
+
+        if $u-1#5 == null goto label1;
+
+        text = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1 = interfaceinvoke $u-1#5.<android.text.method.TransformationMethod: java.lang.CharSequence getTransformation(java.lang.CharSequence,android.view.View)>($u-1, text);
+
+        if $u-1 == null goto label1;
+
+        text#3 = $u-1;
+
+     label1:
+        transformedText = <android.os.Build$VERSION: int SDK_INT>;
+
+        if transformedText < 16 goto label2;
+
+        text = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        transformedText = virtualinvoke text.<android.widget.TextView: int getMaxLines()>();
+
+        goto label3;
+
+     label2:
+        transformedText = -1;
+
+     label3:
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void initTempTextPaint(int)>($u10);
+
+        text = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        layout = <android.text.Layout$Alignment: android.text.Layout$Alignment ALIGN_NORMAL>;
+
+        $u-1#19 = staticinvoke <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.lang.Object invokeAndReturnWithDefault(java.lang.Object,java.lang.String,java.lang.Object)>(text, "getLayoutAlignment", layout);
+
+        layout = (android.text.Layout$Alignment) $u-1#19;
+
+        layout#22 = $u11.<android.graphics.RectF: float right>;
+
+        $u10 = staticinvoke <java.lang.Math: int round(float)>(layout#22);
+
+        $u-1#25 = virtualinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.text.StaticLayout createLayout(java.lang.CharSequence,android.text.Layout$Alignment,int,int)>(text#3, layout, $u10, transformedText);
+
+        if transformedText == -1 goto label4;
+
+        $u10 = virtualinvoke $u-1#25.<android.text.StaticLayout: int getLineCount()>();
+
+        if $u10 > transformedText goto label6;
+
+        $u10 = virtualinvoke $u-1#25.<android.text.StaticLayout: int getLineCount()>();
+
+        $u10 = $u10 - 1;
+
+        $u10 = virtualinvoke $u-1#25.<android.text.StaticLayout: int getLineEnd(int)>($u10);
+
+        transformedText = interfaceinvoke text#3.<java.lang.CharSequence: int length()>();
+
+        if $u10 == transformedText goto label4;
+
+        return 0;
+
+     label4:
+        $u10 = virtualinvoke $u-1#25.<android.text.StaticLayout: int getHeight()>();
+
+        layout#22 = (float) $u10;
+
+        $u8 = $u11.<android.graphics.RectF: float bottom>;
+
+        $u4 = layout#22 cmpl $u8;
+
+        if $u4 <= 0 goto label5;
+
+        return 0;
+
+     label5:
+        return 1;
+
+     label6:
+        return 0;
+    }
+
+    private boolean supportsAutoSizeText()
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        android.widget.TextView $u0;
+        boolean $u0#2;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u0#2 = $u0 instanceof androidx.appcompat.widget.AppCompatEditText;
+
+        $u0#2 = $u0#2 ^ 1;
+
+        return $u0#2;
+    }
+
+    private void validateAndSetAutoSizeTextTypeUniformConfiguration(float, float, float) throws java.lang.IllegalArgumentException
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        float $u5, $u6, $u7;
+        byte $u2;
+        java.lang.IllegalArgumentException $u1;
+        java.lang.StringBuilder $u2#9;
+        java.lang.String $u-1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u5 := @parameter0: float;
+
+        $u6 := @parameter1: float;
+
+        $u7 := @parameter2: float;
+
+        $u2 = $u5 cmpg 0.0F;
+
+        if $u2 <= 0 goto label3;
+
+        $u2 = $u6 cmpg $u5;
+
+        if $u2 <= 0 goto label2;
+
+        $u2 = $u7 cmpg 0.0F;
+
+        if $u2 <= 0 goto label1;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int mAutoSizeTextType> = 1;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeMinTextSizeInPx> = $u5;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeMaxTextSizeInPx> = $u6;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeStepGranularityInPx> = $u7;
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mHasPresetAutoSizeValues> = 0;
+
+        return;
+
+     label1:
+        $u1 = new java.lang.IllegalArgumentException;
+
+        $u2#9 = new java.lang.StringBuilder;
+
+        specialinvoke $u2#9.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("The auto-size step granularity (");
+
+        virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($u7);
+
+        virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("px) is less or equal to (0px)");
+
+        $u-1 = virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1);
+
+        throw $u1;
+
+     label2:
+        $u1 = new java.lang.IllegalArgumentException;
+
+        $u2#9 = new java.lang.StringBuilder;
+
+        specialinvoke $u2#9.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Maximum auto-size text size (");
+
+        virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($u6);
+
+        virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("px) is less or equal to minimum auto-size text size (");
+
+        virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($u5);
+
+        virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("px)");
+
+        $u-1 = virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1);
+
+        throw $u1;
+
+     label3:
+        $u1 = new java.lang.IllegalArgumentException;
+
+        $u2#9 = new java.lang.StringBuilder;
+
+        specialinvoke $u2#9.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Minimum auto-size text size (");
+
+        virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($u5);
+
+        virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("px) is less or equal to (0px)");
+
+        $u-1 = virtualinvoke $u2#9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1);
+
+        throw $u1;
+    }
+
+    void autoSizeText()
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        boolean $u-1;
+        android.widget.TextView horizontallyScrolling;
+        int $u-1#5, $u-1#19, $u-1#29;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl horizontallyScrolling#10;
+        android.graphics.RectF $u3, optimalTextSize;
+        float $u5, $u-1#47;
+        byte $u5#49;
+        java.lang.Throwable optimalTextSize#51;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean isAutoSizeEnabled()>();
+
+        if $u-1 != 0 goto label01;
+
+        return;
+
+     label01:
+        $u-1 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mNeedsAutoSizeText>;
+
+        if $u-1 == 0 goto label12;
+
+        horizontallyScrolling = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#5 = virtualinvoke horizontallyScrolling.<android.widget.TextView: int getMeasuredHeight()>();
+
+        if $u-1#5 <= 0 goto label11;
+
+        horizontallyScrolling = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#5 = virtualinvoke horizontallyScrolling.<android.widget.TextView: int getMeasuredWidth()>();
+
+        if $u-1#5 > 0 goto label02;
+
+        return;
+
+     label02:
+        horizontallyScrolling#10 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl mImpl>;
+
+        horizontallyScrolling = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1 = virtualinvoke horizontallyScrolling#10.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl: boolean isHorizontallyScrollable(android.widget.TextView)>(horizontallyScrolling);
+
+        if $u-1 == 0 goto label03;
+
+        $u-1#5 = 1048576;
+
+        goto label04;
+
+     label03:
+        horizontallyScrolling = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#5 = virtualinvoke horizontallyScrolling.<android.widget.TextView: int getMeasuredWidth()>();
+
+        horizontallyScrolling = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#19 = virtualinvoke horizontallyScrolling.<android.widget.TextView: int getTotalPaddingLeft()>();
+
+        $u-1#5 = $u-1#5 - $u-1#19;
+
+        horizontallyScrolling = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#19 = virtualinvoke horizontallyScrolling.<android.widget.TextView: int getTotalPaddingRight()>();
+
+        $u-1#5 = $u-1#5 - $u-1#19;
+
+     label04:
+        horizontallyScrolling = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#19 = virtualinvoke horizontallyScrolling.<android.widget.TextView: int getHeight()>();
+
+        horizontallyScrolling = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#29 = virtualinvoke horizontallyScrolling.<android.widget.TextView: int getCompoundPaddingBottom()>();
+
+        $u-1#19 = $u-1#19 - $u-1#29;
+
+        horizontallyScrolling = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#29 = virtualinvoke horizontallyScrolling.<android.widget.TextView: int getCompoundPaddingTop()>();
+
+        $u-1#19 = $u-1#19 - $u-1#29;
+
+        if $u-1#5 <= 0 goto label13;
+
+        if $u-1#19 > 0 goto label05;
+
+        return;
+
+     label05:
+        $u3 = <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.graphics.RectF TEMP_RECTF>;
+
+        entermonitor $u3;
+
+     label06:
+        optimalTextSize = <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.graphics.RectF TEMP_RECTF>;
+
+        virtualinvoke optimalTextSize.<android.graphics.RectF: void setEmpty()>();
+
+        optimalTextSize = <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.graphics.RectF TEMP_RECTF>;
+
+        $u5 = (float) $u-1#5;
+
+        optimalTextSize.<android.graphics.RectF: float right> = $u5;
+
+        optimalTextSize = <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.graphics.RectF TEMP_RECTF>;
+
+        $u5 = (float) $u-1#19;
+
+        optimalTextSize.<android.graphics.RectF: float bottom> = $u5;
+
+        optimalTextSize = <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.graphics.RectF TEMP_RECTF>;
+
+        $u-1#5 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int findLargestTextSizeWhichFits(android.graphics.RectF)>(optimalTextSize);
+
+        $u5 = (float) $u-1#5;
+
+        horizontallyScrolling = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1#47 = virtualinvoke horizontallyScrolling.<android.widget.TextView: float getTextSize()>();
+
+        $u5#49 = $u5 cmpl $u-1#47;
+
+        if $u5#49 == 0 goto label07;
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void setTextSizeInternal(int,float)>(0, $u5);
+
+     label07:
+        exitmonitor $u3;
+
+     label08:
+        goto label12;
+
+     label09:
+        optimalTextSize#51 := @caughtexception;
+
+        exitmonitor $u3;
+
+     label10:
+        throw optimalTextSize#51;
+
+     label11:
+        return;
+
+     label12:
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mNeedsAutoSizeText> = 1;
+
+     label13:
+        return;
+
+        catch java.lang.Throwable from label06 to label08 with label09;
+        catch java.lang.Throwable from label09 to label10 with label09;
+    }
+
+    android.text.StaticLayout createLayout(java.lang.CharSequence, android.text.Layout$Alignment, int, int)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        java.lang.CharSequence $u3;
+        android.text.Layout$Alignment $u4;
+        int $u5, $u6, $u0;
+        android.text.StaticLayout $u-1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u3 := @parameter0: java.lang.CharSequence;
+
+        $u4 := @parameter1: android.text.Layout$Alignment;
+
+        $u5 := @parameter2: int;
+
+        $u6 := @parameter3: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 23 goto label1;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.text.StaticLayout createStaticLayoutForMeasuring(java.lang.CharSequence,android.text.Layout$Alignment,int,int)>($u3, $u4, $u5, $u6);
+
+        return $u-1;
+
+     label1:
+        $u6 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u6 < 16 goto label2;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.text.StaticLayout createStaticLayoutForMeasuringPre23(java.lang.CharSequence,android.text.Layout$Alignment,int)>($u3, $u4, $u5);
+
+        return $u-1;
+
+     label2:
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.text.StaticLayout createStaticLayoutForMeasuringPre16(java.lang.CharSequence,android.text.Layout$Alignment,int)>($u3, $u4, $u5);
+
+        return $u-1;
+    }
+
+    int getAutoSizeMaxTextSize()
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int $u-1;
+        float $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeMaxTextSizeInPx>;
+
+        $u-1 = staticinvoke <java.lang.Math: int round(float)>($u0);
+
+        return $u-1;
+    }
+
+    int getAutoSizeMinTextSize()
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int $u-1;
+        float $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeMinTextSizeInPx>;
+
+        $u-1 = staticinvoke <java.lang.Math: int round(float)>($u0);
+
+        return $u-1;
+    }
+
+    int getAutoSizeStepGranularity()
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int $u-1;
+        float $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: float mAutoSizeStepGranularityInPx>;
+
+        $u-1 = staticinvoke <java.lang.Math: int round(float)>($u0);
+
+        return $u-1;
+    }
+
+    int[] getAutoSizeTextAvailableSizes()
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int[] ret0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        ret0 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] mAutoSizeTextSizesInPx>;
+
+        return ret0;
+    }
+
+    int getAutoSizeTextType()
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int ret0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        ret0 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int mAutoSizeTextType>;
+
+        return ret0;
+    }
+
+    void initTempTextPaint(int)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int $u3;
+        android.text.TextPaint $u-1, $u0;
+        android.widget.TextView $u1;
+        float $u1#7;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u3 := @parameter0: int;
+
+        $u-1 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.text.TextPaint mTempTextPaint>;
+
+        if $u-1 != null goto label1;
+
+        $u-1 = new android.text.TextPaint;
+
+        specialinvoke $u-1.<android.text.TextPaint: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.text.TextPaint mTempTextPaint> = $u-1;
+
+        goto label2;
+
+     label1:
+        virtualinvoke $u-1.<android.text.TextPaint: void reset()>();
+
+     label2:
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.text.TextPaint mTempTextPaint>;
+
+        $u1 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        $u-1 = virtualinvoke $u1.<android.widget.TextView: android.text.TextPaint getPaint()>();
+
+        virtualinvoke $u0.<android.text.TextPaint: void set(android.text.TextPaint)>($u-1);
+
+        $u-1 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.text.TextPaint mTempTextPaint>;
+
+        $u1#7 = (float) $u3;
+
+        virtualinvoke $u-1.<android.text.TextPaint: void setTextSize(float)>($u1#7);
+
+        return;
+    }
+
+    boolean isAutoSizeEnabled()
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        boolean $u-1;
+        int $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean supportsAutoSizeText()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int mAutoSizeTextType>;
+
+        if $u0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    void loadFromAttributes(android.util.AttributeSet, int)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        android.util.AttributeSet $u14;
+        int $u15;
+        int[] $u8;
+        float autoSizeMinTextSizeInPx, autoSizeMaxTextSizeInPx, autoSizeStepGranularityInPx;
+        android.content.Context a;
+        android.content.res.TypedArray $u-1, $u-1#42;
+        android.widget.TextView $u6;
+        boolean $u-1#13;
+        android.content.res.Resources $u-1#40;
+        android.util.DisplayMetrics $u-1#52;
+        byte autoSizePreDefTextSizes;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u14 := @parameter0: android.util.AttributeSet;
+
+        $u15 := @parameter1: int;
+
+        autoSizeMinTextSizeInPx = -1.0F;
+
+        autoSizeMaxTextSizeInPx = -1.0F;
+
+        autoSizeStepGranularityInPx = -1.0F;
+
+        a = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.content.Context mContext>;
+
+        $u8 = <androidx.appcompat.R$styleable: int[] AppCompatTextView>;
+
+        $u-1 = virtualinvoke a.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[],int,int)>($u14, $u8, $u15, 0);
+
+        $u6 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.widget.TextView mTextView>;
+
+        a = virtualinvoke $u6.<android.widget.TextView: android.content.Context getContext()>();
+
+        $u8 = <androidx.appcompat.R$styleable: int[] AppCompatTextView>;
+
+        staticinvoke <androidx.core.view.ViewCompat: void saveAttributeDataForStyleable(android.view.View,android.content.Context,int[],android.util.AttributeSet,android.content.res.TypedArray,int,int)>($u6, a, $u8, $u14, $u-1, $u15, 0);
+
+        $u15 = <androidx.appcompat.R$styleable: int AppCompatTextView_autoSizeTextType>;
+
+        $u-1#13 = virtualinvoke $u-1.<android.content.res.TypedArray: boolean hasValue(int)>($u15);
+
+        if $u-1#13 == 0 goto label01;
+
+        $u15 = <androidx.appcompat.R$styleable: int AppCompatTextView_autoSizeTextType>;
+
+        $u15 = virtualinvoke $u-1.<android.content.res.TypedArray: int getInt(int,int)>($u15, 0);
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int mAutoSizeTextType> = $u15;
+
+     label01:
+        $u15 = <androidx.appcompat.R$styleable: int AppCompatTextView_autoSizeStepGranularity>;
+
+        $u-1#13 = virtualinvoke $u-1.<android.content.res.TypedArray: boolean hasValue(int)>($u15);
+
+        if $u-1#13 == 0 goto label02;
+
+        $u15 = <androidx.appcompat.R$styleable: int AppCompatTextView_autoSizeStepGranularity>;
+
+        autoSizeStepGranularityInPx = virtualinvoke $u-1.<android.content.res.TypedArray: float getDimension(int,float)>($u15, -1.0F);
+
+     label02:
+        $u15 = <androidx.appcompat.R$styleable: int AppCompatTextView_autoSizeMinTextSize>;
+
+        $u-1#13 = virtualinvoke $u-1.<android.content.res.TypedArray: boolean hasValue(int)>($u15);
+
+        if $u-1#13 == 0 goto label03;
+
+        $u15 = <androidx.appcompat.R$styleable: int AppCompatTextView_autoSizeMinTextSize>;
+
+        autoSizeMinTextSizeInPx = virtualinvoke $u-1.<android.content.res.TypedArray: float getDimension(int,float)>($u15, -1.0F);
+
+     label03:
+        $u15 = <androidx.appcompat.R$styleable: int AppCompatTextView_autoSizeMaxTextSize>;
+
+        $u-1#13 = virtualinvoke $u-1.<android.content.res.TypedArray: boolean hasValue(int)>($u15);
+
+        if $u-1#13 == 0 goto label04;
+
+        $u15 = <androidx.appcompat.R$styleable: int AppCompatTextView_autoSizeMaxTextSize>;
+
+        autoSizeMaxTextSizeInPx = virtualinvoke $u-1.<android.content.res.TypedArray: float getDimension(int,float)>($u15, -1.0F);
+
+     label04:
+        $u15 = <androidx.appcompat.R$styleable: int AppCompatTextView_autoSizePresetSizes>;
+
+        $u-1#13 = virtualinvoke $u-1.<android.content.res.TypedArray: boolean hasValue(int)>($u15);
+
+        if $u-1#13 == 0 goto label05;
+
+        $u15 = <androidx.appcompat.R$styleable: int AppCompatTextView_autoSizePresetSizes>;
+
+        $u15 = virtualinvoke $u-1.<android.content.res.TypedArray: int getResourceId(int,int)>($u15, 0);
+
+        if $u15 <= 0 goto label05;
+
+        $u-1#40 = virtualinvoke $u-1.<android.content.res.TypedArray: android.content.res.Resources getResources()>();
+
+        $u-1#42 = virtualinvoke $u-1#40.<android.content.res.Resources: android.content.res.TypedArray obtainTypedArray(int)>($u15);
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void setupAutoSizeUniformPresetSizes(android.content.res.TypedArray)>($u-1#42);
+
+        virtualinvoke $u-1#42.<android.content.res.TypedArray: void recycle()>();
+
+     label05:
+        virtualinvoke $u-1.<android.content.res.TypedArray: void recycle()>();
+
+        $u-1#13 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean supportsAutoSizeText()>();
+
+        if $u-1#13 == 0 goto label10;
+
+        $u15 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int mAutoSizeTextType>;
+
+        if $u15 != 1 goto label11;
+
+        $u-1#13 = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mHasPresetAutoSizeValues>;
+
+        if $u-1#13 != 0 goto label09;
+
+        a = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.content.Context mContext>;
+
+        $u-1#40 = virtualinvoke a.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#52 = virtualinvoke $u-1#40.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        autoSizePreDefTextSizes = autoSizeMinTextSizeInPx cmpl -1.0F;
+
+        if autoSizePreDefTextSizes != 0 goto label06;
+
+        autoSizeMinTextSizeInPx = staticinvoke <android.util.TypedValue: float applyDimension(int,float,android.util.DisplayMetrics)>(2, 12.0F, $u-1#52);
+
+     label06:
+        autoSizePreDefTextSizes = autoSizeMaxTextSizeInPx cmpl -1.0F;
+
+        if autoSizePreDefTextSizes != 0 goto label07;
+
+        autoSizeMaxTextSizeInPx = staticinvoke <android.util.TypedValue: float applyDimension(int,float,android.util.DisplayMetrics)>(2, 112.0F, $u-1#52);
+
+     label07:
+        autoSizePreDefTextSizes = autoSizeStepGranularityInPx cmpl -1.0F;
+
+        if autoSizePreDefTextSizes != 0 goto label08;
+
+        autoSizeStepGranularityInPx = 1.0F;
+
+     label08:
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void validateAndSetAutoSizeTextTypeUniformConfiguration(float,float,float)>(autoSizeMinTextSizeInPx, autoSizeMaxTextSizeInPx, autoSizeStepGranularityInPx);
+
+     label09:
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean setupAutoSizeText()>();
+
+        return;
+
+     label10:
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int mAutoSizeTextType> = 0;
+
+     label11:
+        return;
+    }
+
+    void setAutoSizeTextTypeUniformWithConfiguration(int, int, int, int) throws java.lang.IllegalArgumentException
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int $u6, $u7, $u8, $u9;
+        boolean $u-1;
+        android.content.Context displayMetrics;
+        android.content.res.Resources $u-1#4;
+        android.util.DisplayMetrics $u-1#6;
+        float autoSizeMinTextSizeInPx, autoSizeMaxTextSizeInPx, autoSizeStepGranularityInPx;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u6 := @parameter0: int;
+
+        $u7 := @parameter1: int;
+
+        $u8 := @parameter2: int;
+
+        $u9 := @parameter3: int;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean supportsAutoSizeText()>();
+
+        if $u-1 == 0 goto label1;
+
+        displayMetrics = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.content.Context mContext>;
+
+        $u-1#4 = virtualinvoke displayMetrics.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#6 = virtualinvoke $u-1#4.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        autoSizeMinTextSizeInPx = (float) $u6;
+
+        autoSizeMinTextSizeInPx = staticinvoke <android.util.TypedValue: float applyDimension(int,float,android.util.DisplayMetrics)>($u9, autoSizeMinTextSizeInPx, $u-1#6);
+
+        autoSizeMaxTextSizeInPx = (float) $u7;
+
+        autoSizeMaxTextSizeInPx = staticinvoke <android.util.TypedValue: float applyDimension(int,float,android.util.DisplayMetrics)>($u9, autoSizeMaxTextSizeInPx, $u-1#6);
+
+        autoSizeStepGranularityInPx = (float) $u8;
+
+        autoSizeStepGranularityInPx = staticinvoke <android.util.TypedValue: float applyDimension(int,float,android.util.DisplayMetrics)>($u9, autoSizeStepGranularityInPx, $u-1#6);
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void validateAndSetAutoSizeTextTypeUniformConfiguration(float,float,float)>(autoSizeMinTextSizeInPx, autoSizeMaxTextSizeInPx, autoSizeStepGranularityInPx);
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean setupAutoSizeText()>();
+
+        if $u-1 == 0 goto label1;
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void autoSizeText()>();
+
+     label1:
+        return;
+    }
+
+    void setAutoSizeTextTypeUniformWithPresetSizes(int[], int) throws java.lang.IllegalArgumentException
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int[] $u6, presetSizesInPx;
+        int $u7, presetSizesLength, i, $u4;
+        boolean $u-1;
+        android.content.Context displayMetrics;
+        android.content.res.Resources $u-1#7;
+        android.util.DisplayMetrics $u-1#9;
+        float $u4#13;
+        java.lang.IllegalArgumentException displayMetrics#22;
+        java.lang.StringBuilder i#23;
+        java.lang.String $u-1#25;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u6 := @parameter0: int[];
+
+        $u7 := @parameter1: int;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean supportsAutoSizeText()>();
+
+        if $u-1 == 0 goto label7;
+
+        presetSizesLength = lengthof $u6;
+
+        if presetSizesLength <= 0 goto label5;
+
+        presetSizesInPx = newarray (int)[presetSizesLength];
+
+        if $u7 != 0 goto label1;
+
+        presetSizesInPx = staticinvoke <java.util.Arrays: int[] copyOf(int[],int)>($u6, presetSizesLength);
+
+        goto label3;
+
+     label1:
+        displayMetrics = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.content.Context mContext>;
+
+        $u-1#7 = virtualinvoke displayMetrics.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#9 = virtualinvoke $u-1#7.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        i = 0;
+
+     label2:
+        if i >= presetSizesLength goto label3;
+
+        $u4 = $u6[i];
+
+        $u4#13 = (float) $u4;
+
+        $u4#13 = staticinvoke <android.util.TypedValue: float applyDimension(int,float,android.util.DisplayMetrics)>($u7, $u4#13, $u-1#9);
+
+        $u4 = staticinvoke <java.lang.Math: int round(float)>($u4#13);
+
+        presetSizesInPx[i] = $u4;
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        presetSizesInPx = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] cleanupAutoSizePresetSizes(int[])>(presetSizesInPx);
+
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] mAutoSizeTextSizesInPx> = presetSizesInPx;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean setupAutoSizeUniformPresetSizesConfiguration()>();
+
+        if $u-1 == 0 goto label4;
+
+        goto label6;
+
+     label4:
+        displayMetrics#22 = new java.lang.IllegalArgumentException;
+
+        i#23 = new java.lang.StringBuilder;
+
+        specialinvoke i#23.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke i#23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("None of the preset sizes is valid: ");
+
+        $u-1#25 = staticinvoke <java.util.Arrays: java.lang.String toString(int[])>($u6);
+
+        virtualinvoke i#23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#25);
+
+        $u-1#25 = virtualinvoke i#23.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke displayMetrics#22.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1#25);
+
+        throw displayMetrics#22;
+
+     label5:
+        this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean mHasPresetAutoSizeValues> = 0;
+
+     label6:
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean setupAutoSizeText()>();
+
+        if $u-1 == 0 goto label7;
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void autoSizeText()>();
+
+     label7:
+        return;
+    }
+
+    void setAutoSizeTextTypeWithDefaults(int)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int $u5;
+        boolean $u-1;
+        android.content.Context displayMetrics;
+        android.content.res.Resources $u-1#5;
+        android.util.DisplayMetrics $u-1#7;
+        float $u-1#11, $u-1#14;
+        java.lang.IllegalArgumentException displayMetrics#19;
+        java.lang.StringBuilder autoSizeMinTextSizeInPx;
+        java.lang.String $u-1#22;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u5 := @parameter0: int;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean supportsAutoSizeText()>();
+
+        if $u-1 == 0 goto label3;
+
+        if $u5 == 0 goto label2;
+
+        if $u5 != 1 goto label1;
+
+        displayMetrics = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.content.Context mContext>;
+
+        $u-1#5 = virtualinvoke displayMetrics.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#7 = virtualinvoke $u-1#5.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $u-1#11 = staticinvoke <android.util.TypedValue: float applyDimension(int,float,android.util.DisplayMetrics)>(2, 12.0F, $u-1#7);
+
+        $u-1#14 = staticinvoke <android.util.TypedValue: float applyDimension(int,float,android.util.DisplayMetrics)>(2, 112.0F, $u-1#7);
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void validateAndSetAutoSizeTextTypeUniformConfiguration(float,float,float)>($u-1#11, $u-1#14, 1.0F);
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean setupAutoSizeText()>();
+
+        if $u-1 == 0 goto label3;
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void autoSizeText()>();
+
+        return;
+
+     label1:
+        displayMetrics#19 = new java.lang.IllegalArgumentException;
+
+        autoSizeMinTextSizeInPx = new java.lang.StringBuilder;
+
+        specialinvoke autoSizeMinTextSizeInPx.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke autoSizeMinTextSizeInPx.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unknown auto-size text type: ");
+
+        virtualinvoke autoSizeMinTextSizeInPx.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u5);
+
+        $u-1#22 = virtualinvoke autoSizeMinTextSizeInPx.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke displayMetrics#19.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1#22);
+
+        throw displayMetrics#19;
+
+     label2:
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void clearAutoSizeConfiguration()>();
+
+     label3:
+        return;
+    }
+
+    void setTextSizeInternal(int, float)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper this;
+        int $u3;
+        float $u4;
+        android.content.Context res;
+        android.content.res.Resources $u-1;
+        android.util.DisplayMetrics $u-1#5;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u3 := @parameter0: int;
+
+        $u4 := @parameter1: float;
+
+        res = this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: android.content.Context mContext>;
+
+        if res != null goto label1;
+
+        $u-1 = staticinvoke <android.content.res.Resources: android.content.res.Resources getSystem()>();
+
+        goto label2;
+
+     label1:
+        $u-1 = virtualinvoke res.<android.content.Context: android.content.res.Resources getResources()>();
+
+     label2:
+        $u-1#5 = virtualinvoke $u-1.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $u4 = staticinvoke <android.util.TypedValue: float applyDimension(int,float,android.util.DisplayMetrics)>($u3, $u4, $u-1#5);
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void setRawTextSize(float)>($u4);
+
+        return;
+    }
+}

@@ -1,0 +1,213 @@
+class androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1 extends java.lang.Object implements android.view.Window$OnFrameMetricsAvailableListener
+{
+    final androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0;
+
+    void <init>(androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl)
+    {
+        androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1 this;
+        androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl $u1;
+
+        this := @this: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1;
+
+        $u1 := @parameter0: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl;
+
+        this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onFrameMetricsAvailable(android.view.Window, android.view.FrameMetrics, int)
+    {
+        androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1 this;
+        android.view.Window $u11;
+        android.view.FrameMetrics $u12;
+        int $u13;
+        androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl $u0;
+        android.util.SparseIntArray[] $u4;
+        android.util.SparseIntArray $u4#8;
+        long $u-1;
+
+        this := @this: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1;
+
+        $u11 := @parameter0: android.view.Window;
+
+        $u12 := @parameter1: android.view.FrameMetrics;
+
+        $u13 := @parameter2: int;
+
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u13 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: int mTrackingFlags>;
+
+        $u13 = $u13 & 1;
+
+        if $u13 == 0 goto label1;
+
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u4 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: android.util.SparseIntArray[] mMetrics>;
+
+        $u4#8 = $u4[0];
+
+        $u-1 = virtualinvoke $u12.<android.view.FrameMetrics: long getMetric(int)>(8);
+
+        virtualinvoke $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: void addDurationItem(android.util.SparseIntArray,long)>($u4#8, $u-1);
+
+     label1:
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u13 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: int mTrackingFlags>;
+
+        $u13 = $u13 & 2;
+
+        if $u13 == 0 goto label2;
+
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u4 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: android.util.SparseIntArray[] mMetrics>;
+
+        $u4#8 = $u4[1];
+
+        $u-1 = virtualinvoke $u12.<android.view.FrameMetrics: long getMetric(int)>(1);
+
+        virtualinvoke $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: void addDurationItem(android.util.SparseIntArray,long)>($u4#8, $u-1);
+
+     label2:
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u13 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: int mTrackingFlags>;
+
+        $u13 = $u13 & 4;
+
+        if $u13 == 0 goto label3;
+
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u4 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: android.util.SparseIntArray[] mMetrics>;
+
+        $u4#8 = $u4[2];
+
+        $u-1 = virtualinvoke $u12.<android.view.FrameMetrics: long getMetric(int)>(3);
+
+        virtualinvoke $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: void addDurationItem(android.util.SparseIntArray,long)>($u4#8, $u-1);
+
+     label3:
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u13 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: int mTrackingFlags>;
+
+        $u13 = $u13 & 8;
+
+        if $u13 == 0 goto label4;
+
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u4 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: android.util.SparseIntArray[] mMetrics>;
+
+        $u4#8 = $u4[3];
+
+        $u-1 = virtualinvoke $u12.<android.view.FrameMetrics: long getMetric(int)>(4);
+
+        virtualinvoke $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: void addDurationItem(android.util.SparseIntArray,long)>($u4#8, $u-1);
+
+     label4:
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u13 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: int mTrackingFlags>;
+
+        $u13 = $u13 & 16;
+
+        if $u13 == 0 goto label5;
+
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u4 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: android.util.SparseIntArray[] mMetrics>;
+
+        $u4#8 = $u4[4];
+
+        $u-1 = virtualinvoke $u12.<android.view.FrameMetrics: long getMetric(int)>(5);
+
+        virtualinvoke $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: void addDurationItem(android.util.SparseIntArray,long)>($u4#8, $u-1);
+
+     label5:
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u13 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: int mTrackingFlags>;
+
+        $u13 = $u13 & 64;
+
+        if $u13 == 0 goto label6;
+
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u4 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: android.util.SparseIntArray[] mMetrics>;
+
+        $u4#8 = $u4[6];
+
+        $u-1 = virtualinvoke $u12.<android.view.FrameMetrics: long getMetric(int)>(7);
+
+        virtualinvoke $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: void addDurationItem(android.util.SparseIntArray,long)>($u4#8, $u-1);
+
+     label6:
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u13 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: int mTrackingFlags>;
+
+        $u13 = $u13 & 32;
+
+        if $u13 == 0 goto label7;
+
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u4 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: android.util.SparseIntArray[] mMetrics>;
+
+        $u4#8 = $u4[5];
+
+        $u-1 = virtualinvoke $u12.<android.view.FrameMetrics: long getMetric(int)>(6);
+
+        virtualinvoke $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: void addDurationItem(android.util.SparseIntArray,long)>($u4#8, $u-1);
+
+     label7:
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u13 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: int mTrackingFlags>;
+
+        $u13 = $u13 & 128;
+
+        if $u13 == 0 goto label8;
+
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u4 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: android.util.SparseIntArray[] mMetrics>;
+
+        $u4#8 = $u4[7];
+
+        $u-1 = virtualinvoke $u12.<android.view.FrameMetrics: long getMetric(int)>(0);
+
+        virtualinvoke $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: void addDurationItem(android.util.SparseIntArray,long)>($u4#8, $u-1);
+
+     label8:
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u13 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: int mTrackingFlags>;
+
+        $u13 = $u13 & 256;
+
+        if $u13 == 0 goto label9;
+
+        $u0 = this.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1: androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl this$0>;
+
+        $u4 = $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: android.util.SparseIntArray[] mMetrics>;
+
+        $u4#8 = $u4[8];
+
+        $u-1 = virtualinvoke $u12.<android.view.FrameMetrics: long getMetric(int)>(2);
+
+        virtualinvoke $u0.<androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl: void addDurationItem(android.util.SparseIntArray,long)>($u4#8, $u-1);
+
+     label9:
+        return;
+    }
+}

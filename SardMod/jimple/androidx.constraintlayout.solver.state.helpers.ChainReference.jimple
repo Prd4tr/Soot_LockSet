@@ -1,0 +1,81 @@
+public class androidx.constraintlayout.solver.state.helpers.ChainReference extends androidx.constraintlayout.solver.state.HelperReference
+{
+    protected float mBias;
+    protected androidx.constraintlayout.solver.state.State$Chain mStyle;
+
+    public void <init>(androidx.constraintlayout.solver.state.State, androidx.constraintlayout.solver.state.State$Helper)
+    {
+        androidx.constraintlayout.solver.state.helpers.ChainReference this;
+        androidx.constraintlayout.solver.state.State $u2;
+        androidx.constraintlayout.solver.state.State$Helper $u3;
+        androidx.constraintlayout.solver.state.State$Chain $u0;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.ChainReference;
+
+        $u2 := @parameter0: androidx.constraintlayout.solver.state.State;
+
+        $u3 := @parameter1: androidx.constraintlayout.solver.state.State$Helper;
+
+        specialinvoke this.<androidx.constraintlayout.solver.state.HelperReference: void <init>(androidx.constraintlayout.solver.state.State,androidx.constraintlayout.solver.state.State$Helper)>($u2, $u3);
+
+        this.<androidx.constraintlayout.solver.state.helpers.ChainReference: float mBias> = 0.5F;
+
+        $u0 = <androidx.constraintlayout.solver.state.State$Chain: androidx.constraintlayout.solver.state.State$Chain SPREAD>;
+
+        this.<androidx.constraintlayout.solver.state.helpers.ChainReference: androidx.constraintlayout.solver.state.State$Chain mStyle> = $u0;
+
+        return;
+    }
+
+    public void bias(float)
+    {
+        androidx.constraintlayout.solver.state.helpers.ChainReference this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.ChainReference;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.solver.state.helpers.ChainReference: float mBias> = $u1;
+
+        return;
+    }
+
+    public float getBias()
+    {
+        androidx.constraintlayout.solver.state.helpers.ChainReference this;
+        float ret0;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.ChainReference;
+
+        ret0 = this.<androidx.constraintlayout.solver.state.helpers.ChainReference: float mBias>;
+
+        return ret0;
+    }
+
+    public androidx.constraintlayout.solver.state.State$Chain getStyle()
+    {
+        androidx.constraintlayout.solver.state.helpers.ChainReference this;
+        androidx.constraintlayout.solver.state.State$Chain ret0;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.ChainReference;
+
+        ret0 = <androidx.constraintlayout.solver.state.State$Chain: androidx.constraintlayout.solver.state.State$Chain SPREAD>;
+
+        return ret0;
+    }
+
+    public void style(androidx.constraintlayout.solver.state.State$Chain)
+    {
+        androidx.constraintlayout.solver.state.helpers.ChainReference this;
+        androidx.constraintlayout.solver.state.State$Chain $u1;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.ChainReference;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.state.State$Chain;
+
+        this.<androidx.constraintlayout.solver.state.helpers.ChainReference: androidx.constraintlayout.solver.state.State$Chain mStyle> = $u1;
+
+        return;
+    }
+}

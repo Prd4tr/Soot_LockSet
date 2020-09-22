@@ -1,0 +1,546 @@
+public class androidx.appcompat.widget.AppCompatImageHelper extends java.lang.Object
+{
+    private androidx.appcompat.widget.TintInfo mImageTint;
+    private androidx.appcompat.widget.TintInfo mInternalImageTint;
+    private androidx.appcompat.widget.TintInfo mTmpInfo;
+    private final android.widget.ImageView mView;
+
+    public void <init>(android.widget.ImageView)
+    {
+        androidx.appcompat.widget.AppCompatImageHelper this;
+        android.widget.ImageView $u1;
+
+        this := @this: androidx.appcompat.widget.AppCompatImageHelper;
+
+        $u1 := @parameter0: android.widget.ImageView;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView> = $u1;
+
+        return;
+    }
+
+    private boolean applyFrameworkTintUsingColorFilter(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.AppCompatImageHelper this;
+        android.graphics.drawable.Drawable $u6;
+        androidx.appcompat.widget.TintInfo info;
+        android.widget.ImageView tintList;
+        android.content.res.ColorStateList $u-1;
+        android.graphics.PorterDuff$Mode $u-1#9;
+        boolean $u4;
+        int[] $u-1#15;
+
+        this := @this: androidx.appcompat.widget.AppCompatImageHelper;
+
+        $u6 := @parameter0: android.graphics.drawable.Drawable;
+
+        info = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mTmpInfo>;
+
+        if info != null goto label1;
+
+        info = new androidx.appcompat.widget.TintInfo;
+
+        specialinvoke info.<androidx.appcompat.widget.TintInfo: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mTmpInfo> = info;
+
+     label1:
+        info = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mTmpInfo>;
+
+        virtualinvoke info.<androidx.appcompat.widget.TintInfo: void clear()>();
+
+        tintList = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u-1 = staticinvoke <androidx.core.widget.ImageViewCompat: android.content.res.ColorStateList getImageTintList(android.widget.ImageView)>(tintList);
+
+        if $u-1 == null goto label2;
+
+        info.<androidx.appcompat.widget.TintInfo: boolean mHasTintList> = 1;
+
+        info.<androidx.appcompat.widget.TintInfo: android.content.res.ColorStateList mTintList> = $u-1;
+
+     label2:
+        tintList = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u-1#9 = staticinvoke <androidx.core.widget.ImageViewCompat: android.graphics.PorterDuff$Mode getImageTintMode(android.widget.ImageView)>(tintList);
+
+        if $u-1#9 == null goto label3;
+
+        info.<androidx.appcompat.widget.TintInfo: boolean mHasTintMode> = 1;
+
+        info.<androidx.appcompat.widget.TintInfo: android.graphics.PorterDuff$Mode mTintMode> = $u-1#9;
+
+     label3:
+        $u4 = info.<androidx.appcompat.widget.TintInfo: boolean mHasTintList>;
+
+        if $u4 != 0 goto label5;
+
+        $u4 = info.<androidx.appcompat.widget.TintInfo: boolean mHasTintMode>;
+
+        if $u4 == 0 goto label4;
+
+        goto label5;
+
+     label4:
+        return 0;
+
+     label5:
+        tintList = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u-1#15 = virtualinvoke tintList.<android.widget.ImageView: int[] getDrawableState()>();
+
+        staticinvoke <androidx.appcompat.widget.AppCompatDrawableManager: void tintDrawable(android.graphics.drawable.Drawable,androidx.appcompat.widget.TintInfo,int[])>($u6, info, $u-1#15);
+
+        return 1;
+    }
+
+    private boolean shouldApplyFrameworkTintUsingColorFilter()
+    {
+        androidx.appcompat.widget.AppCompatImageHelper this;
+        int sdk;
+        androidx.appcompat.widget.TintInfo $u3;
+
+        this := @this: androidx.appcompat.widget.AppCompatImageHelper;
+
+        sdk = <android.os.Build$VERSION: int SDK_INT>;
+
+        if sdk <= 21 goto label2;
+
+        $u3 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mInternalImageTint>;
+
+        if $u3 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+
+     label2:
+        if sdk != 21 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    void applySupportImageTint()
+    {
+        androidx.appcompat.widget.AppCompatImageHelper this;
+        android.widget.ImageView imageViewDrawable;
+        android.graphics.drawable.Drawable $u-1;
+        boolean $u-1#4;
+        androidx.appcompat.widget.TintInfo $u1;
+        int[] $u-1#10;
+
+        this := @this: androidx.appcompat.widget.AppCompatImageHelper;
+
+        imageViewDrawable = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u-1 = virtualinvoke imageViewDrawable.<android.widget.ImageView: android.graphics.drawable.Drawable getDrawable()>();
+
+        if $u-1 == null goto label1;
+
+        staticinvoke <androidx.appcompat.widget.DrawableUtils: void fixDrawable(android.graphics.drawable.Drawable)>($u-1);
+
+     label1:
+        if $u-1 == null goto label4;
+
+        $u-1#4 = specialinvoke this.<androidx.appcompat.widget.AppCompatImageHelper: boolean shouldApplyFrameworkTintUsingColorFilter()>();
+
+        if $u-1#4 == 0 goto label2;
+
+        $u-1#4 = specialinvoke this.<androidx.appcompat.widget.AppCompatImageHelper: boolean applyFrameworkTintUsingColorFilter(android.graphics.drawable.Drawable)>($u-1);
+
+        if $u-1#4 == 0 goto label2;
+
+        return;
+
+     label2:
+        $u1 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mImageTint>;
+
+        if $u1 == null goto label3;
+
+        imageViewDrawable = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u-1#10 = virtualinvoke imageViewDrawable.<android.widget.ImageView: int[] getDrawableState()>();
+
+        staticinvoke <androidx.appcompat.widget.AppCompatDrawableManager: void tintDrawable(android.graphics.drawable.Drawable,androidx.appcompat.widget.TintInfo,int[])>($u-1, $u1, $u-1#10);
+
+        return;
+
+     label3:
+        $u1 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mInternalImageTint>;
+
+        if $u1 == null goto label4;
+
+        imageViewDrawable = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u-1#10 = virtualinvoke imageViewDrawable.<android.widget.ImageView: int[] getDrawableState()>();
+
+        staticinvoke <androidx.appcompat.widget.AppCompatDrawableManager: void tintDrawable(android.graphics.drawable.Drawable,androidx.appcompat.widget.TintInfo,int[])>($u-1, $u1, $u-1#10);
+
+     label4:
+        return;
+    }
+
+    android.content.res.ColorStateList getSupportImageTintList()
+    {
+        androidx.appcompat.widget.AppCompatImageHelper this;
+        androidx.appcompat.widget.TintInfo $u0;
+        android.content.res.ColorStateList ret0;
+
+        this := @this: androidx.appcompat.widget.AppCompatImageHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mImageTint>;
+
+        if $u0 == null goto label1;
+
+        ret0 = $u0.<androidx.appcompat.widget.TintInfo: android.content.res.ColorStateList mTintList>;
+
+        return ret0;
+
+     label1:
+        return null;
+    }
+
+    android.graphics.PorterDuff$Mode getSupportImageTintMode()
+    {
+        androidx.appcompat.widget.AppCompatImageHelper this;
+        androidx.appcompat.widget.TintInfo $u0;
+        android.graphics.PorterDuff$Mode ret0;
+
+        this := @this: androidx.appcompat.widget.AppCompatImageHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mImageTint>;
+
+        if $u0 == null goto label1;
+
+        ret0 = $u0.<androidx.appcompat.widget.TintInfo: android.graphics.PorterDuff$Mode mTintMode>;
+
+        return ret0;
+
+     label1:
+        return null;
+    }
+
+    boolean hasOverlappingRendering()
+    {
+        androidx.appcompat.widget.AppCompatImageHelper this;
+        android.graphics.drawable.Drawable $u-1;
+        android.widget.ImageView background;
+        int $u1;
+        boolean $u1#4;
+
+        this := @this: androidx.appcompat.widget.AppCompatImageHelper;
+
+        background = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u-1 = virtualinvoke background.<android.widget.ImageView: android.graphics.drawable.Drawable getBackground()>();
+
+        $u1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u1 < 21 goto label1;
+
+        $u1#4 = $u-1 instanceof android.graphics.drawable.RippleDrawable;
+
+        if $u1#4 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        return 1;
+    }
+
+    public void loadFromAttributes(android.util.AttributeSet, int)
+    {
+        androidx.appcompat.widget.AppCompatImageHelper this;
+        android.util.AttributeSet $u9;
+        int $u10;
+        android.widget.ImageView a;
+        android.content.Context $u-1;
+        int[] drawable;
+        androidx.appcompat.widget.TintTypedArray $u-1#6;
+        android.content.res.TypedArray $u-1#12;
+        android.graphics.drawable.Drawable $u-1#15, drawable#16;
+        boolean $u-1#28;
+        android.content.res.ColorStateList $u-1#32;
+        android.graphics.PorterDuff$Mode $u-1#42;
+        java.lang.Throwable drawable#44;
+
+        this := @this: androidx.appcompat.widget.AppCompatImageHelper;
+
+        $u9 := @parameter0: android.util.AttributeSet;
+
+        $u10 := @parameter1: int;
+
+        a = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u-1 = virtualinvoke a.<android.widget.ImageView: android.content.Context getContext()>();
+
+        drawable = <androidx.appcompat.R$styleable: int[] AppCompatImageView>;
+
+        $u-1#6 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[],int,int)>($u-1, $u9, drawable, $u10, 0);
+
+        a = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u-1 = virtualinvoke a.<android.widget.ImageView: android.content.Context getContext()>();
+
+        drawable = <androidx.appcompat.R$styleable: int[] AppCompatImageView>;
+
+        $u-1#12 = virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: android.content.res.TypedArray getWrappedTypeArray()>();
+
+        staticinvoke <androidx.core.view.ViewCompat: void saveAttributeDataForStyleable(android.view.View,android.content.Context,int[],android.util.AttributeSet,android.content.res.TypedArray,int,int)>(a, $u-1, drawable, $u9, $u-1#12, $u10, 0);
+
+     label01:
+        a = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u-1#15 = virtualinvoke a.<android.widget.ImageView: android.graphics.drawable.Drawable getDrawable()>();
+
+     label02:
+        drawable#16 = $u-1#15;
+
+        if $u-1#15 != null goto label08;
+
+     label03:
+        $u10 = <androidx.appcompat.R$styleable: int AppCompatImageView_srcCompat>;
+
+        $u10 = virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u10, -1);
+
+     label04:
+        if $u10 == -1 goto label08;
+
+     label05:
+        a = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u-1 = virtualinvoke a.<android.widget.ImageView: android.content.Context getContext()>();
+
+        $u-1#15 = staticinvoke <androidx.appcompat.content.res.AppCompatResources: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u10);
+
+     label06:
+        drawable#16 = $u-1#15;
+
+        if $u-1#15 == null goto label08;
+
+     label07:
+        a = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        virtualinvoke a.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($u-1#15);
+
+     label08:
+        if drawable#16 == null goto label10;
+
+     label09:
+        staticinvoke <androidx.appcompat.widget.DrawableUtils: void fixDrawable(android.graphics.drawable.Drawable)>(drawable#16);
+
+     label10:
+        $u10 = <androidx.appcompat.R$styleable: int AppCompatImageView_tint>;
+
+        $u-1#28 = virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>($u10);
+
+     label11:
+        if $u-1#28 == 0 goto label13;
+
+     label12:
+        a = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u10 = <androidx.appcompat.R$styleable: int AppCompatImageView_tint>;
+
+        $u-1#32 = virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: android.content.res.ColorStateList getColorStateList(int)>($u10);
+
+        staticinvoke <androidx.core.widget.ImageViewCompat: void setImageTintList(android.widget.ImageView,android.content.res.ColorStateList)>(a, $u-1#32);
+
+     label13:
+        $u10 = <androidx.appcompat.R$styleable: int AppCompatImageView_tintMode>;
+
+        $u-1#28 = virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>($u10);
+
+     label14:
+        if $u-1#28 == 0 goto label16;
+
+     label15:
+        a = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u10 = <androidx.appcompat.R$styleable: int AppCompatImageView_tintMode>;
+
+        $u10 = virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>($u10, -1);
+
+        $u-1#42 = staticinvoke <androidx.appcompat.widget.DrawableUtils: android.graphics.PorterDuff$Mode parseTintMode(int,android.graphics.PorterDuff$Mode)>($u10, null);
+
+        staticinvoke <androidx.core.widget.ImageViewCompat: void setImageTintMode(android.widget.ImageView,android.graphics.PorterDuff$Mode)>(a, $u-1#42);
+
+     label16:
+        virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        return;
+
+     label17:
+        drawable#44 := @caughtexception;
+
+        virtualinvoke $u-1#6.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        throw drawable#44;
+
+        catch java.lang.Throwable from label01 to label02 with label17;
+        catch java.lang.Throwable from label03 to label04 with label17;
+        catch java.lang.Throwable from label05 to label06 with label17;
+        catch java.lang.Throwable from label07 to label08 with label17;
+        catch java.lang.Throwable from label09 to label11 with label17;
+        catch java.lang.Throwable from label12 to label14 with label17;
+        catch java.lang.Throwable from label15 to label16 with label17;
+    }
+
+    public void setImageResource(int)
+    {
+        androidx.appcompat.widget.AppCompatImageHelper this;
+        int $u3;
+        android.widget.ImageView d;
+        android.content.Context $u-1;
+        android.graphics.drawable.Drawable $u-1#4;
+
+        this := @this: androidx.appcompat.widget.AppCompatImageHelper;
+
+        $u3 := @parameter0: int;
+
+        if $u3 == 0 goto label2;
+
+        d = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        $u-1 = virtualinvoke d.<android.widget.ImageView: android.content.Context getContext()>();
+
+        $u-1#4 = staticinvoke <androidx.appcompat.content.res.AppCompatResources: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u3);
+
+        if $u-1#4 == null goto label1;
+
+        staticinvoke <androidx.appcompat.widget.DrawableUtils: void fixDrawable(android.graphics.drawable.Drawable)>($u-1#4);
+
+     label1:
+        d = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        virtualinvoke d.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($u-1#4);
+
+        goto label3;
+
+     label2:
+        d = this.<androidx.appcompat.widget.AppCompatImageHelper: android.widget.ImageView mView>;
+
+        virtualinvoke d.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>(null);
+
+     label3:
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatImageHelper: void applySupportImageTint()>();
+
+        return;
+    }
+
+    void setInternalImageTint(android.content.res.ColorStateList)
+    {
+        androidx.appcompat.widget.AppCompatImageHelper this;
+        android.content.res.ColorStateList $u3;
+        androidx.appcompat.widget.TintInfo $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatImageHelper;
+
+        $u3 := @parameter0: android.content.res.ColorStateList;
+
+        if $u3 == null goto label2;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mInternalImageTint>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new androidx.appcompat.widget.TintInfo;
+
+        specialinvoke $u0.<androidx.appcompat.widget.TintInfo: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mInternalImageTint> = $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mInternalImageTint>;
+
+        $u0.<androidx.appcompat.widget.TintInfo: android.content.res.ColorStateList mTintList> = $u3;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mInternalImageTint>;
+
+        $u0.<androidx.appcompat.widget.TintInfo: boolean mHasTintList> = 1;
+
+        goto label3;
+
+     label2:
+        this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mInternalImageTint> = null;
+
+     label3:
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatImageHelper: void applySupportImageTint()>();
+
+        return;
+    }
+
+    void setSupportImageTintList(android.content.res.ColorStateList)
+    {
+        androidx.appcompat.widget.AppCompatImageHelper this;
+        android.content.res.ColorStateList $u3;
+        androidx.appcompat.widget.TintInfo $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatImageHelper;
+
+        $u3 := @parameter0: android.content.res.ColorStateList;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mImageTint>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new androidx.appcompat.widget.TintInfo;
+
+        specialinvoke $u0.<androidx.appcompat.widget.TintInfo: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mImageTint> = $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mImageTint>;
+
+        $u0.<androidx.appcompat.widget.TintInfo: android.content.res.ColorStateList mTintList> = $u3;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mImageTint>;
+
+        $u0.<androidx.appcompat.widget.TintInfo: boolean mHasTintList> = 1;
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatImageHelper: void applySupportImageTint()>();
+
+        return;
+    }
+
+    void setSupportImageTintMode(android.graphics.PorterDuff$Mode)
+    {
+        androidx.appcompat.widget.AppCompatImageHelper this;
+        android.graphics.PorterDuff$Mode $u3;
+        androidx.appcompat.widget.TintInfo $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatImageHelper;
+
+        $u3 := @parameter0: android.graphics.PorterDuff$Mode;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mImageTint>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new androidx.appcompat.widget.TintInfo;
+
+        specialinvoke $u0.<androidx.appcompat.widget.TintInfo: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mImageTint> = $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mImageTint>;
+
+        $u0.<androidx.appcompat.widget.TintInfo: android.graphics.PorterDuff$Mode mTintMode> = $u3;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatImageHelper: androidx.appcompat.widget.TintInfo mImageTint>;
+
+        $u0.<androidx.appcompat.widget.TintInfo: boolean mHasTintMode> = 1;
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatImageHelper: void applySupportImageTint()>();
+
+        return;
+    }
+}

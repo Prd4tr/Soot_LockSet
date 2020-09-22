@@ -1,0 +1,63 @@
+class androidx.constraintlayout.solver.PriorityGoalRow$1 extends java.lang.Object implements java.util.Comparator
+{
+    final androidx.constraintlayout.solver.PriorityGoalRow this$0;
+
+    void <init>(androidx.constraintlayout.solver.PriorityGoalRow)
+    {
+        androidx.constraintlayout.solver.PriorityGoalRow$1 this;
+        androidx.constraintlayout.solver.PriorityGoalRow $u1;
+
+        this := @this: androidx.constraintlayout.solver.PriorityGoalRow$1;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.PriorityGoalRow;
+
+        this.<androidx.constraintlayout.solver.PriorityGoalRow$1: androidx.constraintlayout.solver.PriorityGoalRow this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public int compare(androidx.constraintlayout.solver.SolverVariable, androidx.constraintlayout.solver.SolverVariable)
+    {
+        androidx.constraintlayout.solver.PriorityGoalRow$1 this;
+        androidx.constraintlayout.solver.SolverVariable $u3, $u4;
+        int $u1, $u0;
+
+        this := @this: androidx.constraintlayout.solver.PriorityGoalRow$1;
+
+        $u3 := @parameter0: androidx.constraintlayout.solver.SolverVariable;
+
+        $u4 := @parameter1: androidx.constraintlayout.solver.SolverVariable;
+
+        $u0 = $u3.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        $u1 = $u4.<androidx.constraintlayout.solver.SolverVariable: int id>;
+
+        $u1 = $u0 - $u1;
+
+        return $u1;
+    }
+
+    public volatile int compare(java.lang.Object, java.lang.Object)
+    {
+        androidx.constraintlayout.solver.PriorityGoalRow$1 this;
+        int $u-1;
+        java.lang.Object $u1, $u2;
+        androidx.constraintlayout.solver.SolverVariable $u1#3, $u2#4;
+
+        this := @this: androidx.constraintlayout.solver.PriorityGoalRow$1;
+
+        $u1 := @parameter0: java.lang.Object;
+
+        $u2 := @parameter1: java.lang.Object;
+
+        $u1#3 = (androidx.constraintlayout.solver.SolverVariable) $u1;
+
+        $u2#4 = (androidx.constraintlayout.solver.SolverVariable) $u2;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.solver.PriorityGoalRow$1: int compare(androidx.constraintlayout.solver.SolverVariable,androidx.constraintlayout.solver.SolverVariable)>($u1#3, $u2#4);
+
+        return $u-1;
+    }
+}

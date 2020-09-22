@@ -1,0 +1,55 @@
+class androidx.activity.ComponentActivity$3 extends java.lang.Object implements androidx.lifecycle.LifecycleEventObserver
+{
+    final androidx.activity.ComponentActivity this$0;
+
+    void <init>(androidx.activity.ComponentActivity)
+    {
+        androidx.activity.ComponentActivity$3 this;
+        androidx.activity.ComponentActivity $u1;
+
+        this := @this: androidx.activity.ComponentActivity$3;
+
+        $u1 := @parameter0: androidx.activity.ComponentActivity;
+
+        this.<androidx.activity.ComponentActivity$3: androidx.activity.ComponentActivity this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onStateChanged(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Lifecycle$Event)
+    {
+        androidx.activity.ComponentActivity$3 this;
+        androidx.lifecycle.LifecycleOwner $u2;
+        androidx.lifecycle.Lifecycle$Event $u3, $u0;
+        androidx.activity.ComponentActivity $u0#2;
+        boolean $u-1;
+        androidx.lifecycle.ViewModelStore $u-1#6;
+
+        this := @this: androidx.activity.ComponentActivity$3;
+
+        $u2 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        $u3 := @parameter1: androidx.lifecycle.Lifecycle$Event;
+
+        $u0 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_DESTROY>;
+
+        if $u3 != $u0 goto label1;
+
+        $u0#2 = this.<androidx.activity.ComponentActivity$3: androidx.activity.ComponentActivity this$0>;
+
+        $u-1 = virtualinvoke $u0#2.<androidx.activity.ComponentActivity: boolean isChangingConfigurations()>();
+
+        if $u-1 != 0 goto label1;
+
+        $u0#2 = this.<androidx.activity.ComponentActivity$3: androidx.activity.ComponentActivity this$0>;
+
+        $u-1#6 = virtualinvoke $u0#2.<androidx.activity.ComponentActivity: androidx.lifecycle.ViewModelStore getViewModelStore()>();
+
+        virtualinvoke $u-1#6.<androidx.lifecycle.ViewModelStore: void clear()>();
+
+     label1:
+        return;
+    }
+}

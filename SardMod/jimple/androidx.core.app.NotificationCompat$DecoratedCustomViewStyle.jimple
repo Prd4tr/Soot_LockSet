@@ -1,0 +1,407 @@
+public class androidx.core.app.NotificationCompat$DecoratedCustomViewStyle extends androidx.core.app.NotificationCompat$Style
+{
+    private static final int MAX_ACTION_BUTTONS;
+
+    public void <init>()
+    {
+        androidx.core.app.NotificationCompat$DecoratedCustomViewStyle this;
+
+        this := @this: androidx.core.app.NotificationCompat$DecoratedCustomViewStyle;
+
+        specialinvoke this.<androidx.core.app.NotificationCompat$Style: void <init>()>();
+
+        return;
+    }
+
+    private android.widget.RemoteViews createRemoteViews(android.widget.RemoteViews, boolean)
+    {
+        androidx.core.app.NotificationCompat$DecoratedCustomViewStyle this;
+        android.widget.RemoteViews $u9, $u-1, $u-1#21;
+        boolean $u10, actionsVisible;
+        int $u7, $u-1#15, i;
+        byte actionVisibility;
+        androidx.core.app.NotificationCompat$Builder nonContextualActions;
+        java.util.ArrayList nonContextualActions#9;
+        java.util.List $u-1#10;
+        java.lang.Object $u-1#18;
+        androidx.core.app.NotificationCompat$Action button;
+
+        this := @this: androidx.core.app.NotificationCompat$DecoratedCustomViewStyle;
+
+        $u9 := @parameter0: android.widget.RemoteViews;
+
+        $u10 := @parameter1: boolean;
+
+        $u7 = <androidx.core.R$layout: int notification_template_custom_big>;
+
+        actionVisibility = 0;
+
+        $u-1 = virtualinvoke this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: android.widget.RemoteViews applyStandardTemplate(boolean,int,boolean)>(1, $u7, 0);
+
+        $u7 = <androidx.core.R$id: int actions>;
+
+        virtualinvoke $u-1.<android.widget.RemoteViews: void removeAllViews(int)>($u7);
+
+        actionsVisible = 0;
+
+        nonContextualActions = this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        nonContextualActions#9 = nonContextualActions.<androidx.core.app.NotificationCompat$Builder: java.util.ArrayList mActions>;
+
+        $u-1#10 = staticinvoke <androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: java.util.List getNonContextualActions(java.util.List)>(nonContextualActions#9);
+
+        if $u10 == 0 goto label2;
+
+        if $u-1#10 == null goto label2;
+
+        $u7 = interfaceinvoke $u-1#10.<java.util.List: int size()>();
+
+        $u-1#15 = staticinvoke <java.lang.Math: int min(int,int)>($u7, 3);
+
+        if $u-1#15 <= 0 goto label2;
+
+        actionsVisible = 1;
+
+        i = 0;
+
+     label1:
+        if i >= $u-1#15 goto label2;
+
+        $u-1#18 = interfaceinvoke $u-1#10.<java.util.List: java.lang.Object get(int)>(i);
+
+        button = (androidx.core.app.NotificationCompat$Action) $u-1#18;
+
+        $u-1#21 = specialinvoke this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: android.widget.RemoteViews generateActionButton(androidx.core.app.NotificationCompat$Action)>(button);
+
+        $u7 = <androidx.core.R$id: int actions>;
+
+        virtualinvoke $u-1.<android.widget.RemoteViews: void addView(int,android.widget.RemoteViews)>($u7, $u-1#21);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        if actionsVisible == 0 goto label3;
+
+        goto label4;
+
+     label3:
+        actionVisibility = 8;
+
+     label4:
+        $u7 = <androidx.core.R$id: int actions>;
+
+        virtualinvoke $u-1.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u7, actionVisibility);
+
+        $u7 = <androidx.core.R$id: int action_divider>;
+
+        virtualinvoke $u-1.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u7, actionVisibility);
+
+        virtualinvoke this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: void buildIntoRemoteViews(android.widget.RemoteViews,android.widget.RemoteViews)>($u-1, $u9);
+
+        return $u-1;
+    }
+
+    private android.widget.RemoteViews generateActionButton(androidx.core.app.NotificationCompat$Action)
+    {
+        androidx.core.app.NotificationCompat$DecoratedCustomViewStyle this;
+        androidx.core.app.NotificationCompat$Action $u7;
+        android.widget.RemoteViews button;
+        int $u5, $u3;
+        android.app.PendingIntent tombstone;
+        boolean tombstone#2;
+        androidx.core.app.NotificationCompat$Builder $u2;
+        android.content.Context $u2#4;
+        java.lang.String $u-1;
+        androidx.core.graphics.drawable.IconCompat $u-1#9;
+        android.content.res.Resources $u-1#13;
+        android.graphics.Bitmap $u-1#17;
+        java.lang.CharSequence $u3#20;
+
+        this := @this: androidx.core.app.NotificationCompat$DecoratedCustomViewStyle;
+
+        $u7 := @parameter0: androidx.core.app.NotificationCompat$Action;
+
+        tombstone = $u7.<androidx.core.app.NotificationCompat$Action: android.app.PendingIntent actionIntent>;
+
+        if tombstone != null goto label1;
+
+        tombstone#2 = 1;
+
+        goto label2;
+
+     label1:
+        tombstone#2 = 0;
+
+     label2:
+        button = new android.widget.RemoteViews;
+
+        $u2 = this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u2#4 = $u2.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext>;
+
+        $u-1 = virtualinvoke $u2#4.<android.content.Context: java.lang.String getPackageName()>();
+
+        if tombstone#2 == 0 goto label3;
+
+        $u3 = <androidx.core.R$layout: int notification_action_tombstone>;
+
+        goto label4;
+
+     label3:
+        $u3 = <androidx.core.R$layout: int notification_action>;
+
+     label4:
+        specialinvoke button.<android.widget.RemoteViews: void <init>(java.lang.String,int)>($u-1, $u3);
+
+        $u3 = <androidx.core.R$id: int action_image>;
+
+        $u-1#9 = virtualinvoke $u7.<androidx.core.app.NotificationCompat$Action: androidx.core.graphics.drawable.IconCompat getIconCompat()>();
+
+        $u2 = this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u2#4 = $u2.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext>;
+
+        $u-1#13 = virtualinvoke $u2#4.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u5 = <androidx.core.R$color: int notification_action_color_filter>;
+
+        $u5 = virtualinvoke $u-1#13.<android.content.res.Resources: int getColor(int)>($u5);
+
+        $u-1#17 = virtualinvoke this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: android.graphics.Bitmap createColoredBitmap(androidx.core.graphics.drawable.IconCompat,int)>($u-1#9, $u5);
+
+        virtualinvoke button.<android.widget.RemoteViews: void setImageViewBitmap(int,android.graphics.Bitmap)>($u3, $u-1#17);
+
+        $u3 = <androidx.core.R$id: int action_text>;
+
+        $u3#20 = $u7.<androidx.core.app.NotificationCompat$Action: java.lang.CharSequence title>;
+
+        virtualinvoke button.<android.widget.RemoteViews: void setTextViewText(int,java.lang.CharSequence)>($u3, $u3#20);
+
+        if tombstone#2 != 0 goto label5;
+
+        $u3 = <androidx.core.R$id: int action_container>;
+
+        tombstone = $u7.<androidx.core.app.NotificationCompat$Action: android.app.PendingIntent actionIntent>;
+
+        virtualinvoke button.<android.widget.RemoteViews: void setOnClickPendingIntent(int,android.app.PendingIntent)>($u3, tombstone);
+
+     label5:
+        $u3 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u3 < 15 goto label6;
+
+        $u3 = <androidx.core.R$id: int action_container>;
+
+        $u3#20 = $u7.<androidx.core.app.NotificationCompat$Action: java.lang.CharSequence title>;
+
+        virtualinvoke button.<android.widget.RemoteViews: void setContentDescription(int,java.lang.CharSequence)>($u3, $u3#20);
+
+     label6:
+        return button;
+    }
+
+    private static java.util.List getNonContextualActions(java.util.List)
+    {
+        java.util.List actions;
+        java.util.ArrayList nonContextualActions;
+        java.util.Iterator $u-1;
+        boolean $u-1#4;
+        java.lang.Object $u-1#6;
+        androidx.core.app.NotificationCompat$Action action;
+
+        actions := @parameter0: java.util.List;
+
+        if actions != null goto label1;
+
+        return null;
+
+     label1:
+        nonContextualActions = new java.util.ArrayList;
+
+        specialinvoke nonContextualActions.<java.util.ArrayList: void <init>()>();
+
+        $u-1 = interfaceinvoke actions.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label3;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        action = (androidx.core.app.NotificationCompat$Action) $u-1#6;
+
+        $u-1#4 = virtualinvoke action.<androidx.core.app.NotificationCompat$Action: boolean isContextual()>();
+
+        if $u-1#4 != 0 goto label2;
+
+        interfaceinvoke nonContextualActions.<java.util.List: boolean add(java.lang.Object)>(action);
+
+        goto label2;
+
+     label3:
+        return nonContextualActions;
+    }
+
+    public void apply(androidx.core.app.NotificationBuilderWithBuilderAccessor)
+    {
+        androidx.core.app.NotificationCompat$DecoratedCustomViewStyle this;
+        androidx.core.app.NotificationBuilderWithBuilderAccessor $u3;
+        android.app.Notification$Builder $u-1;
+        int $u0;
+        android.app.Notification$DecoratedCustomViewStyle $u1;
+
+        this := @this: androidx.core.app.NotificationCompat$DecoratedCustomViewStyle;
+
+        $u3 := @parameter0: androidx.core.app.NotificationBuilderWithBuilderAccessor;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 24 goto label1;
+
+        $u-1 = interfaceinvoke $u3.<androidx.core.app.NotificationBuilderWithBuilderAccessor: android.app.Notification$Builder getBuilder()>();
+
+        $u1 = new android.app.Notification$DecoratedCustomViewStyle;
+
+        specialinvoke $u1.<android.app.Notification$DecoratedCustomViewStyle: void <init>()>();
+
+        virtualinvoke $u-1.<android.app.Notification$Builder: android.app.Notification$Builder setStyle(android.app.Notification$Style)>($u1);
+
+     label1:
+        return;
+    }
+
+    public android.widget.RemoteViews makeBigContentView(androidx.core.app.NotificationBuilderWithBuilderAccessor)
+    {
+        androidx.core.app.NotificationCompat$DecoratedCustomViewStyle this;
+        androidx.core.app.NotificationBuilderWithBuilderAccessor $u4;
+        int bigContentView;
+        androidx.core.app.NotificationCompat$Builder bigContentView#4;
+        android.widget.RemoteViews $u-1;
+
+        this := @this: androidx.core.app.NotificationCompat$DecoratedCustomViewStyle;
+
+        $u4 := @parameter0: androidx.core.app.NotificationBuilderWithBuilderAccessor;
+
+        bigContentView = <android.os.Build$VERSION: int SDK_INT>;
+
+        if bigContentView < 24 goto label1;
+
+        return null;
+
+     label1:
+        bigContentView#4 = this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u-1 = virtualinvoke bigContentView#4.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews getBigContentView()>();
+
+        if $u-1 == null goto label2;
+
+        goto label3;
+
+     label2:
+        bigContentView#4 = this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u-1 = virtualinvoke bigContentView#4.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews getContentView()>();
+
+     label3:
+        if $u-1 != null goto label4;
+
+        return null;
+
+     label4:
+        $u-1 = specialinvoke this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: android.widget.RemoteViews createRemoteViews(android.widget.RemoteViews,boolean)>($u-1, 1);
+
+        return $u-1;
+    }
+
+    public android.widget.RemoteViews makeContentView(androidx.core.app.NotificationBuilderWithBuilderAccessor)
+    {
+        androidx.core.app.NotificationCompat$DecoratedCustomViewStyle this;
+        androidx.core.app.NotificationBuilderWithBuilderAccessor $u4;
+        int $u0;
+        androidx.core.app.NotificationCompat$Builder $u0#3;
+        android.widget.RemoteViews $u-1;
+
+        this := @this: androidx.core.app.NotificationCompat$DecoratedCustomViewStyle;
+
+        $u4 := @parameter0: androidx.core.app.NotificationBuilderWithBuilderAccessor;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 24 goto label1;
+
+        return null;
+
+     label1:
+        $u0#3 = this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u-1 = virtualinvoke $u0#3.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews getContentView()>();
+
+        if $u-1 != null goto label2;
+
+        return null;
+
+     label2:
+        $u0#3 = this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u-1 = virtualinvoke $u0#3.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews getContentView()>();
+
+        $u-1 = specialinvoke this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: android.widget.RemoteViews createRemoteViews(android.widget.RemoteViews,boolean)>($u-1, 0);
+
+        return $u-1;
+    }
+
+    public android.widget.RemoteViews makeHeadsUpContentView(androidx.core.app.NotificationBuilderWithBuilderAccessor)
+    {
+        androidx.core.app.NotificationCompat$DecoratedCustomViewStyle this;
+        androidx.core.app.NotificationBuilderWithBuilderAccessor $u4;
+        int headsUp;
+        androidx.core.app.NotificationCompat$Builder headsUp#4;
+        android.widget.RemoteViews $u-1, innerView;
+
+        this := @this: androidx.core.app.NotificationCompat$DecoratedCustomViewStyle;
+
+        $u4 := @parameter0: androidx.core.app.NotificationBuilderWithBuilderAccessor;
+
+        headsUp = <android.os.Build$VERSION: int SDK_INT>;
+
+        if headsUp < 24 goto label1;
+
+        return null;
+
+     label1:
+        headsUp#4 = this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u-1 = virtualinvoke headsUp#4.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews getHeadsUpContentView()>();
+
+        if $u-1 == null goto label2;
+
+        innerView = $u-1;
+
+        goto label3;
+
+     label2:
+        headsUp#4 = this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        innerView = virtualinvoke headsUp#4.<androidx.core.app.NotificationCompat$Builder: android.widget.RemoteViews getContentView()>();
+
+     label3:
+        if $u-1 != null goto label4;
+
+        return null;
+
+     label4:
+        $u-1 = specialinvoke this.<androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: android.widget.RemoteViews createRemoteViews(android.widget.RemoteViews,boolean)>(innerView, 1);
+
+        return $u-1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.NotificationCompat$DecoratedCustomViewStyle: int MAX_ACTION_BUTTONS> = 3;
+
+        return;
+    }
+}

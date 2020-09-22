@@ -1,0 +1,237 @@
+public class androidx.core.widget.ContentLoadingProgressBar extends android.widget.ProgressBar
+{
+    private static final int MIN_DELAY;
+    private static final int MIN_SHOW_TIME;
+    private final java.lang.Runnable mDelayedHide;
+    private final java.lang.Runnable mDelayedShow;
+    boolean mDismissed;
+    boolean mPostedHide;
+    boolean mPostedShow;
+    long mStartTime;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.core.widget.ContentLoadingProgressBar this;
+        android.content.Context $u2;
+
+        this := @this: androidx.core.widget.ContentLoadingProgressBar;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.core.widget.ContentLoadingProgressBar: void <init>(android.content.Context,android.util.AttributeSet)>($u2, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.core.widget.ContentLoadingProgressBar this;
+        android.content.Context $u4;
+        android.util.AttributeSet $u5;
+        androidx.core.widget.ContentLoadingProgressBar$1 $u0;
+        androidx.core.widget.ContentLoadingProgressBar$2 $u0#3;
+
+        this := @this: androidx.core.widget.ContentLoadingProgressBar;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<android.widget.ProgressBar: void <init>(android.content.Context,android.util.AttributeSet,int)>($u4, $u5, 0);
+
+        this.<androidx.core.widget.ContentLoadingProgressBar: long mStartTime> = -1L;
+
+        this.<androidx.core.widget.ContentLoadingProgressBar: boolean mPostedHide> = 0;
+
+        this.<androidx.core.widget.ContentLoadingProgressBar: boolean mPostedShow> = 0;
+
+        this.<androidx.core.widget.ContentLoadingProgressBar: boolean mDismissed> = 0;
+
+        $u0 = new androidx.core.widget.ContentLoadingProgressBar$1;
+
+        specialinvoke $u0.<androidx.core.widget.ContentLoadingProgressBar$1: void <init>(androidx.core.widget.ContentLoadingProgressBar)>(this);
+
+        this.<androidx.core.widget.ContentLoadingProgressBar: java.lang.Runnable mDelayedHide> = $u0;
+
+        $u0#3 = new androidx.core.widget.ContentLoadingProgressBar$2;
+
+        specialinvoke $u0#3.<androidx.core.widget.ContentLoadingProgressBar$2: void <init>(androidx.core.widget.ContentLoadingProgressBar)>(this);
+
+        this.<androidx.core.widget.ContentLoadingProgressBar: java.lang.Runnable mDelayedShow> = $u0#3;
+
+        return;
+    }
+
+    private void removeCallbacks()
+    {
+        androidx.core.widget.ContentLoadingProgressBar this;
+        java.lang.Runnable $u0;
+
+        this := @this: androidx.core.widget.ContentLoadingProgressBar;
+
+        $u0 = this.<androidx.core.widget.ContentLoadingProgressBar: java.lang.Runnable mDelayedHide>;
+
+        virtualinvoke this.<androidx.core.widget.ContentLoadingProgressBar: boolean removeCallbacks(java.lang.Runnable)>($u0);
+
+        $u0 = this.<androidx.core.widget.ContentLoadingProgressBar: java.lang.Runnable mDelayedShow>;
+
+        virtualinvoke this.<androidx.core.widget.ContentLoadingProgressBar: boolean removeCallbacks(java.lang.Runnable)>($u0);
+
+        return;
+    }
+
+    public void hide()
+    {
+        androidx.core.widget.ContentLoadingProgressBar this;
+        byte $u9;
+        long $u-1, $u3;
+        java.lang.Runnable diff;
+        boolean $u5;
+        java.lang.Throwable $u0;
+
+        this := @this: androidx.core.widget.ContentLoadingProgressBar;
+
+        entermonitor this;
+
+     label1:
+        this.<androidx.core.widget.ContentLoadingProgressBar: boolean mDismissed> = 1;
+
+        diff = this.<androidx.core.widget.ContentLoadingProgressBar: java.lang.Runnable mDelayedShow>;
+
+        virtualinvoke this.<androidx.core.widget.ContentLoadingProgressBar: boolean removeCallbacks(java.lang.Runnable)>(diff);
+
+        this.<androidx.core.widget.ContentLoadingProgressBar: boolean mPostedShow> = 0;
+
+        $u-1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $u3 = this.<androidx.core.widget.ContentLoadingProgressBar: long mStartTime>;
+
+        $u-1 = $u-1 - $u3;
+
+        $u9 = $u-1 cmp 500L;
+
+        if $u9 >= 0 goto label3;
+
+        $u3 = this.<androidx.core.widget.ContentLoadingProgressBar: long mStartTime>;
+
+        $u9 = $u3 cmp -1L;
+
+        if $u9 != 0 goto label2;
+
+        goto label3;
+
+     label2:
+        $u5 = this.<androidx.core.widget.ContentLoadingProgressBar: boolean mPostedHide>;
+
+        if $u5 != 0 goto label4;
+
+        diff = this.<androidx.core.widget.ContentLoadingProgressBar: java.lang.Runnable mDelayedHide>;
+
+        $u-1 = 500L - $u-1;
+
+        virtualinvoke this.<androidx.core.widget.ContentLoadingProgressBar: boolean postDelayed(java.lang.Runnable,long)>(diff, $u-1);
+
+        this.<androidx.core.widget.ContentLoadingProgressBar: boolean mPostedHide> = 1;
+
+        goto label4;
+
+     label3:
+        virtualinvoke this.<androidx.core.widget.ContentLoadingProgressBar: void setVisibility(int)>(8);
+
+     label4:
+        exitmonitor this;
+
+        return;
+
+     label5:
+        $u0 := @caughtexception;
+
+        exitmonitor this;
+
+        throw $u0;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public void onAttachedToWindow()
+    {
+        androidx.core.widget.ContentLoadingProgressBar this;
+
+        this := @this: androidx.core.widget.ContentLoadingProgressBar;
+
+        specialinvoke this.<android.widget.ProgressBar: void onAttachedToWindow()>();
+
+        specialinvoke this.<androidx.core.widget.ContentLoadingProgressBar: void removeCallbacks()>();
+
+        return;
+    }
+
+    public void onDetachedFromWindow()
+    {
+        androidx.core.widget.ContentLoadingProgressBar this;
+
+        this := @this: androidx.core.widget.ContentLoadingProgressBar;
+
+        specialinvoke this.<android.widget.ProgressBar: void onDetachedFromWindow()>();
+
+        specialinvoke this.<androidx.core.widget.ContentLoadingProgressBar: void removeCallbacks()>();
+
+        return;
+    }
+
+    public void show()
+    {
+        androidx.core.widget.ContentLoadingProgressBar this;
+        java.lang.Runnable $u1;
+        boolean $u0;
+        java.lang.Throwable $u0#8;
+
+        this := @this: androidx.core.widget.ContentLoadingProgressBar;
+
+        entermonitor this;
+
+     label1:
+        this.<androidx.core.widget.ContentLoadingProgressBar: long mStartTime> = -1L;
+
+        this.<androidx.core.widget.ContentLoadingProgressBar: boolean mDismissed> = 0;
+
+        $u1 = this.<androidx.core.widget.ContentLoadingProgressBar: java.lang.Runnable mDelayedHide>;
+
+        virtualinvoke this.<androidx.core.widget.ContentLoadingProgressBar: boolean removeCallbacks(java.lang.Runnable)>($u1);
+
+        this.<androidx.core.widget.ContentLoadingProgressBar: boolean mPostedHide> = 0;
+
+        $u0 = this.<androidx.core.widget.ContentLoadingProgressBar: boolean mPostedShow>;
+
+        if $u0 != 0 goto label2;
+
+        $u1 = this.<androidx.core.widget.ContentLoadingProgressBar: java.lang.Runnable mDelayedShow>;
+
+        virtualinvoke this.<androidx.core.widget.ContentLoadingProgressBar: boolean postDelayed(java.lang.Runnable,long)>($u1, 500L);
+
+        this.<androidx.core.widget.ContentLoadingProgressBar: boolean mPostedShow> = 1;
+
+     label2:
+        exitmonitor this;
+
+        return;
+
+     label3:
+        $u0#8 := @caughtexception;
+
+        exitmonitor this;
+
+        throw $u0#8;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.widget.ContentLoadingProgressBar: int MIN_SHOW_TIME> = 500;
+
+        <androidx.core.widget.ContentLoadingProgressBar: int MIN_DELAY> = 500;
+
+        return;
+    }
+}

@@ -1,0 +1,75 @@
+class androidx.lifecycle.LiveData$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.lifecycle.LiveData this$0;
+
+    void <init>(androidx.lifecycle.LiveData)
+    {
+        androidx.lifecycle.LiveData$1 this;
+        androidx.lifecycle.LiveData $u1;
+
+        this := @this: androidx.lifecycle.LiveData$1;
+
+        $u1 := @parameter0: androidx.lifecycle.LiveData;
+
+        this.<androidx.lifecycle.LiveData$1: androidx.lifecycle.LiveData this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.lifecycle.LiveData$1 this;
+        java.lang.Object $u3, $u0#2, newValue;
+        androidx.lifecycle.LiveData $u0;
+        java.lang.Throwable $u2;
+
+        this := @this: androidx.lifecycle.LiveData$1;
+
+        $u0 = this.<androidx.lifecycle.LiveData$1: androidx.lifecycle.LiveData this$0>;
+
+        $u0#2 = $u0.<androidx.lifecycle.LiveData: java.lang.Object mDataLock>;
+
+        entermonitor $u0#2;
+
+     label1:
+        $u0 = this.<androidx.lifecycle.LiveData$1: androidx.lifecycle.LiveData this$0>;
+
+        newValue = $u0.<androidx.lifecycle.LiveData: java.lang.Object mPendingData>;
+
+     label2:
+        $u0 = this.<androidx.lifecycle.LiveData$1: androidx.lifecycle.LiveData this$0>;
+
+        $u3 = <androidx.lifecycle.LiveData: java.lang.Object NOT_SET>;
+
+        $u0.<androidx.lifecycle.LiveData: java.lang.Object mPendingData> = $u3;
+
+        exitmonitor $u0#2;
+
+     label3:
+        $u0 = this.<androidx.lifecycle.LiveData$1: androidx.lifecycle.LiveData this$0>;
+
+        virtualinvoke $u0.<androidx.lifecycle.LiveData: void setValue(java.lang.Object)>(newValue);
+
+        return;
+
+     label4:
+        $u2 := @caughtexception;
+
+     label5:
+        exitmonitor $u0#2;
+
+     label6:
+        throw $u2;
+
+     label7:
+        $u2 := @caughtexception;
+
+        goto label5;
+
+        catch java.lang.Throwable from label1 to label2 with label4;
+        catch java.lang.Throwable from label2 to label3 with label7;
+        catch java.lang.Throwable from label5 to label6 with label7;
+    }
+}

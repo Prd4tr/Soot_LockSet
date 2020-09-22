@@ -1,0 +1,514 @@
+class androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    static final int UNSET;
+    androidx.constraintlayout.motion.utils.CurveFit mCurveFit;
+    public java.util.HashMap mCustomConstraints;
+    float[] mOffset;
+    androidx.constraintlayout.motion.utils.Oscillator mOscillator;
+    float mPathLength;
+    float[] mPeriod;
+    double[] mPosition;
+    float[] mScale;
+    double[] mSplineSlopeCache;
+    double[] mSplineValueCache;
+    float[] mValues;
+    private final int mVariesBy;
+    int mWaveShape;
+
+    void <init>(int, int, int)
+    {
+        androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator this;
+        int $u2, $u3, $u4;
+        androidx.constraintlayout.motion.utils.Oscillator $u0;
+        java.util.HashMap $u0#2;
+        float[] $u0#4;
+        double[] $u0#5;
+
+        this := @this: androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new androidx.constraintlayout.motion.utils.Oscillator;
+
+        specialinvoke $u0.<androidx.constraintlayout.motion.utils.Oscillator: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.Oscillator mOscillator> = $u0;
+
+        $u0#2 = new java.util.HashMap;
+
+        specialinvoke $u0#2.<java.util.HashMap: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: java.util.HashMap mCustomConstraints> = $u0#2;
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: int mWaveShape> = $u2;
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: int mVariesBy> = $u3;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.Oscillator mOscillator>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.motion.utils.Oscillator: void setType(int)>($u2);
+
+        $u0#4 = newarray (float)[$u4];
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mValues> = $u0#4;
+
+        $u0#5 = newarray (double)[$u4];
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mPosition> = $u0#5;
+
+        $u0#4 = newarray (float)[$u4];
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mPeriod> = $u0#4;
+
+        $u0#4 = newarray (float)[$u4];
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mOffset> = $u0#4;
+
+        $u0#4 = newarray (float)[$u4];
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mScale> = $u0#4;
+
+        return;
+    }
+
+    private androidx.constraintlayout.widget.ConstraintAttribute get(java.lang.String, androidx.constraintlayout.widget.ConstraintAttribute$AttributeType)
+    {
+        androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator this;
+        java.lang.String $u5;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType $u6, $u-1#8;
+        java.util.HashMap 'ret';
+        boolean $u-1;
+        java.lang.Object $u-1#5;
+        androidx.constraintlayout.widget.ConstraintAttribute ret#7;
+        java.lang.IllegalArgumentException $u1;
+        java.lang.StringBuilder $u2;
+
+        this := @this: androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator;
+
+        $u5 := @parameter0: java.lang.String;
+
+        $u6 := @parameter1: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType;
+
+        'ret' = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: java.util.HashMap mCustomConstraints>;
+
+        $u-1 = virtualinvoke 'ret'.<java.util.HashMap: boolean containsKey(java.lang.Object)>($u5);
+
+        if $u-1 == 0 goto label2;
+
+        'ret' = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: java.util.HashMap mCustomConstraints>;
+
+        $u-1#5 = virtualinvoke 'ret'.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($u5);
+
+        ret#7 = (androidx.constraintlayout.widget.ConstraintAttribute) $u-1#5;
+
+        $u-1#8 = virtualinvoke ret#7.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType getType()>();
+
+        if $u-1#8 != $u6 goto label1;
+
+        return ret#7;
+
+     label1:
+        $u1 = new java.lang.IllegalArgumentException;
+
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ConstraintAttribute is already a ");
+
+        $u6 = virtualinvoke ret#7.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType getType()>();
+
+        $u5 = virtualinvoke $u6.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: java.lang.String name()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u5);
+
+        $u5 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u5);
+
+        throw $u1;
+
+     label2:
+        ret#7 = new androidx.constraintlayout.widget.ConstraintAttribute;
+
+        specialinvoke ret#7.<androidx.constraintlayout.widget.ConstraintAttribute: void <init>(java.lang.String,androidx.constraintlayout.widget.ConstraintAttribute$AttributeType)>($u5, $u6);
+
+        'ret' = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: java.util.HashMap mCustomConstraints>;
+
+        virtualinvoke 'ret'.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u5, ret#7);
+
+        return ret#7;
+    }
+
+    public double getSlope(float)
+    {
+        androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator this;
+        float $u12;
+        androidx.constraintlayout.motion.utils.CurveFit $u0;
+        double waveValue, $u-1, $u7, $u9;
+        double[] waveSlope;
+        androidx.constraintlayout.motion.utils.Oscillator $u0#10;
+
+        this := @this: androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator;
+
+        $u12 := @parameter0: float;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.CurveFit mCurveFit>;
+
+        if $u0 == null goto label1;
+
+        waveValue = (double) $u12;
+
+        waveSlope = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mSplineSlopeCache>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.motion.utils.CurveFit: void getSlope(double,double[])>(waveValue, waveSlope);
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.CurveFit mCurveFit>;
+
+        waveValue = (double) $u12;
+
+        waveSlope = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mSplineValueCache>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.motion.utils.CurveFit: void getPos(double,double[])>(waveValue, waveSlope);
+
+        goto label2;
+
+     label1:
+        waveSlope = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mSplineSlopeCache>;
+
+        waveSlope[0] = 0.0;
+
+        waveSlope[1] = 0.0;
+
+     label2:
+        $u0#10 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.Oscillator mOscillator>;
+
+        waveValue = (double) $u12;
+
+        $u-1 = virtualinvoke $u0#10.<androidx.constraintlayout.motion.utils.Oscillator: double getValue(double)>(waveValue);
+
+        $u0#10 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.Oscillator mOscillator>;
+
+        waveValue = (double) $u12;
+
+        waveValue = virtualinvoke $u0#10.<androidx.constraintlayout.motion.utils.Oscillator: double getSlope(double)>(waveValue);
+
+        waveSlope = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mSplineSlopeCache>;
+
+        $u7 = waveSlope[0];
+
+        $u9 = waveSlope[1];
+
+        $u-1 = $u9 * $u-1;
+
+        $u-1 = $u7 + $u-1;
+
+        waveSlope = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mSplineValueCache>;
+
+        $u7 = waveSlope[1];
+
+        waveValue = $u7 * waveValue;
+
+        waveValue = $u-1 + waveValue;
+
+        return waveValue;
+    }
+
+    public double getValues(float)
+    {
+        androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator this;
+        float $u9, $u3#6;
+        double[] $u5;
+        double $u-1, $u3, $u6;
+        androidx.constraintlayout.motion.utils.CurveFit $u0;
+        float[] $u3#5;
+        androidx.constraintlayout.motion.utils.Oscillator $u0#13;
+
+        this := @this: androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator;
+
+        $u9 := @parameter0: float;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.CurveFit mCurveFit>;
+
+        if $u0 == null goto label1;
+
+        $u3 = (double) $u9;
+
+        $u5 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mSplineValueCache>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.motion.utils.CurveFit: void getPos(double,double[])>($u3, $u5);
+
+        goto label2;
+
+     label1:
+        $u5 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mSplineValueCache>;
+
+        $u3#5 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mOffset>;
+
+        $u3#6 = $u3#5[0];
+
+        $u3 = (double) $u3#6;
+
+        $u5[0] = $u3;
+
+        $u3#5 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mValues>;
+
+        $u3#6 = $u3#5[0];
+
+        $u3 = (double) $u3#6;
+
+        $u5[1] = $u3;
+
+     label2:
+        $u5 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mSplineValueCache>;
+
+        $u3 = $u5[0];
+
+        $u0#13 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.Oscillator mOscillator>;
+
+        $u-1 = (double) $u9;
+
+        $u-1 = virtualinvoke $u0#13.<androidx.constraintlayout.motion.utils.Oscillator: double getValue(double)>($u-1);
+
+        $u5 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mSplineValueCache>;
+
+        $u6 = $u5[1];
+
+        $u-1 = $u6 * $u-1;
+
+        $u3 = $u-1 + $u3;
+
+        return $u3;
+    }
+
+    public void setPoint(int, int, float, float, float)
+    {
+        androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator this;
+        int $u6, $u7;
+        float $u8, $u9, $u10;
+        double[] $u0;
+        double $u1;
+        float[] $u0#4;
+
+        this := @this: androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator;
+
+        $u6 := @parameter0: int;
+
+        $u7 := @parameter1: int;
+
+        $u8 := @parameter2: float;
+
+        $u9 := @parameter3: float;
+
+        $u10 := @parameter4: float;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mPosition>;
+
+        $u1 = (double) $u7;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($u1);
+
+        $u1 = $u1 / 100.0;
+
+        $u0[$u6] = $u1;
+
+        $u0#4 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mPeriod>;
+
+        $u0#4[$u6] = $u8;
+
+        $u0#4 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mOffset>;
+
+        $u0#4[$u6] = $u9;
+
+        $u0#4 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mValues>;
+
+        $u0#4[$u6] = $u10;
+
+        return;
+    }
+
+    public void setup(float)
+    {
+        androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator this;
+        float $u11;
+        double $u8;
+        double[] splineValues;
+        int splineValues#2, j, $u7;
+        int[] i;
+        java.lang.Object $u-1;
+        double[][] splineValues#9;
+        float[] i#10;
+        byte i#20;
+        androidx.constraintlayout.motion.utils.Oscillator i#21;
+        androidx.constraintlayout.motion.utils.CurveFit $u-1#52;
+
+        this := @this: androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator;
+
+        $u11 := @parameter0: float;
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float mPathLength> = $u11;
+
+        splineValues = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mPosition>;
+
+        splineValues#2 = lengthof splineValues;
+
+        i = newarray (int)[2];
+
+        i[1] = 2;
+
+        i[0] = splineValues#2;
+
+        $u-1 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int[])>(class "D", i);
+
+        splineValues#9 = (double[][]) $u-1;
+
+        i#10 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mValues>;
+
+        splineValues#2 = lengthof i#10;
+
+        splineValues#2 = splineValues#2 + 1;
+
+        splineValues = newarray (double)[splineValues#2];
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mSplineValueCache> = splineValues;
+
+        splineValues#2 = lengthof i#10;
+
+        splineValues#2 = splineValues#2 + 1;
+
+        splineValues = newarray (double)[splineValues#2];
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mSplineSlopeCache> = splineValues;
+
+        splineValues = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mPosition>;
+
+        $u8 = splineValues[0];
+
+        i#20 = $u8 cmpl 0.0;
+
+        if i#20 <= 0 goto label1;
+
+        i#21 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.Oscillator mOscillator>;
+
+        i#10 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mPeriod>;
+
+        $u11 = i#10[0];
+
+        virtualinvoke i#21.<androidx.constraintlayout.motion.utils.Oscillator: void addPoint(double,float)>(0.0, $u11);
+
+     label1:
+        splineValues = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mPosition>;
+
+        splineValues#2 = lengthof splineValues;
+
+        splineValues#2 = splineValues#2 - 1;
+
+        $u8 = splineValues[splineValues#2];
+
+        i#20 = $u8 cmpg 1.0;
+
+        if i#20 >= 0 goto label2;
+
+        i#21 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.Oscillator mOscillator>;
+
+        i#10 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mPeriod>;
+
+        $u11 = i#10[splineValues#2];
+
+        virtualinvoke i#21.<androidx.constraintlayout.motion.utils.Oscillator: void addPoint(double,float)>(1.0, $u11);
+
+     label2:
+        splineValues#2 = 0;
+
+     label3:
+        j = lengthof splineValues#9;
+
+        if splineValues#2 >= j goto label6;
+
+        splineValues = splineValues#9[splineValues#2];
+
+        i#10 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mOffset>;
+
+        $u11 = i#10[splineValues#2];
+
+        $u8 = (double) $u11;
+
+        splineValues[0] = $u8;
+
+        j = 0;
+
+     label4:
+        i#10 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mValues>;
+
+        $u7 = lengthof i#10;
+
+        if j >= $u7 goto label5;
+
+        splineValues = splineValues#9[j];
+
+        $u11 = i#10[j];
+
+        $u8 = (double) $u11;
+
+        splineValues[1] = $u8;
+
+        j = j + 1;
+
+        goto label4;
+
+     label5:
+        i#21 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.Oscillator mOscillator>;
+
+        splineValues = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mPosition>;
+
+        $u8 = splineValues[splineValues#2];
+
+        i#10 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: float[] mPeriod>;
+
+        $u11 = i#10[splineValues#2];
+
+        virtualinvoke i#21.<androidx.constraintlayout.motion.utils.Oscillator: void addPoint(double,float)>($u8, $u11);
+
+        splineValues#2 = splineValues#2 + 1;
+
+        goto label3;
+
+     label6:
+        i#21 = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.Oscillator mOscillator>;
+
+        virtualinvoke i#21.<androidx.constraintlayout.motion.utils.Oscillator: void normalize()>();
+
+        splineValues = this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: double[] mPosition>;
+
+        splineValues#2 = lengthof splineValues;
+
+        if splineValues#2 <= 1 goto label7;
+
+        $u-1#52 = staticinvoke <androidx.constraintlayout.motion.utils.CurveFit: androidx.constraintlayout.motion.utils.CurveFit get(int,double[],double[][])>(0, splineValues, splineValues#9);
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.CurveFit mCurveFit> = $u-1#52;
+
+        return;
+
+     label7:
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: androidx.constraintlayout.motion.utils.CurveFit mCurveFit> = null;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: int UNSET> = -1;
+
+        <androidx.constraintlayout.motion.widget.KeyCycleOscillator$CycleOscillator: java.lang.String TAG> = "CycleOscillator";
+
+        return;
+    }
+}

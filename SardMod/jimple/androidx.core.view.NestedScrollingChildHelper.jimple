@@ -1,0 +1,710 @@
+public class androidx.core.view.NestedScrollingChildHelper extends java.lang.Object
+{
+    private boolean mIsNestedScrollingEnabled;
+    private android.view.ViewParent mNestedScrollingParentNonTouch;
+    private android.view.ViewParent mNestedScrollingParentTouch;
+    private int[] mTempNestedScrollConsumed;
+    private final android.view.View mView;
+
+    public void <init>(android.view.View)
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        android.view.View $u1;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u1 := @parameter0: android.view.View;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView> = $u1;
+
+        return;
+    }
+
+    private boolean dispatchNestedScrollInternal(int, int, int, int, int[], int, int[])
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        int $u18, $u19, $u20, $u21, $u23, startX, startY;
+        int[] $u22, $u24;
+        boolean $u-1;
+        android.view.ViewParent $u-1#5;
+        android.view.View $u6;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u18 := @parameter0: int;
+
+        $u19 := @parameter1: int;
+
+        $u20 := @parameter2: int;
+
+        $u21 := @parameter3: int;
+
+        $u22 := @parameter4: int[];
+
+        $u23 := @parameter5: int;
+
+        $u24 := @parameter6: int[];
+
+        $u-1 = virtualinvoke this.<androidx.core.view.NestedScrollingChildHelper: boolean isNestedScrollingEnabled()>();
+
+        if $u-1 == 0 goto label7;
+
+        $u-1#5 = specialinvoke this.<androidx.core.view.NestedScrollingChildHelper: android.view.ViewParent getNestedScrollingParentForType(int)>($u23);
+
+        if $u-1#5 != null goto label1;
+
+        return 0;
+
+     label1:
+        if $u18 != 0 goto label3;
+
+        if $u19 != 0 goto label3;
+
+        if $u20 != 0 goto label3;
+
+        if $u21 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        if $u22 == null goto label7;
+
+        $u22[0] = 0;
+
+        $u22[1] = 0;
+
+        return 0;
+
+     label3:
+        if $u22 == null goto label4;
+
+        $u6 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        virtualinvoke $u6.<android.view.View: void getLocationInWindow(int[])>($u22);
+
+        startX = $u22[0];
+
+        startY = $u22[1];
+
+        goto label5;
+
+     label4:
+        startX = 0;
+
+        startY = 0;
+
+     label5:
+        if $u24 != null goto label6;
+
+        $u24 = specialinvoke this.<androidx.core.view.NestedScrollingChildHelper: int[] getTempNestedScrollConsumed()>();
+
+        $u24[0] = 0;
+
+        $u24[1] = 0;
+
+        goto label6;
+
+     label6:
+        $u6 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        staticinvoke <androidx.core.view.ViewParentCompat: void onNestedScroll(android.view.ViewParent,android.view.View,int,int,int,int,int,int[])>($u-1#5, $u6, $u18, $u19, $u20, $u21, $u23, $u24);
+
+        if $u22 == null goto label8;
+
+        $u6 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        virtualinvoke $u6.<android.view.View: void getLocationInWindow(int[])>($u22);
+
+        $u18 = $u22[0];
+
+        $u18 = $u18 - startX;
+
+        $u22[0] = $u18;
+
+        $u18 = $u22[1];
+
+        $u18 = $u18 - startY;
+
+        $u22[1] = $u18;
+
+        return 1;
+
+     label7:
+        return 0;
+
+     label8:
+        return 1;
+    }
+
+    private android.view.ViewParent getNestedScrollingParentForType(int)
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        int $u2;
+        android.view.ViewParent ret0;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u2 := @parameter0: int;
+
+        if $u2 == 0 goto label2;
+
+        if $u2 == 1 goto label1;
+
+        return null;
+
+     label1:
+        ret0 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.ViewParent mNestedScrollingParentNonTouch>;
+
+        return ret0;
+
+     label2:
+        ret0 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.ViewParent mNestedScrollingParentTouch>;
+
+        return ret0;
+    }
+
+    private int[] getTempNestedScrollConsumed()
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        int[] $u0;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u0 = this.<androidx.core.view.NestedScrollingChildHelper: int[] mTempNestedScrollConsumed>;
+
+        if $u0 != null goto label1;
+
+        $u0 = newarray (int)[2];
+
+        this.<androidx.core.view.NestedScrollingChildHelper: int[] mTempNestedScrollConsumed> = $u0;
+
+     label1:
+        $u0 = this.<androidx.core.view.NestedScrollingChildHelper: int[] mTempNestedScrollConsumed>;
+
+        return $u0;
+    }
+
+    private void setNestedScrollingParentForType(int, android.view.ViewParent)
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        int $u2;
+        android.view.ViewParent $u3;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.view.ViewParent;
+
+        if $u2 == 0 goto label2;
+
+        if $u2 == 1 goto label1;
+
+        return;
+
+     label1:
+        this.<androidx.core.view.NestedScrollingChildHelper: android.view.ViewParent mNestedScrollingParentNonTouch> = $u3;
+
+        return;
+
+     label2:
+        this.<androidx.core.view.NestedScrollingChildHelper: android.view.ViewParent mNestedScrollingParentTouch> = $u3;
+
+        return;
+    }
+
+    public boolean dispatchNestedFling(float, float, boolean)
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        float $u3, $u4;
+        boolean $u5, $u-1;
+        android.view.ViewParent $u-1#4;
+        android.view.View $u1;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u3 := @parameter0: float;
+
+        $u4 := @parameter1: float;
+
+        $u5 := @parameter2: boolean;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.NestedScrollingChildHelper: boolean isNestedScrollingEnabled()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u-1#4 = specialinvoke this.<androidx.core.view.NestedScrollingChildHelper: android.view.ViewParent getNestedScrollingParentForType(int)>(0);
+
+        if $u-1#4 == null goto label1;
+
+        $u1 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        $u5 = staticinvoke <androidx.core.view.ViewParentCompat: boolean onNestedFling(android.view.ViewParent,android.view.View,float,float,boolean)>($u-1#4, $u1, $u3, $u4, $u5);
+
+        return $u5;
+
+     label1:
+        return 0;
+    }
+
+    public boolean dispatchNestedPreFling(float, float)
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        float $u3, $u4;
+        boolean $u-1;
+        android.view.ViewParent $u-1#4;
+        android.view.View $u1;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u3 := @parameter0: float;
+
+        $u4 := @parameter1: float;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.NestedScrollingChildHelper: boolean isNestedScrollingEnabled()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u-1#4 = specialinvoke this.<androidx.core.view.NestedScrollingChildHelper: android.view.ViewParent getNestedScrollingParentForType(int)>(0);
+
+        if $u-1#4 == null goto label1;
+
+        $u1 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        $u-1 = staticinvoke <androidx.core.view.ViewParentCompat: boolean onNestedPreFling(android.view.ViewParent,android.view.View,float,float)>($u-1#4, $u1, $u3, $u4);
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean dispatchNestedPreScroll(int, int, int[], int[])
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        int $u7, $u8;
+        int[] $u9, $u10;
+        boolean $u-1;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u7 := @parameter0: int;
+
+        $u8 := @parameter1: int;
+
+        $u9 := @parameter2: int[];
+
+        $u10 := @parameter3: int[];
+
+        $u-1 = virtualinvoke this.<androidx.core.view.NestedScrollingChildHelper: boolean dispatchNestedPreScroll(int,int,int[],int[],int)>($u7, $u8, $u9, $u10, 0);
+
+        return $u-1;
+    }
+
+    public boolean dispatchNestedPreScroll(int, int, int[], int[], int)
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        int $u16, $u17, $u20, startX, startY;
+        int[] $u18, $u19;
+        boolean $u-1;
+        android.view.ViewParent $u-1#5;
+        android.view.View $u6;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u16 := @parameter0: int;
+
+        $u17 := @parameter1: int;
+
+        $u18 := @parameter2: int[];
+
+        $u19 := @parameter3: int[];
+
+        $u20 := @parameter4: int;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.NestedScrollingChildHelper: boolean isNestedScrollingEnabled()>();
+
+        if $u-1 == 0 goto label9;
+
+        $u-1#5 = specialinvoke this.<androidx.core.view.NestedScrollingChildHelper: android.view.ViewParent getNestedScrollingParentForType(int)>($u20);
+
+        if $u-1#5 != null goto label1;
+
+        return 0;
+
+     label1:
+        if $u16 != 0 goto label3;
+
+        if $u17 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        if $u19 == null goto label9;
+
+        $u19[0] = 0;
+
+        $u19[1] = 0;
+
+        return 0;
+
+     label3:
+        if $u19 == null goto label4;
+
+        $u6 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        virtualinvoke $u6.<android.view.View: void getLocationInWindow(int[])>($u19);
+
+        startX = $u19[0];
+
+        startY = $u19[1];
+
+        goto label5;
+
+     label4:
+        startX = 0;
+
+        startY = 0;
+
+     label5:
+        if $u18 != null goto label6;
+
+        $u18 = specialinvoke this.<androidx.core.view.NestedScrollingChildHelper: int[] getTempNestedScrollConsumed()>();
+
+        goto label6;
+
+     label6:
+        $u18[0] = 0;
+
+        $u18[1] = 0;
+
+        $u6 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        staticinvoke <androidx.core.view.ViewParentCompat: void onNestedPreScroll(android.view.ViewParent,android.view.View,int,int,int[],int)>($u-1#5, $u6, $u16, $u17, $u18, $u20);
+
+        if $u19 == null goto label7;
+
+        $u6 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        virtualinvoke $u6.<android.view.View: void getLocationInWindow(int[])>($u19);
+
+        $u16 = $u19[0];
+
+        $u16 = $u16 - startX;
+
+        $u19[0] = $u16;
+
+        $u16 = $u19[1];
+
+        $u16 = $u16 - startY;
+
+        $u19[1] = $u16;
+
+     label7:
+        $u16 = $u18[0];
+
+        if $u16 != 0 goto label8;
+
+        $u16 = $u18[1];
+
+        if $u16 == 0 goto label9;
+
+     label8:
+        return 1;
+
+     label9:
+        return 0;
+    }
+
+    public void dispatchNestedScroll(int, int, int, int, int[], int, int[])
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        int $u1, $u2, $u3, $u4, $u6;
+        int[] $u5, $u7;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: int;
+
+        $u4 := @parameter3: int;
+
+        $u5 := @parameter4: int[];
+
+        $u6 := @parameter5: int;
+
+        $u7 := @parameter6: int[];
+
+        specialinvoke this.<androidx.core.view.NestedScrollingChildHelper: boolean dispatchNestedScrollInternal(int,int,int,int,int[],int,int[])>($u1, $u2, $u3, $u4, $u5, $u6, $u7);
+
+        return;
+    }
+
+    public boolean dispatchNestedScroll(int, int, int, int, int[])
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        int $u9, $u10, $u11, $u12;
+        int[] $u13;
+        boolean $u-1;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u9 := @parameter0: int;
+
+        $u10 := @parameter1: int;
+
+        $u11 := @parameter2: int;
+
+        $u12 := @parameter3: int;
+
+        $u13 := @parameter4: int[];
+
+        $u-1 = specialinvoke this.<androidx.core.view.NestedScrollingChildHelper: boolean dispatchNestedScrollInternal(int,int,int,int,int[],int,int[])>($u9, $u10, $u11, $u12, $u13, 0, null);
+
+        return $u-1;
+    }
+
+    public boolean dispatchNestedScroll(int, int, int, int, int[], int)
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        int $u9, $u10, $u11, $u12, $u14;
+        int[] $u13;
+        boolean $u-1;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u9 := @parameter0: int;
+
+        $u10 := @parameter1: int;
+
+        $u11 := @parameter2: int;
+
+        $u12 := @parameter3: int;
+
+        $u13 := @parameter4: int[];
+
+        $u14 := @parameter5: int;
+
+        $u-1 = specialinvoke this.<androidx.core.view.NestedScrollingChildHelper: boolean dispatchNestedScrollInternal(int,int,int,int,int[],int,int[])>($u9, $u10, $u11, $u12, $u13, $u14, null);
+
+        return $u-1;
+    }
+
+    public boolean hasNestedScrollingParent()
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        boolean $u-1;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.NestedScrollingChildHelper: boolean hasNestedScrollingParent(int)>(0);
+
+        return $u-1;
+    }
+
+    public boolean hasNestedScrollingParent(int)
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        int $u2;
+        android.view.ViewParent $u-1;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u2 := @parameter0: int;
+
+        $u-1 = specialinvoke this.<androidx.core.view.NestedScrollingChildHelper: android.view.ViewParent getNestedScrollingParentForType(int)>($u2);
+
+        if $u-1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isNestedScrollingEnabled()
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        boolean ret0;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        ret0 = this.<androidx.core.view.NestedScrollingChildHelper: boolean mIsNestedScrollingEnabled>;
+
+        return ret0;
+    }
+
+    public void onDetachedFromWindow()
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        android.view.View $u0;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u0 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        staticinvoke <androidx.core.view.ViewCompat: void stopNestedScroll(android.view.View)>($u0);
+
+        return;
+    }
+
+    public void onStopNestedScroll(android.view.View)
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        android.view.View $u2;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u2 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        staticinvoke <androidx.core.view.ViewCompat: void stopNestedScroll(android.view.View)>($u2);
+
+        return;
+    }
+
+    public void setNestedScrollingEnabled(boolean)
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        boolean $u2, $u0;
+        android.view.View $u0#2;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.view.NestedScrollingChildHelper: boolean mIsNestedScrollingEnabled>;
+
+        if $u0 == 0 goto label1;
+
+        $u0#2 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        staticinvoke <androidx.core.view.ViewCompat: void stopNestedScroll(android.view.View)>($u0#2);
+
+     label1:
+        this.<androidx.core.view.NestedScrollingChildHelper: boolean mIsNestedScrollingEnabled> = $u2;
+
+        return;
+    }
+
+    public boolean startNestedScroll(int)
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        int $u2;
+        boolean $u-1;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u2 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.NestedScrollingChildHelper: boolean startNestedScroll(int,int)>($u2, 0);
+
+        return $u-1;
+    }
+
+    public boolean startNestedScroll(int, int)
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        int $u5, $u6;
+        boolean $u-1;
+        android.view.View p, $u3;
+        android.view.ViewParent $u-1#6;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u5 := @parameter0: int;
+
+        $u6 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.NestedScrollingChildHelper: boolean hasNestedScrollingParent(int)>($u6);
+
+        if $u-1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $u-1 = virtualinvoke this.<androidx.core.view.NestedScrollingChildHelper: boolean isNestedScrollingEnabled()>();
+
+        if $u-1 == 0 goto label5;
+
+        p = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        $u-1#6 = virtualinvoke p.<android.view.View: android.view.ViewParent getParent()>();
+
+        p = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+     label2:
+        if $u-1#6 == null goto label5;
+
+        $u3 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        $u-1 = staticinvoke <androidx.core.view.ViewParentCompat: boolean onStartNestedScroll(android.view.ViewParent,android.view.View,android.view.View,int,int)>($u-1#6, p, $u3, $u5, $u6);
+
+        if $u-1 == 0 goto label3;
+
+        specialinvoke this.<androidx.core.view.NestedScrollingChildHelper: void setNestedScrollingParentForType(int,android.view.ViewParent)>($u6, $u-1#6);
+
+        $u3 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        staticinvoke <androidx.core.view.ViewParentCompat: void onNestedScrollAccepted(android.view.ViewParent,android.view.View,android.view.View,int,int)>($u-1#6, p, $u3, $u5, $u6);
+
+        return 1;
+
+     label3:
+        $u-1 = $u-1#6 instanceof android.view.View;
+
+        if $u-1 == 0 goto label4;
+
+        p = (android.view.View) $u-1#6;
+
+     label4:
+        $u-1#6 = interfaceinvoke $u-1#6.<android.view.ViewParent: android.view.ViewParent getParent()>();
+
+        goto label2;
+
+     label5:
+        return 0;
+    }
+
+    public void stopNestedScroll()
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        virtualinvoke this.<androidx.core.view.NestedScrollingChildHelper: void stopNestedScroll(int)>(0);
+
+        return;
+    }
+
+    public void stopNestedScroll(int)
+    {
+        androidx.core.view.NestedScrollingChildHelper this;
+        int $u3;
+        android.view.ViewParent $u-1;
+        android.view.View $u1;
+
+        this := @this: androidx.core.view.NestedScrollingChildHelper;
+
+        $u3 := @parameter0: int;
+
+        $u-1 = specialinvoke this.<androidx.core.view.NestedScrollingChildHelper: android.view.ViewParent getNestedScrollingParentForType(int)>($u3);
+
+        if $u-1 == null goto label1;
+
+        $u1 = this.<androidx.core.view.NestedScrollingChildHelper: android.view.View mView>;
+
+        staticinvoke <androidx.core.view.ViewParentCompat: void onStopNestedScroll(android.view.ViewParent,android.view.View,int)>($u-1, $u1, $u3);
+
+        specialinvoke this.<androidx.core.view.NestedScrollingChildHelper: void setNestedScrollingParentForType(int,android.view.ViewParent)>($u3, null);
+
+     label1:
+        return;
+    }
+}

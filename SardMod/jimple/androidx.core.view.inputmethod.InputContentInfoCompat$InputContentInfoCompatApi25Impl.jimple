@@ -1,0 +1,134 @@
+final class androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl extends java.lang.Object implements androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl
+{
+    final android.view.inputmethod.InputContentInfo mObject;
+
+    void <init>(android.net.Uri, android.content.ClipDescription, android.net.Uri)
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl this;
+        android.net.Uri $u2, $u4;
+        android.content.ClipDescription $u3;
+        android.view.inputmethod.InputContentInfo $u0;
+
+        this := @this: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl;
+
+        $u2 := @parameter0: android.net.Uri;
+
+        $u3 := @parameter1: android.content.ClipDescription;
+
+        $u4 := @parameter2: android.net.Uri;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new android.view.inputmethod.InputContentInfo;
+
+        specialinvoke $u0.<android.view.inputmethod.InputContentInfo: void <init>(android.net.Uri,android.content.ClipDescription,android.net.Uri)>($u2, $u3, $u4);
+
+        this.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl: android.view.inputmethod.InputContentInfo mObject> = $u0;
+
+        return;
+    }
+
+    void <init>(java.lang.Object)
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl this;
+        java.lang.Object $u2;
+        android.view.inputmethod.InputContentInfo $u0;
+
+        this := @this: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = (android.view.inputmethod.InputContentInfo) $u2;
+
+        this.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl: android.view.inputmethod.InputContentInfo mObject> = $u0;
+
+        return;
+    }
+
+    public android.net.Uri getContentUri()
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl this;
+        android.net.Uri $u-1;
+        android.view.inputmethod.InputContentInfo $u0;
+
+        this := @this: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl;
+
+        $u0 = this.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl: android.view.inputmethod.InputContentInfo mObject>;
+
+        $u-1 = virtualinvoke $u0.<android.view.inputmethod.InputContentInfo: android.net.Uri getContentUri()>();
+
+        return $u-1;
+    }
+
+    public android.content.ClipDescription getDescription()
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl this;
+        android.content.ClipDescription $u-1;
+        android.view.inputmethod.InputContentInfo $u0;
+
+        this := @this: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl;
+
+        $u0 = this.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl: android.view.inputmethod.InputContentInfo mObject>;
+
+        $u-1 = virtualinvoke $u0.<android.view.inputmethod.InputContentInfo: android.content.ClipDescription getDescription()>();
+
+        return $u-1;
+    }
+
+    public java.lang.Object getInputContentInfo()
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl this;
+        android.view.inputmethod.InputContentInfo ret0;
+
+        this := @this: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl;
+
+        ret0 = this.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl: android.view.inputmethod.InputContentInfo mObject>;
+
+        return ret0;
+    }
+
+    public android.net.Uri getLinkUri()
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl this;
+        android.net.Uri $u-1;
+        android.view.inputmethod.InputContentInfo $u0;
+
+        this := @this: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl;
+
+        $u0 = this.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl: android.view.inputmethod.InputContentInfo mObject>;
+
+        $u-1 = virtualinvoke $u0.<android.view.inputmethod.InputContentInfo: android.net.Uri getLinkUri()>();
+
+        return $u-1;
+    }
+
+    public void releasePermission()
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl this;
+        android.view.inputmethod.InputContentInfo $u0;
+
+        this := @this: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl;
+
+        $u0 = this.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl: android.view.inputmethod.InputContentInfo mObject>;
+
+        virtualinvoke $u0.<android.view.inputmethod.InputContentInfo: void releasePermission()>();
+
+        return;
+    }
+
+    public void requestPermission()
+    {
+        androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl this;
+        android.view.inputmethod.InputContentInfo $u0;
+
+        this := @this: androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl;
+
+        $u0 = this.<androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl: android.view.inputmethod.InputContentInfo mObject>;
+
+        virtualinvoke $u0.<android.view.inputmethod.InputContentInfo: void requestPermission()>();
+
+        return;
+    }
+}

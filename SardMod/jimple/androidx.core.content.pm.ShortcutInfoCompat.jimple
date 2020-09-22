@@ -1,0 +1,564 @@
+public class androidx.core.content.pm.ShortcutInfoCompat extends java.lang.Object
+{
+    private static final java.lang.String EXTRA_LONG_LIVED;
+    private static final java.lang.String EXTRA_PERSON_;
+    private static final java.lang.String EXTRA_PERSON_COUNT;
+    android.content.ComponentName mActivity;
+    java.util.Set mCategories;
+    android.content.Context mContext;
+    java.lang.CharSequence mDisabledMessage;
+    androidx.core.graphics.drawable.IconCompat mIcon;
+    java.lang.String mId;
+    android.content.Intent[] mIntents;
+    boolean mIsAlwaysBadged;
+    boolean mIsLongLived;
+    java.lang.CharSequence mLabel;
+    java.lang.CharSequence mLongLabel;
+    androidx.core.app.Person[] mPersons;
+    int mRank;
+
+    void <init>()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private android.os.PersistableBundle buildLegacyExtrasBundle()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+        android.os.PersistableBundle bundle, $u-1#15;
+        androidx.core.app.Person[] i;
+        int $u2, $u2#7;
+        java.lang.StringBuilder $u2#8;
+        java.lang.String $u-1;
+        androidx.core.app.Person $u3;
+        boolean i#17;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        bundle = new android.os.PersistableBundle;
+
+        specialinvoke bundle.<android.os.PersistableBundle: void <init>()>();
+
+        i = this.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.app.Person[] mPersons>;
+
+        if i == null goto label2;
+
+        $u2 = lengthof i;
+
+        if $u2 <= 0 goto label2;
+
+        $u2 = lengthof i;
+
+        virtualinvoke bundle.<android.os.PersistableBundle: void putInt(java.lang.String,int)>("extraPersonCount", $u2);
+
+        $u2 = 0;
+
+     label1:
+        i = this.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.app.Person[] mPersons>;
+
+        $u2#7 = lengthof i;
+
+        if $u2 >= $u2#7 goto label2;
+
+        $u2#8 = new java.lang.StringBuilder;
+
+        specialinvoke $u2#8.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2#8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("extraPerson_");
+
+        $u2#7 = $u2 + 1;
+
+        virtualinvoke $u2#8.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u2#7);
+
+        $u-1 = virtualinvoke $u2#8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        i = this.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.app.Person[] mPersons>;
+
+        $u3 = i[$u2];
+
+        $u-1#15 = virtualinvoke $u3.<androidx.core.app.Person: android.os.PersistableBundle toPersistableBundle()>();
+
+        virtualinvoke bundle.<android.os.PersistableBundle: void putPersistableBundle(java.lang.String,android.os.PersistableBundle)>($u-1, $u-1#15);
+
+        $u2 = $u2 + 1;
+
+        goto label1;
+
+     label2:
+        i#17 = this.<androidx.core.content.pm.ShortcutInfoCompat: boolean mIsLongLived>;
+
+        virtualinvoke bundle.<android.os.PersistableBundle: void putBoolean(java.lang.String,boolean)>("extraLongLived", i#17);
+
+        return bundle;
+    }
+
+    static boolean getLongLivedFromExtra(android.os.PersistableBundle)
+    {
+        android.os.PersistableBundle $u2;
+        boolean $u-1;
+
+        $u2 := @parameter0: android.os.PersistableBundle;
+
+        if $u2 == null goto label2;
+
+        $u-1 = virtualinvoke $u2.<android.os.PersistableBundle: boolean containsKey(java.lang.String)>("extraLongLived");
+
+        if $u-1 != 0 goto label1;
+
+        goto label2;
+
+     label1:
+        $u-1 = virtualinvoke $u2.<android.os.PersistableBundle: boolean getBoolean(java.lang.String)>("extraLongLived");
+
+        return $u-1;
+
+     label2:
+        return 0;
+    }
+
+    static androidx.core.app.Person[] getPersonsFromExtra(android.os.PersistableBundle)
+    {
+        android.os.PersistableBundle $u5, $u-1#13;
+        boolean $u-1;
+        int $u-1#4, i, $u4;
+        androidx.core.app.Person[] persons;
+        java.lang.StringBuilder $u3;
+        java.lang.String $u-1#11;
+        androidx.core.app.Person $u-1#15;
+
+        $u5 := @parameter0: android.os.PersistableBundle;
+
+        if $u5 == null goto label4;
+
+        $u-1 = virtualinvoke $u5.<android.os.PersistableBundle: boolean containsKey(java.lang.String)>("extraPersonCount");
+
+        if $u-1 != 0 goto label1;
+
+        goto label4;
+
+     label1:
+        $u-1#4 = virtualinvoke $u5.<android.os.PersistableBundle: int getInt(java.lang.String)>("extraPersonCount");
+
+        persons = newarray (androidx.core.app.Person)[$u-1#4];
+
+        i = 0;
+
+     label2:
+        if i >= $u-1#4 goto label3;
+
+        $u3 = new java.lang.StringBuilder;
+
+        specialinvoke $u3.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("extraPerson_");
+
+        $u4 = i + 1;
+
+        virtualinvoke $u3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u4);
+
+        $u-1#11 = virtualinvoke $u3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $u-1#13 = virtualinvoke $u5.<android.os.PersistableBundle: android.os.PersistableBundle getPersistableBundle(java.lang.String)>($u-1#11);
+
+        $u-1#15 = staticinvoke <androidx.core.app.Person: androidx.core.app.Person fromPersistableBundle(android.os.PersistableBundle)>($u-1#13);
+
+        persons[i] = $u-1#15;
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        return persons;
+
+     label4:
+        return null;
+    }
+
+    android.content.Intent addToIntent(android.content.Intent)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+        android.content.Intent $u4, badge#4;
+        android.content.Intent[] badge;
+        int pm;
+        java.lang.CharSequence pm#8;
+        java.lang.String $u-1;
+        androidx.core.graphics.drawable.IconCompat badge#12;
+        android.graphics.drawable.Drawable badge#13, $u-1#19;
+        boolean pm#14;
+        android.content.Context pm#15;
+        android.content.pm.PackageManager $u-1#16;
+        android.content.ComponentName $u2;
+        android.content.pm.PackageManager$NameNotFoundException $u2#21;
+        android.content.pm.ApplicationInfo $u-1#23;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        $u4 := @parameter0: android.content.Intent;
+
+        badge = this.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents>;
+
+        pm = lengthof badge;
+
+        pm = pm + -1;
+
+        badge#4 = badge[pm];
+
+        badge#4 = virtualinvoke $u4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.INTENT", badge#4);
+
+        pm#8 = this.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLabel>;
+
+        $u-1 = interfaceinvoke pm#8.<java.lang.CharSequence: java.lang.String toString()>();
+
+        virtualinvoke badge#4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("android.intent.extra.shortcut.NAME", $u-1);
+
+        badge#12 = this.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        if badge#12 == null goto label6;
+
+        badge#13 = null;
+
+        pm#14 = this.<androidx.core.content.pm.ShortcutInfoCompat: boolean mIsAlwaysBadged>;
+
+        if pm#14 == 0 goto label5;
+
+        pm#15 = this.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Context mContext>;
+
+        $u-1#16 = virtualinvoke pm#15.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $u2 = this.<androidx.core.content.pm.ShortcutInfoCompat: android.content.ComponentName mActivity>;
+
+        if $u2 == null goto label4;
+
+     label1:
+        $u-1#19 = virtualinvoke $u-1#16.<android.content.pm.PackageManager: android.graphics.drawable.Drawable getActivityIcon(android.content.ComponentName)>($u2);
+
+     label2:
+        badge#13 = $u-1#19;
+
+        goto label4;
+
+     label3:
+        $u2#21 := @caughtexception;
+
+     label4:
+        if badge#13 != null goto label5;
+
+        pm#15 = this.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Context mContext>;
+
+        $u-1#23 = virtualinvoke pm#15.<android.content.Context: android.content.pm.ApplicationInfo getApplicationInfo()>();
+
+        badge#13 = virtualinvoke $u-1#23.<android.content.pm.ApplicationInfo: android.graphics.drawable.Drawable loadIcon(android.content.pm.PackageManager)>($u-1#16);
+
+     label5:
+        badge#12 = this.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        pm#15 = this.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Context mContext>;
+
+        virtualinvoke badge#12.<androidx.core.graphics.drawable.IconCompat: void addToShortcutIntent(android.content.Intent,android.graphics.drawable.Drawable,android.content.Context)>($u4, badge#13, pm#15);
+
+     label6:
+        return $u4;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label1 to label2 with label3;
+    }
+
+    public android.content.ComponentName getActivity()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+        android.content.ComponentName ret0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        ret0 = this.<androidx.core.content.pm.ShortcutInfoCompat: android.content.ComponentName mActivity>;
+
+        return ret0;
+    }
+
+    public java.util.Set getCategories()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+        java.util.Set ret0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        ret0 = this.<androidx.core.content.pm.ShortcutInfoCompat: java.util.Set mCategories>;
+
+        return ret0;
+    }
+
+    public java.lang.CharSequence getDisabledMessage()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+        java.lang.CharSequence ret0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        ret0 = this.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mDisabledMessage>;
+
+        return ret0;
+    }
+
+    public androidx.core.graphics.drawable.IconCompat getIcon()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+        androidx.core.graphics.drawable.IconCompat ret0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        ret0 = this.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        return ret0;
+    }
+
+    public java.lang.String getId()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+        java.lang.String ret0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        ret0 = this.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String mId>;
+
+        return ret0;
+    }
+
+    public android.content.Intent getIntent()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+        android.content.Intent[] $u0;
+        int $u1;
+        android.content.Intent $u0#4;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents>;
+
+        $u1 = lengthof $u0;
+
+        $u1 = $u1 + -1;
+
+        $u0#4 = $u0[$u1];
+
+        return $u0#4;
+    }
+
+    public android.content.Intent[] getIntents()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+        int $u1;
+        java.lang.Object[] $u-1;
+        android.content.Intent[] $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents>;
+
+        $u1 = lengthof $u0;
+
+        $u-1 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($u0, $u1);
+
+        $u0 = (android.content.Intent[]) $u-1;
+
+        return $u0;
+    }
+
+    public java.lang.CharSequence getLongLabel()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+        java.lang.CharSequence ret0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        ret0 = this.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLongLabel>;
+
+        return ret0;
+    }
+
+    public int getRank()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+        int ret0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        ret0 = this.<androidx.core.content.pm.ShortcutInfoCompat: int mRank>;
+
+        return ret0;
+    }
+
+    public java.lang.CharSequence getShortLabel()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+        java.lang.CharSequence ret0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        ret0 = this.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLabel>;
+
+        return ret0;
+    }
+
+    public android.content.pm.ShortcutInfo toShortcutInfo()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat this;
+        android.content.pm.ShortcutInfo$Builder builder;
+        android.content.Context persons;
+        java.lang.String i;
+        java.lang.CharSequence persons#4;
+        android.content.Intent[] persons#7;
+        androidx.core.graphics.drawable.IconCompat persons#10;
+        android.graphics.drawable.Icon $u-1;
+        boolean $u-1#15;
+        android.content.ComponentName persons#22;
+        java.util.Set persons#23;
+        int persons#24, $u3;
+        androidx.core.app.Person[] persons#27;
+        android.app.Person[] persons#30;
+        androidx.core.app.Person $u3#34;
+        android.app.Person $u-1#35;
+        android.os.PersistableBundle $u-1#38;
+        android.content.pm.ShortcutInfo $u-1#40;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat;
+
+        builder = new android.content.pm.ShortcutInfo$Builder;
+
+        persons = this.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Context mContext>;
+
+        i = this.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String mId>;
+
+        specialinvoke builder.<android.content.pm.ShortcutInfo$Builder: void <init>(android.content.Context,java.lang.String)>(persons, i);
+
+        persons#4 = this.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLabel>;
+
+        builder = virtualinvoke builder.<android.content.pm.ShortcutInfo$Builder: android.content.pm.ShortcutInfo$Builder setShortLabel(java.lang.CharSequence)>(persons#4);
+
+        persons#7 = this.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents>;
+
+        builder = virtualinvoke builder.<android.content.pm.ShortcutInfo$Builder: android.content.pm.ShortcutInfo$Builder setIntents(android.content.Intent[])>(persons#7);
+
+        persons#10 = this.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        if persons#10 == null goto label01;
+
+        persons = this.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Context mContext>;
+
+        $u-1 = virtualinvoke persons#10.<androidx.core.graphics.drawable.IconCompat: android.graphics.drawable.Icon toIcon(android.content.Context)>(persons);
+
+        virtualinvoke builder.<android.content.pm.ShortcutInfo$Builder: android.content.pm.ShortcutInfo$Builder setIcon(android.graphics.drawable.Icon)>($u-1);
+
+     label01:
+        persons#4 = this.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLongLabel>;
+
+        $u-1#15 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>(persons#4);
+
+        if $u-1#15 != 0 goto label02;
+
+        persons#4 = this.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLongLabel>;
+
+        virtualinvoke builder.<android.content.pm.ShortcutInfo$Builder: android.content.pm.ShortcutInfo$Builder setLongLabel(java.lang.CharSequence)>(persons#4);
+
+     label02:
+        persons#4 = this.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mDisabledMessage>;
+
+        $u-1#15 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>(persons#4);
+
+        if $u-1#15 != 0 goto label03;
+
+        persons#4 = this.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mDisabledMessage>;
+
+        virtualinvoke builder.<android.content.pm.ShortcutInfo$Builder: android.content.pm.ShortcutInfo$Builder setDisabledMessage(java.lang.CharSequence)>(persons#4);
+
+     label03:
+        persons#22 = this.<androidx.core.content.pm.ShortcutInfoCompat: android.content.ComponentName mActivity>;
+
+        if persons#22 == null goto label04;
+
+        virtualinvoke builder.<android.content.pm.ShortcutInfo$Builder: android.content.pm.ShortcutInfo$Builder setActivity(android.content.ComponentName)>(persons#22);
+
+     label04:
+        persons#23 = this.<androidx.core.content.pm.ShortcutInfoCompat: java.util.Set mCategories>;
+
+        if persons#23 == null goto label05;
+
+        virtualinvoke builder.<android.content.pm.ShortcutInfo$Builder: android.content.pm.ShortcutInfo$Builder setCategories(java.util.Set)>(persons#23);
+
+     label05:
+        persons#24 = this.<androidx.core.content.pm.ShortcutInfoCompat: int mRank>;
+
+        virtualinvoke builder.<android.content.pm.ShortcutInfo$Builder: android.content.pm.ShortcutInfo$Builder setRank(int)>(persons#24);
+
+        persons#24 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if persons#24 < 29 goto label09;
+
+        persons#27 = this.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.app.Person[] mPersons>;
+
+        if persons#27 == null goto label08;
+
+        persons#24 = lengthof persons#27;
+
+        if persons#24 <= 0 goto label08;
+
+        persons#24 = lengthof persons#27;
+
+        persons#30 = newarray (android.app.Person)[persons#24];
+
+        persons#24 = 0;
+
+     label06:
+        $u3 = lengthof persons#30;
+
+        if persons#24 >= $u3 goto label07;
+
+        persons#27 = this.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.app.Person[] mPersons>;
+
+        $u3#34 = persons#27[persons#24];
+
+        $u-1#35 = virtualinvoke $u3#34.<androidx.core.app.Person: android.app.Person toAndroidPerson()>();
+
+        persons#30[persons#24] = $u-1#35;
+
+        persons#24 = persons#24 + 1;
+
+        goto label06;
+
+     label07:
+        virtualinvoke builder.<android.content.pm.ShortcutInfo$Builder: android.content.pm.ShortcutInfo$Builder setPersons(android.app.Person[])>(persons#30);
+
+     label08:
+        $u-1#15 = this.<androidx.core.content.pm.ShortcutInfoCompat: boolean mIsLongLived>;
+
+        virtualinvoke builder.<android.content.pm.ShortcutInfo$Builder: android.content.pm.ShortcutInfo$Builder setLongLived(boolean)>($u-1#15);
+
+        goto label10;
+
+     label09:
+        $u-1#38 = specialinvoke this.<androidx.core.content.pm.ShortcutInfoCompat: android.os.PersistableBundle buildLegacyExtrasBundle()>();
+
+        virtualinvoke builder.<android.content.pm.ShortcutInfo$Builder: android.content.pm.ShortcutInfo$Builder setExtras(android.os.PersistableBundle)>($u-1#38);
+
+     label10:
+        $u-1#40 = virtualinvoke builder.<android.content.pm.ShortcutInfo$Builder: android.content.pm.ShortcutInfo build()>();
+
+        return $u-1#40;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.content.pm.ShortcutInfoCompat: java.lang.String EXTRA_PERSON_COUNT> = "extraPersonCount";
+
+        <androidx.core.content.pm.ShortcutInfoCompat: java.lang.String EXTRA_PERSON_> = "extraPerson_";
+
+        <androidx.core.content.pm.ShortcutInfoCompat: java.lang.String EXTRA_LONG_LIVED> = "extraLongLived";
+
+        return;
+    }
+}

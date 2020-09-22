@@ -1,0 +1,105 @@
+abstract class androidx.core.app.JobIntentService$WorkEnqueuer extends java.lang.Object
+{
+    final android.content.ComponentName mComponentName;
+    boolean mHasJobId;
+    int mJobId;
+
+    void <init>(android.content.ComponentName)
+    {
+        androidx.core.app.JobIntentService$WorkEnqueuer this;
+        android.content.ComponentName $u1;
+
+        this := @this: androidx.core.app.JobIntentService$WorkEnqueuer;
+
+        $u1 := @parameter0: android.content.ComponentName;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.app.JobIntentService$WorkEnqueuer: android.content.ComponentName mComponentName> = $u1;
+
+        return;
+    }
+
+    abstract void enqueueWork(android.content.Intent);
+
+    void ensureJobId(int)
+    {
+        androidx.core.app.JobIntentService$WorkEnqueuer this;
+        int $u4, $u0#3;
+        java.lang.String $u-1;
+        boolean $u0;
+        java.lang.IllegalArgumentException $u0#4;
+        java.lang.StringBuilder $u1;
+
+        this := @this: androidx.core.app.JobIntentService$WorkEnqueuer;
+
+        $u4 := @parameter0: int;
+
+        $u0 = this.<androidx.core.app.JobIntentService$WorkEnqueuer: boolean mHasJobId>;
+
+        if $u0 != 0 goto label1;
+
+        this.<androidx.core.app.JobIntentService$WorkEnqueuer: boolean mHasJobId> = 1;
+
+        this.<androidx.core.app.JobIntentService$WorkEnqueuer: int mJobId> = $u4;
+
+        return;
+
+     label1:
+        $u0#3 = this.<androidx.core.app.JobIntentService$WorkEnqueuer: int mJobId>;
+
+        if $u0#3 != $u4 goto label2;
+
+        return;
+
+     label2:
+        $u0#4 = new java.lang.IllegalArgumentException;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Given job ID ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u4);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" is different than previous ");
+
+        $u4 = this.<androidx.core.app.JobIntentService$WorkEnqueuer: int mJobId>;
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u4);
+
+        $u-1 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0#4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1);
+
+        throw $u0#4;
+    }
+
+    public void serviceProcessingFinished()
+    {
+        androidx.core.app.JobIntentService$WorkEnqueuer this;
+
+        this := @this: androidx.core.app.JobIntentService$WorkEnqueuer;
+
+        return;
+    }
+
+    public void serviceProcessingStarted()
+    {
+        androidx.core.app.JobIntentService$WorkEnqueuer this;
+
+        this := @this: androidx.core.app.JobIntentService$WorkEnqueuer;
+
+        return;
+    }
+
+    public void serviceStartReceived()
+    {
+        androidx.core.app.JobIntentService$WorkEnqueuer this;
+
+        this := @this: androidx.core.app.JobIntentService$WorkEnqueuer;
+
+        return;
+    }
+}

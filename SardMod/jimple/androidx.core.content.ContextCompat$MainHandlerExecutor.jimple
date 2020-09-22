@@ -1,0 +1,62 @@
+class androidx.core.content.ContextCompat$MainHandlerExecutor extends java.lang.Object implements java.util.concurrent.Executor
+{
+    private final android.os.Handler mHandler;
+
+    void <init>(android.os.Handler)
+    {
+        androidx.core.content.ContextCompat$MainHandlerExecutor this;
+        android.os.Handler $u1;
+
+        this := @this: androidx.core.content.ContextCompat$MainHandlerExecutor;
+
+        $u1 := @parameter0: android.os.Handler;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.content.ContextCompat$MainHandlerExecutor: android.os.Handler mHandler> = $u1;
+
+        return;
+    }
+
+    public void execute(java.lang.Runnable)
+    {
+        androidx.core.content.ContextCompat$MainHandlerExecutor this;
+        java.lang.Runnable $u4;
+        android.os.Handler $u0;
+        boolean $u-1;
+        java.util.concurrent.RejectedExecutionException $u0#4;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1#8;
+
+        this := @this: androidx.core.content.ContextCompat$MainHandlerExecutor;
+
+        $u4 := @parameter0: java.lang.Runnable;
+
+        $u0 = this.<androidx.core.content.ContextCompat$MainHandlerExecutor: android.os.Handler mHandler>;
+
+        $u-1 = virtualinvoke $u0.<android.os.Handler: boolean post(java.lang.Runnable)>($u4);
+
+        if $u-1 == 0 goto label1;
+
+        return;
+
+     label1:
+        $u0#4 = new java.util.concurrent.RejectedExecutionException;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        $u0 = this.<androidx.core.content.ContextCompat$MainHandlerExecutor: android.os.Handler mHandler>;
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u0);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" is shutting down");
+
+        $u-1#8 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0#4.<java.util.concurrent.RejectedExecutionException: void <init>(java.lang.String)>($u-1#8);
+
+        throw $u0#4;
+    }
+}

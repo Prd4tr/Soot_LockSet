@@ -1,0 +1,1193 @@
+public class androidx.appcompat.view.menu.ActionMenuItem extends java.lang.Object implements androidx.core.internal.view.SupportMenuItem
+{
+    private static final int CHECKABLE;
+    private static final int CHECKED;
+    private static final int ENABLED;
+    private static final int EXCLUSIVE;
+    private static final int HIDDEN;
+    private android.view.MenuItem$OnMenuItemClickListener mClickListener;
+    private java.lang.CharSequence mContentDescription;
+    private android.content.Context mContext;
+    private int mFlags;
+    private final int mGroup;
+    private boolean mHasIconTint;
+    private boolean mHasIconTintMode;
+    private android.graphics.drawable.Drawable mIconDrawable;
+    private android.content.res.ColorStateList mIconTintList;
+    private android.graphics.PorterDuff$Mode mIconTintMode;
+    private final int mId;
+    private android.content.Intent mIntent;
+    private final int mOrdering;
+    private char mShortcutAlphabeticChar;
+    private int mShortcutAlphabeticModifiers;
+    private char mShortcutNumericChar;
+    private int mShortcutNumericModifiers;
+    private java.lang.CharSequence mTitle;
+    private java.lang.CharSequence mTitleCondensed;
+    private java.lang.CharSequence mTooltipText;
+
+    public void <init>(android.content.Context, int, int, int, int, java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.content.Context $u2;
+        int $u3, $u4, $u5, $u6;
+        java.lang.CharSequence $u7;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        $u6 := @parameter4: int;
+
+        $u7 := @parameter5: java.lang.CharSequence;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mShortcutNumericModifiers> = 4096;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mShortcutAlphabeticModifiers> = 4096;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: android.content.res.ColorStateList mIconTintList> = null;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: android.graphics.PorterDuff$Mode mIconTintMode> = null;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: boolean mHasIconTint> = 0;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: boolean mHasIconTintMode> = 0;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags> = 16;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: android.content.Context mContext> = $u2;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mId> = $u4;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mGroup> = $u3;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mOrdering> = $u6;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: java.lang.CharSequence mTitle> = $u7;
+
+        return;
+    }
+
+    private void applyIconTint()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.graphics.drawable.Drawable $u0;
+        boolean $u0#2;
+        android.content.res.ColorStateList $u1;
+        android.graphics.PorterDuff$Mode $u1#13;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.graphics.drawable.Drawable mIconDrawable>;
+
+        if $u0 == null goto label3;
+
+        $u0#2 = this.<androidx.appcompat.view.menu.ActionMenuItem: boolean mHasIconTint>;
+
+        if $u0#2 != 0 goto label1;
+
+        $u0#2 = this.<androidx.appcompat.view.menu.ActionMenuItem: boolean mHasIconTintMode>;
+
+        if $u0#2 == 0 goto label3;
+
+     label1:
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.graphics.drawable.Drawable mIconDrawable>;
+
+        $u0 = staticinvoke <androidx.core.graphics.drawable.DrawableCompat: android.graphics.drawable.Drawable wrap(android.graphics.drawable.Drawable)>($u0);
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: android.graphics.drawable.Drawable mIconDrawable> = $u0;
+
+        $u0 = virtualinvoke $u0.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable mutate()>();
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: android.graphics.drawable.Drawable mIconDrawable> = $u0;
+
+        $u0#2 = this.<androidx.appcompat.view.menu.ActionMenuItem: boolean mHasIconTint>;
+
+        if $u0#2 == 0 goto label2;
+
+        $u1 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.content.res.ColorStateList mIconTintList>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintList(android.graphics.drawable.Drawable,android.content.res.ColorStateList)>($u0, $u1);
+
+     label2:
+        $u0#2 = this.<androidx.appcompat.view.menu.ActionMenuItem: boolean mHasIconTintMode>;
+
+        if $u0#2 == 0 goto label3;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.graphics.drawable.Drawable mIconDrawable>;
+
+        $u1#13 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.graphics.PorterDuff$Mode mIconTintMode>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintMode(android.graphics.drawable.Drawable,android.graphics.PorterDuff$Mode)>($u0, $u1#13);
+
+     label3:
+        return;
+    }
+
+    public boolean collapseActionView()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        return 0;
+    }
+
+    public boolean expandActionView()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        return 0;
+    }
+
+    public android.view.ActionProvider getActionProvider()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public android.view.View getActionView()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        return null;
+    }
+
+    public int getAlphabeticModifiers()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mShortcutAlphabeticModifiers>;
+
+        return ret0;
+    }
+
+    public char getAlphabeticShortcut()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        char ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: char mShortcutAlphabeticChar>;
+
+        return ret0;
+    }
+
+    public java.lang.CharSequence getContentDescription()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        java.lang.CharSequence ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: java.lang.CharSequence mContentDescription>;
+
+        return ret0;
+    }
+
+    public int getGroupId()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mGroup>;
+
+        return ret0;
+    }
+
+    public android.graphics.drawable.Drawable getIcon()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.graphics.drawable.Drawable ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.graphics.drawable.Drawable mIconDrawable>;
+
+        return ret0;
+    }
+
+    public android.content.res.ColorStateList getIconTintList()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.content.res.ColorStateList ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.content.res.ColorStateList mIconTintList>;
+
+        return ret0;
+    }
+
+    public android.graphics.PorterDuff$Mode getIconTintMode()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.graphics.PorterDuff$Mode ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.graphics.PorterDuff$Mode mIconTintMode>;
+
+        return ret0;
+    }
+
+    public android.content.Intent getIntent()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.content.Intent ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.content.Intent mIntent>;
+
+        return ret0;
+    }
+
+    public int getItemId()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mId>;
+
+        return ret0;
+    }
+
+    public android.view.ContextMenu$ContextMenuInfo getMenuInfo()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        return null;
+    }
+
+    public int getNumericModifiers()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mShortcutNumericModifiers>;
+
+        return ret0;
+    }
+
+    public char getNumericShortcut()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        char ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: char mShortcutNumericChar>;
+
+        return ret0;
+    }
+
+    public int getOrder()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mOrdering>;
+
+        return ret0;
+    }
+
+    public android.view.SubMenu getSubMenu()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        return null;
+    }
+
+    public androidx.core.view.ActionProvider getSupportActionProvider()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        return null;
+    }
+
+    public java.lang.CharSequence getTitle()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        java.lang.CharSequence ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: java.lang.CharSequence mTitle>;
+
+        return ret0;
+    }
+
+    public java.lang.CharSequence getTitleCondensed()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        java.lang.CharSequence $u0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: java.lang.CharSequence mTitleCondensed>;
+
+        if $u0 == null goto label1;
+
+        return $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: java.lang.CharSequence mTitle>;
+
+        return $u0;
+    }
+
+    public java.lang.CharSequence getTooltipText()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        java.lang.CharSequence ret0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        ret0 = this.<androidx.appcompat.view.menu.ActionMenuItem: java.lang.CharSequence mTooltipText>;
+
+        return ret0;
+    }
+
+    public boolean hasSubMenu()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        return 0;
+    }
+
+    public boolean invoke()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.content.Context $u2;
+        boolean $u-1;
+        android.view.MenuItem$OnMenuItemClickListener $u0;
+        android.content.Intent $u0#3;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.view.MenuItem$OnMenuItemClickListener mClickListener>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = interfaceinvoke $u0.<android.view.MenuItem$OnMenuItemClickListener: boolean onMenuItemClick(android.view.MenuItem)>(this);
+
+        if $u-1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $u0#3 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.content.Intent mIntent>;
+
+        if $u0#3 == null goto label2;
+
+        $u2 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.content.Context mContext>;
+
+        virtualinvoke $u2.<android.content.Context: void startActivity(android.content.Intent)>($u0#3);
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public boolean isActionViewExpanded()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        return 0;
+    }
+
+    public boolean isCheckable()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int $u0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags>;
+
+        $u0 = $u0 & 1;
+
+        if $u0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isChecked()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int $u0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags>;
+
+        $u0 = $u0 & 2;
+
+        if $u0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isEnabled()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int $u0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags>;
+
+        $u0 = $u0 & 16;
+
+        if $u0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isVisible()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int $u0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags>;
+
+        $u0 = $u0 & 8;
+
+        if $u0 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean requiresActionButton()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        return 1;
+    }
+
+    public boolean requiresOverflow()
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        return 0;
+    }
+
+    public android.view.MenuItem setActionProvider(android.view.ActionProvider)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.view.ActionProvider $u2;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: android.view.ActionProvider;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public volatile android.view.MenuItem setActionView(int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        androidx.core.internal.view.SupportMenuItem $u-1;
+        int $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.ActionMenuItem: androidx.core.internal.view.SupportMenuItem setActionView(int)>($u1);
+
+        return $u-1;
+    }
+
+    public volatile android.view.MenuItem setActionView(android.view.View)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        androidx.core.internal.view.SupportMenuItem $u-1;
+        android.view.View $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: android.view.View;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.ActionMenuItem: androidx.core.internal.view.SupportMenuItem setActionView(android.view.View)>($u1);
+
+        return $u-1;
+    }
+
+    public androidx.core.internal.view.SupportMenuItem setActionView(int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int $u2;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: int;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public androidx.core.internal.view.SupportMenuItem setActionView(android.view.View)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.view.View $u2;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public android.view.MenuItem setAlphabeticShortcut(char)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        char $u2;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: char;
+
+        $u2 = staticinvoke <java.lang.Character: char toLowerCase(char)>($u2);
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: char mShortcutAlphabeticChar> = $u2;
+
+        return this;
+    }
+
+    public android.view.MenuItem setAlphabeticShortcut(char, int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        char $u2;
+        int $u3;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: char;
+
+        $u3 := @parameter1: int;
+
+        $u2 = staticinvoke <java.lang.Character: char toLowerCase(char)>($u2);
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: char mShortcutAlphabeticChar> = $u2;
+
+        $u3 = staticinvoke <android.view.KeyEvent: int normalizeMetaState(int)>($u3);
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mShortcutAlphabeticModifiers> = $u3;
+
+        return this;
+    }
+
+    public android.view.MenuItem setCheckable(boolean)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        boolean $u2;
+        int $u0, tmp;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags>;
+
+        $u0 = $u0 & -2;
+
+        tmp = (int) $u2;
+
+        $u0 = $u0 | tmp;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags> = $u0;
+
+        return this;
+    }
+
+    public android.view.MenuItem setChecked(boolean)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        boolean $u3;
+        int $u0;
+        byte $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags>;
+
+        $u0 = $u0 & -3;
+
+        if $u3 == 0 goto label1;
+
+        $u1 = 2;
+
+        goto label2;
+
+     label1:
+        $u1 = 0;
+
+     label2:
+        $u0 = $u0 | $u1;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags> = $u0;
+
+        return this;
+    }
+
+    public volatile android.view.MenuItem setContentDescription(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        androidx.core.internal.view.SupportMenuItem $u-1;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.ActionMenuItem: androidx.core.internal.view.SupportMenuItem setContentDescription(java.lang.CharSequence)>($u1);
+
+        return $u-1;
+    }
+
+    public androidx.core.internal.view.SupportMenuItem setContentDescription(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: java.lang.CharSequence mContentDescription> = $u1;
+
+        return this;
+    }
+
+    public android.view.MenuItem setEnabled(boolean)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        boolean $u3;
+        int $u0;
+        byte $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags>;
+
+        $u0 = $u0 & -17;
+
+        if $u3 == 0 goto label1;
+
+        $u1 = 16;
+
+        goto label2;
+
+     label1:
+        $u1 = 0;
+
+     label2:
+        $u0 = $u0 | $u1;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags> = $u0;
+
+        return this;
+    }
+
+    public androidx.appcompat.view.menu.ActionMenuItem setExclusiveCheckable(boolean)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        boolean $u3;
+        int $u0;
+        byte $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags>;
+
+        $u0 = $u0 & -5;
+
+        if $u3 == 0 goto label1;
+
+        $u1 = 4;
+
+        goto label2;
+
+     label1:
+        $u1 = 0;
+
+     label2:
+        $u0 = $u0 | $u1;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags> = $u0;
+
+        return this;
+    }
+
+    public android.view.MenuItem setIcon(int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int $u2;
+        android.graphics.drawable.Drawable $u-1;
+        android.content.Context $u0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.content.Context mContext>;
+
+        $u-1 = staticinvoke <androidx.core.content.ContextCompat: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u0, $u2);
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: android.graphics.drawable.Drawable mIconDrawable> = $u-1;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ActionMenuItem: void applyIconTint()>();
+
+        return this;
+    }
+
+    public android.view.MenuItem setIcon(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.graphics.drawable.Drawable $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: android.graphics.drawable.Drawable;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: android.graphics.drawable.Drawable mIconDrawable> = $u1;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ActionMenuItem: void applyIconTint()>();
+
+        return this;
+    }
+
+    public android.view.MenuItem setIconTintList(android.content.res.ColorStateList)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.content.res.ColorStateList $u2;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: android.content.res.ColorStateList;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: android.content.res.ColorStateList mIconTintList> = $u2;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: boolean mHasIconTint> = 1;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ActionMenuItem: void applyIconTint()>();
+
+        return this;
+    }
+
+    public android.view.MenuItem setIconTintMode(android.graphics.PorterDuff$Mode)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.graphics.PorterDuff$Mode $u2;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: android.graphics.PorterDuff$Mode;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: android.graphics.PorterDuff$Mode mIconTintMode> = $u2;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: boolean mHasIconTintMode> = 1;
+
+        specialinvoke this.<androidx.appcompat.view.menu.ActionMenuItem: void applyIconTint()>();
+
+        return this;
+    }
+
+    public android.view.MenuItem setIntent(android.content.Intent)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.content.Intent $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: android.content.Intent;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: android.content.Intent mIntent> = $u1;
+
+        return this;
+    }
+
+    public android.view.MenuItem setNumericShortcut(char)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        char $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: char;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: char mShortcutNumericChar> = $u1;
+
+        return this;
+    }
+
+    public android.view.MenuItem setNumericShortcut(char, int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        char $u2;
+        int $u3;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: char;
+
+        $u3 := @parameter1: int;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: char mShortcutNumericChar> = $u2;
+
+        $u3 = staticinvoke <android.view.KeyEvent: int normalizeMetaState(int)>($u3);
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mShortcutNumericModifiers> = $u3;
+
+        return this;
+    }
+
+    public android.view.MenuItem setOnActionExpandListener(android.view.MenuItem$OnActionExpandListener)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.view.MenuItem$OnActionExpandListener $u2;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: android.view.MenuItem$OnActionExpandListener;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public android.view.MenuItem setOnMenuItemClickListener(android.view.MenuItem$OnMenuItemClickListener)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        android.view.MenuItem$OnMenuItemClickListener $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: android.view.MenuItem$OnMenuItemClickListener;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: android.view.MenuItem$OnMenuItemClickListener mClickListener> = $u1;
+
+        return this;
+    }
+
+    public android.view.MenuItem setShortcut(char, char)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        char $u2, $u3;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: char;
+
+        $u3 := @parameter1: char;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: char mShortcutNumericChar> = $u2;
+
+        $u2 = staticinvoke <java.lang.Character: char toLowerCase(char)>($u3);
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: char mShortcutAlphabeticChar> = $u2;
+
+        return this;
+    }
+
+    public android.view.MenuItem setShortcut(char, char, int, int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        char $u2, $u3;
+        int $u4, $u5;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: char;
+
+        $u3 := @parameter1: char;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: char mShortcutNumericChar> = $u2;
+
+        $u4 = staticinvoke <android.view.KeyEvent: int normalizeMetaState(int)>($u4);
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mShortcutNumericModifiers> = $u4;
+
+        $u2 = staticinvoke <java.lang.Character: char toLowerCase(char)>($u3);
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: char mShortcutAlphabeticChar> = $u2;
+
+        $u4 = staticinvoke <android.view.KeyEvent: int normalizeMetaState(int)>($u5);
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mShortcutAlphabeticModifiers> = $u4;
+
+        return this;
+    }
+
+    public void setShowAsAction(int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: int;
+
+        return;
+    }
+
+    public volatile android.view.MenuItem setShowAsActionFlags(int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        androidx.core.internal.view.SupportMenuItem $u-1;
+        int $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.ActionMenuItem: androidx.core.internal.view.SupportMenuItem setShowAsActionFlags(int)>($u1);
+
+        return $u-1;
+    }
+
+    public androidx.core.internal.view.SupportMenuItem setShowAsActionFlags(int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: int;
+
+        virtualinvoke this.<androidx.appcompat.view.menu.ActionMenuItem: void setShowAsAction(int)>($u1);
+
+        return this;
+    }
+
+    public androidx.core.internal.view.SupportMenuItem setSupportActionProvider(androidx.core.view.ActionProvider)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        androidx.core.view.ActionProvider $u2;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: androidx.core.view.ActionProvider;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public android.view.MenuItem setTitle(int)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        int $u2;
+        android.content.Context $u0;
+        android.content.res.Resources $u-1;
+        java.lang.String $u-1#4;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: android.content.Context mContext>;
+
+        $u-1 = virtualinvoke $u0.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#4 = virtualinvoke $u-1.<android.content.res.Resources: java.lang.String getString(int)>($u2);
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: java.lang.CharSequence mTitle> = $u-1#4;
+
+        return this;
+    }
+
+    public android.view.MenuItem setTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: java.lang.CharSequence mTitle> = $u1;
+
+        return this;
+    }
+
+    public android.view.MenuItem setTitleCondensed(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: java.lang.CharSequence mTitleCondensed> = $u1;
+
+        return this;
+    }
+
+    public volatile android.view.MenuItem setTooltipText(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        androidx.core.internal.view.SupportMenuItem $u-1;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.view.menu.ActionMenuItem: androidx.core.internal.view.SupportMenuItem setTooltipText(java.lang.CharSequence)>($u1);
+
+        return $u-1;
+    }
+
+    public androidx.core.internal.view.SupportMenuItem setTooltipText(java.lang.CharSequence)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: java.lang.CharSequence mTooltipText> = $u1;
+
+        return this;
+    }
+
+    public android.view.MenuItem setVisible(boolean)
+    {
+        androidx.appcompat.view.menu.ActionMenuItem this;
+        boolean $u3;
+        int $u0;
+        byte $u1;
+
+        this := @this: androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags>;
+
+        $u1 = 8;
+
+        $u0 = $u0 & 8;
+
+        if $u3 == 0 goto label1;
+
+        $u1 = 0;
+
+     label1:
+        $u0 = $u0 | $u1;
+
+        this.<androidx.appcompat.view.menu.ActionMenuItem: int mFlags> = $u0;
+
+        return this;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.view.menu.ActionMenuItem: int HIDDEN> = 8;
+
+        <androidx.appcompat.view.menu.ActionMenuItem: int EXCLUSIVE> = 4;
+
+        <androidx.appcompat.view.menu.ActionMenuItem: int ENABLED> = 16;
+
+        <androidx.appcompat.view.menu.ActionMenuItem: int CHECKED> = 2;
+
+        <androidx.appcompat.view.menu.ActionMenuItem: int CHECKABLE> = 1;
+
+        return;
+    }
+}

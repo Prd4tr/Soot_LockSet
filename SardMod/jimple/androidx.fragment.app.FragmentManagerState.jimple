@@ -1,0 +1,130 @@
+final class androidx.fragment.app.FragmentManagerState extends java.lang.Object implements android.os.Parcelable
+{
+    public static final android.os.Parcelable$Creator CREATOR;
+    java.util.ArrayList mActive;
+    java.util.ArrayList mAdded;
+    androidx.fragment.app.BackStackState[] mBackStack;
+    int mNextFragmentIndex;
+    java.lang.String mPrimaryNavActiveWho;
+
+    static void <clinit>()
+    {
+        androidx.fragment.app.FragmentManagerState$1 $u0;
+
+        $u0 = new androidx.fragment.app.FragmentManagerState$1;
+
+        specialinvoke $u0.<androidx.fragment.app.FragmentManagerState$1: void <init>()>();
+
+        <androidx.fragment.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR> = $u0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.fragment.app.FragmentManagerState this;
+
+        this := @this: androidx.fragment.app.FragmentManagerState;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.fragment.app.FragmentManagerState: java.lang.String mPrimaryNavActiveWho> = null;
+
+        return;
+    }
+
+    public void <init>(android.os.Parcel)
+    {
+        androidx.fragment.app.FragmentManagerState this;
+        android.os.Parcel $u2;
+        android.os.Parcelable$Creator $u0;
+        java.util.ArrayList $u-1;
+        java.lang.Object[] $u-1#8;
+        androidx.fragment.app.BackStackState[] $u0#10;
+        java.lang.String $u-1#11;
+        int $u-1#13;
+
+        this := @this: androidx.fragment.app.FragmentManagerState;
+
+        $u2 := @parameter0: android.os.Parcel;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.fragment.app.FragmentManagerState: java.lang.String mPrimaryNavActiveWho> = null;
+
+        $u0 = <androidx.fragment.app.FragmentState: android.os.Parcelable$Creator CREATOR>;
+
+        $u-1 = virtualinvoke $u2.<android.os.Parcel: java.util.ArrayList createTypedArrayList(android.os.Parcelable$Creator)>($u0);
+
+        this.<androidx.fragment.app.FragmentManagerState: java.util.ArrayList mActive> = $u-1;
+
+        $u-1 = virtualinvoke $u2.<android.os.Parcel: java.util.ArrayList createStringArrayList()>();
+
+        this.<androidx.fragment.app.FragmentManagerState: java.util.ArrayList mAdded> = $u-1;
+
+        $u0 = <androidx.fragment.app.BackStackState: android.os.Parcelable$Creator CREATOR>;
+
+        $u-1#8 = virtualinvoke $u2.<android.os.Parcel: java.lang.Object[] createTypedArray(android.os.Parcelable$Creator)>($u0);
+
+        $u0#10 = (androidx.fragment.app.BackStackState[]) $u-1#8;
+
+        this.<androidx.fragment.app.FragmentManagerState: androidx.fragment.app.BackStackState[] mBackStack> = $u0#10;
+
+        $u-1#11 = virtualinvoke $u2.<android.os.Parcel: java.lang.String readString()>();
+
+        this.<androidx.fragment.app.FragmentManagerState: java.lang.String mPrimaryNavActiveWho> = $u-1#11;
+
+        $u-1#13 = virtualinvoke $u2.<android.os.Parcel: int readInt()>();
+
+        this.<androidx.fragment.app.FragmentManagerState: int mNextFragmentIndex> = $u-1#13;
+
+        return;
+    }
+
+    public int describeContents()
+    {
+        androidx.fragment.app.FragmentManagerState this;
+
+        this := @this: androidx.fragment.app.FragmentManagerState;
+
+        return 0;
+    }
+
+    public void writeToParcel(android.os.Parcel, int)
+    {
+        androidx.fragment.app.FragmentManagerState this;
+        android.os.Parcel $u2;
+        int $u3;
+        java.util.ArrayList $u0;
+        androidx.fragment.app.BackStackState[] $u0#3;
+        java.lang.String $u0#4;
+
+        this := @this: androidx.fragment.app.FragmentManagerState;
+
+        $u2 := @parameter0: android.os.Parcel;
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.fragment.app.FragmentManagerState: java.util.ArrayList mActive>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeTypedList(java.util.List)>($u0);
+
+        $u0 = this.<androidx.fragment.app.FragmentManagerState: java.util.ArrayList mAdded>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeStringList(java.util.List)>($u0);
+
+        $u0#3 = this.<androidx.fragment.app.FragmentManagerState: androidx.fragment.app.BackStackState[] mBackStack>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeTypedArray(android.os.Parcelable[],int)>($u0#3, $u3);
+
+        $u0#4 = this.<androidx.fragment.app.FragmentManagerState: java.lang.String mPrimaryNavActiveWho>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeString(java.lang.String)>($u0#4);
+
+        $u3 = this.<androidx.fragment.app.FragmentManagerState: int mNextFragmentIndex>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeInt(int)>($u3);
+
+        return;
+    }
+}

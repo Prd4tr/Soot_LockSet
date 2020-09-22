@@ -1,0 +1,47 @@
+class androidx.arch.core.internal.SafeIterableMap$DescendingIterator extends androidx.arch.core.internal.SafeIterableMap$ListIterator
+{
+
+    void <init>(androidx.arch.core.internal.SafeIterableMap$Entry, androidx.arch.core.internal.SafeIterableMap$Entry)
+    {
+        androidx.arch.core.internal.SafeIterableMap$DescendingIterator this;
+        androidx.arch.core.internal.SafeIterableMap$Entry start, expectedEnd;
+
+        this := @this: androidx.arch.core.internal.SafeIterableMap$DescendingIterator;
+
+        start := @parameter0: androidx.arch.core.internal.SafeIterableMap$Entry;
+
+        expectedEnd := @parameter1: androidx.arch.core.internal.SafeIterableMap$Entry;
+
+        specialinvoke this.<androidx.arch.core.internal.SafeIterableMap$ListIterator: void <init>(androidx.arch.core.internal.SafeIterableMap$Entry,androidx.arch.core.internal.SafeIterableMap$Entry)>(start, expectedEnd);
+
+        return;
+    }
+
+    androidx.arch.core.internal.SafeIterableMap$Entry backward(androidx.arch.core.internal.SafeIterableMap$Entry)
+    {
+        androidx.arch.core.internal.SafeIterableMap$DescendingIterator this;
+        androidx.arch.core.internal.SafeIterableMap$Entry entry;
+
+        this := @this: androidx.arch.core.internal.SafeIterableMap$DescendingIterator;
+
+        entry := @parameter0: androidx.arch.core.internal.SafeIterableMap$Entry;
+
+        entry = entry.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mNext>;
+
+        return entry;
+    }
+
+    androidx.arch.core.internal.SafeIterableMap$Entry forward(androidx.arch.core.internal.SafeIterableMap$Entry)
+    {
+        androidx.arch.core.internal.SafeIterableMap$DescendingIterator this;
+        androidx.arch.core.internal.SafeIterableMap$Entry entry;
+
+        this := @this: androidx.arch.core.internal.SafeIterableMap$DescendingIterator;
+
+        entry := @parameter0: androidx.arch.core.internal.SafeIterableMap$Entry;
+
+        entry = entry.<androidx.arch.core.internal.SafeIterableMap$Entry: androidx.arch.core.internal.SafeIterableMap$Entry mPrevious>;
+
+        return entry;
+    }
+}

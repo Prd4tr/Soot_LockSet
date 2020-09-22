@@ -1,0 +1,41 @@
+public final class androidx.core.content.res.ConfigurationHelper extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.content.res.ConfigurationHelper this;
+
+        this := @this: androidx.core.content.res.ConfigurationHelper;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static int getDensityDpi(android.content.res.Resources)
+    {
+        android.content.res.Resources $u2;
+        int $u0;
+        android.content.res.Configuration $u-1;
+        android.util.DisplayMetrics $u-1#5;
+
+        $u2 := @parameter0: android.content.res.Resources;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 17 goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        $u0 = $u-1.<android.content.res.Configuration: int densityDpi>;
+
+        return $u0;
+
+     label1:
+        $u-1#5 = virtualinvoke $u2.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $u0 = $u-1#5.<android.util.DisplayMetrics: int densityDpi>;
+
+        return $u0;
+    }
+}

@@ -1,0 +1,150 @@
+class androidx.fragment.app.FragmentTransitionCompat21$3 extends java.lang.Object implements android.transition.Transition$TransitionListener
+{
+    final androidx.fragment.app.FragmentTransitionCompat21 this$0;
+    final java.lang.Object val$enterTransition;
+    final java.util.ArrayList val$enteringViews;
+    final java.lang.Object val$exitTransition;
+    final java.util.ArrayList val$exitingViews;
+    final java.lang.Object val$sharedElementTransition;
+    final java.util.ArrayList val$sharedElementsIn;
+
+    void <init>(androidx.fragment.app.FragmentTransitionCompat21, java.lang.Object, java.util.ArrayList, java.lang.Object, java.util.ArrayList, java.lang.Object, java.util.ArrayList)
+    {
+        androidx.fragment.app.FragmentTransitionCompat21$3 this;
+        androidx.fragment.app.FragmentTransitionCompat21 $u1;
+        java.lang.Object $u2, $u4, $u6;
+        java.util.ArrayList $u3, $u5, $u7;
+
+        this := @this: androidx.fragment.app.FragmentTransitionCompat21$3;
+
+        $u1 := @parameter0: androidx.fragment.app.FragmentTransitionCompat21;
+
+        $u2 := @parameter1: java.lang.Object;
+
+        $u3 := @parameter2: java.util.ArrayList;
+
+        $u4 := @parameter3: java.lang.Object;
+
+        $u5 := @parameter4: java.util.ArrayList;
+
+        $u6 := @parameter5: java.lang.Object;
+
+        $u7 := @parameter6: java.util.ArrayList;
+
+        this.<androidx.fragment.app.FragmentTransitionCompat21$3: androidx.fragment.app.FragmentTransitionCompat21 this$0> = $u1;
+
+        this.<androidx.fragment.app.FragmentTransitionCompat21$3: java.lang.Object val$enterTransition> = $u2;
+
+        this.<androidx.fragment.app.FragmentTransitionCompat21$3: java.util.ArrayList val$enteringViews> = $u3;
+
+        this.<androidx.fragment.app.FragmentTransitionCompat21$3: java.lang.Object val$exitTransition> = $u4;
+
+        this.<androidx.fragment.app.FragmentTransitionCompat21$3: java.util.ArrayList val$exitingViews> = $u5;
+
+        this.<androidx.fragment.app.FragmentTransitionCompat21$3: java.lang.Object val$sharedElementTransition> = $u6;
+
+        this.<androidx.fragment.app.FragmentTransitionCompat21$3: java.util.ArrayList val$sharedElementsIn> = $u7;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onTransitionCancel(android.transition.Transition)
+    {
+        androidx.fragment.app.FragmentTransitionCompat21$3 this;
+        android.transition.Transition $u1;
+
+        this := @this: androidx.fragment.app.FragmentTransitionCompat21$3;
+
+        $u1 := @parameter0: android.transition.Transition;
+
+        return;
+    }
+
+    public void onTransitionEnd(android.transition.Transition)
+    {
+        androidx.fragment.app.FragmentTransitionCompat21$3 this;
+        android.transition.Transition $u1;
+
+        this := @this: androidx.fragment.app.FragmentTransitionCompat21$3;
+
+        $u1 := @parameter0: android.transition.Transition;
+
+        virtualinvoke $u1.<android.transition.Transition: android.transition.Transition removeListener(android.transition.Transition$TransitionListener)>(this);
+
+        return;
+    }
+
+    public void onTransitionPause(android.transition.Transition)
+    {
+        androidx.fragment.app.FragmentTransitionCompat21$3 this;
+        android.transition.Transition $u1;
+
+        this := @this: androidx.fragment.app.FragmentTransitionCompat21$3;
+
+        $u1 := @parameter0: android.transition.Transition;
+
+        return;
+    }
+
+    public void onTransitionResume(android.transition.Transition)
+    {
+        androidx.fragment.app.FragmentTransitionCompat21$3 this;
+        android.transition.Transition $u1;
+
+        this := @this: androidx.fragment.app.FragmentTransitionCompat21$3;
+
+        $u1 := @parameter0: android.transition.Transition;
+
+        return;
+    }
+
+    public void onTransitionStart(android.transition.Transition)
+    {
+        androidx.fragment.app.FragmentTransitionCompat21$3 this;
+        android.transition.Transition $u5;
+        java.lang.Object $u0;
+        androidx.fragment.app.FragmentTransitionCompat21 $u2;
+        java.util.ArrayList $u3;
+
+        this := @this: androidx.fragment.app.FragmentTransitionCompat21$3;
+
+        $u5 := @parameter0: android.transition.Transition;
+
+        $u0 = this.<androidx.fragment.app.FragmentTransitionCompat21$3: java.lang.Object val$enterTransition>;
+
+        if $u0 == null goto label1;
+
+        $u2 = this.<androidx.fragment.app.FragmentTransitionCompat21$3: androidx.fragment.app.FragmentTransitionCompat21 this$0>;
+
+        $u3 = this.<androidx.fragment.app.FragmentTransitionCompat21$3: java.util.ArrayList val$enteringViews>;
+
+        virtualinvoke $u2.<androidx.fragment.app.FragmentTransitionCompat21: void replaceTargets(java.lang.Object,java.util.ArrayList,java.util.ArrayList)>($u0, $u3, null);
+
+     label1:
+        $u0 = this.<androidx.fragment.app.FragmentTransitionCompat21$3: java.lang.Object val$exitTransition>;
+
+        if $u0 == null goto label2;
+
+        $u2 = this.<androidx.fragment.app.FragmentTransitionCompat21$3: androidx.fragment.app.FragmentTransitionCompat21 this$0>;
+
+        $u3 = this.<androidx.fragment.app.FragmentTransitionCompat21$3: java.util.ArrayList val$exitingViews>;
+
+        virtualinvoke $u2.<androidx.fragment.app.FragmentTransitionCompat21: void replaceTargets(java.lang.Object,java.util.ArrayList,java.util.ArrayList)>($u0, $u3, null);
+
+     label2:
+        $u0 = this.<androidx.fragment.app.FragmentTransitionCompat21$3: java.lang.Object val$sharedElementTransition>;
+
+        if $u0 == null goto label3;
+
+        $u2 = this.<androidx.fragment.app.FragmentTransitionCompat21$3: androidx.fragment.app.FragmentTransitionCompat21 this$0>;
+
+        $u3 = this.<androidx.fragment.app.FragmentTransitionCompat21$3: java.util.ArrayList val$sharedElementsIn>;
+
+        virtualinvoke $u2.<androidx.fragment.app.FragmentTransitionCompat21: void replaceTargets(java.lang.Object,java.util.ArrayList,java.util.ArrayList)>($u0, $u3, null);
+
+     label3:
+        return;
+    }
+}

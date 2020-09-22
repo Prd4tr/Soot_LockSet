@@ -1,0 +1,34 @@
+class androidx.fragment.app.Fragment$3 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.fragment.app.Fragment this$0;
+
+    void <init>(androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.Fragment$3 this;
+        androidx.fragment.app.Fragment $u1;
+
+        this := @this: androidx.fragment.app.Fragment$3;
+
+        $u1 := @parameter0: androidx.fragment.app.Fragment;
+
+        this.<androidx.fragment.app.Fragment$3: androidx.fragment.app.Fragment this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.fragment.app.Fragment$3 this;
+        androidx.fragment.app.Fragment $u0;
+
+        this := @this: androidx.fragment.app.Fragment$3;
+
+        $u0 = this.<androidx.fragment.app.Fragment$3: androidx.fragment.app.Fragment this$0>;
+
+        virtualinvoke $u0.<androidx.fragment.app.Fragment: void callStartTransitionListener()>();
+
+        return;
+    }
+}

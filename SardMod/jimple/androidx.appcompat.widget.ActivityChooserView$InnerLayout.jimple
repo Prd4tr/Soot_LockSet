@@ -1,0 +1,47 @@
+public class androidx.appcompat.widget.ActivityChooserView$InnerLayout extends android.widget.LinearLayout
+{
+    private static final int[] TINT_ATTRS;
+
+    static void <clinit>()
+    {
+        int[] $u0;
+
+        $u0 = newarray (int)[1];
+
+        $u0[0] = 16842964;
+
+        <androidx.appcompat.widget.ActivityChooserView$InnerLayout: int[] TINT_ATTRS> = $u0;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.ActivityChooserView$InnerLayout this;
+        android.content.Context $u3;
+        android.util.AttributeSet $u4;
+        int[] a;
+        androidx.appcompat.widget.TintTypedArray $u-1;
+        android.graphics.drawable.Drawable $u-1#5;
+
+        this := @this: androidx.appcompat.widget.ActivityChooserView$InnerLayout;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u4 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<android.widget.LinearLayout: void <init>(android.content.Context,android.util.AttributeSet)>($u3, $u4);
+
+        a = <androidx.appcompat.widget.ActivityChooserView$InnerLayout: int[] TINT_ATTRS>;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[])>($u3, $u4, a);
+
+        $u-1#5 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>(0);
+
+        virtualinvoke this.<androidx.appcompat.widget.ActivityChooserView$InnerLayout: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($u-1#5);
+
+        virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        return;
+    }
+}

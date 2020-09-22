@@ -1,0 +1,78 @@
+class androidx.appcompat.widget.ToolbarWidgetWrapper$1 extends java.lang.Object implements android.view.View$OnClickListener
+{
+    final androidx.appcompat.view.menu.ActionMenuItem mNavItem;
+    final androidx.appcompat.widget.ToolbarWidgetWrapper this$0;
+
+    void <init>(androidx.appcompat.widget.ToolbarWidgetWrapper)
+    {
+        androidx.appcompat.widget.ToolbarWidgetWrapper$1 this;
+        androidx.appcompat.widget.ToolbarWidgetWrapper $u9;
+        java.lang.CharSequence $u6;
+        androidx.appcompat.view.menu.ActionMenuItem $u7;
+        android.content.Context $u-1;
+        androidx.appcompat.widget.Toolbar $u0;
+
+        this := @this: androidx.appcompat.widget.ToolbarWidgetWrapper$1;
+
+        $u9 := @parameter0: androidx.appcompat.widget.ToolbarWidgetWrapper;
+
+        this.<androidx.appcompat.widget.ToolbarWidgetWrapper$1: androidx.appcompat.widget.ToolbarWidgetWrapper this$0> = $u9;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u7 = new androidx.appcompat.view.menu.ActionMenuItem;
+
+        $u9 = this.<androidx.appcompat.widget.ToolbarWidgetWrapper$1: androidx.appcompat.widget.ToolbarWidgetWrapper this$0>;
+
+        $u0 = $u9.<androidx.appcompat.widget.ToolbarWidgetWrapper: androidx.appcompat.widget.Toolbar mToolbar>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.Toolbar: android.content.Context getContext()>();
+
+        $u9 = this.<androidx.appcompat.widget.ToolbarWidgetWrapper$1: androidx.appcompat.widget.ToolbarWidgetWrapper this$0>;
+
+        $u6 = $u9.<androidx.appcompat.widget.ToolbarWidgetWrapper: java.lang.CharSequence mTitle>;
+
+        specialinvoke $u7.<androidx.appcompat.view.menu.ActionMenuItem: void <init>(android.content.Context,int,int,int,int,java.lang.CharSequence)>($u-1, 0, 16908332, 0, 0, $u6);
+
+        this.<androidx.appcompat.widget.ToolbarWidgetWrapper$1: androidx.appcompat.view.menu.ActionMenuItem mNavItem> = $u7;
+
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        androidx.appcompat.widget.ToolbarWidgetWrapper$1 this;
+        android.view.View $u4;
+        androidx.appcompat.view.menu.ActionMenuItem $u2;
+        androidx.appcompat.widget.ToolbarWidgetWrapper $u0;
+        android.view.Window$Callback $u0#2;
+        boolean $u0#4;
+
+        this := @this: androidx.appcompat.widget.ToolbarWidgetWrapper$1;
+
+        $u4 := @parameter0: android.view.View;
+
+        $u0 = this.<androidx.appcompat.widget.ToolbarWidgetWrapper$1: androidx.appcompat.widget.ToolbarWidgetWrapper this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ToolbarWidgetWrapper: android.view.Window$Callback mWindowCallback>;
+
+        if $u0#2 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ToolbarWidgetWrapper$1: androidx.appcompat.widget.ToolbarWidgetWrapper this$0>;
+
+        $u0#4 = $u0.<androidx.appcompat.widget.ToolbarWidgetWrapper: boolean mMenuPrepared>;
+
+        if $u0#4 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ToolbarWidgetWrapper$1: androidx.appcompat.widget.ToolbarWidgetWrapper this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ToolbarWidgetWrapper: android.view.Window$Callback mWindowCallback>;
+
+        $u2 = this.<androidx.appcompat.widget.ToolbarWidgetWrapper$1: androidx.appcompat.view.menu.ActionMenuItem mNavItem>;
+
+        interfaceinvoke $u0#2.<android.view.Window$Callback: boolean onMenuItemSelected(int,android.view.MenuItem)>(0, $u2);
+
+     label1:
+        return;
+    }
+}

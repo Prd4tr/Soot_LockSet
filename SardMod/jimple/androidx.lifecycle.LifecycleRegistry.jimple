@@ -1,0 +1,951 @@
+public class androidx.lifecycle.LifecycleRegistry extends androidx.lifecycle.Lifecycle
+{
+    private int mAddingObserverCounter;
+    private boolean mHandlingEvent;
+    private final java.lang.ref.WeakReference mLifecycleOwner;
+    private boolean mNewEventOccurred;
+    private androidx.arch.core.internal.FastSafeIterableMap mObserverMap;
+    private java.util.ArrayList mParentStates;
+    private androidx.lifecycle.Lifecycle$State mState;
+
+    public void <init>(androidx.lifecycle.LifecycleOwner)
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        androidx.lifecycle.LifecycleOwner $u2;
+        androidx.arch.core.internal.FastSafeIterableMap $u0;
+        java.util.ArrayList $u0#3;
+        java.lang.ref.WeakReference $u0#4;
+        androidx.lifecycle.Lifecycle$State $u0#5;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        $u2 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        specialinvoke this.<androidx.lifecycle.Lifecycle: void <init>()>();
+
+        $u0 = new androidx.arch.core.internal.FastSafeIterableMap;
+
+        specialinvoke $u0.<androidx.arch.core.internal.FastSafeIterableMap: void <init>()>();
+
+        this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap> = $u0;
+
+        this.<androidx.lifecycle.LifecycleRegistry: int mAddingObserverCounter> = 0;
+
+        this.<androidx.lifecycle.LifecycleRegistry: boolean mHandlingEvent> = 0;
+
+        this.<androidx.lifecycle.LifecycleRegistry: boolean mNewEventOccurred> = 0;
+
+        $u0#3 = new java.util.ArrayList;
+
+        specialinvoke $u0#3.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.lifecycle.LifecycleRegistry: java.util.ArrayList mParentStates> = $u0#3;
+
+        $u0#4 = new java.lang.ref.WeakReference;
+
+        specialinvoke $u0#4.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>($u2);
+
+        this.<androidx.lifecycle.LifecycleRegistry: java.lang.ref.WeakReference mLifecycleOwner> = $u0#4;
+
+        $u0#5 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State INITIALIZED>;
+
+        this.<androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State mState> = $u0#5;
+
+        return;
+    }
+
+    private void backwardPass(androidx.lifecycle.LifecycleOwner)
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        androidx.lifecycle.LifecycleOwner $u6;
+        androidx.arch.core.internal.FastSafeIterableMap descendingIterator;
+        java.util.Iterator $u-1;
+        boolean $u-1#4;
+        java.lang.Object $u-1#7;
+        java.util.Map$Entry entry;
+        androidx.lifecycle.LifecycleRegistry$ObserverWithState observer;
+        androidx.lifecycle.Lifecycle$State event, $u4;
+        int $u-1#15;
+        androidx.lifecycle.Lifecycle$Event $u-1#24;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        $u6 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        descendingIterator = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        $u-1 = virtualinvoke descendingIterator.<androidx.arch.core.internal.FastSafeIterableMap: java.util.Iterator descendingIterator()>();
+
+     label1:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label3;
+
+        $u-1#4 = this.<androidx.lifecycle.LifecycleRegistry: boolean mNewEventOccurred>;
+
+        if $u-1#4 != 0 goto label3;
+
+        $u-1#7 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        entry = (java.util.Map$Entry) $u-1#7;
+
+        $u-1#7 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        observer = (androidx.lifecycle.LifecycleRegistry$ObserverWithState) $u-1#7;
+
+     label2:
+        event = observer.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        $u4 = this.<androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State mState>;
+
+        $u-1#15 = virtualinvoke event.<androidx.lifecycle.Lifecycle$State: int compareTo(java.lang.Enum)>($u4);
+
+        if $u-1#15 <= 0 goto label1;
+
+        $u-1#4 = this.<androidx.lifecycle.LifecycleRegistry: boolean mNewEventOccurred>;
+
+        if $u-1#4 != 0 goto label1;
+
+        descendingIterator = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        $u-1#7 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $u-1#4 = virtualinvoke descendingIterator.<androidx.arch.core.internal.FastSafeIterableMap: boolean contains(java.lang.Object)>($u-1#7);
+
+        if $u-1#4 == 0 goto label1;
+
+        event = observer.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        $u-1#24 = staticinvoke <androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$Event downEvent(androidx.lifecycle.Lifecycle$State)>(event);
+
+        event = staticinvoke <androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State getStateAfter(androidx.lifecycle.Lifecycle$Event)>($u-1#24);
+
+        specialinvoke this.<androidx.lifecycle.LifecycleRegistry: void pushParentState(androidx.lifecycle.Lifecycle$State)>(event);
+
+        virtualinvoke observer.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: void dispatchEvent(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event)>($u6, $u-1#24);
+
+        specialinvoke this.<androidx.lifecycle.LifecycleRegistry: void popParentState()>();
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    private androidx.lifecycle.Lifecycle$State calculateTargetState(androidx.lifecycle.LifecycleObserver)
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        androidx.lifecycle.LifecycleObserver $u5;
+        androidx.arch.core.internal.FastSafeIterableMap previous;
+        java.util.Map$Entry $u-1;
+        androidx.lifecycle.Lifecycle$State parentState, siblingState#8, $u3#18;
+        java.lang.Object $u-1#5;
+        androidx.lifecycle.LifecycleRegistry$ObserverWithState siblingState;
+        java.util.ArrayList $u3;
+        boolean $u-1#10;
+        int $u-1#13;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        $u5 := @parameter0: androidx.lifecycle.LifecycleObserver;
+
+        previous = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        $u-1 = virtualinvoke previous.<androidx.arch.core.internal.FastSafeIterableMap: java.util.Map$Entry ceil(java.lang.Object)>($u5);
+
+        parentState = null;
+
+        if $u-1 == null goto label1;
+
+        $u-1#5 = interfaceinvoke $u-1.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        siblingState = (androidx.lifecycle.LifecycleRegistry$ObserverWithState) $u-1#5;
+
+        siblingState#8 = siblingState.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        goto label2;
+
+     label1:
+        siblingState#8 = null;
+
+     label2:
+        $u3 = this.<androidx.lifecycle.LifecycleRegistry: java.util.ArrayList mParentStates>;
+
+        $u-1#10 = virtualinvoke $u3.<java.util.ArrayList: boolean isEmpty()>();
+
+        if $u-1#10 != 0 goto label3;
+
+        $u3 = this.<androidx.lifecycle.LifecycleRegistry: java.util.ArrayList mParentStates>;
+
+        $u-1#13 = virtualinvoke $u3.<java.util.ArrayList: int size()>();
+
+        $u-1#13 = $u-1#13 + -1;
+
+        $u-1#5 = virtualinvoke $u3.<java.util.ArrayList: java.lang.Object get(int)>($u-1#13);
+
+        parentState = (androidx.lifecycle.Lifecycle$State) $u-1#5;
+
+     label3:
+        $u3#18 = this.<androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State mState>;
+
+        siblingState#8 = staticinvoke <androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State min(androidx.lifecycle.Lifecycle$State,androidx.lifecycle.Lifecycle$State)>($u3#18, siblingState#8);
+
+        parentState = staticinvoke <androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State min(androidx.lifecycle.Lifecycle$State,androidx.lifecycle.Lifecycle$State)>(siblingState#8, parentState);
+
+        return parentState;
+    }
+
+    private static androidx.lifecycle.Lifecycle$Event downEvent(androidx.lifecycle.Lifecycle$State)
+    {
+        androidx.lifecycle.Lifecycle$State $u3;
+        int[] $u0;
+        int $u-1;
+        java.lang.IllegalArgumentException $u0#10;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1#12;
+        androidx.lifecycle.Lifecycle$Event ret0;
+
+        $u3 := @parameter0: androidx.lifecycle.Lifecycle$State;
+
+        $u0 = <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$State>;
+
+        $u-1 = virtualinvoke $u3.<androidx.lifecycle.Lifecycle$State: int ordinal()>();
+
+        $u-1 = $u0[$u-1];
+
+        if $u-1 == 1 goto label5;
+
+        if $u-1 == 2 goto label4;
+
+        if $u-1 == 3 goto label3;
+
+        if $u-1 == 4 goto label2;
+
+        if $u-1 == 5 goto label1;
+
+        $u0#10 = new java.lang.IllegalArgumentException;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unexpected state value ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u3);
+
+        $u-1#12 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0#10.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1#12);
+
+        throw $u0#10;
+
+     label1:
+        $u0#10 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#10.<java.lang.IllegalArgumentException: void <init>()>();
+
+        throw $u0#10;
+
+     label2:
+        ret0 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_PAUSE>;
+
+        return ret0;
+
+     label3:
+        ret0 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_STOP>;
+
+        return ret0;
+
+     label4:
+        ret0 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_DESTROY>;
+
+        return ret0;
+
+     label5:
+        $u0#10 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#10.<java.lang.IllegalArgumentException: void <init>()>();
+
+        throw $u0#10;
+    }
+
+    private void forwardPass(androidx.lifecycle.LifecycleOwner)
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        androidx.lifecycle.LifecycleOwner $u6;
+        androidx.arch.core.internal.FastSafeIterableMap ascendingIterator;
+        androidx.arch.core.internal.SafeIterableMap$IteratorWithAdditions $u-1;
+        boolean $u-1#4;
+        java.lang.Object $u-1#7;
+        java.util.Map$Entry entry;
+        androidx.lifecycle.LifecycleRegistry$ObserverWithState observer;
+        androidx.lifecycle.Lifecycle$State $u3, $u4;
+        int $u-1#15;
+        androidx.lifecycle.Lifecycle$Event $u-1#25;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        $u6 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        ascendingIterator = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        $u-1 = virtualinvoke ascendingIterator.<androidx.arch.core.internal.FastSafeIterableMap: androidx.arch.core.internal.SafeIterableMap$IteratorWithAdditions iteratorWithAdditions()>();
+
+     label1:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label3;
+
+        $u-1#4 = this.<androidx.lifecycle.LifecycleRegistry: boolean mNewEventOccurred>;
+
+        if $u-1#4 != 0 goto label3;
+
+        $u-1#7 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        entry = (java.util.Map$Entry) $u-1#7;
+
+        $u-1#7 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        observer = (androidx.lifecycle.LifecycleRegistry$ObserverWithState) $u-1#7;
+
+     label2:
+        $u3 = observer.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        $u4 = this.<androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State mState>;
+
+        $u-1#15 = virtualinvoke $u3.<androidx.lifecycle.Lifecycle$State: int compareTo(java.lang.Enum)>($u4);
+
+        if $u-1#15 >= 0 goto label1;
+
+        $u-1#4 = this.<androidx.lifecycle.LifecycleRegistry: boolean mNewEventOccurred>;
+
+        if $u-1#4 != 0 goto label1;
+
+        ascendingIterator = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        $u-1#7 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $u-1#4 = virtualinvoke ascendingIterator.<androidx.arch.core.internal.FastSafeIterableMap: boolean contains(java.lang.Object)>($u-1#7);
+
+        if $u-1#4 == 0 goto label1;
+
+        $u3 = observer.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        specialinvoke this.<androidx.lifecycle.LifecycleRegistry: void pushParentState(androidx.lifecycle.Lifecycle$State)>($u3);
+
+        $u3 = observer.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        $u-1#25 = staticinvoke <androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$Event upEvent(androidx.lifecycle.Lifecycle$State)>($u3);
+
+        virtualinvoke observer.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: void dispatchEvent(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event)>($u6, $u-1#25);
+
+        specialinvoke this.<androidx.lifecycle.LifecycleRegistry: void popParentState()>();
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    static androidx.lifecycle.Lifecycle$State getStateAfter(androidx.lifecycle.Lifecycle$Event)
+    {
+        androidx.lifecycle.Lifecycle$Event $u3;
+        int[] $u0;
+        int $u-1;
+        java.lang.IllegalArgumentException $u0#5;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1#7;
+        androidx.lifecycle.Lifecycle$State ret0;
+
+        $u3 := @parameter0: androidx.lifecycle.Lifecycle$Event;
+
+        $u0 = <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$Event>;
+
+        $u-1 = virtualinvoke $u3.<androidx.lifecycle.Lifecycle$Event: int ordinal()>();
+
+        $u-1 = $u0[$u-1];
+
+        lookupswitch($u-1)
+        {
+            case 1: goto label5;
+            case 2: goto label5;
+            case 3: goto label4;
+            case 4: goto label4;
+            case 5: goto label3;
+            case 6: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        $u0#5 = new java.lang.IllegalArgumentException;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unexpected event value ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u3);
+
+        $u-1#7 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0#5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1#7);
+
+        throw $u0#5;
+
+     label2:
+        ret0 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State DESTROYED>;
+
+        return ret0;
+
+     label3:
+        ret0 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State RESUMED>;
+
+        return ret0;
+
+     label4:
+        ret0 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State STARTED>;
+
+        return ret0;
+
+     label5:
+        ret0 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State CREATED>;
+
+        return ret0;
+    }
+
+    private boolean isSynced()
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        androidx.lifecycle.Lifecycle$State $u3, newestObserverState;
+        androidx.arch.core.internal.FastSafeIterableMap eldestObserverState;
+        int $u-1;
+        java.util.Map$Entry $u-1#6;
+        java.lang.Object $u-1#8;
+        androidx.lifecycle.LifecycleRegistry$ObserverWithState eldestObserverState#10;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        eldestObserverState = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        $u-1 = virtualinvoke eldestObserverState.<androidx.arch.core.internal.FastSafeIterableMap: int size()>();
+
+        if $u-1 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        eldestObserverState = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        $u-1#6 = virtualinvoke eldestObserverState.<androidx.arch.core.internal.FastSafeIterableMap: java.util.Map$Entry eldest()>();
+
+        $u-1#8 = interfaceinvoke $u-1#6.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        eldestObserverState#10 = (androidx.lifecycle.LifecycleRegistry$ObserverWithState) $u-1#8;
+
+        $u3 = eldestObserverState#10.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        eldestObserverState = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        $u-1#6 = virtualinvoke eldestObserverState.<androidx.arch.core.internal.FastSafeIterableMap: java.util.Map$Entry newest()>();
+
+        $u-1#8 = interfaceinvoke $u-1#6.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        eldestObserverState#10 = (androidx.lifecycle.LifecycleRegistry$ObserverWithState) $u-1#8;
+
+        newestObserverState = eldestObserverState#10.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        if $u3 != newestObserverState goto label2;
+
+        $u3 = this.<androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State mState>;
+
+        if $u3 != newestObserverState goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    static androidx.lifecycle.Lifecycle$State min(androidx.lifecycle.Lifecycle$State, androidx.lifecycle.Lifecycle$State)
+    {
+        androidx.lifecycle.Lifecycle$State $u1, $u2;
+        int $u-1;
+
+        $u1 := @parameter0: androidx.lifecycle.Lifecycle$State;
+
+        $u2 := @parameter1: androidx.lifecycle.Lifecycle$State;
+
+        if $u2 == null goto label1;
+
+        $u-1 = virtualinvoke $u2.<androidx.lifecycle.Lifecycle$State: int compareTo(java.lang.Enum)>($u1);
+
+        if $u-1 >= 0 goto label1;
+
+        return $u2;
+
+     label1:
+        return $u1;
+    }
+
+    private void moveToState(androidx.lifecycle.Lifecycle$State)
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        androidx.lifecycle.Lifecycle$State $u3, $u0;
+        boolean $u0#2;
+        int $u0#3;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        $u3 := @parameter0: androidx.lifecycle.Lifecycle$State;
+
+        $u0 = this.<androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State mState>;
+
+        if $u0 != $u3 goto label1;
+
+        return;
+
+     label1:
+        this.<androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State mState> = $u3;
+
+        $u0#2 = this.<androidx.lifecycle.LifecycleRegistry: boolean mHandlingEvent>;
+
+        if $u0#2 != 0 goto label3;
+
+        $u0#3 = this.<androidx.lifecycle.LifecycleRegistry: int mAddingObserverCounter>;
+
+        if $u0#3 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        this.<androidx.lifecycle.LifecycleRegistry: boolean mHandlingEvent> = 1;
+
+        specialinvoke this.<androidx.lifecycle.LifecycleRegistry: void sync()>();
+
+        this.<androidx.lifecycle.LifecycleRegistry: boolean mHandlingEvent> = 0;
+
+        return;
+
+     label3:
+        this.<androidx.lifecycle.LifecycleRegistry: boolean mNewEventOccurred> = 1;
+
+        return;
+    }
+
+    private void popParentState()
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        java.util.ArrayList $u0;
+        int $u-1;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        $u0 = this.<androidx.lifecycle.LifecycleRegistry: java.util.ArrayList mParentStates>;
+
+        $u-1 = virtualinvoke $u0.<java.util.ArrayList: int size()>();
+
+        $u-1 = $u-1 + -1;
+
+        virtualinvoke $u0.<java.util.ArrayList: java.lang.Object remove(int)>($u-1);
+
+        return;
+    }
+
+    private void pushParentState(androidx.lifecycle.Lifecycle$State)
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        androidx.lifecycle.Lifecycle$State $u2;
+        java.util.ArrayList $u0;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        $u2 := @parameter0: androidx.lifecycle.Lifecycle$State;
+
+        $u0 = this.<androidx.lifecycle.LifecycleRegistry: java.util.ArrayList mParentStates>;
+
+        virtualinvoke $u0.<java.util.ArrayList: boolean add(java.lang.Object)>($u2);
+
+        return;
+    }
+
+    private void sync()
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        java.lang.ref.WeakReference lifecycleOwner;
+        java.lang.Object $u-1;
+        androidx.lifecycle.LifecycleOwner lifecycleOwner#4;
+        boolean $u-1#5;
+        androidx.lifecycle.Lifecycle$State newest, $u2#15;
+        androidx.arch.core.internal.FastSafeIterableMap $u2;
+        java.util.Map$Entry $u-1#10;
+        androidx.lifecycle.LifecycleRegistry$ObserverWithState $u2#14;
+        int $u-1#16;
+        java.lang.IllegalStateException newest#29;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        lifecycleOwner = this.<androidx.lifecycle.LifecycleRegistry: java.lang.ref.WeakReference mLifecycleOwner>;
+
+        $u-1 = virtualinvoke lifecycleOwner.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        lifecycleOwner#4 = (androidx.lifecycle.LifecycleOwner) $u-1;
+
+        if lifecycleOwner#4 == null goto label4;
+
+     label1:
+        $u-1#5 = specialinvoke this.<androidx.lifecycle.LifecycleRegistry: boolean isSynced()>();
+
+        if $u-1#5 != 0 goto label3;
+
+        this.<androidx.lifecycle.LifecycleRegistry: boolean mNewEventOccurred> = 0;
+
+        newest = this.<androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State mState>;
+
+        $u2 = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        $u-1#10 = virtualinvoke $u2.<androidx.arch.core.internal.FastSafeIterableMap: java.util.Map$Entry eldest()>();
+
+        $u-1 = interfaceinvoke $u-1#10.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $u2#14 = (androidx.lifecycle.LifecycleRegistry$ObserverWithState) $u-1;
+
+        $u2#15 = $u2#14.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        $u-1#16 = virtualinvoke newest.<androidx.lifecycle.Lifecycle$State: int compareTo(java.lang.Enum)>($u2#15);
+
+        if $u-1#16 >= 0 goto label2;
+
+        specialinvoke this.<androidx.lifecycle.LifecycleRegistry: void backwardPass(androidx.lifecycle.LifecycleOwner)>(lifecycleOwner#4);
+
+     label2:
+        $u2 = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        $u-1#10 = virtualinvoke $u2.<androidx.arch.core.internal.FastSafeIterableMap: java.util.Map$Entry newest()>();
+
+        $u-1#5 = this.<androidx.lifecycle.LifecycleRegistry: boolean mNewEventOccurred>;
+
+        if $u-1#5 != 0 goto label1;
+
+        if $u-1#10 == null goto label1;
+
+        newest = this.<androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State mState>;
+
+        $u-1 = interfaceinvoke $u-1#10.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $u2#14 = (androidx.lifecycle.LifecycleRegistry$ObserverWithState) $u-1;
+
+        $u2#15 = $u2#14.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        $u-1#16 = virtualinvoke newest.<androidx.lifecycle.Lifecycle$State: int compareTo(java.lang.Enum)>($u2#15);
+
+        if $u-1#16 <= 0 goto label1;
+
+        specialinvoke this.<androidx.lifecycle.LifecycleRegistry: void forwardPass(androidx.lifecycle.LifecycleOwner)>(lifecycleOwner#4);
+
+        goto label1;
+
+     label3:
+        this.<androidx.lifecycle.LifecycleRegistry: boolean mNewEventOccurred> = 0;
+
+        return;
+
+     label4:
+        newest#29 = new java.lang.IllegalStateException;
+
+        specialinvoke newest#29.<java.lang.IllegalStateException: void <init>(java.lang.String)>("LifecycleOwner of this LifecycleRegistry is alreadygarbage collected. It is too late to change lifecycle state.");
+
+        goto label5;
+
+     label5:
+        throw newest#29;
+    }
+
+    private static androidx.lifecycle.Lifecycle$Event upEvent(androidx.lifecycle.Lifecycle$State)
+    {
+        androidx.lifecycle.Lifecycle$State $u3;
+        int[] $u0;
+        int $u-1;
+        java.lang.IllegalArgumentException $u0#10;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1#12;
+        androidx.lifecycle.Lifecycle$Event ret0;
+
+        $u3 := @parameter0: androidx.lifecycle.Lifecycle$State;
+
+        $u0 = <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$State>;
+
+        $u-1 = virtualinvoke $u3.<androidx.lifecycle.Lifecycle$State: int ordinal()>();
+
+        $u-1 = $u0[$u-1];
+
+        if $u-1 == 1 goto label5;
+
+        if $u-1 == 2 goto label4;
+
+        if $u-1 == 3 goto label3;
+
+        if $u-1 == 4 goto label2;
+
+        if $u-1 != 5 goto label1;
+
+        goto label5;
+
+     label1:
+        $u0#10 = new java.lang.IllegalArgumentException;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unexpected state value ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u3);
+
+        $u-1#12 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0#10.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1#12);
+
+        throw $u0#10;
+
+     label2:
+        $u0#10 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#10.<java.lang.IllegalArgumentException: void <init>()>();
+
+        throw $u0#10;
+
+     label3:
+        ret0 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_RESUME>;
+
+        return ret0;
+
+     label4:
+        ret0 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_START>;
+
+        return ret0;
+
+     label5:
+        ret0 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_CREATE>;
+
+        return ret0;
+    }
+
+    public void addObserver(androidx.lifecycle.LifecycleObserver)
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        androidx.lifecycle.LifecycleObserver $u9;
+        androidx.lifecycle.Lifecycle$State initialState, statefulObserver;
+        androidx.lifecycle.LifecycleRegistry$ObserverWithState statefulObserver#4, previous#8;
+        androidx.arch.core.internal.FastSafeIterableMap previous;
+        java.lang.Object $u-1;
+        java.lang.ref.WeakReference lifecycleOwner;
+        androidx.lifecycle.LifecycleOwner lifecycleOwner#12;
+        int isReentrance;
+        boolean isReentrance#14, $u-1#24;
+        androidx.lifecycle.Lifecycle$Event $u-1#28;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        $u9 := @parameter0: androidx.lifecycle.LifecycleObserver;
+
+        initialState = this.<androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State mState>;
+
+        statefulObserver = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State DESTROYED>;
+
+        if initialState != statefulObserver goto label01;
+
+        initialState = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State DESTROYED>;
+
+        goto label02;
+
+     label01:
+        initialState = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State INITIALIZED>;
+
+     label02:
+        statefulObserver#4 = new androidx.lifecycle.LifecycleRegistry$ObserverWithState;
+
+        specialinvoke statefulObserver#4.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: void <init>(androidx.lifecycle.LifecycleObserver,androidx.lifecycle.Lifecycle$State)>($u9, initialState);
+
+        previous = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        $u-1 = virtualinvoke previous.<androidx.arch.core.internal.FastSafeIterableMap: java.lang.Object putIfAbsent(java.lang.Object,java.lang.Object)>($u9, statefulObserver#4);
+
+        previous#8 = (androidx.lifecycle.LifecycleRegistry$ObserverWithState) $u-1;
+
+        if previous#8 == null goto label03;
+
+        return;
+
+     label03:
+        lifecycleOwner = this.<androidx.lifecycle.LifecycleRegistry: java.lang.ref.WeakReference mLifecycleOwner>;
+
+        $u-1 = virtualinvoke lifecycleOwner.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        lifecycleOwner#12 = (androidx.lifecycle.LifecycleOwner) $u-1;
+
+        if lifecycleOwner#12 != null goto label04;
+
+        return;
+
+     label04:
+        isReentrance = this.<androidx.lifecycle.LifecycleRegistry: int mAddingObserverCounter>;
+
+        if isReentrance != 0 goto label06;
+
+        isReentrance#14 = this.<androidx.lifecycle.LifecycleRegistry: boolean mHandlingEvent>;
+
+        if isReentrance#14 == 0 goto label05;
+
+        goto label06;
+
+     label05:
+        isReentrance#14 = 0;
+
+        goto label07;
+
+     label06:
+        isReentrance#14 = 1;
+
+     label07:
+        initialState = specialinvoke this.<androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State calculateTargetState(androidx.lifecycle.LifecycleObserver)>($u9);
+
+        isReentrance = this.<androidx.lifecycle.LifecycleRegistry: int mAddingObserverCounter>;
+
+        isReentrance = isReentrance + 1;
+
+        this.<androidx.lifecycle.LifecycleRegistry: int mAddingObserverCounter> = isReentrance;
+
+     label08:
+        statefulObserver = statefulObserver#4.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        isReentrance = virtualinvoke statefulObserver.<androidx.lifecycle.Lifecycle$State: int compareTo(java.lang.Enum)>(initialState);
+
+        if isReentrance >= 0 goto label09;
+
+        previous = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        $u-1#24 = virtualinvoke previous.<androidx.arch.core.internal.FastSafeIterableMap: boolean contains(java.lang.Object)>($u9);
+
+        if $u-1#24 == 0 goto label09;
+
+        initialState = statefulObserver#4.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        specialinvoke this.<androidx.lifecycle.LifecycleRegistry: void pushParentState(androidx.lifecycle.Lifecycle$State)>(initialState);
+
+        initialState = statefulObserver#4.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        $u-1#28 = staticinvoke <androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$Event upEvent(androidx.lifecycle.Lifecycle$State)>(initialState);
+
+        virtualinvoke statefulObserver#4.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: void dispatchEvent(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event)>(lifecycleOwner#12, $u-1#28);
+
+        specialinvoke this.<androidx.lifecycle.LifecycleRegistry: void popParentState()>();
+
+        initialState = specialinvoke this.<androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State calculateTargetState(androidx.lifecycle.LifecycleObserver)>($u9);
+
+        goto label08;
+
+     label09:
+        if isReentrance#14 != 0 goto label10;
+
+        specialinvoke this.<androidx.lifecycle.LifecycleRegistry: void sync()>();
+
+     label10:
+        isReentrance = this.<androidx.lifecycle.LifecycleRegistry: int mAddingObserverCounter>;
+
+        isReentrance = isReentrance - 1;
+
+        this.<androidx.lifecycle.LifecycleRegistry: int mAddingObserverCounter> = isReentrance;
+
+        return;
+    }
+
+    public androidx.lifecycle.Lifecycle$State getCurrentState()
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        androidx.lifecycle.Lifecycle$State ret0;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        ret0 = this.<androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State mState>;
+
+        return ret0;
+    }
+
+    public int getObserverCount()
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        int $u-1;
+        androidx.arch.core.internal.FastSafeIterableMap $u0;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        $u0 = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        $u-1 = virtualinvoke $u0.<androidx.arch.core.internal.FastSafeIterableMap: int size()>();
+
+        return $u-1;
+    }
+
+    public void handleLifecycleEvent(androidx.lifecycle.Lifecycle$Event)
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        androidx.lifecycle.Lifecycle$Event $u2;
+        androidx.lifecycle.Lifecycle$State $u-1;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        $u2 := @parameter0: androidx.lifecycle.Lifecycle$Event;
+
+        $u-1 = staticinvoke <androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State getStateAfter(androidx.lifecycle.Lifecycle$Event)>($u2);
+
+        specialinvoke this.<androidx.lifecycle.LifecycleRegistry: void moveToState(androidx.lifecycle.Lifecycle$State)>($u-1);
+
+        return;
+    }
+
+    public void markState(androidx.lifecycle.Lifecycle$State)
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        androidx.lifecycle.Lifecycle$State $u1;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        $u1 := @parameter0: androidx.lifecycle.Lifecycle$State;
+
+        virtualinvoke this.<androidx.lifecycle.LifecycleRegistry: void setCurrentState(androidx.lifecycle.Lifecycle$State)>($u1);
+
+        return;
+    }
+
+    public void removeObserver(androidx.lifecycle.LifecycleObserver)
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        androidx.lifecycle.LifecycleObserver $u2;
+        androidx.arch.core.internal.FastSafeIterableMap $u0;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        $u2 := @parameter0: androidx.lifecycle.LifecycleObserver;
+
+        $u0 = this.<androidx.lifecycle.LifecycleRegistry: androidx.arch.core.internal.FastSafeIterableMap mObserverMap>;
+
+        virtualinvoke $u0.<androidx.arch.core.internal.FastSafeIterableMap: java.lang.Object remove(java.lang.Object)>($u2);
+
+        return;
+    }
+
+    public void setCurrentState(androidx.lifecycle.Lifecycle$State)
+    {
+        androidx.lifecycle.LifecycleRegistry this;
+        androidx.lifecycle.Lifecycle$State $u1;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry;
+
+        $u1 := @parameter0: androidx.lifecycle.Lifecycle$State;
+
+        specialinvoke this.<androidx.lifecycle.LifecycleRegistry: void moveToState(androidx.lifecycle.Lifecycle$State)>($u1);
+
+        return;
+    }
+}

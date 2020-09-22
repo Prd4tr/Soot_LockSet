@@ -1,0 +1,59 @@
+class com.example.sardmod.MainActivity$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final com.example.sardmod.MainActivity this$0;
+
+    void <init>(com.example.sardmod.MainActivity)
+    {
+        com.example.sardmod.MainActivity$1 this;
+        com.example.sardmod.MainActivity $u1;
+
+        this := @this: com.example.sardmod.MainActivity$1;
+
+        $u1 := @parameter0: com.example.sardmod.MainActivity;
+
+        this.<com.example.sardmod.MainActivity$1: com.example.sardmod.MainActivity this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.example.sardmod.MainActivity$1 this;
+        java.lang.Integer $u-1, $u0#2;
+        com.example.sardmod.MainActivity $u0;
+        java.lang.Throwable $u1;
+
+        this := @this: com.example.sardmod.MainActivity$1;
+
+        $u0 = this.<com.example.sardmod.MainActivity$1: com.example.sardmod.MainActivity this$0>;
+
+        $u0#2 = $u0.<com.example.sardmod.MainActivity: java.lang.Integer p>;
+
+        entermonitor $u0#2;
+
+     label1:
+        $u0 = this.<com.example.sardmod.MainActivity$1: com.example.sardmod.MainActivity this$0>;
+
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(10);
+
+        $u0.<com.example.sardmod.MainActivity: java.lang.Integer p> = $u-1;
+
+        exitmonitor $u0#2;
+
+     label2:
+        return;
+
+     label3:
+        $u1 := @caughtexception;
+
+        exitmonitor $u0#2;
+
+     label4:
+        throw $u1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+}

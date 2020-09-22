@@ -1,0 +1,48 @@
+class androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatableTransition extends androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$Transition
+{
+    private final android.graphics.drawable.Animatable mA;
+
+    void <init>(android.graphics.drawable.Animatable)
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatableTransition this;
+        android.graphics.drawable.Animatable $u2;
+
+        this := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatableTransition;
+
+        $u2 := @parameter0: android.graphics.drawable.Animatable;
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$Transition: void <init>(androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$1)>(null);
+
+        this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatableTransition: android.graphics.drawable.Animatable mA> = $u2;
+
+        return;
+    }
+
+    public void start()
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatableTransition this;
+        android.graphics.drawable.Animatable $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatableTransition;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatableTransition: android.graphics.drawable.Animatable mA>;
+
+        interfaceinvoke $u0.<android.graphics.drawable.Animatable: void start()>();
+
+        return;
+    }
+
+    public void stop()
+    {
+        androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatableTransition this;
+        android.graphics.drawable.Animatable $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatableTransition;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat$AnimatableTransition: android.graphics.drawable.Animatable mA>;
+
+        interfaceinvoke $u0.<android.graphics.drawable.Animatable: void stop()>();
+
+        return;
+    }
+}

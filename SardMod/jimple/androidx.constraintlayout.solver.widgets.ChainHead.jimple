@@ -1,0 +1,668 @@
+public class androidx.constraintlayout.solver.widgets.ChainHead extends java.lang.Object
+{
+    private boolean mDefined;
+    protected androidx.constraintlayout.solver.widgets.ConstraintWidget mFirst;
+    protected androidx.constraintlayout.solver.widgets.ConstraintWidget mFirstMatchConstraintWidget;
+    protected androidx.constraintlayout.solver.widgets.ConstraintWidget mFirstVisibleWidget;
+    protected boolean mHasComplexMatchWeights;
+    protected boolean mHasDefinedWeights;
+    protected boolean mHasRatio;
+    protected boolean mHasUndefinedWeights;
+    protected androidx.constraintlayout.solver.widgets.ConstraintWidget mHead;
+    private boolean mIsRtl;
+    protected androidx.constraintlayout.solver.widgets.ConstraintWidget mLast;
+    protected androidx.constraintlayout.solver.widgets.ConstraintWidget mLastMatchConstraintWidget;
+    protected androidx.constraintlayout.solver.widgets.ConstraintWidget mLastVisibleWidget;
+    boolean mOptimizable;
+    private int mOrientation;
+    int mTotalMargins;
+    int mTotalSize;
+    protected float mTotalWeight;
+    int mVisibleWidgets;
+    protected java.util.ArrayList mWeightedMatchConstraintsWidgets;
+    protected int mWidgetsCount;
+    protected int mWidgetsMatchCount;
+
+    public void <init>(androidx.constraintlayout.solver.widgets.ConstraintWidget, int, boolean)
+    {
+        androidx.constraintlayout.solver.widgets.ChainHead this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u2;
+        int $u3;
+        boolean $u4;
+
+        this := @this: androidx.constraintlayout.solver.widgets.ChainHead;
+
+        $u2 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: boolean;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: float mTotalWeight> = 0.0F;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mIsRtl> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mFirst> = $u2;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation> = $u3;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mIsRtl> = $u4;
+
+        return;
+    }
+
+    private void defineChainProperties()
+    {
+        androidx.constraintlayout.solver.widgets.ChainHead this;
+        int $u12, offset, $u9#27;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget lastVisited, widget, weight#55, weight#114;
+        boolean $u3, done, $u-1#82;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] weight;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour $u-1, $u9;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor[] $u9#32;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $u9#33;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] weight#56;
+        int[] weight#60;
+        float[] weight#73;
+        float weight#75, $u10#77, $u11;
+        byte $u10;
+        java.util.ArrayList $u10#85;
+
+        this := @this: androidx.constraintlayout.solver.widgets.ChainHead;
+
+        offset = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        offset = offset * 2;
+
+        lastVisited = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mFirst>;
+
+        $u3 = 1;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mOptimizable> = 1;
+
+        widget = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mFirst>;
+
+        done = 0;
+
+     label01:
+        if done != 0 goto label25;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mWidgetsCount>;
+
+        $u12 = $u12 + 1;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: int mWidgetsCount> = $u12;
+
+        weight = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mNextChainWidget>;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        weight[$u12] = null;
+
+        weight = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mListNextMatchConstraintsWidget>;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        weight[$u12] = null;
+
+        $u12 = virtualinvoke widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if $u12 == 8 goto label19;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mVisibleWidgets>;
+
+        $u12 = $u12 + 1;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: int mVisibleWidgets> = $u12;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        $u-1 = virtualinvoke widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getDimensionBehaviour(int)>($u12);
+
+        $u9 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $u-1 == $u9 goto label02;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mTotalSize>;
+
+        $u9#27 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        $u9#27 = virtualinvoke widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getLength(int)>($u9#27);
+
+        $u12 = $u12 + $u9#27;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: int mTotalSize> = $u12;
+
+     label02:
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mTotalSize>;
+
+        $u9#32 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $u9#33 = $u9#32[offset];
+
+        $u9#27 = virtualinvoke $u9#33.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int getMargin()>();
+
+        $u12 = $u12 + $u9#27;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: int mTotalSize> = $u12;
+
+        $u9#32 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $u9#27 = offset + 1;
+
+        $u9#33 = $u9#32[$u9#27];
+
+        $u9#27 = virtualinvoke $u9#33.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int getMargin()>();
+
+        $u12 = $u12 + $u9#27;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: int mTotalSize> = $u12;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mTotalMargins>;
+
+        $u9#32 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $u9#33 = $u9#32[offset];
+
+        $u9#27 = virtualinvoke $u9#33.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int getMargin()>();
+
+        $u12 = $u12 + $u9#27;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: int mTotalMargins> = $u12;
+
+        $u9#32 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $u9#27 = offset + 1;
+
+        $u9#33 = $u9#32[$u9#27];
+
+        $u9#27 = virtualinvoke $u9#33.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int getMargin()>();
+
+        $u12 = $u12 + $u9#27;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: int mTotalMargins> = $u12;
+
+        weight#55 = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mFirstVisibleWidget>;
+
+        if weight#55 != null goto label03;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mFirstVisibleWidget> = widget;
+
+     label03:
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mLastVisibleWidget> = widget;
+
+        weight#56 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        $u-1 = weight#56[$u12];
+
+        $u9 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $u-1 != $u9 goto label19;
+
+        weight#60 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] mResolvedMatchConstraintDefault>;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        $u12 = weight#60[$u12];
+
+        if $u12 == 0 goto label04;
+
+        weight#60 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] mResolvedMatchConstraintDefault>;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        $u12 = weight#60[$u12];
+
+        if $u12 == 3 goto label04;
+
+        weight#60 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] mResolvedMatchConstraintDefault>;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        $u12 = weight#60[$u12];
+
+        if $u12 != 2 goto label12;
+
+     label04:
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mWidgetsMatchCount>;
+
+        $u12 = $u12 + 1;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: int mWidgetsMatchCount> = $u12;
+
+        weight#73 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: float[] mWeight>;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        weight#75 = weight#73[$u12];
+
+        $u10 = weight#75 cmpl 0.0F;
+
+        if $u10 <= 0 goto label05;
+
+        $u10#77 = this.<androidx.constraintlayout.solver.widgets.ChainHead: float mTotalWeight>;
+
+        weight#73 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: float[] mWeight>;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        $u11 = weight#73[$u12];
+
+        $u10#77 = $u10#77 + $u11;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: float mTotalWeight> = $u10#77;
+
+     label05:
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        $u-1#82 = staticinvoke <androidx.constraintlayout.solver.widgets.ChainHead: boolean isMatchConstraintEqualityCandidate(androidx.constraintlayout.solver.widgets.ConstraintWidget,int)>(widget, $u12);
+
+        if $u-1#82 == 0 goto label09;
+
+        $u10 = weight#75 cmpg 0.0F;
+
+        if $u10 >= 0 goto label06;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mHasUndefinedWeights> = 1;
+
+        goto label07;
+
+     label06:
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mHasDefinedWeights> = 1;
+
+     label07:
+        $u10#85 = this.<androidx.constraintlayout.solver.widgets.ChainHead: java.util.ArrayList mWeightedMatchConstraintsWidgets>;
+
+        if $u10#85 != null goto label08;
+
+        $u10#85 = new java.util.ArrayList;
+
+        specialinvoke $u10#85.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: java.util.ArrayList mWeightedMatchConstraintsWidgets> = $u10#85;
+
+     label08:
+        $u10#85 = this.<androidx.constraintlayout.solver.widgets.ChainHead: java.util.ArrayList mWeightedMatchConstraintsWidgets>;
+
+        virtualinvoke $u10#85.<java.util.ArrayList: boolean add(java.lang.Object)>(widget);
+
+     label09:
+        weight#55 = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mFirstMatchConstraintWidget>;
+
+        if weight#55 != null goto label10;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mFirstMatchConstraintWidget> = widget;
+
+     label10:
+        weight#55 = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mLastMatchConstraintWidget>;
+
+        if weight#55 == null goto label11;
+
+        weight = weight#55.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mListNextMatchConstraintsWidget>;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        weight[$u12] = widget;
+
+     label11:
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mLastMatchConstraintWidget> = widget;
+
+     label12:
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        if $u12 != 0 goto label15;
+
+        $u12 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultWidth>;
+
+        if $u12 == 0 goto label13;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mOptimizable> = 0;
+
+        goto label18;
+
+     label13:
+        $u12 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintMinWidth>;
+
+        if $u12 != 0 goto label14;
+
+        $u12 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintMaxWidth>;
+
+        if $u12 == 0 goto label18;
+
+     label14:
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mOptimizable> = 0;
+
+        goto label18;
+
+     label15:
+        $u12 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultHeight>;
+
+        if $u12 == 0 goto label16;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mOptimizable> = 0;
+
+        goto label18;
+
+     label16:
+        $u12 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintMinHeight>;
+
+        if $u12 != 0 goto label17;
+
+        $u12 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintMaxHeight>;
+
+        if $u12 == 0 goto label18;
+
+     label17:
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mOptimizable> = 0;
+
+     label18:
+        weight#75 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: float mDimensionRatio>;
+
+        $u10 = weight#75 cmpl 0.0F;
+
+        if $u10 == 0 goto label19;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mOptimizable> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mHasRatio> = 1;
+
+     label19:
+        if lastVisited == widget goto label20;
+
+        weight = lastVisited.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mNextChainWidget>;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        weight[$u12] = widget;
+
+     label20:
+        lastVisited = widget;
+
+        $u9#32 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $u12 = offset + 1;
+
+        $u9#33 = $u9#32[$u12];
+
+        $u9#33 = $u9#33.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTarget>;
+
+        if $u9#33 == null goto label22;
+
+        weight#55 = $u9#33.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget mOwner>;
+
+        $u9#32 = weight#55.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $u9#33 = $u9#32[offset];
+
+        $u9#33 = $u9#33.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTarget>;
+
+        if $u9#33 == null goto label21;
+
+        $u9#32 = weight#55.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $u9#33 = $u9#32[offset];
+
+        $u9#33 = $u9#33.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTarget>;
+
+        weight#114 = $u9#33.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: androidx.constraintlayout.solver.widgets.ConstraintWidget mOwner>;
+
+        if weight#114 == widget goto label23;
+
+     label21:
+        weight#55 = null;
+
+        goto label23;
+
+     label22:
+        weight#55 = null;
+
+     label23:
+        if weight#55 == null goto label24;
+
+        widget = weight#55;
+
+        goto label01;
+
+     label24:
+        done = 1;
+
+        goto label01;
+
+     label25:
+        lastVisited = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mFirstVisibleWidget>;
+
+        if lastVisited == null goto label26;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mTotalSize>;
+
+        $u9#32 = lastVisited.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        $u9#33 = $u9#32[offset];
+
+        $u9#27 = virtualinvoke $u9#33.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int getMargin()>();
+
+        $u12 = $u12 - $u9#27;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: int mTotalSize> = $u12;
+
+     label26:
+        lastVisited = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mLastVisibleWidget>;
+
+        if lastVisited == null goto label27;
+
+        $u12 = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mTotalSize>;
+
+        $u9#32 = lastVisited.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor[] mListAnchors>;
+
+        offset = offset + 1;
+
+        $u9#33 = $u9#32[offset];
+
+        offset = virtualinvoke $u9#33.<androidx.constraintlayout.solver.widgets.ConstraintAnchor: int getMargin()>();
+
+        offset = $u12 - offset;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: int mTotalSize> = offset;
+
+     label27:
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mLast> = widget;
+
+        offset = this.<androidx.constraintlayout.solver.widgets.ChainHead: int mOrientation>;
+
+        if offset != 0 goto label28;
+
+        done = this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mIsRtl>;
+
+        if done == 0 goto label28;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mHead> = widget;
+
+        goto label29;
+
+     label28:
+        widget = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mFirst>;
+
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mHead> = widget;
+
+     label29:
+        done = this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mHasDefinedWeights>;
+
+        if done == 0 goto label30;
+
+        done = this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mHasUndefinedWeights>;
+
+        if done == 0 goto label30;
+
+        goto label31;
+
+     label30:
+        $u3 = 0;
+
+     label31:
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mHasComplexMatchWeights> = $u3;
+
+        return;
+    }
+
+    private static boolean isMatchConstraintEqualityCandidate(androidx.constraintlayout.solver.widgets.ConstraintWidget, int)
+    {
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u2;
+        int $u3, $u-1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] $u0;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour $u0#4, $u1;
+        int[] $u0#6;
+
+        $u2 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = virtualinvoke $u2.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if $u-1 == 8 goto label2;
+
+        $u0 = $u2.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] mListDimensionBehaviors>;
+
+        $u0#4 = $u0[$u3];
+
+        $u1 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $u0#4 != $u1 goto label2;
+
+        $u0#6 = $u2.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] mResolvedMatchConstraintDefault>;
+
+        $u-1 = $u0#6[$u3];
+
+        if $u-1 == 0 goto label1;
+
+        $u0#6 = $u2.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int[] mResolvedMatchConstraintDefault>;
+
+        $u3 = $u0#6[$u3];
+
+        if $u3 != 3 goto label2;
+
+     label1:
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public void define()
+    {
+        androidx.constraintlayout.solver.widgets.ChainHead this;
+        boolean $u0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.ChainHead;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mDefined>;
+
+        if $u0 != 0 goto label1;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.ChainHead: void defineChainProperties()>();
+
+     label1:
+        this.<androidx.constraintlayout.solver.widgets.ChainHead: boolean mDefined> = 1;
+
+        return;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ConstraintWidget getFirst()
+    {
+        androidx.constraintlayout.solver.widgets.ChainHead this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.ChainHead;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mFirst>;
+
+        return ret0;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ConstraintWidget getFirstMatchConstraintWidget()
+    {
+        androidx.constraintlayout.solver.widgets.ChainHead this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.ChainHead;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mFirstMatchConstraintWidget>;
+
+        return ret0;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ConstraintWidget getFirstVisibleWidget()
+    {
+        androidx.constraintlayout.solver.widgets.ChainHead this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.ChainHead;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mFirstVisibleWidget>;
+
+        return ret0;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ConstraintWidget getHead()
+    {
+        androidx.constraintlayout.solver.widgets.ChainHead this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.ChainHead;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mHead>;
+
+        return ret0;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ConstraintWidget getLast()
+    {
+        androidx.constraintlayout.solver.widgets.ChainHead this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.ChainHead;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mLast>;
+
+        return ret0;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ConstraintWidget getLastMatchConstraintWidget()
+    {
+        androidx.constraintlayout.solver.widgets.ChainHead this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.ChainHead;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mLastMatchConstraintWidget>;
+
+        return ret0;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ConstraintWidget getLastVisibleWidget()
+    {
+        androidx.constraintlayout.solver.widgets.ChainHead this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.ChainHead;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.ChainHead: androidx.constraintlayout.solver.widgets.ConstraintWidget mLastVisibleWidget>;
+
+        return ret0;
+    }
+
+    public float getTotalWeight()
+    {
+        androidx.constraintlayout.solver.widgets.ChainHead this;
+        float ret0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.ChainHead;
+
+        ret0 = this.<androidx.constraintlayout.solver.widgets.ChainHead: float mTotalWeight>;
+
+        return ret0;
+    }
+}

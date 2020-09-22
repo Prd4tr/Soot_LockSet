@@ -1,0 +1,184 @@
+final class androidx.core.os.LocaleListPlatformWrapper extends java.lang.Object implements androidx.core.os.LocaleListInterface
+{
+    private final android.os.LocaleList mLocaleList;
+
+    void <init>(android.os.LocaleList)
+    {
+        androidx.core.os.LocaleListPlatformWrapper this;
+        android.os.LocaleList $u1;
+
+        this := @this: androidx.core.os.LocaleListPlatformWrapper;
+
+        $u1 := @parameter0: android.os.LocaleList;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.os.LocaleListPlatformWrapper: android.os.LocaleList mLocaleList> = $u1;
+
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.core.os.LocaleListPlatformWrapper this;
+        java.lang.Object $u3;
+        android.os.LocaleList $u0;
+        androidx.core.os.LocaleListInterface $u1;
+        boolean $u-1;
+
+        this := @this: androidx.core.os.LocaleListPlatformWrapper;
+
+        $u3 := @parameter0: java.lang.Object;
+
+        $u0 = this.<androidx.core.os.LocaleListPlatformWrapper: android.os.LocaleList mLocaleList>;
+
+        $u1 = (androidx.core.os.LocaleListInterface) $u3;
+
+        $u3 = interfaceinvoke $u1.<androidx.core.os.LocaleListInterface: java.lang.Object getLocaleList()>();
+
+        $u-1 = virtualinvoke $u0.<android.os.LocaleList: boolean equals(java.lang.Object)>($u3);
+
+        return $u-1;
+    }
+
+    public java.util.Locale get(int)
+    {
+        androidx.core.os.LocaleListPlatformWrapper this;
+        int $u2;
+        java.util.Locale $u-1;
+        android.os.LocaleList $u0;
+
+        this := @this: androidx.core.os.LocaleListPlatformWrapper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.core.os.LocaleListPlatformWrapper: android.os.LocaleList mLocaleList>;
+
+        $u-1 = virtualinvoke $u0.<android.os.LocaleList: java.util.Locale get(int)>($u2);
+
+        return $u-1;
+    }
+
+    public java.util.Locale getFirstMatch(java.lang.String[])
+    {
+        androidx.core.os.LocaleListPlatformWrapper this;
+        java.lang.String[] $u2;
+        java.util.Locale $u-1;
+        android.os.LocaleList $u0;
+
+        this := @this: androidx.core.os.LocaleListPlatformWrapper;
+
+        $u2 := @parameter0: java.lang.String[];
+
+        $u0 = this.<androidx.core.os.LocaleListPlatformWrapper: android.os.LocaleList mLocaleList>;
+
+        $u-1 = virtualinvoke $u0.<android.os.LocaleList: java.util.Locale getFirstMatch(java.lang.String[])>($u2);
+
+        return $u-1;
+    }
+
+    public java.lang.Object getLocaleList()
+    {
+        androidx.core.os.LocaleListPlatformWrapper this;
+        android.os.LocaleList ret0;
+
+        this := @this: androidx.core.os.LocaleListPlatformWrapper;
+
+        ret0 = this.<androidx.core.os.LocaleListPlatformWrapper: android.os.LocaleList mLocaleList>;
+
+        return ret0;
+    }
+
+    public int hashCode()
+    {
+        androidx.core.os.LocaleListPlatformWrapper this;
+        int $u-1;
+        android.os.LocaleList $u0;
+
+        this := @this: androidx.core.os.LocaleListPlatformWrapper;
+
+        $u0 = this.<androidx.core.os.LocaleListPlatformWrapper: android.os.LocaleList mLocaleList>;
+
+        $u-1 = virtualinvoke $u0.<android.os.LocaleList: int hashCode()>();
+
+        return $u-1;
+    }
+
+    public int indexOf(java.util.Locale)
+    {
+        androidx.core.os.LocaleListPlatformWrapper this;
+        java.util.Locale $u2;
+        int $u-1;
+        android.os.LocaleList $u0;
+
+        this := @this: androidx.core.os.LocaleListPlatformWrapper;
+
+        $u2 := @parameter0: java.util.Locale;
+
+        $u0 = this.<androidx.core.os.LocaleListPlatformWrapper: android.os.LocaleList mLocaleList>;
+
+        $u-1 = virtualinvoke $u0.<android.os.LocaleList: int indexOf(java.util.Locale)>($u2);
+
+        return $u-1;
+    }
+
+    public boolean isEmpty()
+    {
+        androidx.core.os.LocaleListPlatformWrapper this;
+        boolean $u-1;
+        android.os.LocaleList $u0;
+
+        this := @this: androidx.core.os.LocaleListPlatformWrapper;
+
+        $u0 = this.<androidx.core.os.LocaleListPlatformWrapper: android.os.LocaleList mLocaleList>;
+
+        $u-1 = virtualinvoke $u0.<android.os.LocaleList: boolean isEmpty()>();
+
+        return $u-1;
+    }
+
+    public int size()
+    {
+        androidx.core.os.LocaleListPlatformWrapper this;
+        int $u-1;
+        android.os.LocaleList $u0;
+
+        this := @this: androidx.core.os.LocaleListPlatformWrapper;
+
+        $u0 = this.<androidx.core.os.LocaleListPlatformWrapper: android.os.LocaleList mLocaleList>;
+
+        $u-1 = virtualinvoke $u0.<android.os.LocaleList: int size()>();
+
+        return $u-1;
+    }
+
+    public java.lang.String toLanguageTags()
+    {
+        androidx.core.os.LocaleListPlatformWrapper this;
+        java.lang.String $u-1;
+        android.os.LocaleList $u0;
+
+        this := @this: androidx.core.os.LocaleListPlatformWrapper;
+
+        $u0 = this.<androidx.core.os.LocaleListPlatformWrapper: android.os.LocaleList mLocaleList>;
+
+        $u-1 = virtualinvoke $u0.<android.os.LocaleList: java.lang.String toLanguageTags()>();
+
+        return $u-1;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.core.os.LocaleListPlatformWrapper this;
+        java.lang.String $u-1;
+        android.os.LocaleList $u0;
+
+        this := @this: androidx.core.os.LocaleListPlatformWrapper;
+
+        $u0 = this.<androidx.core.os.LocaleListPlatformWrapper: android.os.LocaleList mLocaleList>;
+
+        $u-1 = virtualinvoke $u0.<android.os.LocaleList: java.lang.String toString()>();
+
+        return $u-1;
+    }
+}

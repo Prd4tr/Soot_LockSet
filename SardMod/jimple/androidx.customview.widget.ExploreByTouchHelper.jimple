@@ -1,0 +1,1779 @@
+public abstract class androidx.customview.widget.ExploreByTouchHelper extends androidx.core.view.AccessibilityDelegateCompat
+{
+    private static final java.lang.String DEFAULT_CLASS_NAME;
+    public static final int HOST_ID;
+    public static final int INVALID_ID;
+    private static final android.graphics.Rect INVALID_PARENT_BOUNDS;
+    private static final androidx.customview.widget.FocusStrategy$BoundsAdapter NODE_ADAPTER;
+    private static final androidx.customview.widget.FocusStrategy$CollectionAdapter SPARSE_VALUES_ADAPTER;
+    int mAccessibilityFocusedVirtualViewId;
+    private final android.view.View mHost;
+    private int mHoveredVirtualViewId;
+    int mKeyboardFocusedVirtualViewId;
+    private final android.view.accessibility.AccessibilityManager mManager;
+    private androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider mNodeProvider;
+    private final int[] mTempGlobalRect;
+    private final android.graphics.Rect mTempParentRect;
+    private final android.graphics.Rect mTempScreenRect;
+    private final android.graphics.Rect mTempVisibleRect;
+
+    static void <clinit>()
+    {
+        android.graphics.Rect $u0;
+        androidx.customview.widget.ExploreByTouchHelper$1 $u0#2;
+        androidx.customview.widget.ExploreByTouchHelper$2 $u0#3;
+
+        <androidx.customview.widget.ExploreByTouchHelper: int INVALID_ID> = -2147483648;
+
+        <androidx.customview.widget.ExploreByTouchHelper: int HOST_ID> = -1;
+
+        <androidx.customview.widget.ExploreByTouchHelper: java.lang.String DEFAULT_CLASS_NAME> = "android.view.View";
+
+        $u0 = new android.graphics.Rect;
+
+        specialinvoke $u0.<android.graphics.Rect: void <init>(int,int,int,int)>(2147483647, 2147483647, -2147483648, -2147483648);
+
+        <androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect INVALID_PARENT_BOUNDS> = $u0;
+
+        $u0#2 = new androidx.customview.widget.ExploreByTouchHelper$1;
+
+        specialinvoke $u0#2.<androidx.customview.widget.ExploreByTouchHelper$1: void <init>()>();
+
+        <androidx.customview.widget.ExploreByTouchHelper: androidx.customview.widget.FocusStrategy$BoundsAdapter NODE_ADAPTER> = $u0#2;
+
+        $u0#3 = new androidx.customview.widget.ExploreByTouchHelper$2;
+
+        specialinvoke $u0#3.<androidx.customview.widget.ExploreByTouchHelper$2: void <init>()>();
+
+        <androidx.customview.widget.ExploreByTouchHelper: androidx.customview.widget.FocusStrategy$CollectionAdapter SPARSE_VALUES_ADAPTER> = $u0#3;
+
+        return;
+    }
+
+    public void <init>(android.view.View)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        android.view.View $u4;
+        android.graphics.Rect context;
+        int[] context#5;
+        android.content.Context $u-1;
+        java.lang.Object $u-1#10;
+        android.view.accessibility.AccessibilityManager $u1;
+        int $u-1#14;
+        java.lang.IllegalArgumentException context#15;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u4 := @parameter0: android.view.View;
+
+        specialinvoke this.<androidx.core.view.AccessibilityDelegateCompat: void <init>()>();
+
+        context = new android.graphics.Rect;
+
+        specialinvoke context.<android.graphics.Rect: void <init>()>();
+
+        this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempScreenRect> = context;
+
+        context = new android.graphics.Rect;
+
+        specialinvoke context.<android.graphics.Rect: void <init>()>();
+
+        this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempParentRect> = context;
+
+        context = new android.graphics.Rect;
+
+        specialinvoke context.<android.graphics.Rect: void <init>()>();
+
+        this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempVisibleRect> = context;
+
+        context#5 = newarray (int)[2];
+
+        this.<androidx.customview.widget.ExploreByTouchHelper: int[] mTempGlobalRect> = context#5;
+
+        this.<androidx.customview.widget.ExploreByTouchHelper: int mAccessibilityFocusedVirtualViewId> = -2147483648;
+
+        this.<androidx.customview.widget.ExploreByTouchHelper: int mKeyboardFocusedVirtualViewId> = -2147483648;
+
+        this.<androidx.customview.widget.ExploreByTouchHelper: int mHoveredVirtualViewId> = -2147483648;
+
+        if $u4 == null goto label1;
+
+        this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost> = $u4;
+
+        $u-1 = virtualinvoke $u4.<android.view.View: android.content.Context getContext()>();
+
+        $u-1#10 = virtualinvoke $u-1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("accessibility");
+
+        $u1 = (android.view.accessibility.AccessibilityManager) $u-1#10;
+
+        this.<androidx.customview.widget.ExploreByTouchHelper: android.view.accessibility.AccessibilityManager mManager> = $u1;
+
+        virtualinvoke $u4.<android.view.View: void setFocusable(boolean)>(1);
+
+        $u-1#14 = staticinvoke <androidx.core.view.ViewCompat: int getImportantForAccessibility(android.view.View)>($u4);
+
+        if $u-1#14 != 0 goto label2;
+
+        staticinvoke <androidx.core.view.ViewCompat: void setImportantForAccessibility(android.view.View,int)>($u4, 1);
+
+        return;
+
+     label1:
+        context#15 = new java.lang.IllegalArgumentException;
+
+        specialinvoke context#15.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("View may not be null");
+
+        throw context#15;
+
+     label2:
+        return;
+    }
+
+    private boolean clearAccessibilityFocus(int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u2, $u0;
+        android.view.View $u0#3;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.customview.widget.ExploreByTouchHelper: int mAccessibilityFocusedVirtualViewId>;
+
+        if $u0 != $u2 goto label1;
+
+        this.<androidx.customview.widget.ExploreByTouchHelper: int mAccessibilityFocusedVirtualViewId> = -2147483648;
+
+        $u0#3 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        virtualinvoke $u0#3.<android.view.View: void invalidate()>();
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean sendEventForVirtualView(int,int)>($u2, 65536);
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private boolean clickKeyboardFocusedVirtualView()
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        boolean $u-1;
+        int $u0;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u0 = this.<androidx.customview.widget.ExploreByTouchHelper: int mKeyboardFocusedVirtualViewId>;
+
+        if $u0 == -2147483648 goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean onPerformActionForVirtualView(int,int,android.os.Bundle)>($u0, 16, null);
+
+        if $u-1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private android.view.accessibility.AccessibilityEvent createEvent(int, int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u2, $u3;
+        android.view.accessibility.AccessibilityEvent $u-1;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        if $u2 == -1 goto label1;
+
+        $u-1 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: android.view.accessibility.AccessibilityEvent createEventForChild(int,int)>($u2, $u3);
+
+        return $u-1;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: android.view.accessibility.AccessibilityEvent createEventForHost(int)>($u3);
+
+        return $u-1;
+    }
+
+    private android.view.accessibility.AccessibilityEvent createEventForChild(int, int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u5, $u6;
+        android.view.accessibility.AccessibilityEvent $u-1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u-1#2;
+        java.util.List $u-1#3;
+        java.lang.CharSequence $u-1#5;
+        boolean $u-1#9;
+        java.lang.RuntimeException $u2;
+        android.view.View $u2#27;
+        android.content.Context $u-1#29;
+        java.lang.String $u-1#31;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u5 := @parameter0: int;
+
+        $u6 := @parameter1: int;
+
+        $u-1 = staticinvoke <android.view.accessibility.AccessibilityEvent: android.view.accessibility.AccessibilityEvent obtain(int)>($u6);
+
+        $u-1#2 = virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtainAccessibilityNodeInfo(int)>($u5);
+
+        $u-1#3 = virtualinvoke $u-1.<android.view.accessibility.AccessibilityEvent: java.util.List getText()>();
+
+        $u-1#5 = virtualinvoke $u-1#2.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.CharSequence getText()>();
+
+        interfaceinvoke $u-1#3.<java.util.List: boolean add(java.lang.Object)>($u-1#5);
+
+        $u-1#5 = virtualinvoke $u-1#2.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.CharSequence getContentDescription()>();
+
+        virtualinvoke $u-1.<android.view.accessibility.AccessibilityEvent: void setContentDescription(java.lang.CharSequence)>($u-1#5);
+
+        $u-1#9 = virtualinvoke $u-1#2.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isScrollable()>();
+
+        virtualinvoke $u-1.<android.view.accessibility.AccessibilityEvent: void setScrollable(boolean)>($u-1#9);
+
+        $u-1#9 = virtualinvoke $u-1#2.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isPassword()>();
+
+        virtualinvoke $u-1.<android.view.accessibility.AccessibilityEvent: void setPassword(boolean)>($u-1#9);
+
+        $u-1#9 = virtualinvoke $u-1#2.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isEnabled()>();
+
+        virtualinvoke $u-1.<android.view.accessibility.AccessibilityEvent: void setEnabled(boolean)>($u-1#9);
+
+        $u-1#9 = virtualinvoke $u-1#2.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isChecked()>();
+
+        virtualinvoke $u-1.<android.view.accessibility.AccessibilityEvent: void setChecked(boolean)>($u-1#9);
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void onPopulateEventForVirtualView(int,android.view.accessibility.AccessibilityEvent)>($u5, $u-1);
+
+        $u-1#3 = virtualinvoke $u-1.<android.view.accessibility.AccessibilityEvent: java.util.List getText()>();
+
+        $u-1#9 = interfaceinvoke $u-1#3.<java.util.List: boolean isEmpty()>();
+
+        if $u-1#9 == 0 goto label2;
+
+        $u-1#5 = virtualinvoke $u-1.<android.view.accessibility.AccessibilityEvent: java.lang.CharSequence getContentDescription()>();
+
+        if $u-1#5 == null goto label1;
+
+        goto label2;
+
+     label1:
+        $u2 = new java.lang.RuntimeException;
+
+        specialinvoke $u2.<java.lang.RuntimeException: void <init>(java.lang.String)>("Callbacks must add text or a content description in populateEventForVirtualViewId()");
+
+        throw $u2;
+
+     label2:
+        $u-1#5 = virtualinvoke $u-1#2.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.CharSequence getClassName()>();
+
+        virtualinvoke $u-1.<android.view.accessibility.AccessibilityEvent: void setClassName(java.lang.CharSequence)>($u-1#5);
+
+        $u2#27 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        staticinvoke <androidx.core.view.accessibility.AccessibilityRecordCompat: void setSource(android.view.accessibility.AccessibilityRecord,android.view.View,int)>($u-1, $u2#27, $u5);
+
+        $u2#27 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1#29 = virtualinvoke $u2#27.<android.view.View: android.content.Context getContext()>();
+
+        $u-1#31 = virtualinvoke $u-1#29.<android.content.Context: java.lang.String getPackageName()>();
+
+        virtualinvoke $u-1.<android.view.accessibility.AccessibilityEvent: void setPackageName(java.lang.CharSequence)>($u-1#31);
+
+        return $u-1;
+    }
+
+    private android.view.accessibility.AccessibilityEvent createEventForHost(int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u3;
+        android.view.View $u1;
+        android.view.accessibility.AccessibilityEvent $u-1;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u3 := @parameter0: int;
+
+        $u-1 = staticinvoke <android.view.accessibility.AccessibilityEvent: android.view.accessibility.AccessibilityEvent obtain(int)>($u3);
+
+        $u1 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        virtualinvoke $u1.<android.view.View: void onInitializeAccessibilityEvent(android.view.accessibility.AccessibilityEvent)>($u-1);
+
+        return $u-1;
+    }
+
+    private androidx.core.view.accessibility.AccessibilityNodeInfoCompat createNodeForChild(int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u12, $u-1#18, isFocused#20;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u-1, $u-1#47;
+        android.graphics.Rect actions, isFocused;
+        android.view.View actions#6;
+        java.lang.CharSequence $u-1#7;
+        java.lang.RuntimeException $u1;
+        boolean $u-1#16, $u-1#35;
+        android.content.Context $u-1#23;
+        java.lang.String $u-1#25;
+        int[] $u6;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u12 := @parameter0: int;
+
+        $u-1 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtain()>();
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setEnabled(boolean)>(1);
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setFocusable(boolean)>(1);
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setClassName(java.lang.CharSequence)>("android.view.View");
+
+        actions = <androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect INVALID_PARENT_BOUNDS>;
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setBoundsInParent(android.graphics.Rect)>(actions);
+
+        actions = <androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect INVALID_PARENT_BOUNDS>;
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setBoundsInScreen(android.graphics.Rect)>(actions);
+
+        actions#6 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setParent(android.view.View)>(actions#6);
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void onPopulateNodeForVirtualView(int,androidx.core.view.accessibility.AccessibilityNodeInfoCompat)>($u12, $u-1);
+
+        $u-1#7 = virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.CharSequence getText()>();
+
+        if $u-1#7 != null goto label02;
+
+        $u-1#7 = virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.CharSequence getContentDescription()>();
+
+        if $u-1#7 == null goto label01;
+
+        goto label02;
+
+     label01:
+        $u1 = new java.lang.RuntimeException;
+
+        specialinvoke $u1.<java.lang.RuntimeException: void <init>(java.lang.String)>("Callbacks must add text or a content description in populateNodeForVirtualViewId()");
+
+        throw $u1;
+
+     label02:
+        actions = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempParentRect>;
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void getBoundsInParent(android.graphics.Rect)>(actions);
+
+        actions = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempParentRect>;
+
+        isFocused = <androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect INVALID_PARENT_BOUNDS>;
+
+        $u-1#16 = virtualinvoke actions.<android.graphics.Rect: boolean equals(java.lang.Object)>(isFocused);
+
+        if $u-1#16 != 0 goto label15;
+
+        $u-1#18 = virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int getActions()>();
+
+        isFocused#20 = $u-1#18 & 64;
+
+        if isFocused#20 != 0 goto label14;
+
+        $u-1#18 = $u-1#18 & 128;
+
+        if $u-1#18 != 0 goto label13;
+
+        actions#6 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1#23 = virtualinvoke actions#6.<android.view.View: android.content.Context getContext()>();
+
+        $u-1#25 = virtualinvoke $u-1#23.<android.content.Context: java.lang.String getPackageName()>();
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setPackageName(java.lang.CharSequence)>($u-1#25);
+
+        actions#6 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setSource(android.view.View,int)>(actions#6, $u12);
+
+        $u-1#18 = this.<androidx.customview.widget.ExploreByTouchHelper: int mAccessibilityFocusedVirtualViewId>;
+
+        if $u-1#18 != $u12 goto label03;
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setAccessibilityFocused(boolean)>(1);
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void addAction(int)>(128);
+
+        goto label04;
+
+     label03:
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setAccessibilityFocused(boolean)>(0);
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void addAction(int)>(64);
+
+     label04:
+        $u-1#18 = this.<androidx.customview.widget.ExploreByTouchHelper: int mKeyboardFocusedVirtualViewId>;
+
+        if $u-1#18 != $u12 goto label05;
+
+        $u-1#16 = 1;
+
+        goto label06;
+
+     label05:
+        $u-1#16 = 0;
+
+     label06:
+        if $u-1#16 == 0 goto label07;
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void addAction(int)>(2);
+
+        goto label08;
+
+     label07:
+        $u-1#35 = virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isFocusable()>();
+
+        if $u-1#35 == 0 goto label08;
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void addAction(int)>(1);
+
+     label08:
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setFocused(boolean)>($u-1#16);
+
+        actions#6 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u6 = this.<androidx.customview.widget.ExploreByTouchHelper: int[] mTempGlobalRect>;
+
+        virtualinvoke actions#6.<android.view.View: void getLocationOnScreen(int[])>($u6);
+
+        actions = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempScreenRect>;
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void getBoundsInScreen(android.graphics.Rect)>(actions);
+
+        actions = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempScreenRect>;
+
+        isFocused = <androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect INVALID_PARENT_BOUNDS>;
+
+        $u-1#16 = virtualinvoke actions.<android.graphics.Rect: boolean equals(java.lang.Object)>(isFocused);
+
+        if $u-1#16 == 0 goto label12;
+
+        actions = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempScreenRect>;
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void getBoundsInParent(android.graphics.Rect)>(actions);
+
+        $u12 = $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mParentVirtualDescendantId>;
+
+        if $u12 == -1 goto label11;
+
+        $u-1#47 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtain()>();
+
+        $u12 = $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mParentVirtualDescendantId>;
+
+     label09:
+        if $u12 == -1 goto label10;
+
+        actions#6 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        virtualinvoke $u-1#47.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setParent(android.view.View,int)>(actions#6, -1);
+
+        actions = <androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect INVALID_PARENT_BOUNDS>;
+
+        virtualinvoke $u-1#47.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setBoundsInParent(android.graphics.Rect)>(actions);
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void onPopulateNodeForVirtualView(int,androidx.core.view.accessibility.AccessibilityNodeInfoCompat)>($u12, $u-1#47);
+
+        actions = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempParentRect>;
+
+        virtualinvoke $u-1#47.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void getBoundsInParent(android.graphics.Rect)>(actions);
+
+        actions = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempScreenRect>;
+
+        isFocused = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempParentRect>;
+
+        $u12 = isFocused.<android.graphics.Rect: int left>;
+
+        isFocused = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempParentRect>;
+
+        $u-1#18 = isFocused.<android.graphics.Rect: int top>;
+
+        virtualinvoke actions.<android.graphics.Rect: void offset(int,int)>($u12, $u-1#18);
+
+        $u12 = $u-1#47.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mParentVirtualDescendantId>;
+
+        goto label09;
+
+     label10:
+        virtualinvoke $u-1#47.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void recycle()>();
+
+     label11:
+        actions = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempScreenRect>;
+
+        $u6 = this.<androidx.customview.widget.ExploreByTouchHelper: int[] mTempGlobalRect>;
+
+        $u12 = $u6[0];
+
+        actions#6 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1#18 = virtualinvoke actions#6.<android.view.View: int getScrollX()>();
+
+        $u12 = $u12 - $u-1#18;
+
+        $u6 = this.<androidx.customview.widget.ExploreByTouchHelper: int[] mTempGlobalRect>;
+
+        $u-1#18 = $u6[1];
+
+        actions#6 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        isFocused#20 = virtualinvoke actions#6.<android.view.View: int getScrollY()>();
+
+        $u-1#18 = $u-1#18 - isFocused#20;
+
+        virtualinvoke actions.<android.graphics.Rect: void offset(int,int)>($u12, $u-1#18);
+
+     label12:
+        actions#6 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        actions = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempVisibleRect>;
+
+        $u-1#16 = virtualinvoke actions#6.<android.view.View: boolean getLocalVisibleRect(android.graphics.Rect)>(actions);
+
+        if $u-1#16 == 0 goto label17;
+
+        actions = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempVisibleRect>;
+
+        $u6 = this.<androidx.customview.widget.ExploreByTouchHelper: int[] mTempGlobalRect>;
+
+        $u12 = $u6[0];
+
+        actions#6 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1#18 = virtualinvoke actions#6.<android.view.View: int getScrollX()>();
+
+        $u12 = $u12 - $u-1#18;
+
+        $u6 = this.<androidx.customview.widget.ExploreByTouchHelper: int[] mTempGlobalRect>;
+
+        $u-1#18 = $u6[1];
+
+        actions#6 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        isFocused#20 = virtualinvoke actions#6.<android.view.View: int getScrollY()>();
+
+        $u-1#18 = $u-1#18 - isFocused#20;
+
+        virtualinvoke actions.<android.graphics.Rect: void offset(int,int)>($u12, $u-1#18);
+
+        actions = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempScreenRect>;
+
+        isFocused = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempVisibleRect>;
+
+        $u-1#16 = virtualinvoke actions.<android.graphics.Rect: boolean intersect(android.graphics.Rect)>(isFocused);
+
+        if $u-1#16 == 0 goto label17;
+
+        actions = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempScreenRect>;
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setBoundsInScreen(android.graphics.Rect)>(actions);
+
+        actions = this.<androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect mTempScreenRect>;
+
+        $u-1#16 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean isVisibleToUser(android.graphics.Rect)>(actions);
+
+        if $u-1#16 == 0 goto label17;
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setVisibleToUser(boolean)>(1);
+
+        return $u-1;
+
+     label13:
+        $u1 = new java.lang.RuntimeException;
+
+        specialinvoke $u1.<java.lang.RuntimeException: void <init>(java.lang.String)>("Callbacks must not add ACTION_CLEAR_ACCESSIBILITY_FOCUS in populateNodeForVirtualViewId()");
+
+        throw $u1;
+
+     label14:
+        $u1 = new java.lang.RuntimeException;
+
+        specialinvoke $u1.<java.lang.RuntimeException: void <init>(java.lang.String)>("Callbacks must not add ACTION_ACCESSIBILITY_FOCUS in populateNodeForVirtualViewId()");
+
+        throw $u1;
+
+     label15:
+        $u1 = new java.lang.RuntimeException;
+
+        specialinvoke $u1.<java.lang.RuntimeException: void <init>(java.lang.String)>("Callbacks must set parent bounds in populateNodeForVirtualViewId()");
+
+        goto label16;
+
+     label16:
+        throw $u1;
+
+     label17:
+        return $u-1;
+    }
+
+    private androidx.core.view.accessibility.AccessibilityNodeInfoCompat createNodeForHost()
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        android.view.View $u5;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u-1;
+        java.util.ArrayList virtualViewIds;
+        int $u-1#6, $u-1#12, $u-1#17;
+        java.lang.RuntimeException i;
+        java.lang.Object $u-1#14;
+        java.lang.Integer $u6;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u5 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtain(android.view.View)>($u5);
+
+        $u5 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        staticinvoke <androidx.core.view.ViewCompat: void onInitializeAccessibilityNodeInfo(android.view.View,androidx.core.view.accessibility.AccessibilityNodeInfoCompat)>($u5, $u-1);
+
+        virtualViewIds = new java.util.ArrayList;
+
+        specialinvoke virtualViewIds.<java.util.ArrayList: void <init>()>();
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void getVisibleVirtualViews(java.util.List)>(virtualViewIds);
+
+        $u-1#6 = virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int getChildCount()>();
+
+        if $u-1#6 <= 0 goto label2;
+
+        $u-1#6 = virtualinvoke virtualViewIds.<java.util.ArrayList: int size()>();
+
+        if $u-1#6 > 0 goto label1;
+
+        goto label2;
+
+     label1:
+        i = new java.lang.RuntimeException;
+
+        specialinvoke i.<java.lang.RuntimeException: void <init>(java.lang.String)>("Views cannot have both real and virtual children");
+
+        throw i;
+
+     label2:
+        $u-1#6 = 0;
+
+        $u-1#12 = virtualinvoke virtualViewIds.<java.util.ArrayList: int size()>();
+
+     label3:
+        if $u-1#6 >= $u-1#12 goto label4;
+
+        $u5 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1#14 = virtualinvoke virtualViewIds.<java.util.ArrayList: java.lang.Object get(int)>($u-1#6);
+
+        $u6 = (java.lang.Integer) $u-1#14;
+
+        $u-1#17 = virtualinvoke $u6.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void addChild(android.view.View,int)>($u5, $u-1#17);
+
+        $u-1#6 = $u-1#6 + 1;
+
+        goto label3;
+
+     label4:
+        return $u-1;
+    }
+
+    private androidx.collection.SparseArrayCompat getAllNodes()
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        java.util.ArrayList virtualViewIds;
+        androidx.collection.SparseArrayCompat allNodes;
+        int virtualViewId, $u-1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u-1#4;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        virtualViewIds = new java.util.ArrayList;
+
+        specialinvoke virtualViewIds.<java.util.ArrayList: void <init>()>();
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void getVisibleVirtualViews(java.util.List)>(virtualViewIds);
+
+        allNodes = new androidx.collection.SparseArrayCompat;
+
+        specialinvoke allNodes.<androidx.collection.SparseArrayCompat: void <init>()>();
+
+        virtualViewId = 0;
+
+     label1:
+        $u-1 = interfaceinvoke virtualViewIds.<java.util.List: int size()>();
+
+        if virtualViewId >= $u-1 goto label2;
+
+        $u-1#4 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: androidx.core.view.accessibility.AccessibilityNodeInfoCompat createNodeForChild(int)>(virtualViewId);
+
+        virtualinvoke allNodes.<androidx.collection.SparseArrayCompat: void put(int,java.lang.Object)>(virtualViewId, $u-1#4);
+
+        virtualViewId = virtualViewId + 1;
+
+        goto label1;
+
+     label2:
+        return allNodes;
+    }
+
+    private void getBoundsInParent(int, android.graphics.Rect)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u2;
+        android.graphics.Rect $u3;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u-1;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.graphics.Rect;
+
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtainAccessibilityNodeInfo(int)>($u2);
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void getBoundsInParent(android.graphics.Rect)>($u3);
+
+        return;
+    }
+
+    private static android.graphics.Rect guessPreviouslyFocusedRect(android.view.View, int, android.graphics.Rect)
+    {
+        android.view.View $u5;
+        int $u6, $u-1, $u-1#2;
+        android.graphics.Rect $u7;
+        java.lang.IllegalArgumentException $u2;
+
+        $u5 := @parameter0: android.view.View;
+
+        $u6 := @parameter1: int;
+
+        $u7 := @parameter2: android.graphics.Rect;
+
+        $u-1 = virtualinvoke $u5.<android.view.View: int getWidth()>();
+
+        $u-1#2 = virtualinvoke $u5.<android.view.View: int getHeight()>();
+
+        if $u6 == 17 goto label4;
+
+        if $u6 == 33 goto label3;
+
+        if $u6 == 66 goto label2;
+
+        if $u6 != 130 goto label1;
+
+        virtualinvoke $u7.<android.graphics.Rect: void set(int,int,int,int)>(0, -1, $u-1, -1);
+
+        return $u7;
+
+     label1:
+        $u2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+
+        throw $u2;
+
+     label2:
+        virtualinvoke $u7.<android.graphics.Rect: void set(int,int,int,int)>(-1, 0, -1, $u-1#2);
+
+        return $u7;
+
+     label3:
+        virtualinvoke $u7.<android.graphics.Rect: void set(int,int,int,int)>(0, $u-1#2, $u-1, $u-1#2);
+
+        return $u7;
+
+     label4:
+        virtualinvoke $u7.<android.graphics.Rect: void set(int,int,int,int)>($u-1, 0, $u-1, $u-1#2);
+
+        return $u7;
+    }
+
+    private boolean isVisibleToUser(android.graphics.Rect)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        android.graphics.Rect $u6;
+        boolean $u-1;
+        android.view.View viewParent;
+        int $u-1#5;
+        android.view.ViewParent $u-1#8;
+        float $u-1#13;
+        byte $u3;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u6 := @parameter0: android.graphics.Rect;
+
+        if $u6 == null goto label7;
+
+        $u-1 = virtualinvoke $u6.<android.graphics.Rect: boolean isEmpty()>();
+
+        if $u-1 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        viewParent = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1#5 = virtualinvoke viewParent.<android.view.View: int getWindowVisibility()>();
+
+        if $u-1#5 == 0 goto label2;
+
+        return 0;
+
+     label2:
+        viewParent = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1#8 = virtualinvoke viewParent.<android.view.View: android.view.ViewParent getParent()>();
+
+     label3:
+        $u-1 = $u-1#8 instanceof android.view.View;
+
+        if $u-1 == 0 goto label6;
+
+        viewParent = (android.view.View) $u-1#8;
+
+        $u-1#13 = virtualinvoke viewParent.<android.view.View: float getAlpha()>();
+
+        $u3 = $u-1#13 cmpg 0.0F;
+
+        if $u3 <= 0 goto label5;
+
+        $u-1#5 = virtualinvoke viewParent.<android.view.View: int getVisibility()>();
+
+        if $u-1#5 == 0 goto label4;
+
+        return 0;
+
+     label4:
+        $u-1#8 = virtualinvoke viewParent.<android.view.View: android.view.ViewParent getParent()>();
+
+        goto label3;
+
+     label5:
+        return 0;
+
+     label6:
+        if $u-1#8 == null goto label7;
+
+        return 1;
+
+     label7:
+        return 0;
+    }
+
+    private static int keyToDirection(int)
+    {
+        int $u1;
+
+        $u1 := @parameter0: int;
+
+        if $u1 == 19 goto label3;
+
+        if $u1 == 21 goto label2;
+
+        if $u1 == 22 goto label1;
+
+        return 130;
+
+     label1:
+        return 66;
+
+     label2:
+        return 17;
+
+     label3:
+        return 33;
+    }
+
+    private boolean moveFocus(int, android.graphics.Rect)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u14, focusedNodeId;
+        android.graphics.Rect $u15, nextFocusedNodeId;
+        androidx.collection.SparseArrayCompat $u-1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat focusedNode;
+        java.lang.Object $u-1#5;
+        java.lang.IllegalArgumentException nextFocusedNode;
+        android.view.View nextFocusedNode#19;
+        androidx.customview.widget.FocusStrategy$CollectionAdapter nextFocusedNodeId#20;
+        androidx.customview.widget.FocusStrategy$BoundsAdapter $u2;
+        boolean isLayoutRtl;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u14 := @parameter0: int;
+
+        $u15 := @parameter1: android.graphics.Rect;
+
+        $u-1 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: androidx.collection.SparseArrayCompat getAllNodes()>();
+
+        focusedNodeId = this.<androidx.customview.widget.ExploreByTouchHelper: int mKeyboardFocusedVirtualViewId>;
+
+        if focusedNodeId != -2147483648 goto label01;
+
+        focusedNode = null;
+
+        goto label02;
+
+     label01:
+        $u-1#5 = virtualinvoke $u-1.<androidx.collection.SparseArrayCompat: java.lang.Object get(int)>(focusedNodeId);
+
+        focusedNode = (androidx.core.view.accessibility.AccessibilityNodeInfoCompat) $u-1#5;
+
+     label02:
+        if $u14 == 1 goto label08;
+
+        if $u14 == 2 goto label08;
+
+        if $u14 == 17 goto label04;
+
+        if $u14 == 33 goto label04;
+
+        if $u14 == 66 goto label04;
+
+        if $u14 != 130 goto label03;
+
+        goto label04;
+
+     label03:
+        nextFocusedNode = new java.lang.IllegalArgumentException;
+
+        specialinvoke nextFocusedNode.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("direction must be one of {FOCUS_FORWARD, FOCUS_BACKWARD, FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+
+        throw nextFocusedNode;
+
+     label04:
+        nextFocusedNodeId = new android.graphics.Rect;
+
+        specialinvoke nextFocusedNodeId.<android.graphics.Rect: void <init>()>();
+
+        focusedNodeId = this.<androidx.customview.widget.ExploreByTouchHelper: int mKeyboardFocusedVirtualViewId>;
+
+        if focusedNodeId == -2147483648 goto label05;
+
+        specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void getBoundsInParent(int,android.graphics.Rect)>(focusedNodeId, nextFocusedNodeId);
+
+        goto label07;
+
+     label05:
+        if $u15 == null goto label06;
+
+        virtualinvoke nextFocusedNodeId.<android.graphics.Rect: void set(android.graphics.Rect)>($u15);
+
+        goto label07;
+
+     label06:
+        nextFocusedNode#19 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        staticinvoke <androidx.customview.widget.ExploreByTouchHelper: android.graphics.Rect guessPreviouslyFocusedRect(android.view.View,int,android.graphics.Rect)>(nextFocusedNode#19, $u14, nextFocusedNodeId);
+
+     label07:
+        nextFocusedNodeId#20 = <androidx.customview.widget.ExploreByTouchHelper: androidx.customview.widget.FocusStrategy$CollectionAdapter SPARSE_VALUES_ADAPTER>;
+
+        $u2 = <androidx.customview.widget.ExploreByTouchHelper: androidx.customview.widget.FocusStrategy$BoundsAdapter NODE_ADAPTER>;
+
+        $u-1#5 = staticinvoke <androidx.customview.widget.FocusStrategy: java.lang.Object findNextFocusInAbsoluteDirection(java.lang.Object,androidx.customview.widget.FocusStrategy$CollectionAdapter,androidx.customview.widget.FocusStrategy$BoundsAdapter,java.lang.Object,android.graphics.Rect,int)>($u-1, nextFocusedNodeId#20, $u2, focusedNode, nextFocusedNodeId, $u14);
+
+        focusedNode = (androidx.core.view.accessibility.AccessibilityNodeInfoCompat) $u-1#5;
+
+        goto label11;
+
+     label08:
+        nextFocusedNode#19 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        focusedNodeId = staticinvoke <androidx.core.view.ViewCompat: int getLayoutDirection(android.view.View)>(nextFocusedNode#19);
+
+        if focusedNodeId != 1 goto label09;
+
+        isLayoutRtl = 1;
+
+        goto label10;
+
+     label09:
+        isLayoutRtl = 0;
+
+     label10:
+        nextFocusedNodeId#20 = <androidx.customview.widget.ExploreByTouchHelper: androidx.customview.widget.FocusStrategy$CollectionAdapter SPARSE_VALUES_ADAPTER>;
+
+        $u2 = <androidx.customview.widget.ExploreByTouchHelper: androidx.customview.widget.FocusStrategy$BoundsAdapter NODE_ADAPTER>;
+
+        $u-1#5 = staticinvoke <androidx.customview.widget.FocusStrategy: java.lang.Object findNextFocusInRelativeDirection(java.lang.Object,androidx.customview.widget.FocusStrategy$CollectionAdapter,androidx.customview.widget.FocusStrategy$BoundsAdapter,java.lang.Object,int,boolean,boolean)>($u-1, nextFocusedNodeId#20, $u2, focusedNode, $u14, isLayoutRtl, 0);
+
+        focusedNode = (androidx.core.view.accessibility.AccessibilityNodeInfoCompat) $u-1#5;
+
+     label11:
+        if focusedNode != null goto label12;
+
+        $u14 = -2147483648;
+
+        goto label13;
+
+     label12:
+        $u14 = virtualinvoke $u-1.<androidx.collection.SparseArrayCompat: int indexOfValue(java.lang.Object)>(focusedNode);
+
+        $u14 = virtualinvoke $u-1.<androidx.collection.SparseArrayCompat: int keyAt(int)>($u14);
+
+     label13:
+        isLayoutRtl = virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean requestKeyboardFocusForVirtualView(int)>($u14);
+
+        return isLayoutRtl;
+    }
+
+    private boolean performActionForChild(int, int, android.os.Bundle)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u2, $u3;
+        android.os.Bundle $u4;
+        boolean $u-1;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.os.Bundle;
+
+        if $u3 == 1 goto label4;
+
+        if $u3 == 2 goto label3;
+
+        if $u3 == 64 goto label2;
+
+        if $u3 == 128 goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean onPerformActionForVirtualView(int,int,android.os.Bundle)>($u2, $u3, $u4);
+
+        return $u-1;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean clearAccessibilityFocus(int)>($u2);
+
+        return $u-1;
+
+     label2:
+        $u-1 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean requestAccessibilityFocus(int)>($u2);
+
+        return $u-1;
+
+     label3:
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean clearKeyboardFocusForVirtualView(int)>($u2);
+
+        return $u-1;
+
+     label4:
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean requestKeyboardFocusForVirtualView(int)>($u2);
+
+        return $u-1;
+    }
+
+    private boolean performActionForHost(int, android.os.Bundle)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u2;
+        android.os.Bundle $u3;
+        boolean $u-1;
+        android.view.View $u0;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.os.Bundle;
+
+        $u0 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1 = staticinvoke <androidx.core.view.ViewCompat: boolean performAccessibilityAction(android.view.View,int,android.os.Bundle)>($u0, $u2, $u3);
+
+        return $u-1;
+    }
+
+    private boolean requestAccessibilityFocus(int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u3, $u0#8;
+        android.view.accessibility.AccessibilityManager $u0;
+        boolean $u-1;
+        android.view.View $u0#10;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.accessibility.AccessibilityManager mManager>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityManager: boolean isEnabled()>();
+
+        if $u-1 == 0 goto label3;
+
+        $u0 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.accessibility.AccessibilityManager mManager>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityManager: boolean isTouchExplorationEnabled()>();
+
+        if $u-1 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        $u0#8 = this.<androidx.customview.widget.ExploreByTouchHelper: int mAccessibilityFocusedVirtualViewId>;
+
+        if $u0#8 == $u3 goto label3;
+
+        if $u0#8 == -2147483648 goto label2;
+
+        specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean clearAccessibilityFocus(int)>($u0#8);
+
+     label2:
+        this.<androidx.customview.widget.ExploreByTouchHelper: int mAccessibilityFocusedVirtualViewId> = $u3;
+
+        $u0#10 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        virtualinvoke $u0#10.<android.view.View: void invalidate()>();
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean sendEventForVirtualView(int,int)>($u3, 32768);
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    private void updateHoveredVirtualView(int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u3, previousVirtualViewId;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u3 := @parameter0: int;
+
+        previousVirtualViewId = this.<androidx.customview.widget.ExploreByTouchHelper: int mHoveredVirtualViewId>;
+
+        if previousVirtualViewId != $u3 goto label1;
+
+        return;
+
+     label1:
+        previousVirtualViewId = this.<androidx.customview.widget.ExploreByTouchHelper: int mHoveredVirtualViewId>;
+
+        this.<androidx.customview.widget.ExploreByTouchHelper: int mHoveredVirtualViewId> = $u3;
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean sendEventForVirtualView(int,int)>($u3, 128);
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean sendEventForVirtualView(int,int)>(previousVirtualViewId, 256);
+
+        return;
+    }
+
+    public final boolean clearKeyboardFocusForVirtualView(int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u3, $u0;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.customview.widget.ExploreByTouchHelper: int mKeyboardFocusedVirtualViewId>;
+
+        if $u0 == $u3 goto label1;
+
+        return 0;
+
+     label1:
+        this.<androidx.customview.widget.ExploreByTouchHelper: int mKeyboardFocusedVirtualViewId> = -2147483648;
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void onVirtualViewKeyboardFocusChanged(int,boolean)>($u3, 0);
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean sendEventForVirtualView(int,int)>($u3, 8);
+
+        return 1;
+    }
+
+    public final boolean dispatchHoverEvent(android.view.MotionEvent)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        android.view.MotionEvent $u6;
+        android.view.accessibility.AccessibilityManager virtualViewId;
+        boolean $u-1;
+        int $u-1#8;
+        float $u-1#14, $u-1#16;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u6 := @parameter0: android.view.MotionEvent;
+
+        virtualViewId = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.accessibility.AccessibilityManager mManager>;
+
+        $u-1 = virtualinvoke virtualViewId.<android.view.accessibility.AccessibilityManager: boolean isEnabled()>();
+
+        if $u-1 == 0 goto label5;
+
+        virtualViewId = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.accessibility.AccessibilityManager mManager>;
+
+        $u-1 = virtualinvoke virtualViewId.<android.view.accessibility.AccessibilityManager: boolean isTouchExplorationEnabled()>();
+
+        if $u-1 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        $u-1#8 = virtualinvoke $u6.<android.view.MotionEvent: int getAction()>();
+
+        if $u-1#8 == 7 goto label4;
+
+        if $u-1#8 == 9 goto label4;
+
+        if $u-1#8 == 10 goto label2;
+
+        return 0;
+
+     label2:
+        $u-1#8 = this.<androidx.customview.widget.ExploreByTouchHelper: int mHoveredVirtualViewId>;
+
+        if $u-1#8 == -2147483648 goto label3;
+
+        specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void updateHoveredVirtualView(int)>(-2147483648);
+
+        return 1;
+
+     label3:
+        return 0;
+
+     label4:
+        $u-1#14 = virtualinvoke $u6.<android.view.MotionEvent: float getX()>();
+
+        $u-1#16 = virtualinvoke $u6.<android.view.MotionEvent: float getY()>();
+
+        $u-1#8 = virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: int getVirtualViewAt(float,float)>($u-1#14, $u-1#16);
+
+        specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void updateHoveredVirtualView(int)>($u-1#8);
+
+        if $u-1#8 == -2147483648 goto label5;
+
+        return 1;
+
+     label5:
+        return 0;
+    }
+
+    public final boolean dispatchKeyEvent(android.view.KeyEvent)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        android.view.KeyEvent $u9;
+        boolean handled, $u-1#7;
+        int $u-1, $u-1#11, i;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u9 := @parameter0: android.view.KeyEvent;
+
+        handled = 0;
+
+        $u-1 = virtualinvoke $u9.<android.view.KeyEvent: int getAction()>();
+
+        if $u-1 == 1 goto label8;
+
+        $u-1 = virtualinvoke $u9.<android.view.KeyEvent: int getKeyCode()>();
+
+        if $u-1 == 61 goto label6;
+
+        if $u-1 == 66 goto label5;
+
+        lookupswitch($u-1)
+        {
+            case 19: goto label2;
+            case 20: goto label2;
+            case 21: goto label2;
+            case 22: goto label2;
+            case 23: goto label5;
+            default: goto label1;
+        };
+
+     label1:
+        return 0;
+
+     label2:
+        $u-1#7 = virtualinvoke $u9.<android.view.KeyEvent: boolean hasNoModifiers()>();
+
+        if $u-1#7 == 0 goto label8;
+
+        $u-1 = staticinvoke <androidx.customview.widget.ExploreByTouchHelper: int keyToDirection(int)>($u-1);
+
+        $u-1#11 = virtualinvoke $u9.<android.view.KeyEvent: int getRepeatCount()>();
+
+        $u-1#11 = $u-1#11 + 1;
+
+        i = 0;
+
+     label3:
+        if i >= $u-1#11 goto label4;
+
+        $u-1#7 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean moveFocus(int,android.graphics.Rect)>($u-1, null);
+
+        if $u-1#7 == 0 goto label4;
+
+        handled = 1;
+
+        i = i + 1;
+
+        goto label3;
+
+     label4:
+        return handled;
+
+     label5:
+        handled = virtualinvoke $u9.<android.view.KeyEvent: boolean hasNoModifiers()>();
+
+        if handled == 0 goto label8;
+
+        $u-1 = virtualinvoke $u9.<android.view.KeyEvent: int getRepeatCount()>();
+
+        if $u-1 != 0 goto label8;
+
+        specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean clickKeyboardFocusedVirtualView()>();
+
+        return 1;
+
+     label6:
+        handled = virtualinvoke $u9.<android.view.KeyEvent: boolean hasNoModifiers()>();
+
+        if handled == 0 goto label7;
+
+        handled = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean moveFocus(int,android.graphics.Rect)>(2, null);
+
+        return handled;
+
+     label7:
+        handled = virtualinvoke $u9.<android.view.KeyEvent: boolean hasModifiers(int)>(1);
+
+        if handled == 0 goto label8;
+
+        handled = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean moveFocus(int,android.graphics.Rect)>(1, null);
+
+        return handled;
+
+     label8:
+        return 0;
+    }
+
+    public final int getAccessibilityFocusedVirtualViewId()
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int ret0;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        ret0 = this.<androidx.customview.widget.ExploreByTouchHelper: int mAccessibilityFocusedVirtualViewId>;
+
+        return ret0;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeProviderCompat getAccessibilityNodeProvider(android.view.View)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        android.view.View $u2;
+        androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider $u0;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u0 = this.<androidx.customview.widget.ExploreByTouchHelper: androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider mNodeProvider>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider;
+
+        specialinvoke $u0.<androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider: void <init>(androidx.customview.widget.ExploreByTouchHelper)>(this);
+
+        this.<androidx.customview.widget.ExploreByTouchHelper: androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider mNodeProvider> = $u0;
+
+     label1:
+        $u0 = this.<androidx.customview.widget.ExploreByTouchHelper: androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider mNodeProvider>;
+
+        return $u0;
+    }
+
+    public int getFocusedVirtualView()
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u-1;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: int getAccessibilityFocusedVirtualViewId()>();
+
+        return $u-1;
+    }
+
+    public final int getKeyboardFocusedVirtualViewId()
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int ret0;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        ret0 = this.<androidx.customview.widget.ExploreByTouchHelper: int mKeyboardFocusedVirtualViewId>;
+
+        return ret0;
+    }
+
+    protected abstract int getVirtualViewAt(float, float);
+
+    protected abstract void getVisibleVirtualViews(java.util.List);
+
+    public final void invalidateRoot()
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void invalidateVirtualView(int,int)>(-1, 1);
+
+        return;
+    }
+
+    public final void invalidateVirtualView(int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u2;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u2 := @parameter0: int;
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void invalidateVirtualView(int,int)>($u2, 0);
+
+        return;
+    }
+
+    public final void invalidateVirtualView(int, int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u4, $u5;
+        android.view.View $u2;
+        android.view.accessibility.AccessibilityManager parent;
+        boolean $u-1;
+        android.view.ViewParent $u-1#6;
+        android.view.accessibility.AccessibilityEvent $u-1#9;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: int;
+
+        if $u4 == -2147483648 goto label1;
+
+        parent = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.accessibility.AccessibilityManager mManager>;
+
+        $u-1 = virtualinvoke parent.<android.view.accessibility.AccessibilityManager: boolean isEnabled()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u2 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1#6 = virtualinvoke $u2.<android.view.View: android.view.ViewParent getParent()>();
+
+        if $u-1#6 == null goto label1;
+
+        $u-1#9 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: android.view.accessibility.AccessibilityEvent createEvent(int,int)>($u4, 2048);
+
+        staticinvoke <androidx.core.view.accessibility.AccessibilityEventCompat: void setContentChangeTypes(android.view.accessibility.AccessibilityEvent,int)>($u-1#9, $u5);
+
+        $u2 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        staticinvoke <androidx.core.view.ViewParentCompat: boolean requestSendAccessibilityEvent(android.view.ViewParent,android.view.View,android.view.accessibility.AccessibilityEvent)>($u-1#6, $u2, $u-1#9);
+
+     label1:
+        return;
+    }
+
+    androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtainAccessibilityNodeInfo(int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u2;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u-1;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u2 := @parameter0: int;
+
+        if $u2 != -1 goto label1;
+
+        $u-1 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: androidx.core.view.accessibility.AccessibilityNodeInfoCompat createNodeForHost()>();
+
+        return $u-1;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: androidx.core.view.accessibility.AccessibilityNodeInfoCompat createNodeForChild(int)>($u2);
+
+        return $u-1;
+    }
+
+    public final void onFocusChanged(boolean, int, android.graphics.Rect)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        boolean $u3;
+        int $u4, $u0;
+        android.graphics.Rect $u5;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u3 := @parameter0: boolean;
+
+        $u4 := @parameter1: int;
+
+        $u5 := @parameter2: android.graphics.Rect;
+
+        $u0 = this.<androidx.customview.widget.ExploreByTouchHelper: int mKeyboardFocusedVirtualViewId>;
+
+        if $u0 == -2147483648 goto label1;
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean clearKeyboardFocusForVirtualView(int)>($u0);
+
+     label1:
+        if $u3 == 0 goto label2;
+
+        specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean moveFocus(int,android.graphics.Rect)>($u4, $u5);
+
+     label2:
+        return;
+    }
+
+    public void onInitializeAccessibilityEvent(android.view.View, android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        android.view.View $u1;
+        android.view.accessibility.AccessibilityEvent $u2;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u1 := @parameter0: android.view.View;
+
+        $u2 := @parameter1: android.view.accessibility.AccessibilityEvent;
+
+        specialinvoke this.<androidx.core.view.AccessibilityDelegateCompat: void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent)>($u1, $u2);
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void onPopulateEventForHost(android.view.accessibility.AccessibilityEvent)>($u2);
+
+        return;
+    }
+
+    public void onInitializeAccessibilityNodeInfo(android.view.View, androidx.core.view.accessibility.AccessibilityNodeInfoCompat)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        android.view.View $u1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u2;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u1 := @parameter0: android.view.View;
+
+        $u2 := @parameter1: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        specialinvoke this.<androidx.core.view.AccessibilityDelegateCompat: void onInitializeAccessibilityNodeInfo(android.view.View,androidx.core.view.accessibility.AccessibilityNodeInfoCompat)>($u1, $u2);
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void onPopulateNodeForHost(androidx.core.view.accessibility.AccessibilityNodeInfoCompat)>($u2);
+
+        return;
+    }
+
+    protected abstract boolean onPerformActionForVirtualView(int, int, android.os.Bundle);
+
+    protected void onPopulateEventForHost(android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        android.view.accessibility.AccessibilityEvent $u1;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u1 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        return;
+    }
+
+    protected void onPopulateEventForVirtualView(int, android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u1;
+        android.view.accessibility.AccessibilityEvent $u2;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: android.view.accessibility.AccessibilityEvent;
+
+        return;
+    }
+
+    protected void onPopulateNodeForHost(androidx.core.view.accessibility.AccessibilityNodeInfoCompat)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u1;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u1 := @parameter0: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        return;
+    }
+
+    protected abstract void onPopulateNodeForVirtualView(int, androidx.core.view.accessibility.AccessibilityNodeInfoCompat);
+
+    protected void onVirtualViewKeyboardFocusChanged(int, boolean)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u1;
+        boolean $u2;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: boolean;
+
+        return;
+    }
+
+    boolean performAction(int, int, android.os.Bundle)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u2, $u3;
+        android.os.Bundle $u4;
+        boolean $u-1;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.os.Bundle;
+
+        if $u2 == -1 goto label1;
+
+        $u-1 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean performActionForChild(int,int,android.os.Bundle)>($u2, $u3, $u4);
+
+        return $u-1;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean performActionForHost(int,android.os.Bundle)>($u3, $u4);
+
+        return $u-1;
+    }
+
+    public final boolean requestKeyboardFocusForVirtualView(int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u3, $u0#8;
+        android.view.View $u0;
+        boolean $u-1;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1 = virtualinvoke $u0.<android.view.View: boolean isFocused()>();
+
+        if $u-1 != 0 goto label1;
+
+        $u0 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1 = virtualinvoke $u0.<android.view.View: boolean requestFocus()>();
+
+        if $u-1 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        $u0#8 = this.<androidx.customview.widget.ExploreByTouchHelper: int mKeyboardFocusedVirtualViewId>;
+
+        if $u0#8 != $u3 goto label2;
+
+        return 0;
+
+     label2:
+        if $u0#8 == -2147483648 goto label3;
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean clearKeyboardFocusForVirtualView(int)>($u0#8);
+
+     label3:
+        this.<androidx.customview.widget.ExploreByTouchHelper: int mKeyboardFocusedVirtualViewId> = $u3;
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: void onVirtualViewKeyboardFocusChanged(int,boolean)>($u3, 1);
+
+        virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper: boolean sendEventForVirtualView(int,int)>($u3, 8);
+
+        return 1;
+    }
+
+    public final boolean sendEventForVirtualView(int, int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper this;
+        int $u4, $u5;
+        android.view.accessibility.AccessibilityManager parent;
+        boolean $u-1;
+        android.view.View parent#6;
+        android.view.ViewParent $u-1#7;
+        android.view.accessibility.AccessibilityEvent $u-1#9;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: int;
+
+        if $u4 == -2147483648 goto label3;
+
+        parent = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.accessibility.AccessibilityManager mManager>;
+
+        $u-1 = virtualinvoke parent.<android.view.accessibility.AccessibilityManager: boolean isEnabled()>();
+
+        if $u-1 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        parent#6 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1#7 = virtualinvoke parent#6.<android.view.View: android.view.ViewParent getParent()>();
+
+        if $u-1#7 != null goto label2;
+
+        return 0;
+
+     label2:
+        $u-1#9 = specialinvoke this.<androidx.customview.widget.ExploreByTouchHelper: android.view.accessibility.AccessibilityEvent createEvent(int,int)>($u4, $u5);
+
+        parent#6 = this.<androidx.customview.widget.ExploreByTouchHelper: android.view.View mHost>;
+
+        $u-1 = staticinvoke <androidx.core.view.ViewParentCompat: boolean requestSendAccessibilityEvent(android.view.ViewParent,android.view.View,android.view.accessibility.AccessibilityEvent)>($u-1#7, parent#6, $u-1#9);
+
+        return $u-1;
+
+     label3:
+        return 0;
+    }
+}

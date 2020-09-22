@@ -1,0 +1,33 @@
+final class androidx.fragment.app.FragmentTabHost$TabInfo extends java.lang.Object
+{
+    final android.os.Bundle args;
+    final java.lang.Class clss;
+    androidx.fragment.app.Fragment fragment;
+    final java.lang.String tag;
+
+    void <init>(java.lang.String, java.lang.Class, android.os.Bundle)
+    {
+        androidx.fragment.app.FragmentTabHost$TabInfo this;
+        java.lang.String $u1;
+        java.lang.Class _class;
+        android.os.Bundle $u3;
+
+        this := @this: androidx.fragment.app.FragmentTabHost$TabInfo;
+
+        $u1 := @parameter0: java.lang.String;
+
+        _class := @parameter1: java.lang.Class;
+
+        $u3 := @parameter2: android.os.Bundle;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.fragment.app.FragmentTabHost$TabInfo: java.lang.String tag> = $u1;
+
+        this.<androidx.fragment.app.FragmentTabHost$TabInfo: java.lang.Class clss> = _class;
+
+        this.<androidx.fragment.app.FragmentTabHost$TabInfo: android.os.Bundle args> = $u3;
+
+        return;
+    }
+}

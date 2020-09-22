@@ -1,0 +1,1856 @@
+public class androidx.collection.SimpleArrayMap extends java.lang.Object
+{
+    private static final int BASE_SIZE;
+    private static final int CACHE_SIZE;
+    private static final boolean CONCURRENT_MODIFICATION_EXCEPTIONS;
+    private static final boolean DEBUG;
+    private static final java.lang.String TAG;
+    static java.lang.Object[] mBaseCache;
+    static int mBaseCacheSize;
+    static java.lang.Object[] mTwiceBaseCache;
+    static int mTwiceBaseCacheSize;
+    java.lang.Object[] mArray;
+    int[] mHashes;
+    int mSize;
+
+    public void <init>()
+    {
+        androidx.collection.SimpleArrayMap this;
+        int[] $u0;
+        java.lang.Object[] $u0#2;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = <androidx.collection.ContainerHelpers: int[] EMPTY_INTS>;
+
+        this.<androidx.collection.SimpleArrayMap: int[] mHashes> = $u0;
+
+        $u0#2 = <androidx.collection.ContainerHelpers: java.lang.Object[] EMPTY_OBJECTS>;
+
+        this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray> = $u0#2;
+
+        this.<androidx.collection.SimpleArrayMap: int mSize> = 0;
+
+        return;
+    }
+
+    public void <init>(int)
+    {
+        androidx.collection.SimpleArrayMap this;
+        int $u2;
+        int[] $u0;
+        java.lang.Object[] $u0#2;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u2 := @parameter0: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        if $u2 != 0 goto label1;
+
+        $u0 = <androidx.collection.ContainerHelpers: int[] EMPTY_INTS>;
+
+        this.<androidx.collection.SimpleArrayMap: int[] mHashes> = $u0;
+
+        $u0#2 = <androidx.collection.ContainerHelpers: java.lang.Object[] EMPTY_OBJECTS>;
+
+        this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray> = $u0#2;
+
+        goto label2;
+
+     label1:
+        specialinvoke this.<androidx.collection.SimpleArrayMap: void allocArrays(int)>($u2);
+
+     label2:
+        this.<androidx.collection.SimpleArrayMap: int mSize> = 0;
+
+        return;
+    }
+
+    public void <init>(androidx.collection.SimpleArrayMap)
+    {
+        androidx.collection.SimpleArrayMap this, map;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        map := @parameter0: androidx.collection.SimpleArrayMap;
+
+        specialinvoke this.<androidx.collection.SimpleArrayMap: void <init>()>();
+
+        if map == null goto label1;
+
+        virtualinvoke this.<androidx.collection.SimpleArrayMap: void putAll(androidx.collection.SimpleArrayMap)>(map);
+
+     label1:
+        return;
+    }
+
+    private void allocArrays(int)
+    {
+        androidx.collection.SimpleArrayMap this;
+        int $u7;
+        java.lang.Object[] array, $u5#7;
+        java.lang.Object $u5;
+        int[] $u5#10;
+        java.lang.Throwable $u1, $u1#26;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u7 := @parameter0: int;
+
+        if $u7 != 8 goto label07;
+
+        entermonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label01:
+        array = <androidx.collection.SimpleArrayMap: java.lang.Object[] mTwiceBaseCache>;
+
+        if array == null goto label03;
+
+        array = <androidx.collection.SimpleArrayMap: java.lang.Object[] mTwiceBaseCache>;
+
+        this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray> = array;
+
+        $u5 = array[0];
+
+        $u5#7 = (java.lang.Object[]) $u5;
+
+        <androidx.collection.SimpleArrayMap: java.lang.Object[] mTwiceBaseCache> = $u5#7;
+
+        $u5 = array[1];
+
+        $u5#10 = (int[]) $u5;
+
+        this.<androidx.collection.SimpleArrayMap: int[] mHashes> = $u5#10;
+
+        array[1] = null;
+
+        array[0] = null;
+
+        $u7 = <androidx.collection.SimpleArrayMap: int mTwiceBaseCacheSize>;
+
+        $u7 = $u7 - 1;
+
+        <androidx.collection.SimpleArrayMap: int mTwiceBaseCacheSize> = $u7;
+
+        exitmonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label02:
+        return;
+
+     label03:
+        exitmonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label04:
+        goto label14;
+
+     label05:
+        $u1 := @caughtexception;
+
+        exitmonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label06:
+        throw $u1;
+
+     label07:
+        if $u7 != 4 goto label14;
+
+        entermonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label08:
+        array = <androidx.collection.SimpleArrayMap: java.lang.Object[] mBaseCache>;
+
+        if array == null goto label10;
+
+        array = <androidx.collection.SimpleArrayMap: java.lang.Object[] mBaseCache>;
+
+        this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray> = array;
+
+        $u5 = array[0];
+
+        $u5#7 = (java.lang.Object[]) $u5;
+
+        <androidx.collection.SimpleArrayMap: java.lang.Object[] mBaseCache> = $u5#7;
+
+        $u5 = array[1];
+
+        $u5#10 = (int[]) $u5;
+
+        this.<androidx.collection.SimpleArrayMap: int[] mHashes> = $u5#10;
+
+        array[1] = null;
+
+        array[0] = null;
+
+        $u7 = <androidx.collection.SimpleArrayMap: int mBaseCacheSize>;
+
+        $u7 = $u7 - 1;
+
+        <androidx.collection.SimpleArrayMap: int mBaseCacheSize> = $u7;
+
+        exitmonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label09:
+        return;
+
+     label10:
+        exitmonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label11:
+        goto label14;
+
+     label12:
+        $u1#26 := @caughtexception;
+
+        exitmonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label13:
+        throw $u1#26;
+
+     label14:
+        $u5#10 = newarray (int)[$u7];
+
+        this.<androidx.collection.SimpleArrayMap: int[] mHashes> = $u5#10;
+
+        $u7 = $u7 << 1;
+
+        array = newarray (java.lang.Object)[$u7];
+
+        this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray> = array;
+
+        return;
+
+        catch java.lang.Throwable from label01 to label02 with label05;
+        catch java.lang.Throwable from label03 to label04 with label05;
+        catch java.lang.Throwable from label05 to label06 with label05;
+        catch java.lang.Throwable from label08 to label09 with label12;
+        catch java.lang.Throwable from label10 to label11 with label12;
+        catch java.lang.Throwable from label12 to label13 with label12;
+    }
+
+    private static int binarySearchHashes(int[], int, int)
+    {
+        int[] $u2;
+        int $u3, $u4;
+        java.util.ConcurrentModificationException $u1;
+        java.lang.ArrayIndexOutOfBoundsException e;
+
+        $u2 := @parameter0: int[];
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+     label1:
+        $u3 = staticinvoke <androidx.collection.ContainerHelpers: int binarySearch(int[],int,int)>($u2, $u3, $u4);
+
+     label2:
+        return $u3;
+
+     label3:
+        e := @caughtexception;
+
+        $u1 = new java.util.ConcurrentModificationException;
+
+        specialinvoke $u1.<java.util.ConcurrentModificationException: void <init>()>();
+
+        throw $u1;
+
+        catch java.lang.ArrayIndexOutOfBoundsException from label1 to label2 with label3;
+    }
+
+    private static void freeArrays(int[], java.lang.Object[], int)
+    {
+        int[] $u8;
+        java.lang.Object[] $u9, i#4;
+        int $u10, i;
+        java.lang.Throwable i#9, i#18;
+
+        $u8 := @parameter0: int[];
+
+        $u9 := @parameter1: java.lang.Object[];
+
+        $u10 := @parameter2: int;
+
+        i = lengthof $u8;
+
+        if i != 8 goto label08;
+
+        entermonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label01:
+        i = <androidx.collection.SimpleArrayMap: int mTwiceBaseCacheSize>;
+
+        if i >= 10 goto label04;
+
+        i#4 = <androidx.collection.SimpleArrayMap: java.lang.Object[] mTwiceBaseCache>;
+
+        $u9[0] = i#4;
+
+        $u9[1] = $u8;
+
+        $u10 = $u10 << 1;
+
+        $u10 = $u10 - 1;
+
+     label02:
+        if $u10 < 2 goto label03;
+
+        $u9[$u10] = null;
+
+        $u10 = $u10 + -1;
+
+        goto label02;
+
+     label03:
+        <androidx.collection.SimpleArrayMap: java.lang.Object[] mTwiceBaseCache> = $u9;
+
+        $u10 = <androidx.collection.SimpleArrayMap: int mTwiceBaseCacheSize>;
+
+        $u10 = $u10 + 1;
+
+        <androidx.collection.SimpleArrayMap: int mTwiceBaseCacheSize> = $u10;
+
+     label04:
+        exitmonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label05:
+        return;
+
+     label06:
+        i#9 := @caughtexception;
+
+        exitmonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label07:
+        throw i#9;
+
+     label08:
+        i = lengthof $u8;
+
+        if i != 4 goto label16;
+
+        entermonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label09:
+        i = <androidx.collection.SimpleArrayMap: int mBaseCacheSize>;
+
+        if i >= 10 goto label12;
+
+        i#4 = <androidx.collection.SimpleArrayMap: java.lang.Object[] mBaseCache>;
+
+        $u9[0] = i#4;
+
+        $u9[1] = $u8;
+
+        $u10 = $u10 << 1;
+
+        $u10 = $u10 - 1;
+
+     label10:
+        if $u10 < 2 goto label11;
+
+        $u9[$u10] = null;
+
+        $u10 = $u10 + -1;
+
+        goto label10;
+
+     label11:
+        <androidx.collection.SimpleArrayMap: java.lang.Object[] mBaseCache> = $u9;
+
+        $u10 = <androidx.collection.SimpleArrayMap: int mBaseCacheSize>;
+
+        $u10 = $u10 + 1;
+
+        <androidx.collection.SimpleArrayMap: int mBaseCacheSize> = $u10;
+
+     label12:
+        exitmonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label13:
+        return;
+
+     label14:
+        i#18 := @caughtexception;
+
+        exitmonitor class "Landroidx/collection/SimpleArrayMap;";
+
+     label15:
+        throw i#18;
+
+     label16:
+        return;
+
+        catch java.lang.Throwable from label01 to label05 with label06;
+        catch java.lang.Throwable from label06 to label07 with label06;
+        catch java.lang.Throwable from label09 to label13 with label14;
+        catch java.lang.Throwable from label14 to label15 with label14;
+    }
+
+    public void clear()
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object[] oarray, $u3#4;
+        int osize;
+        int[] ohashes, $u3;
+        java.util.ConcurrentModificationException ohashes#7;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        osize = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if osize <= 0 goto label1;
+
+        ohashes = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        oarray = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        osize = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        $u3 = <androidx.collection.ContainerHelpers: int[] EMPTY_INTS>;
+
+        this.<androidx.collection.SimpleArrayMap: int[] mHashes> = $u3;
+
+        $u3#4 = <androidx.collection.ContainerHelpers: java.lang.Object[] EMPTY_OBJECTS>;
+
+        this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray> = $u3#4;
+
+        this.<androidx.collection.SimpleArrayMap: int mSize> = 0;
+
+        staticinvoke <androidx.collection.SimpleArrayMap: void freeArrays(int[],java.lang.Object[],int)>(ohashes, oarray, osize);
+
+     label1:
+        osize = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if osize > 0 goto label2;
+
+        return;
+
+     label2:
+        ohashes#7 = new java.util.ConcurrentModificationException;
+
+        specialinvoke ohashes#7.<java.util.ConcurrentModificationException: void <init>()>();
+
+        throw ohashes#7;
+    }
+
+    public boolean containsKey(java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object $u2;
+        int $u-1;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: int indexOfKey(java.lang.Object)>($u2);
+
+        if $u-1 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean containsValue(java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object $u2;
+        int $u-1;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: int indexOfValue(java.lang.Object)>($u2);
+
+        if $u-1 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void ensureCapacity(int)
+    {
+        androidx.collection.SimpleArrayMap this;
+        int $u7, osize, ohashes#2;
+        java.lang.Object[] oarray, $u3#6;
+        int[] ohashes, $u3;
+        java.util.ConcurrentModificationException ohashes#8;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u7 := @parameter0: int;
+
+        osize = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        ohashes = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        ohashes#2 = lengthof ohashes;
+
+        if ohashes#2 >= $u7 goto label2;
+
+        ohashes = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        oarray = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        specialinvoke this.<androidx.collection.SimpleArrayMap: void allocArrays(int)>($u7);
+
+        $u7 = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if $u7 <= 0 goto label1;
+
+        $u3 = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(ohashes, 0, $u3, 0, osize);
+
+        $u3#6 = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        $u7 = osize << 1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(oarray, 0, $u3#6, 0, $u7);
+
+     label1:
+        staticinvoke <androidx.collection.SimpleArrayMap: void freeArrays(int[],java.lang.Object[],int)>(ohashes, oarray, osize);
+
+     label2:
+        $u7 = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if $u7 != osize goto label3;
+
+        return;
+
+     label3:
+        ohashes#8 = new java.util.ConcurrentModificationException;
+
+        specialinvoke ohashes#8.<java.util.ConcurrentModificationException: void <init>()>();
+
+        throw ohashes#8;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this, map#4;
+        java.lang.Object $u9, $u-1#13, $u-1#15;
+        boolean map;
+        int $u-1, $u-1#7;
+        java.lang.ClassCastException ignored, ignored#42;
+        java.lang.NullPointerException ignored#22, ignored#43;
+        java.util.Map map#25;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u9 := @parameter0: java.lang.Object;
+
+        if this != $u9 goto label01;
+
+        return 1;
+
+     label01:
+        map = $u9 instanceof androidx.collection.SimpleArrayMap;
+
+        if map == 0 goto label15;
+
+        map#4 = (androidx.collection.SimpleArrayMap) $u9;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: int size()>();
+
+        $u-1#7 = virtualinvoke map#4.<androidx.collection.SimpleArrayMap: int size()>();
+
+        if $u-1 == $u-1#7 goto label02;
+
+        return 0;
+
+     label02:
+        $u-1 = 0;
+
+     label03:
+        $u-1#7 = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+     label04:
+        if $u-1 >= $u-1#7 goto label12;
+
+     label05:
+        $u9 = virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object keyAt(int)>($u-1);
+
+        $u-1#13 = virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object valueAt(int)>($u-1);
+
+        $u-1#15 = virtualinvoke map#4.<androidx.collection.SimpleArrayMap: java.lang.Object get(java.lang.Object)>($u9);
+
+     label06:
+        if $u-1#13 != null goto label09;
+
+        if $u-1#15 != null goto label29;
+
+     label07:
+        map = virtualinvoke map#4.<androidx.collection.SimpleArrayMap: boolean containsKey(java.lang.Object)>($u9);
+
+     label08:
+        if map != 0 goto label11;
+
+        return 0;
+
+     label09:
+        map = virtualinvoke $u-1#13.<java.lang.Object: boolean equals(java.lang.Object)>($u-1#15);
+
+     label10:
+        if map != 0 goto label11;
+
+        return 0;
+
+     label11:
+        $u-1 = $u-1 + 1;
+
+        goto label03;
+
+     label12:
+        return 1;
+
+     label13:
+        ignored := @caughtexception;
+
+        return 0;
+
+     label14:
+        ignored#22 := @caughtexception;
+
+        return 0;
+
+     label15:
+        map = $u9 instanceof java.util.Map;
+
+        if map == 0 goto label29;
+
+        map#25 = (java.util.Map) $u9;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: int size()>();
+
+        $u-1#7 = interfaceinvoke map#25.<java.util.Map: int size()>();
+
+        if $u-1 == $u-1#7 goto label16;
+
+        return 0;
+
+     label16:
+        $u-1 = 0;
+
+     label17:
+        $u-1#7 = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+     label18:
+        if $u-1 >= $u-1#7 goto label26;
+
+     label19:
+        $u9 = virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object keyAt(int)>($u-1);
+
+        $u-1#13 = virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object valueAt(int)>($u-1);
+
+        $u-1#15 = interfaceinvoke map#25.<java.util.Map: java.lang.Object get(java.lang.Object)>($u9);
+
+     label20:
+        if $u-1#13 != null goto label23;
+
+        if $u-1#15 != null goto label29;
+
+     label21:
+        map = interfaceinvoke map#25.<java.util.Map: boolean containsKey(java.lang.Object)>($u9);
+
+     label22:
+        if map != 0 goto label25;
+
+        return 0;
+
+     label23:
+        map = virtualinvoke $u-1#13.<java.lang.Object: boolean equals(java.lang.Object)>($u-1#15);
+
+     label24:
+        if map != 0 goto label25;
+
+        return 0;
+
+     label25:
+        $u-1 = $u-1 + 1;
+
+        goto label17;
+
+     label26:
+        return 1;
+
+     label27:
+        ignored#42 := @caughtexception;
+
+        return 0;
+
+     label28:
+        ignored#43 := @caughtexception;
+
+     label29:
+        return 0;
+
+        catch java.lang.NullPointerException from label03 to label04 with label14;
+        catch java.lang.NullPointerException from label05 to label06 with label14;
+        catch java.lang.NullPointerException from label07 to label08 with label14;
+        catch java.lang.NullPointerException from label09 to label10 with label14;
+        catch java.lang.ClassCastException from label05 to label06 with label13;
+        catch java.lang.ClassCastException from label07 to label08 with label13;
+        catch java.lang.ClassCastException from label09 to label10 with label13;
+        catch java.lang.NullPointerException from label17 to label18 with label28;
+        catch java.lang.NullPointerException from label19 to label20 with label28;
+        catch java.lang.NullPointerException from label21 to label22 with label28;
+        catch java.lang.NullPointerException from label23 to label24 with label28;
+        catch java.lang.ClassCastException from label19 to label20 with label27;
+        catch java.lang.ClassCastException from label21 to label22 with label27;
+        catch java.lang.ClassCastException from label23 to label24 with label27;
+    }
+
+    public java.lang.Object get(java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object $u2;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        $u2 = virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object getOrDefault(java.lang.Object,java.lang.Object)>($u2, null);
+
+        return $u2;
+    }
+
+    public java.lang.Object getOrDefault(java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object $u4, defaultValue;
+        int $u-1;
+        java.lang.Object[] $u1;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u4 := @parameter0: java.lang.Object;
+
+        defaultValue := @parameter1: java.lang.Object;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: int indexOfKey(java.lang.Object)>($u4);
+
+        if $u-1 < 0 goto label1;
+
+        $u1 = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        $u-1 = $u-1 << 1;
+
+        $u-1 = $u-1 + 1;
+
+        $u4 = $u1[$u-1];
+
+        return $u4;
+
+     label1:
+        return defaultValue;
+    }
+
+    public int hashCode()
+    {
+        androidx.collection.SimpleArrayMap this;
+        int[] hashes;
+        java.lang.Object[] array;
+        int s, $u-1, result, i, v, $u7;
+        java.lang.Object value;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        hashes = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        array = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        result = 0;
+
+        i = 0;
+
+        v = 1;
+
+        s = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+     label1:
+        if i >= s goto label4;
+
+        value = array[v];
+
+        $u7 = hashes[i];
+
+        if value != null goto label2;
+
+        $u-1 = 0;
+
+        goto label3;
+
+     label2:
+        $u-1 = virtualinvoke value.<java.lang.Object: int hashCode()>();
+
+     label3:
+        $u7 = $u7 ^ $u-1;
+
+        result = result + $u7;
+
+        i = i + 1;
+
+        v = v + 2;
+
+        goto label1;
+
+     label4:
+        return result;
+    }
+
+    int indexOf(java.lang.Object, int)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object $u7, end#7;
+        int $u8, N, $u5, i, i#12;
+        int[] index;
+        java.lang.Object[] end;
+        boolean $u-1;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u7 := @parameter0: java.lang.Object;
+
+        $u8 := @parameter1: int;
+
+        N = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if N != 0 goto label1;
+
+        return -1;
+
+     label1:
+        index = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        $u5 = staticinvoke <androidx.collection.SimpleArrayMap: int binarySearchHashes(int[],int,int)>(index, N, $u8);
+
+        if $u5 >= 0 goto label2;
+
+        return $u5;
+
+     label2:
+        end = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        i = $u5 << 1;
+
+        end#7 = end[i];
+
+        $u-1 = virtualinvoke $u7.<java.lang.Object: boolean equals(java.lang.Object)>(end#7);
+
+        if $u-1 == 0 goto label3;
+
+        return $u5;
+
+     label3:
+        i = $u5 + 1;
+
+     label4:
+        if i >= N goto label6;
+
+        index = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        i#12 = index[i];
+
+        if i#12 != $u8 goto label6;
+
+        end = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        i#12 = i << 1;
+
+        end#7 = end[i#12];
+
+        $u-1 = virtualinvoke $u7.<java.lang.Object: boolean equals(java.lang.Object)>(end#7);
+
+        if $u-1 == 0 goto label5;
+
+        return i;
+
+     label5:
+        i = i + 1;
+
+        goto label4;
+
+     label6:
+        N = $u5 + -1;
+
+     label7:
+        if N < 0 goto label9;
+
+        index = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        $u5 = index[N];
+
+        if $u5 != $u8 goto label9;
+
+        end = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        $u5 = N << 1;
+
+        end#7 = end[$u5];
+
+        $u-1 = virtualinvoke $u7.<java.lang.Object: boolean equals(java.lang.Object)>(end#7);
+
+        if $u-1 == 0 goto label8;
+
+        return N;
+
+     label8:
+        N = N + -1;
+
+        goto label7;
+
+     label9:
+        $u8 = i ^ -1;
+
+        return $u8;
+    }
+
+    public int indexOfKey(java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object $u2;
+        int $u-1;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        if $u2 != null goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: int indexOfNull()>();
+
+        return $u-1;
+
+     label1:
+        $u-1 = virtualinvoke $u2.<java.lang.Object: int hashCode()>();
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: int indexOf(java.lang.Object,int)>($u2, $u-1);
+
+        return $u-1;
+    }
+
+    int indexOfNull()
+    {
+        androidx.collection.SimpleArrayMap this;
+        int N, $u5, i, i#10;
+        int[] index;
+        java.lang.Object[] end;
+        java.lang.Object end#7;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        N = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if N != 0 goto label1;
+
+        return -1;
+
+     label1:
+        index = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        $u5 = staticinvoke <androidx.collection.SimpleArrayMap: int binarySearchHashes(int[],int,int)>(index, N, 0);
+
+        if $u5 >= 0 goto label2;
+
+        return $u5;
+
+     label2:
+        end = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        i = $u5 << 1;
+
+        end#7 = end[i];
+
+        if end#7 != null goto label3;
+
+        return $u5;
+
+     label3:
+        i = $u5 + 1;
+
+     label4:
+        if i >= N goto label6;
+
+        index = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        i#10 = index[i];
+
+        if i#10 != 0 goto label6;
+
+        end = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        i#10 = i << 1;
+
+        end#7 = end[i#10];
+
+        if end#7 != null goto label5;
+
+        return i;
+
+     label5:
+        i = i + 1;
+
+        goto label4;
+
+     label6:
+        N = $u5 + -1;
+
+     label7:
+        if N < 0 goto label9;
+
+        index = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        $u5 = index[N];
+
+        if $u5 != 0 goto label9;
+
+        end = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        $u5 = N << 1;
+
+        end#7 = end[$u5];
+
+        if end#7 != null goto label8;
+
+        return N;
+
+     label8:
+        N = N + -1;
+
+        goto label7;
+
+     label9:
+        i = i ^ -1;
+
+        return i;
+    }
+
+    int indexOfValue(java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object $u5, $u3;
+        java.lang.Object[] array;
+        boolean $u-1;
+        int N, i;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u5 := @parameter0: java.lang.Object;
+
+        N = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        N = N * 2;
+
+        array = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        if $u5 != null goto label4;
+
+        i = 1;
+
+     label1:
+        if i >= N goto label3;
+
+        $u5 = array[i];
+
+        if $u5 != null goto label2;
+
+        N = i >> 1;
+
+        return N;
+
+     label2:
+        i = i + 2;
+
+        goto label1;
+
+     label3:
+        goto label7;
+
+     label4:
+        i = 1;
+
+     label5:
+        if i >= N goto label7;
+
+        $u3 = array[i];
+
+        $u-1 = virtualinvoke $u5.<java.lang.Object: boolean equals(java.lang.Object)>($u3);
+
+        if $u-1 == 0 goto label6;
+
+        N = i >> 1;
+
+        return N;
+
+     label6:
+        i = i + 2;
+
+        goto label5;
+
+     label7:
+        return -1;
+    }
+
+    public boolean isEmpty()
+    {
+        androidx.collection.SimpleArrayMap this;
+        int $u0;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u0 = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if $u0 > 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public java.lang.Object keyAt(int)
+    {
+        androidx.collection.SimpleArrayMap this;
+        int $u3;
+        java.lang.Object[] $u0;
+        java.lang.Object $u0#2;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        $u3 = $u3 << 1;
+
+        $u0#2 = $u0[$u3];
+
+        return $u0#2;
+    }
+
+    public java.lang.Object put(java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object key, value;
+        int osize, hash, $u-1, index1#12, oarray, $u6#32;
+        java.lang.Object[] index, $u6#22;
+        int[] index1, $u6;
+        java.util.ConcurrentModificationException $u6#24;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        key := @parameter0: java.lang.Object;
+
+        value := @parameter1: java.lang.Object;
+
+        osize = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if key != null goto label01;
+
+        hash = 0;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: int indexOfNull()>();
+
+        goto label02;
+
+     label01:
+        $u-1 = virtualinvoke key.<java.lang.Object: int hashCode()>();
+
+        hash = $u-1;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: int indexOf(java.lang.Object,int)>(key, $u-1);
+
+     label02:
+        if $u-1 < 0 goto label03;
+
+        hash = $u-1 << 1;
+
+        hash = hash + 1;
+
+        index = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        key = index[hash];
+
+        index[hash] = value;
+
+        return key;
+
+     label03:
+        $u-1 = $u-1 ^ -1;
+
+        index1 = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        index1#12 = lengthof index1;
+
+        if osize < index1#12 goto label08;
+
+        index1#12 = 4;
+
+        if osize < 8 goto label04;
+
+        index1#12 = osize >> 1;
+
+        index1#12 = index1#12 + osize;
+
+        goto label05;
+
+     label04:
+        if osize < 4 goto label05;
+
+        index1#12 = 8;
+
+     label05:
+        index1 = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        index = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        specialinvoke this.<androidx.collection.SimpleArrayMap: void allocArrays(int)>(index1#12);
+
+        index1#12 = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if osize != index1#12 goto label07;
+
+        $u6 = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        index1#12 = lengthof $u6;
+
+        if index1#12 <= 0 goto label06;
+
+        index1#12 = lengthof index1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(index1, 0, $u6, 0, index1#12);
+
+        $u6#22 = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        index1#12 = lengthof index;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(index, 0, $u6#22, 0, index1#12);
+
+     label06:
+        staticinvoke <androidx.collection.SimpleArrayMap: void freeArrays(int[],java.lang.Object[],int)>(index1, index, osize);
+
+        goto label08;
+
+     label07:
+        $u6#24 = new java.util.ConcurrentModificationException;
+
+        specialinvoke $u6#24.<java.util.ConcurrentModificationException: void <init>()>();
+
+        throw $u6#24;
+
+     label08:
+        if $u-1 >= osize goto label09;
+
+        index1 = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        index1#12 = $u-1 + 1;
+
+        oarray = osize - $u-1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(index1, $u-1, index1, index1#12, oarray);
+
+        index = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        index1#12 = $u-1 << 1;
+
+        oarray = $u-1 + 1;
+
+        oarray = oarray << 1;
+
+        $u6#32 = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        $u6#32 = $u6#32 - $u-1;
+
+        $u6#32 = $u6#32 << 1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(index, index1#12, index, oarray, $u6#32);
+
+     label09:
+        index1#12 = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if osize != index1#12 goto label10;
+
+        index1 = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        osize = lengthof index1;
+
+        if $u-1 >= osize goto label10;
+
+        index1[$u-1] = hash;
+
+        index = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        hash = $u-1 << 1;
+
+        index[hash] = key;
+
+        hash = $u-1 << 1;
+
+        hash = hash + 1;
+
+        index[hash] = value;
+
+        hash = index1#12 + 1;
+
+        this.<androidx.collection.SimpleArrayMap: int mSize> = hash;
+
+        return null;
+
+     label10:
+        $u6#24 = new java.util.ConcurrentModificationException;
+
+        specialinvoke $u6#24.<java.util.ConcurrentModificationException: void <init>()>();
+
+        throw $u6#24;
+    }
+
+    public void putAll(androidx.collection.SimpleArrayMap)
+    {
+        androidx.collection.SimpleArrayMap this, array;
+        int N, $u4;
+        int[] i, $u2;
+        java.lang.Object[] i#7, $u2#8;
+        java.lang.Object $u-1, $u-1#12;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        array := @parameter0: androidx.collection.SimpleArrayMap;
+
+        N = array.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        $u4 = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        $u4 = $u4 + N;
+
+        virtualinvoke this.<androidx.collection.SimpleArrayMap: void ensureCapacity(int)>($u4);
+
+        $u4 = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if $u4 != 0 goto label1;
+
+        if N <= 0 goto label3;
+
+        i = array.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        $u2 = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(i, 0, $u2, 0, N);
+
+        i#7 = array.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        $u2#8 = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        $u4 = N << 1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(i#7, 0, $u2#8, 0, $u4);
+
+        this.<androidx.collection.SimpleArrayMap: int mSize> = N;
+
+        return;
+
+     label1:
+        $u4 = 0;
+
+     label2:
+        if $u4 >= N goto label3;
+
+        $u-1 = virtualinvoke array.<androidx.collection.SimpleArrayMap: java.lang.Object keyAt(int)>($u4);
+
+        $u-1#12 = virtualinvoke array.<androidx.collection.SimpleArrayMap: java.lang.Object valueAt(int)>($u4);
+
+        virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u-1, $u-1#12);
+
+        $u4 = $u4 + 1;
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    public java.lang.Object putIfAbsent(java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object key, value, $u-1;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        key := @parameter0: java.lang.Object;
+
+        value := @parameter1: java.lang.Object;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object get(java.lang.Object)>(key);
+
+        if $u-1 != null goto label1;
+
+        key = virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(key, value);
+
+        return key;
+
+     label1:
+        return $u-1;
+    }
+
+    public java.lang.Object remove(java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object $u3;
+        int $u-1;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u3 := @parameter0: java.lang.Object;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: int indexOfKey(java.lang.Object)>($u3);
+
+        if $u-1 < 0 goto label1;
+
+        $u3 = virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object removeAt(int)>($u-1);
+
+        return $u3;
+
+     label1:
+        return null;
+    }
+
+    public boolean remove(java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object $u4, $u5;
+        int $u-1;
+        boolean $u-1#4;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u4 := @parameter0: java.lang.Object;
+
+        $u5 := @parameter1: java.lang.Object;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: int indexOfKey(java.lang.Object)>($u4);
+
+        if $u-1 < 0 goto label2;
+
+        $u4 = virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object valueAt(int)>($u-1);
+
+        if $u5 == $u4 goto label1;
+
+        if $u5 == null goto label2;
+
+        $u-1#4 = virtualinvoke $u5.<java.lang.Object: boolean equals(java.lang.Object)>($u4);
+
+        if $u-1#4 == 0 goto label2;
+
+     label1:
+        virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object removeAt(int)>($u-1);
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public java.lang.Object removeAt(int)
+    {
+        androidx.collection.SimpleArrayMap this;
+        int $u12, osize, nsize#9, ohashes, oarray, n;
+        java.lang.Object[] nsize, $u7#23;
+        java.lang.Object old;
+        int[] $u2, $u7;
+        java.util.ConcurrentModificationException $u2#33;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u12 := @parameter0: int;
+
+        nsize = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        osize = $u12 << 1;
+
+        osize = osize + 1;
+
+        old = nsize[osize];
+
+        osize = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if osize > 1 goto label1;
+
+        $u2 = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        staticinvoke <androidx.collection.SimpleArrayMap: void freeArrays(int[],java.lang.Object[],int)>($u2, nsize, osize);
+
+        $u2 = <androidx.collection.ContainerHelpers: int[] EMPTY_INTS>;
+
+        this.<androidx.collection.SimpleArrayMap: int[] mHashes> = $u2;
+
+        nsize = <androidx.collection.ContainerHelpers: java.lang.Object[] EMPTY_OBJECTS>;
+
+        this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray> = nsize;
+
+        nsize#9 = 0;
+
+        goto label8;
+
+     label1:
+        nsize#9 = osize + -1;
+
+        $u2 = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        ohashes = lengthof $u2;
+
+        oarray = 8;
+
+        if ohashes <= 8 goto label6;
+
+        ohashes = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        n = lengthof $u2;
+
+        n = n / 3;
+
+        if ohashes >= n goto label6;
+
+        if osize <= 8 goto label2;
+
+        oarray = osize >> 1;
+
+        oarray = osize + oarray;
+
+     label2:
+        $u2 = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        nsize = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        specialinvoke this.<androidx.collection.SimpleArrayMap: void allocArrays(int)>(oarray);
+
+        oarray = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if osize != oarray goto label5;
+
+        if $u12 <= 0 goto label3;
+
+        $u7 = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u2, 0, $u7, 0, $u12);
+
+        $u7#23 = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        oarray = $u12 << 1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(nsize, 0, $u7#23, 0, oarray);
+
+     label3:
+        if $u12 >= nsize#9 goto label4;
+
+        oarray = $u12 + 1;
+
+        $u7 = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        ohashes = nsize#9 - $u12;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u2, oarray, $u7, $u12, ohashes);
+
+        oarray = $u12 + 1;
+
+        oarray = oarray << 1;
+
+        $u7#23 = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        ohashes = $u12 << 1;
+
+        $u12 = nsize#9 - $u12;
+
+        $u12 = $u12 << 1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(nsize, oarray, $u7#23, ohashes, $u12);
+
+     label4:
+        goto label8;
+
+     label5:
+        $u2#33 = new java.util.ConcurrentModificationException;
+
+        specialinvoke $u2#33.<java.util.ConcurrentModificationException: void <init>()>();
+
+        throw $u2#33;
+
+     label6:
+        if $u12 >= nsize#9 goto label7;
+
+        $u2 = this.<androidx.collection.SimpleArrayMap: int[] mHashes>;
+
+        oarray = $u12 + 1;
+
+        ohashes = nsize#9 - $u12;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u2, oarray, $u2, $u12, ohashes);
+
+        nsize = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        oarray = $u12 + 1;
+
+        oarray = oarray << 1;
+
+        ohashes = $u12 << 1;
+
+        $u12 = nsize#9 - $u12;
+
+        $u12 = $u12 << 1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(nsize, oarray, nsize, ohashes, $u12);
+
+     label7:
+        nsize = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        $u12 = nsize#9 << 1;
+
+        nsize[$u12] = null;
+
+        $u12 = nsize#9 << 1;
+
+        $u12 = $u12 + 1;
+
+        nsize[$u12] = null;
+
+     label8:
+        $u12 = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if osize != $u12 goto label9;
+
+        this.<androidx.collection.SimpleArrayMap: int mSize> = nsize#9;
+
+        return old;
+
+     label9:
+        $u2#33 = new java.util.ConcurrentModificationException;
+
+        specialinvoke $u2#33.<java.util.ConcurrentModificationException: void <init>()>();
+
+        throw $u2#33;
+    }
+
+    public java.lang.Object replace(java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object key, value;
+        int $u-1;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        key := @parameter0: java.lang.Object;
+
+        value := @parameter1: java.lang.Object;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: int indexOfKey(java.lang.Object)>(key);
+
+        if $u-1 < 0 goto label1;
+
+        key = virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object setValueAt(int,java.lang.Object)>($u-1, value);
+
+        return key;
+
+     label1:
+        return null;
+    }
+
+    public boolean replace(java.lang.Object, java.lang.Object, java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object key, oldValue, newValue;
+        int $u-1;
+        boolean $u-1#4;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        key := @parameter0: java.lang.Object;
+
+        oldValue := @parameter1: java.lang.Object;
+
+        newValue := @parameter2: java.lang.Object;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: int indexOfKey(java.lang.Object)>(key);
+
+        if $u-1 < 0 goto label2;
+
+        key = virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object valueAt(int)>($u-1);
+
+        if key == oldValue goto label1;
+
+        if oldValue == null goto label2;
+
+        $u-1#4 = virtualinvoke oldValue.<java.lang.Object: boolean equals(java.lang.Object)>(key);
+
+        if $u-1#4 == 0 goto label2;
+
+     label1:
+        virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object setValueAt(int,java.lang.Object)>($u-1, newValue);
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public java.lang.Object setValueAt(int, java.lang.Object)
+    {
+        androidx.collection.SimpleArrayMap this;
+        java.lang.Object value, old;
+        int $u3;
+        java.lang.Object[] $u3#4;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u3 := @parameter0: int;
+
+        value := @parameter1: java.lang.Object;
+
+        $u3 = $u3 << 1;
+
+        $u3 = $u3 + 1;
+
+        $u3#4 = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        old = $u3#4[$u3];
+
+        $u3#4[$u3] = value;
+
+        return old;
+    }
+
+    public int size()
+    {
+        androidx.collection.SimpleArrayMap this;
+        int ret0;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        ret0 = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        return ret0;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.collection.SimpleArrayMap this;
+        boolean $u-1;
+        java.lang.StringBuilder buffer;
+        int i, key;
+        java.lang.Object $u-1#11;
+        java.lang.String $u-1#17;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u-1 = virtualinvoke this.<androidx.collection.SimpleArrayMap: boolean isEmpty()>();
+
+        if $u-1 == 0 goto label1;
+
+        return "{}";
+
+     label1:
+        buffer = new java.lang.StringBuilder;
+
+        i = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        i = i * 28;
+
+        specialinvoke buffer.<java.lang.StringBuilder: void <init>(int)>(i);
+
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(123);
+
+        i = 0;
+
+     label2:
+        key = this.<androidx.collection.SimpleArrayMap: int mSize>;
+
+        if i >= key goto label8;
+
+        if i <= 0 goto label3;
+
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ");
+
+     label3:
+        $u-1#11 = virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object keyAt(int)>(i);
+
+        if $u-1#11 == this goto label4;
+
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u-1#11);
+
+        goto label5;
+
+     label4:
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(this Map)");
+
+     label5:
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(61);
+
+        $u-1#11 = virtualinvoke this.<androidx.collection.SimpleArrayMap: java.lang.Object valueAt(int)>(i);
+
+        if $u-1#11 == this goto label6;
+
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u-1#11);
+
+        goto label7;
+
+     label6:
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(this Map)");
+
+     label7:
+        i = i + 1;
+
+        goto label2;
+
+     label8:
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125);
+
+        $u-1#17 = virtualinvoke buffer.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1#17;
+    }
+
+    public java.lang.Object valueAt(int)
+    {
+        androidx.collection.SimpleArrayMap this;
+        int $u3;
+        java.lang.Object[] $u0;
+        java.lang.Object $u0#4;
+
+        this := @this: androidx.collection.SimpleArrayMap;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.collection.SimpleArrayMap: java.lang.Object[] mArray>;
+
+        $u3 = $u3 << 1;
+
+        $u3 = $u3 + 1;
+
+        $u0#4 = $u0[$u3];
+
+        return $u0#4;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.collection.SimpleArrayMap: java.lang.String TAG> = "ArrayMap";
+
+        <androidx.collection.SimpleArrayMap: boolean DEBUG> = 0;
+
+        <androidx.collection.SimpleArrayMap: boolean CONCURRENT_MODIFICATION_EXCEPTIONS> = 1;
+
+        <androidx.collection.SimpleArrayMap: int CACHE_SIZE> = 10;
+
+        <androidx.collection.SimpleArrayMap: int BASE_SIZE> = 4;
+
+        return;
+    }
+}

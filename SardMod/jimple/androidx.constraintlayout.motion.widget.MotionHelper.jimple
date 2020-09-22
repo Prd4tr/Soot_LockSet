@@ -1,0 +1,345 @@
+public class androidx.constraintlayout.motion.widget.MotionHelper extends androidx.constraintlayout.widget.ConstraintHelper implements androidx.constraintlayout.motion.widget.Animatable, androidx.constraintlayout.motion.widget.MotionLayout$TransitionListener
+{
+    private float mProgress;
+    private boolean mUseOnHide;
+    private boolean mUseOnShow;
+    protected android.view.View[] views;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.constraintlayout.motion.widget.MotionHelper this;
+        android.content.Context $u2;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionHelper;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void <init>(android.content.Context)>($u2);
+
+        this.<androidx.constraintlayout.motion.widget.MotionHelper: boolean mUseOnShow> = 0;
+
+        this.<androidx.constraintlayout.motion.widget.MotionHelper: boolean mUseOnHide> = 0;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.constraintlayout.motion.widget.MotionHelper this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionHelper;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        this.<androidx.constraintlayout.motion.widget.MotionHelper: boolean mUseOnShow> = 0;
+
+        this.<androidx.constraintlayout.motion.widget.MotionHelper: boolean mUseOnHide> = 0;
+
+        virtualinvoke this.<androidx.constraintlayout.motion.widget.MotionHelper: void init(android.util.AttributeSet)>($u3);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.constraintlayout.motion.widget.MotionHelper this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        int $u4;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionHelper;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u4 := @parameter2: int;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, $u4);
+
+        this.<androidx.constraintlayout.motion.widget.MotionHelper: boolean mUseOnShow> = 0;
+
+        this.<androidx.constraintlayout.motion.widget.MotionHelper: boolean mUseOnHide> = 0;
+
+        virtualinvoke this.<androidx.constraintlayout.motion.widget.MotionHelper: void init(android.util.AttributeSet)>($u3);
+
+        return;
+    }
+
+    public float getProgress()
+    {
+        androidx.constraintlayout.motion.widget.MotionHelper this;
+        float ret0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionHelper;
+
+        ret0 = this.<androidx.constraintlayout.motion.widget.MotionHelper: float mProgress>;
+
+        return ret0;
+    }
+
+    protected void init(android.util.AttributeSet)
+    {
+        androidx.constraintlayout.motion.widget.MotionHelper this;
+        android.util.AttributeSet $u6;
+        android.content.Context $u-1;
+        int[] N;
+        android.content.res.TypedArray $u-1#4;
+        int $u-1#6, i, $u-1#9, $u4;
+        boolean $u4#11;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionHelper;
+
+        $u6 := @parameter0: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void init(android.util.AttributeSet)>($u6);
+
+        if $u6 == null goto label4;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.motion.widget.MotionHelper: android.content.Context getContext()>();
+
+        N = <androidx.constraintlayout.widget.R$styleable: int[] MotionHelper>;
+
+        $u-1#4 = virtualinvoke $u-1.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[])>($u6, N);
+
+        $u-1#6 = virtualinvoke $u-1#4.<android.content.res.TypedArray: int getIndexCount()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1#6 goto label4;
+
+        $u-1#9 = virtualinvoke $u-1#4.<android.content.res.TypedArray: int getIndex(int)>(i);
+
+        $u4 = <androidx.constraintlayout.widget.R$styleable: int MotionHelper_onShow>;
+
+        if $u-1#9 != $u4 goto label2;
+
+        $u4#11 = this.<androidx.constraintlayout.motion.widget.MotionHelper: boolean mUseOnShow>;
+
+        $u4#11 = virtualinvoke $u-1#4.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($u-1#9, $u4#11);
+
+        this.<androidx.constraintlayout.motion.widget.MotionHelper: boolean mUseOnShow> = $u4#11;
+
+        goto label3;
+
+     label2:
+        $u4 = <androidx.constraintlayout.widget.R$styleable: int MotionHelper_onHide>;
+
+        if $u-1#9 != $u4 goto label3;
+
+        $u4#11 = this.<androidx.constraintlayout.motion.widget.MotionHelper: boolean mUseOnHide>;
+
+        $u4#11 = virtualinvoke $u-1#4.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($u-1#9, $u4#11);
+
+        this.<androidx.constraintlayout.motion.widget.MotionHelper: boolean mUseOnHide> = $u4#11;
+
+     label3:
+        i = i + 1;
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    public boolean isUseOnHide()
+    {
+        androidx.constraintlayout.motion.widget.MotionHelper this;
+        boolean ret0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionHelper;
+
+        ret0 = this.<androidx.constraintlayout.motion.widget.MotionHelper: boolean mUseOnHide>;
+
+        return ret0;
+    }
+
+    public boolean isUsedOnShow()
+    {
+        androidx.constraintlayout.motion.widget.MotionHelper this;
+        boolean ret0;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionHelper;
+
+        ret0 = this.<androidx.constraintlayout.motion.widget.MotionHelper: boolean mUseOnShow>;
+
+        return ret0;
+    }
+
+    public void onTransitionChange(androidx.constraintlayout.motion.widget.MotionLayout, int, int, float)
+    {
+        androidx.constraintlayout.motion.widget.MotionHelper this;
+        androidx.constraintlayout.motion.widget.MotionLayout $u1;
+        int $u2, $u3;
+        float $u4;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionHelper;
+
+        $u1 := @parameter0: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: int;
+
+        $u4 := @parameter3: float;
+
+        return;
+    }
+
+    public void onTransitionCompleted(androidx.constraintlayout.motion.widget.MotionLayout, int)
+    {
+        androidx.constraintlayout.motion.widget.MotionHelper this;
+        androidx.constraintlayout.motion.widget.MotionLayout $u1;
+        int $u2;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionHelper;
+
+        $u1 := @parameter0: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        $u2 := @parameter1: int;
+
+        return;
+    }
+
+    public void onTransitionStarted(androidx.constraintlayout.motion.widget.MotionLayout, int, int)
+    {
+        androidx.constraintlayout.motion.widget.MotionHelper this;
+        androidx.constraintlayout.motion.widget.MotionLayout $u1;
+        int $u2, $u3;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionHelper;
+
+        $u1 := @parameter0: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: int;
+
+        return;
+    }
+
+    public void onTransitionTrigger(androidx.constraintlayout.motion.widget.MotionLayout, int, boolean, float)
+    {
+        androidx.constraintlayout.motion.widget.MotionHelper this;
+        androidx.constraintlayout.motion.widget.MotionLayout $u1;
+        int $u2;
+        boolean $u3;
+        float $u4;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionHelper;
+
+        $u1 := @parameter0: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: boolean;
+
+        $u4 := @parameter3: float;
+
+        return;
+    }
+
+    public void setProgress(float)
+    {
+        androidx.constraintlayout.motion.widget.MotionHelper this;
+        float $u6;
+        boolean $u4;
+        int i, view;
+        android.view.ViewParent $u-1;
+        androidx.constraintlayout.widget.ConstraintLayout i#4;
+        android.view.View[] $u-1#5;
+        android.view.View view#10;
+        android.view.ViewGroup i#13;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionHelper;
+
+        $u6 := @parameter0: float;
+
+        this.<androidx.constraintlayout.motion.widget.MotionHelper: float mProgress> = $u6;
+
+        i = this.<androidx.constraintlayout.motion.widget.MotionHelper: int mCount>;
+
+        if i <= 0 goto label3;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.motion.widget.MotionHelper: android.view.ViewParent getParent()>();
+
+        i#4 = (androidx.constraintlayout.widget.ConstraintLayout) $u-1;
+
+        $u-1#5 = virtualinvoke this.<androidx.constraintlayout.motion.widget.MotionHelper: android.view.View[] getViews(androidx.constraintlayout.widget.ConstraintLayout)>(i#4);
+
+        this.<androidx.constraintlayout.motion.widget.MotionHelper: android.view.View[] views> = $u-1#5;
+
+        i = 0;
+
+     label1:
+        view = this.<androidx.constraintlayout.motion.widget.MotionHelper: int mCount>;
+
+        if i >= view goto label2;
+
+        $u-1#5 = this.<androidx.constraintlayout.motion.widget.MotionHelper: android.view.View[] views>;
+
+        view#10 = $u-1#5[i];
+
+        virtualinvoke this.<androidx.constraintlayout.motion.widget.MotionHelper: void setProgress(android.view.View,float)>(view#10, $u6);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return;
+
+     label3:
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.motion.widget.MotionHelper: android.view.ViewParent getParent()>();
+
+        i#13 = (android.view.ViewGroup) $u-1;
+
+        i = virtualinvoke i#13.<android.view.ViewGroup: int getChildCount()>();
+
+        view = 0;
+
+     label4:
+        if view >= i goto label7;
+
+        view#10 = virtualinvoke i#13.<android.view.ViewGroup: android.view.View getChildAt(int)>(view);
+
+        $u4 = view#10 instanceof androidx.constraintlayout.motion.widget.MotionHelper;
+
+        if $u4 == 0 goto label5;
+
+        goto label6;
+
+     label5:
+        virtualinvoke this.<androidx.constraintlayout.motion.widget.MotionHelper: void setProgress(android.view.View,float)>(view#10, $u6);
+
+     label6:
+        view = view + 1;
+
+        goto label4;
+
+     label7:
+        return;
+    }
+
+    public void setProgress(android.view.View, float)
+    {
+        androidx.constraintlayout.motion.widget.MotionHelper this;
+        android.view.View $u1;
+        float $u2;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionHelper;
+
+        $u1 := @parameter0: android.view.View;
+
+        $u2 := @parameter1: float;
+
+        return;
+    }
+}

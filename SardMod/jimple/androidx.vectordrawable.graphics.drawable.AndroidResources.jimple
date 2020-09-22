@@ -1,0 +1,405 @@
+class androidx.vectordrawable.graphics.drawable.AndroidResources extends java.lang.Object
+{
+    public static final int FAST_OUT_LINEAR_IN;
+    public static final int FAST_OUT_SLOW_IN;
+    public static final int LINEAR_OUT_SLOW_IN;
+    static final int[] STYLEABLE_ANIMATED_VECTOR_DRAWABLE;
+    static final int STYLEABLE_ANIMATED_VECTOR_DRAWABLE_DRAWABLE;
+    static final int[] STYLEABLE_ANIMATED_VECTOR_DRAWABLE_TARGET;
+    static final int STYLEABLE_ANIMATED_VECTOR_DRAWABLE_TARGET_ANIMATION;
+    static final int STYLEABLE_ANIMATED_VECTOR_DRAWABLE_TARGET_NAME;
+    public static final int[] STYLEABLE_ANIMATOR;
+    public static final int STYLEABLE_ANIMATOR_DURATION;
+    public static final int STYLEABLE_ANIMATOR_INTERPOLATOR;
+    public static final int STYLEABLE_ANIMATOR_REPEAT_COUNT;
+    public static final int STYLEABLE_ANIMATOR_REPEAT_MODE;
+    public static final int[] STYLEABLE_ANIMATOR_SET;
+    public static final int STYLEABLE_ANIMATOR_SET_ORDERING;
+    public static final int STYLEABLE_ANIMATOR_START_OFFSET;
+    public static final int STYLEABLE_ANIMATOR_VALUE_FROM;
+    public static final int STYLEABLE_ANIMATOR_VALUE_TO;
+    public static final int STYLEABLE_ANIMATOR_VALUE_TYPE;
+    public static final int[] STYLEABLE_KEYFRAME;
+    public static final int STYLEABLE_KEYFRAME_FRACTION;
+    public static final int STYLEABLE_KEYFRAME_INTERPOLATOR;
+    public static final int STYLEABLE_KEYFRAME_VALUE;
+    public static final int STYLEABLE_KEYFRAME_VALUE_TYPE;
+    public static final int[] STYLEABLE_PATH_INTERPOLATOR;
+    public static final int STYLEABLE_PATH_INTERPOLATOR_CONTROL_X_1;
+    public static final int STYLEABLE_PATH_INTERPOLATOR_CONTROL_X_2;
+    public static final int STYLEABLE_PATH_INTERPOLATOR_CONTROL_Y_1;
+    public static final int STYLEABLE_PATH_INTERPOLATOR_CONTROL_Y_2;
+    public static final int STYLEABLE_PATH_INTERPOLATOR_PATH_DATA;
+    public static final int[] STYLEABLE_PROPERTY_ANIMATOR;
+    public static final int STYLEABLE_PROPERTY_ANIMATOR_PATH_DATA;
+    public static final int STYLEABLE_PROPERTY_ANIMATOR_PROPERTY_NAME;
+    public static final int STYLEABLE_PROPERTY_ANIMATOR_PROPERTY_X_NAME;
+    public static final int STYLEABLE_PROPERTY_ANIMATOR_PROPERTY_Y_NAME;
+    public static final int[] STYLEABLE_PROPERTY_VALUES_HOLDER;
+    public static final int STYLEABLE_PROPERTY_VALUES_HOLDER_PROPERTY_NAME;
+    public static final int STYLEABLE_PROPERTY_VALUES_HOLDER_VALUE_FROM;
+    public static final int STYLEABLE_PROPERTY_VALUES_HOLDER_VALUE_TO;
+    public static final int STYLEABLE_PROPERTY_VALUES_HOLDER_VALUE_TYPE;
+    static final int STYLEABLE_VECTOR_DRAWABLE_ALPHA;
+    static final int STYLEABLE_VECTOR_DRAWABLE_AUTO_MIRRORED;
+    static final int[] STYLEABLE_VECTOR_DRAWABLE_CLIP_PATH;
+    static final int STYLEABLE_VECTOR_DRAWABLE_CLIP_PATH_FILLTYPE;
+    static final int STYLEABLE_VECTOR_DRAWABLE_CLIP_PATH_NAME;
+    static final int STYLEABLE_VECTOR_DRAWABLE_CLIP_PATH_PATH_DATA;
+    static final int[] STYLEABLE_VECTOR_DRAWABLE_GROUP;
+    static final int STYLEABLE_VECTOR_DRAWABLE_GROUP_NAME;
+    static final int STYLEABLE_VECTOR_DRAWABLE_GROUP_PIVOT_X;
+    static final int STYLEABLE_VECTOR_DRAWABLE_GROUP_PIVOT_Y;
+    static final int STYLEABLE_VECTOR_DRAWABLE_GROUP_ROTATION;
+    static final int STYLEABLE_VECTOR_DRAWABLE_GROUP_SCALE_X;
+    static final int STYLEABLE_VECTOR_DRAWABLE_GROUP_SCALE_Y;
+    static final int STYLEABLE_VECTOR_DRAWABLE_GROUP_TRANSLATE_X;
+    static final int STYLEABLE_VECTOR_DRAWABLE_GROUP_TRANSLATE_Y;
+    static final int STYLEABLE_VECTOR_DRAWABLE_HEIGHT;
+    static final int STYLEABLE_VECTOR_DRAWABLE_NAME;
+    static final int[] STYLEABLE_VECTOR_DRAWABLE_PATH;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_FILL_ALPHA;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_FILL_COLOR;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_NAME;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_PATH_DATA;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_STROKE_ALPHA;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_STROKE_COLOR;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_STROKE_LINE_CAP;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_STROKE_LINE_JOIN;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_STROKE_MITER_LIMIT;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_STROKE_WIDTH;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_TRIM_PATH_END;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_TRIM_PATH_FILLTYPE;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_TRIM_PATH_OFFSET;
+    static final int STYLEABLE_VECTOR_DRAWABLE_PATH_TRIM_PATH_START;
+    static final int STYLEABLE_VECTOR_DRAWABLE_TINT;
+    static final int STYLEABLE_VECTOR_DRAWABLE_TINT_MODE;
+    static final int[] STYLEABLE_VECTOR_DRAWABLE_TYPE_ARRAY;
+    static final int STYLEABLE_VECTOR_DRAWABLE_VIEWPORT_HEIGHT;
+    static final int STYLEABLE_VECTOR_DRAWABLE_VIEWPORT_WIDTH;
+    static final int STYLEABLE_VECTOR_DRAWABLE_WIDTH;
+
+    static void <clinit>()
+    {
+        int[] $u0;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_WIDTH> = 3;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_VIEWPORT_WIDTH> = 7;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_VIEWPORT_HEIGHT> = 8;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_TINT_MODE> = 6;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_TINT> = 1;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_TRIM_PATH_START> = 5;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_TRIM_PATH_OFFSET> = 7;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_TRIM_PATH_FILLTYPE> = 13;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_TRIM_PATH_END> = 6;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_STROKE_WIDTH> = 4;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_STROKE_MITER_LIMIT> = 10;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_STROKE_LINE_JOIN> = 9;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_STROKE_LINE_CAP> = 8;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_STROKE_COLOR> = 3;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_STROKE_ALPHA> = 11;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_PATH_DATA> = 2;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_NAME> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_FILL_COLOR> = 1;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_PATH_FILL_ALPHA> = 12;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_NAME> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_HEIGHT> = 2;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_GROUP_TRANSLATE_Y> = 7;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_GROUP_TRANSLATE_X> = 6;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_GROUP_SCALE_Y> = 4;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_GROUP_SCALE_X> = 3;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_GROUP_ROTATION> = 5;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_GROUP_PIVOT_Y> = 2;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_GROUP_PIVOT_X> = 1;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_GROUP_NAME> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_CLIP_PATH_PATH_DATA> = 1;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_CLIP_PATH_NAME> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_CLIP_PATH_FILLTYPE> = 2;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_AUTO_MIRRORED> = 5;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_VECTOR_DRAWABLE_ALPHA> = 4;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_PROPERTY_VALUES_HOLDER_VALUE_TYPE> = 2;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_PROPERTY_VALUES_HOLDER_VALUE_TO> = 1;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_PROPERTY_VALUES_HOLDER_VALUE_FROM> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_PROPERTY_VALUES_HOLDER_PROPERTY_NAME> = 3;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_PROPERTY_ANIMATOR_PROPERTY_Y_NAME> = 3;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_PROPERTY_ANIMATOR_PROPERTY_X_NAME> = 2;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_PROPERTY_ANIMATOR_PROPERTY_NAME> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_PROPERTY_ANIMATOR_PATH_DATA> = 1;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_PATH_INTERPOLATOR_PATH_DATA> = 4;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_PATH_INTERPOLATOR_CONTROL_Y_2> = 3;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_PATH_INTERPOLATOR_CONTROL_Y_1> = 1;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_PATH_INTERPOLATOR_CONTROL_X_2> = 2;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_PATH_INTERPOLATOR_CONTROL_X_1> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_KEYFRAME_VALUE_TYPE> = 2;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_KEYFRAME_VALUE> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_KEYFRAME_INTERPOLATOR> = 1;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_KEYFRAME_FRACTION> = 3;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_ANIMATOR_VALUE_TYPE> = 7;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_ANIMATOR_VALUE_TO> = 6;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_ANIMATOR_VALUE_FROM> = 5;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_ANIMATOR_START_OFFSET> = 2;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_ANIMATOR_SET_ORDERING> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_ANIMATOR_REPEAT_MODE> = 4;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_ANIMATOR_REPEAT_COUNT> = 3;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_ANIMATOR_INTERPOLATOR> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_ANIMATOR_DURATION> = 1;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_ANIMATED_VECTOR_DRAWABLE_TARGET_NAME> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_ANIMATED_VECTOR_DRAWABLE_TARGET_ANIMATION> = 1;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int STYLEABLE_ANIMATED_VECTOR_DRAWABLE_DRAWABLE> = 0;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int LINEAR_OUT_SLOW_IN> = 17563662;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int FAST_OUT_SLOW_IN> = 17563661;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int FAST_OUT_LINEAR_IN> = 17563663;
+
+        $u0 = newarray (int)[9];
+
+        $u0[0] = 16842755;
+
+        $u0[1] = 16843041;
+
+        $u0[2] = 16843093;
+
+        $u0[3] = 16843097;
+
+        $u0[4] = 16843551;
+
+        $u0[5] = 16843754;
+
+        $u0[6] = 16843771;
+
+        $u0[7] = 16843778;
+
+        $u0[8] = 16843779;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_VECTOR_DRAWABLE_TYPE_ARRAY> = $u0;
+
+        $u0 = newarray (int)[8];
+
+        $u0[0] = 16842755;
+
+        $u0[1] = 16843189;
+
+        $u0[2] = 16843190;
+
+        $u0[3] = 16843556;
+
+        $u0[4] = 16843557;
+
+        $u0[5] = 16843558;
+
+        $u0[6] = 16843866;
+
+        $u0[7] = 16843867;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_VECTOR_DRAWABLE_GROUP> = $u0;
+
+        $u0 = newarray (int)[14];
+
+        $u0[0] = 16842755;
+
+        $u0[1] = 16843780;
+
+        $u0[2] = 16843781;
+
+        $u0[3] = 16843782;
+
+        $u0[4] = 16843783;
+
+        $u0[5] = 16843784;
+
+        $u0[6] = 16843785;
+
+        $u0[7] = 16843786;
+
+        $u0[8] = 16843787;
+
+        $u0[9] = 16843788;
+
+        $u0[10] = 16843789;
+
+        $u0[11] = 16843979;
+
+        $u0[12] = 16843980;
+
+        $u0[13] = 16844062;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_VECTOR_DRAWABLE_PATH> = $u0;
+
+        $u0 = newarray (int)[3];
+
+        $u0[0] = 16842755;
+
+        $u0[1] = 16843781;
+
+        $u0[2] = 16844062;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_VECTOR_DRAWABLE_CLIP_PATH> = $u0;
+
+        $u0 = newarray (int)[1];
+
+        $u0[0] = 16843161;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_ANIMATED_VECTOR_DRAWABLE> = $u0;
+
+        $u0 = newarray (int)[2];
+
+        $u0[0] = 16842755;
+
+        $u0[1] = 16843213;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_ANIMATED_VECTOR_DRAWABLE_TARGET> = $u0;
+
+        $u0 = newarray (int)[8];
+
+        $u0[0] = 16843073;
+
+        $u0[1] = 16843160;
+
+        $u0[2] = 16843198;
+
+        $u0[3] = 16843199;
+
+        $u0[4] = 16843200;
+
+        $u0[5] = 16843486;
+
+        $u0[6] = 16843487;
+
+        $u0[7] = 16843488;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_ANIMATOR> = $u0;
+
+        $u0 = newarray (int)[1];
+
+        $u0[0] = 16843490;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_ANIMATOR_SET> = $u0;
+
+        $u0 = newarray (int)[4];
+
+        $u0[0] = 16843486;
+
+        $u0[1] = 16843487;
+
+        $u0[2] = 16843488;
+
+        $u0[3] = 16843489;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_PROPERTY_VALUES_HOLDER> = $u0;
+
+        $u0 = newarray (int)[4];
+
+        $u0[0] = 16842788;
+
+        $u0[1] = 16843073;
+
+        $u0[2] = 16843488;
+
+        $u0[3] = 16843992;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_KEYFRAME> = $u0;
+
+        $u0 = newarray (int)[4];
+
+        $u0[0] = 16843489;
+
+        $u0[1] = 16843781;
+
+        $u0[2] = 16843892;
+
+        $u0[3] = 16843893;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_PROPERTY_ANIMATOR> = $u0;
+
+        $u0 = newarray (int)[5];
+
+        $u0[0] = 16843772;
+
+        $u0[1] = 16843773;
+
+        $u0[2] = 16843774;
+
+        $u0[3] = 16843775;
+
+        $u0[4] = 16843781;
+
+        <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_PATH_INTERPOLATOR> = $u0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.vectordrawable.graphics.drawable.AndroidResources this;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.AndroidResources;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

@@ -1,0 +1,49 @@
+class androidx.fragment.app.ListFragment$2 extends java.lang.Object implements android.widget.AdapterView$OnItemClickListener
+{
+    final androidx.fragment.app.ListFragment this$0;
+
+    void <init>(androidx.fragment.app.ListFragment)
+    {
+        androidx.fragment.app.ListFragment$2 this;
+        androidx.fragment.app.ListFragment $u1;
+
+        this := @this: androidx.fragment.app.ListFragment$2;
+
+        $u1 := @parameter0: androidx.fragment.app.ListFragment;
+
+        this.<androidx.fragment.app.ListFragment$2: androidx.fragment.app.ListFragment this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onItemClick(android.widget.AdapterView, android.view.View, int, long)
+    {
+        androidx.fragment.app.ListFragment$2 this;
+        android.widget.AdapterView parent;
+        android.view.View $u8;
+        int $u9;
+        long $u10;
+        androidx.fragment.app.ListFragment $u0;
+        android.widget.ListView $u1;
+
+        this := @this: androidx.fragment.app.ListFragment$2;
+
+        parent := @parameter0: android.widget.AdapterView;
+
+        $u8 := @parameter1: android.view.View;
+
+        $u9 := @parameter2: int;
+
+        $u10 := @parameter3: long;
+
+        $u0 = this.<androidx.fragment.app.ListFragment$2: androidx.fragment.app.ListFragment this$0>;
+
+        $u1 = (android.widget.ListView) parent;
+
+        virtualinvoke $u0.<androidx.fragment.app.ListFragment: void onListItemClick(android.widget.ListView,android.view.View,int,long)>($u1, $u8, $u9, $u10);
+
+        return;
+    }
+}

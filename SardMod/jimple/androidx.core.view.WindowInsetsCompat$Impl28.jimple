@@ -1,0 +1,120 @@
+class androidx.core.view.WindowInsetsCompat$Impl28 extends androidx.core.view.WindowInsetsCompat$Impl21
+{
+
+    void <init>(androidx.core.view.WindowInsetsCompat, android.view.WindowInsets)
+    {
+        androidx.core.view.WindowInsetsCompat$Impl28 this;
+        androidx.core.view.WindowInsetsCompat $u1;
+        android.view.WindowInsets $u2;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl28;
+
+        $u1 := @parameter0: androidx.core.view.WindowInsetsCompat;
+
+        $u2 := @parameter1: android.view.WindowInsets;
+
+        specialinvoke this.<androidx.core.view.WindowInsetsCompat$Impl21: void <init>(androidx.core.view.WindowInsetsCompat,android.view.WindowInsets)>($u1, $u2);
+
+        return;
+    }
+
+    void <init>(androidx.core.view.WindowInsetsCompat, androidx.core.view.WindowInsetsCompat$Impl28)
+    {
+        androidx.core.view.WindowInsetsCompat$Impl28 this, $u2;
+        androidx.core.view.WindowInsetsCompat $u1;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl28;
+
+        $u1 := @parameter0: androidx.core.view.WindowInsetsCompat;
+
+        $u2 := @parameter1: androidx.core.view.WindowInsetsCompat$Impl28;
+
+        specialinvoke this.<androidx.core.view.WindowInsetsCompat$Impl21: void <init>(androidx.core.view.WindowInsetsCompat,androidx.core.view.WindowInsetsCompat$Impl21)>($u1, $u2);
+
+        return;
+    }
+
+    androidx.core.view.WindowInsetsCompat consumeDisplayCutout()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl28 this;
+        android.view.WindowInsets $u0;
+        androidx.core.view.WindowInsetsCompat $u-1;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl28;
+
+        $u0 = this.<androidx.core.view.WindowInsetsCompat$Impl28: android.view.WindowInsets mPlatformInsets>;
+
+        $u0 = virtualinvoke $u0.<android.view.WindowInsets: android.view.WindowInsets consumeDisplayCutout()>();
+
+        $u-1 = staticinvoke <androidx.core.view.WindowInsetsCompat: androidx.core.view.WindowInsetsCompat toWindowInsetsCompat(android.view.WindowInsets)>($u0);
+
+        return $u-1;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.core.view.WindowInsetsCompat$Impl28 this, otherImpl28;
+        java.lang.Object $u4;
+        android.view.WindowInsets $u2, $u1;
+        boolean $u-1;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl28;
+
+        $u4 := @parameter0: java.lang.Object;
+
+        if this != $u4 goto label1;
+
+        return 1;
+
+     label1:
+        $u-1 = $u4 instanceof androidx.core.view.WindowInsetsCompat$Impl28;
+
+        if $u-1 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        otherImpl28 = (androidx.core.view.WindowInsetsCompat$Impl28) $u4;
+
+        $u1 = this.<androidx.core.view.WindowInsetsCompat$Impl28: android.view.WindowInsets mPlatformInsets>;
+
+        $u2 = otherImpl28.<androidx.core.view.WindowInsetsCompat$Impl28: android.view.WindowInsets mPlatformInsets>;
+
+        $u-1 = staticinvoke <java.util.Objects: boolean equals(java.lang.Object,java.lang.Object)>($u1, $u2);
+
+        return $u-1;
+    }
+
+    androidx.core.view.DisplayCutoutCompat getDisplayCutout()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl28 this;
+        android.view.WindowInsets $u0;
+        android.view.DisplayCutout $u-1;
+        androidx.core.view.DisplayCutoutCompat $u-1#4;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl28;
+
+        $u0 = this.<androidx.core.view.WindowInsetsCompat$Impl28: android.view.WindowInsets mPlatformInsets>;
+
+        $u-1 = virtualinvoke $u0.<android.view.WindowInsets: android.view.DisplayCutout getDisplayCutout()>();
+
+        $u-1#4 = staticinvoke <androidx.core.view.DisplayCutoutCompat: androidx.core.view.DisplayCutoutCompat wrap(java.lang.Object)>($u-1);
+
+        return $u-1#4;
+    }
+
+    public int hashCode()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl28 this;
+        int $u-1;
+        android.view.WindowInsets $u0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl28;
+
+        $u0 = this.<androidx.core.view.WindowInsetsCompat$Impl28: android.view.WindowInsets mPlatformInsets>;
+
+        $u-1 = virtualinvoke $u0.<android.view.WindowInsets: int hashCode()>();
+
+        return $u-1;
+    }
+}

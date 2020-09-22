@@ -1,0 +1,69 @@
+class androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong extends java.lang.Object implements androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionAlgorithm
+{
+    static final androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong INSTANCE;
+
+    static void <clinit>()
+    {
+        androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong $u0;
+
+        $u0 = new androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong;
+
+        specialinvoke $u0.<androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong: void <init>()>();
+
+        <androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong: androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong INSTANCE> = $u0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong this;
+
+        this := @this: androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public int checkRtl(java.lang.CharSequence, int, int)
+    {
+        androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong this;
+        java.lang.CharSequence $u5;
+        int $u6, $u7, result, i;
+        char $u-1;
+        byte $u-1#6;
+
+        this := @this: androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong;
+
+        $u5 := @parameter0: java.lang.CharSequence;
+
+        $u6 := @parameter1: int;
+
+        $u7 := @parameter2: int;
+
+        result = 2;
+
+        i = $u6;
+
+        $u6 = $u6 + $u7;
+
+     label1:
+        if i >= $u6 goto label2;
+
+        if result != 2 goto label2;
+
+        $u-1 = interfaceinvoke $u5.<java.lang.CharSequence: char charAt(int)>(i);
+
+        $u-1#6 = staticinvoke <java.lang.Character: byte getDirectionality(char)>($u-1);
+
+        result = staticinvoke <androidx.core.text.TextDirectionHeuristicsCompat: int isRtlTextOrFormat(int)>($u-1#6);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return result;
+    }
+}

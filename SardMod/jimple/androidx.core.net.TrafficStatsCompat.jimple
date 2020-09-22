@@ -1,0 +1,155 @@
+public final class androidx.core.net.TrafficStatsCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.net.TrafficStatsCompat this;
+
+        this := @this: androidx.core.net.TrafficStatsCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void clearThreadStatsTag()
+    {
+        staticinvoke <android.net.TrafficStats: void clearThreadStatsTag()>();
+
+        return;
+    }
+
+    public static int getThreadStatsTag()
+    {
+        int $u-1;
+
+        $u-1 = staticinvoke <android.net.TrafficStats: int getThreadStatsTag()>();
+
+        return $u-1;
+    }
+
+    public static void incrementOperationCount(int)
+    {
+        int $u0;
+
+        $u0 := @parameter0: int;
+
+        staticinvoke <android.net.TrafficStats: void incrementOperationCount(int)>($u0);
+
+        return;
+    }
+
+    public static void incrementOperationCount(int, int)
+    {
+        int $u0, $u1;
+
+        $u0 := @parameter0: int;
+
+        $u1 := @parameter1: int;
+
+        staticinvoke <android.net.TrafficStats: void incrementOperationCount(int,int)>($u0, $u1);
+
+        return;
+    }
+
+    public static void setThreadStatsTag(int)
+    {
+        int $u0;
+
+        $u0 := @parameter0: int;
+
+        staticinvoke <android.net.TrafficStats: void setThreadStatsTag(int)>($u0);
+
+        return;
+    }
+
+    public static void tagDatagramSocket(java.net.DatagramSocket) throws java.net.SocketException
+    {
+        java.net.DatagramSocket $u3;
+        int pfd;
+        android.os.ParcelFileDescriptor $u-1;
+        androidx.core.net.DatagramSocketWrapper $u1;
+        java.io.FileDescriptor $u-1#6;
+
+        $u3 := @parameter0: java.net.DatagramSocket;
+
+        pfd = <android.os.Build$VERSION: int SDK_INT>;
+
+        if pfd < 24 goto label1;
+
+        staticinvoke <android.net.TrafficStats: void tagDatagramSocket(java.net.DatagramSocket)>($u3);
+
+        return;
+
+     label1:
+        $u-1 = staticinvoke <android.os.ParcelFileDescriptor: android.os.ParcelFileDescriptor fromDatagramSocket(java.net.DatagramSocket)>($u3);
+
+        $u1 = new androidx.core.net.DatagramSocketWrapper;
+
+        $u-1#6 = virtualinvoke $u-1.<android.os.ParcelFileDescriptor: java.io.FileDescriptor getFileDescriptor()>();
+
+        specialinvoke $u1.<androidx.core.net.DatagramSocketWrapper: void <init>(java.net.DatagramSocket,java.io.FileDescriptor)>($u3, $u-1#6);
+
+        staticinvoke <android.net.TrafficStats: void tagSocket(java.net.Socket)>($u1);
+
+        virtualinvoke $u-1.<android.os.ParcelFileDescriptor: int detachFd()>();
+
+        return;
+    }
+
+    public static void tagSocket(java.net.Socket) throws java.net.SocketException
+    {
+        java.net.Socket $u0;
+
+        $u0 := @parameter0: java.net.Socket;
+
+        staticinvoke <android.net.TrafficStats: void tagSocket(java.net.Socket)>($u0);
+
+        return;
+    }
+
+    public static void untagDatagramSocket(java.net.DatagramSocket) throws java.net.SocketException
+    {
+        java.net.DatagramSocket $u3;
+        int pfd;
+        android.os.ParcelFileDescriptor $u-1;
+        androidx.core.net.DatagramSocketWrapper $u1;
+        java.io.FileDescriptor $u-1#6;
+
+        $u3 := @parameter0: java.net.DatagramSocket;
+
+        pfd = <android.os.Build$VERSION: int SDK_INT>;
+
+        if pfd < 24 goto label1;
+
+        staticinvoke <android.net.TrafficStats: void untagDatagramSocket(java.net.DatagramSocket)>($u3);
+
+        return;
+
+     label1:
+        $u-1 = staticinvoke <android.os.ParcelFileDescriptor: android.os.ParcelFileDescriptor fromDatagramSocket(java.net.DatagramSocket)>($u3);
+
+        $u1 = new androidx.core.net.DatagramSocketWrapper;
+
+        $u-1#6 = virtualinvoke $u-1.<android.os.ParcelFileDescriptor: java.io.FileDescriptor getFileDescriptor()>();
+
+        specialinvoke $u1.<androidx.core.net.DatagramSocketWrapper: void <init>(java.net.DatagramSocket,java.io.FileDescriptor)>($u3, $u-1#6);
+
+        staticinvoke <android.net.TrafficStats: void untagSocket(java.net.Socket)>($u1);
+
+        virtualinvoke $u-1.<android.os.ParcelFileDescriptor: int detachFd()>();
+
+        return;
+    }
+
+    public static void untagSocket(java.net.Socket) throws java.net.SocketException
+    {
+        java.net.Socket $u0;
+
+        $u0 := @parameter0: java.net.Socket;
+
+        staticinvoke <android.net.TrafficStats: void untagSocket(java.net.Socket)>($u0);
+
+        return;
+    }
+}

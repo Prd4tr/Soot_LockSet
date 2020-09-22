@@ -1,0 +1,425 @@
+class androidx.appcompat.widget.AppCompatSpinner$DropdownPopup extends androidx.appcompat.widget.ListPopupWindow implements androidx.appcompat.widget.AppCompatSpinner$SpinnerPopup
+{
+    android.widget.ListAdapter mAdapter;
+    private java.lang.CharSequence mHintText;
+    private int mOriginalHorizontalOffset;
+    private final android.graphics.Rect mVisibleRect;
+    final androidx.appcompat.widget.AppCompatSpinner this$0;
+
+    public void <init>(androidx.appcompat.widget.AppCompatSpinner, android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this;
+        androidx.appcompat.widget.AppCompatSpinner $u2;
+        android.content.Context $u3;
+        android.util.AttributeSet $u4;
+        int $u5;
+        android.graphics.Rect $u0;
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1 $u0#4;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup;
+
+        $u2 := @parameter0: androidx.appcompat.widget.AppCompatSpinner;
+
+        $u3 := @parameter1: android.content.Context;
+
+        $u4 := @parameter2: android.util.AttributeSet;
+
+        $u5 := @parameter3: int;
+
+        this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0> = $u2;
+
+        specialinvoke this.<androidx.appcompat.widget.ListPopupWindow: void <init>(android.content.Context,android.util.AttributeSet,int)>($u3, $u4, $u5);
+
+        $u0 = new android.graphics.Rect;
+
+        specialinvoke $u0.<android.graphics.Rect: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: android.graphics.Rect mVisibleRect> = $u0;
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void setAnchorView(android.view.View)>($u2);
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void setModal(boolean)>(1);
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void setPromptPosition(int)>(0);
+
+        $u0#4 = new androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1;
+
+        specialinvoke $u0#4.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1: void <init>(androidx.appcompat.widget.AppCompatSpinner$DropdownPopup,androidx.appcompat.widget.AppCompatSpinner)>(this, $u2);
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void setOnItemClickListener(android.widget.AdapterView$OnItemClickListener)>($u0#4);
+
+        return;
+    }
+
+    static void access$001(androidx.appcompat.widget.AppCompatSpinner$DropdownPopup)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup $u0;
+
+        $u0 := @parameter0: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup;
+
+        specialinvoke $u0.<androidx.appcompat.widget.ListPopupWindow: void show()>();
+
+        return;
+    }
+
+    void computeContentWidth()
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this;
+        android.graphics.drawable.Drawable $u-1;
+        int hOffset, $u-1#20, $u-1#23, $u-1#26, contentWidth, $u-1#36, contentWidthLimit#45, $u7;
+        androidx.appcompat.widget.AppCompatSpinner spinnerPaddingLeft;
+        android.graphics.Rect spinnerPaddingLeft#4, spinnerPaddingRight;
+        boolean $u-1#6;
+        android.widget.ListAdapter contentWidthLimit;
+        android.widget.SpinnerAdapter contentWidthLimit#33;
+        android.content.Context $u-1#39;
+        android.content.res.Resources $u-1#41;
+        android.util.DisplayMetrics $u-1#43;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: android.graphics.drawable.Drawable getBackground()>();
+
+        hOffset = 0;
+
+        if $u-1 == null goto label03;
+
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        spinnerPaddingLeft#4 = spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: android.graphics.Rect mTempRect>;
+
+        virtualinvoke $u-1.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>(spinnerPaddingLeft#4);
+
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $u-1#6 = staticinvoke <androidx.appcompat.widget.ViewUtils: boolean isLayoutRtl(android.view.View)>(spinnerPaddingLeft);
+
+        if $u-1#6 == 0 goto label01;
+
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        spinnerPaddingLeft#4 = spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: android.graphics.Rect mTempRect>;
+
+        hOffset = spinnerPaddingLeft#4.<android.graphics.Rect: int right>;
+
+        goto label02;
+
+     label01:
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        spinnerPaddingLeft#4 = spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: android.graphics.Rect mTempRect>;
+
+        hOffset = spinnerPaddingLeft#4.<android.graphics.Rect: int left>;
+
+        hOffset = neg hOffset;
+
+     label02:
+        goto label04;
+
+     label03:
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        spinnerPaddingLeft#4 = spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: android.graphics.Rect mTempRect>;
+
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        spinnerPaddingRight = spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: android.graphics.Rect mTempRect>;
+
+        spinnerPaddingRight.<android.graphics.Rect: int right> = 0;
+
+        spinnerPaddingLeft#4.<android.graphics.Rect: int left> = 0;
+
+     label04:
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $u-1#20 = virtualinvoke spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: int getPaddingLeft()>();
+
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $u-1#23 = virtualinvoke spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: int getPaddingRight()>();
+
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $u-1#26 = virtualinvoke spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: int getWidth()>();
+
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        contentWidth = spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: int mDropDownWidth>;
+
+        if contentWidth != -2 goto label06;
+
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        contentWidthLimit = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: android.widget.ListAdapter mAdapter>;
+
+        contentWidthLimit#33 = (android.widget.SpinnerAdapter) contentWidthLimit;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: android.graphics.drawable.Drawable getBackground()>();
+
+        $u-1#36 = virtualinvoke spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: int compatMeasureContentWidth(android.widget.SpinnerAdapter,android.graphics.drawable.Drawable)>(contentWidthLimit#33, $u-1);
+
+        contentWidth = $u-1#36;
+
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $u-1#39 = virtualinvoke spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: android.content.Context getContext()>();
+
+        $u-1#41 = virtualinvoke $u-1#39.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#43 = virtualinvoke $u-1#41.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        contentWidthLimit#45 = $u-1#43.<android.util.DisplayMetrics: int widthPixels>;
+
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        spinnerPaddingLeft#4 = spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: android.graphics.Rect mTempRect>;
+
+        $u7 = spinnerPaddingLeft#4.<android.graphics.Rect: int left>;
+
+        contentWidthLimit#45 = contentWidthLimit#45 - $u7;
+
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        spinnerPaddingLeft#4 = spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: android.graphics.Rect mTempRect>;
+
+        $u7 = spinnerPaddingLeft#4.<android.graphics.Rect: int right>;
+
+        contentWidthLimit#45 = contentWidthLimit#45 - $u7;
+
+        if $u-1#36 <= contentWidthLimit#45 goto label05;
+
+        contentWidth = contentWidthLimit#45;
+
+     label05:
+        $u-1#36 = $u-1#26 - $u-1#20;
+
+        $u-1#36 = $u-1#36 - $u-1#23;
+
+        contentWidth = staticinvoke <java.lang.Math: int max(int,int)>(contentWidth, $u-1#36);
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void setContentWidth(int)>(contentWidth);
+
+        goto label08;
+
+     label06:
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        contentWidth = spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: int mDropDownWidth>;
+
+        if contentWidth != -1 goto label07;
+
+        contentWidth = $u-1#26 - $u-1#20;
+
+        contentWidth = contentWidth - $u-1#23;
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void setContentWidth(int)>(contentWidth);
+
+        goto label08;
+
+     label07:
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        contentWidth = spinnerPaddingLeft.<androidx.appcompat.widget.AppCompatSpinner: int mDropDownWidth>;
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void setContentWidth(int)>(contentWidth);
+
+     label08:
+        spinnerPaddingLeft = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $u-1#6 = staticinvoke <androidx.appcompat.widget.ViewUtils: boolean isLayoutRtl(android.view.View)>(spinnerPaddingLeft);
+
+        if $u-1#6 == 0 goto label09;
+
+        $u-1#20 = $u-1#26 - $u-1#23;
+
+        $u-1#23 = virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: int getWidth()>();
+
+        $u-1#20 = $u-1#20 - $u-1#23;
+
+        $u-1#23 = virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: int getHorizontalOriginalOffset()>();
+
+        $u-1#20 = $u-1#20 - $u-1#23;
+
+        hOffset = hOffset + $u-1#20;
+
+        goto label10;
+
+     label09:
+        $u-1#23 = virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: int getHorizontalOriginalOffset()>();
+
+        $u-1#20 = $u-1#23 + $u-1#20;
+
+        hOffset = hOffset + $u-1#20;
+
+     label10:
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void setHorizontalOffset(int)>(hOffset);
+
+        return;
+    }
+
+    public java.lang.CharSequence getHintText()
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this;
+        java.lang.CharSequence ret0;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup;
+
+        ret0 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: java.lang.CharSequence mHintText>;
+
+        return ret0;
+    }
+
+    public int getHorizontalOriginalOffset()
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this;
+        int ret0;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup;
+
+        ret0 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: int mOriginalHorizontalOffset>;
+
+        return ret0;
+    }
+
+    boolean isVisibleToUser(android.view.View)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this;
+        android.view.View $u2;
+        boolean $u-1;
+        android.graphics.Rect $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u-1 = staticinvoke <androidx.core.view.ViewCompat: boolean isAttachedToWindow(android.view.View)>($u2);
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: android.graphics.Rect mVisibleRect>;
+
+        $u-1 = virtualinvoke $u2.<android.view.View: boolean getGlobalVisibleRect(android.graphics.Rect)>($u0);
+
+        if $u-1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void setAdapter(android.widget.ListAdapter)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this;
+        android.widget.ListAdapter $u1;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup;
+
+        $u1 := @parameter0: android.widget.ListAdapter;
+
+        specialinvoke this.<androidx.appcompat.widget.ListPopupWindow: void setAdapter(android.widget.ListAdapter)>($u1);
+
+        this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: android.widget.ListAdapter mAdapter> = $u1;
+
+        return;
+    }
+
+    public void setHorizontalOriginalOffset(int)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this;
+        int $u1;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: int mOriginalHorizontalOffset> = $u1;
+
+        return;
+    }
+
+    public void setPromptText(java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: java.lang.CharSequence mHintText> = $u1;
+
+        return;
+    }
+
+    public void show(int, int)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this;
+        int $u6, $u7, vto;
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$3 $u4;
+        boolean $u-1;
+        android.widget.ListView $u-1#3;
+        androidx.appcompat.widget.AppCompatSpinner vto#8;
+        android.view.ViewTreeObserver $u-1#12;
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$2 layoutListener;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup;
+
+        $u6 := @parameter0: int;
+
+        $u7 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: boolean isShowing()>();
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void computeContentWidth()>();
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void setInputMethodMode(int)>(2);
+
+        specialinvoke this.<androidx.appcompat.widget.ListPopupWindow: void show()>();
+
+        $u-1#3 = virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: android.widget.ListView getListView()>();
+
+        virtualinvoke $u-1#3.<android.widget.ListView: void setChoiceMode(int)>(1);
+
+        vto = <android.os.Build$VERSION: int SDK_INT>;
+
+        if vto < 17 goto label1;
+
+        virtualinvoke $u-1#3.<android.widget.ListView: void setTextDirection(int)>($u6);
+
+        virtualinvoke $u-1#3.<android.widget.ListView: void setTextAlignment(int)>($u7);
+
+     label1:
+        vto#8 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $u6 = virtualinvoke vto#8.<androidx.appcompat.widget.AppCompatSpinner: int getSelectedItemPosition()>();
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void setSelection(int)>($u6);
+
+        if $u-1 == 0 goto label2;
+
+        return;
+
+     label2:
+        vto#8 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $u-1#12 = virtualinvoke vto#8.<androidx.appcompat.widget.AppCompatSpinner: android.view.ViewTreeObserver getViewTreeObserver()>();
+
+        if $u-1#12 == null goto label3;
+
+        layoutListener = new androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$2;
+
+        specialinvoke layoutListener.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$2: void <init>(androidx.appcompat.widget.AppCompatSpinner$DropdownPopup)>(this);
+
+        virtualinvoke $u-1#12.<android.view.ViewTreeObserver: void addOnGlobalLayoutListener(android.view.ViewTreeObserver$OnGlobalLayoutListener)>(layoutListener);
+
+        $u4 = new androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$3;
+
+        specialinvoke $u4.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$3: void <init>(androidx.appcompat.widget.AppCompatSpinner$DropdownPopup,android.view.ViewTreeObserver$OnGlobalLayoutListener)>(this, layoutListener);
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void setOnDismissListener(android.widget.PopupWindow$OnDismissListener)>($u4);
+
+     label3:
+        return;
+    }
+}

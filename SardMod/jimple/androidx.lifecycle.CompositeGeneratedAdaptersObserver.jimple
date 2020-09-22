@@ -1,0 +1,79 @@
+class androidx.lifecycle.CompositeGeneratedAdaptersObserver extends java.lang.Object implements androidx.lifecycle.LifecycleEventObserver
+{
+    private final androidx.lifecycle.GeneratedAdapter[] mGeneratedAdapters;
+
+    void <init>(androidx.lifecycle.GeneratedAdapter[])
+    {
+        androidx.lifecycle.CompositeGeneratedAdaptersObserver this;
+        androidx.lifecycle.GeneratedAdapter[] $u1;
+
+        this := @this: androidx.lifecycle.CompositeGeneratedAdaptersObserver;
+
+        $u1 := @parameter0: androidx.lifecycle.GeneratedAdapter[];
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.lifecycle.CompositeGeneratedAdaptersObserver: androidx.lifecycle.GeneratedAdapter[] mGeneratedAdapters> = $u1;
+
+        return;
+    }
+
+    public void onStateChanged(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Lifecycle$Event)
+    {
+        androidx.lifecycle.CompositeGeneratedAdaptersObserver this;
+        androidx.lifecycle.LifecycleOwner $u7;
+        androidx.lifecycle.Lifecycle$Event $u8;
+        androidx.lifecycle.MethodCallsLogger logger;
+        androidx.lifecycle.GeneratedAdapter[] $u1;
+        int $u2, $u3, mGenerated;
+        androidx.lifecycle.GeneratedAdapter mGenerated1;
+
+        this := @this: androidx.lifecycle.CompositeGeneratedAdaptersObserver;
+
+        $u7 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        $u8 := @parameter1: androidx.lifecycle.Lifecycle$Event;
+
+        logger = new androidx.lifecycle.MethodCallsLogger;
+
+        specialinvoke logger.<androidx.lifecycle.MethodCallsLogger: void <init>()>();
+
+        $u1 = this.<androidx.lifecycle.CompositeGeneratedAdaptersObserver: androidx.lifecycle.GeneratedAdapter[] mGeneratedAdapters>;
+
+        $u2 = lengthof $u1;
+
+        $u3 = 0;
+
+        mGenerated = 0;
+
+     label1:
+        if mGenerated >= $u2 goto label2;
+
+        mGenerated1 = $u1[mGenerated];
+
+        interfaceinvoke mGenerated1.<androidx.lifecycle.GeneratedAdapter: void callMethods(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event,boolean,androidx.lifecycle.MethodCallsLogger)>($u7, $u8, 0, logger);
+
+        mGenerated = mGenerated + 1;
+
+        goto label1;
+
+     label2:
+        $u1 = this.<androidx.lifecycle.CompositeGeneratedAdaptersObserver: androidx.lifecycle.GeneratedAdapter[] mGeneratedAdapters>;
+
+        $u2 = lengthof $u1;
+
+     label3:
+        if $u3 >= $u2 goto label4;
+
+        mGenerated1 = $u1[$u3];
+
+        interfaceinvoke mGenerated1.<androidx.lifecycle.GeneratedAdapter: void callMethods(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event,boolean,androidx.lifecycle.MethodCallsLogger)>($u7, $u8, 1, logger);
+
+        $u3 = $u3 + 1;
+
+        goto label3;
+
+     label4:
+        return;
+    }
+}

@@ -1,0 +1,68 @@
+public final class androidx.core.view.accessibility.AccessibilityClickableSpanCompat extends android.text.style.ClickableSpan
+{
+    public static final java.lang.String SPAN_ID;
+    private final int mClickableSpanActionId;
+    private final androidx.core.view.accessibility.AccessibilityNodeInfoCompat mNodeInfoCompat;
+    private final int mOriginalClickableSpanId;
+
+    public void <init>(int, androidx.core.view.accessibility.AccessibilityNodeInfoCompat, int)
+    {
+        androidx.core.view.accessibility.AccessibilityClickableSpanCompat this;
+        int $u1, $u3;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityClickableSpanCompat;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter2: int;
+
+        specialinvoke this.<android.text.style.ClickableSpan: void <init>()>();
+
+        this.<androidx.core.view.accessibility.AccessibilityClickableSpanCompat: int mOriginalClickableSpanId> = $u1;
+
+        this.<androidx.core.view.accessibility.AccessibilityClickableSpanCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat mNodeInfoCompat> = $u2;
+
+        this.<androidx.core.view.accessibility.AccessibilityClickableSpanCompat: int mClickableSpanActionId> = $u3;
+
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityClickableSpanCompat this;
+        android.view.View $u4;
+        android.os.Bundle arguments;
+        int $u1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u1#3;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityClickableSpanCompat;
+
+        $u4 := @parameter0: android.view.View;
+
+        arguments = new android.os.Bundle;
+
+        specialinvoke arguments.<android.os.Bundle: void <init>()>();
+
+        $u1 = this.<androidx.core.view.accessibility.AccessibilityClickableSpanCompat: int mOriginalClickableSpanId>;
+
+        virtualinvoke arguments.<android.os.Bundle: void putInt(java.lang.String,int)>("ACCESSIBILITY_CLICKABLE_SPAN_ID", $u1);
+
+        $u1#3 = this.<androidx.core.view.accessibility.AccessibilityClickableSpanCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat mNodeInfoCompat>;
+
+        $u1 = this.<androidx.core.view.accessibility.AccessibilityClickableSpanCompat: int mClickableSpanActionId>;
+
+        virtualinvoke $u1#3.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean performAction(int,android.os.Bundle)>($u1, arguments);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.view.accessibility.AccessibilityClickableSpanCompat: java.lang.String SPAN_ID> = "ACCESSIBILITY_CLICKABLE_SPAN_ID";
+
+        return;
+    }
+}

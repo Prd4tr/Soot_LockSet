@@ -1,0 +1,75 @@
+public final class androidx.core.graphics.BitmapCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.graphics.BitmapCompat this;
+
+        this := @this: androidx.core.graphics.BitmapCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static int getAllocationByteCount(android.graphics.Bitmap)
+    {
+        android.graphics.Bitmap $u2;
+        int $u0;
+
+        $u2 := @parameter0: android.graphics.Bitmap;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0 = virtualinvoke $u2.<android.graphics.Bitmap: int getAllocationByteCount()>();
+
+        return $u0;
+
+     label1:
+        $u0 = virtualinvoke $u2.<android.graphics.Bitmap: int getByteCount()>();
+
+        return $u0;
+    }
+
+    public static boolean hasMipMap(android.graphics.Bitmap)
+    {
+        android.graphics.Bitmap $u2;
+        boolean $u-1;
+        int $u0;
+
+        $u2 := @parameter0: android.graphics.Bitmap;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 18 goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.graphics.Bitmap: boolean hasMipMap()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public static void setHasMipMap(android.graphics.Bitmap, boolean)
+    {
+        android.graphics.Bitmap $u2;
+        boolean $u3;
+        int $u0;
+
+        $u2 := @parameter0: android.graphics.Bitmap;
+
+        $u3 := @parameter1: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 18 goto label1;
+
+        virtualinvoke $u2.<android.graphics.Bitmap: void setHasMipMap(boolean)>($u3);
+
+     label1:
+        return;
+    }
+}

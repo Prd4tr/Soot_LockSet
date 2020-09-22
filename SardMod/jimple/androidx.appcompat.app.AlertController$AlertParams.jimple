@@ -1,0 +1,451 @@
+public class androidx.appcompat.app.AlertController$AlertParams extends java.lang.Object
+{
+    public android.widget.ListAdapter mAdapter;
+    public boolean mCancelable;
+    public int mCheckedItem;
+    public boolean[] mCheckedItems;
+    public final android.content.Context mContext;
+    public android.database.Cursor mCursor;
+    public android.view.View mCustomTitleView;
+    public boolean mForceInverseBackground;
+    public android.graphics.drawable.Drawable mIcon;
+    public int mIconAttrId;
+    public int mIconId;
+    public final android.view.LayoutInflater mInflater;
+    public java.lang.String mIsCheckedColumn;
+    public boolean mIsMultiChoice;
+    public boolean mIsSingleChoice;
+    public java.lang.CharSequence[] mItems;
+    public java.lang.String mLabelColumn;
+    public java.lang.CharSequence mMessage;
+    public android.graphics.drawable.Drawable mNegativeButtonIcon;
+    public android.content.DialogInterface$OnClickListener mNegativeButtonListener;
+    public java.lang.CharSequence mNegativeButtonText;
+    public android.graphics.drawable.Drawable mNeutralButtonIcon;
+    public android.content.DialogInterface$OnClickListener mNeutralButtonListener;
+    public java.lang.CharSequence mNeutralButtonText;
+    public android.content.DialogInterface$OnCancelListener mOnCancelListener;
+    public android.content.DialogInterface$OnMultiChoiceClickListener mOnCheckboxClickListener;
+    public android.content.DialogInterface$OnClickListener mOnClickListener;
+    public android.content.DialogInterface$OnDismissListener mOnDismissListener;
+    public android.widget.AdapterView$OnItemSelectedListener mOnItemSelectedListener;
+    public android.content.DialogInterface$OnKeyListener mOnKeyListener;
+    public androidx.appcompat.app.AlertController$AlertParams$OnPrepareListViewListener mOnPrepareListViewListener;
+    public android.graphics.drawable.Drawable mPositiveButtonIcon;
+    public android.content.DialogInterface$OnClickListener mPositiveButtonListener;
+    public java.lang.CharSequence mPositiveButtonText;
+    public boolean mRecycleOnMeasure;
+    public java.lang.CharSequence mTitle;
+    public android.view.View mView;
+    public int mViewLayoutResId;
+    public int mViewSpacingBottom;
+    public int mViewSpacingLeft;
+    public int mViewSpacingRight;
+    public boolean mViewSpacingSpecified;
+    public int mViewSpacingTop;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.app.AlertController$AlertParams this;
+        android.content.Context $u2;
+        java.lang.Object $u-1;
+        android.view.LayoutInflater $u0;
+
+        this := @this: androidx.appcompat.app.AlertController$AlertParams;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.app.AlertController$AlertParams: int mIconId> = 0;
+
+        this.<androidx.appcompat.app.AlertController$AlertParams: int mIconAttrId> = 0;
+
+        this.<androidx.appcompat.app.AlertController$AlertParams: boolean mViewSpacingSpecified> = 0;
+
+        this.<androidx.appcompat.app.AlertController$AlertParams: int mCheckedItem> = -1;
+
+        this.<androidx.appcompat.app.AlertController$AlertParams: boolean mRecycleOnMeasure> = 1;
+
+        this.<androidx.appcompat.app.AlertController$AlertParams: android.content.Context mContext> = $u2;
+
+        this.<androidx.appcompat.app.AlertController$AlertParams: boolean mCancelable> = 1;
+
+        $u-1 = virtualinvoke $u2.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("layout_inflater");
+
+        $u0 = (android.view.LayoutInflater) $u-1;
+
+        this.<androidx.appcompat.app.AlertController$AlertParams: android.view.LayoutInflater mInflater> = $u0;
+
+        return;
+    }
+
+    private void createListView(androidx.appcompat.app.AlertController)
+    {
+        androidx.appcompat.app.AlertController$AlertParams this;
+        androidx.appcompat.app.AlertController $u12;
+        int[] $u10;
+        android.view.View $u-1;
+        android.view.LayoutInflater listView;
+        int adapter;
+        androidx.appcompat.app.AlertController$RecycleListView listView#5;
+        boolean adapter#6;
+        android.database.Cursor adapter#7;
+        androidx.appcompat.app.AlertController$AlertParams$1 $u9;
+        android.content.Context $u3;
+        java.lang.CharSequence[] $u6;
+        android.widget.ListAdapter adapter#13;
+        androidx.appcompat.app.AlertController$AlertParams$2 $u9#16;
+        android.widget.SimpleCursorAdapter $u9#27;
+        java.lang.String[] $u6#30;
+        java.lang.String adapter1;
+        androidx.appcompat.app.AlertController$CheckedItemAdapter adapter1#39;
+        androidx.appcompat.app.AlertController$AlertParams$OnPrepareListViewListener adapter1#42;
+        android.content.DialogInterface$OnClickListener adapter1#44;
+        androidx.appcompat.app.AlertController$AlertParams$3 adapter1#45;
+        android.content.DialogInterface$OnMultiChoiceClickListener adapter1#46;
+        androidx.appcompat.app.AlertController$AlertParams$4 adapter1#47;
+        android.widget.AdapterView$OnItemSelectedListener adapter1#48;
+
+        this := @this: androidx.appcompat.app.AlertController$AlertParams;
+
+        $u12 := @parameter0: androidx.appcompat.app.AlertController;
+
+        listView = this.<androidx.appcompat.app.AlertController$AlertParams: android.view.LayoutInflater mInflater>;
+
+        adapter = $u12.<androidx.appcompat.app.AlertController: int mListLayout>;
+
+        $u-1 = virtualinvoke listView.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>(adapter, null);
+
+        listView#5 = (androidx.appcompat.app.AlertController$RecycleListView) $u-1;
+
+        adapter#6 = this.<androidx.appcompat.app.AlertController$AlertParams: boolean mIsMultiChoice>;
+
+        if adapter#6 == 0 goto label02;
+
+        adapter#7 = this.<androidx.appcompat.app.AlertController$AlertParams: android.database.Cursor mCursor>;
+
+        if adapter#7 != null goto label01;
+
+        $u9 = new androidx.appcompat.app.AlertController$AlertParams$1;
+
+        $u3 = this.<androidx.appcompat.app.AlertController$AlertParams: android.content.Context mContext>;
+
+        adapter = $u12.<androidx.appcompat.app.AlertController: int mMultiChoiceItemLayout>;
+
+        $u6 = this.<androidx.appcompat.app.AlertController$AlertParams: java.lang.CharSequence[] mItems>;
+
+        adapter#13 = $u9;
+
+        specialinvoke $u9.<androidx.appcompat.app.AlertController$AlertParams$1: void <init>(androidx.appcompat.app.AlertController$AlertParams,android.content.Context,int,int,java.lang.CharSequence[],androidx.appcompat.app.AlertController$RecycleListView)>(this, $u3, adapter, 16908308, $u6, listView#5);
+
+        goto label07;
+
+     label01:
+        $u9#16 = new androidx.appcompat.app.AlertController$AlertParams$2;
+
+        $u3 = this.<androidx.appcompat.app.AlertController$AlertParams: android.content.Context mContext>;
+
+        adapter#7 = this.<androidx.appcompat.app.AlertController$AlertParams: android.database.Cursor mCursor>;
+
+        adapter#13 = $u9#16;
+
+        specialinvoke $u9#16.<androidx.appcompat.app.AlertController$AlertParams$2: void <init>(androidx.appcompat.app.AlertController$AlertParams,android.content.Context,android.database.Cursor,boolean,androidx.appcompat.app.AlertController$RecycleListView,androidx.appcompat.app.AlertController)>(this, $u3, adapter#7, 0, listView#5, $u12);
+
+        goto label07;
+
+     label02:
+        adapter#6 = this.<androidx.appcompat.app.AlertController$AlertParams: boolean mIsSingleChoice>;
+
+        if adapter#6 == 0 goto label03;
+
+        adapter = $u12.<androidx.appcompat.app.AlertController: int mSingleChoiceItemLayout>;
+
+        goto label04;
+
+     label03:
+        adapter = $u12.<androidx.appcompat.app.AlertController: int mListItemLayout>;
+
+     label04:
+        adapter#7 = this.<androidx.appcompat.app.AlertController$AlertParams: android.database.Cursor mCursor>;
+
+        if adapter#7 == null goto label05;
+
+        $u9#27 = new android.widget.SimpleCursorAdapter;
+
+        $u3 = this.<androidx.appcompat.app.AlertController$AlertParams: android.content.Context mContext>;
+
+        adapter#7 = this.<androidx.appcompat.app.AlertController$AlertParams: android.database.Cursor mCursor>;
+
+        $u6#30 = newarray (java.lang.String)[1];
+
+        adapter1 = this.<androidx.appcompat.app.AlertController$AlertParams: java.lang.String mLabelColumn>;
+
+        $u6#30[0] = adapter1;
+
+        $u10 = newarray (int)[1];
+
+        $u10[0] = 16908308;
+
+        specialinvoke $u9#27.<android.widget.SimpleCursorAdapter: void <init>(android.content.Context,int,android.database.Cursor,java.lang.String[],int[])>($u3, adapter, adapter#7, $u6#30, $u10);
+
+        adapter#13 = $u9#27;
+
+        goto label07;
+
+     label05:
+        adapter#13 = this.<androidx.appcompat.app.AlertController$AlertParams: android.widget.ListAdapter mAdapter>;
+
+        if adapter#13 == null goto label06;
+
+        adapter#13 = this.<androidx.appcompat.app.AlertController$AlertParams: android.widget.ListAdapter mAdapter>;
+
+        goto label07;
+
+     label06:
+        adapter1#39 = new androidx.appcompat.app.AlertController$CheckedItemAdapter;
+
+        $u3 = this.<androidx.appcompat.app.AlertController$AlertParams: android.content.Context mContext>;
+
+        $u6 = this.<androidx.appcompat.app.AlertController$AlertParams: java.lang.CharSequence[] mItems>;
+
+        specialinvoke adapter1#39.<androidx.appcompat.app.AlertController$CheckedItemAdapter: void <init>(android.content.Context,int,int,java.lang.CharSequence[])>($u3, adapter, 16908308, $u6);
+
+        adapter#13 = adapter1#39;
+
+     label07:
+        adapter1#42 = this.<androidx.appcompat.app.AlertController$AlertParams: androidx.appcompat.app.AlertController$AlertParams$OnPrepareListViewListener mOnPrepareListViewListener>;
+
+        if adapter1#42 == null goto label08;
+
+        interfaceinvoke adapter1#42.<androidx.appcompat.app.AlertController$AlertParams$OnPrepareListViewListener: void onPrepareListView(android.widget.ListView)>(listView#5);
+
+     label08:
+        $u12.<androidx.appcompat.app.AlertController: android.widget.ListAdapter mAdapter> = adapter#13;
+
+        adapter = this.<androidx.appcompat.app.AlertController$AlertParams: int mCheckedItem>;
+
+        $u12.<androidx.appcompat.app.AlertController: int mCheckedItem> = adapter;
+
+        adapter1#44 = this.<androidx.appcompat.app.AlertController$AlertParams: android.content.DialogInterface$OnClickListener mOnClickListener>;
+
+        if adapter1#44 == null goto label09;
+
+        adapter1#45 = new androidx.appcompat.app.AlertController$AlertParams$3;
+
+        specialinvoke adapter1#45.<androidx.appcompat.app.AlertController$AlertParams$3: void <init>(androidx.appcompat.app.AlertController$AlertParams,androidx.appcompat.app.AlertController)>(this, $u12);
+
+        virtualinvoke listView#5.<androidx.appcompat.app.AlertController$RecycleListView: void setOnItemClickListener(android.widget.AdapterView$OnItemClickListener)>(adapter1#45);
+
+        goto label10;
+
+     label09:
+        adapter1#46 = this.<androidx.appcompat.app.AlertController$AlertParams: android.content.DialogInterface$OnMultiChoiceClickListener mOnCheckboxClickListener>;
+
+        if adapter1#46 == null goto label10;
+
+        adapter1#47 = new androidx.appcompat.app.AlertController$AlertParams$4;
+
+        specialinvoke adapter1#47.<androidx.appcompat.app.AlertController$AlertParams$4: void <init>(androidx.appcompat.app.AlertController$AlertParams,androidx.appcompat.app.AlertController$RecycleListView,androidx.appcompat.app.AlertController)>(this, listView#5, $u12);
+
+        virtualinvoke listView#5.<androidx.appcompat.app.AlertController$RecycleListView: void setOnItemClickListener(android.widget.AdapterView$OnItemClickListener)>(adapter1#47);
+
+     label10:
+        adapter1#48 = this.<androidx.appcompat.app.AlertController$AlertParams: android.widget.AdapterView$OnItemSelectedListener mOnItemSelectedListener>;
+
+        if adapter1#48 == null goto label11;
+
+        virtualinvoke listView#5.<androidx.appcompat.app.AlertController$RecycleListView: void setOnItemSelectedListener(android.widget.AdapterView$OnItemSelectedListener)>(adapter1#48);
+
+     label11:
+        adapter#6 = this.<androidx.appcompat.app.AlertController$AlertParams: boolean mIsSingleChoice>;
+
+        if adapter#6 == 0 goto label12;
+
+        virtualinvoke listView#5.<androidx.appcompat.app.AlertController$RecycleListView: void setChoiceMode(int)>(1);
+
+        goto label13;
+
+     label12:
+        adapter#6 = this.<androidx.appcompat.app.AlertController$AlertParams: boolean mIsMultiChoice>;
+
+        if adapter#6 == 0 goto label13;
+
+        virtualinvoke listView#5.<androidx.appcompat.app.AlertController$RecycleListView: void setChoiceMode(int)>(2);
+
+     label13:
+        $u12.<androidx.appcompat.app.AlertController: android.widget.ListView mListView> = listView#5;
+
+        return;
+    }
+
+    public void apply(androidx.appcompat.app.AlertController)
+    {
+        androidx.appcompat.app.AlertController$AlertParams this;
+        androidx.appcompat.app.AlertController $u8;
+        int $u-1, $u4#38, $u5, $u6;
+        android.view.View $u0;
+        java.lang.CharSequence $u0#2;
+        android.graphics.drawable.Drawable $u0#3;
+        android.content.DialogInterface$OnClickListener $u4;
+        java.lang.CharSequence[] $u0#32;
+        android.database.Cursor $u0#33;
+        android.widget.ListAdapter $u0#34;
+        boolean $u0#36;
+
+        this := @this: androidx.appcompat.app.AlertController$AlertParams;
+
+        $u8 := @parameter0: androidx.appcompat.app.AlertController;
+
+        $u0 = this.<androidx.appcompat.app.AlertController$AlertParams: android.view.View mCustomTitleView>;
+
+        if $u0 == null goto label01;
+
+        virtualinvoke $u8.<androidx.appcompat.app.AlertController: void setCustomTitle(android.view.View)>($u0);
+
+        goto label05;
+
+     label01:
+        $u0#2 = this.<androidx.appcompat.app.AlertController$AlertParams: java.lang.CharSequence mTitle>;
+
+        if $u0#2 == null goto label02;
+
+        virtualinvoke $u8.<androidx.appcompat.app.AlertController: void setTitle(java.lang.CharSequence)>($u0#2);
+
+     label02:
+        $u0#3 = this.<androidx.appcompat.app.AlertController$AlertParams: android.graphics.drawable.Drawable mIcon>;
+
+        if $u0#3 == null goto label03;
+
+        virtualinvoke $u8.<androidx.appcompat.app.AlertController: void setIcon(android.graphics.drawable.Drawable)>($u0#3);
+
+     label03:
+        $u-1 = this.<androidx.appcompat.app.AlertController$AlertParams: int mIconId>;
+
+        if $u-1 == 0 goto label04;
+
+        virtualinvoke $u8.<androidx.appcompat.app.AlertController: void setIcon(int)>($u-1);
+
+     label04:
+        $u-1 = this.<androidx.appcompat.app.AlertController$AlertParams: int mIconAttrId>;
+
+        if $u-1 == 0 goto label05;
+
+        $u-1 = virtualinvoke $u8.<androidx.appcompat.app.AlertController: int getIconAttributeResId(int)>($u-1);
+
+        virtualinvoke $u8.<androidx.appcompat.app.AlertController: void setIcon(int)>($u-1);
+
+     label05:
+        $u0#2 = this.<androidx.appcompat.app.AlertController$AlertParams: java.lang.CharSequence mMessage>;
+
+        if $u0#2 == null goto label06;
+
+        virtualinvoke $u8.<androidx.appcompat.app.AlertController: void setMessage(java.lang.CharSequence)>($u0#2);
+
+     label06:
+        $u0#2 = this.<androidx.appcompat.app.AlertController$AlertParams: java.lang.CharSequence mPositiveButtonText>;
+
+        if $u0#2 != null goto label07;
+
+        $u0#3 = this.<androidx.appcompat.app.AlertController$AlertParams: android.graphics.drawable.Drawable mPositiveButtonIcon>;
+
+        if $u0#3 == null goto label08;
+
+     label07:
+        $u0#2 = this.<androidx.appcompat.app.AlertController$AlertParams: java.lang.CharSequence mPositiveButtonText>;
+
+        $u4 = this.<androidx.appcompat.app.AlertController$AlertParams: android.content.DialogInterface$OnClickListener mPositiveButtonListener>;
+
+        $u0#3 = this.<androidx.appcompat.app.AlertController$AlertParams: android.graphics.drawable.Drawable mPositiveButtonIcon>;
+
+        virtualinvoke $u8.<androidx.appcompat.app.AlertController: void setButton(int,java.lang.CharSequence,android.content.DialogInterface$OnClickListener,android.os.Message,android.graphics.drawable.Drawable)>(-1, $u0#2, $u4, null, $u0#3);
+
+     label08:
+        $u0#2 = this.<androidx.appcompat.app.AlertController$AlertParams: java.lang.CharSequence mNegativeButtonText>;
+
+        if $u0#2 != null goto label09;
+
+        $u0#3 = this.<androidx.appcompat.app.AlertController$AlertParams: android.graphics.drawable.Drawable mNegativeButtonIcon>;
+
+        if $u0#3 == null goto label10;
+
+     label09:
+        $u0#2 = this.<androidx.appcompat.app.AlertController$AlertParams: java.lang.CharSequence mNegativeButtonText>;
+
+        $u4 = this.<androidx.appcompat.app.AlertController$AlertParams: android.content.DialogInterface$OnClickListener mNegativeButtonListener>;
+
+        $u0#3 = this.<androidx.appcompat.app.AlertController$AlertParams: android.graphics.drawable.Drawable mNegativeButtonIcon>;
+
+        virtualinvoke $u8.<androidx.appcompat.app.AlertController: void setButton(int,java.lang.CharSequence,android.content.DialogInterface$OnClickListener,android.os.Message,android.graphics.drawable.Drawable)>(-2, $u0#2, $u4, null, $u0#3);
+
+     label10:
+        $u0#2 = this.<androidx.appcompat.app.AlertController$AlertParams: java.lang.CharSequence mNeutralButtonText>;
+
+        if $u0#2 != null goto label11;
+
+        $u0#3 = this.<androidx.appcompat.app.AlertController$AlertParams: android.graphics.drawable.Drawable mNeutralButtonIcon>;
+
+        if $u0#3 == null goto label12;
+
+     label11:
+        $u0#2 = this.<androidx.appcompat.app.AlertController$AlertParams: java.lang.CharSequence mNeutralButtonText>;
+
+        $u4 = this.<androidx.appcompat.app.AlertController$AlertParams: android.content.DialogInterface$OnClickListener mNeutralButtonListener>;
+
+        $u0#3 = this.<androidx.appcompat.app.AlertController$AlertParams: android.graphics.drawable.Drawable mNeutralButtonIcon>;
+
+        virtualinvoke $u8.<androidx.appcompat.app.AlertController: void setButton(int,java.lang.CharSequence,android.content.DialogInterface$OnClickListener,android.os.Message,android.graphics.drawable.Drawable)>(-3, $u0#2, $u4, null, $u0#3);
+
+     label12:
+        $u0#32 = this.<androidx.appcompat.app.AlertController$AlertParams: java.lang.CharSequence[] mItems>;
+
+        if $u0#32 != null goto label13;
+
+        $u0#33 = this.<androidx.appcompat.app.AlertController$AlertParams: android.database.Cursor mCursor>;
+
+        if $u0#33 != null goto label13;
+
+        $u0#34 = this.<androidx.appcompat.app.AlertController$AlertParams: android.widget.ListAdapter mAdapter>;
+
+        if $u0#34 == null goto label14;
+
+     label13:
+        specialinvoke this.<androidx.appcompat.app.AlertController$AlertParams: void createListView(androidx.appcompat.app.AlertController)>($u8);
+
+     label14:
+        $u0 = this.<androidx.appcompat.app.AlertController$AlertParams: android.view.View mView>;
+
+        if $u0 == null goto label16;
+
+        $u0#36 = this.<androidx.appcompat.app.AlertController$AlertParams: boolean mViewSpacingSpecified>;
+
+        if $u0#36 == 0 goto label15;
+
+        $u-1 = this.<androidx.appcompat.app.AlertController$AlertParams: int mViewSpacingLeft>;
+
+        $u4#38 = this.<androidx.appcompat.app.AlertController$AlertParams: int mViewSpacingTop>;
+
+        $u5 = this.<androidx.appcompat.app.AlertController$AlertParams: int mViewSpacingRight>;
+
+        $u6 = this.<androidx.appcompat.app.AlertController$AlertParams: int mViewSpacingBottom>;
+
+        virtualinvoke $u8.<androidx.appcompat.app.AlertController: void setView(android.view.View,int,int,int,int)>($u0, $u-1, $u4#38, $u5, $u6);
+
+        return;
+
+     label15:
+        virtualinvoke $u8.<androidx.appcompat.app.AlertController: void setView(android.view.View)>($u0);
+
+        return;
+
+     label16:
+        $u-1 = this.<androidx.appcompat.app.AlertController$AlertParams: int mViewLayoutResId>;
+
+        if $u-1 == 0 goto label17;
+
+        virtualinvoke $u8.<androidx.appcompat.app.AlertController: void setView(int)>($u-1);
+
+     label17:
+        return;
+    }
+}

@@ -1,0 +1,63 @@
+public abstract class androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback extends java.lang.Object
+{
+    android.graphics.drawable.Animatable2$AnimationCallback mPlatformCallback;
+
+    public void <init>()
+    {
+        androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback this;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    android.graphics.drawable.Animatable2$AnimationCallback getPlatformCallback()
+    {
+        androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback this;
+        android.graphics.drawable.Animatable2$AnimationCallback $u0;
+        androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback$1 $u0#2;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback;
+
+        $u0 = this.<androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback: android.graphics.drawable.Animatable2$AnimationCallback mPlatformCallback>;
+
+        if $u0 != null goto label1;
+
+        $u0#2 = new androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback$1;
+
+        specialinvoke $u0#2.<androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback$1: void <init>(androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback)>(this);
+
+        this.<androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback: android.graphics.drawable.Animatable2$AnimationCallback mPlatformCallback> = $u0#2;
+
+     label1:
+        $u0 = this.<androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback: android.graphics.drawable.Animatable2$AnimationCallback mPlatformCallback>;
+
+        return $u0;
+    }
+
+    public void onAnimationEnd(android.graphics.drawable.Drawable)
+    {
+        androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback this;
+        android.graphics.drawable.Drawable $u1;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback;
+
+        $u1 := @parameter0: android.graphics.drawable.Drawable;
+
+        return;
+    }
+
+    public void onAnimationStart(android.graphics.drawable.Drawable)
+    {
+        androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback this;
+        android.graphics.drawable.Drawable $u1;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback;
+
+        $u1 := @parameter0: android.graphics.drawable.Drawable;
+
+        return;
+    }
+}

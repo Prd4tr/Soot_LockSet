@@ -1,0 +1,53 @@
+class androidx.appcompat.app.AlertController$3 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.appcompat.app.AlertController this$0;
+    final android.view.View val$bottom;
+    final android.view.View val$top;
+
+    void <init>(androidx.appcompat.app.AlertController, android.view.View, android.view.View)
+    {
+        androidx.appcompat.app.AlertController$3 this;
+        androidx.appcompat.app.AlertController $u1;
+        android.view.View $u2, $u3;
+
+        this := @this: androidx.appcompat.app.AlertController$3;
+
+        $u1 := @parameter0: androidx.appcompat.app.AlertController;
+
+        $u2 := @parameter1: android.view.View;
+
+        $u3 := @parameter2: android.view.View;
+
+        this.<androidx.appcompat.app.AlertController$3: androidx.appcompat.app.AlertController this$0> = $u1;
+
+        this.<androidx.appcompat.app.AlertController$3: android.view.View val$top> = $u2;
+
+        this.<androidx.appcompat.app.AlertController$3: android.view.View val$bottom> = $u3;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.appcompat.app.AlertController$3 this;
+        android.view.View $u1, $u2;
+        androidx.appcompat.app.AlertController $u0;
+        androidx.core.widget.NestedScrollView $u0#2;
+
+        this := @this: androidx.appcompat.app.AlertController$3;
+
+        $u0 = this.<androidx.appcompat.app.AlertController$3: androidx.appcompat.app.AlertController this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.app.AlertController: androidx.core.widget.NestedScrollView mScrollView>;
+
+        $u1 = this.<androidx.appcompat.app.AlertController$3: android.view.View val$top>;
+
+        $u2 = this.<androidx.appcompat.app.AlertController$3: android.view.View val$bottom>;
+
+        staticinvoke <androidx.appcompat.app.AlertController: void manageScrollIndicators(android.view.View,android.view.View,android.view.View)>($u0#2, $u1, $u2);
+
+        return;
+    }
+}

@@ -1,0 +1,72 @@
+public class android.support.v4.app.INotificationSideChannel$Default extends java.lang.Object implements android.support.v4.app.INotificationSideChannel
+{
+
+    public void <init>()
+    {
+        android.support.v4.app.INotificationSideChannel$Default this;
+
+        this := @this: android.support.v4.app.INotificationSideChannel$Default;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public android.os.IBinder asBinder()
+    {
+        android.support.v4.app.INotificationSideChannel$Default this;
+
+        this := @this: android.support.v4.app.INotificationSideChannel$Default;
+
+        return null;
+    }
+
+    public void cancel(java.lang.String, int, java.lang.String) throws android.os.RemoteException
+    {
+        android.support.v4.app.INotificationSideChannel$Default this;
+        java.lang.String $u1, $u3;
+        int $u2;
+
+        this := @this: android.support.v4.app.INotificationSideChannel$Default;
+
+        $u1 := @parameter0: java.lang.String;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: java.lang.String;
+
+        return;
+    }
+
+    public void cancelAll(java.lang.String) throws android.os.RemoteException
+    {
+        android.support.v4.app.INotificationSideChannel$Default this;
+        java.lang.String $u1;
+
+        this := @this: android.support.v4.app.INotificationSideChannel$Default;
+
+        $u1 := @parameter0: java.lang.String;
+
+        return;
+    }
+
+    public void notify(java.lang.String, int, java.lang.String, android.app.Notification) throws android.os.RemoteException
+    {
+        android.support.v4.app.INotificationSideChannel$Default this;
+        java.lang.String $u1, $u3;
+        int $u2;
+        android.app.Notification $u4;
+
+        this := @this: android.support.v4.app.INotificationSideChannel$Default;
+
+        $u1 := @parameter0: java.lang.String;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: java.lang.String;
+
+        $u4 := @parameter3: android.app.Notification;
+
+        return;
+    }
+}

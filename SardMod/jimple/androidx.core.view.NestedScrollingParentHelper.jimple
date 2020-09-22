@@ -1,0 +1,120 @@
+public class androidx.core.view.NestedScrollingParentHelper extends java.lang.Object
+{
+    private int mNestedScrollAxesNonTouch;
+    private int mNestedScrollAxesTouch;
+
+    public void <init>(android.view.ViewGroup)
+    {
+        androidx.core.view.NestedScrollingParentHelper this;
+        android.view.ViewGroup $u1;
+
+        this := @this: androidx.core.view.NestedScrollingParentHelper;
+
+        $u1 := @parameter0: android.view.ViewGroup;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public int getNestedScrollAxes()
+    {
+        androidx.core.view.NestedScrollingParentHelper this;
+        int $u1, $u0;
+
+        this := @this: androidx.core.view.NestedScrollingParentHelper;
+
+        $u0 = this.<androidx.core.view.NestedScrollingParentHelper: int mNestedScrollAxesTouch>;
+
+        $u1 = this.<androidx.core.view.NestedScrollingParentHelper: int mNestedScrollAxesNonTouch>;
+
+        $u1 = $u0 | $u1;
+
+        return $u1;
+    }
+
+    public void onNestedScrollAccepted(android.view.View, android.view.View, int)
+    {
+        androidx.core.view.NestedScrollingParentHelper this;
+        android.view.View $u2, $u3;
+        int $u4;
+
+        this := @this: androidx.core.view.NestedScrollingParentHelper;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: android.view.View;
+
+        $u4 := @parameter2: int;
+
+        virtualinvoke this.<androidx.core.view.NestedScrollingParentHelper: void onNestedScrollAccepted(android.view.View,android.view.View,int,int)>($u2, $u3, $u4, 0);
+
+        return;
+    }
+
+    public void onNestedScrollAccepted(android.view.View, android.view.View, int, int)
+    {
+        androidx.core.view.NestedScrollingParentHelper this;
+        android.view.View $u2, $u3;
+        int $u4, $u5;
+
+        this := @this: androidx.core.view.NestedScrollingParentHelper;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: android.view.View;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        if $u5 != 1 goto label1;
+
+        this.<androidx.core.view.NestedScrollingParentHelper: int mNestedScrollAxesNonTouch> = $u4;
+
+        return;
+
+     label1:
+        this.<androidx.core.view.NestedScrollingParentHelper: int mNestedScrollAxesTouch> = $u4;
+
+        return;
+    }
+
+    public void onStopNestedScroll(android.view.View)
+    {
+        androidx.core.view.NestedScrollingParentHelper this;
+        android.view.View $u2;
+
+        this := @this: androidx.core.view.NestedScrollingParentHelper;
+
+        $u2 := @parameter0: android.view.View;
+
+        virtualinvoke this.<androidx.core.view.NestedScrollingParentHelper: void onStopNestedScroll(android.view.View,int)>($u2, 0);
+
+        return;
+    }
+
+    public void onStopNestedScroll(android.view.View, int)
+    {
+        androidx.core.view.NestedScrollingParentHelper this;
+        android.view.View $u3;
+        int $u4;
+
+        this := @this: androidx.core.view.NestedScrollingParentHelper;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u4 := @parameter1: int;
+
+        if $u4 != 1 goto label1;
+
+        this.<androidx.core.view.NestedScrollingParentHelper: int mNestedScrollAxesNonTouch> = 0;
+
+        return;
+
+     label1:
+        this.<androidx.core.view.NestedScrollingParentHelper: int mNestedScrollAxesTouch> = 0;
+
+        return;
+    }
+}

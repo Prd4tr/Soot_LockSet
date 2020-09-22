@@ -1,0 +1,934 @@
+public abstract class androidx.core.graphics.drawable.RoundedBitmapDrawable extends android.graphics.drawable.Drawable
+{
+    private static final int DEFAULT_PAINT_FLAGS;
+    private boolean mApplyGravity;
+    final android.graphics.Bitmap mBitmap;
+    private int mBitmapHeight;
+    private final android.graphics.BitmapShader mBitmapShader;
+    private int mBitmapWidth;
+    private float mCornerRadius;
+    final android.graphics.Rect mDstRect;
+    private final android.graphics.RectF mDstRectF;
+    private int mGravity;
+    private boolean mIsCircular;
+    private final android.graphics.Paint mPaint;
+    private final android.graphics.Matrix mShaderMatrix;
+    private int mTargetDensity;
+
+    void <init>(android.content.res.Resources, android.graphics.Bitmap)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        android.content.res.Resources $u5;
+        android.graphics.Bitmap $u6;
+        android.graphics.Shader$TileMode $u2, $u3;
+        android.util.DisplayMetrics $u-1;
+        android.graphics.Paint $u0;
+        android.graphics.Matrix $u0#5;
+        android.graphics.Rect $u0#6;
+        android.graphics.RectF $u0#7;
+        int $u0#10;
+        android.graphics.BitmapShader $u0#11;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u5 := @parameter0: android.content.res.Resources;
+
+        $u6 := @parameter1: android.graphics.Bitmap;
+
+        specialinvoke this.<android.graphics.drawable.Drawable: void <init>()>();
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mTargetDensity> = 160;
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mGravity> = 119;
+
+        $u0 = new android.graphics.Paint;
+
+        specialinvoke $u0.<android.graphics.Paint: void <init>(int)>(3);
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint> = $u0;
+
+        $u0#5 = new android.graphics.Matrix;
+
+        specialinvoke $u0#5.<android.graphics.Matrix: void <init>()>();
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Matrix mShaderMatrix> = $u0#5;
+
+        $u0#6 = new android.graphics.Rect;
+
+        specialinvoke $u0#6.<android.graphics.Rect: void <init>()>();
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Rect mDstRect> = $u0#6;
+
+        $u0#7 = new android.graphics.RectF;
+
+        specialinvoke $u0#7.<android.graphics.RectF: void <init>()>();
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.RectF mDstRectF> = $u0#7;
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean mApplyGravity> = 1;
+
+        if $u5 == null goto label1;
+
+        $u-1 = virtualinvoke $u5.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $u0#10 = $u-1.<android.util.DisplayMetrics: int densityDpi>;
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mTargetDensity> = $u0#10;
+
+     label1:
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Bitmap mBitmap> = $u6;
+
+        if $u6 == null goto label2;
+
+        specialinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void computeBitmapSize()>();
+
+        $u0#11 = new android.graphics.BitmapShader;
+
+        $u6 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Bitmap mBitmap>;
+
+        $u2 = <android.graphics.Shader$TileMode: android.graphics.Shader$TileMode CLAMP>;
+
+        $u3 = <android.graphics.Shader$TileMode: android.graphics.Shader$TileMode CLAMP>;
+
+        specialinvoke $u0#11.<android.graphics.BitmapShader: void <init>(android.graphics.Bitmap,android.graphics.Shader$TileMode,android.graphics.Shader$TileMode)>($u6, $u2, $u3);
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.BitmapShader mBitmapShader> = $u0#11;
+
+        return;
+
+     label2:
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mBitmapHeight> = -1;
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mBitmapWidth> = -1;
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.BitmapShader mBitmapShader> = null;
+
+        return;
+    }
+
+    private void computeBitmapSize()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        android.graphics.Bitmap $u0;
+        int $u1;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Bitmap mBitmap>;
+
+        $u1 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mTargetDensity>;
+
+        $u1 = virtualinvoke $u0.<android.graphics.Bitmap: int getScaledWidth(int)>($u1);
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mBitmapWidth> = $u1;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Bitmap mBitmap>;
+
+        $u1 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mTargetDensity>;
+
+        $u1 = virtualinvoke $u0.<android.graphics.Bitmap: int getScaledHeight(int)>($u1);
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mBitmapHeight> = $u1;
+
+        return;
+    }
+
+    private static boolean isGreaterThanZero(float)
+    {
+        float $u1;
+        byte $u0;
+
+        $u1 := @parameter0: float;
+
+        $u0 = $u1 cmpl 0.05F;
+
+        if $u0 <= 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private void updateCircularCornerRadius()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        int $u-1, $u1;
+        float $u1#5;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u-1 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mBitmapHeight>;
+
+        $u1 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mBitmapWidth>;
+
+        $u-1 = staticinvoke <java.lang.Math: int min(int,int)>($u-1, $u1);
+
+        $u-1 = $u-1 / 2;
+
+        $u1#5 = (float) $u-1;
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: float mCornerRadius> = $u1#5;
+
+        return;
+    }
+
+    public void draw(android.graphics.Canvas)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        android.graphics.Canvas $u5;
+        android.graphics.Bitmap bitmap;
+        android.graphics.Shader $u-1;
+        android.graphics.Paint $u1;
+        android.graphics.Rect $u2;
+        android.graphics.RectF $u1#6;
+        float $u2#7;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u5 := @parameter0: android.graphics.Canvas;
+
+        bitmap = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Bitmap mBitmap>;
+
+        if bitmap != null goto label1;
+
+        return;
+
+     label1:
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void updateDstRect()>();
+
+        $u1 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        $u-1 = virtualinvoke $u1.<android.graphics.Paint: android.graphics.Shader getShader()>();
+
+        if $u-1 != null goto label2;
+
+        $u2 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Rect mDstRect>;
+
+        $u1 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u5.<android.graphics.Canvas: void drawBitmap(android.graphics.Bitmap,android.graphics.Rect,android.graphics.Rect,android.graphics.Paint)>(bitmap, null, $u2, $u1);
+
+        return;
+
+     label2:
+        $u1#6 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.RectF mDstRectF>;
+
+        $u2#7 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: float mCornerRadius>;
+
+        $u1 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u5.<android.graphics.Canvas: void drawRoundRect(android.graphics.RectF,float,float,android.graphics.Paint)>($u1#6, $u2#7, $u2#7, $u1);
+
+        return;
+    }
+
+    public int getAlpha()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        int $u-1;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.Paint: int getAlpha()>();
+
+        return $u-1;
+    }
+
+    public final android.graphics.Bitmap getBitmap()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        android.graphics.Bitmap ret0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        ret0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Bitmap mBitmap>;
+
+        return ret0;
+    }
+
+    public android.graphics.ColorFilter getColorFilter()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        android.graphics.ColorFilter $u-1;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.Paint: android.graphics.ColorFilter getColorFilter()>();
+
+        return $u-1;
+    }
+
+    public float getCornerRadius()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        float ret0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        ret0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: float mCornerRadius>;
+
+        return ret0;
+    }
+
+    public int getGravity()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        int ret0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        ret0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mGravity>;
+
+        return ret0;
+    }
+
+    public int getIntrinsicHeight()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        int ret0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        ret0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mBitmapHeight>;
+
+        return ret0;
+    }
+
+    public int getIntrinsicWidth()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        int ret0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        ret0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mBitmapWidth>;
+
+        return ret0;
+    }
+
+    public int getOpacity()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        int bm;
+        boolean bm#4;
+        android.graphics.Bitmap bm#5;
+        android.graphics.Paint $u2;
+        float $u2#11;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        bm = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mGravity>;
+
+        if bm != 119 goto label3;
+
+        bm#4 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean mIsCircular>;
+
+        if bm#4 == 0 goto label1;
+
+        return -3;
+
+     label1:
+        bm#5 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Bitmap mBitmap>;
+
+        if bm#5 == null goto label3;
+
+        bm#4 = virtualinvoke bm#5.<android.graphics.Bitmap: boolean hasAlpha()>();
+
+        if bm#4 != 0 goto label3;
+
+        $u2 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        bm = virtualinvoke $u2.<android.graphics.Paint: int getAlpha()>();
+
+        if bm < 255 goto label3;
+
+        $u2#11 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: float mCornerRadius>;
+
+        bm#4 = staticinvoke <androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean isGreaterThanZero(float)>($u2#11);
+
+        if bm#4 == 0 goto label2;
+
+        goto label3;
+
+     label2:
+        return -1;
+
+     label3:
+        return -3;
+    }
+
+    public final android.graphics.Paint getPaint()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        android.graphics.Paint ret0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        ret0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        return ret0;
+    }
+
+    void gravityCompatApply(int, int, int, android.graphics.Rect, android.graphics.Rect)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        int $u2, $u3, $u4;
+        android.graphics.Rect $u5, $u6;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: android.graphics.Rect;
+
+        $u6 := @parameter4: android.graphics.Rect;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public boolean hasAntiAlias()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        boolean $u-1;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.Paint: boolean isAntiAlias()>();
+
+        return $u-1;
+    }
+
+    public boolean hasMipMap()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public boolean isCircular()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        boolean ret0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        ret0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean mIsCircular>;
+
+        return ret0;
+    }
+
+    protected void onBoundsChange(android.graphics.Rect)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        android.graphics.Rect $u2;
+        boolean $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u2 := @parameter0: android.graphics.Rect;
+
+        specialinvoke this.<android.graphics.drawable.Drawable: void onBoundsChange(android.graphics.Rect)>($u2);
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean mIsCircular>;
+
+        if $u0 == 0 goto label1;
+
+        specialinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void updateCircularCornerRadius()>();
+
+     label1:
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean mApplyGravity> = 1;
+
+        return;
+    }
+
+    public void setAlpha(int)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        int $u3, $u-1;
+        android.graphics.Paint $u1;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u3 := @parameter0: int;
+
+        $u1 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        $u-1 = virtualinvoke $u1.<android.graphics.Paint: int getAlpha()>();
+
+        if $u3 == $u-1 goto label1;
+
+        $u1 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u1.<android.graphics.Paint: void setAlpha(int)>($u3);
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+
+    public void setAntiAlias(boolean)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        boolean $u2;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u0.<android.graphics.Paint: void setAntiAlias(boolean)>($u2);
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void invalidateSelf()>();
+
+        return;
+    }
+
+    public void setCircular(boolean)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        boolean $u3;
+        android.graphics.BitmapShader $u1;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u3 := @parameter0: boolean;
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean mIsCircular> = $u3;
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean mApplyGravity> = 1;
+
+        if $u3 == 0 goto label1;
+
+        specialinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void updateCircularCornerRadius()>();
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        $u1 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.BitmapShader mBitmapShader>;
+
+        virtualinvoke $u0.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>($u1);
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void invalidateSelf()>();
+
+        return;
+
+     label1:
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void setCornerRadius(float)>(0.0F);
+
+        return;
+    }
+
+    public void setColorFilter(android.graphics.ColorFilter)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        android.graphics.ColorFilter $u2;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u2 := @parameter0: android.graphics.ColorFilter;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u0.<android.graphics.Paint: android.graphics.ColorFilter setColorFilter(android.graphics.ColorFilter)>($u2);
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void invalidateSelf()>();
+
+        return;
+    }
+
+    public void setCornerRadius(float)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        float $u3, $u0;
+        boolean $u-1;
+        byte $u0#2;
+        android.graphics.Paint $u0#5;
+        android.graphics.BitmapShader $u1;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u3 := @parameter0: float;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: float mCornerRadius>;
+
+        $u0#2 = $u0 cmpl $u3;
+
+        if $u0#2 != 0 goto label1;
+
+        return;
+
+     label1:
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean mIsCircular> = 0;
+
+        $u-1 = staticinvoke <androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean isGreaterThanZero(float)>($u3);
+
+        if $u-1 == 0 goto label2;
+
+        $u0#5 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        $u1 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.BitmapShader mBitmapShader>;
+
+        virtualinvoke $u0#5.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>($u1);
+
+        goto label3;
+
+     label2:
+        $u0#5 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u0#5.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>(null);
+
+     label3:
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: float mCornerRadius> = $u3;
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void invalidateSelf()>();
+
+        return;
+    }
+
+    public void setDither(boolean)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        boolean $u2;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u0.<android.graphics.Paint: void setDither(boolean)>($u2);
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void invalidateSelf()>();
+
+        return;
+    }
+
+    public void setFilterBitmap(boolean)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        boolean $u2;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u0.<android.graphics.Paint: void setFilterBitmap(boolean)>($u2);
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void invalidateSelf()>();
+
+        return;
+    }
+
+    public void setGravity(int)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        int $u2, $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mGravity>;
+
+        if $u0 == $u2 goto label1;
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mGravity> = $u2;
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean mApplyGravity> = 1;
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+
+    public void setMipMap(boolean)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        boolean $u2;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public void setTargetDensity(int)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        int $u2, $u0;
+        android.graphics.Bitmap $u0#3;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mTargetDensity>;
+
+        if $u0 == $u2 goto label3;
+
+        if $u2 != 0 goto label1;
+
+        $u2 = 160;
+
+        goto label1;
+
+     label1:
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mTargetDensity> = $u2;
+
+        $u0#3 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Bitmap mBitmap>;
+
+        if $u0#3 == null goto label2;
+
+        specialinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void computeBitmapSize()>();
+
+     label2:
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void invalidateSelf()>();
+
+     label3:
+        return;
+    }
+
+    public void setTargetDensity(android.graphics.Canvas)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        android.graphics.Canvas $u2;
+        int $u-1;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u2 := @parameter0: android.graphics.Canvas;
+
+        $u-1 = virtualinvoke $u2.<android.graphics.Canvas: int getDensity()>();
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void setTargetDensity(int)>($u-1);
+
+        return;
+    }
+
+    public void setTargetDensity(android.util.DisplayMetrics)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        android.util.DisplayMetrics $u2;
+        int $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        $u2 := @parameter0: android.util.DisplayMetrics;
+
+        $u0 = $u2.<android.util.DisplayMetrics: int densityDpi>;
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void setTargetDensity(int)>($u0);
+
+        return;
+    }
+
+    void updateDstRect()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable this;
+        int $u9, $u10, $u-1;
+        android.graphics.Rect $u12, $u8;
+        boolean minDimen;
+        float $u6, insetX, insetY;
+        android.graphics.RectF minDimen#43;
+        android.graphics.BitmapShader minDimen#45;
+        android.graphics.Matrix minDimen#46;
+        android.graphics.Bitmap insetX#55;
+        android.graphics.Paint minDimen#70;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable;
+
+        minDimen = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean mApplyGravity>;
+
+        if minDimen == 0 goto label4;
+
+        minDimen = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean mIsCircular>;
+
+        if minDimen == 0 goto label1;
+
+        $u9 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mBitmapWidth>;
+
+        $u10 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mBitmapHeight>;
+
+        $u9 = staticinvoke <java.lang.Math: int min(int,int)>($u9, $u10);
+
+        $u10 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mGravity>;
+
+        $u12 = virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Rect getBounds()>();
+
+        $u8 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Rect mDstRect>;
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void gravityCompatApply(int,int,int,android.graphics.Rect,android.graphics.Rect)>($u10, $u9, $u9, $u12, $u8);
+
+        $u12 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Rect mDstRect>;
+
+        $u9 = virtualinvoke $u12.<android.graphics.Rect: int width()>();
+
+        $u12 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Rect mDstRect>;
+
+        $u10 = virtualinvoke $u12.<android.graphics.Rect: int height()>();
+
+        $u9 = staticinvoke <java.lang.Math: int min(int,int)>($u9, $u10);
+
+        $u12 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Rect mDstRect>;
+
+        $u10 = virtualinvoke $u12.<android.graphics.Rect: int width()>();
+
+        $u10 = $u10 - $u9;
+
+        $u10 = $u10 / 2;
+
+        $u10 = staticinvoke <java.lang.Math: int max(int,int)>(0, $u10);
+
+        $u12 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Rect mDstRect>;
+
+        $u-1 = virtualinvoke $u12.<android.graphics.Rect: int height()>();
+
+        $u-1 = $u-1 - $u9;
+
+        $u-1 = $u-1 / 2;
+
+        $u-1 = staticinvoke <java.lang.Math: int max(int,int)>(0, $u-1);
+
+        $u12 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Rect mDstRect>;
+
+        virtualinvoke $u12.<android.graphics.Rect: void inset(int,int)>($u10, $u-1);
+
+        $u6 = (float) $u9;
+
+        $u6 = $u6 * 0.5F;
+
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: float mCornerRadius> = $u6;
+
+        goto label2;
+
+     label1:
+        $u-1 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mGravity>;
+
+        $u9 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mBitmapWidth>;
+
+        $u10 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: int mBitmapHeight>;
+
+        $u8 = virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Rect getBounds()>();
+
+        $u12 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Rect mDstRect>;
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void gravityCompatApply(int,int,int,android.graphics.Rect,android.graphics.Rect)>($u-1, $u9, $u10, $u8, $u12);
+
+     label2:
+        minDimen#43 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.RectF mDstRectF>;
+
+        $u12 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Rect mDstRect>;
+
+        virtualinvoke minDimen#43.<android.graphics.RectF: void set(android.graphics.Rect)>($u12);
+
+        minDimen#45 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.BitmapShader mBitmapShader>;
+
+        if minDimen#45 == null goto label3;
+
+        minDimen#46 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Matrix mShaderMatrix>;
+
+        minDimen#43 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.RectF mDstRectF>;
+
+        $u6 = minDimen#43.<android.graphics.RectF: float left>;
+
+        minDimen#43 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.RectF mDstRectF>;
+
+        insetX = minDimen#43.<android.graphics.RectF: float top>;
+
+        virtualinvoke minDimen#46.<android.graphics.Matrix: void setTranslate(float,float)>($u6, insetX);
+
+        minDimen#46 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Matrix mShaderMatrix>;
+
+        minDimen#43 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.RectF mDstRectF>;
+
+        $u6 = virtualinvoke minDimen#43.<android.graphics.RectF: float width()>();
+
+        insetX#55 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Bitmap mBitmap>;
+
+        $u9 = virtualinvoke insetX#55.<android.graphics.Bitmap: int getWidth()>();
+
+        insetX = (float) $u9;
+
+        $u6 = $u6 / insetX;
+
+        minDimen#43 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.RectF mDstRectF>;
+
+        insetX = virtualinvoke minDimen#43.<android.graphics.RectF: float height()>();
+
+        insetX#55 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Bitmap mBitmap>;
+
+        $u9 = virtualinvoke insetX#55.<android.graphics.Bitmap: int getHeight()>();
+
+        insetY = (float) $u9;
+
+        insetX = insetX / insetY;
+
+        virtualinvoke minDimen#46.<android.graphics.Matrix: boolean preScale(float,float)>($u6, insetX);
+
+        minDimen#45 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.BitmapShader mBitmapShader>;
+
+        minDimen#46 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Matrix mShaderMatrix>;
+
+        virtualinvoke minDimen#45.<android.graphics.BitmapShader: void setLocalMatrix(android.graphics.Matrix)>(minDimen#46);
+
+        minDimen#70 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.Paint mPaint>;
+
+        minDimen#45 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: android.graphics.BitmapShader mBitmapShader>;
+
+        virtualinvoke minDimen#70.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>(minDimen#45);
+
+     label3:
+        this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: boolean mApplyGravity> = 0;
+
+     label4:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.graphics.drawable.RoundedBitmapDrawable: int DEFAULT_PAINT_FLAGS> = 3;
+
+        return;
+    }
+}

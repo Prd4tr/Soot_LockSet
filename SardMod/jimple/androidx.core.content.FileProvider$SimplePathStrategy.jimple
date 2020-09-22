@@ -1,0 +1,370 @@
+class androidx.core.content.FileProvider$SimplePathStrategy extends java.lang.Object implements androidx.core.content.FileProvider$PathStrategy
+{
+    private final java.lang.String mAuthority;
+    private final java.util.HashMap mRoots;
+
+    void <init>(java.lang.String)
+    {
+        androidx.core.content.FileProvider$SimplePathStrategy this;
+        java.lang.String $u2;
+        java.util.HashMap $u0;
+
+        this := @this: androidx.core.content.FileProvider$SimplePathStrategy;
+
+        $u2 := @parameter0: java.lang.String;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new java.util.HashMap;
+
+        specialinvoke $u0.<java.util.HashMap: void <init>()>();
+
+        this.<androidx.core.content.FileProvider$SimplePathStrategy: java.util.HashMap mRoots> = $u0;
+
+        this.<androidx.core.content.FileProvider$SimplePathStrategy: java.lang.String mAuthority> = $u2;
+
+        return;
+    }
+
+    void addRoot(java.lang.String, java.io.File)
+    {
+        androidx.core.content.FileProvider$SimplePathStrategy this;
+        java.lang.String $u5;
+        java.io.File $u6, $u-1#4;
+        boolean $u-1;
+        java.util.HashMap e;
+        java.io.IOException e#8;
+        java.lang.IllegalArgumentException $u1;
+        java.lang.StringBuilder $u2;
+
+        this := @this: androidx.core.content.FileProvider$SimplePathStrategy;
+
+        $u5 := @parameter0: java.lang.String;
+
+        $u6 := @parameter1: java.io.File;
+
+        $u-1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u5);
+
+        if $u-1 != 0 goto label4;
+
+     label1:
+        $u-1#4 = virtualinvoke $u6.<java.io.File: java.io.File getCanonicalFile()>();
+
+     label2:
+        e = this.<androidx.core.content.FileProvider$SimplePathStrategy: java.util.HashMap mRoots>;
+
+        virtualinvoke e.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u5, $u-1#4);
+
+        return;
+
+     label3:
+        e#8 := @caughtexception;
+
+        $u1 = new java.lang.IllegalArgumentException;
+
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to resolve canonical path for ");
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u6);
+
+        $u5 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u1.<java.lang.IllegalArgumentException: void <init>(java.lang.String,java.lang.Throwable)>($u5, e#8);
+
+        throw $u1;
+
+     label4:
+        $u1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Name must not be empty");
+
+        throw $u1;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public java.io.File getFileForUri(android.net.Uri)
+    {
+        androidx.core.content.FileProvider$SimplePathStrategy this;
+        android.net.Uri $u10;
+        java.lang.String $u-1, $u-1#7;
+        int $u-1#5;
+        java.util.HashMap root;
+        java.lang.Object $u-1#17;
+        java.io.File root#19, file, $u-1#21;
+        boolean $u-1#28;
+        java.lang.SecurityException e;
+        java.io.IOException e#32;
+        java.lang.IllegalArgumentException $u6;
+        java.lang.StringBuilder $u7;
+
+        this := @this: androidx.core.content.FileProvider$SimplePathStrategy;
+
+        $u10 := @parameter0: android.net.Uri;
+
+        $u-1 = virtualinvoke $u10.<android.net.Uri: java.lang.String getEncodedPath()>();
+
+        $u-1#5 = virtualinvoke $u-1.<java.lang.String: int indexOf(int,int)>(47, 1);
+
+        $u-1#7 = virtualinvoke $u-1.<java.lang.String: java.lang.String substring(int,int)>(1, $u-1#5);
+
+        $u-1#7 = staticinvoke <android.net.Uri: java.lang.String decode(java.lang.String)>($u-1#7);
+
+        $u-1#5 = $u-1#5 + 1;
+
+        $u-1 = virtualinvoke $u-1.<java.lang.String: java.lang.String substring(int)>($u-1#5);
+
+        $u-1 = staticinvoke <android.net.Uri: java.lang.String decode(java.lang.String)>($u-1);
+
+        root = this.<androidx.core.content.FileProvider$SimplePathStrategy: java.util.HashMap mRoots>;
+
+        $u-1#17 = virtualinvoke root.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($u-1#7);
+
+        root#19 = (java.io.File) $u-1#17;
+
+        if root#19 == null goto label5;
+
+        file = new java.io.File;
+
+        specialinvoke file.<java.io.File: void <init>(java.io.File,java.lang.String)>(root#19, $u-1);
+
+     label1:
+        $u-1#21 = virtualinvoke file.<java.io.File: java.io.File getCanonicalFile()>();
+
+     label2:
+        $u-1#7 = virtualinvoke $u-1#21.<java.io.File: java.lang.String getPath()>();
+
+        $u-1 = virtualinvoke root#19.<java.io.File: java.lang.String getPath()>();
+
+        $u-1#28 = virtualinvoke $u-1#7.<java.lang.String: boolean startsWith(java.lang.String)>($u-1);
+
+        if $u-1#28 == 0 goto label3;
+
+        return $u-1#21;
+
+     label3:
+        e = new java.lang.SecurityException;
+
+        specialinvoke e.<java.lang.SecurityException: void <init>(java.lang.String)>("Resolved path jumped beyond configured root");
+
+        throw e;
+
+     label4:
+        e#32 := @caughtexception;
+
+        $u6 = new java.lang.IllegalArgumentException;
+
+        $u7 = new java.lang.StringBuilder;
+
+        specialinvoke $u7.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to resolve canonical path for ");
+
+        virtualinvoke $u7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(file);
+
+        $u-1#7 = virtualinvoke $u7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1#7);
+
+        throw $u6;
+
+     label5:
+        $u6 = new java.lang.IllegalArgumentException;
+
+        $u7 = new java.lang.StringBuilder;
+
+        specialinvoke $u7.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to find configured root for ");
+
+        virtualinvoke $u7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u10);
+
+        $u-1#7 = virtualinvoke $u7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1#7);
+
+        throw $u6;
+
+        catch java.io.IOException from label1 to label2 with label4;
+    }
+
+    public android.net.Uri getUriForFile(java.io.File)
+    {
+        androidx.core.content.FileProvider$SimplePathStrategy this;
+        java.io.File $u8;
+        java.lang.String $u-1, $u-1#17;
+        java.util.Map$Entry mostSpecific, root;
+        java.util.HashMap rootPath;
+        java.util.Set $u-1#5;
+        java.util.Iterator $u-1#7;
+        boolean $u-1#9;
+        java.lang.Object $u-1#11;
+        int $u-1#21, $u-1#28;
+        java.lang.StringBuilder rootPath1;
+        android.net.Uri$Builder root#57;
+        android.net.Uri $u-1#66;
+        java.lang.IllegalArgumentException rootPath#68;
+        java.io.IOException path;
+
+        this := @this: androidx.core.content.FileProvider$SimplePathStrategy;
+
+        $u8 := @parameter0: java.io.File;
+
+     label01:
+        $u-1 = virtualinvoke $u8.<java.io.File: java.lang.String getCanonicalPath()>();
+
+     label02:
+        mostSpecific = null;
+
+        rootPath = this.<androidx.core.content.FileProvider$SimplePathStrategy: java.util.HashMap mRoots>;
+
+        $u-1#5 = virtualinvoke rootPath.<java.util.HashMap: java.util.Set entrySet()>();
+
+        $u-1#7 = interfaceinvoke $u-1#5.<java.util.Set: java.util.Iterator iterator()>();
+
+     label03:
+        $u-1#9 = interfaceinvoke $u-1#7.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#9 == 0 goto label05;
+
+        $u-1#11 = interfaceinvoke $u-1#7.<java.util.Iterator: java.lang.Object next()>();
+
+        root = (java.util.Map$Entry) $u-1#11;
+
+        $u-1#11 = interfaceinvoke root.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $u8 = (java.io.File) $u-1#11;
+
+        $u-1#17 = virtualinvoke $u8.<java.io.File: java.lang.String getPath()>();
+
+        $u-1#9 = virtualinvoke $u-1.<java.lang.String: boolean startsWith(java.lang.String)>($u-1#17);
+
+        if $u-1#9 == 0 goto label03;
+
+        if mostSpecific == null goto label04;
+
+        $u-1#21 = virtualinvoke $u-1#17.<java.lang.String: int length()>();
+
+        $u-1#11 = interfaceinvoke mostSpecific.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $u8 = (java.io.File) $u-1#11;
+
+        $u-1#17 = virtualinvoke $u8.<java.io.File: java.lang.String getPath()>();
+
+        $u-1#28 = virtualinvoke $u-1#17.<java.lang.String: int length()>();
+
+        if $u-1#21 <= $u-1#28 goto label03;
+
+     label04:
+        mostSpecific = root;
+
+        goto label03;
+
+     label05:
+        if mostSpecific == null goto label08;
+
+        $u-1#11 = interfaceinvoke mostSpecific.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $u8 = (java.io.File) $u-1#11;
+
+        $u-1#17 = virtualinvoke $u8.<java.io.File: java.lang.String getPath()>();
+
+        $u-1#9 = virtualinvoke $u-1#17.<java.lang.String: boolean endsWith(java.lang.String)>("/");
+
+        if $u-1#9 == 0 goto label06;
+
+        $u-1#21 = virtualinvoke $u-1#17.<java.lang.String: int length()>();
+
+        $u-1 = virtualinvoke $u-1.<java.lang.String: java.lang.String substring(int)>($u-1#21);
+
+        goto label07;
+
+     label06:
+        $u-1#21 = virtualinvoke $u-1#17.<java.lang.String: int length()>();
+
+        $u-1#21 = $u-1#21 + 1;
+
+        $u-1 = virtualinvoke $u-1.<java.lang.String: java.lang.String substring(int)>($u-1#21);
+
+     label07:
+        rootPath1 = new java.lang.StringBuilder;
+
+        specialinvoke rootPath1.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1#11 = interfaceinvoke mostSpecific.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $u-1#17 = (java.lang.String) $u-1#11;
+
+        $u-1#17 = staticinvoke <android.net.Uri: java.lang.String encode(java.lang.String)>($u-1#17);
+
+        virtualinvoke rootPath1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#17);
+
+        virtualinvoke rootPath1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(47);
+
+        $u-1 = staticinvoke <android.net.Uri: java.lang.String encode(java.lang.String,java.lang.String)>($u-1, "/");
+
+        virtualinvoke rootPath1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        $u-1 = virtualinvoke rootPath1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        root#57 = new android.net.Uri$Builder;
+
+        specialinvoke root#57.<android.net.Uri$Builder: void <init>()>();
+
+        root#57 = virtualinvoke root#57.<android.net.Uri$Builder: android.net.Uri$Builder scheme(java.lang.String)>("content");
+
+        $u-1#17 = this.<androidx.core.content.FileProvider$SimplePathStrategy: java.lang.String mAuthority>;
+
+        root#57 = virtualinvoke root#57.<android.net.Uri$Builder: android.net.Uri$Builder authority(java.lang.String)>($u-1#17);
+
+        root#57 = virtualinvoke root#57.<android.net.Uri$Builder: android.net.Uri$Builder encodedPath(java.lang.String)>($u-1);
+
+        $u-1#66 = virtualinvoke root#57.<android.net.Uri$Builder: android.net.Uri build()>();
+
+        return $u-1#66;
+
+     label08:
+        rootPath#68 = new java.lang.IllegalArgumentException;
+
+        rootPath1 = new java.lang.StringBuilder;
+
+        specialinvoke rootPath1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke rootPath1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to find configured root that contains ");
+
+        virtualinvoke rootPath1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        $u-1 = virtualinvoke rootPath1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke rootPath#68.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1);
+
+        throw rootPath#68;
+
+     label09:
+        path := @caughtexception;
+
+        rootPath#68 = new java.lang.IllegalArgumentException;
+
+        rootPath1 = new java.lang.StringBuilder;
+
+        specialinvoke rootPath1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke rootPath1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to resolve canonical path for ");
+
+        virtualinvoke rootPath1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u8);
+
+        $u-1 = virtualinvoke rootPath1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke rootPath#68.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1);
+
+        goto label10;
+
+     label10:
+        throw rootPath#68;
+
+        catch java.io.IOException from label01 to label02 with label09;
+    }
+}

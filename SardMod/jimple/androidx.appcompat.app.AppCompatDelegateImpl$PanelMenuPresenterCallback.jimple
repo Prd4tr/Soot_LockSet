@@ -1,0 +1,123 @@
+final class androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback extends java.lang.Object implements androidx.appcompat.view.menu.MenuPresenter$Callback
+{
+    final androidx.appcompat.app.AppCompatDelegateImpl this$0;
+
+    void <init>(androidx.appcompat.app.AppCompatDelegateImpl)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback this;
+        androidx.appcompat.app.AppCompatDelegateImpl $u1;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback;
+
+        $u1 := @parameter0: androidx.appcompat.app.AppCompatDelegateImpl;
+
+        this.<androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback: androidx.appcompat.app.AppCompatDelegateImpl this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onCloseMenu(androidx.appcompat.view.menu.MenuBuilder, boolean)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback this;
+        androidx.appcompat.view.menu.MenuBuilder $u7, $u-1;
+        boolean $u8, isSubMenu;
+        int $u5;
+        androidx.appcompat.app.AppCompatDelegateImpl panel;
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState $u-1#6;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback;
+
+        $u7 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u8 := @parameter1: boolean;
+
+        $u-1 = virtualinvoke $u7.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuBuilder getRootMenu()>();
+
+        if $u-1 == $u7 goto label1;
+
+        isSubMenu = 1;
+
+        goto label2;
+
+     label1:
+        isSubMenu = 0;
+
+     label2:
+        panel = this.<androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        if isSubMenu == 0 goto label3;
+
+        $u7 = $u-1;
+
+        goto label3;
+
+     label3:
+        $u-1#6 = virtualinvoke panel.<androidx.appcompat.app.AppCompatDelegateImpl: androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState findMenuPanel(android.view.Menu)>($u7);
+
+        if $u-1#6 == null goto label5;
+
+        if isSubMenu == 0 goto label4;
+
+        panel = this.<androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $u5 = $u-1#6.<androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState: int featureId>;
+
+        virtualinvoke panel.<androidx.appcompat.app.AppCompatDelegateImpl: void callOnPanelClosed(int,androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,android.view.Menu)>($u5, $u-1#6, $u-1);
+
+        panel = this.<androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        virtualinvoke panel.<androidx.appcompat.app.AppCompatDelegateImpl: void closePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,boolean)>($u-1#6, 1);
+
+        return;
+
+     label4:
+        panel = this.<androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        virtualinvoke panel.<androidx.appcompat.app.AppCompatDelegateImpl: void closePanel(androidx.appcompat.app.AppCompatDelegateImpl$PanelFeatureState,boolean)>($u-1#6, $u8);
+
+     label5:
+        return;
+    }
+
+    public boolean onOpenSubMenu(androidx.appcompat.view.menu.MenuBuilder)
+    {
+        androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback this;
+        androidx.appcompat.view.menu.MenuBuilder $u3, $u-1;
+        androidx.appcompat.app.AppCompatDelegateImpl cb;
+        boolean cb#4;
+        android.view.Window$Callback $u-1#6;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback;
+
+        $u3 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u-1 = virtualinvoke $u3.<androidx.appcompat.view.menu.MenuBuilder: androidx.appcompat.view.menu.MenuBuilder getRootMenu()>();
+
+        if $u3 != $u-1 goto label1;
+
+        cb = this.<androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        cb#4 = cb.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mHasActionBar>;
+
+        if cb#4 == 0 goto label1;
+
+        cb = this.<androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        $u-1#6 = virtualinvoke cb.<androidx.appcompat.app.AppCompatDelegateImpl: android.view.Window$Callback getWindowCallback()>();
+
+        if $u-1#6 == null goto label1;
+
+        cb = this.<androidx.appcompat.app.AppCompatDelegateImpl$PanelMenuPresenterCallback: androidx.appcompat.app.AppCompatDelegateImpl this$0>;
+
+        cb#4 = cb.<androidx.appcompat.app.AppCompatDelegateImpl: boolean mIsDestroyed>;
+
+        if cb#4 != 0 goto label1;
+
+        interfaceinvoke $u-1#6.<android.view.Window$Callback: boolean onMenuOpened(int,android.view.Menu)>(108, $u3);
+
+     label1:
+        return 1;
+    }
+}

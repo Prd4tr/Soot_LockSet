@@ -1,0 +1,95 @@
+class androidx.appcompat.view.menu.CascadingMenuPopup$3$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.appcompat.view.menu.CascadingMenuPopup$3 this$1;
+    final android.view.MenuItem val$item;
+    final androidx.appcompat.view.menu.MenuBuilder val$menu;
+    final androidx.appcompat.view.menu.CascadingMenuPopup$CascadingMenuInfo val$nextInfo;
+
+    void <init>(androidx.appcompat.view.menu.CascadingMenuPopup$3, androidx.appcompat.view.menu.CascadingMenuPopup$CascadingMenuInfo, android.view.MenuItem, androidx.appcompat.view.menu.MenuBuilder)
+    {
+        androidx.appcompat.view.menu.CascadingMenuPopup$3$1 this;
+        androidx.appcompat.view.menu.CascadingMenuPopup$3 $u1;
+        androidx.appcompat.view.menu.CascadingMenuPopup$CascadingMenuInfo $u2;
+        android.view.MenuItem $u3;
+        androidx.appcompat.view.menu.MenuBuilder $u4;
+
+        this := @this: androidx.appcompat.view.menu.CascadingMenuPopup$3$1;
+
+        $u1 := @parameter0: androidx.appcompat.view.menu.CascadingMenuPopup$3;
+
+        $u2 := @parameter1: androidx.appcompat.view.menu.CascadingMenuPopup$CascadingMenuInfo;
+
+        $u3 := @parameter2: android.view.MenuItem;
+
+        $u4 := @parameter3: androidx.appcompat.view.menu.MenuBuilder;
+
+        this.<androidx.appcompat.view.menu.CascadingMenuPopup$3$1: androidx.appcompat.view.menu.CascadingMenuPopup$3 this$1> = $u1;
+
+        this.<androidx.appcompat.view.menu.CascadingMenuPopup$3$1: androidx.appcompat.view.menu.CascadingMenuPopup$CascadingMenuInfo val$nextInfo> = $u2;
+
+        this.<androidx.appcompat.view.menu.CascadingMenuPopup$3$1: android.view.MenuItem val$item> = $u3;
+
+        this.<androidx.appcompat.view.menu.CascadingMenuPopup$3$1: androidx.appcompat.view.menu.MenuBuilder val$menu> = $u4;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.appcompat.view.menu.CascadingMenuPopup$3$1 this;
+        androidx.appcompat.view.menu.CascadingMenuPopup$CascadingMenuInfo $u0;
+        androidx.appcompat.view.menu.CascadingMenuPopup$3 $u0#2;
+        androidx.appcompat.view.menu.CascadingMenuPopup $u0#3;
+        androidx.appcompat.view.menu.MenuBuilder $u0#6;
+        android.view.MenuItem $u0#10;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.view.menu.CascadingMenuPopup$3$1;
+
+        $u0 = this.<androidx.appcompat.view.menu.CascadingMenuPopup$3$1: androidx.appcompat.view.menu.CascadingMenuPopup$CascadingMenuInfo val$nextInfo>;
+
+        if $u0 == null goto label1;
+
+        $u0#2 = this.<androidx.appcompat.view.menu.CascadingMenuPopup$3$1: androidx.appcompat.view.menu.CascadingMenuPopup$3 this$1>;
+
+        $u0#3 = $u0#2.<androidx.appcompat.view.menu.CascadingMenuPopup$3: androidx.appcompat.view.menu.CascadingMenuPopup this$0>;
+
+        $u0#3.<androidx.appcompat.view.menu.CascadingMenuPopup: boolean mShouldCloseImmediately> = 1;
+
+        $u0 = this.<androidx.appcompat.view.menu.CascadingMenuPopup$3$1: androidx.appcompat.view.menu.CascadingMenuPopup$CascadingMenuInfo val$nextInfo>;
+
+        $u0#6 = $u0.<androidx.appcompat.view.menu.CascadingMenuPopup$CascadingMenuInfo: androidx.appcompat.view.menu.MenuBuilder menu>;
+
+        virtualinvoke $u0#6.<androidx.appcompat.view.menu.MenuBuilder: void close(boolean)>(0);
+
+        $u0#2 = this.<androidx.appcompat.view.menu.CascadingMenuPopup$3$1: androidx.appcompat.view.menu.CascadingMenuPopup$3 this$1>;
+
+        $u0#3 = $u0#2.<androidx.appcompat.view.menu.CascadingMenuPopup$3: androidx.appcompat.view.menu.CascadingMenuPopup this$0>;
+
+        $u0#3.<androidx.appcompat.view.menu.CascadingMenuPopup: boolean mShouldCloseImmediately> = 0;
+
+     label1:
+        $u0#10 = this.<androidx.appcompat.view.menu.CascadingMenuPopup$3$1: android.view.MenuItem val$item>;
+
+        $u-1 = interfaceinvoke $u0#10.<android.view.MenuItem: boolean isEnabled()>();
+
+        if $u-1 == 0 goto label2;
+
+        $u0#10 = this.<androidx.appcompat.view.menu.CascadingMenuPopup$3$1: android.view.MenuItem val$item>;
+
+        $u-1 = interfaceinvoke $u0#10.<android.view.MenuItem: boolean hasSubMenu()>();
+
+        if $u-1 == 0 goto label2;
+
+        $u0#6 = this.<androidx.appcompat.view.menu.CascadingMenuPopup$3$1: androidx.appcompat.view.menu.MenuBuilder val$menu>;
+
+        $u0#10 = this.<androidx.appcompat.view.menu.CascadingMenuPopup$3$1: android.view.MenuItem val$item>;
+
+        virtualinvoke $u0#6.<androidx.appcompat.view.menu.MenuBuilder: boolean performItemAction(android.view.MenuItem,int)>($u0#10, 4);
+
+     label2:
+        return;
+    }
+}

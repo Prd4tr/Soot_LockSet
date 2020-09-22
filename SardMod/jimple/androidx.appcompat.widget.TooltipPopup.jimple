@@ -1,0 +1,532 @@
+class androidx.appcompat.widget.TooltipPopup extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    private final android.view.View mContentView;
+    private final android.content.Context mContext;
+    private final android.view.WindowManager$LayoutParams mLayoutParams;
+    private final android.widget.TextView mMessageView;
+    private final int[] mTmpAnchorPos;
+    private final int[] mTmpAppPos;
+    private final android.graphics.Rect mTmpDisplayFrame;
+
+    void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.TooltipPopup this;
+        android.content.Context $u4;
+        android.view.WindowManager$LayoutParams $u0;
+        android.graphics.Rect $u0#2;
+        int[] $u1;
+        android.view.LayoutInflater $u-1;
+        int $u1#8;
+        android.view.View $u-1#9;
+        android.widget.TextView $u0#14;
+        java.lang.Class $u-1#16;
+        java.lang.String $u-1#18;
+
+        this := @this: androidx.appcompat.widget.TooltipPopup;
+
+        $u4 := @parameter0: android.content.Context;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new android.view.WindowManager$LayoutParams;
+
+        specialinvoke $u0.<android.view.WindowManager$LayoutParams: void <init>()>();
+
+        this.<androidx.appcompat.widget.TooltipPopup: android.view.WindowManager$LayoutParams mLayoutParams> = $u0;
+
+        $u0#2 = new android.graphics.Rect;
+
+        specialinvoke $u0#2.<android.graphics.Rect: void <init>()>();
+
+        this.<androidx.appcompat.widget.TooltipPopup: android.graphics.Rect mTmpDisplayFrame> = $u0#2;
+
+        $u1 = newarray (int)[2];
+
+        this.<androidx.appcompat.widget.TooltipPopup: int[] mTmpAnchorPos> = $u1;
+
+        $u1 = newarray (int)[2];
+
+        this.<androidx.appcompat.widget.TooltipPopup: int[] mTmpAppPos> = $u1;
+
+        this.<androidx.appcompat.widget.TooltipPopup: android.content.Context mContext> = $u4;
+
+        $u-1 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($u4);
+
+        $u1#8 = <androidx.appcompat.R$layout: int abc_tooltip>;
+
+        $u-1#9 = virtualinvoke $u-1.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>($u1#8, null);
+
+        this.<androidx.appcompat.widget.TooltipPopup: android.view.View mContentView> = $u-1#9;
+
+        $u1#8 = <androidx.appcompat.R$id: int message>;
+
+        $u-1#9 = virtualinvoke $u-1#9.<android.view.View: android.view.View findViewById(int)>($u1#8);
+
+        $u0#14 = (android.widget.TextView) $u-1#9;
+
+        this.<androidx.appcompat.widget.TooltipPopup: android.widget.TextView mMessageView> = $u0#14;
+
+        $u0 = this.<androidx.appcompat.widget.TooltipPopup: android.view.WindowManager$LayoutParams mLayoutParams>;
+
+        $u-1#16 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#18 = virtualinvoke $u-1#16.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        virtualinvoke $u0.<android.view.WindowManager$LayoutParams: void setTitle(java.lang.CharSequence)>($u-1#18);
+
+        $u0 = this.<androidx.appcompat.widget.TooltipPopup: android.view.WindowManager$LayoutParams mLayoutParams>;
+
+        $u4 = this.<androidx.appcompat.widget.TooltipPopup: android.content.Context mContext>;
+
+        $u-1#18 = virtualinvoke $u4.<android.content.Context: java.lang.String getPackageName()>();
+
+        $u0.<android.view.WindowManager$LayoutParams: java.lang.String packageName> = $u-1#18;
+
+        $u0 = this.<androidx.appcompat.widget.TooltipPopup: android.view.WindowManager$LayoutParams mLayoutParams>;
+
+        $u0.<android.view.WindowManager$LayoutParams: int type> = 1002;
+
+        $u0 = this.<androidx.appcompat.widget.TooltipPopup: android.view.WindowManager$LayoutParams mLayoutParams>;
+
+        $u0.<android.view.WindowManager$LayoutParams: int width> = -2;
+
+        $u0 = this.<androidx.appcompat.widget.TooltipPopup: android.view.WindowManager$LayoutParams mLayoutParams>;
+
+        $u0.<android.view.WindowManager$LayoutParams: int height> = -2;
+
+        $u0 = this.<androidx.appcompat.widget.TooltipPopup: android.view.WindowManager$LayoutParams mLayoutParams>;
+
+        $u0.<android.view.WindowManager$LayoutParams: int format> = -3;
+
+        $u0 = this.<androidx.appcompat.widget.TooltipPopup: android.view.WindowManager$LayoutParams mLayoutParams>;
+
+        $u1#8 = <androidx.appcompat.R$style: int Animation_AppCompat_Tooltip>;
+
+        $u0.<android.view.WindowManager$LayoutParams: int windowAnimations> = $u1#8;
+
+        $u0 = this.<androidx.appcompat.widget.TooltipPopup: android.view.WindowManager$LayoutParams mLayoutParams>;
+
+        $u0.<android.view.WindowManager$LayoutParams: int flags> = 24;
+
+        return;
+    }
+
+    private void computePosition(android.view.View, int, int, boolean, android.view.WindowManager$LayoutParams)
+    {
+        androidx.appcompat.widget.TooltipPopup this;
+        android.view.View $u17, $u-1#32;
+        int $u18, $u19, $u15, offsetX, $u-1#9, statusBarHeight, $u14;
+        boolean $u20;
+        android.view.WindowManager$LayoutParams $u21;
+        android.os.IBinder $u-1;
+        android.content.Context tooltipPreciseAnchorThreshold;
+        android.content.res.Resources $u-1#4;
+        android.graphics.Rect res;
+        android.util.DisplayMetrics $u-1#52;
+        int[] res#56, metrics;
+
+        this := @this: androidx.appcompat.widget.TooltipPopup;
+
+        $u17 := @parameter0: android.view.View;
+
+        $u18 := @parameter1: int;
+
+        $u19 := @parameter2: int;
+
+        $u20 := @parameter3: boolean;
+
+        $u21 := @parameter4: android.view.WindowManager$LayoutParams;
+
+        $u-1 = virtualinvoke $u17.<android.view.View: android.os.IBinder getApplicationWindowToken()>();
+
+        $u21.<android.view.WindowManager$LayoutParams: android.os.IBinder token> = $u-1;
+
+        tooltipPreciseAnchorThreshold = this.<androidx.appcompat.widget.TooltipPopup: android.content.Context mContext>;
+
+        $u-1#4 = virtualinvoke tooltipPreciseAnchorThreshold.<android.content.Context: android.content.res.Resources getResources()>();
+
+        offsetX = <androidx.appcompat.R$dimen: int tooltip_precise_anchor_threshold>;
+
+        offsetX = virtualinvoke $u-1#4.<android.content.res.Resources: int getDimensionPixelOffset(int)>(offsetX);
+
+        $u-1#9 = virtualinvoke $u17.<android.view.View: int getWidth()>();
+
+        if $u-1#9 < offsetX goto label01;
+
+        $u-1#9 = $u18;
+
+        goto label02;
+
+     label01:
+        $u18 = virtualinvoke $u17.<android.view.View: int getWidth()>();
+
+        $u-1#9 = $u18 / 2;
+
+     label02:
+        $u18 = virtualinvoke $u17.<android.view.View: int getHeight()>();
+
+        if $u18 < offsetX goto label03;
+
+        tooltipPreciseAnchorThreshold = this.<androidx.appcompat.widget.TooltipPopup: android.content.Context mContext>;
+
+        $u-1#4 = virtualinvoke tooltipPreciseAnchorThreshold.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u18 = <androidx.appcompat.R$dimen: int tooltip_precise_anchor_extra_offset>;
+
+        offsetX = virtualinvoke $u-1#4.<android.content.res.Resources: int getDimensionPixelOffset(int)>($u18);
+
+        $u18 = $u19 + offsetX;
+
+        offsetX = $u19 - offsetX;
+
+        goto label04;
+
+     label03:
+        $u18 = virtualinvoke $u17.<android.view.View: int getHeight()>();
+
+        offsetX = 0;
+
+     label04:
+        $u21.<android.view.WindowManager$LayoutParams: int gravity> = 49;
+
+        tooltipPreciseAnchorThreshold = this.<androidx.appcompat.widget.TooltipPopup: android.content.Context mContext>;
+
+        $u-1#4 = virtualinvoke tooltipPreciseAnchorThreshold.<android.content.Context: android.content.res.Resources getResources()>();
+
+        if $u20 == 0 goto label05;
+
+        $u19 = <androidx.appcompat.R$dimen: int tooltip_y_offset_touch>;
+
+        goto label06;
+
+     label05:
+        $u19 = <androidx.appcompat.R$dimen: int tooltip_y_offset_non_touch>;
+
+     label06:
+        $u19 = virtualinvoke $u-1#4.<android.content.res.Resources: int getDimensionPixelOffset(int)>($u19);
+
+        $u-1#32 = staticinvoke <androidx.appcompat.widget.TooltipPopup: android.view.View getAppRootView(android.view.View)>($u17);
+
+        if $u-1#32 != null goto label07;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("TooltipPopup", "Cannot find app view");
+
+        return;
+
+     label07:
+        res = this.<androidx.appcompat.widget.TooltipPopup: android.graphics.Rect mTmpDisplayFrame>;
+
+        virtualinvoke $u-1#32.<android.view.View: void getWindowVisibleDisplayFrame(android.graphics.Rect)>(res);
+
+        res = this.<androidx.appcompat.widget.TooltipPopup: android.graphics.Rect mTmpDisplayFrame>;
+
+        $u15 = res.<android.graphics.Rect: int left>;
+
+        if $u15 >= 0 goto label10;
+
+        res = this.<androidx.appcompat.widget.TooltipPopup: android.graphics.Rect mTmpDisplayFrame>;
+
+        $u15 = res.<android.graphics.Rect: int top>;
+
+        if $u15 >= 0 goto label10;
+
+        tooltipPreciseAnchorThreshold = this.<androidx.appcompat.widget.TooltipPopup: android.content.Context mContext>;
+
+        $u-1#4 = virtualinvoke tooltipPreciseAnchorThreshold.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u15 = virtualinvoke $u-1#4.<android.content.res.Resources: int getIdentifier(java.lang.String,java.lang.String,java.lang.String)>("status_bar_height", "dimen", "android");
+
+        if $u15 == 0 goto label08;
+
+        statusBarHeight = virtualinvoke $u-1#4.<android.content.res.Resources: int getDimensionPixelSize(int)>($u15);
+
+        goto label09;
+
+     label08:
+        statusBarHeight = 0;
+
+     label09:
+        $u-1#52 = virtualinvoke $u-1#4.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        res = this.<androidx.appcompat.widget.TooltipPopup: android.graphics.Rect mTmpDisplayFrame>;
+
+        $u14 = $u-1#52.<android.util.DisplayMetrics: int widthPixels>;
+
+        $u15 = $u-1#52.<android.util.DisplayMetrics: int heightPixels>;
+
+        virtualinvoke res.<android.graphics.Rect: void set(int,int,int,int)>(0, statusBarHeight, $u14, $u15);
+
+     label10:
+        res#56 = this.<androidx.appcompat.widget.TooltipPopup: int[] mTmpAppPos>;
+
+        virtualinvoke $u-1#32.<android.view.View: void getLocationOnScreen(int[])>(res#56);
+
+        res#56 = this.<androidx.appcompat.widget.TooltipPopup: int[] mTmpAnchorPos>;
+
+        virtualinvoke $u17.<android.view.View: void getLocationOnScreen(int[])>(res#56);
+
+        res#56 = this.<androidx.appcompat.widget.TooltipPopup: int[] mTmpAnchorPos>;
+
+        $u15 = res#56[0];
+
+        metrics = this.<androidx.appcompat.widget.TooltipPopup: int[] mTmpAppPos>;
+
+        statusBarHeight = metrics[0];
+
+        $u15 = $u15 - statusBarHeight;
+
+        res#56[0] = $u15;
+
+        $u15 = res#56[1];
+
+        statusBarHeight = metrics[1];
+
+        $u15 = $u15 - statusBarHeight;
+
+        res#56[1] = $u15;
+
+        $u15 = res#56[0];
+
+        $u-1#9 = $u15 + $u-1#9;
+
+        $u15 = virtualinvoke $u-1#32.<android.view.View: int getWidth()>();
+
+        $u15 = $u15 / 2;
+
+        $u-1#9 = $u-1#9 - $u15;
+
+        $u21.<android.view.WindowManager$LayoutParams: int x> = $u-1#9;
+
+        $u-1#9 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>(0, 0);
+
+        $u17 = this.<androidx.appcompat.widget.TooltipPopup: android.view.View mContentView>;
+
+        virtualinvoke $u17.<android.view.View: void measure(int,int)>($u-1#9, $u-1#9);
+
+        $u17 = this.<androidx.appcompat.widget.TooltipPopup: android.view.View mContentView>;
+
+        $u-1#9 = virtualinvoke $u17.<android.view.View: int getMeasuredHeight()>();
+
+        res#56 = this.<androidx.appcompat.widget.TooltipPopup: int[] mTmpAnchorPos>;
+
+        $u15 = res#56[1];
+
+        offsetX = $u15 + offsetX;
+
+        offsetX = offsetX - $u19;
+
+        offsetX = offsetX - $u-1#9;
+
+        $u15 = res#56[1];
+
+        $u18 = $u15 + $u18;
+
+        $u18 = $u18 + $u19;
+
+        if $u20 == 0 goto label12;
+
+        if offsetX < 0 goto label11;
+
+        $u21.<android.view.WindowManager$LayoutParams: int y> = offsetX;
+
+        return;
+
+     label11:
+        $u21.<android.view.WindowManager$LayoutParams: int y> = $u18;
+
+        return;
+
+     label12:
+        $u19 = $u18 + $u-1#9;
+
+        res = this.<androidx.appcompat.widget.TooltipPopup: android.graphics.Rect mTmpDisplayFrame>;
+
+        $u-1#9 = virtualinvoke res.<android.graphics.Rect: int height()>();
+
+        if $u19 > $u-1#9 goto label13;
+
+        $u21.<android.view.WindowManager$LayoutParams: int y> = $u18;
+
+        return;
+
+     label13:
+        $u21.<android.view.WindowManager$LayoutParams: int y> = offsetX;
+
+        return;
+    }
+
+    private static android.view.View getAppRootView(android.view.View)
+    {
+        android.view.View $u4, $u-1;
+        android.view.ViewGroup$LayoutParams $u-1#2;
+        boolean context;
+        android.view.WindowManager$LayoutParams context#5;
+        int context#6;
+        android.content.Context $u-1#8;
+        android.app.Activity $u3;
+        android.view.Window $u-1#14;
+        android.content.ContextWrapper $u3#19;
+
+        $u4 := @parameter0: android.view.View;
+
+        $u-1 = virtualinvoke $u4.<android.view.View: android.view.View getRootView()>();
+
+        $u-1#2 = virtualinvoke $u-1.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        context = $u-1#2 instanceof android.view.WindowManager$LayoutParams;
+
+        if context == 0 goto label1;
+
+        context#5 = (android.view.WindowManager$LayoutParams) $u-1#2;
+
+        context#6 = context#5.<android.view.WindowManager$LayoutParams: int type>;
+
+        if context#6 != 2 goto label1;
+
+        return $u-1;
+
+     label1:
+        $u-1#8 = virtualinvoke $u4.<android.view.View: android.content.Context getContext()>();
+
+     label2:
+        context = $u-1#8 instanceof android.content.ContextWrapper;
+
+        if context == 0 goto label4;
+
+        context = $u-1#8 instanceof android.app.Activity;
+
+        if context == 0 goto label3;
+
+        $u3 = (android.app.Activity) $u-1#8;
+
+        $u-1#14 = virtualinvoke $u3.<android.app.Activity: android.view.Window getWindow()>();
+
+        $u4 = virtualinvoke $u-1#14.<android.view.Window: android.view.View getDecorView()>();
+
+        return $u4;
+
+     label3:
+        $u3#19 = (android.content.ContextWrapper) $u-1#8;
+
+        $u-1#8 = virtualinvoke $u3#19.<android.content.ContextWrapper: android.content.Context getBaseContext()>();
+
+        goto label2;
+
+     label4:
+        return $u-1;
+    }
+
+    void hide()
+    {
+        androidx.appcompat.widget.TooltipPopup this;
+        boolean $u-1;
+        android.content.Context wm;
+        java.lang.Object $u-1#5;
+        android.view.WindowManager wm#7;
+        android.view.View $u1;
+
+        this := @this: androidx.appcompat.widget.TooltipPopup;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.TooltipPopup: boolean isShowing()>();
+
+        if $u-1 != 0 goto label1;
+
+        return;
+
+     label1:
+        wm = this.<androidx.appcompat.widget.TooltipPopup: android.content.Context mContext>;
+
+        $u-1#5 = virtualinvoke wm.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("window");
+
+        wm#7 = (android.view.WindowManager) $u-1#5;
+
+        $u1 = this.<androidx.appcompat.widget.TooltipPopup: android.view.View mContentView>;
+
+        interfaceinvoke wm#7.<android.view.WindowManager: void removeView(android.view.View)>($u1);
+
+        return;
+    }
+
+    boolean isShowing()
+    {
+        androidx.appcompat.widget.TooltipPopup this;
+        android.view.ViewParent $u-1;
+        android.view.View $u0;
+
+        this := @this: androidx.appcompat.widget.TooltipPopup;
+
+        $u0 = this.<androidx.appcompat.widget.TooltipPopup: android.view.View mContentView>;
+
+        $u-1 = virtualinvoke $u0.<android.view.View: android.view.ViewParent getParent()>();
+
+        if $u-1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    void show(android.view.View, int, int, boolean, java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.TooltipPopup this;
+        android.view.View $u8;
+        int $u9, $u10;
+        boolean $u11, $u-1;
+        java.lang.CharSequence $u12;
+        android.view.WindowManager$LayoutParams $u6;
+        android.widget.TextView wm;
+        android.content.Context wm#6;
+        java.lang.Object $u-1#8;
+        android.view.WindowManager wm#10;
+
+        this := @this: androidx.appcompat.widget.TooltipPopup;
+
+        $u8 := @parameter0: android.view.View;
+
+        $u9 := @parameter1: int;
+
+        $u10 := @parameter2: int;
+
+        $u11 := @parameter3: boolean;
+
+        $u12 := @parameter4: java.lang.CharSequence;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.TooltipPopup: boolean isShowing()>();
+
+        if $u-1 == 0 goto label1;
+
+        virtualinvoke this.<androidx.appcompat.widget.TooltipPopup: void hide()>();
+
+     label1:
+        wm = this.<androidx.appcompat.widget.TooltipPopup: android.widget.TextView mMessageView>;
+
+        virtualinvoke wm.<android.widget.TextView: void setText(java.lang.CharSequence)>($u12);
+
+        $u6 = this.<androidx.appcompat.widget.TooltipPopup: android.view.WindowManager$LayoutParams mLayoutParams>;
+
+        specialinvoke this.<androidx.appcompat.widget.TooltipPopup: void computePosition(android.view.View,int,int,boolean,android.view.WindowManager$LayoutParams)>($u8, $u9, $u10, $u11, $u6);
+
+        wm#6 = this.<androidx.appcompat.widget.TooltipPopup: android.content.Context mContext>;
+
+        $u-1#8 = virtualinvoke wm#6.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("window");
+
+        wm#10 = (android.view.WindowManager) $u-1#8;
+
+        $u8 = this.<androidx.appcompat.widget.TooltipPopup: android.view.View mContentView>;
+
+        $u6 = this.<androidx.appcompat.widget.TooltipPopup: android.view.WindowManager$LayoutParams mLayoutParams>;
+
+        interfaceinvoke wm#10.<android.view.WindowManager: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($u8, $u6);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.widget.TooltipPopup: java.lang.String TAG> = "TooltipPopup";
+
+        return;
+    }
+}

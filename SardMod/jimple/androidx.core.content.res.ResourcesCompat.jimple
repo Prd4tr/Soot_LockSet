@@ -1,0 +1,650 @@
+public final class androidx.core.content.res.ResourcesCompat extends java.lang.Object
+{
+    public static final int ID_NULL;
+    private static final java.lang.String TAG;
+
+    private void <init>()
+    {
+        androidx.core.content.res.ResourcesCompat this;
+
+        this := @this: androidx.core.content.res.ResourcesCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static int getColor(android.content.res.Resources, int, android.content.res.Resources$Theme) throws android.content.res.Resources$NotFoundException
+    {
+        android.content.res.Resources $u2;
+        int $u3, $u0;
+        android.content.res.Resources$Theme $u4;
+
+        $u2 := @parameter0: android.content.res.Resources;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.content.res.Resources$Theme;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 23 goto label1;
+
+        $u3 = virtualinvoke $u2.<android.content.res.Resources: int getColor(int,android.content.res.Resources$Theme)>($u3, $u4);
+
+        return $u3;
+
+     label1:
+        $u3 = virtualinvoke $u2.<android.content.res.Resources: int getColor(int)>($u3);
+
+        return $u3;
+    }
+
+    public static android.content.res.ColorStateList getColorStateList(android.content.res.Resources, int, android.content.res.Resources$Theme) throws android.content.res.Resources$NotFoundException
+    {
+        android.content.res.Resources $u2;
+        int $u3, $u0;
+        android.content.res.Resources$Theme $u4;
+        android.content.res.ColorStateList $u-1;
+
+        $u2 := @parameter0: android.content.res.Resources;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.content.res.Resources$Theme;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 23 goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.content.res.Resources: android.content.res.ColorStateList getColorStateList(int,android.content.res.Resources$Theme)>($u3, $u4);
+
+        return $u-1;
+
+     label1:
+        $u-1 = virtualinvoke $u2.<android.content.res.Resources: android.content.res.ColorStateList getColorStateList(int)>($u3);
+
+        return $u-1;
+    }
+
+    public static android.graphics.drawable.Drawable getDrawable(android.content.res.Resources, int, android.content.res.Resources$Theme) throws android.content.res.Resources$NotFoundException
+    {
+        android.content.res.Resources $u2;
+        int $u3, $u0;
+        android.content.res.Resources$Theme $u4;
+        android.graphics.drawable.Drawable $u-1;
+
+        $u2 := @parameter0: android.content.res.Resources;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.content.res.Resources$Theme;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int,android.content.res.Resources$Theme)>($u3, $u4);
+
+        return $u-1;
+
+     label1:
+        $u-1 = virtualinvoke $u2.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int)>($u3);
+
+        return $u-1;
+    }
+
+    public static android.graphics.drawable.Drawable getDrawableForDensity(android.content.res.Resources, int, int, android.content.res.Resources$Theme) throws android.content.res.Resources$NotFoundException
+    {
+        android.content.res.Resources $u2;
+        int $u3, $u4, $u0;
+        android.content.res.Resources$Theme $u5;
+        android.graphics.drawable.Drawable $u-1;
+
+        $u2 := @parameter0: android.content.res.Resources;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: android.content.res.Resources$Theme;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawableForDensity(int,int,android.content.res.Resources$Theme)>($u3, $u4, $u5);
+
+        return $u-1;
+
+     label1:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 15 goto label2;
+
+        $u-1 = virtualinvoke $u2.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawableForDensity(int,int)>($u3, $u4);
+
+        return $u-1;
+
+     label2:
+        $u-1 = virtualinvoke $u2.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int)>($u3);
+
+        return $u-1;
+    }
+
+    public static float getFloat(android.content.res.Resources, int)
+    {
+        android.content.res.Resources $u4;
+        int $u5, $u1;
+        android.util.TypedValue value;
+        float $u-1;
+        android.content.res.Resources$NotFoundException $u1#6;
+        java.lang.StringBuilder $u2;
+        java.lang.String $u-1#9;
+
+        $u4 := @parameter0: android.content.res.Resources;
+
+        $u5 := @parameter1: int;
+
+        value = new android.util.TypedValue;
+
+        specialinvoke value.<android.util.TypedValue: void <init>()>();
+
+        virtualinvoke $u4.<android.content.res.Resources: void getValue(int,android.util.TypedValue,boolean)>($u5, value, 1);
+
+        $u1 = value.<android.util.TypedValue: int type>;
+
+        if $u1 != 4 goto label1;
+
+        $u-1 = virtualinvoke value.<android.util.TypedValue: float getFloat()>();
+
+        return $u-1;
+
+     label1:
+        $u1#6 = new android.content.res.Resources$NotFoundException;
+
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Resource ID #0x");
+
+        $u-1#9 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($u5);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#9);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" type #0x");
+
+        $u5 = value.<android.util.TypedValue: int type>;
+
+        $u-1#9 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($u5);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#9);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" is not valid");
+
+        $u-1#9 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u1#6.<android.content.res.Resources$NotFoundException: void <init>(java.lang.String)>($u-1#9);
+
+        throw $u1#6;
+    }
+
+    public static android.graphics.Typeface getFont(android.content.Context, int) throws android.content.res.Resources$NotFoundException
+    {
+        android.content.Context $u8;
+        int $u9;
+        android.util.TypedValue $u3;
+        boolean $u-1;
+        android.graphics.Typeface $u-1#4;
+
+        $u8 := @parameter0: android.content.Context;
+
+        $u9 := @parameter1: int;
+
+        $u-1 = virtualinvoke $u8.<android.content.Context: boolean isRestricted()>();
+
+        if $u-1 == 0 goto label1;
+
+        return null;
+
+     label1:
+        $u3 = new android.util.TypedValue;
+
+        specialinvoke $u3.<android.util.TypedValue: void <init>()>();
+
+        $u-1#4 = staticinvoke <androidx.core.content.res.ResourcesCompat: android.graphics.Typeface loadFont(android.content.Context,int,android.util.TypedValue,int,androidx.core.content.res.ResourcesCompat$FontCallback,android.os.Handler,boolean)>($u8, $u9, $u3, 0, null, null, 0);
+
+        return $u-1#4;
+    }
+
+    public static android.graphics.Typeface getFont(android.content.Context, int, android.util.TypedValue, int, androidx.core.content.res.ResourcesCompat$FontCallback) throws android.content.res.Resources$NotFoundException
+    {
+        android.content.Context $u8;
+        int $u9, $u11;
+        android.util.TypedValue $u10;
+        androidx.core.content.res.ResourcesCompat$FontCallback $u12;
+        boolean $u-1;
+        android.graphics.Typeface $u-1#4;
+
+        $u8 := @parameter0: android.content.Context;
+
+        $u9 := @parameter1: int;
+
+        $u10 := @parameter2: android.util.TypedValue;
+
+        $u11 := @parameter3: int;
+
+        $u12 := @parameter4: androidx.core.content.res.ResourcesCompat$FontCallback;
+
+        $u-1 = virtualinvoke $u8.<android.content.Context: boolean isRestricted()>();
+
+        if $u-1 == 0 goto label1;
+
+        return null;
+
+     label1:
+        $u-1#4 = staticinvoke <androidx.core.content.res.ResourcesCompat: android.graphics.Typeface loadFont(android.content.Context,int,android.util.TypedValue,int,androidx.core.content.res.ResourcesCompat$FontCallback,android.os.Handler,boolean)>($u8, $u9, $u10, $u11, $u12, null, 1);
+
+        return $u-1#4;
+    }
+
+    public static void getFont(android.content.Context, int, androidx.core.content.res.ResourcesCompat$FontCallback, android.os.Handler) throws android.content.res.Resources$NotFoundException
+    {
+        android.content.Context $u8;
+        int $u9;
+        androidx.core.content.res.ResourcesCompat$FontCallback $u10;
+        android.os.Handler $u11;
+        android.util.TypedValue $u3;
+        boolean $u-1;
+
+        $u8 := @parameter0: android.content.Context;
+
+        $u9 := @parameter1: int;
+
+        $u10 := @parameter2: androidx.core.content.res.ResourcesCompat$FontCallback;
+
+        $u11 := @parameter3: android.os.Handler;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($u10);
+
+        $u-1 = virtualinvoke $u8.<android.content.Context: boolean isRestricted()>();
+
+        if $u-1 == 0 goto label1;
+
+        virtualinvoke $u10.<androidx.core.content.res.ResourcesCompat$FontCallback: void callbackFailAsync(int,android.os.Handler)>(-4, $u11);
+
+        return;
+
+     label1:
+        $u3 = new android.util.TypedValue;
+
+        specialinvoke $u3.<android.util.TypedValue: void <init>()>();
+
+        staticinvoke <androidx.core.content.res.ResourcesCompat: android.graphics.Typeface loadFont(android.content.Context,int,android.util.TypedValue,int,androidx.core.content.res.ResourcesCompat$FontCallback,android.os.Handler,boolean)>($u8, $u9, $u3, 0, $u10, $u11, 0);
+
+        return;
+    }
+
+    private static android.graphics.Typeface loadFont(android.content.Context, int, android.util.TypedValue, int, androidx.core.content.res.ResourcesCompat$FontCallback, android.os.Handler, boolean)
+    {
+        android.content.Context $u9;
+        int $u10, $u12;
+        android.util.TypedValue $u11;
+        androidx.core.content.res.ResourcesCompat$FontCallback $u13;
+        android.os.Handler $u14;
+        boolean $u15;
+        android.content.res.Resources $u-1;
+        android.graphics.Typeface $u-1#7;
+        android.content.res.Resources$NotFoundException $u1;
+        java.lang.StringBuilder $u2;
+        java.lang.String $u-1#12;
+
+        $u9 := @parameter0: android.content.Context;
+
+        $u10 := @parameter1: int;
+
+        $u11 := @parameter2: android.util.TypedValue;
+
+        $u12 := @parameter3: int;
+
+        $u13 := @parameter4: androidx.core.content.res.ResourcesCompat$FontCallback;
+
+        $u14 := @parameter5: android.os.Handler;
+
+        $u15 := @parameter6: boolean;
+
+        $u-1 = virtualinvoke $u9.<android.content.Context: android.content.res.Resources getResources()>();
+
+        virtualinvoke $u-1.<android.content.res.Resources: void getValue(int,android.util.TypedValue,boolean)>($u10, $u11, 1);
+
+        $u-1#7 = staticinvoke <androidx.core.content.res.ResourcesCompat: android.graphics.Typeface loadFont(android.content.Context,android.content.res.Resources,android.util.TypedValue,int,int,androidx.core.content.res.ResourcesCompat$FontCallback,android.os.Handler,boolean)>($u9, $u-1, $u11, $u10, $u12, $u13, $u14, $u15);
+
+        if $u-1#7 != null goto label2;
+
+        if $u13 == null goto label1;
+
+        return $u-1#7;
+
+     label1:
+        $u1 = new android.content.res.Resources$NotFoundException;
+
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Font resource ID #0x");
+
+        $u-1#12 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($u10);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#12);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" could not be retrieved.");
+
+        $u-1#12 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u1.<android.content.res.Resources$NotFoundException: void <init>(java.lang.String)>($u-1#12);
+
+        throw $u1;
+
+     label2:
+        return $u-1#7;
+    }
+
+    private static android.graphics.Typeface loadFont(android.content.Context, android.content.res.Resources, android.util.TypedValue, int, int, androidx.core.content.res.ResourcesCompat$FontCallback, android.os.Handler, boolean)
+    {
+        android.content.Context $u19;
+        android.content.res.Resources $u20;
+        android.util.TypedValue $u21;
+        int $u22, $u23;
+        androidx.core.content.res.ResourcesCompat$FontCallback $u24;
+        android.os.Handler $u25;
+        boolean $u26, $u-1#7;
+        java.lang.CharSequence rp;
+        java.lang.String $u-1, $u-1#12;
+        android.graphics.Typeface $u-1#10;
+        android.content.res.XmlResourceParser $u-1#17;
+        androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry $u-1#19;
+        java.io.IOException rp#22;
+        org.xmlpull.v1.XmlPullParserException rp#25;
+        java.lang.StringBuilder $u2;
+        android.content.res.Resources$NotFoundException rp#64;
+
+        $u19 := @parameter0: android.content.Context;
+
+        $u20 := @parameter1: android.content.res.Resources;
+
+        $u21 := @parameter2: android.util.TypedValue;
+
+        $u22 := @parameter3: int;
+
+        $u23 := @parameter4: int;
+
+        $u24 := @parameter5: androidx.core.content.res.ResourcesCompat$FontCallback;
+
+        $u25 := @parameter6: android.os.Handler;
+
+        $u26 := @parameter7: boolean;
+
+        rp = $u21.<android.util.TypedValue: java.lang.CharSequence string>;
+
+        if rp == null goto label38;
+
+        rp = $u21.<android.util.TypedValue: java.lang.CharSequence string>;
+
+        $u-1 = interfaceinvoke rp.<java.lang.CharSequence: java.lang.String toString()>();
+
+        $u-1#7 = virtualinvoke $u-1.<java.lang.String: boolean startsWith(java.lang.String)>("res/");
+
+        if $u-1#7 != 0 goto label01;
+
+        if $u24 == null goto label39;
+
+        virtualinvoke $u24.<androidx.core.content.res.ResourcesCompat$FontCallback: void callbackFailAsync(int,android.os.Handler)>(-3, $u25);
+
+        return null;
+
+     label01:
+        $u-1#10 = staticinvoke <androidx.core.graphics.TypefaceCompat: android.graphics.Typeface findFromCache(android.content.res.Resources,int,int)>($u20, $u22, $u23);
+
+        if $u-1#10 == null goto label02;
+
+        if $u24 == null goto label40;
+
+        virtualinvoke $u24.<androidx.core.content.res.ResourcesCompat$FontCallback: void callbackSuccessAsync(android.graphics.Typeface,android.os.Handler)>($u-1#10, $u25);
+
+        return $u-1#10;
+
+     label02:
+        $u-1#12 = virtualinvoke $u-1.<java.lang.String: java.lang.String toLowerCase()>();
+
+        $u-1#7 = virtualinvoke $u-1#12.<java.lang.String: boolean endsWith(java.lang.String)>(".xml");
+
+     label03:
+        if $u-1#7 == 0 goto label19;
+
+     label04:
+        $u-1#17 = virtualinvoke $u20.<android.content.res.Resources: android.content.res.XmlResourceParser getXml(int)>($u22);
+
+        $u-1#19 = staticinvoke <androidx.core.content.res.FontResourcesParserCompat: androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry parse(org.xmlpull.v1.XmlPullParser,android.content.res.Resources)>($u-1#17, $u20);
+
+     label05:
+        if $u-1#19 != null goto label12;
+
+     label06:
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("ResourcesCompat", "Failed to find font-family tag");
+
+     label07:
+        if $u24 == null goto label41;
+
+     label08:
+        virtualinvoke $u24.<androidx.core.content.res.ResourcesCompat$FontCallback: void callbackFailAsync(int,android.os.Handler)>(-3, $u25);
+
+     label09:
+        return null;
+
+     label10:
+        rp#22 := @caughtexception;
+
+        $u-1#12 = $u-1;
+
+        goto label34;
+
+     label11:
+        rp#25 := @caughtexception;
+
+        $u-1#12 = $u-1;
+
+        goto label36;
+
+     label12:
+        $u-1#12 = $u-1;
+
+     label13:
+        $u-1#10 = staticinvoke <androidx.core.graphics.TypefaceCompat: android.graphics.Typeface createFromResourcesFamilyXml(android.content.Context,androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry,android.content.res.Resources,int,int,androidx.core.content.res.ResourcesCompat$FontCallback,android.os.Handler,boolean)>($u19, $u-1#19, $u20, $u22, $u23, $u24, $u25, $u26);
+
+     label14:
+        return $u-1#10;
+
+     label15:
+        rp#22 := @caughtexception;
+
+        goto label30;
+
+     label16:
+        rp#25 := @caughtexception;
+
+        goto label32;
+
+     label17:
+        rp#22 := @caughtexception;
+
+        $u-1#12 = $u-1;
+
+        goto label34;
+
+     label18:
+        rp#25 := @caughtexception;
+
+        $u-1#12 = $u-1;
+
+        goto label36;
+
+     label19:
+        $u-1#12 = $u-1;
+
+     label20:
+        $u-1#10 = staticinvoke <androidx.core.graphics.TypefaceCompat: android.graphics.Typeface createFromResourcesFontFile(android.content.Context,android.content.res.Resources,int,java.lang.String,int)>($u19, $u20, $u22, $u-1, $u23);
+
+     label21:
+        if $u24 == null goto label28;
+
+        if $u-1#10 == null goto label24;
+
+     label22:
+        virtualinvoke $u24.<androidx.core.content.res.ResourcesCompat$FontCallback: void callbackSuccessAsync(android.graphics.Typeface,android.os.Handler)>($u-1#10, $u25);
+
+     label23:
+        return $u-1#10;
+
+     label24:
+        virtualinvoke $u24.<androidx.core.content.res.ResourcesCompat$FontCallback: void callbackFailAsync(int,android.os.Handler)>(-3, $u25);
+
+     label25:
+        return $u-1#10;
+
+     label26:
+        rp#22 := @caughtexception;
+
+        goto label34;
+
+     label27:
+        rp#25 := @caughtexception;
+
+        goto label36;
+
+     label28:
+        return $u-1#10;
+
+     label29:
+        rp#22 := @caughtexception;
+
+     label30:
+        goto label34;
+
+     label31:
+        rp#25 := @caughtexception;
+
+     label32:
+        goto label36;
+
+     label33:
+        rp#22 := @caughtexception;
+
+        $u-1#12 = $u-1;
+
+     label34:
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to read xml resource ");
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#12);
+
+        $u-1 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesCompat", $u-1, rp#22);
+
+        goto label37;
+
+     label35:
+        rp#25 := @caughtexception;
+
+        $u-1#12 = $u-1;
+
+     label36:
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to parse xml resource ");
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#12);
+
+        $u-1 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("ResourcesCompat", $u-1, rp#25);
+
+     label37:
+        if $u24 == null goto label41;
+
+        virtualinvoke $u24.<androidx.core.content.res.ResourcesCompat$FontCallback: void callbackFailAsync(int,android.os.Handler)>(-3, $u25);
+
+        return null;
+
+     label38:
+        rp#64 = new android.content.res.Resources$NotFoundException;
+
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Resource \"");
+
+        $u-1 = virtualinvoke $u20.<android.content.res.Resources: java.lang.String getResourceName(int)>($u22);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\" (");
+
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($u22);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") is not a Font: ");
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u21);
+
+        $u-1 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke rp#64.<android.content.res.Resources$NotFoundException: void <init>(java.lang.String)>($u-1);
+
+        throw rp#64;
+
+     label39:
+        return null;
+
+     label40:
+        return $u-1#10;
+
+     label41:
+        return null;
+
+        catch org.xmlpull.v1.XmlPullParserException from label02 to label03 with label35;
+        catch java.io.IOException from label02 to label03 with label33;
+        catch org.xmlpull.v1.XmlPullParserException from label04 to label05 with label18;
+        catch java.io.IOException from label04 to label05 with label17;
+        catch org.xmlpull.v1.XmlPullParserException from label06 to label07 with label11;
+        catch org.xmlpull.v1.XmlPullParserException from label08 to label09 with label11;
+        catch java.io.IOException from label06 to label07 with label10;
+        catch java.io.IOException from label08 to label09 with label10;
+        catch org.xmlpull.v1.XmlPullParserException from label13 to label14 with label16;
+        catch java.io.IOException from label13 to label14 with label15;
+        catch org.xmlpull.v1.XmlPullParserException from label20 to label21 with label31;
+        catch java.io.IOException from label20 to label21 with label29;
+        catch org.xmlpull.v1.XmlPullParserException from label22 to label23 with label27;
+        catch org.xmlpull.v1.XmlPullParserException from label24 to label25 with label27;
+        catch java.io.IOException from label22 to label23 with label26;
+        catch java.io.IOException from label24 to label25 with label26;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.content.res.ResourcesCompat: java.lang.String TAG> = "ResourcesCompat";
+
+        <androidx.core.content.res.ResourcesCompat: int ID_NULL> = 0;
+
+        return;
+    }
+}

@@ -1,0 +1,134 @@
+class androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState extends android.graphics.drawable.Drawable$ConstantState
+{
+    private final android.graphics.drawable.Drawable$ConstantState mDelegateState;
+
+    public void <init>(android.graphics.drawable.Drawable$ConstantState)
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState this;
+        android.graphics.drawable.Drawable$ConstantState $u1;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState;
+
+        $u1 := @parameter0: android.graphics.drawable.Drawable$ConstantState;
+
+        specialinvoke this.<android.graphics.drawable.Drawable$ConstantState: void <init>()>();
+
+        this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState: android.graphics.drawable.Drawable$ConstantState mDelegateState> = $u1;
+
+        return;
+    }
+
+    public boolean canApplyTheme()
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState this;
+        boolean $u-1;
+        android.graphics.drawable.Drawable$ConstantState $u0;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState;
+
+        $u0 = this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState: android.graphics.drawable.Drawable$ConstantState mDelegateState>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable$ConstantState: boolean canApplyTheme()>();
+
+        return $u-1;
+    }
+
+    public int getChangingConfigurations()
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState this;
+        int $u-1;
+        android.graphics.drawable.Drawable$ConstantState $u0;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState;
+
+        $u0 = this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState: android.graphics.drawable.Drawable$ConstantState mDelegateState>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable$ConstantState: int getChangingConfigurations()>();
+
+        return $u-1;
+    }
+
+    public android.graphics.drawable.Drawable newDrawable()
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState this;
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat drawableCompat;
+        android.graphics.drawable.Drawable $u-1;
+        android.graphics.drawable.Drawable$ConstantState $u1;
+        android.graphics.drawable.VectorDrawable $u1#3;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState;
+
+        drawableCompat = new androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
+
+        specialinvoke drawableCompat.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat: void <init>()>();
+
+        $u1 = this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState: android.graphics.drawable.Drawable$ConstantState mDelegateState>;
+
+        $u-1 = virtualinvoke $u1.<android.graphics.drawable.Drawable$ConstantState: android.graphics.drawable.Drawable newDrawable()>();
+
+        $u1#3 = (android.graphics.drawable.VectorDrawable) $u-1;
+
+        drawableCompat.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat: android.graphics.drawable.Drawable mDelegateDrawable> = $u1#3;
+
+        return drawableCompat;
+    }
+
+    public android.graphics.drawable.Drawable newDrawable(android.content.res.Resources)
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState this;
+        android.content.res.Resources $u3;
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat drawableCompat;
+        android.graphics.drawable.Drawable $u-1;
+        android.graphics.drawable.Drawable$ConstantState $u1;
+        android.graphics.drawable.VectorDrawable $u1#3;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState;
+
+        $u3 := @parameter0: android.content.res.Resources;
+
+        drawableCompat = new androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
+
+        specialinvoke drawableCompat.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat: void <init>()>();
+
+        $u1 = this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState: android.graphics.drawable.Drawable$ConstantState mDelegateState>;
+
+        $u-1 = virtualinvoke $u1.<android.graphics.drawable.Drawable$ConstantState: android.graphics.drawable.Drawable newDrawable(android.content.res.Resources)>($u3);
+
+        $u1#3 = (android.graphics.drawable.VectorDrawable) $u-1;
+
+        drawableCompat.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat: android.graphics.drawable.Drawable mDelegateDrawable> = $u1#3;
+
+        return drawableCompat;
+    }
+
+    public android.graphics.drawable.Drawable newDrawable(android.content.res.Resources, android.content.res.Resources$Theme)
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState this;
+        android.content.res.Resources $u3;
+        android.content.res.Resources$Theme $u4;
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat drawableCompat;
+        android.graphics.drawable.Drawable $u-1;
+        android.graphics.drawable.Drawable$ConstantState $u1;
+        android.graphics.drawable.VectorDrawable $u1#3;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState;
+
+        $u3 := @parameter0: android.content.res.Resources;
+
+        $u4 := @parameter1: android.content.res.Resources$Theme;
+
+        drawableCompat = new androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
+
+        specialinvoke drawableCompat.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat: void <init>()>();
+
+        $u1 = this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableDelegateState: android.graphics.drawable.Drawable$ConstantState mDelegateState>;
+
+        $u-1 = virtualinvoke $u1.<android.graphics.drawable.Drawable$ConstantState: android.graphics.drawable.Drawable newDrawable(android.content.res.Resources,android.content.res.Resources$Theme)>($u3, $u4);
+
+        $u1#3 = (android.graphics.drawable.VectorDrawable) $u-1;
+
+        drawableCompat.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat: android.graphics.drawable.Drawable mDelegateDrawable> = $u1#3;
+
+        return drawableCompat;
+    }
+}

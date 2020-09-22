@@ -1,0 +1,40 @@
+class androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper extends java.lang.Object
+{
+
+    void <init>()
+    {
+        androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper this;
+
+        this := @this: androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void apply(android.content.SharedPreferences$Editor)
+    {
+        androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper this;
+        android.content.SharedPreferences$Editor $u2;
+        java.lang.AbstractMethodError unused;
+
+        this := @this: androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper;
+
+        $u2 := @parameter0: android.content.SharedPreferences$Editor;
+
+     label1:
+        interfaceinvoke $u2.<android.content.SharedPreferences$Editor: void apply()>();
+
+     label2:
+        return;
+
+     label3:
+        unused := @caughtexception;
+
+        interfaceinvoke $u2.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+
+        catch java.lang.AbstractMethodError from label1 to label2 with label3;
+    }
+}

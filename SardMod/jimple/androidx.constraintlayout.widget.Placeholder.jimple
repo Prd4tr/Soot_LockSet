@@ -1,0 +1,507 @@
+public class androidx.constraintlayout.widget.Placeholder extends android.view.View
+{
+    private android.view.View mContent;
+    private int mContentId;
+    private int mEmptyVisibility;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.constraintlayout.widget.Placeholder this;
+        android.content.Context $u3;
+
+        this := @this: androidx.constraintlayout.widget.Placeholder;
+
+        $u3 := @parameter0: android.content.Context;
+
+        specialinvoke this.<android.view.View: void <init>(android.content.Context)>($u3);
+
+        this.<androidx.constraintlayout.widget.Placeholder: int mContentId> = -1;
+
+        this.<androidx.constraintlayout.widget.Placeholder: android.view.View mContent> = null;
+
+        this.<androidx.constraintlayout.widget.Placeholder: int mEmptyVisibility> = 4;
+
+        specialinvoke this.<androidx.constraintlayout.widget.Placeholder: void init(android.util.AttributeSet)>(null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.constraintlayout.widget.Placeholder this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+
+        this := @this: androidx.constraintlayout.widget.Placeholder;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<android.view.View: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        this.<androidx.constraintlayout.widget.Placeholder: int mContentId> = -1;
+
+        this.<androidx.constraintlayout.widget.Placeholder: android.view.View mContent> = null;
+
+        this.<androidx.constraintlayout.widget.Placeholder: int mEmptyVisibility> = 4;
+
+        specialinvoke this.<androidx.constraintlayout.widget.Placeholder: void init(android.util.AttributeSet)>($u3);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.constraintlayout.widget.Placeholder this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        int $u4;
+
+        this := @this: androidx.constraintlayout.widget.Placeholder;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u4 := @parameter2: int;
+
+        specialinvoke this.<android.view.View: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, $u4);
+
+        this.<androidx.constraintlayout.widget.Placeholder: int mContentId> = -1;
+
+        this.<androidx.constraintlayout.widget.Placeholder: android.view.View mContent> = null;
+
+        this.<androidx.constraintlayout.widget.Placeholder: int mEmptyVisibility> = 4;
+
+        specialinvoke this.<androidx.constraintlayout.widget.Placeholder: void init(android.util.AttributeSet)>($u3);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int, int)
+    {
+        androidx.constraintlayout.widget.Placeholder this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        int $u4, $u5;
+
+        this := @this: androidx.constraintlayout.widget.Placeholder;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        specialinvoke this.<android.view.View: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, $u4);
+
+        this.<androidx.constraintlayout.widget.Placeholder: int mContentId> = -1;
+
+        this.<androidx.constraintlayout.widget.Placeholder: android.view.View mContent> = null;
+
+        this.<androidx.constraintlayout.widget.Placeholder: int mEmptyVisibility> = 4;
+
+        specialinvoke this.<androidx.constraintlayout.widget.Placeholder: void init(android.util.AttributeSet)>($u3);
+
+        return;
+    }
+
+    private void init(android.util.AttributeSet)
+    {
+        androidx.constraintlayout.widget.Placeholder this;
+        android.util.AttributeSet $u6;
+        int a, i, $u-1#11, $u4;
+        android.content.Context $u-1;
+        int[] N;
+        android.content.res.TypedArray $u-1#6;
+
+        this := @this: androidx.constraintlayout.widget.Placeholder;
+
+        $u6 := @parameter0: android.util.AttributeSet;
+
+        a = this.<androidx.constraintlayout.widget.Placeholder: int mEmptyVisibility>;
+
+        specialinvoke this.<android.view.View: void setVisibility(int)>(a);
+
+        this.<androidx.constraintlayout.widget.Placeholder: int mContentId> = -1;
+
+        if $u6 == null goto label4;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.widget.Placeholder: android.content.Context getContext()>();
+
+        N = <androidx.constraintlayout.widget.R$styleable: int[] ConstraintLayout_placeholder>;
+
+        $u-1#6 = virtualinvoke $u-1.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[])>($u6, N);
+
+        a = virtualinvoke $u-1#6.<android.content.res.TypedArray: int getIndexCount()>();
+
+        i = 0;
+
+     label1:
+        if i >= a goto label4;
+
+        $u-1#11 = virtualinvoke $u-1#6.<android.content.res.TypedArray: int getIndex(int)>(i);
+
+        $u4 = <androidx.constraintlayout.widget.R$styleable: int ConstraintLayout_placeholder_content>;
+
+        if $u-1#11 != $u4 goto label2;
+
+        $u4 = this.<androidx.constraintlayout.widget.Placeholder: int mContentId>;
+
+        $u-1#11 = virtualinvoke $u-1#6.<android.content.res.TypedArray: int getResourceId(int,int)>($u-1#11, $u4);
+
+        this.<androidx.constraintlayout.widget.Placeholder: int mContentId> = $u-1#11;
+
+        goto label3;
+
+     label2:
+        $u4 = <androidx.constraintlayout.widget.R$styleable: int ConstraintLayout_placeholder_placeholder_emptyVisibility>;
+
+        if $u-1#11 != $u4 goto label3;
+
+        $u4 = this.<androidx.constraintlayout.widget.Placeholder: int mEmptyVisibility>;
+
+        $u-1#11 = virtualinvoke $u-1#6.<android.content.res.TypedArray: int getInt(int,int)>($u-1#11, $u4);
+
+        this.<androidx.constraintlayout.widget.Placeholder: int mEmptyVisibility> = $u-1#11;
+
+     label3:
+        i = i + 1;
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    public android.view.View getContent()
+    {
+        androidx.constraintlayout.widget.Placeholder this;
+        android.view.View ret0;
+
+        this := @this: androidx.constraintlayout.widget.Placeholder;
+
+        ret0 = this.<androidx.constraintlayout.widget.Placeholder: android.view.View mContent>;
+
+        return ret0;
+    }
+
+    public int getEmptyVisibility()
+    {
+        androidx.constraintlayout.widget.Placeholder this;
+        int ret0;
+
+        this := @this: androidx.constraintlayout.widget.Placeholder;
+
+        ret0 = this.<androidx.constraintlayout.widget.Placeholder: int mEmptyVisibility>;
+
+        return ret0;
+    }
+
+    public void onDraw(android.graphics.Canvas)
+    {
+        androidx.constraintlayout.widget.Placeholder this;
+        android.graphics.Canvas $u10;
+        boolean $u-1;
+        android.graphics.Paint paint;
+        android.graphics.Paint$Align r;
+        android.graphics.Typeface r#8;
+        android.graphics.Rect r#12;
+        int $u-1#13, $u-1#18, $u-1#21;
+        float cHeight, y, $u8;
+        java.lang.String text;
+
+        this := @this: androidx.constraintlayout.widget.Placeholder;
+
+        $u10 := @parameter0: android.graphics.Canvas;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.widget.Placeholder: boolean isInEditMode()>();
+
+        if $u-1 == 0 goto label1;
+
+        virtualinvoke $u10.<android.graphics.Canvas: void drawRGB(int,int,int)>(223, 223, 223);
+
+        paint = new android.graphics.Paint;
+
+        specialinvoke paint.<android.graphics.Paint: void <init>()>();
+
+        virtualinvoke paint.<android.graphics.Paint: void setARGB(int,int,int,int)>(255, 210, 210, 210);
+
+        r = <android.graphics.Paint$Align: android.graphics.Paint$Align CENTER>;
+
+        virtualinvoke paint.<android.graphics.Paint: void setTextAlign(android.graphics.Paint$Align)>(r);
+
+        r#8 = <android.graphics.Typeface: android.graphics.Typeface DEFAULT>;
+
+        r#8 = staticinvoke <android.graphics.Typeface: android.graphics.Typeface create(android.graphics.Typeface,int)>(r#8, 0);
+
+        virtualinvoke paint.<android.graphics.Paint: android.graphics.Typeface setTypeface(android.graphics.Typeface)>(r#8);
+
+        r#12 = new android.graphics.Rect;
+
+        specialinvoke r#12.<android.graphics.Rect: void <init>()>();
+
+        virtualinvoke $u10.<android.graphics.Canvas: boolean getClipBounds(android.graphics.Rect)>(r#12);
+
+        $u-1#13 = virtualinvoke r#12.<android.graphics.Rect: int height()>();
+
+        cHeight = (float) $u-1#13;
+
+        virtualinvoke paint.<android.graphics.Paint: void setTextSize(float)>(cHeight);
+
+        $u-1#13 = virtualinvoke r#12.<android.graphics.Rect: int height()>();
+
+        $u-1#18 = virtualinvoke r#12.<android.graphics.Rect: int width()>();
+
+        r = <android.graphics.Paint$Align: android.graphics.Paint$Align LEFT>;
+
+        virtualinvoke paint.<android.graphics.Paint: void setTextAlign(android.graphics.Paint$Align)>(r);
+
+        text = "?";
+
+        $u-1#21 = virtualinvoke text.<java.lang.String: int length()>();
+
+        virtualinvoke paint.<android.graphics.Paint: void getTextBounds(java.lang.String,int,int,android.graphics.Rect)>("?", 0, $u-1#21, r#12);
+
+        cHeight = (float) $u-1#18;
+
+        cHeight = cHeight / 2.0F;
+
+        $u-1#18 = virtualinvoke r#12.<android.graphics.Rect: int width()>();
+
+        y = (float) $u-1#18;
+
+        y = y / 2.0F;
+
+        cHeight = cHeight - y;
+
+        $u-1#18 = r#12.<android.graphics.Rect: int left>;
+
+        y = (float) $u-1#18;
+
+        cHeight = cHeight - y;
+
+        y = (float) $u-1#13;
+
+        y = y / 2.0F;
+
+        $u-1#13 = virtualinvoke r#12.<android.graphics.Rect: int height()>();
+
+        $u8 = (float) $u-1#13;
+
+        $u8 = $u8 / 2.0F;
+
+        y = y + $u8;
+
+        $u-1#13 = r#12.<android.graphics.Rect: int bottom>;
+
+        $u8 = (float) $u-1#13;
+
+        y = y - $u8;
+
+        virtualinvoke $u10.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>("?", cHeight, y, paint);
+
+     label1:
+        return;
+    }
+
+    public void setContentId(int)
+    {
+        androidx.constraintlayout.widget.Placeholder this;
+        int $u3, layoutParamsContent;
+        android.view.View layoutParamsContent#2;
+        android.view.ViewGroup$LayoutParams $u-1;
+        androidx.constraintlayout.widget.ConstraintLayout$LayoutParams layoutParamsContent#7;
+        android.view.ViewParent $u-1#10;
+
+        this := @this: androidx.constraintlayout.widget.Placeholder;
+
+        $u3 := @parameter0: int;
+
+        layoutParamsContent = this.<androidx.constraintlayout.widget.Placeholder: int mContentId>;
+
+        if layoutParamsContent != $u3 goto label1;
+
+        return;
+
+     label1:
+        layoutParamsContent#2 = this.<androidx.constraintlayout.widget.Placeholder: android.view.View mContent>;
+
+        if layoutParamsContent#2 == null goto label2;
+
+        virtualinvoke layoutParamsContent#2.<android.view.View: void setVisibility(int)>(0);
+
+        layoutParamsContent#2 = this.<androidx.constraintlayout.widget.Placeholder: android.view.View mContent>;
+
+        $u-1 = virtualinvoke layoutParamsContent#2.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        layoutParamsContent#7 = (androidx.constraintlayout.widget.ConstraintLayout$LayoutParams) $u-1;
+
+        layoutParamsContent#7.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: boolean isInPlaceholder> = 0;
+
+        this.<androidx.constraintlayout.widget.Placeholder: android.view.View mContent> = null;
+
+     label2:
+        this.<androidx.constraintlayout.widget.Placeholder: int mContentId> = $u3;
+
+        if $u3 == -1 goto label3;
+
+        $u-1#10 = virtualinvoke this.<androidx.constraintlayout.widget.Placeholder: android.view.ViewParent getParent()>();
+
+        layoutParamsContent#2 = (android.view.View) $u-1#10;
+
+        layoutParamsContent#2 = virtualinvoke layoutParamsContent#2.<android.view.View: android.view.View findViewById(int)>($u3);
+
+        if layoutParamsContent#2 == null goto label3;
+
+        virtualinvoke layoutParamsContent#2.<android.view.View: void setVisibility(int)>(8);
+
+     label3:
+        return;
+    }
+
+    public void setEmptyVisibility(int)
+    {
+        androidx.constraintlayout.widget.Placeholder this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.widget.Placeholder;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.widget.Placeholder: int mEmptyVisibility> = $u1;
+
+        return;
+    }
+
+    public void updatePostMeasure(androidx.constraintlayout.widget.ConstraintLayout)
+    {
+        androidx.constraintlayout.widget.Placeholder this;
+        androidx.constraintlayout.widget.ConstraintLayout $u5;
+        android.view.View layoutParams;
+        android.view.ViewGroup$LayoutParams $u-1;
+        androidx.constraintlayout.widget.ConstraintLayout$LayoutParams layoutParams#4, layoutParamsContent;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u2, $u3#16;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour $u-1#12, $u3;
+        int $u-1#17;
+
+        this := @this: androidx.constraintlayout.widget.Placeholder;
+
+        $u5 := @parameter0: androidx.constraintlayout.widget.ConstraintLayout;
+
+        layoutParams = this.<androidx.constraintlayout.widget.Placeholder: android.view.View mContent>;
+
+        if layoutParams != null goto label1;
+
+        return;
+
+     label1:
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.widget.Placeholder: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        layoutParams#4 = (androidx.constraintlayout.widget.ConstraintLayout$LayoutParams) $u-1;
+
+        layoutParams = this.<androidx.constraintlayout.widget.Placeholder: android.view.View mContent>;
+
+        $u-1 = virtualinvoke layoutParams.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        layoutParamsContent = (androidx.constraintlayout.widget.ConstraintLayout$LayoutParams) $u-1;
+
+        $u2 = layoutParamsContent.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        virtualinvoke $u2.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setVisibility(int)>(0);
+
+        $u2 = layoutParams#4.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        $u-1#12 = virtualinvoke $u2.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getHorizontalDimensionBehaviour()>();
+
+        $u3 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        if $u-1#12 == $u3 goto label2;
+
+        $u2 = layoutParams#4.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        $u3#16 = layoutParamsContent.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        $u-1#17 = virtualinvoke $u3#16.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        virtualinvoke $u2.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setWidth(int)>($u-1#17);
+
+     label2:
+        $u2 = layoutParams#4.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        $u-1#12 = virtualinvoke $u2.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getVerticalDimensionBehaviour()>();
+
+        $u3 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        if $u-1#12 == $u3 goto label3;
+
+        $u2 = layoutParams#4.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        $u3#16 = layoutParamsContent.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        $u-1#17 = virtualinvoke $u3#16.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        virtualinvoke $u2.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setHeight(int)>($u-1#17);
+
+     label3:
+        $u2 = layoutParamsContent.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        virtualinvoke $u2.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setVisibility(int)>(8);
+
+        return;
+    }
+
+    public void updatePreLayout(androidx.constraintlayout.widget.ConstraintLayout)
+    {
+        androidx.constraintlayout.widget.Placeholder this;
+        androidx.constraintlayout.widget.ConstraintLayout $u4;
+        int layoutParamsContent;
+        boolean $u-1;
+        android.view.View $u-1#7;
+        android.view.ViewGroup$LayoutParams $u-1#9;
+        androidx.constraintlayout.widget.ConstraintLayout$LayoutParams layoutParamsContent#11;
+
+        this := @this: androidx.constraintlayout.widget.Placeholder;
+
+        $u4 := @parameter0: androidx.constraintlayout.widget.ConstraintLayout;
+
+        layoutParamsContent = this.<androidx.constraintlayout.widget.Placeholder: int mContentId>;
+
+        if layoutParamsContent != -1 goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.widget.Placeholder: boolean isInEditMode()>();
+
+        if $u-1 != 0 goto label1;
+
+        layoutParamsContent = this.<androidx.constraintlayout.widget.Placeholder: int mEmptyVisibility>;
+
+        virtualinvoke this.<androidx.constraintlayout.widget.Placeholder: void setVisibility(int)>(layoutParamsContent);
+
+     label1:
+        layoutParamsContent = this.<androidx.constraintlayout.widget.Placeholder: int mContentId>;
+
+        $u-1#7 = virtualinvoke $u4.<androidx.constraintlayout.widget.ConstraintLayout: android.view.View findViewById(int)>(layoutParamsContent);
+
+        this.<androidx.constraintlayout.widget.Placeholder: android.view.View mContent> = $u-1#7;
+
+        if $u-1#7 == null goto label2;
+
+        $u-1#9 = virtualinvoke $u-1#7.<android.view.View: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        layoutParamsContent#11 = (androidx.constraintlayout.widget.ConstraintLayout$LayoutParams) $u-1#9;
+
+        layoutParamsContent#11.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: boolean isInPlaceholder> = 1;
+
+        $u-1#7 = this.<androidx.constraintlayout.widget.Placeholder: android.view.View mContent>;
+
+        virtualinvoke $u-1#7.<android.view.View: void setVisibility(int)>(0);
+
+        virtualinvoke this.<androidx.constraintlayout.widget.Placeholder: void setVisibility(int)>(0);
+
+     label2:
+        return;
+    }
+}
