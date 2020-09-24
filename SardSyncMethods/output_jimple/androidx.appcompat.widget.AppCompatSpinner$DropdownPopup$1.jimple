@@ -1,0 +1,82 @@
+class androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1 extends java.lang.Object implements android.widget.AdapterView$OnItemClickListener
+{
+    final androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this$1;
+    final androidx.appcompat.widget.AppCompatSpinner val$this$0;
+
+    void <init>(androidx.appcompat.widget.AppCompatSpinner$DropdownPopup, androidx.appcompat.widget.AppCompatSpinner)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1 this;
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup $u1;
+        androidx.appcompat.widget.AppCompatSpinner $u2;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1;
+
+        $u1 := @parameter0: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup;
+
+        $u2 := @parameter1: androidx.appcompat.widget.AppCompatSpinner;
+
+        this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this$1> = $u1;
+
+        this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1: androidx.appcompat.widget.AppCompatSpinner val$this$0> = $u2;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onItemClick(android.widget.AdapterView, android.view.View, int, long)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1 this;
+        android.widget.AdapterView parent;
+        android.view.View $u5;
+        int $u6;
+        long $u7;
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup $u0;
+        androidx.appcompat.widget.AppCompatSpinner $u0#2;
+        android.widget.AdapterView$OnItemClickListener $u-1;
+        android.widget.ListAdapter $u1;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1;
+
+        parent := @parameter0: android.widget.AdapterView;
+
+        $u5 := @parameter1: android.view.View;
+
+        $u6 := @parameter2: int;
+
+        $u7 := @parameter3: long;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this$1>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        virtualinvoke $u0#2.<androidx.appcompat.widget.AppCompatSpinner: void setSelection(int)>($u6);
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this$1>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $u-1 = virtualinvoke $u0#2.<androidx.appcompat.widget.AppCompatSpinner: android.widget.AdapterView$OnItemClickListener getOnItemClickListener()>();
+
+        if $u-1 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this$1>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this$1>;
+
+        $u1 = $u0.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: android.widget.ListAdapter mAdapter>;
+
+        $u7 = interfaceinvoke $u1.<android.widget.ListAdapter: long getItemId(int)>($u6);
+
+        virtualinvoke $u0#2.<androidx.appcompat.widget.AppCompatSpinner: boolean performItemClick(android.view.View,int,long)>($u5, $u6, $u7);
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup$1: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup this$1>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatSpinner$DropdownPopup: void dismiss()>();
+
+        return;
+    }
+}

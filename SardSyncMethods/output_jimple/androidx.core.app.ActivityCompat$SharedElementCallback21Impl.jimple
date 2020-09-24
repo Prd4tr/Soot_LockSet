@@ -1,0 +1,171 @@
+class androidx.core.app.ActivityCompat$SharedElementCallback21Impl extends android.app.SharedElementCallback
+{
+    private final androidx.core.app.SharedElementCallback mCallback;
+
+    void <init>(androidx.core.app.SharedElementCallback)
+    {
+        androidx.core.app.ActivityCompat$SharedElementCallback21Impl this;
+        androidx.core.app.SharedElementCallback $u1;
+
+        this := @this: androidx.core.app.ActivityCompat$SharedElementCallback21Impl;
+
+        $u1 := @parameter0: androidx.core.app.SharedElementCallback;
+
+        specialinvoke this.<android.app.SharedElementCallback: void <init>()>();
+
+        this.<androidx.core.app.ActivityCompat$SharedElementCallback21Impl: androidx.core.app.SharedElementCallback mCallback> = $u1;
+
+        return;
+    }
+
+    public android.os.Parcelable onCaptureSharedElementSnapshot(android.view.View, android.graphics.Matrix, android.graphics.RectF)
+    {
+        androidx.core.app.ActivityCompat$SharedElementCallback21Impl this;
+        android.view.View $u2;
+        android.graphics.Matrix $u3;
+        android.graphics.RectF $u4;
+        android.os.Parcelable $u-1;
+        androidx.core.app.SharedElementCallback $u0;
+
+        this := @this: androidx.core.app.ActivityCompat$SharedElementCallback21Impl;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: android.graphics.Matrix;
+
+        $u4 := @parameter2: android.graphics.RectF;
+
+        $u0 = this.<androidx.core.app.ActivityCompat$SharedElementCallback21Impl: androidx.core.app.SharedElementCallback mCallback>;
+
+        $u-1 = virtualinvoke $u0.<androidx.core.app.SharedElementCallback: android.os.Parcelable onCaptureSharedElementSnapshot(android.view.View,android.graphics.Matrix,android.graphics.RectF)>($u2, $u3, $u4);
+
+        return $u-1;
+    }
+
+    public android.view.View onCreateSnapshotView(android.content.Context, android.os.Parcelable)
+    {
+        androidx.core.app.ActivityCompat$SharedElementCallback21Impl this;
+        android.content.Context $u2;
+        android.os.Parcelable $u3;
+        android.view.View $u-1;
+        androidx.core.app.SharedElementCallback $u0;
+
+        this := @this: androidx.core.app.ActivityCompat$SharedElementCallback21Impl;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.os.Parcelable;
+
+        $u0 = this.<androidx.core.app.ActivityCompat$SharedElementCallback21Impl: androidx.core.app.SharedElementCallback mCallback>;
+
+        $u-1 = virtualinvoke $u0.<androidx.core.app.SharedElementCallback: android.view.View onCreateSnapshotView(android.content.Context,android.os.Parcelable)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public void onMapSharedElements(java.util.List, java.util.Map)
+    {
+        androidx.core.app.ActivityCompat$SharedElementCallback21Impl this;
+        java.util.List names;
+        java.util.Map sharedElements;
+        androidx.core.app.SharedElementCallback $u0;
+
+        this := @this: androidx.core.app.ActivityCompat$SharedElementCallback21Impl;
+
+        names := @parameter0: java.util.List;
+
+        sharedElements := @parameter1: java.util.Map;
+
+        $u0 = this.<androidx.core.app.ActivityCompat$SharedElementCallback21Impl: androidx.core.app.SharedElementCallback mCallback>;
+
+        virtualinvoke $u0.<androidx.core.app.SharedElementCallback: void onMapSharedElements(java.util.List,java.util.Map)>(names, sharedElements);
+
+        return;
+    }
+
+    public void onRejectSharedElements(java.util.List)
+    {
+        androidx.core.app.ActivityCompat$SharedElementCallback21Impl this;
+        java.util.List rejectedSharedElements;
+        androidx.core.app.SharedElementCallback $u0;
+
+        this := @this: androidx.core.app.ActivityCompat$SharedElementCallback21Impl;
+
+        rejectedSharedElements := @parameter0: java.util.List;
+
+        $u0 = this.<androidx.core.app.ActivityCompat$SharedElementCallback21Impl: androidx.core.app.SharedElementCallback mCallback>;
+
+        virtualinvoke $u0.<androidx.core.app.SharedElementCallback: void onRejectSharedElements(java.util.List)>(rejectedSharedElements);
+
+        return;
+    }
+
+    public void onSharedElementEnd(java.util.List, java.util.List, java.util.List)
+    {
+        androidx.core.app.ActivityCompat$SharedElementCallback21Impl this;
+        java.util.List sharedElementNames, sharedElements, sharedElementSnapshots;
+        androidx.core.app.SharedElementCallback $u0;
+
+        this := @this: androidx.core.app.ActivityCompat$SharedElementCallback21Impl;
+
+        sharedElementNames := @parameter0: java.util.List;
+
+        sharedElements := @parameter1: java.util.List;
+
+        sharedElementSnapshots := @parameter2: java.util.List;
+
+        $u0 = this.<androidx.core.app.ActivityCompat$SharedElementCallback21Impl: androidx.core.app.SharedElementCallback mCallback>;
+
+        virtualinvoke $u0.<androidx.core.app.SharedElementCallback: void onSharedElementEnd(java.util.List,java.util.List,java.util.List)>(sharedElementNames, sharedElements, sharedElementSnapshots);
+
+        return;
+    }
+
+    public void onSharedElementStart(java.util.List, java.util.List, java.util.List)
+    {
+        androidx.core.app.ActivityCompat$SharedElementCallback21Impl this;
+        java.util.List sharedElementNames, sharedElements, sharedElementSnapshots;
+        androidx.core.app.SharedElementCallback $u0;
+
+        this := @this: androidx.core.app.ActivityCompat$SharedElementCallback21Impl;
+
+        sharedElementNames := @parameter0: java.util.List;
+
+        sharedElements := @parameter1: java.util.List;
+
+        sharedElementSnapshots := @parameter2: java.util.List;
+
+        $u0 = this.<androidx.core.app.ActivityCompat$SharedElementCallback21Impl: androidx.core.app.SharedElementCallback mCallback>;
+
+        virtualinvoke $u0.<androidx.core.app.SharedElementCallback: void onSharedElementStart(java.util.List,java.util.List,java.util.List)>(sharedElementNames, sharedElements, sharedElementSnapshots);
+
+        return;
+    }
+
+    public void onSharedElementsArrived(java.util.List, java.util.List, android.app.SharedElementCallback$OnSharedElementsReadyListener)
+    {
+        androidx.core.app.ActivityCompat$SharedElementCallback21Impl this;
+        java.util.List sharedElementNames, sharedElements;
+        android.app.SharedElementCallback$OnSharedElementsReadyListener $u5;
+        androidx.core.app.SharedElementCallback $u0;
+        androidx.core.app.ActivityCompat$SharedElementCallback21Impl$1 $u1;
+
+        this := @this: androidx.core.app.ActivityCompat$SharedElementCallback21Impl;
+
+        sharedElementNames := @parameter0: java.util.List;
+
+        sharedElements := @parameter1: java.util.List;
+
+        $u5 := @parameter2: android.app.SharedElementCallback$OnSharedElementsReadyListener;
+
+        $u0 = this.<androidx.core.app.ActivityCompat$SharedElementCallback21Impl: androidx.core.app.SharedElementCallback mCallback>;
+
+        $u1 = new androidx.core.app.ActivityCompat$SharedElementCallback21Impl$1;
+
+        specialinvoke $u1.<androidx.core.app.ActivityCompat$SharedElementCallback21Impl$1: void <init>(androidx.core.app.ActivityCompat$SharedElementCallback21Impl,android.app.SharedElementCallback$OnSharedElementsReadyListener)>(this, $u5);
+
+        virtualinvoke $u0.<androidx.core.app.SharedElementCallback: void onSharedElementsArrived(java.util.List,java.util.List,androidx.core.app.SharedElementCallback$OnSharedElementsReadyListener)>(sharedElementNames, sharedElements, $u1);
+
+        return;
+    }
+}

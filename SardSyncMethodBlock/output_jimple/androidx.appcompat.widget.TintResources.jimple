@@ -1,0 +1,62 @@
+class androidx.appcompat.widget.TintResources extends androidx.appcompat.widget.ResourcesWrapper
+{
+    private final java.lang.ref.WeakReference mContextRef;
+
+    public void <init>(android.content.Context, android.content.res.Resources)
+    {
+        androidx.appcompat.widget.TintResources this;
+        android.content.Context $u2;
+        android.content.res.Resources $u3;
+        java.lang.ref.WeakReference $u0;
+
+        this := @this: androidx.appcompat.widget.TintResources;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.content.res.Resources;
+
+        specialinvoke this.<androidx.appcompat.widget.ResourcesWrapper: void <init>(android.content.res.Resources)>($u3);
+
+        $u0 = new java.lang.ref.WeakReference;
+
+        specialinvoke $u0.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>($u2);
+
+        this.<androidx.appcompat.widget.TintResources: java.lang.ref.WeakReference mContextRef> = $u0;
+
+        return;
+    }
+
+    public android.graphics.drawable.Drawable getDrawable(int) throws android.content.res.Resources$NotFoundException
+    {
+        androidx.appcompat.widget.TintResources this;
+        int $u4;
+        android.graphics.drawable.Drawable $u-1;
+        java.lang.ref.WeakReference context;
+        java.lang.Object $u-1#3;
+        android.content.Context context#5;
+        androidx.appcompat.widget.ResourceManagerInternal $u-1#6;
+
+        this := @this: androidx.appcompat.widget.TintResources;
+
+        $u4 := @parameter0: int;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.ResourcesWrapper: android.graphics.drawable.Drawable getDrawable(int)>($u4);
+
+        context = this.<androidx.appcompat.widget.TintResources: java.lang.ref.WeakReference mContextRef>;
+
+        $u-1#3 = virtualinvoke context.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        context#5 = (android.content.Context) $u-1#3;
+
+        if $u-1 == null goto label1;
+
+        if context#5 == null goto label1;
+
+        $u-1#6 = staticinvoke <androidx.appcompat.widget.ResourceManagerInternal: androidx.appcompat.widget.ResourceManagerInternal get()>();
+
+        virtualinvoke $u-1#6.<androidx.appcompat.widget.ResourceManagerInternal: boolean tintDrawableUsingColorFilter(android.content.Context,int,android.graphics.drawable.Drawable)>(context#5, $u4, $u-1);
+
+     label1:
+        return $u-1;
+    }
+}

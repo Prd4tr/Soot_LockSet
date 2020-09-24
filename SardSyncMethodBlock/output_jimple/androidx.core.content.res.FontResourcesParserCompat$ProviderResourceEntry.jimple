@@ -1,0 +1,67 @@
+public final class androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry extends java.lang.Object implements androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry
+{
+    private final androidx.core.provider.FontRequest mRequest;
+    private final int mStrategy;
+    private final int mTimeoutMs;
+
+    public void <init>(androidx.core.provider.FontRequest, int, int)
+    {
+        androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry this;
+        androidx.core.provider.FontRequest $u1;
+        int $u2, $u3;
+
+        this := @this: androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry;
+
+        $u1 := @parameter0: androidx.core.provider.FontRequest;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry: androidx.core.provider.FontRequest mRequest> = $u1;
+
+        this.<androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry: int mStrategy> = $u2;
+
+        this.<androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry: int mTimeoutMs> = $u3;
+
+        return;
+    }
+
+    public int getFetchStrategy()
+    {
+        androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry this;
+        int ret0;
+
+        this := @this: androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry;
+
+        ret0 = this.<androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry: int mStrategy>;
+
+        return ret0;
+    }
+
+    public androidx.core.provider.FontRequest getRequest()
+    {
+        androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry this;
+        androidx.core.provider.FontRequest ret0;
+
+        this := @this: androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry;
+
+        ret0 = this.<androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry: androidx.core.provider.FontRequest mRequest>;
+
+        return ret0;
+    }
+
+    public int getTimeout()
+    {
+        androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry this;
+        int ret0;
+
+        this := @this: androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry;
+
+        ret0 = this.<androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry: int mTimeoutMs>;
+
+        return ret0;
+    }
+}

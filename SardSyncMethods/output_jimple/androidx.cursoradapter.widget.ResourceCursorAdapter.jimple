@@ -1,0 +1,189 @@
+public abstract class androidx.cursoradapter.widget.ResourceCursorAdapter extends androidx.cursoradapter.widget.CursorAdapter
+{
+    private int mDropDownLayout;
+    private android.view.LayoutInflater mInflater;
+    private int mLayout;
+
+    public void <init>(android.content.Context, int, android.database.Cursor)
+    {
+        androidx.cursoradapter.widget.ResourceCursorAdapter this;
+        android.content.Context $u2;
+        int $u3;
+        android.database.Cursor $u4;
+        java.lang.Object $u-1;
+        android.view.LayoutInflater $u0;
+
+        this := @this: androidx.cursoradapter.widget.ResourceCursorAdapter;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.database.Cursor;
+
+        specialinvoke this.<androidx.cursoradapter.widget.CursorAdapter: void <init>(android.content.Context,android.database.Cursor)>($u2, $u4);
+
+        this.<androidx.cursoradapter.widget.ResourceCursorAdapter: int mDropDownLayout> = $u3;
+
+        this.<androidx.cursoradapter.widget.ResourceCursorAdapter: int mLayout> = $u3;
+
+        $u-1 = virtualinvoke $u2.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("layout_inflater");
+
+        $u0 = (android.view.LayoutInflater) $u-1;
+
+        this.<androidx.cursoradapter.widget.ResourceCursorAdapter: android.view.LayoutInflater mInflater> = $u0;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, int, android.database.Cursor, int)
+    {
+        androidx.cursoradapter.widget.ResourceCursorAdapter this;
+        android.content.Context $u2;
+        int $u3, $u5;
+        android.database.Cursor $u4;
+        java.lang.Object $u-1;
+        android.view.LayoutInflater $u0;
+
+        this := @this: androidx.cursoradapter.widget.ResourceCursorAdapter;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.database.Cursor;
+
+        $u5 := @parameter3: int;
+
+        specialinvoke this.<androidx.cursoradapter.widget.CursorAdapter: void <init>(android.content.Context,android.database.Cursor,int)>($u2, $u4, $u5);
+
+        this.<androidx.cursoradapter.widget.ResourceCursorAdapter: int mDropDownLayout> = $u3;
+
+        this.<androidx.cursoradapter.widget.ResourceCursorAdapter: int mLayout> = $u3;
+
+        $u-1 = virtualinvoke $u2.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("layout_inflater");
+
+        $u0 = (android.view.LayoutInflater) $u-1;
+
+        this.<androidx.cursoradapter.widget.ResourceCursorAdapter: android.view.LayoutInflater mInflater> = $u0;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, int, android.database.Cursor, boolean)
+    {
+        androidx.cursoradapter.widget.ResourceCursorAdapter this;
+        android.content.Context $u2;
+        int $u3;
+        android.database.Cursor $u4;
+        boolean $u5;
+        java.lang.Object $u-1;
+        android.view.LayoutInflater $u0;
+
+        this := @this: androidx.cursoradapter.widget.ResourceCursorAdapter;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.database.Cursor;
+
+        $u5 := @parameter3: boolean;
+
+        specialinvoke this.<androidx.cursoradapter.widget.CursorAdapter: void <init>(android.content.Context,android.database.Cursor,boolean)>($u2, $u4, $u5);
+
+        this.<androidx.cursoradapter.widget.ResourceCursorAdapter: int mDropDownLayout> = $u3;
+
+        this.<androidx.cursoradapter.widget.ResourceCursorAdapter: int mLayout> = $u3;
+
+        $u-1 = virtualinvoke $u2.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("layout_inflater");
+
+        $u0 = (android.view.LayoutInflater) $u-1;
+
+        this.<androidx.cursoradapter.widget.ResourceCursorAdapter: android.view.LayoutInflater mInflater> = $u0;
+
+        return;
+    }
+
+    public android.view.View newDropDownView(android.content.Context, android.database.Cursor, android.view.ViewGroup)
+    {
+        androidx.cursoradapter.widget.ResourceCursorAdapter this;
+        android.content.Context $u4;
+        android.database.Cursor $u5;
+        android.view.ViewGroup $u6;
+        int $u1;
+        android.view.View $u-1;
+        android.view.LayoutInflater $u0;
+
+        this := @this: androidx.cursoradapter.widget.ResourceCursorAdapter;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: android.database.Cursor;
+
+        $u6 := @parameter2: android.view.ViewGroup;
+
+        $u0 = this.<androidx.cursoradapter.widget.ResourceCursorAdapter: android.view.LayoutInflater mInflater>;
+
+        $u1 = this.<androidx.cursoradapter.widget.ResourceCursorAdapter: int mDropDownLayout>;
+
+        $u-1 = virtualinvoke $u0.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>($u1, $u6, 0);
+
+        return $u-1;
+    }
+
+    public android.view.View newView(android.content.Context, android.database.Cursor, android.view.ViewGroup)
+    {
+        androidx.cursoradapter.widget.ResourceCursorAdapter this;
+        android.content.Context $u4;
+        android.database.Cursor $u5;
+        android.view.ViewGroup $u6;
+        int $u1;
+        android.view.View $u-1;
+        android.view.LayoutInflater $u0;
+
+        this := @this: androidx.cursoradapter.widget.ResourceCursorAdapter;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: android.database.Cursor;
+
+        $u6 := @parameter2: android.view.ViewGroup;
+
+        $u0 = this.<androidx.cursoradapter.widget.ResourceCursorAdapter: android.view.LayoutInflater mInflater>;
+
+        $u1 = this.<androidx.cursoradapter.widget.ResourceCursorAdapter: int mLayout>;
+
+        $u-1 = virtualinvoke $u0.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>($u1, $u6, 0);
+
+        return $u-1;
+    }
+
+    public void setDropDownViewResource(int)
+    {
+        androidx.cursoradapter.widget.ResourceCursorAdapter this;
+        int $u1;
+
+        this := @this: androidx.cursoradapter.widget.ResourceCursorAdapter;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.cursoradapter.widget.ResourceCursorAdapter: int mDropDownLayout> = $u1;
+
+        return;
+    }
+
+    public void setViewResource(int)
+    {
+        androidx.cursoradapter.widget.ResourceCursorAdapter this;
+        int $u1;
+
+        this := @this: androidx.cursoradapter.widget.ResourceCursorAdapter;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.cursoradapter.widget.ResourceCursorAdapter: int mLayout> = $u1;
+
+        return;
+    }
+}

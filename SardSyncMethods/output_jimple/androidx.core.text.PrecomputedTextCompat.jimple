@@ -1,0 +1,758 @@
+public class androidx.core.text.PrecomputedTextCompat extends java.lang.Object implements android.text.Spannable
+{
+    private static final char LINE_FEED;
+    private static java.util.concurrent.Executor sExecutor;
+    private static final java.lang.Object sLock;
+    private final int[] mParagraphEnds;
+    private final androidx.core.text.PrecomputedTextCompat$Params mParams;
+    private final android.text.Spannable mText;
+    private final android.text.PrecomputedText mWrapped;
+
+    static void <clinit>()
+    {
+        java.lang.Object $u0;
+
+        <androidx.core.text.PrecomputedTextCompat: char LINE_FEED> = 10;
+
+        $u0 = new java.lang.Object;
+
+        specialinvoke $u0.<java.lang.Object: void <init>()>();
+
+        <androidx.core.text.PrecomputedTextCompat: java.lang.Object sLock> = $u0;
+
+        <androidx.core.text.PrecomputedTextCompat: java.util.concurrent.Executor sExecutor> = null;
+
+        return;
+    }
+
+    private void <init>(android.text.PrecomputedText, androidx.core.text.PrecomputedTextCompat$Params)
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        android.text.PrecomputedText $u4, $u0;
+        androidx.core.text.PrecomputedTextCompat$Params $u5;
+        int $u1;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u4 := @parameter0: android.text.PrecomputedText;
+
+        $u5 := @parameter1: androidx.core.text.PrecomputedTextCompat$Params;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText> = $u4;
+
+        this.<androidx.core.text.PrecomputedTextCompat: androidx.core.text.PrecomputedTextCompat$Params mParams> = $u5;
+
+        $u0 = null;
+
+        this.<androidx.core.text.PrecomputedTextCompat: int[] mParagraphEnds> = null;
+
+        $u1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u1 < 29 goto label1;
+
+        $u0 = $u4;
+
+     label1:
+        this.<androidx.core.text.PrecomputedTextCompat: android.text.PrecomputedText mWrapped> = $u0;
+
+        return;
+    }
+
+    private void <init>(java.lang.CharSequence, androidx.core.text.PrecomputedTextCompat$Params, int[])
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        java.lang.CharSequence $u2;
+        androidx.core.text.PrecomputedTextCompat$Params $u3;
+        int[] $u4;
+        android.text.SpannableString $u0;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u3 := @parameter1: androidx.core.text.PrecomputedTextCompat$Params;
+
+        $u4 := @parameter2: int[];
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new android.text.SpannableString;
+
+        specialinvoke $u0.<android.text.SpannableString: void <init>(java.lang.CharSequence)>($u2);
+
+        this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText> = $u0;
+
+        this.<androidx.core.text.PrecomputedTextCompat: androidx.core.text.PrecomputedTextCompat$Params mParams> = $u3;
+
+        this.<androidx.core.text.PrecomputedTextCompat: int[] mParagraphEnds> = $u4;
+
+        this.<androidx.core.text.PrecomputedTextCompat: android.text.PrecomputedText mWrapped> = null;
+
+        return;
+    }
+
+    public static androidx.core.text.PrecomputedTextCompat create(java.lang.CharSequence, androidx.core.text.PrecomputedTextCompat$Params)
+    {
+        java.lang.CharSequence $u14;
+        androidx.core.text.PrecomputedTextCompat$Params $u15;
+        android.text.Layout$Alignment $u10;
+        int ends, paraStart;
+        android.text.PrecomputedText$Params ends#4;
+        androidx.core.text.PrecomputedTextCompat ends#5;
+        android.text.PrecomputedText $u-1;
+        java.util.ArrayList ends#9;
+        java.lang.Integer $u-1#18;
+        int[] paraStart#22;
+        java.lang.Object $u-1#26;
+        android.text.TextPaint $u-1#36;
+        android.text.StaticLayout$Builder $u-1#39;
+        android.text.TextDirectionHeuristic $u-1#49;
+        android.text.StaticLayout $u6;
+        java.lang.Throwable ends#59;
+
+        $u14 := @parameter0: java.lang.CharSequence;
+
+        $u15 := @parameter1: androidx.core.text.PrecomputedTextCompat$Params;
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($u14);
+
+        staticinvoke <androidx.core.util.Preconditions: java.lang.Object checkNotNull(java.lang.Object)>($u15);
+
+     label01:
+        staticinvoke <androidx.core.os.TraceCompat: void beginSection(java.lang.String)>("PrecomputedText");
+
+        ends = <android.os.Build$VERSION: int SDK_INT>;
+
+     label02:
+        if ends < 29 goto label07;
+
+     label03:
+        ends#4 = $u15.<androidx.core.text.PrecomputedTextCompat$Params: android.text.PrecomputedText$Params mWrapped>;
+
+     label04:
+        if ends#4 == null goto label07;
+
+     label05:
+        ends#5 = new androidx.core.text.PrecomputedTextCompat;
+
+        ends#4 = $u15.<androidx.core.text.PrecomputedTextCompat$Params: android.text.PrecomputedText$Params mWrapped>;
+
+        $u-1 = staticinvoke <android.text.PrecomputedText: android.text.PrecomputedText create(java.lang.CharSequence,android.text.PrecomputedText$Params)>($u14, ends#4);
+
+        specialinvoke ends#5.<androidx.core.text.PrecomputedTextCompat: void <init>(android.text.PrecomputedText,androidx.core.text.PrecomputedTextCompat$Params)>($u-1, $u15);
+
+     label06:
+        staticinvoke <androidx.core.os.TraceCompat: void endSection()>();
+
+        return ends#5;
+
+     label07:
+        ends#9 = new java.util.ArrayList;
+
+        specialinvoke ends#9.<java.util.ArrayList: void <init>()>();
+
+        ends = interfaceinvoke $u14.<java.lang.CharSequence: int length()>();
+
+     label08:
+        paraStart = 0;
+
+     label09:
+        if paraStart >= ends goto label15;
+
+     label10:
+        paraStart = staticinvoke <android.text.TextUtils: int indexOf(java.lang.CharSequence,char,int,int)>($u14, 10, paraStart, ends);
+
+     label11:
+        if paraStart >= 0 goto label12;
+
+        paraStart = ends;
+
+        goto label13;
+
+     label12:
+        paraStart = paraStart + 1;
+
+     label13:
+        $u-1#18 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(paraStart);
+
+        virtualinvoke ends#9.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1#18);
+
+     label14:
+        goto label09;
+
+     label15:
+        ends = virtualinvoke ends#9.<java.util.ArrayList: int size()>();
+
+        paraStart#22 = newarray (int)[ends];
+
+     label16:
+        ends = 0;
+
+     label17:
+        paraStart = virtualinvoke ends#9.<java.util.ArrayList: int size()>();
+
+     label18:
+        if ends >= paraStart goto label21;
+
+     label19:
+        $u-1#26 = virtualinvoke ends#9.<java.util.ArrayList: java.lang.Object get(int)>(ends);
+
+        $u-1#18 = (java.lang.Integer) $u-1#26;
+
+        paraStart = virtualinvoke $u-1#18.<java.lang.Integer: int intValue()>();
+
+        paraStart#22[ends] = paraStart;
+
+     label20:
+        ends = ends + 1;
+
+        goto label17;
+
+     label21:
+        ends = <android.os.Build$VERSION: int SDK_INT>;
+
+     label22:
+        if ends < 23 goto label25;
+
+     label23:
+        ends = interfaceinvoke $u14.<java.lang.CharSequence: int length()>();
+
+        $u-1#36 = virtualinvoke $u15.<androidx.core.text.PrecomputedTextCompat$Params: android.text.TextPaint getTextPaint()>();
+
+        $u-1#39 = staticinvoke <android.text.StaticLayout$Builder: android.text.StaticLayout$Builder obtain(java.lang.CharSequence,int,int,android.text.TextPaint,int)>($u14, 0, ends, $u-1#36, 2147483647);
+
+        ends = virtualinvoke $u15.<androidx.core.text.PrecomputedTextCompat$Params: int getBreakStrategy()>();
+
+        $u-1#39 = virtualinvoke $u-1#39.<android.text.StaticLayout$Builder: android.text.StaticLayout$Builder setBreakStrategy(int)>(ends);
+
+        ends = virtualinvoke $u15.<androidx.core.text.PrecomputedTextCompat$Params: int getHyphenationFrequency()>();
+
+        $u-1#39 = virtualinvoke $u-1#39.<android.text.StaticLayout$Builder: android.text.StaticLayout$Builder setHyphenationFrequency(int)>(ends);
+
+        $u-1#49 = virtualinvoke $u15.<androidx.core.text.PrecomputedTextCompat$Params: android.text.TextDirectionHeuristic getTextDirection()>();
+
+        $u-1#39 = virtualinvoke $u-1#39.<android.text.StaticLayout$Builder: android.text.StaticLayout$Builder setTextDirection(android.text.TextDirectionHeuristic)>($u-1#49);
+
+        virtualinvoke $u-1#39.<android.text.StaticLayout$Builder: android.text.StaticLayout build()>();
+
+     label24:
+        goto label28;
+
+     label25:
+        ends = <android.os.Build$VERSION: int SDK_INT>;
+
+     label26:
+        if ends < 21 goto label28;
+
+     label27:
+        $u6 = new android.text.StaticLayout;
+
+        $u-1#36 = virtualinvoke $u15.<androidx.core.text.PrecomputedTextCompat$Params: android.text.TextPaint getTextPaint()>();
+
+        $u10 = <android.text.Layout$Alignment: android.text.Layout$Alignment ALIGN_NORMAL>;
+
+        specialinvoke $u6.<android.text.StaticLayout: void <init>(java.lang.CharSequence,android.text.TextPaint,int,android.text.Layout$Alignment,float,float,boolean)>($u14, $u-1#36, 2147483647, $u10, 1.0F, 0.0F, 0);
+
+     label28:
+        ends#5 = new androidx.core.text.PrecomputedTextCompat;
+
+        specialinvoke ends#5.<androidx.core.text.PrecomputedTextCompat: void <init>(java.lang.CharSequence,androidx.core.text.PrecomputedTextCompat$Params,int[])>($u14, $u15, paraStart#22);
+
+     label29:
+        staticinvoke <androidx.core.os.TraceCompat: void endSection()>();
+
+        return ends#5;
+
+     label30:
+        ends#59 := @caughtexception;
+
+        staticinvoke <androidx.core.os.TraceCompat: void endSection()>();
+
+        goto label31;
+
+     label31:
+        throw ends#59;
+
+        catch java.lang.Throwable from label01 to label02 with label30;
+        catch java.lang.Throwable from label03 to label04 with label30;
+        catch java.lang.Throwable from label05 to label06 with label30;
+        catch java.lang.Throwable from label07 to label08 with label30;
+        catch java.lang.Throwable from label10 to label11 with label30;
+        catch java.lang.Throwable from label13 to label14 with label30;
+        catch java.lang.Throwable from label15 to label16 with label30;
+        catch java.lang.Throwable from label17 to label18 with label30;
+        catch java.lang.Throwable from label19 to label20 with label30;
+        catch java.lang.Throwable from label21 to label22 with label30;
+        catch java.lang.Throwable from label23 to label24 with label30;
+        catch java.lang.Throwable from label25 to label26 with label30;
+        catch java.lang.Throwable from label27 to label29 with label30;
+    }
+
+    public static java.util.concurrent.Future getTextFuture(java.lang.CharSequence, androidx.core.text.PrecomputedTextCompat$Params, java.util.concurrent.Executor)
+    {
+        java.lang.CharSequence $u3;
+        androidx.core.text.PrecomputedTextCompat$Params $u4;
+        androidx.core.text.PrecomputedTextCompat$PrecomputedTextFutureTask task;
+        java.lang.Object $u1;
+        java.util.concurrent.ExecutorService $u-1;
+        java.util.concurrent.Executor $u5;
+        java.lang.Throwable $u2;
+
+        $u3 := @parameter0: java.lang.CharSequence;
+
+        $u4 := @parameter1: androidx.core.text.PrecomputedTextCompat$Params;
+
+        $u5 := @parameter2: java.util.concurrent.Executor;
+
+        task = new androidx.core.text.PrecomputedTextCompat$PrecomputedTextFutureTask;
+
+        specialinvoke task.<androidx.core.text.PrecomputedTextCompat$PrecomputedTextFutureTask: void <init>(androidx.core.text.PrecomputedTextCompat$Params,java.lang.CharSequence)>($u4, $u3);
+
+        if $u5 != null goto label6;
+
+        $u1 = <androidx.core.text.PrecomputedTextCompat: java.lang.Object sLock>;
+
+        entermonitor $u1;
+
+     label1:
+        $u5 = <androidx.core.text.PrecomputedTextCompat: java.util.concurrent.Executor sExecutor>;
+
+        if $u5 != null goto label2;
+
+        $u-1 = staticinvoke <java.util.concurrent.Executors: java.util.concurrent.ExecutorService newFixedThreadPool(int)>(1);
+
+        <androidx.core.text.PrecomputedTextCompat: java.util.concurrent.Executor sExecutor> = $u-1;
+
+     label2:
+        $u5 = <androidx.core.text.PrecomputedTextCompat: java.util.concurrent.Executor sExecutor>;
+
+        exitmonitor $u1;
+
+     label3:
+        goto label6;
+
+     label4:
+        $u2 := @caughtexception;
+
+        exitmonitor $u1;
+
+     label5:
+        throw $u2;
+
+     label6:
+        interfaceinvoke $u5.<java.util.concurrent.Executor: void execute(java.lang.Runnable)>(task);
+
+        return task;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+    }
+
+    public char charAt(int)
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        int $u2;
+        char $u-1;
+        android.text.Spannable $u0;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText>;
+
+        $u-1 = interfaceinvoke $u0.<android.text.Spannable: char charAt(int)>($u2);
+
+        return $u-1;
+    }
+
+    public int getParagraphCount()
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        int $u-1;
+        android.text.PrecomputedText $u0;
+        int[] $u0#4;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 29 goto label1;
+
+        $u0 = this.<androidx.core.text.PrecomputedTextCompat: android.text.PrecomputedText mWrapped>;
+
+        $u-1 = virtualinvoke $u0.<android.text.PrecomputedText: int getParagraphCount()>();
+
+        return $u-1;
+
+     label1:
+        $u0#4 = this.<androidx.core.text.PrecomputedTextCompat: int[] mParagraphEnds>;
+
+        $u-1 = lengthof $u0#4;
+
+        return $u-1;
+    }
+
+    public int getParagraphEnd(int)
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        int $u4, $u-1;
+        android.text.PrecomputedText $u0;
+        int[] $u0#9;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u4 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.core.text.PrecomputedTextCompat: int getParagraphCount()>();
+
+        staticinvoke <androidx.core.util.Preconditions: int checkArgumentInRange(int,int,int,java.lang.String)>($u4, 0, $u-1, "paraIndex");
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 29 goto label1;
+
+        $u0 = this.<androidx.core.text.PrecomputedTextCompat: android.text.PrecomputedText mWrapped>;
+
+        $u4 = virtualinvoke $u0.<android.text.PrecomputedText: int getParagraphEnd(int)>($u4);
+
+        return $u4;
+
+     label1:
+        $u0#9 = this.<androidx.core.text.PrecomputedTextCompat: int[] mParagraphEnds>;
+
+        $u4 = $u0#9[$u4];
+
+        return $u4;
+    }
+
+    public int getParagraphStart(int)
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        int $u4, $u-1;
+        android.text.PrecomputedText $u0;
+        int[] $u0#10;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u4 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.core.text.PrecomputedTextCompat: int getParagraphCount()>();
+
+        staticinvoke <androidx.core.util.Preconditions: int checkArgumentInRange(int,int,int,java.lang.String)>($u4, 0, $u-1, "paraIndex");
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 29 goto label1;
+
+        $u0 = this.<androidx.core.text.PrecomputedTextCompat: android.text.PrecomputedText mWrapped>;
+
+        $u4 = virtualinvoke $u0.<android.text.PrecomputedText: int getParagraphStart(int)>($u4);
+
+        return $u4;
+
+     label1:
+        if $u4 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        $u0#10 = this.<androidx.core.text.PrecomputedTextCompat: int[] mParagraphEnds>;
+
+        $u4 = $u4 + -1;
+
+        $u4 = $u0#10[$u4];
+
+        return $u4;
+    }
+
+    public androidx.core.text.PrecomputedTextCompat$Params getParams()
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        androidx.core.text.PrecomputedTextCompat$Params ret0;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        ret0 = this.<androidx.core.text.PrecomputedTextCompat: androidx.core.text.PrecomputedTextCompat$Params mParams>;
+
+        return ret0;
+    }
+
+    public android.text.PrecomputedText getPrecomputedText()
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        boolean $u1;
+        android.text.Spannable $u0;
+        android.text.PrecomputedText $u0#2;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u0 = this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText>;
+
+        $u1 = $u0 instanceof android.text.PrecomputedText;
+
+        if $u1 == 0 goto label1;
+
+        $u0#2 = (android.text.PrecomputedText) $u0;
+
+        return $u0#2;
+
+     label1:
+        return null;
+    }
+
+    public int getSpanEnd(java.lang.Object)
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        java.lang.Object $u2;
+        int $u-1;
+        android.text.Spannable $u0;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        $u0 = this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText>;
+
+        $u-1 = interfaceinvoke $u0.<android.text.Spannable: int getSpanEnd(java.lang.Object)>($u2);
+
+        return $u-1;
+    }
+
+    public int getSpanFlags(java.lang.Object)
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        java.lang.Object $u2;
+        int $u-1;
+        android.text.Spannable $u0;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        $u0 = this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText>;
+
+        $u-1 = interfaceinvoke $u0.<android.text.Spannable: int getSpanFlags(java.lang.Object)>($u2);
+
+        return $u-1;
+    }
+
+    public int getSpanStart(java.lang.Object)
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        java.lang.Object $u2;
+        int $u-1;
+        android.text.Spannable $u0;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        $u0 = this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText>;
+
+        $u-1 = interfaceinvoke $u0.<android.text.Spannable: int getSpanStart(java.lang.Object)>($u2);
+
+        return $u-1;
+    }
+
+    public java.lang.Object[] getSpans(int, int, java.lang.Class)
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        int $u3, $u4, $u0;
+        java.lang.Class type;
+        android.text.PrecomputedText $u0#2;
+        java.lang.Object[] $u-1;
+        android.text.Spannable $u0#5;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u3 := @parameter0: int;
+
+        $u4 := @parameter1: int;
+
+        type := @parameter2: java.lang.Class;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 29 goto label1;
+
+        $u0#2 = this.<androidx.core.text.PrecomputedTextCompat: android.text.PrecomputedText mWrapped>;
+
+        $u-1 = virtualinvoke $u0#2.<android.text.PrecomputedText: java.lang.Object[] getSpans(int,int,java.lang.Class)>($u3, $u4, type);
+
+        return $u-1;
+
+     label1:
+        $u0#5 = this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText>;
+
+        $u-1 = interfaceinvoke $u0#5.<android.text.Spannable: java.lang.Object[] getSpans(int,int,java.lang.Class)>($u3, $u4, type);
+
+        return $u-1;
+    }
+
+    public int length()
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        int $u-1;
+        android.text.Spannable $u0;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u0 = this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText>;
+
+        $u-1 = interfaceinvoke $u0.<android.text.Spannable: int length()>();
+
+        return $u-1;
+    }
+
+    public int nextSpanTransition(int, int, java.lang.Class)
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        int $u2, $u3;
+        java.lang.Class $u4;
+        android.text.Spannable $u0;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: java.lang.Class;
+
+        $u0 = this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText>;
+
+        $u2 = interfaceinvoke $u0.<android.text.Spannable: int nextSpanTransition(int,int,java.lang.Class)>($u2, $u3, $u4);
+
+        return $u2;
+    }
+
+    public void removeSpan(java.lang.Object)
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        java.lang.Object $u3;
+        boolean $u0;
+        int $u0#2;
+        android.text.PrecomputedText $u0#4;
+        android.text.Spannable $u0#5;
+        java.lang.IllegalArgumentException $u0#6;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u3 := @parameter0: java.lang.Object;
+
+        $u0 = $u3 instanceof android.text.style.MetricAffectingSpan;
+
+        if $u0 != 0 goto label2;
+
+        $u0#2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0#2 < 29 goto label1;
+
+        $u0#4 = this.<androidx.core.text.PrecomputedTextCompat: android.text.PrecomputedText mWrapped>;
+
+        virtualinvoke $u0#4.<android.text.PrecomputedText: void removeSpan(java.lang.Object)>($u3);
+
+        return;
+
+     label1:
+        $u0#5 = this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText>;
+
+        interfaceinvoke $u0#5.<android.text.Spannable: void removeSpan(java.lang.Object)>($u3);
+
+        return;
+
+     label2:
+        $u0#6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("MetricAffectingSpan can not be removed from PrecomputedText.");
+
+        throw $u0#6;
+    }
+
+    public void setSpan(java.lang.Object, int, int, int)
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        java.lang.Object $u3;
+        int $u4, $u5, $u6, $u0#2;
+        boolean $u0;
+        android.text.PrecomputedText $u0#4;
+        android.text.Spannable $u0#5;
+        java.lang.IllegalArgumentException $u0#6;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u3 := @parameter0: java.lang.Object;
+
+        $u4 := @parameter1: int;
+
+        $u5 := @parameter2: int;
+
+        $u6 := @parameter3: int;
+
+        $u0 = $u3 instanceof android.text.style.MetricAffectingSpan;
+
+        if $u0 != 0 goto label2;
+
+        $u0#2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0#2 < 29 goto label1;
+
+        $u0#4 = this.<androidx.core.text.PrecomputedTextCompat: android.text.PrecomputedText mWrapped>;
+
+        virtualinvoke $u0#4.<android.text.PrecomputedText: void setSpan(java.lang.Object,int,int,int)>($u3, $u4, $u5, $u6);
+
+        return;
+
+     label1:
+        $u0#5 = this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText>;
+
+        interfaceinvoke $u0#5.<android.text.Spannable: void setSpan(java.lang.Object,int,int,int)>($u3, $u4, $u5, $u6);
+
+        return;
+
+     label2:
+        $u0#6 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("MetricAffectingSpan can not be set to PrecomputedText.");
+
+        throw $u0#6;
+    }
+
+    public java.lang.CharSequence subSequence(int, int)
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        int $u2, $u3;
+        java.lang.CharSequence $u-1;
+        android.text.Spannable $u0;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText>;
+
+        $u-1 = interfaceinvoke $u0.<android.text.Spannable: java.lang.CharSequence subSequence(int,int)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.core.text.PrecomputedTextCompat this;
+        java.lang.String $u-1;
+        android.text.Spannable $u0;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat;
+
+        $u0 = this.<androidx.core.text.PrecomputedTextCompat: android.text.Spannable mText>;
+
+        $u-1 = virtualinvoke $u0.<java.lang.Object: java.lang.String toString()>();
+
+        return $u-1;
+    }
+}

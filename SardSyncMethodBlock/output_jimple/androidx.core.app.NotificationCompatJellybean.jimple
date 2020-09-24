@@ -1,0 +1,1110 @@
+class androidx.core.app.NotificationCompatJellybean extends java.lang.Object
+{
+    static final java.lang.String EXTRA_ALLOW_GENERATED_REPLIES;
+    static final java.lang.String EXTRA_DATA_ONLY_REMOTE_INPUTS;
+    private static final java.lang.String KEY_ACTION_INTENT;
+    private static final java.lang.String KEY_ALLOWED_DATA_TYPES;
+    private static final java.lang.String KEY_ALLOW_FREE_FORM_INPUT;
+    private static final java.lang.String KEY_CHOICES;
+    private static final java.lang.String KEY_DATA_ONLY_REMOTE_INPUTS;
+    private static final java.lang.String KEY_EXTRAS;
+    private static final java.lang.String KEY_ICON;
+    private static final java.lang.String KEY_LABEL;
+    private static final java.lang.String KEY_REMOTE_INPUTS;
+    private static final java.lang.String KEY_RESULT_KEY;
+    private static final java.lang.String KEY_SEMANTIC_ACTION;
+    private static final java.lang.String KEY_SHOWS_USER_INTERFACE;
+    private static final java.lang.String KEY_TITLE;
+    public static final java.lang.String TAG;
+    private static java.lang.reflect.Field sActionIconField;
+    private static java.lang.reflect.Field sActionIntentField;
+    private static java.lang.reflect.Field sActionTitleField;
+    private static boolean sActionsAccessFailed;
+    private static java.lang.reflect.Field sActionsField;
+    private static final java.lang.Object sActionsLock;
+    private static java.lang.reflect.Field sExtrasField;
+    private static boolean sExtrasFieldAccessFailed;
+    private static final java.lang.Object sExtrasLock;
+
+    static void <clinit>()
+    {
+        java.lang.Object $u0;
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String TAG> = "NotificationCompat";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String KEY_TITLE> = "title";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String KEY_SHOWS_USER_INTERFACE> = "showsUserInterface";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String KEY_SEMANTIC_ACTION> = "semanticAction";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String KEY_RESULT_KEY> = "resultKey";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String KEY_REMOTE_INPUTS> = "remoteInputs";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String KEY_LABEL> = "label";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String KEY_ICON> = "icon";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String KEY_EXTRAS> = "extras";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String KEY_DATA_ONLY_REMOTE_INPUTS> = "dataOnlyRemoteInputs";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String KEY_CHOICES> = "choices";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String KEY_ALLOW_FREE_FORM_INPUT> = "allowFreeFormInput";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String KEY_ALLOWED_DATA_TYPES> = "allowedDataTypes";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String KEY_ACTION_INTENT> = "actionIntent";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String EXTRA_DATA_ONLY_REMOTE_INPUTS> = "android.support.dataRemoteInputs";
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.String EXTRA_ALLOW_GENERATED_REPLIES> = "android.support.allowGeneratedReplies";
+
+        $u0 = new java.lang.Object;
+
+        specialinvoke $u0.<java.lang.Object: void <init>()>();
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.Object sExtrasLock> = $u0;
+
+        $u0 = new java.lang.Object;
+
+        specialinvoke $u0.<java.lang.Object: void <init>()>();
+
+        <androidx.core.app.NotificationCompatJellybean: java.lang.Object sActionsLock> = $u0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.core.app.NotificationCompatJellybean this;
+
+        this := @this: androidx.core.app.NotificationCompatJellybean;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.util.SparseArray buildActionExtrasMap(java.util.List)
+    {
+        java.util.List actionExtrasList;
+        android.util.SparseArray $u4;
+        int i, $u-1;
+        java.lang.Object $u-1#4;
+        android.os.Bundle actionExtras;
+
+        actionExtrasList := @parameter0: java.util.List;
+
+        $u4 = null;
+
+        i = 0;
+
+        $u-1 = interfaceinvoke actionExtrasList.<java.util.List: int size()>();
+
+     label1:
+        if i >= $u-1 goto label4;
+
+        $u-1#4 = interfaceinvoke actionExtrasList.<java.util.List: java.lang.Object get(int)>(i);
+
+        actionExtras = (android.os.Bundle) $u-1#4;
+
+        if actionExtras == null goto label3;
+
+        if $u4 != null goto label2;
+
+        $u4 = new android.util.SparseArray;
+
+        specialinvoke $u4.<android.util.SparseArray: void <init>()>();
+
+     label2:
+        virtualinvoke $u4.<android.util.SparseArray: void put(int,java.lang.Object)>(i, actionExtras);
+
+     label3:
+        i = i + 1;
+
+        goto label1;
+
+     label4:
+        return $u4;
+    }
+
+    private static boolean ensureActionReflectionReadyLocked()
+    {
+        boolean $u2;
+        java.lang.reflect.Field sActionClass;
+        java.lang.Class $u-1;
+        java.lang.NoSuchFieldException sActionClass#21;
+        java.lang.ClassNotFoundException sActionClass#22;
+
+        $u2 = <androidx.core.app.NotificationCompatJellybean: boolean sActionsAccessFailed>;
+
+        if $u2 == 0 goto label01;
+
+        return 0;
+
+     label01:
+        sActionClass = <androidx.core.app.NotificationCompatJellybean: java.lang.reflect.Field sActionsField>;
+
+        if sActionClass != null goto label14;
+
+     label02:
+        $u-1 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("android.app.Notification$Action");
+
+        sActionClass = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("icon");
+
+     label03:
+        <androidx.core.app.NotificationCompatJellybean: java.lang.reflect.Field sActionIconField> = sActionClass;
+
+     label04:
+        sActionClass = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("title");
+
+     label05:
+        <androidx.core.app.NotificationCompatJellybean: java.lang.reflect.Field sActionTitleField> = sActionClass;
+
+     label06:
+        sActionClass = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("actionIntent");
+
+     label07:
+        <androidx.core.app.NotificationCompatJellybean: java.lang.reflect.Field sActionIntentField> = sActionClass;
+
+        $u-1 = class "Landroid/app/Notification;";
+
+     label08:
+        sActionClass = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("actions");
+
+     label09:
+        <androidx.core.app.NotificationCompatJellybean: java.lang.reflect.Field sActionsField> = sActionClass;
+
+     label10:
+        virtualinvoke sActionClass.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label11:
+        goto label14;
+
+     label12:
+        sActionClass#21 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("NotificationCompat", "Unable to access notification actions", sActionClass#21);
+
+        <androidx.core.app.NotificationCompatJellybean: boolean sActionsAccessFailed> = 1;
+
+        goto label14;
+
+     label13:
+        sActionClass#22 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("NotificationCompat", "Unable to access notification actions", sActionClass#22);
+
+        <androidx.core.app.NotificationCompatJellybean: boolean sActionsAccessFailed> = 1;
+
+     label14:
+        $u2 = <androidx.core.app.NotificationCompatJellybean: boolean sActionsAccessFailed>;
+
+        $u2 = $u2 ^ 1;
+
+        return $u2;
+
+        catch java.lang.ClassNotFoundException from label02 to label03 with label13;
+        catch java.lang.ClassNotFoundException from label04 to label05 with label13;
+        catch java.lang.ClassNotFoundException from label06 to label07 with label13;
+        catch java.lang.ClassNotFoundException from label08 to label09 with label13;
+        catch java.lang.ClassNotFoundException from label10 to label11 with label13;
+        catch java.lang.NoSuchFieldException from label02 to label03 with label12;
+        catch java.lang.NoSuchFieldException from label04 to label05 with label12;
+        catch java.lang.NoSuchFieldException from label06 to label07 with label12;
+        catch java.lang.NoSuchFieldException from label08 to label09 with label12;
+        catch java.lang.NoSuchFieldException from label10 to label11 with label12;
+    }
+
+    private static androidx.core.app.RemoteInput fromBundle(android.os.Bundle)
+    {
+        android.os.Bundle $u11;
+        java.util.HashSet allowedDataTypes;
+        androidx.core.app.RemoteInput $u10;
+        java.util.ArrayList $u-1;
+        java.util.Iterator $u-1#4;
+        boolean $u-1#6;
+        java.lang.Object $u-1#8;
+        java.lang.String type;
+        java.lang.CharSequence $u-1#15;
+        java.lang.CharSequence[] $u-1#17;
+
+        $u11 := @parameter0: android.os.Bundle;
+
+        $u-1 = virtualinvoke $u11.<android.os.Bundle: java.util.ArrayList getStringArrayList(java.lang.String)>("allowedDataTypes");
+
+        allowedDataTypes = new java.util.HashSet;
+
+        specialinvoke allowedDataTypes.<java.util.HashSet: void <init>()>();
+
+        if $u-1 == null goto label2;
+
+        $u-1#4 = virtualinvoke $u-1.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#6 == 0 goto label2;
+
+        $u-1#8 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        type = (java.lang.String) $u-1#8;
+
+        interfaceinvoke allowedDataTypes.<java.util.Set: boolean add(java.lang.Object)>(type);
+
+        goto label1;
+
+     label2:
+        $u10 = new androidx.core.app.RemoteInput;
+
+        type = virtualinvoke $u11.<android.os.Bundle: java.lang.String getString(java.lang.String)>("resultKey");
+
+        $u-1#15 = virtualinvoke $u11.<android.os.Bundle: java.lang.CharSequence getCharSequence(java.lang.String)>("label");
+
+        $u-1#17 = virtualinvoke $u11.<android.os.Bundle: java.lang.CharSequence[] getCharSequenceArray(java.lang.String)>("choices");
+
+        $u-1#6 = virtualinvoke $u11.<android.os.Bundle: boolean getBoolean(java.lang.String)>("allowFreeFormInput");
+
+        $u11 = virtualinvoke $u11.<android.os.Bundle: android.os.Bundle getBundle(java.lang.String)>("extras");
+
+        specialinvoke $u10.<androidx.core.app.RemoteInput: void <init>(java.lang.String,java.lang.CharSequence,java.lang.CharSequence[],boolean,int,android.os.Bundle,java.util.Set)>(type, $u-1#15, $u-1#17, $u-1#6, 0, $u11, allowedDataTypes);
+
+        return $u10;
+    }
+
+    private static androidx.core.app.RemoteInput[] fromBundleArray(android.os.Bundle[])
+    {
+        android.os.Bundle[] $u3;
+        androidx.core.app.RemoteInput $u-1;
+        int remoteInputs, $u2;
+        androidx.core.app.RemoteInput[] remoteInputs#3;
+        android.os.Bundle $u2#6;
+
+        $u3 := @parameter0: android.os.Bundle[];
+
+        if $u3 != null goto label1;
+
+        return null;
+
+     label1:
+        remoteInputs = lengthof $u3;
+
+        remoteInputs#3 = newarray (androidx.core.app.RemoteInput)[remoteInputs];
+
+        remoteInputs = 0;
+
+     label2:
+        $u2 = lengthof $u3;
+
+        if remoteInputs >= $u2 goto label3;
+
+        $u2#6 = $u3[remoteInputs];
+
+        $u-1 = staticinvoke <androidx.core.app.NotificationCompatJellybean: androidx.core.app.RemoteInput fromBundle(android.os.Bundle)>($u2#6);
+
+        remoteInputs#3[remoteInputs] = $u-1;
+
+        remoteInputs = remoteInputs + 1;
+
+        goto label2;
+
+     label3:
+        return remoteInputs#3;
+    }
+
+    public static androidx.core.app.NotificationCompat$Action getAction(android.app.Notification, int)
+    {
+        android.app.Notification $u8;
+        int $u9;
+        java.lang.Object $u0, actionObject, $u-1#10;
+        java.lang.Object[] $u-1;
+        android.os.Bundle actionExtras, $u-1#6;
+        android.util.SparseArray $u-1#8;
+        java.lang.reflect.Field actionExtrasMap;
+        java.lang.CharSequence $u6;
+        android.app.PendingIntent $u7;
+        androidx.core.app.NotificationCompat$Action $u-1#24;
+        java.lang.Throwable actionObjects;
+        java.lang.IllegalAccessException actionObjects#27;
+
+        $u8 := @parameter0: android.app.Notification;
+
+        $u9 := @parameter1: int;
+
+        $u0 = <androidx.core.app.NotificationCompatJellybean: java.lang.Object sActionsLock>;
+
+        entermonitor $u0;
+
+     label01:
+        $u-1 = staticinvoke <androidx.core.app.NotificationCompatJellybean: java.lang.Object[] getActionObjectsLocked(android.app.Notification)>($u8);
+
+     label02:
+        if $u-1 == null goto label19;
+
+        actionObject = $u-1[$u9];
+
+        actionExtras = null;
+
+     label03:
+        $u-1#6 = staticinvoke <androidx.core.app.NotificationCompatJellybean: android.os.Bundle getExtras(android.app.Notification)>($u8);
+
+     label04:
+        if $u-1#6 == null goto label09;
+
+     label05:
+        $u-1#8 = virtualinvoke $u-1#6.<android.os.Bundle: android.util.SparseArray getSparseParcelableArray(java.lang.String)>("android.support.actionExtras");
+
+     label06:
+        if $u-1#8 == null goto label09;
+
+     label07:
+        $u-1#10 = virtualinvoke $u-1#8.<android.util.SparseArray: java.lang.Object get(int)>($u9);
+
+     label08:
+        actionExtras = (android.os.Bundle) $u-1#10;
+
+     label09:
+        actionExtrasMap = <androidx.core.app.NotificationCompatJellybean: java.lang.reflect.Field sActionIconField>;
+
+     label10:
+        $u9 = virtualinvoke actionExtrasMap.<java.lang.reflect.Field: int getInt(java.lang.Object)>(actionObject);
+
+     label11:
+        actionExtrasMap = <androidx.core.app.NotificationCompatJellybean: java.lang.reflect.Field sActionTitleField>;
+
+     label12:
+        $u-1#10 = virtualinvoke actionExtrasMap.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>(actionObject);
+
+     label13:
+        $u6 = (java.lang.CharSequence) $u-1#10;
+
+        actionExtrasMap = <androidx.core.app.NotificationCompatJellybean: java.lang.reflect.Field sActionIntentField>;
+
+     label14:
+        actionObject = virtualinvoke actionExtrasMap.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>(actionObject);
+
+     label15:
+        $u7 = (android.app.PendingIntent) actionObject;
+
+     label16:
+        $u-1#24 = staticinvoke <androidx.core.app.NotificationCompatJellybean: androidx.core.app.NotificationCompat$Action readAction(int,java.lang.CharSequence,android.app.PendingIntent,android.os.Bundle)>($u9, $u6, $u7, actionExtras);
+
+     label17:
+        exitmonitor $u0;
+
+     label18:
+        return $u-1#24;
+
+     label19:
+        goto label22;
+
+     label20:
+        actionObjects := @caughtexception;
+
+        goto label24;
+
+     label21:
+        actionObjects#27 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("NotificationCompat", "Unable to access notification actions", actionObjects#27);
+
+        <androidx.core.app.NotificationCompatJellybean: boolean sActionsAccessFailed> = 1;
+
+     label22:
+        exitmonitor $u0;
+
+     label23:
+        return null;
+
+     label24:
+        exitmonitor $u0;
+
+     label25:
+        throw actionObjects;
+
+        catch java.lang.IllegalAccessException from label01 to label02 with label21;
+        catch java.lang.IllegalAccessException from label03 to label04 with label21;
+        catch java.lang.IllegalAccessException from label05 to label06 with label21;
+        catch java.lang.IllegalAccessException from label07 to label08 with label21;
+        catch java.lang.IllegalAccessException from label10 to label11 with label21;
+        catch java.lang.IllegalAccessException from label12 to label13 with label21;
+        catch java.lang.IllegalAccessException from label14 to label15 with label21;
+        catch java.lang.IllegalAccessException from label16 to label17 with label21;
+        catch java.lang.Throwable from label01 to label17 with label20;
+        catch java.lang.Throwable from label17 to label18 with label20;
+        catch java.lang.Throwable from label19 to label23 with label20;
+        catch java.lang.Throwable from label24 to label25 with label20;
+    }
+
+    public static int getActionCount(android.app.Notification)
+    {
+        android.app.Notification $u3;
+        java.lang.Object $u0;
+        java.lang.Object[] $u-1;
+        int $u2;
+        java.lang.Throwable actionObjects;
+
+        $u3 := @parameter0: android.app.Notification;
+
+        $u0 = <androidx.core.app.NotificationCompatJellybean: java.lang.Object sActionsLock>;
+
+        entermonitor $u0;
+
+     label1:
+        $u-1 = staticinvoke <androidx.core.app.NotificationCompatJellybean: java.lang.Object[] getActionObjectsLocked(android.app.Notification)>($u3);
+
+        if $u-1 == null goto label2;
+
+        $u2 = lengthof $u-1;
+
+        goto label3;
+
+     label2:
+        $u2 = 0;
+
+     label3:
+        exitmonitor $u0;
+
+     label4:
+        return $u2;
+
+     label5:
+        actionObjects := @caughtexception;
+
+        exitmonitor $u0;
+
+     label6:
+        throw actionObjects;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    static androidx.core.app.NotificationCompat$Action getActionFromBundle(android.os.Bundle)
+    {
+        android.os.Bundle $u15, $u-1;
+        androidx.core.app.NotificationCompat$Action $u14;
+        boolean allowGeneratedReplies, $u-1#29;
+        int $u-1#8, $u-1#27;
+        java.lang.CharSequence $u-1#11;
+        android.os.Parcelable $u-1#13;
+        android.app.PendingIntent $u6;
+        android.os.Bundle[] $u-1#19;
+        androidx.core.app.RemoteInput[] $u-1#21, $u-1#25;
+
+        $u15 := @parameter0: android.os.Bundle;
+
+        $u-1 = virtualinvoke $u15.<android.os.Bundle: android.os.Bundle getBundle(java.lang.String)>("extras");
+
+        allowGeneratedReplies = 0;
+
+        if $u-1 == null goto label1;
+
+        allowGeneratedReplies = virtualinvoke $u-1.<android.os.Bundle: boolean getBoolean(java.lang.String,boolean)>("android.support.allowGeneratedReplies", 0);
+
+     label1:
+        $u14 = new androidx.core.app.NotificationCompat$Action;
+
+        $u-1#8 = virtualinvoke $u15.<android.os.Bundle: int getInt(java.lang.String)>("icon");
+
+        $u-1#11 = virtualinvoke $u15.<android.os.Bundle: java.lang.CharSequence getCharSequence(java.lang.String)>("title");
+
+        $u-1#13 = virtualinvoke $u15.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>("actionIntent");
+
+        $u6 = (android.app.PendingIntent) $u-1#13;
+
+        $u-1 = virtualinvoke $u15.<android.os.Bundle: android.os.Bundle getBundle(java.lang.String)>("extras");
+
+        $u-1#19 = staticinvoke <androidx.core.app.NotificationCompatJellybean: android.os.Bundle[] getBundleArrayFromBundle(android.os.Bundle,java.lang.String)>($u15, "remoteInputs");
+
+        $u-1#21 = staticinvoke <androidx.core.app.NotificationCompatJellybean: androidx.core.app.RemoteInput[] fromBundleArray(android.os.Bundle[])>($u-1#19);
+
+        $u-1#19 = staticinvoke <androidx.core.app.NotificationCompatJellybean: android.os.Bundle[] getBundleArrayFromBundle(android.os.Bundle,java.lang.String)>($u15, "dataOnlyRemoteInputs");
+
+        $u-1#25 = staticinvoke <androidx.core.app.NotificationCompatJellybean: androidx.core.app.RemoteInput[] fromBundleArray(android.os.Bundle[])>($u-1#19);
+
+        $u-1#27 = virtualinvoke $u15.<android.os.Bundle: int getInt(java.lang.String)>("semanticAction");
+
+        $u-1#29 = virtualinvoke $u15.<android.os.Bundle: boolean getBoolean(java.lang.String)>("showsUserInterface");
+
+        specialinvoke $u14.<androidx.core.app.NotificationCompat$Action: void <init>(int,java.lang.CharSequence,android.app.PendingIntent,android.os.Bundle,androidx.core.app.RemoteInput[],androidx.core.app.RemoteInput[],boolean,int,boolean,boolean)>($u-1#8, $u-1#11, $u6, $u-1, $u-1#21, $u-1#25, allowGeneratedReplies, $u-1#27, $u-1#29, 0);
+
+        return $u14;
+    }
+
+    private static java.lang.Object[] getActionObjectsLocked(android.app.Notification)
+    {
+        android.app.Notification $u5;
+        java.lang.Object $u0, $u-1#4;
+        boolean $u-1;
+        java.lang.reflect.Field e;
+        java.lang.Object[] e#6;
+        java.lang.IllegalAccessException e#7;
+        java.lang.Throwable e#10;
+
+        $u5 := @parameter0: android.app.Notification;
+
+        $u0 = <androidx.core.app.NotificationCompatJellybean: java.lang.Object sActionsLock>;
+
+        entermonitor $u0;
+
+     label01:
+        $u-1 = staticinvoke <androidx.core.app.NotificationCompatJellybean: boolean ensureActionReflectionReadyLocked()>();
+
+        if $u-1 != 0 goto label03;
+
+        exitmonitor $u0;
+
+     label02:
+        return null;
+
+     label03:
+        e = <androidx.core.app.NotificationCompatJellybean: java.lang.reflect.Field sActionsField>;
+
+     label04:
+        $u-1#4 = virtualinvoke e.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($u5);
+
+     label05:
+        e#6 = (java.lang.Object[]) $u-1#4;
+
+     label06:
+        exitmonitor $u0;
+
+     label07:
+        return e#6;
+
+     label08:
+        e#7 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("NotificationCompat", "Unable to access notification actions", e#7);
+
+        <androidx.core.app.NotificationCompatJellybean: boolean sActionsAccessFailed> = 1;
+
+        exitmonitor $u0;
+
+     label09:
+        return null;
+
+     label10:
+        e#10 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label11:
+        throw e#10;
+
+        catch java.lang.Throwable from label01 to label02 with label10;
+        catch java.lang.IllegalAccessException from label04 to label05 with label08;
+        catch java.lang.Throwable from label03 to label06 with label10;
+        catch java.lang.Throwable from label06 to label07 with label10;
+        catch java.lang.Throwable from label08 to label09 with label10;
+        catch java.lang.Throwable from label10 to label11 with label10;
+    }
+
+    private static android.os.Bundle[] getBundleArrayFromBundle(android.os.Bundle, java.lang.String)
+    {
+        android.os.Bundle $u3;
+        java.lang.String $u4;
+        android.os.Parcelable[] $u-1;
+        boolean typedArray;
+        int typedArray#3;
+        java.lang.Object[] $u-1#4;
+        android.os.Bundle[] typedArray#6;
+
+        $u3 := @parameter0: android.os.Bundle;
+
+        $u4 := @parameter1: java.lang.String;
+
+        $u-1 = virtualinvoke $u3.<android.os.Bundle: android.os.Parcelable[] getParcelableArray(java.lang.String)>($u4);
+
+        typedArray = $u-1 instanceof android.os.Bundle[];
+
+        if typedArray != 0 goto label2;
+
+        if $u-1 != null goto label1;
+
+        goto label2;
+
+     label1:
+        typedArray#3 = lengthof $u-1;
+
+        $u-1#4 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int,java.lang.Class)>($u-1, typedArray#3, class "[Landroid/os/Bundle;");
+
+        typedArray#6 = (android.os.Bundle[]) $u-1#4;
+
+        virtualinvoke $u3.<android.os.Bundle: void putParcelableArray(java.lang.String,android.os.Parcelable[])>($u4, typedArray#6);
+
+        return typedArray#6;
+
+     label2:
+        typedArray#6 = (android.os.Bundle[]) $u-1;
+
+        return typedArray#6;
+    }
+
+    static android.os.Bundle getBundleForAction(androidx.core.app.NotificationCompat$Action)
+    {
+        androidx.core.app.NotificationCompat$Action $u5;
+        android.os.Bundle bundle, $u-1#11, $u-1#14;
+        androidx.core.graphics.drawable.IconCompat $u-1;
+        int $u-1#2;
+        java.lang.CharSequence $u-1#5;
+        android.app.PendingIntent $u-1#8;
+        boolean $u-1#16;
+        androidx.core.app.RemoteInput[] $u-1#20;
+        android.os.Bundle[] $u-1#22;
+
+        $u5 := @parameter0: androidx.core.app.NotificationCompat$Action;
+
+        bundle = new android.os.Bundle;
+
+        specialinvoke bundle.<android.os.Bundle: void <init>()>();
+
+        $u-1 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: androidx.core.graphics.drawable.IconCompat getIconCompat()>();
+
+        if $u-1 == null goto label1;
+
+        $u-1#2 = virtualinvoke $u-1.<androidx.core.graphics.drawable.IconCompat: int getResId()>();
+
+        goto label2;
+
+     label1:
+        $u-1#2 = 0;
+
+     label2:
+        virtualinvoke bundle.<android.os.Bundle: void putInt(java.lang.String,int)>("icon", $u-1#2);
+
+        $u-1#5 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: java.lang.CharSequence getTitle()>();
+
+        virtualinvoke bundle.<android.os.Bundle: void putCharSequence(java.lang.String,java.lang.CharSequence)>("title", $u-1#5);
+
+        $u-1#8 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: android.app.PendingIntent getActionIntent()>();
+
+        virtualinvoke bundle.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("actionIntent", $u-1#8);
+
+        $u-1#11 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: android.os.Bundle getExtras()>();
+
+        if $u-1#11 == null goto label3;
+
+        $u-1#11 = new android.os.Bundle;
+
+        $u-1#14 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: android.os.Bundle getExtras()>();
+
+        specialinvoke $u-1#11.<android.os.Bundle: void <init>(android.os.Bundle)>($u-1#14);
+
+        goto label4;
+
+     label3:
+        $u-1#11 = new android.os.Bundle;
+
+        specialinvoke $u-1#11.<android.os.Bundle: void <init>()>();
+
+     label4:
+        $u-1#16 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: boolean getAllowGeneratedReplies()>();
+
+        virtualinvoke $u-1#11.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>("android.support.allowGeneratedReplies", $u-1#16);
+
+        virtualinvoke bundle.<android.os.Bundle: void putBundle(java.lang.String,android.os.Bundle)>("extras", $u-1#11);
+
+        $u-1#20 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: androidx.core.app.RemoteInput[] getRemoteInputs()>();
+
+        $u-1#22 = staticinvoke <androidx.core.app.NotificationCompatJellybean: android.os.Bundle[] toBundleArray(androidx.core.app.RemoteInput[])>($u-1#20);
+
+        virtualinvoke bundle.<android.os.Bundle: void putParcelableArray(java.lang.String,android.os.Parcelable[])>("remoteInputs", $u-1#22);
+
+        $u-1#16 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: boolean getShowsUserInterface()>();
+
+        virtualinvoke bundle.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>("showsUserInterface", $u-1#16);
+
+        $u-1#2 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: int getSemanticAction()>();
+
+        virtualinvoke bundle.<android.os.Bundle: void putInt(java.lang.String,int)>("semanticAction", $u-1#2);
+
+        return bundle;
+    }
+
+    public static android.os.Bundle getExtras(android.app.Notification)
+    {
+        android.app.Notification $u6;
+        java.lang.Object $u0, $u-1#16;
+        boolean $u1;
+        java.lang.reflect.Field extrasField;
+        java.lang.Class extrasField#4, $u-1;
+        android.os.Bundle extrasField#18, $u4;
+        java.lang.NoSuchFieldException extrasField#21;
+        java.lang.IllegalAccessException extrasField#24;
+        java.lang.Throwable $u1#27;
+
+        $u6 := @parameter0: android.app.Notification;
+
+        $u0 = <androidx.core.app.NotificationCompatJellybean: java.lang.Object sExtrasLock>;
+
+        entermonitor $u0;
+
+     label01:
+        $u1 = <androidx.core.app.NotificationCompatJellybean: boolean sExtrasFieldAccessFailed>;
+
+        if $u1 == 0 goto label03;
+
+        exitmonitor $u0;
+
+     label02:
+        return null;
+
+     label03:
+        extrasField = <androidx.core.app.NotificationCompatJellybean: java.lang.reflect.Field sExtrasField>;
+
+        if extrasField != null goto label14;
+
+        extrasField#4 = class "Landroid/app/Notification;";
+
+     label04:
+        extrasField = virtualinvoke extrasField#4.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("extras");
+
+     label05:
+        extrasField#4 = class "Landroid/os/Bundle;";
+
+     label06:
+        $u-1 = virtualinvoke extrasField.<java.lang.reflect.Field: java.lang.Class getType()>();
+
+        $u1 = virtualinvoke extrasField#4.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($u-1);
+
+     label07:
+        if $u1 != 0 goto label12;
+
+     label08:
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("NotificationCompat", "Notification.extras field is not of type Bundle");
+
+     label09:
+        <androidx.core.app.NotificationCompatJellybean: boolean sExtrasFieldAccessFailed> = 1;
+
+     label10:
+        exitmonitor $u0;
+
+     label11:
+        return null;
+
+     label12:
+        virtualinvoke extrasField.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+     label13:
+        <androidx.core.app.NotificationCompatJellybean: java.lang.reflect.Field sExtrasField> = extrasField;
+
+     label14:
+        extrasField = <androidx.core.app.NotificationCompatJellybean: java.lang.reflect.Field sExtrasField>;
+
+     label15:
+        $u-1#16 = virtualinvoke extrasField.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($u6);
+
+     label16:
+        extrasField#18 = (android.os.Bundle) $u-1#16;
+
+        if extrasField#18 != null goto label20;
+
+        $u4 = new android.os.Bundle;
+
+     label17:
+        specialinvoke $u4.<android.os.Bundle: void <init>()>();
+
+     label18:
+        extrasField#18 = $u4;
+
+        extrasField = <androidx.core.app.NotificationCompatJellybean: java.lang.reflect.Field sExtrasField>;
+
+     label19:
+        virtualinvoke extrasField.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($u6, $u4);
+
+     label20:
+        exitmonitor $u0;
+
+     label21:
+        return extrasField#18;
+
+     label22:
+        extrasField#21 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("NotificationCompat", "Unable to access notification extras", extrasField#21);
+
+        goto label24;
+
+     label23:
+        extrasField#24 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("NotificationCompat", "Unable to access notification extras", extrasField#24);
+
+     label24:
+        <androidx.core.app.NotificationCompatJellybean: boolean sExtrasFieldAccessFailed> = 1;
+
+        exitmonitor $u0;
+
+     label25:
+        return null;
+
+     label26:
+        $u1#27 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label27:
+        throw $u1#27;
+
+        catch java.lang.Throwable from label01 to label02 with label26;
+        catch java.lang.IllegalAccessException from label04 to label05 with label23;
+        catch java.lang.IllegalAccessException from label06 to label07 with label23;
+        catch java.lang.IllegalAccessException from label08 to label09 with label23;
+        catch java.lang.NoSuchFieldException from label04 to label05 with label22;
+        catch java.lang.NoSuchFieldException from label06 to label07 with label22;
+        catch java.lang.NoSuchFieldException from label08 to label09 with label22;
+        catch java.lang.Throwable from label03 to label10 with label26;
+        catch java.lang.Throwable from label10 to label11 with label26;
+        catch java.lang.IllegalAccessException from label12 to label13 with label23;
+        catch java.lang.IllegalAccessException from label15 to label16 with label23;
+        catch java.lang.IllegalAccessException from label17 to label18 with label23;
+        catch java.lang.IllegalAccessException from label19 to label20 with label23;
+        catch java.lang.NoSuchFieldException from label12 to label13 with label22;
+        catch java.lang.NoSuchFieldException from label15 to label16 with label22;
+        catch java.lang.NoSuchFieldException from label17 to label18 with label22;
+        catch java.lang.NoSuchFieldException from label19 to label20 with label22;
+        catch java.lang.Throwable from label12 to label20 with label26;
+        catch java.lang.Throwable from label20 to label21 with label26;
+        catch java.lang.Throwable from label22 to label25 with label26;
+        catch java.lang.Throwable from label26 to label27 with label26;
+    }
+
+    public static androidx.core.app.NotificationCompat$Action readAction(int, java.lang.CharSequence, android.app.PendingIntent, android.os.Bundle)
+    {
+        int $u16;
+        java.lang.CharSequence $u17;
+        android.app.PendingIntent $u18;
+        android.os.Bundle $u19;
+        androidx.core.app.NotificationCompat$Action $u15;
+        android.os.Bundle[] $u-1;
+        androidx.core.app.RemoteInput[] $u-1#7, $u-1#12;
+        boolean $u-1#15;
+
+        $u16 := @parameter0: int;
+
+        $u17 := @parameter1: java.lang.CharSequence;
+
+        $u18 := @parameter2: android.app.PendingIntent;
+
+        $u19 := @parameter3: android.os.Bundle;
+
+        if $u19 == null goto label1;
+
+        $u-1 = staticinvoke <androidx.core.app.NotificationCompatJellybean: android.os.Bundle[] getBundleArrayFromBundle(android.os.Bundle,java.lang.String)>($u19, "android.support.remoteInputs");
+
+        $u-1#7 = staticinvoke <androidx.core.app.NotificationCompatJellybean: androidx.core.app.RemoteInput[] fromBundleArray(android.os.Bundle[])>($u-1);
+
+        $u-1 = staticinvoke <androidx.core.app.NotificationCompatJellybean: android.os.Bundle[] getBundleArrayFromBundle(android.os.Bundle,java.lang.String)>($u19, "android.support.dataRemoteInputs");
+
+        $u-1#12 = staticinvoke <androidx.core.app.NotificationCompatJellybean: androidx.core.app.RemoteInput[] fromBundleArray(android.os.Bundle[])>($u-1);
+
+        $u-1#15 = virtualinvoke $u19.<android.os.Bundle: boolean getBoolean(java.lang.String)>("android.support.allowGeneratedReplies");
+
+        goto label2;
+
+     label1:
+        $u-1#7 = null;
+
+        $u-1#12 = null;
+
+        $u-1#15 = 0;
+
+     label2:
+        $u15 = new androidx.core.app.NotificationCompat$Action;
+
+        specialinvoke $u15.<androidx.core.app.NotificationCompat$Action: void <init>(int,java.lang.CharSequence,android.app.PendingIntent,android.os.Bundle,androidx.core.app.RemoteInput[],androidx.core.app.RemoteInput[],boolean,int,boolean,boolean)>($u16, $u17, $u18, $u19, $u-1#7, $u-1#12, $u-1#15, 0, 1, 0);
+
+        return $u15;
+    }
+
+    private static android.os.Bundle toBundle(androidx.core.app.RemoteInput)
+    {
+        androidx.core.app.RemoteInput $u5;
+        android.os.Bundle data, $u-1#13;
+        java.lang.String $u-1;
+        java.lang.CharSequence $u-1#4;
+        java.lang.CharSequence[] $u-1#7;
+        boolean $u-1#10;
+        java.util.Set $u-1#16;
+        java.util.ArrayList allowedDataTypesAsList;
+        int $u-1#21;
+        java.util.Iterator $u-1#23;
+        java.lang.Object $u-1#27;
+
+        $u5 := @parameter0: androidx.core.app.RemoteInput;
+
+        data = new android.os.Bundle;
+
+        specialinvoke data.<android.os.Bundle: void <init>()>();
+
+        $u-1 = virtualinvoke $u5.<androidx.core.app.RemoteInput: java.lang.String getResultKey()>();
+
+        virtualinvoke data.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("resultKey", $u-1);
+
+        $u-1#4 = virtualinvoke $u5.<androidx.core.app.RemoteInput: java.lang.CharSequence getLabel()>();
+
+        virtualinvoke data.<android.os.Bundle: void putCharSequence(java.lang.String,java.lang.CharSequence)>("label", $u-1#4);
+
+        $u-1#7 = virtualinvoke $u5.<androidx.core.app.RemoteInput: java.lang.CharSequence[] getChoices()>();
+
+        virtualinvoke data.<android.os.Bundle: void putCharSequenceArray(java.lang.String,java.lang.CharSequence[])>("choices", $u-1#7);
+
+        $u-1#10 = virtualinvoke $u5.<androidx.core.app.RemoteInput: boolean getAllowFreeFormInput()>();
+
+        virtualinvoke data.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>("allowFreeFormInput", $u-1#10);
+
+        $u-1#13 = virtualinvoke $u5.<androidx.core.app.RemoteInput: android.os.Bundle getExtras()>();
+
+        virtualinvoke data.<android.os.Bundle: void putBundle(java.lang.String,android.os.Bundle)>("extras", $u-1#13);
+
+        $u-1#16 = virtualinvoke $u5.<androidx.core.app.RemoteInput: java.util.Set getAllowedDataTypes()>();
+
+        if $u-1#16 == null goto label3;
+
+        $u-1#10 = interfaceinvoke $u-1#16.<java.util.Set: boolean isEmpty()>();
+
+        if $u-1#10 != 0 goto label3;
+
+        allowedDataTypesAsList = new java.util.ArrayList;
+
+        $u-1#21 = interfaceinvoke $u-1#16.<java.util.Set: int size()>();
+
+        specialinvoke allowedDataTypesAsList.<java.util.ArrayList: void <init>(int)>($u-1#21);
+
+        $u-1#23 = interfaceinvoke $u-1#16.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#10 = interfaceinvoke $u-1#23.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#10 == 0 goto label2;
+
+        $u-1#27 = interfaceinvoke $u-1#23.<java.util.Iterator: java.lang.Object next()>();
+
+        $u-1 = (java.lang.String) $u-1#27;
+
+        virtualinvoke allowedDataTypesAsList.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1);
+
+        goto label1;
+
+     label2:
+        virtualinvoke data.<android.os.Bundle: void putStringArrayList(java.lang.String,java.util.ArrayList)>("allowedDataTypes", allowedDataTypesAsList);
+
+     label3:
+        return data;
+    }
+
+    private static android.os.Bundle[] toBundleArray(androidx.core.app.RemoteInput[])
+    {
+        androidx.core.app.RemoteInput[] $u3;
+        android.os.Bundle $u-1;
+        int bundles, $u2;
+        android.os.Bundle[] bundles#3;
+        androidx.core.app.RemoteInput $u2#6;
+
+        $u3 := @parameter0: androidx.core.app.RemoteInput[];
+
+        if $u3 != null goto label1;
+
+        return null;
+
+     label1:
+        bundles = lengthof $u3;
+
+        bundles#3 = newarray (android.os.Bundle)[bundles];
+
+        bundles = 0;
+
+     label2:
+        $u2 = lengthof $u3;
+
+        if bundles >= $u2 goto label3;
+
+        $u2#6 = $u3[bundles];
+
+        $u-1 = staticinvoke <androidx.core.app.NotificationCompatJellybean: android.os.Bundle toBundle(androidx.core.app.RemoteInput)>($u2#6);
+
+        bundles#3[bundles] = $u-1;
+
+        bundles = bundles + 1;
+
+        goto label2;
+
+     label3:
+        return bundles#3;
+    }
+
+    public static android.os.Bundle writeActionAndGetExtras(android.app.Notification$Builder, androidx.core.app.NotificationCompat$Action)
+    {
+        android.app.Notification$Builder $u4;
+        androidx.core.app.NotificationCompat$Action $u5;
+        androidx.core.graphics.drawable.IconCompat $u-1;
+        int $u-1#2;
+        java.lang.CharSequence $u-1#4;
+        android.app.PendingIntent $u-1#6;
+        android.os.Bundle actionExtras, $u-1#9;
+        androidx.core.app.RemoteInput[] $u-1#11;
+        android.os.Bundle[] $u-1#15;
+        boolean $u-1#25;
+
+        $u4 := @parameter0: android.app.Notification$Builder;
+
+        $u5 := @parameter1: androidx.core.app.NotificationCompat$Action;
+
+        $u-1 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: androidx.core.graphics.drawable.IconCompat getIconCompat()>();
+
+        if $u-1 == null goto label1;
+
+        $u-1#2 = virtualinvoke $u-1.<androidx.core.graphics.drawable.IconCompat: int getResId()>();
+
+        goto label2;
+
+     label1:
+        $u-1#2 = 0;
+
+     label2:
+        $u-1#4 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: java.lang.CharSequence getTitle()>();
+
+        $u-1#6 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: android.app.PendingIntent getActionIntent()>();
+
+        virtualinvoke $u4.<android.app.Notification$Builder: android.app.Notification$Builder addAction(int,java.lang.CharSequence,android.app.PendingIntent)>($u-1#2, $u-1#4, $u-1#6);
+
+        actionExtras = new android.os.Bundle;
+
+        $u-1#9 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: android.os.Bundle getExtras()>();
+
+        specialinvoke actionExtras.<android.os.Bundle: void <init>(android.os.Bundle)>($u-1#9);
+
+        $u-1#11 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: androidx.core.app.RemoteInput[] getRemoteInputs()>();
+
+        if $u-1#11 == null goto label3;
+
+        $u-1#11 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: androidx.core.app.RemoteInput[] getRemoteInputs()>();
+
+        $u-1#15 = staticinvoke <androidx.core.app.NotificationCompatJellybean: android.os.Bundle[] toBundleArray(androidx.core.app.RemoteInput[])>($u-1#11);
+
+        virtualinvoke actionExtras.<android.os.Bundle: void putParcelableArray(java.lang.String,android.os.Parcelable[])>("android.support.remoteInputs", $u-1#15);
+
+     label3:
+        $u-1#11 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: androidx.core.app.RemoteInput[] getDataOnlyRemoteInputs()>();
+
+        if $u-1#11 == null goto label4;
+
+        $u-1#11 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: androidx.core.app.RemoteInput[] getDataOnlyRemoteInputs()>();
+
+        $u-1#15 = staticinvoke <androidx.core.app.NotificationCompatJellybean: android.os.Bundle[] toBundleArray(androidx.core.app.RemoteInput[])>($u-1#11);
+
+        virtualinvoke actionExtras.<android.os.Bundle: void putParcelableArray(java.lang.String,android.os.Parcelable[])>("android.support.dataRemoteInputs", $u-1#15);
+
+     label4:
+        $u-1#25 = virtualinvoke $u5.<androidx.core.app.NotificationCompat$Action: boolean getAllowGeneratedReplies()>();
+
+        virtualinvoke actionExtras.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>("android.support.allowGeneratedReplies", $u-1#25);
+
+        return actionExtras;
+    }
+}

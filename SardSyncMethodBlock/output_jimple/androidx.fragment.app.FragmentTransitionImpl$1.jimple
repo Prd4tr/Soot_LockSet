@@ -1,0 +1,101 @@
+class androidx.fragment.app.FragmentTransitionImpl$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.fragment.app.FragmentTransitionImpl this$0;
+    final java.util.ArrayList val$inNames;
+    final int val$numSharedElements;
+    final java.util.ArrayList val$outNames;
+    final java.util.ArrayList val$sharedElementsIn;
+    final java.util.ArrayList val$sharedElementsOut;
+
+    void <init>(androidx.fragment.app.FragmentTransitionImpl, int, java.util.ArrayList, java.util.ArrayList, java.util.ArrayList, java.util.ArrayList)
+    {
+        androidx.fragment.app.FragmentTransitionImpl$1 this;
+        androidx.fragment.app.FragmentTransitionImpl $u1;
+        int $u2;
+        java.util.ArrayList $u3, $u4, $u5, $u6;
+
+        this := @this: androidx.fragment.app.FragmentTransitionImpl$1;
+
+        $u1 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: java.util.ArrayList;
+
+        $u4 := @parameter3: java.util.ArrayList;
+
+        $u5 := @parameter4: java.util.ArrayList;
+
+        $u6 := @parameter5: java.util.ArrayList;
+
+        this.<androidx.fragment.app.FragmentTransitionImpl$1: androidx.fragment.app.FragmentTransitionImpl this$0> = $u1;
+
+        this.<androidx.fragment.app.FragmentTransitionImpl$1: int val$numSharedElements> = $u2;
+
+        this.<androidx.fragment.app.FragmentTransitionImpl$1: java.util.ArrayList val$sharedElementsIn> = $u3;
+
+        this.<androidx.fragment.app.FragmentTransitionImpl$1: java.util.ArrayList val$inNames> = $u4;
+
+        this.<androidx.fragment.app.FragmentTransitionImpl$1: java.util.ArrayList val$sharedElementsOut> = $u5;
+
+        this.<androidx.fragment.app.FragmentTransitionImpl$1: java.util.ArrayList val$outNames> = $u6;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.fragment.app.FragmentTransitionImpl$1 this;
+        int i, $u1;
+        java.util.ArrayList $u1#3;
+        java.lang.Object $u-1;
+        android.view.View $u1#6;
+        java.lang.String $u2;
+
+        this := @this: androidx.fragment.app.FragmentTransitionImpl$1;
+
+        i = 0;
+
+     label1:
+        $u1 = this.<androidx.fragment.app.FragmentTransitionImpl$1: int val$numSharedElements>;
+
+        if i >= $u1 goto label2;
+
+        $u1#3 = this.<androidx.fragment.app.FragmentTransitionImpl$1: java.util.ArrayList val$sharedElementsIn>;
+
+        $u-1 = virtualinvoke $u1#3.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        $u1#6 = (android.view.View) $u-1;
+
+        $u1#3 = this.<androidx.fragment.app.FragmentTransitionImpl$1: java.util.ArrayList val$inNames>;
+
+        $u-1 = virtualinvoke $u1#3.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        $u2 = (java.lang.String) $u-1;
+
+        staticinvoke <androidx.core.view.ViewCompat: void setTransitionName(android.view.View,java.lang.String)>($u1#6, $u2);
+
+        $u1#3 = this.<androidx.fragment.app.FragmentTransitionImpl$1: java.util.ArrayList val$sharedElementsOut>;
+
+        $u-1 = virtualinvoke $u1#3.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        $u1#6 = (android.view.View) $u-1;
+
+        $u1#3 = this.<androidx.fragment.app.FragmentTransitionImpl$1: java.util.ArrayList val$outNames>;
+
+        $u-1 = virtualinvoke $u1#3.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        $u2 = (java.lang.String) $u-1;
+
+        staticinvoke <androidx.core.view.ViewCompat: void setTransitionName(android.view.View,java.lang.String)>($u1#6, $u2);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+}

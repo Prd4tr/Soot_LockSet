@@ -1,0 +1,971 @@
+public class androidx.constraintlayout.helper.widget.Layer extends androidx.constraintlayout.widget.ConstraintHelper
+{
+    private static final java.lang.String TAG;
+    private boolean mApplyElevationOnAttach;
+    private boolean mApplyVisibilityOnAttach;
+    protected float mComputedCenterX;
+    protected float mComputedCenterY;
+    protected float mComputedMaxX;
+    protected float mComputedMaxY;
+    protected float mComputedMinX;
+    protected float mComputedMinY;
+    androidx.constraintlayout.widget.ConstraintLayout mContainer;
+    private float mGroupRotateAngle;
+    boolean mNeedBounds;
+    private float mRotationCenterX;
+    private float mRotationCenterY;
+    private float mScaleX;
+    private float mScaleY;
+    private float mShiftX;
+    private float mShiftY;
+    android.view.View[] mViews;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        android.content.Context $u3;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u3 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void <init>(android.content.Context)>($u3);
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterX> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterY> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mGroupRotateAngle> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mScaleX> = 1.0F;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mScaleY> = 1.0F;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterX> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterY> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMaxX> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMaxY> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMinX> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMinY> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: boolean mNeedBounds> = 1;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: android.view.View[] mViews> = null;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mShiftX> = 0.0F;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mShiftY> = 0.0F;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        android.content.Context $u3;
+        android.util.AttributeSet $u4;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u4 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void <init>(android.content.Context,android.util.AttributeSet)>($u3, $u4);
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterX> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterY> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mGroupRotateAngle> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mScaleX> = 1.0F;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mScaleY> = 1.0F;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterX> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterY> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMaxX> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMaxY> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMinX> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMinY> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: boolean mNeedBounds> = 1;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: android.view.View[] mViews> = null;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mShiftX> = 0.0F;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mShiftY> = 0.0F;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        android.content.Context $u3;
+        android.util.AttributeSet $u4;
+        int $u5;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u4 := @parameter1: android.util.AttributeSet;
+
+        $u5 := @parameter2: int;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void <init>(android.content.Context,android.util.AttributeSet,int)>($u3, $u4, $u5);
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterX> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterY> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mGroupRotateAngle> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mScaleX> = 1.0F;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mScaleY> = 1.0F;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterX> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterY> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMaxX> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMaxY> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMinX> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMinY> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: boolean mNeedBounds> = 1;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: android.view.View[] mViews> = null;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mShiftX> = 0.0F;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mShiftY> = 0.0F;
+
+        return;
+    }
+
+    private void reCacheViews()
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        android.view.View[] $u2;
+        android.view.View $u-1;
+        androidx.constraintlayout.widget.ConstraintLayout i;
+        int i#2, id;
+        int[] id#10;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        i = this.<androidx.constraintlayout.helper.widget.Layer: androidx.constraintlayout.widget.ConstraintLayout mContainer>;
+
+        if i != null goto label1;
+
+        return;
+
+     label1:
+        i#2 = this.<androidx.constraintlayout.helper.widget.Layer: int mCount>;
+
+        if i#2 != 0 goto label2;
+
+        return;
+
+     label2:
+        $u2 = this.<androidx.constraintlayout.helper.widget.Layer: android.view.View[] mViews>;
+
+        if $u2 == null goto label3;
+
+        i#2 = lengthof $u2;
+
+        id = this.<androidx.constraintlayout.helper.widget.Layer: int mCount>;
+
+        if i#2 == id goto label4;
+
+     label3:
+        i#2 = this.<androidx.constraintlayout.helper.widget.Layer: int mCount>;
+
+        $u2 = newarray (android.view.View)[i#2];
+
+        this.<androidx.constraintlayout.helper.widget.Layer: android.view.View[] mViews> = $u2;
+
+     label4:
+        i#2 = 0;
+
+     label5:
+        id = this.<androidx.constraintlayout.helper.widget.Layer: int mCount>;
+
+        if i#2 >= id goto label6;
+
+        id#10 = this.<androidx.constraintlayout.helper.widget.Layer: int[] mIds>;
+
+        id = id#10[i#2];
+
+        $u2 = this.<androidx.constraintlayout.helper.widget.Layer: android.view.View[] mViews>;
+
+        i = this.<androidx.constraintlayout.helper.widget.Layer: androidx.constraintlayout.widget.ConstraintLayout mContainer>;
+
+        $u-1 = virtualinvoke i.<androidx.constraintlayout.widget.ConstraintLayout: android.view.View getViewById(int)>(id);
+
+        $u2[i#2] = $u-1;
+
+        i#2 = i#2 + 1;
+
+        goto label5;
+
+     label6:
+        return;
+    }
+
+    private void transform()
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        float m11, sin, cos, m21, m22, m12, shiftx, rad1;
+        androidx.constraintlayout.widget.ConstraintLayout rad;
+        android.view.View[] rad#2;
+        double rad#4, $u-1;
+        int i, view, $u-1#25, $u-1#31;
+        android.view.View view#22;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        rad = this.<androidx.constraintlayout.helper.widget.Layer: androidx.constraintlayout.widget.ConstraintLayout mContainer>;
+
+        if rad != null goto label1;
+
+        return;
+
+     label1:
+        rad#2 = this.<androidx.constraintlayout.helper.widget.Layer: android.view.View[] mViews>;
+
+        if rad#2 != null goto label2;
+
+        specialinvoke this.<androidx.constraintlayout.helper.widget.Layer: void reCacheViews()>();
+
+     label2:
+        virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: void calcCenters()>();
+
+        m11 = this.<androidx.constraintlayout.helper.widget.Layer: float mGroupRotateAngle>;
+
+        rad#4 = (double) m11;
+
+        rad#4 = staticinvoke <java.lang.Math: double toRadians(double)>(rad#4);
+
+        $u-1 = staticinvoke <java.lang.Math: double sin(double)>(rad#4);
+
+        sin = (float) $u-1;
+
+        rad#4 = staticinvoke <java.lang.Math: double cos(double)>(rad#4);
+
+        cos = (float) rad#4;
+
+        m21 = this.<androidx.constraintlayout.helper.widget.Layer: float mScaleX>;
+
+        m11 = m21 * cos;
+
+        m22 = this.<androidx.constraintlayout.helper.widget.Layer: float mScaleY>;
+
+        m12 = neg m22;
+
+        m12 = m12 * sin;
+
+        sin = m21 * sin;
+
+        cos = m22 * cos;
+
+        i = 0;
+
+     label3:
+        view = this.<androidx.constraintlayout.helper.widget.Layer: int mCount>;
+
+        if i >= view goto label4;
+
+        rad#2 = this.<androidx.constraintlayout.helper.widget.Layer: android.view.View[] mViews>;
+
+        view#22 = rad#2[i];
+
+        view = virtualinvoke view#22.<android.view.View: int getLeft()>();
+
+        $u-1#25 = virtualinvoke view#22.<android.view.View: int getRight()>();
+
+        view = view + $u-1#25;
+
+        view = view / 2;
+
+        $u-1#25 = virtualinvoke view#22.<android.view.View: int getTop()>();
+
+        $u-1#31 = virtualinvoke view#22.<android.view.View: int getBottom()>();
+
+        $u-1#25 = $u-1#25 + $u-1#31;
+
+        $u-1#25 = $u-1#25 / 2;
+
+        m22 = (float) view;
+
+        m21 = this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterX>;
+
+        m21 = m22 - m21;
+
+        m22 = (float) $u-1#25;
+
+        shiftx = this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterY>;
+
+        m22 = m22 - shiftx;
+
+        shiftx = m11 * m21;
+
+        rad1 = m12 * m22;
+
+        shiftx = shiftx + rad1;
+
+        shiftx = shiftx - m21;
+
+        rad1 = this.<androidx.constraintlayout.helper.widget.Layer: float mShiftX>;
+
+        shiftx = shiftx + rad1;
+
+        m21 = sin * m21;
+
+        rad1 = cos * m22;
+
+        m21 = m21 + rad1;
+
+        m22 = m21 - m22;
+
+        m21 = this.<androidx.constraintlayout.helper.widget.Layer: float mShiftY>;
+
+        m22 = m22 + m21;
+
+        virtualinvoke view#22.<android.view.View: void setTranslationX(float)>(shiftx);
+
+        virtualinvoke view#22.<android.view.View: void setTranslationY(float)>(m22);
+
+        m22 = this.<androidx.constraintlayout.helper.widget.Layer: float mScaleY>;
+
+        virtualinvoke view#22.<android.view.View: void setScaleY(float)>(m22);
+
+        m22 = this.<androidx.constraintlayout.helper.widget.Layer: float mScaleX>;
+
+        virtualinvoke view#22.<android.view.View: void setScaleX(float)>(m22);
+
+        m22 = this.<androidx.constraintlayout.helper.widget.Layer: float mGroupRotateAngle>;
+
+        virtualinvoke view#22.<android.view.View: void setRotation(float)>(m22);
+
+        i = i + 1;
+
+        goto label3;
+
+     label4:
+        return;
+    }
+
+    protected void calcCenters()
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        androidx.constraintlayout.widget.ConstraintLayout views;
+        boolean views#2;
+        float views#3;
+        android.view.View[] $u-1;
+        android.view.View minx;
+        int $u-1#22, minx#23, $u-1#28, maxx, i, view;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        views = this.<androidx.constraintlayout.helper.widget.Layer: androidx.constraintlayout.widget.ConstraintLayout mContainer>;
+
+        if views != null goto label01;
+
+        return;
+
+     label01:
+        views#2 = this.<androidx.constraintlayout.helper.widget.Layer: boolean mNeedBounds>;
+
+        if views#2 != 0 goto label02;
+
+        views#3 = this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterX>;
+
+        views#2 = staticinvoke <java.lang.Float: boolean isNaN(float)>(views#3);
+
+        if views#2 != 0 goto label02;
+
+        views#3 = this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterY>;
+
+        views#2 = staticinvoke <java.lang.Float: boolean isNaN(float)>(views#3);
+
+        if views#2 != 0 goto label02;
+
+        return;
+
+     label02:
+        views#3 = this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterX>;
+
+        views#2 = staticinvoke <java.lang.Float: boolean isNaN(float)>(views#3);
+
+        if views#2 != 0 goto label04;
+
+        views#3 = this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterY>;
+
+        views#2 = staticinvoke <java.lang.Float: boolean isNaN(float)>(views#3);
+
+        if views#2 == 0 goto label03;
+
+        goto label04;
+
+     label03:
+        views#3 = this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterY>;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterY> = views#3;
+
+        views#3 = this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterX>;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterX> = views#3;
+
+        return;
+
+     label04:
+        views = this.<androidx.constraintlayout.helper.widget.Layer: androidx.constraintlayout.widget.ConstraintLayout mContainer>;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: android.view.View[] getViews(androidx.constraintlayout.widget.ConstraintLayout)>(views);
+
+        minx = $u-1[0];
+
+        minx#23 = virtualinvoke minx.<android.view.View: int getLeft()>();
+
+        minx = $u-1[0];
+
+        $u-1#22 = virtualinvoke minx.<android.view.View: int getTop()>();
+
+        minx = $u-1[0];
+
+        maxx = virtualinvoke minx.<android.view.View: int getRight()>();
+
+        minx = $u-1[0];
+
+        $u-1#28 = virtualinvoke minx.<android.view.View: int getBottom()>();
+
+        i = 0;
+
+     label05:
+        view = this.<androidx.constraintlayout.helper.widget.Layer: int mCount>;
+
+        if i >= view goto label06;
+
+        minx = $u-1[i];
+
+        view = virtualinvoke minx.<android.view.View: int getLeft()>();
+
+        minx#23 = staticinvoke <java.lang.Math: int min(int,int)>(minx#23, view);
+
+        view = virtualinvoke minx.<android.view.View: int getTop()>();
+
+        $u-1#22 = staticinvoke <java.lang.Math: int min(int,int)>($u-1#22, view);
+
+        view = virtualinvoke minx.<android.view.View: int getRight()>();
+
+        maxx = staticinvoke <java.lang.Math: int max(int,int)>(maxx, view);
+
+        view = virtualinvoke minx.<android.view.View: int getBottom()>();
+
+        $u-1#28 = staticinvoke <java.lang.Math: int max(int,int)>($u-1#28, view);
+
+        i = i + 1;
+
+        goto label05;
+
+     label06:
+        views#3 = (float) maxx;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMaxX> = views#3;
+
+        views#3 = (float) $u-1#28;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMaxY> = views#3;
+
+        views#3 = (float) minx#23;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMinX> = views#3;
+
+        views#3 = (float) $u-1#22;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMinY> = views#3;
+
+        views#3 = this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterX>;
+
+        views#2 = staticinvoke <java.lang.Float: boolean isNaN(float)>(views#3);
+
+        if views#2 == 0 goto label07;
+
+        minx#23 = minx#23 + maxx;
+
+        minx#23 = minx#23 / 2;
+
+        views#3 = (float) minx#23;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterX> = views#3;
+
+        goto label08;
+
+     label07:
+        views#3 = this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterX>;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterX> = views#3;
+
+     label08:
+        views#3 = this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterY>;
+
+        views#2 = staticinvoke <java.lang.Float: boolean isNaN(float)>(views#3);
+
+        if views#2 == 0 goto label09;
+
+        $u-1#22 = $u-1#22 + $u-1#28;
+
+        $u-1#22 = $u-1#22 / 2;
+
+        views#3 = (float) $u-1#22;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterY> = views#3;
+
+        goto label10;
+
+     label09:
+        views#3 = this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterY>;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterY> = views#3;
+
+     label10:
+        return;
+    }
+
+    protected void init(android.util.AttributeSet)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        android.util.AttributeSet $u7;
+        android.content.Context $u-1;
+        int[] N;
+        android.content.res.TypedArray $u-1#5;
+        int $u-1#7, i, $u-1#10, $u4;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u7 := @parameter0: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void init(android.util.AttributeSet)>($u7);
+
+        this.<androidx.constraintlayout.helper.widget.Layer: boolean mUseViewMeasure> = 0;
+
+        if $u7 == null goto label4;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: android.content.Context getContext()>();
+
+        N = <androidx.constraintlayout.widget.R$styleable: int[] ConstraintLayout_Layout>;
+
+        $u-1#5 = virtualinvoke $u-1.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[])>($u7, N);
+
+        $u-1#7 = virtualinvoke $u-1#5.<android.content.res.TypedArray: int getIndexCount()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1#7 goto label4;
+
+        $u-1#10 = virtualinvoke $u-1#5.<android.content.res.TypedArray: int getIndex(int)>(i);
+
+        $u4 = <androidx.constraintlayout.widget.R$styleable: int ConstraintLayout_Layout_android_visibility>;
+
+        if $u-1#10 != $u4 goto label2;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: boolean mApplyVisibilityOnAttach> = 1;
+
+        goto label3;
+
+     label2:
+        $u4 = <androidx.constraintlayout.widget.R$styleable: int ConstraintLayout_Layout_android_elevation>;
+
+        if $u-1#10 != $u4 goto label3;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: boolean mApplyElevationOnAttach> = 1;
+
+     label3:
+        i = i + 1;
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    protected void onAttachedToWindow()
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        android.view.ViewParent $u-1;
+        androidx.constraintlayout.widget.ConstraintLayout visibility;
+        boolean visibility#4;
+        int $u-1#6, i, id;
+        float elevation, $u-1#23;
+        int[] id#13;
+        android.view.View $u-1#16;
+        byte $u6;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void onAttachedToWindow()>();
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: android.view.ViewParent getParent()>();
+
+        visibility = (androidx.constraintlayout.widget.ConstraintLayout) $u-1;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: androidx.constraintlayout.widget.ConstraintLayout mContainer> = visibility;
+
+        visibility#4 = this.<androidx.constraintlayout.helper.widget.Layer: boolean mApplyVisibilityOnAttach>;
+
+        if visibility#4 != 0 goto label1;
+
+        visibility#4 = this.<androidx.constraintlayout.helper.widget.Layer: boolean mApplyElevationOnAttach>;
+
+        if visibility#4 == 0 goto label6;
+
+     label1:
+        $u-1#6 = virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: int getVisibility()>();
+
+        elevation = 0.0F;
+
+        i = <android.os.Build$VERSION: int SDK_INT>;
+
+        if i < 21 goto label2;
+
+        elevation = virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: float getElevation()>();
+
+     label2:
+        i = 0;
+
+     label3:
+        id = this.<androidx.constraintlayout.helper.widget.Layer: int mCount>;
+
+        if i >= id goto label6;
+
+        id#13 = this.<androidx.constraintlayout.helper.widget.Layer: int[] mIds>;
+
+        id = id#13[i];
+
+        visibility = this.<androidx.constraintlayout.helper.widget.Layer: androidx.constraintlayout.widget.ConstraintLayout mContainer>;
+
+        $u-1#16 = virtualinvoke visibility.<androidx.constraintlayout.widget.ConstraintLayout: android.view.View getViewById(int)>(id);
+
+        if $u-1#16 == null goto label5;
+
+        visibility#4 = this.<androidx.constraintlayout.helper.widget.Layer: boolean mApplyVisibilityOnAttach>;
+
+        if visibility#4 == 0 goto label4;
+
+        virtualinvoke $u-1#16.<android.view.View: void setVisibility(int)>($u-1#6);
+
+     label4:
+        visibility#4 = this.<androidx.constraintlayout.helper.widget.Layer: boolean mApplyElevationOnAttach>;
+
+        if visibility#4 == 0 goto label5;
+
+        $u6 = elevation cmpl 0.0F;
+
+        if $u6 <= 0 goto label5;
+
+        id = <android.os.Build$VERSION: int SDK_INT>;
+
+        if id < 21 goto label5;
+
+        $u-1#23 = virtualinvoke $u-1#16.<android.view.View: float getTranslationZ()>();
+
+        $u-1#23 = $u-1#23 + elevation;
+
+        virtualinvoke $u-1#16.<android.view.View: void setTranslationZ(float)>($u-1#23);
+
+     label5:
+        i = i + 1;
+
+        goto label3;
+
+     label6:
+        return;
+    }
+
+    public void setElevation(float)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u1 := @parameter0: float;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void setElevation(float)>($u1);
+
+        virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: void applyLayoutFeatures()>();
+
+        return;
+    }
+
+    public void setPivotX(float)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterX> = $u1;
+
+        specialinvoke this.<androidx.constraintlayout.helper.widget.Layer: void transform()>();
+
+        return;
+    }
+
+    public void setPivotY(float)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mRotationCenterY> = $u1;
+
+        specialinvoke this.<androidx.constraintlayout.helper.widget.Layer: void transform()>();
+
+        return;
+    }
+
+    public void setRotation(float)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mGroupRotateAngle> = $u1;
+
+        specialinvoke this.<androidx.constraintlayout.helper.widget.Layer: void transform()>();
+
+        return;
+    }
+
+    public void setScaleX(float)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mScaleX> = $u1;
+
+        specialinvoke this.<androidx.constraintlayout.helper.widget.Layer: void transform()>();
+
+        return;
+    }
+
+    public void setScaleY(float)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mScaleY> = $u1;
+
+        specialinvoke this.<androidx.constraintlayout.helper.widget.Layer: void transform()>();
+
+        return;
+    }
+
+    public void setTranslationX(float)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mShiftX> = $u1;
+
+        specialinvoke this.<androidx.constraintlayout.helper.widget.Layer: void transform()>();
+
+        return;
+    }
+
+    public void setTranslationY(float)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mShiftY> = $u1;
+
+        specialinvoke this.<androidx.constraintlayout.helper.widget.Layer: void transform()>();
+
+        return;
+    }
+
+    public void setVisibility(int)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u1 := @parameter0: int;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void setVisibility(int)>($u1);
+
+        virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: void applyLayoutFeatures()>();
+
+        return;
+    }
+
+    public void updatePostLayout(androidx.constraintlayout.widget.ConstraintLayout)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        androidx.constraintlayout.widget.ConstraintLayout $u8;
+        android.view.ViewGroup$LayoutParams $u-1;
+        androidx.constraintlayout.widget.ConstraintLayout$LayoutParams params;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u-1#5;
+        float left;
+        int left#8, $u-1#9, $u-1#14, $u-1#19, $u-1#24;
+        boolean $u-1#28;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u8 := @parameter0: androidx.constraintlayout.widget.ConstraintLayout;
+
+        specialinvoke this.<androidx.constraintlayout.helper.widget.Layer: void reCacheViews()>();
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterX> = #NaNF;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mComputedCenterY> = #NaNF;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        params = (androidx.constraintlayout.widget.ConstraintLayout$LayoutParams) $u-1;
+
+        $u-1#5 = virtualinvoke params.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: androidx.constraintlayout.solver.widgets.ConstraintWidget getConstraintWidget()>();
+
+        virtualinvoke $u-1#5.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setWidth(int)>(0);
+
+        virtualinvoke $u-1#5.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setHeight(int)>(0);
+
+        virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: void calcCenters()>();
+
+        left = this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMinX>;
+
+        left#8 = (int) left;
+
+        $u-1#9 = virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: int getPaddingLeft()>();
+
+        left#8 = left#8 - $u-1#9;
+
+        left = this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMinY>;
+
+        $u-1#9 = (int) left;
+
+        $u-1#14 = virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: int getPaddingTop()>();
+
+        $u-1#9 = $u-1#9 - $u-1#14;
+
+        left = this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMaxX>;
+
+        $u-1#14 = (int) left;
+
+        $u-1#19 = virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: int getPaddingRight()>();
+
+        $u-1#14 = $u-1#14 + $u-1#19;
+
+        left = this.<androidx.constraintlayout.helper.widget.Layer: float mComputedMaxY>;
+
+        $u-1#19 = (int) left;
+
+        $u-1#24 = virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: int getPaddingBottom()>();
+
+        $u-1#19 = $u-1#19 + $u-1#24;
+
+        virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: void layout(int,int,int,int)>(left#8, $u-1#9, $u-1#14, $u-1#19);
+
+        left = this.<androidx.constraintlayout.helper.widget.Layer: float mGroupRotateAngle>;
+
+        $u-1#28 = staticinvoke <java.lang.Float: boolean isNaN(float)>(left);
+
+        if $u-1#28 != 0 goto label1;
+
+        specialinvoke this.<androidx.constraintlayout.helper.widget.Layer: void transform()>();
+
+     label1:
+        return;
+    }
+
+    public void updatePreDraw(androidx.constraintlayout.widget.ConstraintLayout)
+    {
+        androidx.constraintlayout.helper.widget.Layer this;
+        androidx.constraintlayout.widget.ConstraintLayout $u3;
+        float $u-1, $u1#4;
+        byte $u1;
+        boolean $u-1#5;
+
+        this := @this: androidx.constraintlayout.helper.widget.Layer;
+
+        $u3 := @parameter0: androidx.constraintlayout.widget.ConstraintLayout;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: androidx.constraintlayout.widget.ConstraintLayout mContainer> = $u3;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.helper.widget.Layer: float getRotation()>();
+
+        $u1 = $u-1 cmpl 0.0F;
+
+        if $u1 != 0 goto label1;
+
+        $u1#4 = this.<androidx.constraintlayout.helper.widget.Layer: float mGroupRotateAngle>;
+
+        $u-1#5 = staticinvoke <java.lang.Float: boolean isNaN(float)>($u1#4);
+
+        if $u-1#5 != 0 goto label2;
+
+        this.<androidx.constraintlayout.helper.widget.Layer: float mGroupRotateAngle> = $u-1;
+
+        return;
+
+     label1:
+        this.<androidx.constraintlayout.helper.widget.Layer: float mGroupRotateAngle> = $u-1;
+
+     label2:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.helper.widget.Layer: java.lang.String TAG> = "Layer";
+
+        return;
+    }
+}

@@ -1,0 +1,128 @@
+public class androidx.core.os.BuildCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.os.BuildCompat this;
+
+        this := @this: androidx.core.os.BuildCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static boolean isAtLeastN()
+    {
+        int $u0;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 24 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean isAtLeastNMR1()
+    {
+        int $u0;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 25 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean isAtLeastO()
+    {
+        int $u0;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 26 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean isAtLeastOMR1()
+    {
+        int $u0;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 27 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean isAtLeastP()
+    {
+        int $u0;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 28 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean isAtLeastQ()
+    {
+        int $u0;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 29 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static boolean isAtLeastR()
+    {
+        java.lang.String $u0;
+        int $u-1;
+        char $u-1#6;
+
+        $u0 = <android.os.Build$VERSION: java.lang.String CODENAME>;
+
+        $u-1 = virtualinvoke $u0.<java.lang.String: int length()>();
+
+        if $u-1 != 1 goto label1;
+
+        $u0 = <android.os.Build$VERSION: java.lang.String CODENAME>;
+
+        $u-1#6 = virtualinvoke $u0.<java.lang.String: char charAt(int)>(0);
+
+        if $u-1#6 < 82 goto label1;
+
+        $u0 = <android.os.Build$VERSION: java.lang.String CODENAME>;
+
+        $u-1#6 = virtualinvoke $u0.<java.lang.String: char charAt(int)>(0);
+
+        if $u-1#6 > 90 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+}

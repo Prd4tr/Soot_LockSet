@@ -1,0 +1,137 @@
+public final enum class androidx.'annotation'.InspectableProperty$ValueType extends java.lang.Enum
+{
+    private static final androidx.'annotation'.InspectableProperty$ValueType[] $VALUES;
+    public static final enum androidx.'annotation'.InspectableProperty$ValueType COLOR;
+    public static final enum androidx.'annotation'.InspectableProperty$ValueType GRAVITY;
+    public static final enum androidx.'annotation'.InspectableProperty$ValueType INFERRED;
+    public static final enum androidx.'annotation'.InspectableProperty$ValueType INT_ENUM;
+    public static final enum androidx.'annotation'.InspectableProperty$ValueType INT_FLAG;
+    public static final enum androidx.'annotation'.InspectableProperty$ValueType NONE;
+    public static final enum androidx.'annotation'.InspectableProperty$ValueType RESOURCE_ID;
+
+    static void <clinit>()
+    {
+        androidx.'annotation'.InspectableProperty$ValueType $u9, $u0;
+        androidx.'annotation'.InspectableProperty$ValueType[] $u1;
+
+        $u0 = new androidx.'annotation'.InspectableProperty$ValueType;
+
+        specialinvoke $u0.<androidx.'annotation'.InspectableProperty$ValueType: void <init>(java.lang.String,int)>("NONE", 0);
+
+        <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType NONE> = $u0;
+
+        $u0 = new androidx.'annotation'.InspectableProperty$ValueType;
+
+        specialinvoke $u0.<androidx.'annotation'.InspectableProperty$ValueType: void <init>(java.lang.String,int)>("INFERRED", 1);
+
+        <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType INFERRED> = $u0;
+
+        $u0 = new androidx.'annotation'.InspectableProperty$ValueType;
+
+        specialinvoke $u0.<androidx.'annotation'.InspectableProperty$ValueType: void <init>(java.lang.String,int)>("INT_ENUM", 2);
+
+        <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType INT_ENUM> = $u0;
+
+        $u0 = new androidx.'annotation'.InspectableProperty$ValueType;
+
+        specialinvoke $u0.<androidx.'annotation'.InspectableProperty$ValueType: void <init>(java.lang.String,int)>("INT_FLAG", 3);
+
+        <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType INT_FLAG> = $u0;
+
+        $u0 = new androidx.'annotation'.InspectableProperty$ValueType;
+
+        specialinvoke $u0.<androidx.'annotation'.InspectableProperty$ValueType: void <init>(java.lang.String,int)>("COLOR", 4);
+
+        <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType COLOR> = $u0;
+
+        $u0 = new androidx.'annotation'.InspectableProperty$ValueType;
+
+        specialinvoke $u0.<androidx.'annotation'.InspectableProperty$ValueType: void <init>(java.lang.String,int)>("GRAVITY", 5);
+
+        <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType GRAVITY> = $u0;
+
+        $u0 = new androidx.'annotation'.InspectableProperty$ValueType;
+
+        specialinvoke $u0.<androidx.'annotation'.InspectableProperty$ValueType: void <init>(java.lang.String,int)>("RESOURCE_ID", 6);
+
+        <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType RESOURCE_ID> = $u0;
+
+        $u1 = newarray (androidx.'annotation'.InspectableProperty$ValueType)[7];
+
+        $u9 = <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType NONE>;
+
+        $u1[0] = $u9;
+
+        $u9 = <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType INFERRED>;
+
+        $u1[1] = $u9;
+
+        $u9 = <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType INT_ENUM>;
+
+        $u1[2] = $u9;
+
+        $u9 = <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType INT_FLAG>;
+
+        $u1[3] = $u9;
+
+        $u9 = <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType COLOR>;
+
+        $u1[4] = $u9;
+
+        $u9 = <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType GRAVITY>;
+
+        $u1[5] = $u9;
+
+        $u1[6] = $u0;
+
+        <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType[] $VALUES> = $u1;
+
+        return;
+    }
+
+    private void <init>(java.lang.String, int)
+    {
+        androidx.'annotation'.InspectableProperty$ValueType this;
+        java.lang.String $u1;
+        int $u2;
+
+        this := @this: androidx.'annotation'.InspectableProperty$ValueType;
+
+        $u1 := @parameter0: java.lang.String;
+
+        $u2 := @parameter1: int;
+
+        specialinvoke this.<java.lang.Enum: void <init>(java.lang.String,int)>($u1, $u2);
+
+        return;
+    }
+
+    public static androidx.'annotation'.InspectableProperty$ValueType valueOf(java.lang.String)
+    {
+        java.lang.String $u1;
+        java.lang.Enum $u-1;
+        androidx.'annotation'.InspectableProperty$ValueType $u0;
+
+        $u1 := @parameter0: java.lang.String;
+
+        $u-1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Landroidx/annotation/InspectableProperty$ValueType;", $u1);
+
+        $u0 = (androidx.'annotation'.InspectableProperty$ValueType) $u-1;
+
+        return $u0;
+    }
+
+    public static androidx.'annotation'.InspectableProperty$ValueType[] values()
+    {
+        java.lang.Object $u-1;
+        androidx.'annotation'.InspectableProperty$ValueType[] $u0;
+
+        $u0 = <androidx.'annotation'.InspectableProperty$ValueType: androidx.'annotation'.InspectableProperty$ValueType[] $VALUES>;
+
+        $u-1 = virtualinvoke $u0.<java.lang.Object: java.lang.Object clone()>();
+
+        $u0 = (androidx.'annotation'.InspectableProperty$ValueType[]) $u-1;
+
+        return $u0;
+    }
+}

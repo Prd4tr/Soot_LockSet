@@ -1,0 +1,98 @@
+class androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider extends androidx.core.view.accessibility.AccessibilityNodeProviderCompat
+{
+    final androidx.customview.widget.ExploreByTouchHelper this$0;
+
+    void <init>(androidx.customview.widget.ExploreByTouchHelper)
+    {
+        androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider this;
+        androidx.customview.widget.ExploreByTouchHelper $u1;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider;
+
+        $u1 := @parameter0: androidx.customview.widget.ExploreByTouchHelper;
+
+        this.<androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider: androidx.customview.widget.ExploreByTouchHelper this$0> = $u1;
+
+        specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeProviderCompat: void <init>()>();
+
+        return;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat createAccessibilityNodeInfo(int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider this;
+        int $u3;
+        androidx.customview.widget.ExploreByTouchHelper node;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u-1;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider;
+
+        $u3 := @parameter0: int;
+
+        node = this.<androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider: androidx.customview.widget.ExploreByTouchHelper this$0>;
+
+        $u-1 = virtualinvoke node.<androidx.customview.widget.ExploreByTouchHelper: androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtainAccessibilityNodeInfo(int)>($u3);
+
+        $u-1 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtain(androidx.core.view.accessibility.AccessibilityNodeInfoCompat)>($u-1);
+
+        return $u-1;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat findFocus(int)
+    {
+        androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider this;
+        int $u3;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u-1;
+        androidx.customview.widget.ExploreByTouchHelper focusedId;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider;
+
+        $u3 := @parameter0: int;
+
+        if $u3 != 2 goto label1;
+
+        focusedId = this.<androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider: androidx.customview.widget.ExploreByTouchHelper this$0>;
+
+        $u3 = focusedId.<androidx.customview.widget.ExploreByTouchHelper: int mAccessibilityFocusedVirtualViewId>;
+
+        goto label2;
+
+     label1:
+        focusedId = this.<androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider: androidx.customview.widget.ExploreByTouchHelper this$0>;
+
+        $u3 = focusedId.<androidx.customview.widget.ExploreByTouchHelper: int mKeyboardFocusedVirtualViewId>;
+
+     label2:
+        if $u3 != -2147483648 goto label3;
+
+        return null;
+
+     label3:
+        $u-1 = virtualinvoke this.<androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider: androidx.core.view.accessibility.AccessibilityNodeInfoCompat createAccessibilityNodeInfo(int)>($u3);
+
+        return $u-1;
+    }
+
+    public boolean performAction(int, int, android.os.Bundle)
+    {
+        androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider this;
+        int $u2, $u3;
+        android.os.Bundle $u4;
+        boolean $u-1;
+        androidx.customview.widget.ExploreByTouchHelper $u0;
+
+        this := @this: androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.os.Bundle;
+
+        $u0 = this.<androidx.customview.widget.ExploreByTouchHelper$MyNodeProvider: androidx.customview.widget.ExploreByTouchHelper this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.customview.widget.ExploreByTouchHelper: boolean performAction(int,int,android.os.Bundle)>($u2, $u3, $u4);
+
+        return $u-1;
+    }
+}

@@ -1,0 +1,1063 @@
+public abstract class androidx.core.app.NotificationCompat$Style extends java.lang.Object
+{
+    java.lang.CharSequence mBigContentTitle;
+    protected androidx.core.app.NotificationCompat$Builder mBuilder;
+    java.lang.CharSequence mSummaryText;
+    boolean mSummaryTextSet;
+
+    public void <init>()
+    {
+        androidx.core.app.NotificationCompat$Style this;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.app.NotificationCompat$Style: boolean mSummaryTextSet> = 0;
+
+        return;
+    }
+
+    private int calculateTopPadding()
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        androidx.core.app.NotificationCompat$Builder resources;
+        android.content.Context resources#2;
+        android.content.res.Resources $u-1;
+        int padding, largePadding;
+        android.content.res.Configuration $u-1#11;
+        float fontScale, $u4, $u6;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        resources = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        resources#2 = resources.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext>;
+
+        $u-1 = virtualinvoke resources#2.<android.content.Context: android.content.res.Resources getResources()>();
+
+        padding = <androidx.core.R$dimen: int notification_top_pad>;
+
+        padding = virtualinvoke $u-1.<android.content.res.Resources: int getDimensionPixelSize(int)>(padding);
+
+        largePadding = <androidx.core.R$dimen: int notification_top_pad_large_text>;
+
+        largePadding = virtualinvoke $u-1.<android.content.res.Resources: int getDimensionPixelSize(int)>(largePadding);
+
+        $u-1#11 = virtualinvoke $u-1.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        fontScale = $u-1#11.<android.content.res.Configuration: float fontScale>;
+
+        fontScale = staticinvoke <androidx.core.app.NotificationCompat$Style: float constrain(float,float,float)>(fontScale, 1.0F, 1.3F);
+
+        fontScale = fontScale - 1.0F;
+
+        fontScale = fontScale / 0.29999995F;
+
+        $u4 = 1.0F - fontScale;
+
+        $u6 = (float) padding;
+
+        $u4 = $u4 * $u6;
+
+        $u6 = (float) largePadding;
+
+        fontScale = $u6 * fontScale;
+
+        fontScale = $u4 + fontScale;
+
+        padding = staticinvoke <java.lang.Math: int round(float)>(fontScale);
+
+        return padding;
+    }
+
+    private static float constrain(float, float, float)
+    {
+        float $u1, $u2, $u3;
+        byte $u0;
+
+        $u1 := @parameter0: float;
+
+        $u2 := @parameter1: float;
+
+        $u3 := @parameter2: float;
+
+        $u0 = $u1 cmpg $u2;
+
+        if $u0 >= 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u0 = $u1 cmpl $u3;
+
+        if $u0 <= 0 goto label2;
+
+        return $u3;
+
+     label2:
+        return $u1;
+    }
+
+    private android.graphics.Bitmap createColoredBitmap(int, int, int)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        int $u2, $u3, $u4;
+        androidx.core.app.NotificationCompat$Builder $u0;
+        android.content.Context $u0#2;
+        androidx.core.graphics.drawable.IconCompat $u-1;
+        android.graphics.Bitmap $u-1#5;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u0 = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u0#2 = $u0.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext>;
+
+        $u-1 = staticinvoke <androidx.core.graphics.drawable.IconCompat: androidx.core.graphics.drawable.IconCompat createWithResource(android.content.Context,int)>($u0#2, $u2);
+
+        $u-1#5 = specialinvoke this.<androidx.core.app.NotificationCompat$Style: android.graphics.Bitmap createColoredBitmap(androidx.core.graphics.drawable.IconCompat,int,int)>($u-1, $u3, $u4);
+
+        return $u-1#5;
+    }
+
+    private android.graphics.Bitmap createColoredBitmap(androidx.core.graphics.drawable.IconCompat, int, int)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        androidx.core.graphics.drawable.IconCompat $u8;
+        int $u9, $u10, $u-1#5;
+        android.graphics.PorterDuffColorFilter $u5;
+        android.graphics.PorterDuff$Mode $u6;
+        androidx.core.app.NotificationCompat$Builder drawable;
+        android.content.Context drawable#2;
+        android.graphics.drawable.Drawable $u-1, $u-1#13;
+        android.graphics.Bitmap$Config resultBitmap;
+        android.graphics.Bitmap $u-1#10;
+        android.graphics.Canvas canvas;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u8 := @parameter0: androidx.core.graphics.drawable.IconCompat;
+
+        $u9 := @parameter1: int;
+
+        $u10 := @parameter2: int;
+
+        drawable = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        drawable#2 = drawable.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext>;
+
+        $u-1 = virtualinvoke $u8.<androidx.core.graphics.drawable.IconCompat: android.graphics.drawable.Drawable loadDrawable(android.content.Context)>(drawable#2);
+
+        if $u10 != 0 goto label1;
+
+        $u-1#5 = virtualinvoke $u-1.<android.graphics.drawable.Drawable: int getIntrinsicWidth()>();
+
+        goto label2;
+
+     label1:
+        $u-1#5 = $u10;
+
+     label2:
+        if $u10 != 0 goto label3;
+
+        $u10 = virtualinvoke $u-1.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+        goto label3;
+
+     label3:
+        resultBitmap = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config ARGB_8888>;
+
+        $u-1#10 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createBitmap(int,int,android.graphics.Bitmap$Config)>($u-1#5, $u10, resultBitmap);
+
+        virtualinvoke $u-1.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>(0, 0, $u-1#5, $u10);
+
+        if $u9 == 0 goto label4;
+
+        $u-1#13 = virtualinvoke $u-1.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable mutate()>();
+
+        $u5 = new android.graphics.PorterDuffColorFilter;
+
+        $u6 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode SRC_IN>;
+
+        specialinvoke $u5.<android.graphics.PorterDuffColorFilter: void <init>(int,android.graphics.PorterDuff$Mode)>($u9, $u6);
+
+        virtualinvoke $u-1#13.<android.graphics.drawable.Drawable: void setColorFilter(android.graphics.ColorFilter)>($u5);
+
+     label4:
+        canvas = new android.graphics.Canvas;
+
+        specialinvoke canvas.<android.graphics.Canvas: void <init>(android.graphics.Bitmap)>($u-1#10);
+
+        virtualinvoke $u-1.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>(canvas);
+
+        return $u-1#10;
+    }
+
+    private android.graphics.Bitmap createIconWithBackground(int, int, int, int)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        int $u8, $u9, $u10, $u11, coloredBitmap;
+        android.graphics.PorterDuff$Mode $u6;
+        android.graphics.Bitmap $u-1;
+        android.graphics.Canvas canvas;
+        androidx.core.app.NotificationCompat$Builder icon;
+        android.content.Context icon#7;
+        android.content.res.Resources $u-1#8;
+        android.graphics.drawable.Drawable $u-1#10;
+        android.graphics.PorterDuffColorFilter $u4;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u8 := @parameter0: int;
+
+        $u9 := @parameter1: int;
+
+        $u10 := @parameter2: int;
+
+        $u11 := @parameter3: int;
+
+        coloredBitmap = <androidx.core.R$drawable: int notification_icon_background>;
+
+        if $u11 != 0 goto label1;
+
+        $u11 = 0;
+
+        goto label1;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.core.app.NotificationCompat$Style: android.graphics.Bitmap createColoredBitmap(int,int,int)>(coloredBitmap, $u11, $u9);
+
+        canvas = new android.graphics.Canvas;
+
+        specialinvoke canvas.<android.graphics.Canvas: void <init>(android.graphics.Bitmap)>($u-1);
+
+        icon = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        icon#7 = icon.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext>;
+
+        $u-1#8 = virtualinvoke icon#7.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#10 = virtualinvoke $u-1#8.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int)>($u8);
+
+        $u-1#10 = virtualinvoke $u-1#10.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable mutate()>();
+
+        virtualinvoke $u-1#10.<android.graphics.drawable.Drawable: void setFilterBitmap(boolean)>(1);
+
+        $u8 = $u9 - $u10;
+
+        $u8 = $u8 / 2;
+
+        $u9 = $u10 + $u8;
+
+        $u10 = $u10 + $u8;
+
+        virtualinvoke $u-1#10.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>($u8, $u8, $u9, $u10);
+
+        $u4 = new android.graphics.PorterDuffColorFilter;
+
+        $u6 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode SRC_ATOP>;
+
+        specialinvoke $u4.<android.graphics.PorterDuffColorFilter: void <init>(int,android.graphics.PorterDuff$Mode)>(-1, $u6);
+
+        virtualinvoke $u-1#10.<android.graphics.drawable.Drawable: void setColorFilter(android.graphics.ColorFilter)>($u4);
+
+        virtualinvoke $u-1#10.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>(canvas);
+
+        return $u-1;
+    }
+
+    private void hideNormalContent(android.widget.RemoteViews)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        android.widget.RemoteViews $u3;
+        int $u0;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u3 := @parameter0: android.widget.RemoteViews;
+
+        $u0 = <androidx.core.R$id: int title>;
+
+        virtualinvoke $u3.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u0, 8);
+
+        $u0 = <androidx.core.R$id: int text2>;
+
+        virtualinvoke $u3.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u0, 8);
+
+        $u0 = <androidx.core.R$id: int text>;
+
+        virtualinvoke $u3.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u0, 8);
+
+        return;
+    }
+
+    public void addCompatExtras(android.os.Bundle)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        android.os.Bundle $u1;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u1 := @parameter0: android.os.Bundle;
+
+        return;
+    }
+
+    public void apply(androidx.core.app.NotificationBuilderWithBuilderAccessor)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        androidx.core.app.NotificationBuilderWithBuilderAccessor $u1;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u1 := @parameter0: androidx.core.app.NotificationBuilderWithBuilderAccessor;
+
+        return;
+    }
+
+    public android.widget.RemoteViews applyStandardTemplate(boolean, int, boolean)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        boolean $u20, $u22, showLine3, backgroundSize;
+        int $u21, $u10, $u10#48, $u-1#53;
+        android.widget.RemoteViews contentView;
+        androidx.core.app.NotificationCompat$Builder res;
+        android.content.Context res#2;
+        android.content.res.Resources $u-1;
+        java.lang.String $u-1#7;
+        byte $u12, iconSize;
+        android.graphics.Bitmap backgroundSize#30;
+        android.app.Notification backgroundSize#38;
+        java.lang.CharSequence backgroundSize#96;
+        java.text.NumberFormat $u-1#128;
+        long $u10#133, $u-1#179, $u-1#181;
+        float showLine2;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u20 := @parameter0: boolean;
+
+        $u21 := @parameter1: int;
+
+        $u22 := @parameter2: boolean;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        res#2 = res.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext>;
+
+        $u-1 = virtualinvoke res#2.<android.content.Context: android.content.res.Resources getResources()>();
+
+        contentView = new android.widget.RemoteViews;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        res#2 = res.<androidx.core.app.NotificationCompat$Builder: android.content.Context mContext>;
+
+        $u-1#7 = virtualinvoke res#2.<android.content.Context: java.lang.String getPackageName()>();
+
+        specialinvoke contentView.<android.widget.RemoteViews: void <init>(java.lang.String,int)>($u-1#7, $u21);
+
+        showLine3 = 0;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u21 = virtualinvoke res.<androidx.core.app.NotificationCompat$Builder: int getPriority()>();
+
+        $u12 = 0;
+
+        if $u21 >= -1 goto label01;
+
+        backgroundSize = 1;
+
+        goto label02;
+
+     label01:
+        backgroundSize = 0;
+
+     label02:
+        $u21 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u21 < 16 goto label04;
+
+        $u21 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u21 >= 21 goto label04;
+
+        if backgroundSize == 0 goto label03;
+
+        $u21 = <androidx.core.R$id: int notification_background>;
+
+        $u10 = <androidx.core.R$drawable: int notification_bg_low>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setInt(int,java.lang.String,int)>($u21, "setBackgroundResource", $u10);
+
+        $u21 = <androidx.core.R$id: int icon>;
+
+        $u10 = <androidx.core.R$drawable: int notification_template_icon_low_bg>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setInt(int,java.lang.String,int)>($u21, "setBackgroundResource", $u10);
+
+        goto label04;
+
+     label03:
+        $u21 = <androidx.core.R$id: int notification_background>;
+
+        $u10 = <androidx.core.R$drawable: int notification_bg>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setInt(int,java.lang.String,int)>($u21, "setBackgroundResource", $u10);
+
+        $u21 = <androidx.core.R$id: int icon>;
+
+        $u10 = <androidx.core.R$drawable: int notification_template_icon_bg>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setInt(int,java.lang.String,int)>($u21, "setBackgroundResource", $u10);
+
+     label04:
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#30 = res.<androidx.core.app.NotificationCompat$Builder: android.graphics.Bitmap mLargeIcon>;
+
+        if backgroundSize#30 == null goto label09;
+
+        $u21 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u21 < 16 goto label05;
+
+        $u21 = <androidx.core.R$id: int icon>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u21, 0);
+
+        $u21 = <androidx.core.R$id: int icon>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#30 = res.<androidx.core.app.NotificationCompat$Builder: android.graphics.Bitmap mLargeIcon>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setImageViewBitmap(int,android.graphics.Bitmap)>($u21, backgroundSize#30);
+
+        goto label06;
+
+     label05:
+        $u21 = <androidx.core.R$id: int icon>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u21, 8);
+
+     label06:
+        if $u20 == 0 goto label11;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#38 = res.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $u21 = backgroundSize#38.<android.app.Notification: int icon>;
+
+        if $u21 == 0 goto label11;
+
+        $u21 = <androidx.core.R$dimen: int notification_right_icon_size>;
+
+        $u21 = virtualinvoke $u-1.<android.content.res.Resources: int getDimensionPixelSize(int)>($u21);
+
+        $u10 = <androidx.core.R$dimen: int notification_small_icon_background_padding>;
+
+        $u10 = virtualinvoke $u-1.<android.content.res.Resources: int getDimensionPixelSize(int)>($u10);
+
+        $u10 = $u10 * 2;
+
+        $u10 = $u21 - $u10;
+
+        $u10#48 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u10#48 < 21 goto label07;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#38 = res.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $u10#48 = backgroundSize#38.<android.app.Notification: int icon>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u-1#53 = virtualinvoke res.<androidx.core.app.NotificationCompat$Builder: int getColor()>();
+
+        backgroundSize#30 = specialinvoke this.<androidx.core.app.NotificationCompat$Style: android.graphics.Bitmap createIconWithBackground(int,int,int,int)>($u10#48, $u21, $u10, $u-1#53);
+
+        $u21 = <androidx.core.R$id: int right_icon>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setImageViewBitmap(int,android.graphics.Bitmap)>($u21, backgroundSize#30);
+
+        goto label08;
+
+     label07:
+        $u21 = <androidx.core.R$id: int right_icon>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#38 = res.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $u10 = backgroundSize#38.<android.app.Notification: int icon>;
+
+        backgroundSize#30 = virtualinvoke this.<androidx.core.app.NotificationCompat$Style: android.graphics.Bitmap createColoredBitmap(int,int)>($u10, -1);
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setImageViewBitmap(int,android.graphics.Bitmap)>($u21, backgroundSize#30);
+
+     label08:
+        $u21 = <androidx.core.R$id: int right_icon>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u21, 0);
+
+        goto label11;
+
+     label09:
+        if $u20 == 0 goto label11;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#38 = res.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $u21 = backgroundSize#38.<android.app.Notification: int icon>;
+
+        if $u21 == 0 goto label11;
+
+        $u21 = <androidx.core.R$id: int icon>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u21, 0);
+
+        $u21 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u21 < 21 goto label10;
+
+        $u21 = <androidx.core.R$dimen: int notification_large_icon_width>;
+
+        $u21 = virtualinvoke $u-1.<android.content.res.Resources: int getDimensionPixelSize(int)>($u21);
+
+        $u10 = <androidx.core.R$dimen: int notification_big_circle_margin>;
+
+        $u10 = virtualinvoke $u-1.<android.content.res.Resources: int getDimensionPixelSize(int)>($u10);
+
+        $u21 = $u21 - $u10;
+
+        $u10 = <androidx.core.R$dimen: int notification_small_icon_size_as_large>;
+
+        $u10 = virtualinvoke $u-1.<android.content.res.Resources: int getDimensionPixelSize(int)>($u10);
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#38 = res.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $u10#48 = backgroundSize#38.<android.app.Notification: int icon>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u-1#53 = virtualinvoke res.<androidx.core.app.NotificationCompat$Builder: int getColor()>();
+
+        backgroundSize#30 = specialinvoke this.<androidx.core.app.NotificationCompat$Style: android.graphics.Bitmap createIconWithBackground(int,int,int,int)>($u10#48, $u21, $u10, $u-1#53);
+
+        $u21 = <androidx.core.R$id: int icon>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setImageViewBitmap(int,android.graphics.Bitmap)>($u21, backgroundSize#30);
+
+        goto label11;
+
+     label10:
+        $u21 = <androidx.core.R$id: int icon>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#38 = res.<androidx.core.app.NotificationCompat$Builder: android.app.Notification mNotification>;
+
+        $u10 = backgroundSize#38.<android.app.Notification: int icon>;
+
+        backgroundSize#30 = virtualinvoke this.<androidx.core.app.NotificationCompat$Style: android.graphics.Bitmap createColoredBitmap(int,int)>($u10, -1);
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setImageViewBitmap(int,android.graphics.Bitmap)>($u21, backgroundSize#30);
+
+     label11:
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#96 = res.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mContentTitle>;
+
+        if backgroundSize#96 == null goto label12;
+
+        $u21 = <androidx.core.R$id: int title>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#96 = res.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mContentTitle>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setTextViewText(int,java.lang.CharSequence)>($u21, backgroundSize#96);
+
+     label12:
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#96 = res.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mContentText>;
+
+        if backgroundSize#96 == null goto label13;
+
+        $u21 = <androidx.core.R$id: int text>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#96 = res.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mContentText>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setTextViewText(int,java.lang.CharSequence)>($u21, backgroundSize#96);
+
+        showLine3 = 1;
+
+     label13:
+        $u21 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u21 >= 21 goto label14;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#30 = res.<androidx.core.app.NotificationCompat$Builder: android.graphics.Bitmap mLargeIcon>;
+
+        if backgroundSize#30 == null goto label14;
+
+        $u20 = 1;
+
+        goto label15;
+
+     label14:
+        $u20 = 0;
+
+     label15:
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#96 = res.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mContentInfo>;
+
+        if backgroundSize#96 == null goto label16;
+
+        $u21 = <androidx.core.R$id: int info>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#96 = res.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mContentInfo>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setTextViewText(int,java.lang.CharSequence)>($u21, backgroundSize#96);
+
+        $u21 = <androidx.core.R$id: int info>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u21, 0);
+
+        showLine3 = 1;
+
+        $u20 = 1;
+
+        goto label20;
+
+     label16:
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u21 = res.<androidx.core.app.NotificationCompat$Builder: int mNumber>;
+
+        if $u21 <= 0 goto label19;
+
+        $u21 = <androidx.core.R$integer: int status_bar_notification_info_maxnum>;
+
+        $u21 = virtualinvoke $u-1.<android.content.res.Resources: int getInteger(int)>($u21);
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u10 = res.<androidx.core.app.NotificationCompat$Builder: int mNumber>;
+
+        if $u10 <= $u21 goto label17;
+
+        $u21 = <androidx.core.R$id: int info>;
+
+        $u10 = <androidx.core.R$string: int status_bar_notification_info_overflow>;
+
+        $u-1#7 = virtualinvoke $u-1.<android.content.res.Resources: java.lang.String getString(int)>($u10);
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setTextViewText(int,java.lang.CharSequence)>($u21, $u-1#7);
+
+        goto label18;
+
+     label17:
+        $u-1#128 = staticinvoke <java.text.NumberFormat: java.text.NumberFormat getIntegerInstance()>();
+
+        $u21 = <androidx.core.R$id: int info>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u10 = res.<androidx.core.app.NotificationCompat$Builder: int mNumber>;
+
+        $u10#133 = (long) $u10;
+
+        $u-1#7 = virtualinvoke $u-1#128.<java.text.NumberFormat: java.lang.String format(long)>($u10#133);
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setTextViewText(int,java.lang.CharSequence)>($u21, $u-1#7);
+
+     label18:
+        $u21 = <androidx.core.R$id: int info>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u21, 0);
+
+        showLine3 = 1;
+
+        $u20 = 1;
+
+        goto label20;
+
+     label19:
+        $u21 = <androidx.core.R$id: int info>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u21, 8);
+
+     label20:
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#96 = res.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mSubText>;
+
+        if backgroundSize#96 == null goto label22;
+
+        $u21 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u21 < 16 goto label22;
+
+        $u21 = <androidx.core.R$id: int text>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#96 = res.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mSubText>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setTextViewText(int,java.lang.CharSequence)>($u21, backgroundSize#96);
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#96 = res.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mContentText>;
+
+        if backgroundSize#96 == null goto label21;
+
+        $u21 = <androidx.core.R$id: int text2>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        backgroundSize#96 = res.<androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence mContentText>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setTextViewText(int,java.lang.CharSequence)>($u21, backgroundSize#96);
+
+        $u21 = <androidx.core.R$id: int text2>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u21, 0);
+
+        backgroundSize = 1;
+
+        goto label23;
+
+     label21:
+        $u21 = <androidx.core.R$id: int text2>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u21, 8);
+
+     label22:
+        backgroundSize = 0;
+
+     label23:
+        if backgroundSize == 0 goto label25;
+
+        $u21 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u21 < 16 goto label25;
+
+        if $u22 == 0 goto label24;
+
+        $u21 = <androidx.core.R$dimen: int notification_subtext_size>;
+
+        $u21 = virtualinvoke $u-1.<android.content.res.Resources: int getDimensionPixelSize(int)>($u21);
+
+        showLine2 = (float) $u21;
+
+        $u21 = <androidx.core.R$id: int text>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setTextViewTextSize(int,int,float)>($u21, 0, showLine2);
+
+     label24:
+        $u21 = <androidx.core.R$id: int line1>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewPadding(int,int,int,int,int)>($u21, 0, 0, 0, 0);
+
+     label25:
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u10#133 = virtualinvoke res.<androidx.core.app.NotificationCompat$Builder: long getWhenIfShowing()>();
+
+        iconSize = $u10#133 cmp 0L;
+
+        if iconSize == 0 goto label28;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u20 = res.<androidx.core.app.NotificationCompat$Builder: boolean mUseChronometer>;
+
+        if $u20 == 0 goto label26;
+
+        $u21 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u21 < 16 goto label26;
+
+        $u21 = <androidx.core.R$id: int chronometer>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u21, 0);
+
+        $u21 = <androidx.core.R$id: int chronometer>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u10#133 = virtualinvoke res.<androidx.core.app.NotificationCompat$Builder: long getWhenIfShowing()>();
+
+        $u-1#179 = staticinvoke <android.os.SystemClock: long elapsedRealtime()>();
+
+        $u-1#181 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $u-1#179 = $u-1#179 - $u-1#181;
+
+        $u10#133 = $u10#133 + $u-1#179;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setLong(int,java.lang.String,long)>($u21, "setBase", $u10#133);
+
+        $u21 = <androidx.core.R$id: int chronometer>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setBoolean(int,java.lang.String,boolean)>($u21, "setStarted", 1);
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u20 = res.<androidx.core.app.NotificationCompat$Builder: boolean mChronometerCountDown>;
+
+        if $u20 == 0 goto label27;
+
+        $u21 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u21 < 24 goto label27;
+
+        $u21 = <androidx.core.R$id: int chronometer>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u20 = res.<androidx.core.app.NotificationCompat$Builder: boolean mChronometerCountDown>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setChronometerCountDown(int,boolean)>($u21, $u20);
+
+        goto label27;
+
+     label26:
+        $u21 = <androidx.core.R$id: int time>;
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u21, 0);
+
+        $u21 = <androidx.core.R$id: int time>;
+
+        res = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        $u10#133 = virtualinvoke res.<androidx.core.app.NotificationCompat$Builder: long getWhenIfShowing()>();
+
+        virtualinvoke contentView.<android.widget.RemoteViews: void setLong(int,java.lang.String,long)>($u21, "setTime", $u10#133);
+
+     label27:
+        $u20 = 1;
+
+     label28:
+        $u21 = <androidx.core.R$id: int right_side>;
+
+        if $u20 == 0 goto label29;
+
+        iconSize = 0;
+
+        goto label30;
+
+     label29:
+        iconSize = 8;
+
+     label30:
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u21, iconSize);
+
+        $u21 = <androidx.core.R$id: int line3>;
+
+        if showLine3 == 0 goto label31;
+
+        goto label32;
+
+     label31:
+        $u12 = 8;
+
+     label32:
+        virtualinvoke contentView.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u21, $u12);
+
+        return contentView;
+    }
+
+    public android.app.Notification build()
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        androidx.core.app.NotificationCompat$Builder $u1;
+        android.app.Notification $u-1;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u1 = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        if $u1 == null goto label1;
+
+        $u-1 = virtualinvoke $u1.<androidx.core.app.NotificationCompat$Builder: android.app.Notification build()>();
+
+        return $u-1;
+
+     label1:
+        return null;
+    }
+
+    public void buildIntoRemoteViews(android.widget.RemoteViews, android.widget.RemoteViews)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        android.widget.RemoteViews $u9, $u10;
+        int $u3, $u-1;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u9 := @parameter0: android.widget.RemoteViews;
+
+        $u10 := @parameter1: android.widget.RemoteViews;
+
+        specialinvoke this.<androidx.core.app.NotificationCompat$Style: void hideNormalContent(android.widget.RemoteViews)>($u9);
+
+        $u3 = <androidx.core.R$id: int notification_main_column>;
+
+        virtualinvoke $u9.<android.widget.RemoteViews: void removeAllViews(int)>($u3);
+
+        $u3 = <androidx.core.R$id: int notification_main_column>;
+
+        $u10 = virtualinvoke $u10.<android.widget.RemoteViews: android.widget.RemoteViews clone()>();
+
+        virtualinvoke $u9.<android.widget.RemoteViews: void addView(int,android.widget.RemoteViews)>($u3, $u10);
+
+        $u3 = <androidx.core.R$id: int notification_main_column>;
+
+        virtualinvoke $u9.<android.widget.RemoteViews: void setViewVisibility(int,int)>($u3, 0);
+
+        $u3 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u3 < 21 goto label1;
+
+        $u3 = <androidx.core.R$id: int notification_main_column_container>;
+
+        $u-1 = specialinvoke this.<androidx.core.app.NotificationCompat$Style: int calculateTopPadding()>();
+
+        virtualinvoke $u9.<android.widget.RemoteViews: void setViewPadding(int,int,int,int,int)>($u3, 0, $u-1, 0, 0);
+
+     label1:
+        return;
+    }
+
+    public android.graphics.Bitmap createColoredBitmap(int, int)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        int $u2, $u3;
+        android.graphics.Bitmap $u-1;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = specialinvoke this.<androidx.core.app.NotificationCompat$Style: android.graphics.Bitmap createColoredBitmap(int,int,int)>($u2, $u3, 0);
+
+        return $u-1;
+    }
+
+    android.graphics.Bitmap createColoredBitmap(androidx.core.graphics.drawable.IconCompat, int)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        androidx.core.graphics.drawable.IconCompat $u2;
+        int $u3;
+        android.graphics.Bitmap $u-1;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u2 := @parameter0: androidx.core.graphics.drawable.IconCompat;
+
+        $u3 := @parameter1: int;
+
+        $u-1 = specialinvoke this.<androidx.core.app.NotificationCompat$Style: android.graphics.Bitmap createColoredBitmap(androidx.core.graphics.drawable.IconCompat,int,int)>($u2, $u3, 0);
+
+        return $u-1;
+    }
+
+    public android.widget.RemoteViews makeBigContentView(androidx.core.app.NotificationBuilderWithBuilderAccessor)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        androidx.core.app.NotificationBuilderWithBuilderAccessor $u2;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u2 := @parameter0: androidx.core.app.NotificationBuilderWithBuilderAccessor;
+
+        return null;
+    }
+
+    public android.widget.RemoteViews makeContentView(androidx.core.app.NotificationBuilderWithBuilderAccessor)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        androidx.core.app.NotificationBuilderWithBuilderAccessor $u2;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u2 := @parameter0: androidx.core.app.NotificationBuilderWithBuilderAccessor;
+
+        return null;
+    }
+
+    public android.widget.RemoteViews makeHeadsUpContentView(androidx.core.app.NotificationBuilderWithBuilderAccessor)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        androidx.core.app.NotificationBuilderWithBuilderAccessor $u2;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u2 := @parameter0: androidx.core.app.NotificationBuilderWithBuilderAccessor;
+
+        return null;
+    }
+
+    protected void restoreFromCompatExtras(android.os.Bundle)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        android.os.Bundle $u1;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u1 := @parameter0: android.os.Bundle;
+
+        return;
+    }
+
+    public void setBuilder(androidx.core.app.NotificationCompat$Builder)
+    {
+        androidx.core.app.NotificationCompat$Style this;
+        androidx.core.app.NotificationCompat$Builder $u2, $u0;
+
+        this := @this: androidx.core.app.NotificationCompat$Style;
+
+        $u2 := @parameter0: androidx.core.app.NotificationCompat$Builder;
+
+        $u0 = this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder>;
+
+        if $u0 == $u2 goto label1;
+
+        this.<androidx.core.app.NotificationCompat$Style: androidx.core.app.NotificationCompat$Builder mBuilder> = $u2;
+
+        if $u2 == null goto label1;
+
+        virtualinvoke $u2.<androidx.core.app.NotificationCompat$Builder: androidx.core.app.NotificationCompat$Builder setStyle(androidx.core.app.NotificationCompat$Style)>(this);
+
+     label1:
+        return;
+    }
+}

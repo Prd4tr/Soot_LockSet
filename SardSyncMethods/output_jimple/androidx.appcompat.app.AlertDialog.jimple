@@ -1,0 +1,478 @@
+public class androidx.appcompat.app.AlertDialog extends androidx.appcompat.app.AppCompatDialog implements android.content.DialogInterface
+{
+    static final int LAYOUT_HINT_NONE;
+    static final int LAYOUT_HINT_SIDE;
+    final androidx.appcompat.app.AlertController mAlert;
+
+    protected void <init>(android.content.Context)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        android.content.Context $u2;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.appcompat.app.AlertDialog: void <init>(android.content.Context,int)>($u2, 0);
+
+        return;
+    }
+
+    protected void <init>(android.content.Context, int)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        android.content.Context $u4;
+        int $u5;
+        androidx.appcompat.app.AlertController $u0;
+        android.view.Window $u-1;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: int;
+
+        $u5 = staticinvoke <androidx.appcompat.app.AlertDialog: int resolveDialogTheme(android.content.Context,int)>($u4, $u5);
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatDialog: void <init>(android.content.Context,int)>($u4, $u5);
+
+        $u0 = new androidx.appcompat.app.AlertController;
+
+        $u4 = virtualinvoke this.<androidx.appcompat.app.AlertDialog: android.content.Context getContext()>();
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AlertDialog: android.view.Window getWindow()>();
+
+        specialinvoke $u0.<androidx.appcompat.app.AlertController: void <init>(android.content.Context,androidx.appcompat.app.AppCompatDialog,android.view.Window)>($u4, this, $u-1);
+
+        this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert> = $u0;
+
+        return;
+    }
+
+    protected void <init>(android.content.Context, boolean, android.content.DialogInterface$OnCancelListener)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        android.content.Context $u2;
+        boolean $u3;
+        android.content.DialogInterface$OnCancelListener $u4;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: boolean;
+
+        $u4 := @parameter2: android.content.DialogInterface$OnCancelListener;
+
+        specialinvoke this.<androidx.appcompat.app.AlertDialog: void <init>(android.content.Context,int)>($u2, 0);
+
+        virtualinvoke this.<androidx.appcompat.app.AlertDialog: void setCancelable(boolean)>($u3);
+
+        virtualinvoke this.<androidx.appcompat.app.AlertDialog: void setOnCancelListener(android.content.DialogInterface$OnCancelListener)>($u4);
+
+        return;
+    }
+
+    static int resolveDialogTheme(android.content.Context, int)
+    {
+        android.content.Context $u4;
+        int $u5, outValue;
+        android.content.res.Resources$Theme $u-1;
+        android.util.TypedValue outValue#4;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: int;
+
+        outValue = $u5 >>> 24;
+
+        outValue = outValue & 255;
+
+        if outValue < 1 goto label1;
+
+        return $u5;
+
+     label1:
+        outValue#4 = new android.util.TypedValue;
+
+        specialinvoke outValue#4.<android.util.TypedValue: void <init>()>();
+
+        $u-1 = virtualinvoke $u4.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        $u5 = <androidx.appcompat.R$attr: int alertDialogTheme>;
+
+        virtualinvoke $u-1.<android.content.res.Resources$Theme: boolean resolveAttribute(int,android.util.TypedValue,boolean)>($u5, outValue#4, 1);
+
+        $u5 = outValue#4.<android.util.TypedValue: int resourceId>;
+
+        return $u5;
+    }
+
+    public android.widget.Button getButton(int)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        int $u2;
+        android.widget.Button $u-1;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.app.AlertController: android.widget.Button getButton(int)>($u2);
+
+        return $u-1;
+    }
+
+    public android.widget.ListView getListView()
+    {
+        androidx.appcompat.app.AlertDialog this;
+        android.widget.ListView $u-1;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.app.AlertController: android.widget.ListView getListView()>();
+
+        return $u-1;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        android.os.Bundle $u2;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u2 := @parameter0: android.os.Bundle;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatDialog: void onCreate(android.os.Bundle)>($u2);
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        virtualinvoke $u0.<androidx.appcompat.app.AlertController: void installContent()>();
+
+        return;
+    }
+
+    public boolean onKeyDown(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        int $u2;
+        android.view.KeyEvent $u3;
+        androidx.appcompat.app.AlertController $u0;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.view.KeyEvent;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.app.AlertController: boolean onKeyDown(int,android.view.KeyEvent)>($u2, $u3);
+
+        if $u-1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.appcompat.app.AppCompatDialog: boolean onKeyDown(int,android.view.KeyEvent)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public boolean onKeyUp(int, android.view.KeyEvent)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        int $u2;
+        android.view.KeyEvent $u3;
+        androidx.appcompat.app.AlertController $u0;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: android.view.KeyEvent;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.app.AlertController: boolean onKeyUp(int,android.view.KeyEvent)>($u2, $u3);
+
+        if $u-1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.appcompat.app.AppCompatDialog: boolean onKeyUp(int,android.view.KeyEvent)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public void setButton(int, java.lang.CharSequence, android.content.DialogInterface$OnClickListener)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        int $u7;
+        java.lang.CharSequence $u8;
+        android.content.DialogInterface$OnClickListener $u9;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u7 := @parameter0: int;
+
+        $u8 := @parameter1: java.lang.CharSequence;
+
+        $u9 := @parameter2: android.content.DialogInterface$OnClickListener;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        virtualinvoke $u0.<androidx.appcompat.app.AlertController: void setButton(int,java.lang.CharSequence,android.content.DialogInterface$OnClickListener,android.os.Message,android.graphics.drawable.Drawable)>($u7, $u8, $u9, null, null);
+
+        return;
+    }
+
+    public void setButton(int, java.lang.CharSequence, android.graphics.drawable.Drawable, android.content.DialogInterface$OnClickListener)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        int $u7;
+        java.lang.CharSequence $u8;
+        android.graphics.drawable.Drawable $u9;
+        android.content.DialogInterface$OnClickListener $u10;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u7 := @parameter0: int;
+
+        $u8 := @parameter1: java.lang.CharSequence;
+
+        $u9 := @parameter2: android.graphics.drawable.Drawable;
+
+        $u10 := @parameter3: android.content.DialogInterface$OnClickListener;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        virtualinvoke $u0.<androidx.appcompat.app.AlertController: void setButton(int,java.lang.CharSequence,android.content.DialogInterface$OnClickListener,android.os.Message,android.graphics.drawable.Drawable)>($u7, $u8, $u10, null, $u9);
+
+        return;
+    }
+
+    public void setButton(int, java.lang.CharSequence, android.os.Message)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        int $u7;
+        java.lang.CharSequence $u8;
+        android.os.Message $u9;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u7 := @parameter0: int;
+
+        $u8 := @parameter1: java.lang.CharSequence;
+
+        $u9 := @parameter2: android.os.Message;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        virtualinvoke $u0.<androidx.appcompat.app.AlertController: void setButton(int,java.lang.CharSequence,android.content.DialogInterface$OnClickListener,android.os.Message,android.graphics.drawable.Drawable)>($u7, $u8, null, $u9, null);
+
+        return;
+    }
+
+    void setButtonPanelLayoutHint(int)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        int $u2;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        virtualinvoke $u0.<androidx.appcompat.app.AlertController: void setButtonPanelLayoutHint(int)>($u2);
+
+        return;
+    }
+
+    public void setCustomTitle(android.view.View)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        android.view.View $u2;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        virtualinvoke $u0.<androidx.appcompat.app.AlertController: void setCustomTitle(android.view.View)>($u2);
+
+        return;
+    }
+
+    public void setIcon(int)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        int $u2;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        virtualinvoke $u0.<androidx.appcompat.app.AlertController: void setIcon(int)>($u2);
+
+        return;
+    }
+
+    public void setIcon(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        android.graphics.drawable.Drawable $u2;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        virtualinvoke $u0.<androidx.appcompat.app.AlertController: void setIcon(android.graphics.drawable.Drawable)>($u2);
+
+        return;
+    }
+
+    public void setIconAttribute(int)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        int $u4;
+        android.util.TypedValue out;
+        android.content.Context $u-1;
+        android.content.res.Resources$Theme $u-1#3;
+        androidx.appcompat.app.AlertController $u1;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u4 := @parameter0: int;
+
+        out = new android.util.TypedValue;
+
+        specialinvoke out.<android.util.TypedValue: void <init>()>();
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.AlertDialog: android.content.Context getContext()>();
+
+        $u-1#3 = virtualinvoke $u-1.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        virtualinvoke $u-1#3.<android.content.res.Resources$Theme: boolean resolveAttribute(int,android.util.TypedValue,boolean)>($u4, out, 1);
+
+        $u1 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        $u4 = out.<android.util.TypedValue: int resourceId>;
+
+        virtualinvoke $u1.<androidx.appcompat.app.AlertController: void setIcon(int)>($u4);
+
+        return;
+    }
+
+    public void setMessage(java.lang.CharSequence)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        java.lang.CharSequence $u2;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        virtualinvoke $u0.<androidx.appcompat.app.AlertController: void setMessage(java.lang.CharSequence)>($u2);
+
+        return;
+    }
+
+    public void setTitle(java.lang.CharSequence)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        java.lang.CharSequence $u2;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatDialog: void setTitle(java.lang.CharSequence)>($u2);
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        virtualinvoke $u0.<androidx.appcompat.app.AlertController: void setTitle(java.lang.CharSequence)>($u2);
+
+        return;
+    }
+
+    public void setView(android.view.View)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        android.view.View $u2;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        virtualinvoke $u0.<androidx.appcompat.app.AlertController: void setView(android.view.View)>($u2);
+
+        return;
+    }
+
+    public void setView(android.view.View, int, int, int, int)
+    {
+        androidx.appcompat.app.AlertDialog this;
+        android.view.View $u7;
+        int $u8, $u9, $u10, $u11;
+        androidx.appcompat.app.AlertController $u0;
+
+        this := @this: androidx.appcompat.app.AlertDialog;
+
+        $u7 := @parameter0: android.view.View;
+
+        $u8 := @parameter1: int;
+
+        $u9 := @parameter2: int;
+
+        $u10 := @parameter3: int;
+
+        $u11 := @parameter4: int;
+
+        $u0 = this.<androidx.appcompat.app.AlertDialog: androidx.appcompat.app.AlertController mAlert>;
+
+        virtualinvoke $u0.<androidx.appcompat.app.AlertController: void setView(android.view.View,int,int,int,int)>($u7, $u8, $u9, $u10, $u11);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.app.AlertDialog: int LAYOUT_HINT_SIDE> = 1;
+
+        <androidx.appcompat.app.AlertDialog: int LAYOUT_HINT_NONE> = 0;
+
+        return;
+    }
+}

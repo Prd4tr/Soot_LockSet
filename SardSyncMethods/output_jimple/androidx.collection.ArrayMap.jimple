@@ -1,0 +1,205 @@
+public class androidx.collection.ArrayMap extends androidx.collection.SimpleArrayMap implements java.util.Map
+{
+    androidx.collection.MapCollections mCollections;
+
+    public void <init>()
+    {
+        androidx.collection.ArrayMap this;
+
+        this := @this: androidx.collection.ArrayMap;
+
+        specialinvoke this.<androidx.collection.SimpleArrayMap: void <init>()>();
+
+        return;
+    }
+
+    public void <init>(int)
+    {
+        androidx.collection.ArrayMap this;
+        int $u1;
+
+        this := @this: androidx.collection.ArrayMap;
+
+        $u1 := @parameter0: int;
+
+        specialinvoke this.<androidx.collection.SimpleArrayMap: void <init>(int)>($u1);
+
+        return;
+    }
+
+    public void <init>(androidx.collection.SimpleArrayMap)
+    {
+        androidx.collection.ArrayMap this;
+        androidx.collection.SimpleArrayMap $u1;
+
+        this := @this: androidx.collection.ArrayMap;
+
+        $u1 := @parameter0: androidx.collection.SimpleArrayMap;
+
+        specialinvoke this.<androidx.collection.SimpleArrayMap: void <init>(androidx.collection.SimpleArrayMap)>($u1);
+
+        return;
+    }
+
+    private androidx.collection.MapCollections getCollection()
+    {
+        androidx.collection.ArrayMap this;
+        androidx.collection.MapCollections $u0;
+        androidx.collection.ArrayMap$1 $u0#2;
+
+        this := @this: androidx.collection.ArrayMap;
+
+        $u0 = this.<androidx.collection.ArrayMap: androidx.collection.MapCollections mCollections>;
+
+        if $u0 != null goto label1;
+
+        $u0#2 = new androidx.collection.ArrayMap$1;
+
+        specialinvoke $u0#2.<androidx.collection.ArrayMap$1: void <init>(androidx.collection.ArrayMap)>(this);
+
+        this.<androidx.collection.ArrayMap: androidx.collection.MapCollections mCollections> = $u0#2;
+
+     label1:
+        $u0 = this.<androidx.collection.ArrayMap: androidx.collection.MapCollections mCollections>;
+
+        return $u0;
+    }
+
+    public boolean containsAll(java.util.Collection)
+    {
+        androidx.collection.ArrayMap this;
+        java.util.Collection collection;
+        boolean $u-1;
+
+        this := @this: androidx.collection.ArrayMap;
+
+        collection := @parameter0: java.util.Collection;
+
+        $u-1 = staticinvoke <androidx.collection.MapCollections: boolean containsAllHelper(java.util.Map,java.util.Collection)>(this, collection);
+
+        return $u-1;
+    }
+
+    public java.util.Set entrySet()
+    {
+        androidx.collection.ArrayMap this;
+        androidx.collection.MapCollections $u-1;
+        java.util.Set $u-1#3;
+
+        this := @this: androidx.collection.ArrayMap;
+
+        $u-1 = specialinvoke this.<androidx.collection.ArrayMap: androidx.collection.MapCollections getCollection()>();
+
+        $u-1#3 = virtualinvoke $u-1.<androidx.collection.MapCollections: java.util.Set getEntrySet()>();
+
+        return $u-1#3;
+    }
+
+    public java.util.Set keySet()
+    {
+        androidx.collection.ArrayMap this;
+        androidx.collection.MapCollections $u-1;
+        java.util.Set $u-1#3;
+
+        this := @this: androidx.collection.ArrayMap;
+
+        $u-1 = specialinvoke this.<androidx.collection.ArrayMap: androidx.collection.MapCollections getCollection()>();
+
+        $u-1#3 = virtualinvoke $u-1.<androidx.collection.MapCollections: java.util.Set getKeySet()>();
+
+        return $u-1#3;
+    }
+
+    public void putAll(java.util.Map)
+    {
+        androidx.collection.ArrayMap this;
+        java.util.Map map;
+        int $u0, $u-1;
+        java.util.Set $u-1#5;
+        java.util.Iterator $u-1#7;
+        boolean $u-1#9;
+        java.lang.Object $u-1#11, $u-1#15;
+        java.util.Map$Entry entry;
+
+        this := @this: androidx.collection.ArrayMap;
+
+        map := @parameter0: java.util.Map;
+
+        $u0 = this.<androidx.collection.ArrayMap: int mSize>;
+
+        $u-1 = interfaceinvoke map.<java.util.Map: int size()>();
+
+        $u0 = $u0 + $u-1;
+
+        virtualinvoke this.<androidx.collection.ArrayMap: void ensureCapacity(int)>($u0);
+
+        $u-1#5 = interfaceinvoke map.<java.util.Map: java.util.Set entrySet()>();
+
+        $u-1#7 = interfaceinvoke $u-1#5.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#9 = interfaceinvoke $u-1#7.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#9 == 0 goto label2;
+
+        $u-1#11 = interfaceinvoke $u-1#7.<java.util.Iterator: java.lang.Object next()>();
+
+        entry = (java.util.Map$Entry) $u-1#11;
+
+        $u-1#11 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $u-1#15 = interfaceinvoke entry.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        virtualinvoke this.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u-1#11, $u-1#15);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public boolean removeAll(java.util.Collection)
+    {
+        androidx.collection.ArrayMap this;
+        java.util.Collection collection;
+        boolean $u-1;
+
+        this := @this: androidx.collection.ArrayMap;
+
+        collection := @parameter0: java.util.Collection;
+
+        $u-1 = staticinvoke <androidx.collection.MapCollections: boolean removeAllHelper(java.util.Map,java.util.Collection)>(this, collection);
+
+        return $u-1;
+    }
+
+    public boolean retainAll(java.util.Collection)
+    {
+        androidx.collection.ArrayMap this;
+        java.util.Collection collection;
+        boolean $u-1;
+
+        this := @this: androidx.collection.ArrayMap;
+
+        collection := @parameter0: java.util.Collection;
+
+        $u-1 = staticinvoke <androidx.collection.MapCollections: boolean retainAllHelper(java.util.Map,java.util.Collection)>(this, collection);
+
+        return $u-1;
+    }
+
+    public java.util.Collection values()
+    {
+        androidx.collection.ArrayMap this;
+        androidx.collection.MapCollections $u-1;
+        java.util.Collection $u-1#3;
+
+        this := @this: androidx.collection.ArrayMap;
+
+        $u-1 = specialinvoke this.<androidx.collection.ArrayMap: androidx.collection.MapCollections getCollection()>();
+
+        $u-1#3 = virtualinvoke $u-1.<androidx.collection.MapCollections: java.util.Collection getValues()>();
+
+        return $u-1#3;
+    }
+}

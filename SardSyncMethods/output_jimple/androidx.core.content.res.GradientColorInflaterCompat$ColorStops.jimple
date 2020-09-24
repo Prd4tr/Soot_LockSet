@@ -1,0 +1,142 @@
+final class androidx.core.content.res.GradientColorInflaterCompat$ColorStops extends java.lang.Object
+{
+    final int[] mColors;
+    final float[] mOffsets;
+
+    void <init>(int, int)
+    {
+        androidx.core.content.res.GradientColorInflaterCompat$ColorStops this;
+        int $u4, $u5;
+        int[] $u1;
+        float[] $u0;
+
+        this := @this: androidx.core.content.res.GradientColorInflaterCompat$ColorStops;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u1 = newarray (int)[2];
+
+        $u1[0] = $u4;
+
+        $u1[1] = $u5;
+
+        this.<androidx.core.content.res.GradientColorInflaterCompat$ColorStops: int[] mColors> = $u1;
+
+        $u0 = newarray (float)[2];
+
+        $u0[0] = 0.0F;
+
+        $u0[1] = 1.0F;
+
+        this.<androidx.core.content.res.GradientColorInflaterCompat$ColorStops: float[] mOffsets> = $u0;
+
+        return;
+    }
+
+    void <init>(int, int, int)
+    {
+        androidx.core.content.res.GradientColorInflaterCompat$ColorStops this;
+        int $u4, $u5, $u6;
+        int[] $u1;
+        float[] $u0;
+
+        this := @this: androidx.core.content.res.GradientColorInflaterCompat$ColorStops;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: int;
+
+        $u6 := @parameter2: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u1 = newarray (int)[3];
+
+        $u1[0] = $u4;
+
+        $u1[1] = $u5;
+
+        $u1[2] = $u6;
+
+        this.<androidx.core.content.res.GradientColorInflaterCompat$ColorStops: int[] mColors> = $u1;
+
+        $u0 = newarray (float)[3];
+
+        $u0[0] = 0.0F;
+
+        $u0[1] = 0.5F;
+
+        $u0[2] = 1.0F;
+
+        this.<androidx.core.content.res.GradientColorInflaterCompat$ColorStops: float[] mOffsets> = $u0;
+
+        return;
+    }
+
+    void <init>(java.util.List, java.util.List)
+    {
+        androidx.core.content.res.GradientColorInflaterCompat$ColorStops this;
+        java.util.List colorsList, offsetsList;
+        int $u-1, i#4, $u-1#9;
+        int[] i;
+        float[] i#3;
+        java.lang.Object $u-1#6;
+        java.lang.Integer $u3;
+        java.lang.Float $u3#14;
+        float $u-1#15;
+
+        this := @this: androidx.core.content.res.GradientColorInflaterCompat$ColorStops;
+
+        colorsList := @parameter0: java.util.List;
+
+        offsetsList := @parameter1: java.util.List;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u-1 = interfaceinvoke colorsList.<java.util.List: int size()>();
+
+        i = newarray (int)[$u-1];
+
+        this.<androidx.core.content.res.GradientColorInflaterCompat$ColorStops: int[] mColors> = i;
+
+        i#3 = newarray (float)[$u-1];
+
+        this.<androidx.core.content.res.GradientColorInflaterCompat$ColorStops: float[] mOffsets> = i#3;
+
+        i#4 = 0;
+
+     label1:
+        if i#4 >= $u-1 goto label2;
+
+        i = this.<androidx.core.content.res.GradientColorInflaterCompat$ColorStops: int[] mColors>;
+
+        $u-1#6 = interfaceinvoke colorsList.<java.util.List: java.lang.Object get(int)>(i#4);
+
+        $u3 = (java.lang.Integer) $u-1#6;
+
+        $u-1#9 = virtualinvoke $u3.<java.lang.Integer: int intValue()>();
+
+        i[i#4] = $u-1#9;
+
+        i#3 = this.<androidx.core.content.res.GradientColorInflaterCompat$ColorStops: float[] mOffsets>;
+
+        $u-1#6 = interfaceinvoke offsetsList.<java.util.List: java.lang.Object get(int)>(i#4);
+
+        $u3#14 = (java.lang.Float) $u-1#6;
+
+        $u-1#15 = virtualinvoke $u3#14.<java.lang.Float: float floatValue()>();
+
+        i#3[i#4] = $u-1#15;
+
+        i#4 = i#4 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+}

@@ -1,0 +1,113 @@
+class androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath extends androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath
+{
+
+    void <init>()
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath this;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath;
+
+        specialinvoke this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: void <init>()>();
+
+        return;
+    }
+
+    void <init>(androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath)
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath this, $u1;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath;
+
+        $u1 := @parameter0: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath;
+
+        specialinvoke this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath: void <init>(androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VPath)>($u1);
+
+        return;
+    }
+
+    private void updateStateFromTypedArray(android.content.res.TypedArray, org.xmlpull.v1.XmlPullParser)
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath this;
+        android.content.res.TypedArray $u6;
+        org.xmlpull.v1.XmlPullParser $u7;
+        java.lang.String $u-1;
+        androidx.core.graphics.PathParser$PathDataNode[] $u-1#6;
+        int $u-1#9;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath;
+
+        $u6 := @parameter0: android.content.res.TypedArray;
+
+        $u7 := @parameter1: org.xmlpull.v1.XmlPullParser;
+
+        $u-1 = virtualinvoke $u6.<android.content.res.TypedArray: java.lang.String getString(int)>(0);
+
+        if $u-1 == null goto label1;
+
+        this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath: java.lang.String mPathName> = $u-1;
+
+     label1:
+        $u-1 = virtualinvoke $u6.<android.content.res.TypedArray: java.lang.String getString(int)>(1);
+
+        if $u-1 == null goto label2;
+
+        $u-1#6 = staticinvoke <androidx.core.graphics.PathParser: androidx.core.graphics.PathParser$PathDataNode[] createNodesFromPathData(java.lang.String)>($u-1);
+
+        this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath: androidx.core.graphics.PathParser$PathDataNode[] mNodes> = $u-1#6;
+
+     label2:
+        $u-1#9 = staticinvoke <androidx.core.content.res.TypedArrayUtils: int getNamedInt(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser,java.lang.String,int,int)>($u6, $u7, "fillType", 2, 0);
+
+        this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath: int mFillRule> = $u-1#9;
+
+        return;
+    }
+
+    public void inflate(android.content.res.Resources, android.util.AttributeSet, android.content.res.Resources$Theme, org.xmlpull.v1.XmlPullParser)
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath this;
+        android.content.res.Resources $u3;
+        android.util.AttributeSet $u4;
+        android.content.res.Resources$Theme $u5;
+        org.xmlpull.v1.XmlPullParser $u6;
+        boolean $u-1;
+        int[] a;
+        android.content.res.TypedArray $u-1#5;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath;
+
+        $u3 := @parameter0: android.content.res.Resources;
+
+        $u4 := @parameter1: android.util.AttributeSet;
+
+        $u5 := @parameter2: android.content.res.Resources$Theme;
+
+        $u6 := @parameter3: org.xmlpull.v1.XmlPullParser;
+
+        $u-1 = staticinvoke <androidx.core.content.res.TypedArrayUtils: boolean hasAttribute(org.xmlpull.v1.XmlPullParser,java.lang.String)>($u6, "pathData");
+
+        if $u-1 != 0 goto label1;
+
+        return;
+
+     label1:
+        a = <androidx.vectordrawable.graphics.drawable.AndroidResources: int[] STYLEABLE_VECTOR_DRAWABLE_CLIP_PATH>;
+
+        $u-1#5 = staticinvoke <androidx.core.content.res.TypedArrayUtils: android.content.res.TypedArray obtainAttributes(android.content.res.Resources,android.content.res.Resources$Theme,android.util.AttributeSet,int[])>($u3, $u5, $u4, a);
+
+        specialinvoke this.<androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath: void updateStateFromTypedArray(android.content.res.TypedArray,org.xmlpull.v1.XmlPullParser)>($u-1#5, $u6);
+
+        virtualinvoke $u-1#5.<android.content.res.TypedArray: void recycle()>();
+
+        return;
+    }
+
+    public boolean isClipPath()
+    {
+        androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath this;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VClipPath;
+
+        return 1;
+    }
+}

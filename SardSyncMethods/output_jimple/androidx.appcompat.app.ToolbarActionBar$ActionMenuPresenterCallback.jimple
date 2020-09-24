@@ -1,0 +1,98 @@
+final class androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback extends java.lang.Object implements androidx.appcompat.view.menu.MenuPresenter$Callback
+{
+    private boolean mClosingActionMenu;
+    final androidx.appcompat.app.ToolbarActionBar this$0;
+
+    void <init>(androidx.appcompat.app.ToolbarActionBar)
+    {
+        androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback this;
+        androidx.appcompat.app.ToolbarActionBar $u1;
+
+        this := @this: androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback;
+
+        $u1 := @parameter0: androidx.appcompat.app.ToolbarActionBar;
+
+        this.<androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback: androidx.appcompat.app.ToolbarActionBar this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onCloseMenu(androidx.appcompat.view.menu.MenuBuilder, boolean)
+    {
+        androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback this;
+        androidx.appcompat.view.menu.MenuBuilder $u3;
+        boolean $u4;
+        androidx.appcompat.app.ToolbarActionBar $u0;
+        androidx.appcompat.widget.DecorToolbar $u0#4;
+        android.view.Window$Callback $u0#6;
+
+        this := @this: androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback;
+
+        $u3 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u4 := @parameter1: boolean;
+
+        $u4 = this.<androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback: boolean mClosingActionMenu>;
+
+        if $u4 == 0 goto label1;
+
+        return;
+
+     label1:
+        this.<androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback: boolean mClosingActionMenu> = 1;
+
+        $u0 = this.<androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback: androidx.appcompat.app.ToolbarActionBar this$0>;
+
+        $u0#4 = $u0.<androidx.appcompat.app.ToolbarActionBar: androidx.appcompat.widget.DecorToolbar mDecorToolbar>;
+
+        interfaceinvoke $u0#4.<androidx.appcompat.widget.DecorToolbar: void dismissPopupMenus()>();
+
+        $u0 = this.<androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback: androidx.appcompat.app.ToolbarActionBar this$0>;
+
+        $u0#6 = $u0.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback mWindowCallback>;
+
+        if $u0#6 == null goto label2;
+
+        $u0 = this.<androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback: androidx.appcompat.app.ToolbarActionBar this$0>;
+
+        $u0#6 = $u0.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback mWindowCallback>;
+
+        interfaceinvoke $u0#6.<android.view.Window$Callback: void onPanelClosed(int,android.view.Menu)>(108, $u3);
+
+     label2:
+        this.<androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback: boolean mClosingActionMenu> = 0;
+
+        return;
+    }
+
+    public boolean onOpenSubMenu(androidx.appcompat.view.menu.MenuBuilder)
+    {
+        androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback this;
+        androidx.appcompat.view.menu.MenuBuilder $u3;
+        androidx.appcompat.app.ToolbarActionBar $u0;
+        android.view.Window$Callback $u0#2;
+
+        this := @this: androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback;
+
+        $u3 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u0 = this.<androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback: androidx.appcompat.app.ToolbarActionBar this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback mWindowCallback>;
+
+        if $u0#2 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.app.ToolbarActionBar$ActionMenuPresenterCallback: androidx.appcompat.app.ToolbarActionBar this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.app.ToolbarActionBar: android.view.Window$Callback mWindowCallback>;
+
+        interfaceinvoke $u0#2.<android.view.Window$Callback: boolean onMenuOpened(int,android.view.Menu)>(108, $u3);
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+}

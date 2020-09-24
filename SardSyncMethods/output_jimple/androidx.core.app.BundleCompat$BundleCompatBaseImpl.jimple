@@ -1,0 +1,215 @@
+class androidx.core.app.BundleCompat$BundleCompatBaseImpl extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    private static java.lang.reflect.Method sGetIBinderMethod;
+    private static boolean sGetIBinderMethodFetched;
+    private static java.lang.reflect.Method sPutIBinderMethod;
+    private static boolean sPutIBinderMethodFetched;
+
+    private void <init>()
+    {
+        androidx.core.app.BundleCompat$BundleCompatBaseImpl this;
+
+        this := @this: androidx.core.app.BundleCompat$BundleCompatBaseImpl;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.os.IBinder getBinder(android.os.Bundle, java.lang.String)
+    {
+        android.os.Bundle $u7;
+        java.lang.String $u8;
+        java.lang.Class[] $u5;
+        boolean e;
+        java.lang.Class e#4;
+        java.lang.reflect.Method $u-1;
+        java.lang.NoSuchMethodException e#8;
+        java.lang.Object[] $u3;
+        java.lang.Object $u-1#13;
+        android.os.IBinder e#15;
+        java.lang.Exception e#16;
+
+        $u7 := @parameter0: android.os.Bundle;
+
+        $u8 := @parameter1: java.lang.String;
+
+        e = <androidx.core.app.BundleCompat$BundleCompatBaseImpl: boolean sGetIBinderMethodFetched>;
+
+        if e != 0 goto label07;
+
+        e#4 = class "Landroid/os/Bundle;";
+
+        $u5 = newarray (java.lang.Class)[1];
+
+        $u5[0] = class "Ljava/lang/String;";
+
+     label01:
+        $u-1 = virtualinvoke e#4.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getIBinder", $u5);
+
+     label02:
+        <androidx.core.app.BundleCompat$BundleCompatBaseImpl: java.lang.reflect.Method sGetIBinderMethod> = $u-1;
+
+     label03:
+        virtualinvoke $u-1.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label04:
+        goto label06;
+
+     label05:
+        e#8 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("BundleCompatBaseImpl", "Failed to retrieve getIBinder method", e#8);
+
+     label06:
+        <androidx.core.app.BundleCompat$BundleCompatBaseImpl: boolean sGetIBinderMethodFetched> = 1;
+
+     label07:
+        $u-1 = <androidx.core.app.BundleCompat$BundleCompatBaseImpl: java.lang.reflect.Method sGetIBinderMethod>;
+
+        if $u-1 == null goto label14;
+
+        $u3 = newarray (java.lang.Object)[1];
+
+        $u3[0] = $u8;
+
+     label08:
+        $u-1#13 = virtualinvoke $u-1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u7, $u3);
+
+     label09:
+        e#15 = (android.os.IBinder) $u-1#13;
+
+        return e#15;
+
+     label10:
+        e#16 := @caughtexception;
+
+        goto label13;
+
+     label11:
+        e#16 := @caughtexception;
+
+        goto label13;
+
+     label12:
+        e#16 := @caughtexception;
+
+     label13:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("BundleCompatBaseImpl", "Failed to invoke getIBinder via reflection", e#16);
+
+        <androidx.core.app.BundleCompat$BundleCompatBaseImpl: java.lang.reflect.Method sGetIBinderMethod> = null;
+
+     label14:
+        return null;
+
+        catch java.lang.NoSuchMethodException from label01 to label02 with label05;
+        catch java.lang.NoSuchMethodException from label03 to label04 with label05;
+        catch java.lang.reflect.InvocationTargetException from label08 to label09 with label12;
+        catch java.lang.IllegalAccessException from label08 to label09 with label11;
+        catch java.lang.IllegalArgumentException from label08 to label09 with label10;
+    }
+
+    public static void putBinder(android.os.Bundle, java.lang.String, android.os.IBinder)
+    {
+        android.os.Bundle $u8;
+        java.lang.String $u9;
+        android.os.IBinder $u10;
+        java.lang.Class[] $u6;
+        java.lang.reflect.Method $u-1;
+        boolean e;
+        java.lang.Class e#4;
+        java.lang.NoSuchMethodException e#9;
+        java.lang.Object[] $u3;
+        java.lang.Exception e#13;
+
+        $u8 := @parameter0: android.os.Bundle;
+
+        $u9 := @parameter1: java.lang.String;
+
+        $u10 := @parameter2: android.os.IBinder;
+
+        e = <androidx.core.app.BundleCompat$BundleCompatBaseImpl: boolean sPutIBinderMethodFetched>;
+
+        if e != 0 goto label07;
+
+        e#4 = class "Landroid/os/Bundle;";
+
+        $u6 = newarray (java.lang.Class)[2];
+
+        $u6[0] = class "Ljava/lang/String;";
+
+        $u6[1] = class "Landroid/os/IBinder;";
+
+     label01:
+        $u-1 = virtualinvoke e#4.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("putIBinder", $u6);
+
+     label02:
+        <androidx.core.app.BundleCompat$BundleCompatBaseImpl: java.lang.reflect.Method sPutIBinderMethod> = $u-1;
+
+     label03:
+        virtualinvoke $u-1.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label04:
+        goto label06;
+
+     label05:
+        e#9 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("BundleCompatBaseImpl", "Failed to retrieve putIBinder method", e#9);
+
+     label06:
+        <androidx.core.app.BundleCompat$BundleCompatBaseImpl: boolean sPutIBinderMethodFetched> = 1;
+
+     label07:
+        $u-1 = <androidx.core.app.BundleCompat$BundleCompatBaseImpl: java.lang.reflect.Method sPutIBinderMethod>;
+
+        if $u-1 == null goto label14;
+
+        $u3 = newarray (java.lang.Object)[2];
+
+        $u3[0] = $u9;
+
+        $u3[1] = $u10;
+
+     label08:
+        virtualinvoke $u-1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u8, $u3);
+
+     label09:
+        return;
+
+     label10:
+        e#13 := @caughtexception;
+
+        goto label13;
+
+     label11:
+        e#13 := @caughtexception;
+
+        goto label13;
+
+     label12:
+        e#13 := @caughtexception;
+
+     label13:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String,java.lang.Throwable)>("BundleCompatBaseImpl", "Failed to invoke putIBinder via reflection", e#13);
+
+        <androidx.core.app.BundleCompat$BundleCompatBaseImpl: java.lang.reflect.Method sPutIBinderMethod> = null;
+
+     label14:
+        return;
+
+        catch java.lang.NoSuchMethodException from label01 to label02 with label05;
+        catch java.lang.NoSuchMethodException from label03 to label04 with label05;
+        catch java.lang.reflect.InvocationTargetException from label08 to label09 with label12;
+        catch java.lang.IllegalAccessException from label08 to label09 with label11;
+        catch java.lang.IllegalArgumentException from label08 to label09 with label10;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.BundleCompat$BundleCompatBaseImpl: java.lang.String TAG> = "BundleCompatBaseImpl";
+
+        return;
+    }
+}

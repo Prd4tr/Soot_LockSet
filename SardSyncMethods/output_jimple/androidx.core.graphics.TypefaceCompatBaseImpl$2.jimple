@@ -1,0 +1,86 @@
+class androidx.core.graphics.TypefaceCompatBaseImpl$2 extends java.lang.Object implements androidx.core.graphics.TypefaceCompatBaseImpl$StyleExtractor
+{
+    final androidx.core.graphics.TypefaceCompatBaseImpl this$0;
+
+    void <init>(androidx.core.graphics.TypefaceCompatBaseImpl)
+    {
+        androidx.core.graphics.TypefaceCompatBaseImpl$2 this;
+        androidx.core.graphics.TypefaceCompatBaseImpl $u1;
+
+        this := @this: androidx.core.graphics.TypefaceCompatBaseImpl$2;
+
+        $u1 := @parameter0: androidx.core.graphics.TypefaceCompatBaseImpl;
+
+        this.<androidx.core.graphics.TypefaceCompatBaseImpl$2: androidx.core.graphics.TypefaceCompatBaseImpl this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public int getWeight(androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry)
+    {
+        androidx.core.graphics.TypefaceCompatBaseImpl$2 this;
+        androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry $u2;
+        int $u-1;
+
+        this := @this: androidx.core.graphics.TypefaceCompatBaseImpl$2;
+
+        $u2 := @parameter0: androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry;
+
+        $u-1 = virtualinvoke $u2.<androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry: int getWeight()>();
+
+        return $u-1;
+    }
+
+    public volatile int getWeight(java.lang.Object)
+    {
+        androidx.core.graphics.TypefaceCompatBaseImpl$2 this;
+        int $u-1;
+        java.lang.Object $u1;
+        androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry $u1#2;
+
+        this := @this: androidx.core.graphics.TypefaceCompatBaseImpl$2;
+
+        $u1 := @parameter0: java.lang.Object;
+
+        $u1#2 = (androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry) $u1;
+
+        $u-1 = virtualinvoke this.<androidx.core.graphics.TypefaceCompatBaseImpl$2: int getWeight(androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry)>($u1#2);
+
+        return $u-1;
+    }
+
+    public boolean isItalic(androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry)
+    {
+        androidx.core.graphics.TypefaceCompatBaseImpl$2 this;
+        androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry $u2;
+        boolean $u-1;
+
+        this := @this: androidx.core.graphics.TypefaceCompatBaseImpl$2;
+
+        $u2 := @parameter0: androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry;
+
+        $u-1 = virtualinvoke $u2.<androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry: boolean isItalic()>();
+
+        return $u-1;
+    }
+
+    public volatile boolean isItalic(java.lang.Object)
+    {
+        androidx.core.graphics.TypefaceCompatBaseImpl$2 this;
+        boolean $u-1;
+        java.lang.Object $u1;
+        androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry $u1#2;
+
+        this := @this: androidx.core.graphics.TypefaceCompatBaseImpl$2;
+
+        $u1 := @parameter0: java.lang.Object;
+
+        $u1#2 = (androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry) $u1;
+
+        $u-1 = virtualinvoke this.<androidx.core.graphics.TypefaceCompatBaseImpl$2: boolean isItalic(androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry)>($u1#2);
+
+        return $u-1;
+    }
+}

@@ -1,0 +1,137 @@
+class androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl extends androidx.core.app.ActivityOptionsCompat
+{
+    private final android.app.ActivityOptions mActivityOptions;
+
+    void <init>(android.app.ActivityOptions)
+    {
+        androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl this;
+        android.app.ActivityOptions $u1;
+
+        this := @this: androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl;
+
+        $u1 := @parameter0: android.app.ActivityOptions;
+
+        specialinvoke this.<androidx.core.app.ActivityOptionsCompat: void <init>()>();
+
+        this.<androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl: android.app.ActivityOptions mActivityOptions> = $u1;
+
+        return;
+    }
+
+    public android.graphics.Rect getLaunchBounds()
+    {
+        androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl this;
+        android.graphics.Rect $u-1;
+        int $u0;
+        android.app.ActivityOptions $u0#3;
+
+        this := @this: androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 >= 24 goto label1;
+
+        return null;
+
+     label1:
+        $u0#3 = this.<androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl: android.app.ActivityOptions mActivityOptions>;
+
+        $u-1 = virtualinvoke $u0#3.<android.app.ActivityOptions: android.graphics.Rect getLaunchBounds()>();
+
+        return $u-1;
+    }
+
+    public void requestUsageTimeReport(android.app.PendingIntent)
+    {
+        androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl this;
+        android.app.PendingIntent $u3;
+        int $u0;
+        android.app.ActivityOptions $u0#2;
+
+        this := @this: androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl;
+
+        $u3 := @parameter0: android.app.PendingIntent;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 23 goto label1;
+
+        $u0#2 = this.<androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl: android.app.ActivityOptions mActivityOptions>;
+
+        virtualinvoke $u0#2.<android.app.ActivityOptions: void requestUsageTimeReport(android.app.PendingIntent)>($u3);
+
+     label1:
+        return;
+    }
+
+    public androidx.core.app.ActivityOptionsCompat setLaunchBounds(android.graphics.Rect)
+    {
+        androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl this, $u0#3;
+        android.graphics.Rect $u3;
+        android.app.ActivityOptions $u-1;
+        int $u0;
+
+        this := @this: androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl;
+
+        $u3 := @parameter0: android.graphics.Rect;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 >= 24 goto label1;
+
+        return this;
+
+     label1:
+        $u0#3 = new androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl;
+
+        $u-1 = this.<androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl: android.app.ActivityOptions mActivityOptions>;
+
+        $u-1 = virtualinvoke $u-1.<android.app.ActivityOptions: android.app.ActivityOptions setLaunchBounds(android.graphics.Rect)>($u3);
+
+        specialinvoke $u0#3.<androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl: void <init>(android.app.ActivityOptions)>($u-1);
+
+        return $u0#3;
+    }
+
+    public android.os.Bundle toBundle()
+    {
+        androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl this;
+        android.os.Bundle $u-1;
+        android.app.ActivityOptions $u0;
+
+        this := @this: androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl;
+
+        $u0 = this.<androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl: android.app.ActivityOptions mActivityOptions>;
+
+        $u-1 = virtualinvoke $u0.<android.app.ActivityOptions: android.os.Bundle toBundle()>();
+
+        return $u-1;
+    }
+
+    public void update(androidx.core.app.ActivityOptionsCompat)
+    {
+        androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl this, otherImpl#3;
+        androidx.core.app.ActivityOptionsCompat $u4;
+        android.app.ActivityOptions $u1, $u2;
+        boolean otherImpl;
+
+        this := @this: androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl;
+
+        $u4 := @parameter0: androidx.core.app.ActivityOptionsCompat;
+
+        otherImpl = $u4 instanceof androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl;
+
+        if otherImpl == 0 goto label1;
+
+        otherImpl#3 = (androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl) $u4;
+
+        $u1 = this.<androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl: android.app.ActivityOptions mActivityOptions>;
+
+        $u2 = otherImpl#3.<androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl: android.app.ActivityOptions mActivityOptions>;
+
+        virtualinvoke $u1.<android.app.ActivityOptions: void update(android.app.ActivityOptions)>($u2);
+
+     label1:
+        return;
+    }
+}

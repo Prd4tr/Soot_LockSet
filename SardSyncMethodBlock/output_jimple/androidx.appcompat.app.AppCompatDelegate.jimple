@@ -1,0 +1,511 @@
+public abstract class androidx.appcompat.app.AppCompatDelegate extends java.lang.Object
+{
+    static final boolean DEBUG;
+    public static final int FEATURE_ACTION_MODE_OVERLAY;
+    public static final int FEATURE_SUPPORT_ACTION_BAR;
+    public static final int FEATURE_SUPPORT_ACTION_BAR_OVERLAY;
+    public static final int MODE_NIGHT_AUTO;
+    public static final int MODE_NIGHT_AUTO_BATTERY;
+    public static final int MODE_NIGHT_AUTO_TIME;
+    public static final int MODE_NIGHT_FOLLOW_SYSTEM;
+    public static final int MODE_NIGHT_NO;
+    public static final int MODE_NIGHT_UNSPECIFIED;
+    public static final int MODE_NIGHT_YES;
+    static final java.lang.String TAG;
+    private static final androidx.collection.ArraySet sActivityDelegates;
+    private static final java.lang.Object sActivityDelegatesLock;
+    private static int sDefaultNightMode;
+
+    static void <clinit>()
+    {
+        androidx.collection.ArraySet $u0;
+        java.lang.Object $u0#3;
+
+        <androidx.appcompat.app.AppCompatDelegate: java.lang.String TAG> = "AppCompatDelegate";
+
+        <androidx.appcompat.app.AppCompatDelegate: int MODE_NIGHT_YES> = 2;
+
+        <androidx.appcompat.app.AppCompatDelegate: int MODE_NIGHT_UNSPECIFIED> = -100;
+
+        <androidx.appcompat.app.AppCompatDelegate: int MODE_NIGHT_NO> = 1;
+
+        <androidx.appcompat.app.AppCompatDelegate: int MODE_NIGHT_FOLLOW_SYSTEM> = -1;
+
+        <androidx.appcompat.app.AppCompatDelegate: int MODE_NIGHT_AUTO_TIME> = 0;
+
+        <androidx.appcompat.app.AppCompatDelegate: int MODE_NIGHT_AUTO_BATTERY> = 3;
+
+        <androidx.appcompat.app.AppCompatDelegate: int MODE_NIGHT_AUTO> = 0;
+
+        <androidx.appcompat.app.AppCompatDelegate: int FEATURE_SUPPORT_ACTION_BAR_OVERLAY> = 109;
+
+        <androidx.appcompat.app.AppCompatDelegate: int FEATURE_SUPPORT_ACTION_BAR> = 108;
+
+        <androidx.appcompat.app.AppCompatDelegate: int FEATURE_ACTION_MODE_OVERLAY> = 10;
+
+        <androidx.appcompat.app.AppCompatDelegate: boolean DEBUG> = 0;
+
+        <androidx.appcompat.app.AppCompatDelegate: int sDefaultNightMode> = -100;
+
+        $u0 = new androidx.collection.ArraySet;
+
+        specialinvoke $u0.<androidx.collection.ArraySet: void <init>()>();
+
+        <androidx.appcompat.app.AppCompatDelegate: androidx.collection.ArraySet sActivityDelegates> = $u0;
+
+        $u0#3 = new java.lang.Object;
+
+        specialinvoke $u0#3.<java.lang.Object: void <init>()>();
+
+        <androidx.appcompat.app.AppCompatDelegate: java.lang.Object sActivityDelegatesLock> = $u0#3;
+
+        return;
+    }
+
+    void <init>()
+    {
+        androidx.appcompat.app.AppCompatDelegate this;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegate;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static void addActiveDelegate(androidx.appcompat.app.AppCompatDelegate)
+    {
+        androidx.appcompat.app.AppCompatDelegate $u3;
+        java.lang.Object $u0;
+        java.lang.ref.WeakReference $u2;
+        androidx.collection.ArraySet $u1;
+        java.lang.Throwable $u1#2;
+
+        $u3 := @parameter0: androidx.appcompat.app.AppCompatDelegate;
+
+        $u0 = <androidx.appcompat.app.AppCompatDelegate: java.lang.Object sActivityDelegatesLock>;
+
+        entermonitor $u0;
+
+     label1:
+        staticinvoke <androidx.appcompat.app.AppCompatDelegate: void removeDelegateFromActives(androidx.appcompat.app.AppCompatDelegate)>($u3);
+
+        $u1 = <androidx.appcompat.app.AppCompatDelegate: androidx.collection.ArraySet sActivityDelegates>;
+
+        $u2 = new java.lang.ref.WeakReference;
+
+        specialinvoke $u2.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>($u3);
+
+        virtualinvoke $u1.<androidx.collection.ArraySet: boolean add(java.lang.Object)>($u2);
+
+        exitmonitor $u0;
+
+     label2:
+        return;
+
+     label3:
+        $u1#2 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label4:
+        throw $u1#2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    private static void applyDayNightToActiveDelegates()
+    {
+        java.lang.Object $u0, $u-1#6;
+        androidx.collection.ArraySet $u1;
+        java.util.Iterator $u-1;
+        boolean $u-1#4;
+        java.lang.ref.WeakReference activeDelegate;
+        androidx.appcompat.app.AppCompatDelegate delegate;
+        java.lang.Throwable $u1#12;
+
+        $u0 = <androidx.appcompat.app.AppCompatDelegate: java.lang.Object sActivityDelegatesLock>;
+
+        entermonitor $u0;
+
+     label1:
+        $u1 = <androidx.appcompat.app.AppCompatDelegate: androidx.collection.ArraySet sActivityDelegates>;
+
+        $u-1 = virtualinvoke $u1.<androidx.collection.ArraySet: java.util.Iterator iterator()>();
+
+     label2:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label3;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        activeDelegate = (java.lang.ref.WeakReference) $u-1#6;
+
+        $u-1#6 = virtualinvoke activeDelegate.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        delegate = (androidx.appcompat.app.AppCompatDelegate) $u-1#6;
+
+        if delegate == null goto label2;
+
+        virtualinvoke delegate.<androidx.appcompat.app.AppCompatDelegate: boolean applyDayNight()>();
+
+        goto label2;
+
+     label3:
+        exitmonitor $u0;
+
+     label4:
+        return;
+
+     label5:
+        $u1#12 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label6:
+        goto label7;
+
+     label7:
+        throw $u1#12;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    public static androidx.appcompat.app.AppCompatDelegate create(android.app.Activity, androidx.appcompat.app.AppCompatCallback)
+    {
+        android.app.Activity $u1;
+        androidx.appcompat.app.AppCompatCallback $u2;
+        androidx.appcompat.app.AppCompatDelegateImpl $u0;
+
+        $u1 := @parameter0: android.app.Activity;
+
+        $u2 := @parameter1: androidx.appcompat.app.AppCompatCallback;
+
+        $u0 = new androidx.appcompat.app.AppCompatDelegateImpl;
+
+        specialinvoke $u0.<androidx.appcompat.app.AppCompatDelegateImpl: void <init>(android.app.Activity,androidx.appcompat.app.AppCompatCallback)>($u1, $u2);
+
+        return $u0;
+    }
+
+    public static androidx.appcompat.app.AppCompatDelegate create(android.app.Dialog, androidx.appcompat.app.AppCompatCallback)
+    {
+        android.app.Dialog $u1;
+        androidx.appcompat.app.AppCompatCallback $u2;
+        androidx.appcompat.app.AppCompatDelegateImpl $u0;
+
+        $u1 := @parameter0: android.app.Dialog;
+
+        $u2 := @parameter1: androidx.appcompat.app.AppCompatCallback;
+
+        $u0 = new androidx.appcompat.app.AppCompatDelegateImpl;
+
+        specialinvoke $u0.<androidx.appcompat.app.AppCompatDelegateImpl: void <init>(android.app.Dialog,androidx.appcompat.app.AppCompatCallback)>($u1, $u2);
+
+        return $u0;
+    }
+
+    public static androidx.appcompat.app.AppCompatDelegate create(android.content.Context, android.app.Activity, androidx.appcompat.app.AppCompatCallback)
+    {
+        android.content.Context $u1;
+        android.app.Activity $u2;
+        androidx.appcompat.app.AppCompatCallback $u3;
+        androidx.appcompat.app.AppCompatDelegateImpl $u0;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: android.app.Activity;
+
+        $u3 := @parameter2: androidx.appcompat.app.AppCompatCallback;
+
+        $u0 = new androidx.appcompat.app.AppCompatDelegateImpl;
+
+        specialinvoke $u0.<androidx.appcompat.app.AppCompatDelegateImpl: void <init>(android.content.Context,android.app.Activity,androidx.appcompat.app.AppCompatCallback)>($u1, $u2, $u3);
+
+        return $u0;
+    }
+
+    public static androidx.appcompat.app.AppCompatDelegate create(android.content.Context, android.view.Window, androidx.appcompat.app.AppCompatCallback)
+    {
+        android.content.Context $u1;
+        android.view.Window $u2;
+        androidx.appcompat.app.AppCompatCallback $u3;
+        androidx.appcompat.app.AppCompatDelegateImpl $u0;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: android.view.Window;
+
+        $u3 := @parameter2: androidx.appcompat.app.AppCompatCallback;
+
+        $u0 = new androidx.appcompat.app.AppCompatDelegateImpl;
+
+        specialinvoke $u0.<androidx.appcompat.app.AppCompatDelegateImpl: void <init>(android.content.Context,android.view.Window,androidx.appcompat.app.AppCompatCallback)>($u1, $u2, $u3);
+
+        return $u0;
+    }
+
+    public static int getDefaultNightMode()
+    {
+        int ret0;
+
+        ret0 = <androidx.appcompat.app.AppCompatDelegate: int sDefaultNightMode>;
+
+        return ret0;
+    }
+
+    public static boolean isCompatVectorFromResourcesEnabled()
+    {
+        boolean $u-1;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.VectorEnabledTintResources: boolean isCompatVectorFromResourcesEnabled()>();
+
+        return $u-1;
+    }
+
+    static void removeActivityDelegate(androidx.appcompat.app.AppCompatDelegate)
+    {
+        androidx.appcompat.app.AppCompatDelegate $u2;
+        java.lang.Object $u0;
+        java.lang.Throwable $u1;
+
+        $u2 := @parameter0: androidx.appcompat.app.AppCompatDelegate;
+
+        $u0 = <androidx.appcompat.app.AppCompatDelegate: java.lang.Object sActivityDelegatesLock>;
+
+        entermonitor $u0;
+
+     label1:
+        staticinvoke <androidx.appcompat.app.AppCompatDelegate: void removeDelegateFromActives(androidx.appcompat.app.AppCompatDelegate)>($u2);
+
+        exitmonitor $u0;
+
+     label2:
+        return;
+
+     label3:
+        $u1 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label4:
+        throw $u1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    private static void removeDelegateFromActives(androidx.appcompat.app.AppCompatDelegate)
+    {
+        androidx.appcompat.app.AppCompatDelegate $u3, delegate#11;
+        java.lang.Object $u0, $u-1#6;
+        androidx.collection.ArraySet i;
+        java.util.Iterator $u-1;
+        boolean $u-1#4;
+        java.lang.ref.WeakReference delegate;
+        java.lang.Throwable i#12;
+
+        $u3 := @parameter0: androidx.appcompat.app.AppCompatDelegate;
+
+        $u0 = <androidx.appcompat.app.AppCompatDelegate: java.lang.Object sActivityDelegatesLock>;
+
+        entermonitor $u0;
+
+     label1:
+        i = <androidx.appcompat.app.AppCompatDelegate: androidx.collection.ArraySet sActivityDelegates>;
+
+        $u-1 = virtualinvoke i.<androidx.collection.ArraySet: java.util.Iterator iterator()>();
+
+     label2:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label4;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        delegate = (java.lang.ref.WeakReference) $u-1#6;
+
+        $u-1#6 = virtualinvoke delegate.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        delegate#11 = (androidx.appcompat.app.AppCompatDelegate) $u-1#6;
+
+        if delegate#11 == $u3 goto label3;
+
+        if delegate#11 != null goto label2;
+
+     label3:
+        interfaceinvoke $u-1.<java.util.Iterator: void remove()>();
+
+        goto label2;
+
+     label4:
+        exitmonitor $u0;
+
+     label5:
+        return;
+
+     label6:
+        i#12 := @caughtexception;
+
+        exitmonitor $u0;
+
+     label7:
+        goto label8;
+
+     label8:
+        throw i#12;
+
+        catch java.lang.Throwable from label1 to label5 with label6;
+        catch java.lang.Throwable from label6 to label7 with label6;
+    }
+
+    public static void setCompatVectorFromResourcesEnabled(boolean)
+    {
+        boolean $u0;
+
+        $u0 := @parameter0: boolean;
+
+        staticinvoke <androidx.appcompat.widget.VectorEnabledTintResources: void setCompatVectorFromResourcesEnabled(boolean)>($u0);
+
+        return;
+    }
+
+    public static void setDefaultNightMode(int)
+    {
+        int $u2, $u0;
+
+        $u2 := @parameter0: int;
+
+        if $u2 == -1 goto label1;
+
+        if $u2 == 0 goto label1;
+
+        if $u2 == 1 goto label1;
+
+        if $u2 == 2 goto label1;
+
+        if $u2 == 3 goto label1;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("AppCompatDelegate", "setDefaultNightMode() called with an unknown mode");
+
+        return;
+
+     label1:
+        $u0 = <androidx.appcompat.app.AppCompatDelegate: int sDefaultNightMode>;
+
+        if $u0 == $u2 goto label2;
+
+        <androidx.appcompat.app.AppCompatDelegate: int sDefaultNightMode> = $u2;
+
+        staticinvoke <androidx.appcompat.app.AppCompatDelegate: void applyDayNightToActiveDelegates()>();
+
+     label2:
+        return;
+    }
+
+    public abstract void addContentView(android.view.View, android.view.ViewGroup$LayoutParams);
+
+    public abstract boolean applyDayNight();
+
+    public void attachBaseContext(android.content.Context)
+    {
+        androidx.appcompat.app.AppCompatDelegate this;
+        android.content.Context $u1;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegate;
+
+        $u1 := @parameter0: android.content.Context;
+
+        return;
+    }
+
+    public android.content.Context attachBaseContext2(android.content.Context)
+    {
+        androidx.appcompat.app.AppCompatDelegate this;
+        android.content.Context $u1;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegate;
+
+        $u1 := @parameter0: android.content.Context;
+
+        virtualinvoke this.<androidx.appcompat.app.AppCompatDelegate: void attachBaseContext(android.content.Context)>($u1);
+
+        return $u1;
+    }
+
+    public abstract android.view.View createView(android.view.View, java.lang.String, android.content.Context, android.util.AttributeSet);
+
+    public abstract android.view.View findViewById(int);
+
+    public abstract androidx.appcompat.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate();
+
+    public int getLocalNightMode()
+    {
+        androidx.appcompat.app.AppCompatDelegate this;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegate;
+
+        return -100;
+    }
+
+    public abstract android.view.MenuInflater getMenuInflater();
+
+    public abstract androidx.appcompat.app.ActionBar getSupportActionBar();
+
+    public abstract boolean hasWindowFeature(int);
+
+    public abstract void installViewFactory();
+
+    public abstract void invalidateOptionsMenu();
+
+    public abstract boolean isHandleNativeActionModesEnabled();
+
+    public abstract void onConfigurationChanged(android.content.res.Configuration);
+
+    public abstract void onCreate(android.os.Bundle);
+
+    public abstract void onDestroy();
+
+    public abstract void onPostCreate(android.os.Bundle);
+
+    public abstract void onPostResume();
+
+    public abstract void onSaveInstanceState(android.os.Bundle);
+
+    public abstract void onStart();
+
+    public abstract void onStop();
+
+    public abstract boolean requestWindowFeature(int);
+
+    public abstract void setContentView(int);
+
+    public abstract void setContentView(android.view.View);
+
+    public abstract void setContentView(android.view.View, android.view.ViewGroup$LayoutParams);
+
+    public abstract void setHandleNativeActionModesEnabled(boolean);
+
+    public abstract void setLocalNightMode(int);
+
+    public abstract void setSupportActionBar(androidx.appcompat.widget.Toolbar);
+
+    public void setTheme(int)
+    {
+        androidx.appcompat.app.AppCompatDelegate this;
+        int $u1;
+
+        this := @this: androidx.appcompat.app.AppCompatDelegate;
+
+        $u1 := @parameter0: int;
+
+        return;
+    }
+
+    public abstract void setTitle(java.lang.CharSequence);
+
+    public abstract androidx.appcompat.view.ActionMode startSupportActionMode(androidx.appcompat.view.ActionMode$Callback);
+}

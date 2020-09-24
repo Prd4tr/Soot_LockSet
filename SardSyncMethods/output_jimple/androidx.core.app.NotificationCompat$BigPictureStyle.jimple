@@ -1,0 +1,151 @@
+public class androidx.core.app.NotificationCompat$BigPictureStyle extends androidx.core.app.NotificationCompat$Style
+{
+    private android.graphics.Bitmap mBigLargeIcon;
+    private boolean mBigLargeIconSet;
+    private android.graphics.Bitmap mPicture;
+
+    public void <init>()
+    {
+        androidx.core.app.NotificationCompat$BigPictureStyle this;
+
+        this := @this: androidx.core.app.NotificationCompat$BigPictureStyle;
+
+        specialinvoke this.<androidx.core.app.NotificationCompat$Style: void <init>()>();
+
+        return;
+    }
+
+    public void <init>(androidx.core.app.NotificationCompat$Builder)
+    {
+        androidx.core.app.NotificationCompat$BigPictureStyle this;
+        androidx.core.app.NotificationCompat$Builder $u1;
+
+        this := @this: androidx.core.app.NotificationCompat$BigPictureStyle;
+
+        $u1 := @parameter0: androidx.core.app.NotificationCompat$Builder;
+
+        specialinvoke this.<androidx.core.app.NotificationCompat$Style: void <init>()>();
+
+        virtualinvoke this.<androidx.core.app.NotificationCompat$BigPictureStyle: void setBuilder(androidx.core.app.NotificationCompat$Builder)>($u1);
+
+        return;
+    }
+
+    public void apply(androidx.core.app.NotificationBuilderWithBuilderAccessor)
+    {
+        androidx.core.app.NotificationCompat$BigPictureStyle this;
+        androidx.core.app.NotificationBuilderWithBuilderAccessor $u3;
+        int style;
+        android.app.Notification$BigPictureStyle style#3;
+        android.app.Notification$Builder $u-1;
+        java.lang.CharSequence $u1;
+        android.graphics.Bitmap $u1#9;
+        boolean $u1#12;
+
+        this := @this: androidx.core.app.NotificationCompat$BigPictureStyle;
+
+        $u3 := @parameter0: androidx.core.app.NotificationBuilderWithBuilderAccessor;
+
+        style = <android.os.Build$VERSION: int SDK_INT>;
+
+        if style < 16 goto label2;
+
+        style#3 = new android.app.Notification$BigPictureStyle;
+
+        $u-1 = interfaceinvoke $u3.<androidx.core.app.NotificationBuilderWithBuilderAccessor: android.app.Notification$Builder getBuilder()>();
+
+        specialinvoke style#3.<android.app.Notification$BigPictureStyle: void <init>(android.app.Notification$Builder)>($u-1);
+
+        $u1 = this.<androidx.core.app.NotificationCompat$BigPictureStyle: java.lang.CharSequence mBigContentTitle>;
+
+        style#3 = virtualinvoke style#3.<android.app.Notification$BigPictureStyle: android.app.Notification$BigPictureStyle setBigContentTitle(java.lang.CharSequence)>($u1);
+
+        $u1#9 = this.<androidx.core.app.NotificationCompat$BigPictureStyle: android.graphics.Bitmap mPicture>;
+
+        style#3 = virtualinvoke style#3.<android.app.Notification$BigPictureStyle: android.app.Notification$BigPictureStyle bigPicture(android.graphics.Bitmap)>($u1#9);
+
+        $u1#12 = this.<androidx.core.app.NotificationCompat$BigPictureStyle: boolean mBigLargeIconSet>;
+
+        if $u1#12 == 0 goto label1;
+
+        $u1#9 = this.<androidx.core.app.NotificationCompat$BigPictureStyle: android.graphics.Bitmap mBigLargeIcon>;
+
+        virtualinvoke style#3.<android.app.Notification$BigPictureStyle: android.app.Notification$BigPictureStyle bigLargeIcon(android.graphics.Bitmap)>($u1#9);
+
+     label1:
+        $u1#12 = this.<androidx.core.app.NotificationCompat$BigPictureStyle: boolean mSummaryTextSet>;
+
+        if $u1#12 == 0 goto label2;
+
+        $u1 = this.<androidx.core.app.NotificationCompat$BigPictureStyle: java.lang.CharSequence mSummaryText>;
+
+        virtualinvoke style#3.<android.app.Notification$BigPictureStyle: android.app.Notification$BigPictureStyle setSummaryText(java.lang.CharSequence)>($u1);
+
+     label2:
+        return;
+    }
+
+    public androidx.core.app.NotificationCompat$BigPictureStyle bigLargeIcon(android.graphics.Bitmap)
+    {
+        androidx.core.app.NotificationCompat$BigPictureStyle this;
+        android.graphics.Bitmap $u2;
+
+        this := @this: androidx.core.app.NotificationCompat$BigPictureStyle;
+
+        $u2 := @parameter0: android.graphics.Bitmap;
+
+        this.<androidx.core.app.NotificationCompat$BigPictureStyle: android.graphics.Bitmap mBigLargeIcon> = $u2;
+
+        this.<androidx.core.app.NotificationCompat$BigPictureStyle: boolean mBigLargeIconSet> = 1;
+
+        return this;
+    }
+
+    public androidx.core.app.NotificationCompat$BigPictureStyle bigPicture(android.graphics.Bitmap)
+    {
+        androidx.core.app.NotificationCompat$BigPictureStyle this;
+        android.graphics.Bitmap $u1;
+
+        this := @this: androidx.core.app.NotificationCompat$BigPictureStyle;
+
+        $u1 := @parameter0: android.graphics.Bitmap;
+
+        this.<androidx.core.app.NotificationCompat$BigPictureStyle: android.graphics.Bitmap mPicture> = $u1;
+
+        return this;
+    }
+
+    public androidx.core.app.NotificationCompat$BigPictureStyle setBigContentTitle(java.lang.CharSequence)
+    {
+        androidx.core.app.NotificationCompat$BigPictureStyle this;
+        java.lang.CharSequence $u2;
+
+        this := @this: androidx.core.app.NotificationCompat$BigPictureStyle;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u2 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($u2);
+
+        this.<androidx.core.app.NotificationCompat$BigPictureStyle: java.lang.CharSequence mBigContentTitle> = $u2;
+
+        return this;
+    }
+
+    public androidx.core.app.NotificationCompat$BigPictureStyle setSummaryText(java.lang.CharSequence)
+    {
+        androidx.core.app.NotificationCompat$BigPictureStyle this;
+        java.lang.CharSequence $u2;
+
+        this := @this: androidx.core.app.NotificationCompat$BigPictureStyle;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u2 = staticinvoke <androidx.core.app.NotificationCompat$Builder: java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)>($u2);
+
+        this.<androidx.core.app.NotificationCompat$BigPictureStyle: java.lang.CharSequence mSummaryText> = $u2;
+
+        this.<androidx.core.app.NotificationCompat$BigPictureStyle: boolean mSummaryTextSet> = 1;
+
+        return this;
+    }
+}

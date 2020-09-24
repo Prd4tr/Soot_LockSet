@@ -1,0 +1,73 @@
+class androidx.core.text.util.FindAddress$ZipRange extends java.lang.Object
+{
+    int mException1;
+    int mException2;
+    int mHigh;
+    int mLow;
+
+    void <init>(int, int, int, int)
+    {
+        androidx.core.text.util.FindAddress$ZipRange this;
+        int $u1, $u2, $u3, $u4;
+
+        this := @this: androidx.core.text.util.FindAddress$ZipRange;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: int;
+
+        $u4 := @parameter3: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.text.util.FindAddress$ZipRange: int mLow> = $u1;
+
+        this.<androidx.core.text.util.FindAddress$ZipRange: int mHigh> = $u2;
+
+        this.<androidx.core.text.util.FindAddress$ZipRange: int mException1> = $u3;
+
+        this.<androidx.core.text.util.FindAddress$ZipRange: int mException2> = $u4;
+
+        return;
+    }
+
+    boolean matches(java.lang.String)
+    {
+        androidx.core.text.util.FindAddress$ZipRange this;
+        java.lang.String $u4;
+        int $u-1, $u2;
+
+        this := @this: androidx.core.text.util.FindAddress$ZipRange;
+
+        $u4 := @parameter0: java.lang.String;
+
+        $u4 = virtualinvoke $u4.<java.lang.String: java.lang.String substring(int,int)>(0, 2);
+
+        $u-1 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($u4);
+
+        $u2 = this.<androidx.core.text.util.FindAddress$ZipRange: int mLow>;
+
+        if $u2 > $u-1 goto label1;
+
+        $u2 = this.<androidx.core.text.util.FindAddress$ZipRange: int mHigh>;
+
+        if $u-1 <= $u2 goto label2;
+
+     label1:
+        $u2 = this.<androidx.core.text.util.FindAddress$ZipRange: int mException1>;
+
+        if $u-1 == $u2 goto label2;
+
+        $u2 = this.<androidx.core.text.util.FindAddress$ZipRange: int mException2>;
+
+        if $u-1 != $u2 goto label3;
+
+     label2:
+        return 1;
+
+     label3:
+        return 0;
+    }
+}

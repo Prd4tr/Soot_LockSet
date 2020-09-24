@@ -1,0 +1,52 @@
+class android.support.v4.os.ResultReceiver$MyRunnable extends java.lang.Object implements java.lang.Runnable
+{
+    final int mResultCode;
+    final android.os.Bundle mResultData;
+    final android.support.v4.os.ResultReceiver this$0;
+
+    void <init>(android.support.v4.os.ResultReceiver, int, android.os.Bundle)
+    {
+        android.support.v4.os.ResultReceiver$MyRunnable this;
+        android.support.v4.os.ResultReceiver $u1;
+        int $u2;
+        android.os.Bundle $u3;
+
+        this := @this: android.support.v4.os.ResultReceiver$MyRunnable;
+
+        $u1 := @parameter0: android.support.v4.os.ResultReceiver;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: android.os.Bundle;
+
+        this.<android.support.v4.os.ResultReceiver$MyRunnable: android.support.v4.os.ResultReceiver this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<android.support.v4.os.ResultReceiver$MyRunnable: int mResultCode> = $u2;
+
+        this.<android.support.v4.os.ResultReceiver$MyRunnable: android.os.Bundle mResultData> = $u3;
+
+        return;
+    }
+
+    public void run()
+    {
+        android.support.v4.os.ResultReceiver$MyRunnable this;
+        android.support.v4.os.ResultReceiver $u0;
+        int $u1;
+        android.os.Bundle $u2;
+
+        this := @this: android.support.v4.os.ResultReceiver$MyRunnable;
+
+        $u0 = this.<android.support.v4.os.ResultReceiver$MyRunnable: android.support.v4.os.ResultReceiver this$0>;
+
+        $u1 = this.<android.support.v4.os.ResultReceiver$MyRunnable: int mResultCode>;
+
+        $u2 = this.<android.support.v4.os.ResultReceiver$MyRunnable: android.os.Bundle mResultData>;
+
+        virtualinvoke $u0.<android.support.v4.os.ResultReceiver: void onReceiveResult(int,android.os.Bundle)>($u1, $u2);
+
+        return;
+    }
+}

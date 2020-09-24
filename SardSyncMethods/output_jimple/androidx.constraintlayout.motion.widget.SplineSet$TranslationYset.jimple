@@ -1,0 +1,33 @@
+class androidx.constraintlayout.motion.widget.SplineSet$TranslationYset extends androidx.constraintlayout.motion.widget.SplineSet
+{
+
+    void <init>()
+    {
+        androidx.constraintlayout.motion.widget.SplineSet$TranslationYset this;
+
+        this := @this: androidx.constraintlayout.motion.widget.SplineSet$TranslationYset;
+
+        specialinvoke this.<androidx.constraintlayout.motion.widget.SplineSet: void <init>()>();
+
+        return;
+    }
+
+    public void setProperty(android.view.View, float)
+    {
+        androidx.constraintlayout.motion.widget.SplineSet$TranslationYset this;
+        android.view.View $u2;
+        float $u3;
+
+        this := @this: androidx.constraintlayout.motion.widget.SplineSet$TranslationYset;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: float;
+
+        $u3 = virtualinvoke this.<androidx.constraintlayout.motion.widget.SplineSet$TranslationYset: float get(float)>($u3);
+
+        virtualinvoke $u2.<android.view.View: void setTranslationY(float)>($u3);
+
+        return;
+    }
+}

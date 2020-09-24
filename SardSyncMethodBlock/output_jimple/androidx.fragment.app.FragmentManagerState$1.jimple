@@ -1,0 +1,76 @@
+final class androidx.fragment.app.FragmentManagerState$1 extends java.lang.Object implements android.os.Parcelable$Creator
+{
+
+    void <init>()
+    {
+        androidx.fragment.app.FragmentManagerState$1 this;
+
+        this := @this: androidx.fragment.app.FragmentManagerState$1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public androidx.fragment.app.FragmentManagerState createFromParcel(android.os.Parcel)
+    {
+        androidx.fragment.app.FragmentManagerState$1 this;
+        android.os.Parcel $u2;
+        androidx.fragment.app.FragmentManagerState $u0;
+
+        this := @this: androidx.fragment.app.FragmentManagerState$1;
+
+        $u2 := @parameter0: android.os.Parcel;
+
+        $u0 = new androidx.fragment.app.FragmentManagerState;
+
+        specialinvoke $u0.<androidx.fragment.app.FragmentManagerState: void <init>(android.os.Parcel)>($u2);
+
+        return $u0;
+    }
+
+    public volatile java.lang.Object createFromParcel(android.os.Parcel)
+    {
+        androidx.fragment.app.FragmentManagerState$1 this;
+        androidx.fragment.app.FragmentManagerState $u-1;
+        android.os.Parcel $u1;
+
+        this := @this: androidx.fragment.app.FragmentManagerState$1;
+
+        $u1 := @parameter0: android.os.Parcel;
+
+        $u-1 = virtualinvoke this.<androidx.fragment.app.FragmentManagerState$1: androidx.fragment.app.FragmentManagerState createFromParcel(android.os.Parcel)>($u1);
+
+        return $u-1;
+    }
+
+    public androidx.fragment.app.FragmentManagerState[] newArray(int)
+    {
+        androidx.fragment.app.FragmentManagerState$1 this;
+        int $u2;
+        androidx.fragment.app.FragmentManagerState[] $u0;
+
+        this := @this: androidx.fragment.app.FragmentManagerState$1;
+
+        $u2 := @parameter0: int;
+
+        $u0 = newarray (androidx.fragment.app.FragmentManagerState)[$u2];
+
+        return $u0;
+    }
+
+    public volatile java.lang.Object[] newArray(int)
+    {
+        androidx.fragment.app.FragmentManagerState$1 this;
+        androidx.fragment.app.FragmentManagerState[] $u-1;
+        int $u1;
+
+        this := @this: androidx.fragment.app.FragmentManagerState$1;
+
+        $u1 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.fragment.app.FragmentManagerState$1: androidx.fragment.app.FragmentManagerState[] newArray(int)>($u1);
+
+        return $u-1;
+    }
+}

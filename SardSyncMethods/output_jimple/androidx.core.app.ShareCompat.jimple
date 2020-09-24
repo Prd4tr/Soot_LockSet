@@ -1,0 +1,235 @@
+public final class androidx.core.app.ShareCompat extends java.lang.Object
+{
+    public static final java.lang.String EXTRA_CALLING_ACTIVITY;
+    public static final java.lang.String EXTRA_CALLING_ACTIVITY_INTEROP;
+    public static final java.lang.String EXTRA_CALLING_PACKAGE;
+    public static final java.lang.String EXTRA_CALLING_PACKAGE_INTEROP;
+    private static final java.lang.String HISTORY_FILENAME_PREFIX;
+
+    private void <init>()
+    {
+        androidx.core.app.ShareCompat this;
+
+        this := @this: androidx.core.app.ShareCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void configureMenuItem(android.view.Menu, int, androidx.core.app.ShareCompat$IntentBuilder)
+    {
+        android.view.Menu $u4;
+        int $u5;
+        androidx.core.app.ShareCompat$IntentBuilder $u6;
+        java.lang.IllegalArgumentException $u1;
+        android.view.MenuItem $u-1;
+        java.lang.StringBuilder $u2;
+        java.lang.String $u-1#5;
+
+        $u4 := @parameter0: android.view.Menu;
+
+        $u5 := @parameter1: int;
+
+        $u6 := @parameter2: androidx.core.app.ShareCompat$IntentBuilder;
+
+        $u-1 = interfaceinvoke $u4.<android.view.Menu: android.view.MenuItem findItem(int)>($u5);
+
+        if $u-1 == null goto label1;
+
+        staticinvoke <androidx.core.app.ShareCompat: void configureMenuItem(android.view.MenuItem,androidx.core.app.ShareCompat$IntentBuilder)>($u-1, $u6);
+
+        return;
+
+     label1:
+        $u1 = new java.lang.IllegalArgumentException;
+
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Could not find menu item with id ");
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u5);
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" in the supplied menu");
+
+        $u-1#5 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($u-1#5);
+
+        throw $u1;
+    }
+
+    public static void configureMenuItem(android.view.MenuItem, androidx.core.app.ShareCompat$IntentBuilder)
+    {
+        android.view.MenuItem $u4;
+        androidx.core.app.ShareCompat$IntentBuilder $u5;
+        android.view.ActionProvider $u-1;
+        boolean provider;
+        android.widget.ShareActionProvider provider#3;
+        android.content.Context $u-1#4;
+        java.lang.StringBuilder $u2;
+        java.lang.Class $u-1#11;
+        java.lang.String $u-1#13;
+        android.content.Intent $u-1#17;
+        int $u2#19;
+
+        $u4 := @parameter0: android.view.MenuItem;
+
+        $u5 := @parameter1: androidx.core.app.ShareCompat$IntentBuilder;
+
+        $u-1 = interfaceinvoke $u4.<android.view.MenuItem: android.view.ActionProvider getActionProvider()>();
+
+        provider = $u-1 instanceof android.widget.ShareActionProvider;
+
+        if provider != 0 goto label1;
+
+        provider#3 = new android.widget.ShareActionProvider;
+
+        $u-1#4 = virtualinvoke $u5.<androidx.core.app.ShareCompat$IntentBuilder: android.content.Context getContext()>();
+
+        specialinvoke provider#3.<android.widget.ShareActionProvider: void <init>(android.content.Context)>($u-1#4);
+
+        goto label2;
+
+     label1:
+        provider#3 = (android.widget.ShareActionProvider) $u-1;
+
+     label2:
+        $u2 = new java.lang.StringBuilder;
+
+        specialinvoke $u2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".sharecompat_");
+
+        $u-1#4 = virtualinvoke $u5.<androidx.core.app.ShareCompat$IntentBuilder: android.content.Context getContext()>();
+
+        $u-1#11 = virtualinvoke $u-1#4.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#13 = virtualinvoke $u-1#11.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke $u2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#13);
+
+        $u-1#13 = virtualinvoke $u2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke provider#3.<android.widget.ShareActionProvider: void setShareHistoryFileName(java.lang.String)>($u-1#13);
+
+        $u-1#17 = virtualinvoke $u5.<androidx.core.app.ShareCompat$IntentBuilder: android.content.Intent getIntent()>();
+
+        virtualinvoke provider#3.<android.widget.ShareActionProvider: void setShareIntent(android.content.Intent)>($u-1#17);
+
+        interfaceinvoke $u4.<android.view.MenuItem: android.view.MenuItem setActionProvider(android.view.ActionProvider)>(provider#3);
+
+        $u2#19 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u2#19 >= 16 goto label3;
+
+        provider = interfaceinvoke $u4.<android.view.MenuItem: boolean hasSubMenu()>();
+
+        if provider != 0 goto label3;
+
+        $u-1#17 = virtualinvoke $u5.<androidx.core.app.ShareCompat$IntentBuilder: android.content.Intent createChooserIntent()>();
+
+        interfaceinvoke $u4.<android.view.MenuItem: android.view.MenuItem setIntent(android.content.Intent)>($u-1#17);
+
+     label3:
+        return;
+    }
+
+    public static android.content.ComponentName getCallingActivity(android.app.Activity)
+    {
+        android.app.Activity $u2;
+        android.content.Intent $u-1;
+        android.content.ComponentName $u-1#2;
+
+        $u2 := @parameter0: android.app.Activity;
+
+        $u-1 = virtualinvoke $u2.<android.app.Activity: android.content.Intent getIntent()>();
+
+        $u-1#2 = virtualinvoke $u2.<android.app.Activity: android.content.ComponentName getCallingActivity()>();
+
+        if $u-1#2 != null goto label1;
+
+        $u-1#2 = staticinvoke <androidx.core.app.ShareCompat: android.content.ComponentName getCallingActivity(android.content.Intent)>($u-1);
+
+     label1:
+        return $u-1#2;
+    }
+
+    static android.content.ComponentName getCallingActivity(android.content.Intent)
+    {
+        android.content.Intent $u2;
+        android.os.Parcelable $u-1;
+        android.content.ComponentName result;
+
+        $u2 := @parameter0: android.content.Intent;
+
+        $u-1 = virtualinvoke $u2.<android.content.Intent: android.os.Parcelable getParcelableExtra(java.lang.String)>("androidx.core.app.EXTRA_CALLING_ACTIVITY");
+
+        result = (android.content.ComponentName) $u-1;
+
+        if result != null goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.content.Intent: android.os.Parcelable getParcelableExtra(java.lang.String)>("android.support.v4.app.EXTRA_CALLING_ACTIVITY");
+
+        result = (android.content.ComponentName) $u-1;
+
+     label1:
+        return result;
+    }
+
+    public static java.lang.String getCallingPackage(android.app.Activity)
+    {
+        android.app.Activity $u2;
+        android.content.Intent $u-1;
+        java.lang.String $u-1#2;
+
+        $u2 := @parameter0: android.app.Activity;
+
+        $u-1 = virtualinvoke $u2.<android.app.Activity: android.content.Intent getIntent()>();
+
+        $u-1#2 = virtualinvoke $u2.<android.app.Activity: java.lang.String getCallingPackage()>();
+
+        if $u-1#2 != null goto label1;
+
+        if $u-1 == null goto label1;
+
+        $u-1#2 = staticinvoke <androidx.core.app.ShareCompat: java.lang.String getCallingPackage(android.content.Intent)>($u-1);
+
+     label1:
+        return $u-1#2;
+    }
+
+    static java.lang.String getCallingPackage(android.content.Intent)
+    {
+        android.content.Intent $u2;
+        java.lang.String $u-1;
+
+        $u2 := @parameter0: android.content.Intent;
+
+        $u-1 = virtualinvoke $u2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("androidx.core.app.EXTRA_CALLING_PACKAGE");
+
+        if $u-1 != null goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("android.support.v4.app.EXTRA_CALLING_PACKAGE");
+
+     label1:
+        return $u-1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.ShareCompat: java.lang.String HISTORY_FILENAME_PREFIX> = ".sharecompat_";
+
+        <androidx.core.app.ShareCompat: java.lang.String EXTRA_CALLING_PACKAGE_INTEROP> = "android.support.v4.app.EXTRA_CALLING_PACKAGE";
+
+        <androidx.core.app.ShareCompat: java.lang.String EXTRA_CALLING_PACKAGE> = "androidx.core.app.EXTRA_CALLING_PACKAGE";
+
+        <androidx.core.app.ShareCompat: java.lang.String EXTRA_CALLING_ACTIVITY_INTEROP> = "android.support.v4.app.EXTRA_CALLING_ACTIVITY";
+
+        <androidx.core.app.ShareCompat: java.lang.String EXTRA_CALLING_ACTIVITY> = "androidx.core.app.EXTRA_CALLING_ACTIVITY";
+
+        return;
+    }
+}

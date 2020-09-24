@@ -1,0 +1,65 @@
+class androidx.appcompat.widget.ActionBarOverlayLayout$3 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.appcompat.widget.ActionBarOverlayLayout this$0;
+
+    void <init>(androidx.appcompat.widget.ActionBarOverlayLayout)
+    {
+        androidx.appcompat.widget.ActionBarOverlayLayout$3 this;
+        androidx.appcompat.widget.ActionBarOverlayLayout $u1;
+
+        this := @this: androidx.appcompat.widget.ActionBarOverlayLayout$3;
+
+        $u1 := @parameter0: androidx.appcompat.widget.ActionBarOverlayLayout;
+
+        this.<androidx.appcompat.widget.ActionBarOverlayLayout$3: androidx.appcompat.widget.ActionBarOverlayLayout this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.appcompat.widget.ActionBarOverlayLayout$3 this;
+        androidx.appcompat.widget.ActionBarOverlayLayout $u0, $u2;
+        androidx.appcompat.widget.ActionBarContainer $u1;
+        android.view.ViewPropertyAnimator $u-1;
+        int $u-1#8;
+        float $u2#11;
+        android.animation.AnimatorListenerAdapter $u2#15;
+
+        this := @this: androidx.appcompat.widget.ActionBarOverlayLayout$3;
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarOverlayLayout$3: androidx.appcompat.widget.ActionBarOverlayLayout this$0>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.ActionBarOverlayLayout: void haltActionBarHideOffsetAnimations()>();
+
+        $u0 = this.<androidx.appcompat.widget.ActionBarOverlayLayout$3: androidx.appcompat.widget.ActionBarOverlayLayout this$0>;
+
+        $u1 = $u0.<androidx.appcompat.widget.ActionBarOverlayLayout: androidx.appcompat.widget.ActionBarContainer mActionBarTop>;
+
+        $u-1 = virtualinvoke $u1.<androidx.appcompat.widget.ActionBarContainer: android.view.ViewPropertyAnimator animate()>();
+
+        $u2 = this.<androidx.appcompat.widget.ActionBarOverlayLayout$3: androidx.appcompat.widget.ActionBarOverlayLayout this$0>;
+
+        $u1 = $u2.<androidx.appcompat.widget.ActionBarOverlayLayout: androidx.appcompat.widget.ActionBarContainer mActionBarTop>;
+
+        $u-1#8 = virtualinvoke $u1.<androidx.appcompat.widget.ActionBarContainer: int getHeight()>();
+
+        $u-1#8 = neg $u-1#8;
+
+        $u2#11 = (float) $u-1#8;
+
+        $u-1 = virtualinvoke $u-1.<android.view.ViewPropertyAnimator: android.view.ViewPropertyAnimator translationY(float)>($u2#11);
+
+        $u2 = this.<androidx.appcompat.widget.ActionBarOverlayLayout$3: androidx.appcompat.widget.ActionBarOverlayLayout this$0>;
+
+        $u2#15 = $u2.<androidx.appcompat.widget.ActionBarOverlayLayout: android.animation.AnimatorListenerAdapter mTopAnimatorListener>;
+
+        $u-1 = virtualinvoke $u-1.<android.view.ViewPropertyAnimator: android.view.ViewPropertyAnimator setListener(android.animation.Animator$AnimatorListener)>($u2#15);
+
+        $u0.<androidx.appcompat.widget.ActionBarOverlayLayout: android.view.ViewPropertyAnimator mCurrentActionBarTopAnimator> = $u-1;
+
+        return;
+    }
+}

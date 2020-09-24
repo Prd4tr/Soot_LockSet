@@ -1,0 +1,64 @@
+public final class androidx.core.app.ServiceCompat extends java.lang.Object
+{
+    public static final int START_STICKY;
+    public static final int STOP_FOREGROUND_DETACH;
+    public static final int STOP_FOREGROUND_REMOVE;
+
+    private void <init>()
+    {
+        androidx.core.app.ServiceCompat this;
+
+        this := @this: androidx.core.app.ServiceCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void stopForeground(android.app.Service, int)
+    {
+        android.app.Service $u2;
+        int $u3, $u0;
+        boolean $u0#3;
+
+        $u2 := @parameter0: android.app.Service;
+
+        $u3 := @parameter1: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 24 goto label1;
+
+        virtualinvoke $u2.<android.app.Service: void stopForeground(int)>($u3);
+
+        return;
+
+     label1:
+        $u3 = $u3 & 1;
+
+        if $u3 == 0 goto label2;
+
+        $u0#3 = 1;
+
+        goto label3;
+
+     label2:
+        $u0#3 = 0;
+
+     label3:
+        virtualinvoke $u2.<android.app.Service: void stopForeground(boolean)>($u0#3);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.app.ServiceCompat: int STOP_FOREGROUND_REMOVE> = 1;
+
+        <androidx.core.app.ServiceCompat: int STOP_FOREGROUND_DETACH> = 2;
+
+        <androidx.core.app.ServiceCompat: int START_STICKY> = 1;
+
+        return;
+    }
+}

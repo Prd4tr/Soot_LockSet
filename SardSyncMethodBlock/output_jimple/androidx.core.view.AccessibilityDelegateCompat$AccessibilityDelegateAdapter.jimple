@@ -1,0 +1,263 @@
+final class androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter extends android.view.View$AccessibilityDelegate
+{
+    final androidx.core.view.AccessibilityDelegateCompat mCompat;
+
+    void <init>(androidx.core.view.AccessibilityDelegateCompat)
+    {
+        androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter this;
+        androidx.core.view.AccessibilityDelegateCompat $u1;
+
+        this := @this: androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter;
+
+        $u1 := @parameter0: androidx.core.view.AccessibilityDelegateCompat;
+
+        specialinvoke this.<android.view.View$AccessibilityDelegate: void <init>()>();
+
+        this.<androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter: androidx.core.view.AccessibilityDelegateCompat mCompat> = $u1;
+
+        return;
+    }
+
+    public boolean dispatchPopulateAccessibilityEvent(android.view.View, android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter this;
+        android.view.View $u2;
+        android.view.accessibility.AccessibilityEvent $u3;
+        boolean $u-1;
+        androidx.core.view.AccessibilityDelegateCompat $u0;
+
+        this := @this: androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: android.view.accessibility.AccessibilityEvent;
+
+        $u0 = this.<androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter: androidx.core.view.AccessibilityDelegateCompat mCompat>;
+
+        $u-1 = virtualinvoke $u0.<androidx.core.view.AccessibilityDelegateCompat: boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public android.view.accessibility.AccessibilityNodeProvider getAccessibilityNodeProvider(android.view.View)
+    {
+        androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter this;
+        android.view.View $u3;
+        androidx.core.view.AccessibilityDelegateCompat provider;
+        androidx.core.view.accessibility.AccessibilityNodeProviderCompat $u-1;
+        java.lang.Object $u-1#4;
+        android.view.accessibility.AccessibilityNodeProvider $u1;
+
+        this := @this: androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter;
+
+        $u3 := @parameter0: android.view.View;
+
+        provider = this.<androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter: androidx.core.view.AccessibilityDelegateCompat mCompat>;
+
+        $u-1 = virtualinvoke provider.<androidx.core.view.AccessibilityDelegateCompat: androidx.core.view.accessibility.AccessibilityNodeProviderCompat getAccessibilityNodeProvider(android.view.View)>($u3);
+
+        if $u-1 == null goto label1;
+
+        $u-1#4 = virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeProviderCompat: java.lang.Object getProvider()>();
+
+        $u1 = (android.view.accessibility.AccessibilityNodeProvider) $u-1#4;
+
+        return $u1;
+
+     label1:
+        return null;
+    }
+
+    public void onInitializeAccessibilityEvent(android.view.View, android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter this;
+        android.view.View $u2;
+        android.view.accessibility.AccessibilityEvent $u3;
+        androidx.core.view.AccessibilityDelegateCompat $u0;
+
+        this := @this: androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: android.view.accessibility.AccessibilityEvent;
+
+        $u0 = this.<androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter: androidx.core.view.AccessibilityDelegateCompat mCompat>;
+
+        virtualinvoke $u0.<androidx.core.view.AccessibilityDelegateCompat: void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent)>($u2, $u3);
+
+        return;
+    }
+
+    public void onInitializeAccessibilityNodeInfo(android.view.View, android.view.accessibility.AccessibilityNodeInfo)
+    {
+        androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter this;
+        android.view.View $u5;
+        android.view.accessibility.AccessibilityNodeInfo $u6;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u-1;
+        boolean $u-1#2;
+        java.lang.CharSequence $u-1#6;
+        androidx.core.view.AccessibilityDelegateCompat actions;
+        java.util.List $u-1#11;
+        int i, $u-1#14;
+        java.lang.Object $u-1#16;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat $u3;
+
+        this := @this: androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter;
+
+        $u5 := @parameter0: android.view.View;
+
+        $u6 := @parameter1: android.view.accessibility.AccessibilityNodeInfo;
+
+        $u-1 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrap(android.view.accessibility.AccessibilityNodeInfo)>($u6);
+
+        $u-1#2 = staticinvoke <androidx.core.view.ViewCompat: boolean isScreenReaderFocusable(android.view.View)>($u5);
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setScreenReaderFocusable(boolean)>($u-1#2);
+
+        $u-1#2 = staticinvoke <androidx.core.view.ViewCompat: boolean isAccessibilityHeading(android.view.View)>($u5);
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setHeading(boolean)>($u-1#2);
+
+        $u-1#6 = staticinvoke <androidx.core.view.ViewCompat: java.lang.CharSequence getAccessibilityPaneTitle(android.view.View)>($u5);
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setPaneTitle(java.lang.CharSequence)>($u-1#6);
+
+        actions = this.<androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter: androidx.core.view.AccessibilityDelegateCompat mCompat>;
+
+        virtualinvoke actions.<androidx.core.view.AccessibilityDelegateCompat: void onInitializeAccessibilityNodeInfo(android.view.View,androidx.core.view.accessibility.AccessibilityNodeInfoCompat)>($u5, $u-1);
+
+        $u-1#6 = virtualinvoke $u6.<android.view.accessibility.AccessibilityNodeInfo: java.lang.CharSequence getText()>();
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void addSpansToExtras(java.lang.CharSequence,android.view.View)>($u-1#6, $u5);
+
+        $u-1#11 = staticinvoke <androidx.core.view.AccessibilityDelegateCompat: java.util.List getActionList(android.view.View)>($u5);
+
+        i = 0;
+
+     label1:
+        $u-1#14 = interfaceinvoke $u-1#11.<java.util.List: int size()>();
+
+        if i >= $u-1#14 goto label2;
+
+        $u-1#16 = interfaceinvoke $u-1#11.<java.util.List: java.lang.Object get(int)>(i);
+
+        $u3 = (androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat) $u-1#16;
+
+        virtualinvoke $u-1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void addAction(androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat)>($u3);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void onPopulateAccessibilityEvent(android.view.View, android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter this;
+        android.view.View $u2;
+        android.view.accessibility.AccessibilityEvent $u3;
+        androidx.core.view.AccessibilityDelegateCompat $u0;
+
+        this := @this: androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: android.view.accessibility.AccessibilityEvent;
+
+        $u0 = this.<androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter: androidx.core.view.AccessibilityDelegateCompat mCompat>;
+
+        virtualinvoke $u0.<androidx.core.view.AccessibilityDelegateCompat: void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent)>($u2, $u3);
+
+        return;
+    }
+
+    public boolean onRequestSendAccessibilityEvent(android.view.ViewGroup, android.view.View, android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter this;
+        android.view.ViewGroup $u2;
+        android.view.View $u3;
+        android.view.accessibility.AccessibilityEvent $u4;
+        boolean $u-1;
+        androidx.core.view.AccessibilityDelegateCompat $u0;
+
+        this := @this: androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter;
+
+        $u2 := @parameter0: android.view.ViewGroup;
+
+        $u3 := @parameter1: android.view.View;
+
+        $u4 := @parameter2: android.view.accessibility.AccessibilityEvent;
+
+        $u0 = this.<androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter: androidx.core.view.AccessibilityDelegateCompat mCompat>;
+
+        $u-1 = virtualinvoke $u0.<androidx.core.view.AccessibilityDelegateCompat: boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent)>($u2, $u3, $u4);
+
+        return $u-1;
+    }
+
+    public boolean performAccessibilityAction(android.view.View, int, android.os.Bundle)
+    {
+        androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter this;
+        android.view.View $u2;
+        int $u3;
+        android.os.Bundle $u4;
+        boolean $u-1;
+        androidx.core.view.AccessibilityDelegateCompat $u0;
+
+        this := @this: androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: android.os.Bundle;
+
+        $u0 = this.<androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter: androidx.core.view.AccessibilityDelegateCompat mCompat>;
+
+        $u-1 = virtualinvoke $u0.<androidx.core.view.AccessibilityDelegateCompat: boolean performAccessibilityAction(android.view.View,int,android.os.Bundle)>($u2, $u3, $u4);
+
+        return $u-1;
+    }
+
+    public void sendAccessibilityEvent(android.view.View, int)
+    {
+        androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter this;
+        android.view.View $u2;
+        int $u3;
+        androidx.core.view.AccessibilityDelegateCompat $u0;
+
+        this := @this: androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter: androidx.core.view.AccessibilityDelegateCompat mCompat>;
+
+        virtualinvoke $u0.<androidx.core.view.AccessibilityDelegateCompat: void sendAccessibilityEvent(android.view.View,int)>($u2, $u3);
+
+        return;
+    }
+
+    public void sendAccessibilityEventUnchecked(android.view.View, android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter this;
+        android.view.View $u2;
+        android.view.accessibility.AccessibilityEvent $u3;
+        androidx.core.view.AccessibilityDelegateCompat $u0;
+
+        this := @this: androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: android.view.accessibility.AccessibilityEvent;
+
+        $u0 = this.<androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter: androidx.core.view.AccessibilityDelegateCompat mCompat>;
+
+        virtualinvoke $u0.<androidx.core.view.AccessibilityDelegateCompat: void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent)>($u2, $u3);
+
+        return;
+    }
+}

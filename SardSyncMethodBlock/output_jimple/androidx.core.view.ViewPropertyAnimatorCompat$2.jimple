@@ -1,0 +1,52 @@
+class androidx.core.view.ViewPropertyAnimatorCompat$2 extends java.lang.Object implements android.animation.ValueAnimator$AnimatorUpdateListener
+{
+    final androidx.core.view.ViewPropertyAnimatorCompat this$0;
+    final androidx.core.view.ViewPropertyAnimatorUpdateListener val$listener;
+    final android.view.View val$view;
+
+    void <init>(androidx.core.view.ViewPropertyAnimatorCompat, androidx.core.view.ViewPropertyAnimatorUpdateListener, android.view.View)
+    {
+        androidx.core.view.ViewPropertyAnimatorCompat$2 this;
+        androidx.core.view.ViewPropertyAnimatorCompat $u1;
+        androidx.core.view.ViewPropertyAnimatorUpdateListener $u2;
+        android.view.View $u3;
+
+        this := @this: androidx.core.view.ViewPropertyAnimatorCompat$2;
+
+        $u1 := @parameter0: androidx.core.view.ViewPropertyAnimatorCompat;
+
+        $u2 := @parameter1: androidx.core.view.ViewPropertyAnimatorUpdateListener;
+
+        $u3 := @parameter2: android.view.View;
+
+        this.<androidx.core.view.ViewPropertyAnimatorCompat$2: androidx.core.view.ViewPropertyAnimatorCompat this$0> = $u1;
+
+        this.<androidx.core.view.ViewPropertyAnimatorCompat$2: androidx.core.view.ViewPropertyAnimatorUpdateListener val$listener> = $u2;
+
+        this.<androidx.core.view.ViewPropertyAnimatorCompat$2: android.view.View val$view> = $u3;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onAnimationUpdate(android.animation.ValueAnimator)
+    {
+        androidx.core.view.ViewPropertyAnimatorCompat$2 this;
+        android.animation.ValueAnimator $u3;
+        androidx.core.view.ViewPropertyAnimatorUpdateListener $u0;
+        android.view.View $u1;
+
+        this := @this: androidx.core.view.ViewPropertyAnimatorCompat$2;
+
+        $u3 := @parameter0: android.animation.ValueAnimator;
+
+        $u0 = this.<androidx.core.view.ViewPropertyAnimatorCompat$2: androidx.core.view.ViewPropertyAnimatorUpdateListener val$listener>;
+
+        $u1 = this.<androidx.core.view.ViewPropertyAnimatorCompat$2: android.view.View val$view>;
+
+        interfaceinvoke $u0.<androidx.core.view.ViewPropertyAnimatorUpdateListener: void onAnimationUpdate(android.view.View)>($u1);
+
+        return;
+    }
+}

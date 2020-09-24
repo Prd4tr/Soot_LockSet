@@ -1,0 +1,2637 @@
+public class androidx.constraintlayout.solver.widgets.Flow extends androidx.constraintlayout.solver.widgets.VirtualLayout
+{
+    public static final int HORIZONTAL_ALIGN_CENTER;
+    public static final int HORIZONTAL_ALIGN_END;
+    public static final int HORIZONTAL_ALIGN_START;
+    public static final int VERTICAL_ALIGN_BASELINE;
+    public static final int VERTICAL_ALIGN_BOTTOM;
+    public static final int VERTICAL_ALIGN_CENTER;
+    public static final int VERTICAL_ALIGN_TOP;
+    public static final int WRAP_ALIGNED;
+    public static final int WRAP_CHAIN;
+    public static final int WRAP_NONE;
+    private androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInCols;
+    private androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInRows;
+    private int[] mAlignedDimensions;
+    private java.util.ArrayList mChainList;
+    private androidx.constraintlayout.solver.widgets.ConstraintWidget[] mDisplayedWidgets;
+    private int mDisplayedWidgetsCount;
+    private float mFirstHorizontalBias;
+    private int mFirstHorizontalStyle;
+    private float mFirstVerticalBias;
+    private int mFirstVerticalStyle;
+    private int mHorizontalAlign;
+    private float mHorizontalBias;
+    private int mHorizontalGap;
+    private int mHorizontalStyle;
+    private float mLastHorizontalBias;
+    private int mLastHorizontalStyle;
+    private float mLastVerticalBias;
+    private int mLastVerticalStyle;
+    private int mMaxElementsWrap;
+    private int mOrientation;
+    private int mVerticalAlign;
+    private float mVerticalBias;
+    private int mVerticalGap;
+    private int mVerticalStyle;
+    private int mWrapMode;
+
+    public void <init>()
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        java.util.ArrayList $u0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.VirtualLayout: void <init>()>();
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalStyle> = -1;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalStyle> = -1;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mFirstHorizontalStyle> = -1;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mFirstVerticalStyle> = -1;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mLastHorizontalStyle> = -1;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mLastVerticalStyle> = -1;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mHorizontalBias> = 0.5F;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mVerticalBias> = 0.5F;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mFirstHorizontalBias> = 0.5F;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mFirstVerticalBias> = 0.5F;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mLastHorizontalBias> = 0.5F;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mLastVerticalBias> = 0.5F;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalGap> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalGap> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalAlign> = 2;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalAlign> = 2;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mWrapMode> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mMaxElementsWrap> = -1;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mOrientation> = 0;
+
+        $u0 = new java.util.ArrayList;
+
+        specialinvoke $u0.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList> = $u0;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInRows> = null;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInCols> = null;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int[] mAlignedDimensions> = null;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mDisplayedWidgetsCount> = 0;
+
+        return;
+    }
+
+    static int access$000(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        int ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalGap>;
+
+        return ret0;
+    }
+
+    static int access$100(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        int ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalGap>;
+
+        return ret0;
+    }
+
+    static int access$1000(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        int ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: int mFirstHorizontalStyle>;
+
+        return ret0;
+    }
+
+    static float access$1100(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        float ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: float mFirstHorizontalBias>;
+
+        return ret0;
+    }
+
+    static int access$1200(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        int ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: int mLastHorizontalStyle>;
+
+        return ret0;
+    }
+
+    static float access$1300(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        float ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: float mLastHorizontalBias>;
+
+        return ret0;
+    }
+
+    static float access$1400(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        float ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: float mVerticalBias>;
+
+        return ret0;
+    }
+
+    static int access$1500(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        int ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: int mFirstVerticalStyle>;
+
+        return ret0;
+    }
+
+    static float access$1600(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        float ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: float mFirstVerticalBias>;
+
+        return ret0;
+    }
+
+    static int access$1700(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        int ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: int mLastVerticalStyle>;
+
+        return ret0;
+    }
+
+    static float access$1800(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        float ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: float mLastVerticalBias>;
+
+        return ret0;
+    }
+
+    static int access$1900(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        int ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalAlign>;
+
+        return ret0;
+    }
+
+    static int access$200(androidx.constraintlayout.solver.widgets.Flow, androidx.constraintlayout.solver.widgets.ConstraintWidget, int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u2;
+        int $u3;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u2 := @parameter1: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $u3 := @parameter2: int;
+
+        $u3 = specialinvoke $u1.<androidx.constraintlayout.solver.widgets.Flow: int getWidgetWidth(androidx.constraintlayout.solver.widgets.ConstraintWidget,int)>($u2, $u3);
+
+        return $u3;
+    }
+
+    static int access$300(androidx.constraintlayout.solver.widgets.Flow, androidx.constraintlayout.solver.widgets.ConstraintWidget, int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u2;
+        int $u3;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u2 := @parameter1: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $u3 := @parameter2: int;
+
+        $u3 = specialinvoke $u1.<androidx.constraintlayout.solver.widgets.Flow: int getWidgetHeight(androidx.constraintlayout.solver.widgets.ConstraintWidget,int)>($u2, $u3);
+
+        return $u3;
+    }
+
+    static int access$400(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        int ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: int mDisplayedWidgetsCount>;
+
+        return ret0;
+    }
+
+    static androidx.constraintlayout.solver.widgets.ConstraintWidget[] access$500(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mDisplayedWidgets>;
+
+        return ret0;
+    }
+
+    static int access$600(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        int ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalStyle>;
+
+        return ret0;
+    }
+
+    static int access$700(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        int ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalAlign>;
+
+        return ret0;
+    }
+
+    static int access$800(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        int ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalStyle>;
+
+        return ret0;
+    }
+
+    static float access$900(androidx.constraintlayout.solver.widgets.Flow)
+    {
+        androidx.constraintlayout.solver.widgets.Flow $u1;
+        float ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.widgets.Flow;
+
+        ret0 = $u1.<androidx.constraintlayout.solver.widgets.Flow: float mHorizontalBias>;
+
+        return ret0;
+    }
+
+    private void createAlignedConstraints(boolean)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        boolean $u15;
+        int cols, widget, i1, index, widget1#59, widget2#61;
+        int[] i;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] i#2;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget widget#7, widget1, biggestInRow;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $u6, widget2;
+        float $u6#25;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u15 := @parameter0: boolean;
+
+        i = this.<androidx.constraintlayout.solver.widgets.Flow: int[] mAlignedDimensions>;
+
+        if i == null goto label27;
+
+        i#2 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInCols>;
+
+        if i#2 == null goto label27;
+
+        i#2 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInRows>;
+
+        if i#2 != null goto label01;
+
+        return;
+
+     label01:
+        cols = 0;
+
+     label02:
+        widget = this.<androidx.constraintlayout.solver.widgets.Flow: int mDisplayedWidgetsCount>;
+
+        if cols >= widget goto label03;
+
+        i#2 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mDisplayedWidgets>;
+
+        widget#7 = i#2[cols];
+
+        virtualinvoke widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void resetAnchors()>();
+
+        cols = cols + 1;
+
+        goto label02;
+
+     label03:
+        i = this.<androidx.constraintlayout.solver.widgets.Flow: int[] mAlignedDimensions>;
+
+        cols = i[0];
+
+        widget = i[1];
+
+        widget#7 = null;
+
+        i1 = 0;
+
+     label04:
+        if i1 >= cols goto label11;
+
+        index = i1;
+
+        if $u15 == 0 goto label05;
+
+        index = cols - i1;
+
+        index = index + -1;
+
+     label05:
+        i#2 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInCols>;
+
+        widget1 = i#2[index];
+
+        if widget1 == null goto label10;
+
+        index = virtualinvoke widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if index != 8 goto label06;
+
+        goto label10;
+
+     label06:
+        if i1 != 0 goto label07;
+
+        $u6 = widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        widget2 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        index = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingLeft()>();
+
+        virtualinvoke widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>($u6, widget2, index);
+
+        index = this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalStyle>;
+
+        virtualinvoke widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setHorizontalChainStyle(int)>(index);
+
+        $u6#25 = this.<androidx.constraintlayout.solver.widgets.Flow: float mHorizontalBias>;
+
+        virtualinvoke widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setHorizontalBiasPercent(float)>($u6#25);
+
+     label07:
+        index = cols + -1;
+
+        if i1 != index goto label08;
+
+        $u6 = widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        widget2 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        index = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingRight()>();
+
+        virtualinvoke widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>($u6, widget2, index);
+
+     label08:
+        if i1 <= 0 goto label09;
+
+        $u6 = widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        widget2 = widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        index = this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalGap>;
+
+        virtualinvoke widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>($u6, widget2, index);
+
+        $u6 = widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        widget2 = widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        virtualinvoke widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>($u6, widget2, 0);
+
+     label09:
+        widget#7 = widget1;
+
+     label10:
+        i1 = i1 + 1;
+
+        goto label04;
+
+     label11:
+        i1 = 0;
+
+     label12:
+        if i1 >= widget goto label18;
+
+        i#2 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInRows>;
+
+        widget1 = i#2[i1];
+
+        if widget1 == null goto label17;
+
+        index = virtualinvoke widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if index != 8 goto label13;
+
+        goto label17;
+
+     label13:
+        if i1 != 0 goto label14;
+
+        $u6 = widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        widget2 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        index = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingTop()>();
+
+        virtualinvoke widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>($u6, widget2, index);
+
+        index = this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalStyle>;
+
+        virtualinvoke widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setVerticalChainStyle(int)>(index);
+
+        $u6#25 = this.<androidx.constraintlayout.solver.widgets.Flow: float mVerticalBias>;
+
+        virtualinvoke widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setVerticalBiasPercent(float)>($u6#25);
+
+     label14:
+        index = widget + -1;
+
+        if i1 != index goto label15;
+
+        $u6 = widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        widget2 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        index = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingBottom()>();
+
+        virtualinvoke widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>($u6, widget2, index);
+
+     label15:
+        if i1 <= 0 goto label16;
+
+        $u6 = widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        widget2 = widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        index = this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalGap>;
+
+        virtualinvoke widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>($u6, widget2, index);
+
+        $u6 = widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        widget2 = widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        virtualinvoke widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>($u6, widget2, 0);
+
+     label16:
+        widget#7 = widget1;
+
+     label17:
+        i1 = i1 + 1;
+
+        goto label12;
+
+     label18:
+        i1 = 0;
+
+     label19:
+        if i1 >= cols goto label27;
+
+        index = 0;
+
+     label20:
+        if index >= widget goto label26;
+
+        widget1#59 = index * cols;
+
+        widget1#59 = widget1#59 + i1;
+
+        widget2#61 = this.<androidx.constraintlayout.solver.widgets.Flow: int mOrientation>;
+
+        if widget2#61 != 1 goto label21;
+
+        widget1#59 = i1 * widget;
+
+        widget1#59 = widget1#59 + index;
+
+     label21:
+        i#2 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mDisplayedWidgets>;
+
+        widget2#61 = lengthof i#2;
+
+        if widget1#59 < widget2#61 goto label22;
+
+        goto label25;
+
+     label22:
+        widget#7 = i#2[widget1#59];
+
+        if widget#7 == null goto label25;
+
+        widget1#59 = virtualinvoke widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if widget1#59 != 8 goto label23;
+
+        goto label25;
+
+     label23:
+        i#2 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInCols>;
+
+        widget1 = i#2[i1];
+
+        i#2 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInRows>;
+
+        biggestInRow = i#2[index];
+
+        if widget#7 == widget1 goto label24;
+
+        $u6 = widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        widget2 = widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        virtualinvoke widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>($u6, widget2, 0);
+
+        $u6 = widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        widget2 = widget1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        virtualinvoke widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>($u6, widget2, 0);
+
+     label24:
+        if widget#7 == biggestInRow goto label25;
+
+        $u6 = widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        widget2 = biggestInRow.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        virtualinvoke widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>($u6, widget2, 0);
+
+        $u6 = widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        widget2 = biggestInRow.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        virtualinvoke widget#7.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void connect(androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>($u6, widget2, 0);
+
+     label25:
+        index = index + 1;
+
+        goto label20;
+
+     label26:
+        i1 = i1 + 1;
+
+        goto label19;
+
+     label27:
+        return;
+    }
+
+    private final int getWidgetHeight(androidx.constraintlayout.solver.widgets.ConstraintWidget, int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u8;
+        int $u9, $u1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour $u5, $u2;
+        float value, $u1#9;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u8 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $u9 := @parameter1: int;
+
+        if $u8 != null goto label1;
+
+        return 0;
+
+     label1:
+        $u5 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getVerticalDimensionBehaviour()>();
+
+        $u2 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $u5 != $u2 goto label5;
+
+        $u1 = $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultHeight>;
+
+        if $u1 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        $u1 = $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultHeight>;
+
+        if $u1 != 2 goto label3;
+
+        value = $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: float mMatchConstraintPercentHeight>;
+
+        $u1#9 = (float) $u9;
+
+        value = value * $u1#9;
+
+        $u9 = (int) value;
+
+        $u1 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        if $u9 == $u1 goto label6;
+
+        $u2 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getHorizontalDimensionBehaviour()>();
+
+        $u1 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        $u5 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: void measure(androidx.constraintlayout.solver.widgets.ConstraintWidget,androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour,int,androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour,int)>($u8, $u2, $u1, $u5, $u9);
+
+        return $u9;
+
+     label3:
+        $u9 = $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultHeight>;
+
+        if $u9 != 1 goto label4;
+
+        $u9 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        return $u9;
+
+     label4:
+        $u9 = $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultHeight>;
+
+        if $u9 != 3 goto label5;
+
+        $u9 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        value = (float) $u9;
+
+        $u1#9 = $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: float mDimensionRatio>;
+
+        value = value * $u1#9;
+
+        value = value + 0.5F;
+
+        $u9 = (int) value;
+
+        return $u9;
+
+     label5:
+        $u9 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+     label6:
+        return $u9;
+    }
+
+    private final int getWidgetWidth(androidx.constraintlayout.solver.widgets.ConstraintWidget, int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u8;
+        int $u9, $u1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour $u3, $u2;
+        float value, $u1#9;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u8 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $u9 := @parameter1: int;
+
+        if $u8 != null goto label1;
+
+        return 0;
+
+     label1:
+        $u3 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getHorizontalDimensionBehaviour()>();
+
+        $u2 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $u3 != $u2 goto label5;
+
+        $u1 = $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultWidth>;
+
+        if $u1 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        $u1 = $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultWidth>;
+
+        if $u1 != 2 goto label3;
+
+        value = $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: float mMatchConstraintPercentWidth>;
+
+        $u1#9 = (float) $u9;
+
+        value = value * $u1#9;
+
+        $u9 = (int) value;
+
+        $u1 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        if $u9 == $u1 goto label6;
+
+        $u3 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour FIXED>;
+
+        $u2 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getVerticalDimensionBehaviour()>();
+
+        $u1 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: void measure(androidx.constraintlayout.solver.widgets.ConstraintWidget,androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour,int,androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour,int)>($u8, $u3, $u9, $u2, $u1);
+
+        return $u9;
+
+     label3:
+        $u9 = $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultWidth>;
+
+        if $u9 != 1 goto label4;
+
+        $u9 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        return $u9;
+
+     label4:
+        $u9 = $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int mMatchConstraintDefaultWidth>;
+
+        if $u9 != 3 goto label5;
+
+        $u9 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        value = (float) $u9;
+
+        $u1#9 = $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: float mDimensionRatio>;
+
+        value = value * $u1#9;
+
+        value = value + 0.5F;
+
+        $u9 = (int) value;
+
+        return $u9;
+
+     label5:
+        $u9 = virtualinvoke $u8.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+     label6:
+        return $u9;
+    }
+
+    private void measureAligned(androidx.constraintlayout.solver.widgets.ConstraintWidget[], int, int, int, int[])
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] $u19, widget#33;
+        int $u20, $u21, $u22, rows, cols, w, i, widget, widget1;
+        int[] $u23, w#16;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u16, widget#7;
+        boolean done;
+        float widget#21, j;
+        double widget#24;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u19 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget[];
+
+        $u20 := @parameter1: int;
+
+        $u21 := @parameter2: int;
+
+        $u22 := @parameter3: int;
+
+        $u23 := @parameter4: int[];
+
+        done = 0;
+
+        rows = 0;
+
+        cols = 0;
+
+        if $u21 != 0 goto label07;
+
+        cols = this.<androidx.constraintlayout.solver.widgets.Flow: int mMaxElementsWrap>;
+
+        if cols > 0 goto label13;
+
+        w = 0;
+
+        cols = 0;
+
+        i = 0;
+
+     label01:
+        if i >= $u20 goto label06;
+
+        if i <= 0 goto label02;
+
+        widget = this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalGap>;
+
+        w = w + widget;
+
+     label02:
+        widget#7 = $u19[i];
+
+        if widget#7 != null goto label03;
+
+        goto label05;
+
+     label03:
+        widget = specialinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getWidgetWidth(androidx.constraintlayout.solver.widgets.ConstraintWidget,int)>(widget#7, $u22);
+
+        w = w + widget;
+
+        if w <= $u22 goto label04;
+
+        goto label06;
+
+     label04:
+        cols = cols + 1;
+
+     label05:
+        i = i + 1;
+
+        goto label01;
+
+     label06:
+        goto label13;
+
+     label07:
+        rows = this.<androidx.constraintlayout.solver.widgets.Flow: int mMaxElementsWrap>;
+
+        if rows > 0 goto label13;
+
+        w = 0;
+
+        rows = 0;
+
+        i = 0;
+
+     label08:
+        if i >= $u20 goto label13;
+
+        if i <= 0 goto label09;
+
+        widget = this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalGap>;
+
+        w = w + widget;
+
+     label09:
+        widget#7 = $u19[i];
+
+        if widget#7 != null goto label10;
+
+        goto label12;
+
+     label10:
+        widget = specialinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getWidgetHeight(androidx.constraintlayout.solver.widgets.ConstraintWidget,int)>(widget#7, $u22);
+
+        w = w + widget;
+
+        if w <= $u22 goto label11;
+
+        goto label13;
+
+     label11:
+        rows = rows + 1;
+
+     label12:
+        i = i + 1;
+
+        goto label08;
+
+     label13:
+        w#16 = this.<androidx.constraintlayout.solver.widgets.Flow: int[] mAlignedDimensions>;
+
+        if w#16 != null goto label14;
+
+        w#16 = newarray (int)[2];
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int[] mAlignedDimensions> = w#16;
+
+     label14:
+        if rows != 0 goto label15;
+
+        if $u21 == 1 goto label16;
+
+     label15:
+        if cols != 0 goto label17;
+
+        if $u21 != 0 goto label17;
+
+     label16:
+        done = 1;
+
+     label17:
+        if done != 0 goto label51;
+
+        if $u21 != 0 goto label18;
+
+        widget#21 = (float) $u20;
+
+        j = (float) cols;
+
+        widget#21 = widget#21 / j;
+
+        widget#24 = (double) widget#21;
+
+        widget#24 = staticinvoke <java.lang.Math: double ceil(double)>(widget#24);
+
+        rows = (int) widget#24;
+
+        goto label19;
+
+     label18:
+        widget#21 = (float) $u20;
+
+        j = (float) rows;
+
+        widget#21 = widget#21 / j;
+
+        widget#24 = (double) widget#21;
+
+        widget#24 = staticinvoke <java.lang.Math: double ceil(double)>(widget#24);
+
+        cols = (int) widget#24;
+
+     label19:
+        widget#33 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInCols>;
+
+        if widget#33 == null goto label21;
+
+        w = lengthof widget#33;
+
+        if w >= cols goto label20;
+
+        goto label21;
+
+     label20:
+        staticinvoke <java.util.Arrays: void fill(java.lang.Object[],java.lang.Object)>(widget#33, null);
+
+        goto label22;
+
+     label21:
+        widget#33 = newarray (androidx.constraintlayout.solver.widgets.ConstraintWidget)[cols];
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInCols> = widget#33;
+
+     label22:
+        widget#33 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInRows>;
+
+        if widget#33 == null goto label24;
+
+        w = lengthof widget#33;
+
+        if w >= rows goto label23;
+
+        goto label24;
+
+     label23:
+        staticinvoke <java.util.Arrays: void fill(java.lang.Object[],java.lang.Object)>(widget#33, null);
+
+        goto label25;
+
+     label24:
+        widget#33 = newarray (androidx.constraintlayout.solver.widgets.ConstraintWidget)[rows];
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInRows> = widget#33;
+
+     label25:
+        w = 0;
+
+     label26:
+        if w >= cols goto label36;
+
+        i = 0;
+
+     label27:
+        if i >= rows goto label35;
+
+        widget = i * cols;
+
+        widget = widget + w;
+
+        if $u21 != 1 goto label28;
+
+        widget = w * rows;
+
+        widget = widget + i;
+
+     label28:
+        widget1 = lengthof $u19;
+
+        if widget < widget1 goto label29;
+
+        goto label34;
+
+     label29:
+        widget#7 = $u19[widget];
+
+        if widget#7 != null goto label30;
+
+        goto label34;
+
+     label30:
+        widget = specialinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getWidgetWidth(androidx.constraintlayout.solver.widgets.ConstraintWidget,int)>(widget#7, $u22);
+
+        widget#33 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInCols>;
+
+        $u16 = widget#33[w];
+
+        if $u16 == null goto label31;
+
+        $u16 = widget#33[w];
+
+        widget1 = virtualinvoke $u16.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getWidth()>();
+
+        if widget1 >= widget goto label32;
+
+     label31:
+        widget#33 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInCols>;
+
+        widget#33[w] = widget#7;
+
+     label32:
+        widget = specialinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getWidgetHeight(androidx.constraintlayout.solver.widgets.ConstraintWidget,int)>(widget#7, $u22);
+
+        widget#33 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInRows>;
+
+        $u16 = widget#33[i];
+
+        if $u16 == null goto label33;
+
+        $u16 = widget#33[i];
+
+        widget1 = virtualinvoke $u16.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getHeight()>();
+
+        if widget1 >= widget goto label34;
+
+     label33:
+        widget#33 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInRows>;
+
+        widget#33[i] = widget#7;
+
+     label34:
+        i = i + 1;
+
+        goto label27;
+
+     label35:
+        w = w + 1;
+
+        goto label26;
+
+     label36:
+        w = 0;
+
+        i = 0;
+
+     label37:
+        if i >= cols goto label40;
+
+        widget#33 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInCols>;
+
+        widget#7 = widget#33[i];
+
+        if widget#7 == null goto label39;
+
+        if i <= 0 goto label38;
+
+        widget = this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalGap>;
+
+        w = w + widget;
+
+     label38:
+        widget = specialinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getWidgetWidth(androidx.constraintlayout.solver.widgets.ConstraintWidget,int)>(widget#7, $u22);
+
+        w = w + widget;
+
+     label39:
+        i = i + 1;
+
+        goto label37;
+
+     label40:
+        i = 0;
+
+        widget = 0;
+
+     label41:
+        if widget >= rows goto label44;
+
+        widget#33 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mAlignedBiggestElementsInRows>;
+
+        widget#7 = widget#33[widget];
+
+        if widget#7 == null goto label43;
+
+        if widget <= 0 goto label42;
+
+        widget1 = this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalGap>;
+
+        i = i + widget1;
+
+     label42:
+        widget1 = specialinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getWidgetHeight(androidx.constraintlayout.solver.widgets.ConstraintWidget,int)>(widget#7, $u22);
+
+        i = i + widget1;
+
+     label43:
+        widget = widget + 1;
+
+        goto label41;
+
+     label44:
+        $u23[0] = w;
+
+        $u23[1] = i;
+
+        if $u21 != 0 goto label47;
+
+        if w <= $u22 goto label46;
+
+        if cols <= 1 goto label45;
+
+        cols = cols + -1;
+
+        goto label50;
+
+     label45:
+        done = 1;
+
+        goto label50;
+
+     label46:
+        done = 1;
+
+        goto label50;
+
+     label47:
+        if i <= $u22 goto label49;
+
+        if rows <= 1 goto label48;
+
+        rows = rows + -1;
+
+        goto label50;
+
+     label48:
+        done = 1;
+
+        goto label50;
+
+     label49:
+        done = 1;
+
+     label50:
+        goto label17;
+
+     label51:
+        $u23 = this.<androidx.constraintlayout.solver.widgets.Flow: int[] mAlignedDimensions>;
+
+        $u23[0] = cols;
+
+        $u23[1] = rows;
+
+        return;
+    }
+
+    private void measureChainWrap(androidx.constraintlayout.solver.widgets.ConstraintWidget[], int, int, int, int[])
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] $u33;
+        int $u34, $u35, $u36, nbMatchConstraintsWidgets, width, i, $u-1, list#27, $u-1#119, w, $u-1#172;
+        int[] $u37;
+        java.util.ArrayList list;
+        androidx.constraintlayout.solver.widgets.Flow$WidgetsList list1, list1#147;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor left, top, right, bottom, widget#155;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget widget, $u-1#30;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour $u-1#22, left#24;
+        boolean list#32;
+        java.lang.Object $u-1#116;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u33 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget[];
+
+        $u34 := @parameter1: int;
+
+        $u35 := @parameter2: int;
+
+        $u36 := @parameter3: int;
+
+        $u37 := @parameter4: int[];
+
+        if $u34 != 0 goto label01;
+
+        return;
+
+     label01:
+        list = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        virtualinvoke list.<java.util.ArrayList: void clear()>();
+
+        list1 = new androidx.constraintlayout.solver.widgets.Flow$WidgetsList;
+
+        left = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        top = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        right = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        bottom = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        specialinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void <init>(androidx.constraintlayout.solver.widgets.Flow,int,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>(this, $u35, left, top, right, bottom, $u36);
+
+        list = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        virtualinvoke list.<java.util.ArrayList: boolean add(java.lang.Object)>(list1);
+
+        nbMatchConstraintsWidgets = 0;
+
+        if $u35 != 0 goto label12;
+
+        width = 0;
+
+        i = 0;
+
+     label02:
+        if i >= $u34 goto label11;
+
+        widget = $u33[i];
+
+        $u-1 = specialinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getWidgetWidth(androidx.constraintlayout.solver.widgets.ConstraintWidget,int)>(widget, $u36);
+
+        $u-1#22 = virtualinvoke widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getHorizontalDimensionBehaviour()>();
+
+        left#24 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $u-1#22 != left#24 goto label03;
+
+        nbMatchConstraintsWidgets = nbMatchConstraintsWidgets + 1;
+
+        goto label03;
+
+     label03:
+        if width == $u36 goto label04;
+
+        list#27 = this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalGap>;
+
+        list#27 = list#27 + width;
+
+        list#27 = list#27 + $u-1;
+
+        if list#27 <= $u36 goto label05;
+
+     label04:
+        $u-1#30 = staticinvoke <androidx.constraintlayout.solver.widgets.Flow$WidgetsList: androidx.constraintlayout.solver.widgets.ConstraintWidget access$2000(androidx.constraintlayout.solver.widgets.Flow$WidgetsList)>(list1);
+
+        if $u-1#30 == null goto label05;
+
+        list#32 = 1;
+
+        goto label06;
+
+     label05:
+        list#32 = 0;
+
+     label06:
+        if list#32 != 0 goto label07;
+
+        if i <= 0 goto label07;
+
+        list#27 = this.<androidx.constraintlayout.solver.widgets.Flow: int mMaxElementsWrap>;
+
+        if list#27 <= 0 goto label07;
+
+        list#27 = i % list#27;
+
+        if list#27 != 0 goto label07;
+
+        list#32 = 1;
+
+        goto label07;
+
+     label07:
+        if list#32 == 0 goto label08;
+
+        list1 = new androidx.constraintlayout.solver.widgets.Flow$WidgetsList;
+
+        left = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        top = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        right = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        bottom = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        specialinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void <init>(androidx.constraintlayout.solver.widgets.Flow,int,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>(this, $u35, left, top, right, bottom, $u36);
+
+        virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void setStartIndex(int)>(i);
+
+        list = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        virtualinvoke list.<java.util.ArrayList: boolean add(java.lang.Object)>(list1);
+
+        width = $u-1;
+
+        goto label10;
+
+     label08:
+        if i <= 0 goto label09;
+
+        list#27 = this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalGap>;
+
+        $u-1 = list#27 + $u-1;
+
+        width = width + $u-1;
+
+        goto label10;
+
+     label09:
+        width = $u-1;
+
+     label10:
+        virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void add(androidx.constraintlayout.solver.widgets.ConstraintWidget)>(widget);
+
+        i = i + 1;
+
+        goto label02;
+
+     label11:
+        goto label22;
+
+     label12:
+        width = 0;
+
+        i = 0;
+
+     label13:
+        if i >= $u34 goto label22;
+
+        widget = $u33[i];
+
+        $u-1 = specialinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getWidgetHeight(androidx.constraintlayout.solver.widgets.ConstraintWidget,int)>(widget, $u36);
+
+        $u-1#22 = virtualinvoke widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getVerticalDimensionBehaviour()>();
+
+        left#24 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour MATCH_CONSTRAINT>;
+
+        if $u-1#22 != left#24 goto label14;
+
+        nbMatchConstraintsWidgets = nbMatchConstraintsWidgets + 1;
+
+        goto label14;
+
+     label14:
+        if width == $u36 goto label15;
+
+        list#27 = this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalGap>;
+
+        list#27 = list#27 + width;
+
+        list#27 = list#27 + $u-1;
+
+        if list#27 <= $u36 goto label16;
+
+     label15:
+        $u-1#30 = staticinvoke <androidx.constraintlayout.solver.widgets.Flow$WidgetsList: androidx.constraintlayout.solver.widgets.ConstraintWidget access$2000(androidx.constraintlayout.solver.widgets.Flow$WidgetsList)>(list1);
+
+        if $u-1#30 == null goto label16;
+
+        list#32 = 1;
+
+        goto label17;
+
+     label16:
+        list#32 = 0;
+
+     label17:
+        if list#32 != 0 goto label18;
+
+        if i <= 0 goto label18;
+
+        list#27 = this.<androidx.constraintlayout.solver.widgets.Flow: int mMaxElementsWrap>;
+
+        if list#27 <= 0 goto label18;
+
+        list#27 = i % list#27;
+
+        if list#27 != 0 goto label18;
+
+        list#32 = 1;
+
+        goto label18;
+
+     label18:
+        if list#32 == 0 goto label19;
+
+        list1 = new androidx.constraintlayout.solver.widgets.Flow$WidgetsList;
+
+        left = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        top = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        right = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        bottom = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        specialinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void <init>(androidx.constraintlayout.solver.widgets.Flow,int,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>(this, $u35, left, top, right, bottom, $u36);
+
+        virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void setStartIndex(int)>(i);
+
+        list = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        virtualinvoke list.<java.util.ArrayList: boolean add(java.lang.Object)>(list1);
+
+        width = $u-1;
+
+        goto label21;
+
+     label19:
+        if i <= 0 goto label20;
+
+        list#27 = this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalGap>;
+
+        $u-1 = list#27 + $u-1;
+
+        width = width + $u-1;
+
+        goto label21;
+
+     label20:
+        width = $u-1;
+
+     label21:
+        virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void add(androidx.constraintlayout.solver.widgets.ConstraintWidget)>(widget);
+
+        i = i + 1;
+
+        goto label13;
+
+     label22:
+        list = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        $u34 = virtualinvoke list.<java.util.ArrayList: int size()>();
+
+        right = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        bottom = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        left = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        top = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        width = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingLeft()>();
+
+        i = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingTop()>();
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingRight()>();
+
+        list#27 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingBottom()>();
+
+        $u-1#22 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getHorizontalDimensionBehaviour()>();
+
+        left#24 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $u-1#22 == left#24 goto label24;
+
+        $u-1#22 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour getVerticalDimensionBehaviour()>();
+
+        left#24 = <androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour: androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour WRAP_CONTENT>;
+
+        if $u-1#22 != left#24 goto label23;
+
+        goto label24;
+
+     label23:
+        list#32 = 0;
+
+        goto label25;
+
+     label24:
+        list#32 = 1;
+
+     label25:
+        if nbMatchConstraintsWidgets <= 0 goto label30;
+
+        if list#32 == 0 goto label30;
+
+        nbMatchConstraintsWidgets = 0;
+
+     label26:
+        if nbMatchConstraintsWidgets >= $u34 goto label29;
+
+        list = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        $u-1#116 = virtualinvoke list.<java.util.ArrayList: java.lang.Object get(int)>(nbMatchConstraintsWidgets);
+
+        list1 = (androidx.constraintlayout.solver.widgets.Flow$WidgetsList) $u-1#116;
+
+        if $u35 != 0 goto label27;
+
+        $u-1#119 = virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: int getWidth()>();
+
+        $u-1#119 = $u36 - $u-1#119;
+
+        virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void measureMatchConstraints(int)>($u-1#119);
+
+        goto label28;
+
+     label27:
+        $u-1#119 = virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: int getHeight()>();
+
+        $u-1#119 = $u36 - $u-1#119;
+
+        virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void measureMatchConstraints(int)>($u-1#119);
+
+     label28:
+        nbMatchConstraintsWidgets = nbMatchConstraintsWidgets + 1;
+
+        goto label26;
+
+     label29:
+        goto label30;
+
+     label30:
+        nbMatchConstraintsWidgets = 0;
+
+        $u-1#119 = 0;
+
+        w = 0;
+
+     label31:
+        if nbMatchConstraintsWidgets >= $u34 goto label39;
+
+        list = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        $u-1#116 = virtualinvoke list.<java.util.ArrayList: java.lang.Object get(int)>(nbMatchConstraintsWidgets);
+
+        list1 = (androidx.constraintlayout.solver.widgets.Flow$WidgetsList) $u-1#116;
+
+        if $u35 != 0 goto label35;
+
+        list#27 = $u34 + -1;
+
+        if nbMatchConstraintsWidgets >= list#27 goto label32;
+
+        list = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        list#27 = nbMatchConstraintsWidgets + 1;
+
+        $u-1#116 = virtualinvoke list.<java.util.ArrayList: java.lang.Object get(int)>(list#27);
+
+        list1#147 = (androidx.constraintlayout.solver.widgets.Flow$WidgetsList) $u-1#116;
+
+        widget = staticinvoke <androidx.constraintlayout.solver.widgets.Flow$WidgetsList: androidx.constraintlayout.solver.widgets.ConstraintWidget access$2000(androidx.constraintlayout.solver.widgets.Flow$WidgetsList)>(list1#147);
+
+        top = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        list#27 = 0;
+
+        goto label33;
+
+     label32:
+        top = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        list#27 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingBottom()>();
+
+     label33:
+        widget = staticinvoke <androidx.constraintlayout.solver.widgets.Flow$WidgetsList: androidx.constraintlayout.solver.widgets.ConstraintWidget access$2000(androidx.constraintlayout.solver.widgets.Flow$WidgetsList)>(list1);
+
+        widget#155 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void setup(int,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int,int,int,int,int)>($u35, right, bottom, left, top, width, i, $u-1, list#27, $u36);
+
+        i = 0;
+
+        $u-1#172 = virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: int getWidth()>();
+
+        $u-1#119 = staticinvoke <java.lang.Math: int max(int,int)>($u-1#119, $u-1#172);
+
+        $u-1#172 = virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: int getHeight()>();
+
+        w = w + $u-1#172;
+
+        if nbMatchConstraintsWidgets <= 0 goto label34;
+
+        $u-1#172 = this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalGap>;
+
+        w = w + $u-1#172;
+
+     label34:
+        bottom = widget#155;
+
+        goto label38;
+
+     label35:
+        $u-1 = $u34 + -1;
+
+        if nbMatchConstraintsWidgets >= $u-1 goto label36;
+
+        list = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        $u-1 = nbMatchConstraintsWidgets + 1;
+
+        $u-1#116 = virtualinvoke list.<java.util.ArrayList: java.lang.Object get(int)>($u-1);
+
+        list1#147 = (androidx.constraintlayout.solver.widgets.Flow$WidgetsList) $u-1#116;
+
+        widget = staticinvoke <androidx.constraintlayout.solver.widgets.Flow$WidgetsList: androidx.constraintlayout.solver.widgets.ConstraintWidget access$2000(androidx.constraintlayout.solver.widgets.Flow$WidgetsList)>(list1#147);
+
+        left = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $u-1 = 0;
+
+        goto label37;
+
+     label36:
+        left = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingRight()>();
+
+     label37:
+        widget = staticinvoke <androidx.constraintlayout.solver.widgets.Flow$WidgetsList: androidx.constraintlayout.solver.widgets.ConstraintWidget access$2000(androidx.constraintlayout.solver.widgets.Flow$WidgetsList)>(list1);
+
+        widget#155 = widget.<androidx.constraintlayout.solver.widgets.ConstraintWidget: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void setup(int,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int,int,int,int,int)>($u35, right, bottom, left, top, width, i, $u-1, list#27, $u36);
+
+        right = widget#155;
+
+        width = 0;
+
+        $u-1#172 = virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: int getWidth()>();
+
+        $u-1#119 = $u-1#119 + $u-1#172;
+
+        $u-1#172 = virtualinvoke list1.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: int getHeight()>();
+
+        w = staticinvoke <java.lang.Math: int max(int,int)>(w, $u-1#172);
+
+        if nbMatchConstraintsWidgets <= 0 goto label38;
+
+        $u-1#172 = this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalGap>;
+
+        $u-1#119 = $u-1#119 + $u-1#172;
+
+        goto label38;
+
+     label38:
+        nbMatchConstraintsWidgets = nbMatchConstraintsWidgets + 1;
+
+        goto label31;
+
+     label39:
+        $u37[0] = $u-1#119;
+
+        $u37[1] = w;
+
+        return;
+    }
+
+    private void measureNoWrap(androidx.constraintlayout.solver.widgets.ConstraintWidget[], int, int, int, int[])
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] $u24;
+        int $u25, $u26, $u27, $u-1, $u-1#15, $u-1#16, $u-1#17;
+        int[] $u28;
+        androidx.constraintlayout.solver.widgets.ConstraintAnchor $u3, $u4, $u5, $u6;
+        java.util.ArrayList list;
+        androidx.constraintlayout.solver.widgets.Flow$WidgetsList $u12, list#5;
+        java.lang.Object $u-1#10;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget widget;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u24 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget[];
+
+        $u25 := @parameter1: int;
+
+        $u26 := @parameter2: int;
+
+        $u27 := @parameter3: int;
+
+        $u28 := @parameter4: int[];
+
+        if $u25 != 0 goto label1;
+
+        return;
+
+     label1:
+        list = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        $u-1 = virtualinvoke list.<java.util.ArrayList: int size()>();
+
+        if $u-1 != 0 goto label2;
+
+        $u12 = new androidx.constraintlayout.solver.widgets.Flow$WidgetsList;
+
+        $u3 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $u4 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        $u5 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        $u6 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        list#5 = $u12;
+
+        specialinvoke $u12.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void <init>(androidx.constraintlayout.solver.widgets.Flow,int,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int)>(this, $u26, $u3, $u4, $u5, $u6, $u27);
+
+        list = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        virtualinvoke list.<java.util.ArrayList: boolean add(java.lang.Object)>($u12);
+
+        goto label3;
+
+     label2:
+        list = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        $u-1#10 = virtualinvoke list.<java.util.ArrayList: java.lang.Object get(int)>(0);
+
+        list#5 = (androidx.constraintlayout.solver.widgets.Flow$WidgetsList) $u-1#10;
+
+        virtualinvoke list#5.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void clear()>();
+
+        $u3 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mLeft>;
+
+        $u4 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mTop>;
+
+        $u5 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mRight>;
+
+        $u6 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintAnchor mBottom>;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingLeft()>();
+
+        $u-1#15 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingTop()>();
+
+        $u-1#16 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingRight()>();
+
+        $u-1#17 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingBottom()>();
+
+        virtualinvoke list#5.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void setup(int,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,androidx.constraintlayout.solver.widgets.ConstraintAnchor,int,int,int,int,int)>($u26, $u3, $u4, $u5, $u6, $u-1, $u-1#15, $u-1#16, $u-1#17, $u27);
+
+     label3:
+        $u26 = 0;
+
+     label4:
+        if $u26 >= $u25 goto label5;
+
+        widget = $u24[$u26];
+
+        virtualinvoke list#5.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void add(androidx.constraintlayout.solver.widgets.ConstraintWidget)>(widget);
+
+        $u26 = $u26 + 1;
+
+        goto label4;
+
+     label5:
+        $u25 = virtualinvoke list#5.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: int getWidth()>();
+
+        $u28[0] = $u25;
+
+        $u25 = virtualinvoke list#5.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: int getHeight()>();
+
+        $u28[1] = $u25;
+
+        return;
+    }
+
+    public void addToSolver(androidx.constraintlayout.solver.LinearSystem)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        androidx.constraintlayout.solver.LinearSystem $u8;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u-1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer isInRtl;
+        boolean $u-1#6, $u6#20;
+        int count, i, $u6;
+        java.util.ArrayList count#11;
+        java.lang.Object $u-1#16;
+        androidx.constraintlayout.solver.widgets.Flow$WidgetsList list;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u8 := @parameter0: androidx.constraintlayout.solver.LinearSystem;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.VirtualLayout: void addToSolver(androidx.constraintlayout.solver.LinearSystem)>($u8);
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget getParent()>();
+
+        if $u-1 == null goto label01;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget getParent()>();
+
+        isInRtl = (androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer) $u-1;
+
+        $u-1#6 = virtualinvoke isInRtl.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean isRtl()>();
+
+        goto label02;
+
+     label01:
+        $u-1#6 = 0;
+
+     label02:
+        count = this.<androidx.constraintlayout.solver.widgets.Flow: int mWrapMode>;
+
+        if count == 0 goto label09;
+
+        if count == 1 goto label04;
+
+        if count == 2 goto label03;
+
+        goto label10;
+
+     label03:
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.Flow: void createAlignedConstraints(boolean)>($u-1#6);
+
+        goto label10;
+
+     label04:
+        count#11 = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        count = virtualinvoke count#11.<java.util.ArrayList: int size()>();
+
+        i = 0;
+
+     label05:
+        if i >= count goto label08;
+
+        count#11 = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        $u-1#16 = virtualinvoke count#11.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        list = (androidx.constraintlayout.solver.widgets.Flow$WidgetsList) $u-1#16;
+
+        $u6 = count + -1;
+
+        if i != $u6 goto label06;
+
+        $u6#20 = 1;
+
+        goto label07;
+
+     label06:
+        $u6#20 = 0;
+
+     label07:
+        virtualinvoke list.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void createConstraints(boolean,int,boolean)>($u-1#6, i, $u6#20);
+
+        i = i + 1;
+
+        goto label05;
+
+     label08:
+        goto label10;
+
+     label09:
+        count#11 = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        count = virtualinvoke count#11.<java.util.ArrayList: int size()>();
+
+        if count <= 0 goto label10;
+
+        count#11 = this.<androidx.constraintlayout.solver.widgets.Flow: java.util.ArrayList mChainList>;
+
+        $u-1#16 = virtualinvoke count#11.<java.util.ArrayList: java.lang.Object get(int)>(0);
+
+        list = (androidx.constraintlayout.solver.widgets.Flow$WidgetsList) $u-1#16;
+
+        virtualinvoke list.<androidx.constraintlayout.solver.widgets.Flow$WidgetsList: void createConstraints(boolean,int,boolean)>($u-1#6, 0, 1);
+
+     label10:
+        virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: void needsCallbackFromSolver(boolean)>(0);
+
+        return;
+    }
+
+    public void copy(androidx.constraintlayout.solver.widgets.ConstraintWidget, java.util.HashMap)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this, srcFLow;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u3;
+        java.util.HashMap map;
+        int $u1;
+        float $u1#9;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u3 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        map := @parameter1: java.util.HashMap;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.VirtualLayout: void copy(androidx.constraintlayout.solver.widgets.ConstraintWidget,java.util.HashMap)>($u3, map);
+
+        srcFLow = (androidx.constraintlayout.solver.widgets.Flow) $u3;
+
+        $u1 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalStyle>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalStyle> = $u1;
+
+        $u1 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalStyle>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalStyle> = $u1;
+
+        $u1 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: int mFirstHorizontalStyle>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mFirstHorizontalStyle> = $u1;
+
+        $u1 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: int mFirstVerticalStyle>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mFirstVerticalStyle> = $u1;
+
+        $u1 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: int mLastHorizontalStyle>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mLastHorizontalStyle> = $u1;
+
+        $u1 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: int mLastVerticalStyle>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mLastVerticalStyle> = $u1;
+
+        $u1#9 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: float mHorizontalBias>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mHorizontalBias> = $u1#9;
+
+        $u1#9 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: float mVerticalBias>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mVerticalBias> = $u1#9;
+
+        $u1#9 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: float mFirstHorizontalBias>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mFirstHorizontalBias> = $u1#9;
+
+        $u1#9 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: float mFirstVerticalBias>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mFirstVerticalBias> = $u1#9;
+
+        $u1#9 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: float mLastHorizontalBias>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mLastHorizontalBias> = $u1#9;
+
+        $u1#9 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: float mLastVerticalBias>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mLastVerticalBias> = $u1#9;
+
+        $u1 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalGap>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalGap> = $u1;
+
+        $u1 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalGap>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalGap> = $u1;
+
+        $u1 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalAlign>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalAlign> = $u1;
+
+        $u1 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalAlign>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalAlign> = $u1;
+
+        $u1 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: int mWrapMode>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mWrapMode> = $u1;
+
+        $u1 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: int mMaxElementsWrap>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mMaxElementsWrap> = $u1;
+
+        $u1 = srcFLow.<androidx.constraintlayout.solver.widgets.Flow: int mOrientation>;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mOrientation> = $u1;
+
+        return;
+    }
+
+    public void measure(int, int, int, int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u24, $u25, $u26, $u27, count, $u-1#6, $u-1#7, $u-1#8, max, gone, i, gone#29;
+        boolean $u-1;
+        int[] measured, count2;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget[] max#25, gone#31;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget gone#32;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u24 := @parameter0: int;
+
+        $u25 := @parameter1: int;
+
+        $u26 := @parameter2: int;
+
+        $u27 := @parameter3: int;
+
+        count = this.<androidx.constraintlayout.solver.widgets.Flow: int mWidgetsCount>;
+
+        if count <= 0 goto label01;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: boolean measureChildren()>();
+
+        if $u-1 != 0 goto label01;
+
+        virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: void setMeasure(int,int)>(0, 0);
+
+        virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: void needsCallbackFromSolver(boolean)>(0);
+
+        return;
+
+     label01:
+        $u-1#6 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingLeft()>();
+
+        $u-1#7 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingRight()>();
+
+        $u-1#8 = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingTop()>();
+
+        count = virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: int getPaddingBottom()>();
+
+        measured = newarray (int)[2];
+
+        max = $u25 - $u-1#6;
+
+        gone = this.<androidx.constraintlayout.solver.widgets.Flow: int mOrientation>;
+
+        if gone != 1 goto label02;
+
+        max = $u27 - $u-1#8;
+
+        max = max - count;
+
+        goto label03;
+
+     label02:
+        max = max - $u-1#7;
+
+     label03:
+        gone = this.<androidx.constraintlayout.solver.widgets.Flow: int mOrientation>;
+
+        if gone != 0 goto label05;
+
+        gone = this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalStyle>;
+
+        if gone != -1 goto label04;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalStyle> = 0;
+
+     label04:
+        gone = this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalStyle>;
+
+        if gone != -1 goto label07;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalStyle> = 0;
+
+        goto label07;
+
+     label05:
+        gone = this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalStyle>;
+
+        if gone != -1 goto label06;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalStyle> = 0;
+
+     label06:
+        gone = this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalStyle>;
+
+        if gone != -1 goto label07;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalStyle> = 0;
+
+     label07:
+        max#25 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        i = 0;
+
+        gone = 0;
+
+     label08:
+        gone#29 = this.<androidx.constraintlayout.solver.widgets.Flow: int mWidgetsCount>;
+
+        if i >= gone#29 goto label10;
+
+        gone#31 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        gone#32 = gone#31[i];
+
+        gone#29 = virtualinvoke gone#32.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if gone#29 != 8 goto label09;
+
+        gone = gone + 1;
+
+     label09:
+        i = i + 1;
+
+        goto label08;
+
+     label10:
+        if gone <= 0 goto label14;
+
+        i = this.<androidx.constraintlayout.solver.widgets.Flow: int mWidgetsCount>;
+
+        gone = i - gone;
+
+        max#25 = newarray (androidx.constraintlayout.solver.widgets.ConstraintWidget)[gone];
+
+        gone = 0;
+
+        i = 0;
+
+     label11:
+        gone#29 = this.<androidx.constraintlayout.solver.widgets.Flow: int mWidgetsCount>;
+
+        if i >= gone#29 goto label13;
+
+        gone#31 = this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mWidgets>;
+
+        gone#32 = gone#31[i];
+
+        gone#29 = virtualinvoke gone#32.<androidx.constraintlayout.solver.widgets.ConstraintWidget: int getVisibility()>();
+
+        if gone#29 == 8 goto label12;
+
+        max#25[gone] = gone#32;
+
+        gone = gone + 1;
+
+     label12:
+        i = i + 1;
+
+        goto label11;
+
+     label13:
+        goto label15;
+
+     label14:
+        gone = this.<androidx.constraintlayout.solver.widgets.Flow: int mWidgetsCount>;
+
+     label15:
+        this.<androidx.constraintlayout.solver.widgets.Flow: androidx.constraintlayout.solver.widgets.ConstraintWidget[] mDisplayedWidgets> = max#25;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mDisplayedWidgetsCount> = gone;
+
+        i = this.<androidx.constraintlayout.solver.widgets.Flow: int mWrapMode>;
+
+        if i == 0 goto label18;
+
+        if i == 1 goto label17;
+
+        if i == 2 goto label16;
+
+        count2 = measured;
+
+        goto label19;
+
+     label16:
+        i = this.<androidx.constraintlayout.solver.widgets.Flow: int mOrientation>;
+
+        count2 = measured;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.Flow: void measureAligned(androidx.constraintlayout.solver.widgets.ConstraintWidget[],int,int,int,int[])>(max#25, gone, i, max, measured);
+
+        goto label19;
+
+     label17:
+        count2 = measured;
+
+        i = this.<androidx.constraintlayout.solver.widgets.Flow: int mOrientation>;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.Flow: void measureChainWrap(androidx.constraintlayout.solver.widgets.ConstraintWidget[],int,int,int,int[])>(max#25, gone, i, max, measured);
+
+        goto label19;
+
+     label18:
+        count2 = measured;
+
+        i = this.<androidx.constraintlayout.solver.widgets.Flow: int mOrientation>;
+
+        specialinvoke this.<androidx.constraintlayout.solver.widgets.Flow: void measureNoWrap(androidx.constraintlayout.solver.widgets.ConstraintWidget[],int,int,int,int[])>(max#25, gone, i, max, measured);
+
+     label19:
+        $u-1 = 0;
+
+        max = count2[0];
+
+        $u-1#6 = max + $u-1#6;
+
+        $u-1#7 = $u-1#6 + $u-1#7;
+
+        $u-1#6 = count2[1];
+
+        $u-1#8 = $u-1#6 + $u-1#8;
+
+        count = $u-1#8 + count;
+
+        $u-1#8 = 0;
+
+        $u-1#6 = 0;
+
+        if $u24 != 1073741824 goto label20;
+
+        $u-1#8 = $u25;
+
+        goto label22;
+
+     label20:
+        if $u24 != -2147483648 goto label21;
+
+        $u-1#8 = staticinvoke <java.lang.Math: int min(int,int)>($u-1#7, $u25);
+
+        goto label22;
+
+     label21:
+        if $u24 != 0 goto label22;
+
+        $u-1#8 = $u-1#7;
+
+     label22:
+        if $u26 != 1073741824 goto label23;
+
+        $u-1#6 = $u27;
+
+        goto label25;
+
+     label23:
+        if $u26 != -2147483648 goto label24;
+
+        $u-1#6 = staticinvoke <java.lang.Math: int min(int,int)>(count, $u27);
+
+        goto label25;
+
+     label24:
+        if $u26 != 0 goto label25;
+
+        $u-1#6 = count;
+
+     label25:
+        virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: void setMeasure(int,int)>($u-1#8, $u-1#6);
+
+        virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: void setWidth(int)>($u-1#8);
+
+        virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: void setHeight(int)>($u-1#6);
+
+        $u24 = this.<androidx.constraintlayout.solver.widgets.Flow: int mWidgetsCount>;
+
+        if $u24 <= 0 goto label26;
+
+        $u-1 = 1;
+
+     label26:
+        virtualinvoke this.<androidx.constraintlayout.solver.widgets.Flow: void needsCallbackFromSolver(boolean)>($u-1);
+
+        return;
+    }
+
+    public void setFirstHorizontalBias(float)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mFirstHorizontalBias> = $u1;
+
+        return;
+    }
+
+    public void setFirstHorizontalStyle(int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mFirstHorizontalStyle> = $u1;
+
+        return;
+    }
+
+    public void setFirstVerticalBias(float)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mFirstVerticalBias> = $u1;
+
+        return;
+    }
+
+    public void setFirstVerticalStyle(int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mFirstVerticalStyle> = $u1;
+
+        return;
+    }
+
+    public void setHorizontalAlign(int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalAlign> = $u1;
+
+        return;
+    }
+
+    public void setHorizontalBias(float)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mHorizontalBias> = $u1;
+
+        return;
+    }
+
+    public void setHorizontalGap(int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalGap> = $u1;
+
+        return;
+    }
+
+    public void setHorizontalStyle(int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mHorizontalStyle> = $u1;
+
+        return;
+    }
+
+    public void setLastHorizontalBias(float)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mLastHorizontalBias> = $u1;
+
+        return;
+    }
+
+    public void setLastHorizontalStyle(int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mLastHorizontalStyle> = $u1;
+
+        return;
+    }
+
+    public void setLastVerticalBias(float)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mLastVerticalBias> = $u1;
+
+        return;
+    }
+
+    public void setLastVerticalStyle(int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mLastVerticalStyle> = $u1;
+
+        return;
+    }
+
+    public void setMaxElementsWrap(int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mMaxElementsWrap> = $u1;
+
+        return;
+    }
+
+    public void setOrientation(int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mOrientation> = $u1;
+
+        return;
+    }
+
+    public void setVerticalAlign(int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalAlign> = $u1;
+
+        return;
+    }
+
+    public void setVerticalBias(float)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: float mVerticalBias> = $u1;
+
+        return;
+    }
+
+    public void setVerticalGap(int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalGap> = $u1;
+
+        return;
+    }
+
+    public void setVerticalStyle(int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mVerticalStyle> = $u1;
+
+        return;
+    }
+
+    public void setWrapMode(int)
+    {
+        androidx.constraintlayout.solver.widgets.Flow this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.widgets.Flow;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.widgets.Flow: int mWrapMode> = $u1;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.solver.widgets.Flow: int WRAP_CHAIN> = 1;
+
+        <androidx.constraintlayout.solver.widgets.Flow: int WRAP_ALIGNED> = 2;
+
+        <androidx.constraintlayout.solver.widgets.Flow: int VERTICAL_ALIGN_TOP> = 0;
+
+        <androidx.constraintlayout.solver.widgets.Flow: int VERTICAL_ALIGN_CENTER> = 2;
+
+        <androidx.constraintlayout.solver.widgets.Flow: int VERTICAL_ALIGN_BOTTOM> = 1;
+
+        <androidx.constraintlayout.solver.widgets.Flow: int VERTICAL_ALIGN_BASELINE> = 3;
+
+        <androidx.constraintlayout.solver.widgets.Flow: int HORIZONTAL_ALIGN_START> = 0;
+
+        <androidx.constraintlayout.solver.widgets.Flow: int HORIZONTAL_ALIGN_END> = 1;
+
+        <androidx.constraintlayout.solver.widgets.Flow: int HORIZONTAL_ALIGN_CENTER> = 2;
+
+        return;
+    }
+}

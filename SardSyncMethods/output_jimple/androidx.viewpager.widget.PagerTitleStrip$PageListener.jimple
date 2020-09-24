@@ -1,0 +1,198 @@
+class androidx.viewpager.widget.PagerTitleStrip$PageListener extends android.database.DataSetObserver implements androidx.viewpager.widget.ViewPager$OnPageChangeListener, androidx.viewpager.widget.ViewPager$OnAdapterChangeListener
+{
+    private int mScrollState;
+    final androidx.viewpager.widget.PagerTitleStrip this$0;
+
+    void <init>(androidx.viewpager.widget.PagerTitleStrip)
+    {
+        androidx.viewpager.widget.PagerTitleStrip$PageListener this;
+        androidx.viewpager.widget.PagerTitleStrip $u1;
+
+        this := @this: androidx.viewpager.widget.PagerTitleStrip$PageListener;
+
+        $u1 := @parameter0: androidx.viewpager.widget.PagerTitleStrip;
+
+        this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: androidx.viewpager.widget.PagerTitleStrip this$0> = $u1;
+
+        specialinvoke this.<android.database.DataSetObserver: void <init>()>();
+
+        return;
+    }
+
+    public void onAdapterChanged(androidx.viewpager.widget.ViewPager, androidx.viewpager.widget.PagerAdapter, androidx.viewpager.widget.PagerAdapter)
+    {
+        androidx.viewpager.widget.PagerTitleStrip$PageListener this;
+        androidx.viewpager.widget.ViewPager $u2;
+        androidx.viewpager.widget.PagerAdapter $u3, $u4;
+        androidx.viewpager.widget.PagerTitleStrip $u0;
+
+        this := @this: androidx.viewpager.widget.PagerTitleStrip$PageListener;
+
+        $u2 := @parameter0: androidx.viewpager.widget.ViewPager;
+
+        $u3 := @parameter1: androidx.viewpager.widget.PagerAdapter;
+
+        $u4 := @parameter2: androidx.viewpager.widget.PagerAdapter;
+
+        $u0 = this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: androidx.viewpager.widget.PagerTitleStrip this$0>;
+
+        virtualinvoke $u0.<androidx.viewpager.widget.PagerTitleStrip: void updateAdapter(androidx.viewpager.widget.PagerAdapter,androidx.viewpager.widget.PagerAdapter)>($u3, $u4);
+
+        return;
+    }
+
+    public void onChanged()
+    {
+        androidx.viewpager.widget.PagerTitleStrip$PageListener this;
+        androidx.viewpager.widget.PagerTitleStrip offset, $u2;
+        androidx.viewpager.widget.ViewPager $u1;
+        int $u-1;
+        androidx.viewpager.widget.PagerAdapter $u-1#7;
+        float offset#10, $u1#11;
+        byte offset#12;
+
+        this := @this: androidx.viewpager.widget.PagerTitleStrip$PageListener;
+
+        offset = this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: androidx.viewpager.widget.PagerTitleStrip this$0>;
+
+        $u1 = offset.<androidx.viewpager.widget.PagerTitleStrip: androidx.viewpager.widget.ViewPager mPager>;
+
+        $u-1 = virtualinvoke $u1.<androidx.viewpager.widget.ViewPager: int getCurrentItem()>();
+
+        $u2 = this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: androidx.viewpager.widget.PagerTitleStrip this$0>;
+
+        $u1 = $u2.<androidx.viewpager.widget.PagerTitleStrip: androidx.viewpager.widget.ViewPager mPager>;
+
+        $u-1#7 = virtualinvoke $u1.<androidx.viewpager.widget.ViewPager: androidx.viewpager.widget.PagerAdapter getAdapter()>();
+
+        virtualinvoke offset.<androidx.viewpager.widget.PagerTitleStrip: void updateText(int,androidx.viewpager.widget.PagerAdapter)>($u-1, $u-1#7);
+
+        offset = this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: androidx.viewpager.widget.PagerTitleStrip this$0>;
+
+        offset#10 = offset.<androidx.viewpager.widget.PagerTitleStrip: float mLastKnownPositionOffset>;
+
+        $u1#11 = 0.0F;
+
+        offset#12 = offset#10 cmpl 0.0F;
+
+        if offset#12 < 0 goto label1;
+
+        offset = this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: androidx.viewpager.widget.PagerTitleStrip this$0>;
+
+        $u1#11 = offset.<androidx.viewpager.widget.PagerTitleStrip: float mLastKnownPositionOffset>;
+
+     label1:
+        offset = this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: androidx.viewpager.widget.PagerTitleStrip this$0>;
+
+        $u1 = offset.<androidx.viewpager.widget.PagerTitleStrip: androidx.viewpager.widget.ViewPager mPager>;
+
+        $u-1 = virtualinvoke $u1.<androidx.viewpager.widget.ViewPager: int getCurrentItem()>();
+
+        virtualinvoke offset.<androidx.viewpager.widget.PagerTitleStrip: void updateTextPositions(int,float,boolean)>($u-1, $u1#11, 1);
+
+        return;
+    }
+
+    public void onPageScrollStateChanged(int)
+    {
+        androidx.viewpager.widget.PagerTitleStrip$PageListener this;
+        int $u1;
+
+        this := @this: androidx.viewpager.widget.PagerTitleStrip$PageListener;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: int mScrollState> = $u1;
+
+        return;
+    }
+
+    public void onPageScrolled(int, float, int)
+    {
+        androidx.viewpager.widget.PagerTitleStrip$PageListener this;
+        float $u4;
+        int $u5, $u3;
+        byte $u0;
+        androidx.viewpager.widget.PagerTitleStrip $u0#4;
+
+        this := @this: androidx.viewpager.widget.PagerTitleStrip$PageListener;
+
+        $u3 := @parameter0: int;
+
+        $u4 := @parameter1: float;
+
+        $u5 := @parameter2: int;
+
+        $u0 = $u4 cmpl 0.5F;
+
+        if $u0 <= 0 goto label1;
+
+        $u3 = $u3 + 1;
+
+     label1:
+        $u0#4 = this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: androidx.viewpager.widget.PagerTitleStrip this$0>;
+
+        virtualinvoke $u0#4.<androidx.viewpager.widget.PagerTitleStrip: void updateTextPositions(int,float,boolean)>($u3, $u4, 0);
+
+        return;
+    }
+
+    public void onPageSelected(int)
+    {
+        androidx.viewpager.widget.PagerTitleStrip$PageListener this;
+        int $u5;
+        androidx.viewpager.widget.PagerTitleStrip offset, $u2;
+        androidx.viewpager.widget.ViewPager $u1;
+        androidx.viewpager.widget.PagerAdapter $u-1;
+        float offset#11, $u1#12;
+        byte offset#13;
+
+        this := @this: androidx.viewpager.widget.PagerTitleStrip$PageListener;
+
+        $u5 := @parameter0: int;
+
+        $u5 = this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: int mScrollState>;
+
+        if $u5 != 0 goto label2;
+
+        offset = this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: androidx.viewpager.widget.PagerTitleStrip this$0>;
+
+        $u1 = offset.<androidx.viewpager.widget.PagerTitleStrip: androidx.viewpager.widget.ViewPager mPager>;
+
+        $u5 = virtualinvoke $u1.<androidx.viewpager.widget.ViewPager: int getCurrentItem()>();
+
+        $u2 = this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: androidx.viewpager.widget.PagerTitleStrip this$0>;
+
+        $u1 = $u2.<androidx.viewpager.widget.PagerTitleStrip: androidx.viewpager.widget.ViewPager mPager>;
+
+        $u-1 = virtualinvoke $u1.<androidx.viewpager.widget.ViewPager: androidx.viewpager.widget.PagerAdapter getAdapter()>();
+
+        virtualinvoke offset.<androidx.viewpager.widget.PagerTitleStrip: void updateText(int,androidx.viewpager.widget.PagerAdapter)>($u5, $u-1);
+
+        offset = this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: androidx.viewpager.widget.PagerTitleStrip this$0>;
+
+        offset#11 = offset.<androidx.viewpager.widget.PagerTitleStrip: float mLastKnownPositionOffset>;
+
+        $u1#12 = 0.0F;
+
+        offset#13 = offset#11 cmpl 0.0F;
+
+        if offset#13 < 0 goto label1;
+
+        offset = this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: androidx.viewpager.widget.PagerTitleStrip this$0>;
+
+        $u1#12 = offset.<androidx.viewpager.widget.PagerTitleStrip: float mLastKnownPositionOffset>;
+
+     label1:
+        offset = this.<androidx.viewpager.widget.PagerTitleStrip$PageListener: androidx.viewpager.widget.PagerTitleStrip this$0>;
+
+        $u1 = offset.<androidx.viewpager.widget.PagerTitleStrip: androidx.viewpager.widget.ViewPager mPager>;
+
+        $u5 = virtualinvoke $u1.<androidx.viewpager.widget.ViewPager: int getCurrentItem()>();
+
+        virtualinvoke offset.<androidx.viewpager.widget.PagerTitleStrip: void updateTextPositions(int,float,boolean)>($u5, $u1#12, 1);
+
+     label2:
+        return;
+    }
+}

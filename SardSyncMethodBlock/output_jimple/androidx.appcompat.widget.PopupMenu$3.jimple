@@ -1,0 +1,69 @@
+class androidx.appcompat.widget.PopupMenu$3 extends androidx.appcompat.widget.ForwardingListener
+{
+    final androidx.appcompat.widget.PopupMenu this$0;
+
+    void <init>(androidx.appcompat.widget.PopupMenu, android.view.View)
+    {
+        androidx.appcompat.widget.PopupMenu$3 this;
+        androidx.appcompat.widget.PopupMenu $u1;
+        android.view.View $u2;
+
+        this := @this: androidx.appcompat.widget.PopupMenu$3;
+
+        $u1 := @parameter0: androidx.appcompat.widget.PopupMenu;
+
+        $u2 := @parameter1: android.view.View;
+
+        this.<androidx.appcompat.widget.PopupMenu$3: androidx.appcompat.widget.PopupMenu this$0> = $u1;
+
+        specialinvoke this.<androidx.appcompat.widget.ForwardingListener: void <init>(android.view.View)>($u2);
+
+        return;
+    }
+
+    public androidx.appcompat.view.menu.ShowableListMenu getPopup()
+    {
+        androidx.appcompat.widget.PopupMenu$3 this;
+        androidx.appcompat.view.menu.MenuPopup $u-1;
+        androidx.appcompat.widget.PopupMenu $u0;
+        androidx.appcompat.view.menu.MenuPopupHelper $u0#2;
+
+        this := @this: androidx.appcompat.widget.PopupMenu$3;
+
+        $u0 = this.<androidx.appcompat.widget.PopupMenu$3: androidx.appcompat.widget.PopupMenu this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.PopupMenu: androidx.appcompat.view.menu.MenuPopupHelper mPopup>;
+
+        $u-1 = virtualinvoke $u0#2.<androidx.appcompat.view.menu.MenuPopupHelper: androidx.appcompat.view.menu.MenuPopup getPopup()>();
+
+        return $u-1;
+    }
+
+    protected boolean onForwardingStarted()
+    {
+        androidx.appcompat.widget.PopupMenu$3 this;
+        androidx.appcompat.widget.PopupMenu $u0;
+
+        this := @this: androidx.appcompat.widget.PopupMenu$3;
+
+        $u0 = this.<androidx.appcompat.widget.PopupMenu$3: androidx.appcompat.widget.PopupMenu this$0>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.PopupMenu: void show()>();
+
+        return 1;
+    }
+
+    protected boolean onForwardingStopped()
+    {
+        androidx.appcompat.widget.PopupMenu$3 this;
+        androidx.appcompat.widget.PopupMenu $u0;
+
+        this := @this: androidx.appcompat.widget.PopupMenu$3;
+
+        $u0 = this.<androidx.appcompat.widget.PopupMenu$3: androidx.appcompat.widget.PopupMenu this$0>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.PopupMenu: void dismiss()>();
+
+        return 1;
+    }
+}

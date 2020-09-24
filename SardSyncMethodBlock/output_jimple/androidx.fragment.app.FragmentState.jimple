@@ -1,0 +1,565 @@
+final class androidx.fragment.app.FragmentState extends java.lang.Object implements android.os.Parcelable
+{
+    public static final android.os.Parcelable$Creator CREATOR;
+    final android.os.Bundle mArguments;
+    final java.lang.String mClassName;
+    final int mContainerId;
+    final boolean mDetached;
+    final int mFragmentId;
+    final boolean mFromLayout;
+    final boolean mHidden;
+    androidx.fragment.app.Fragment mInstance;
+    final int mMaxLifecycleState;
+    final boolean mRemoving;
+    final boolean mRetainInstance;
+    android.os.Bundle mSavedFragmentState;
+    final java.lang.String mTag;
+    final java.lang.String mWho;
+
+    static void <clinit>()
+    {
+        androidx.fragment.app.FragmentState$1 $u0;
+
+        $u0 = new androidx.fragment.app.FragmentState$1;
+
+        specialinvoke $u0.<androidx.fragment.app.FragmentState$1: void <init>()>();
+
+        <androidx.fragment.app.FragmentState: android.os.Parcelable$Creator CREATOR> = $u0;
+
+        return;
+    }
+
+    void <init>(android.os.Parcel)
+    {
+        androidx.fragment.app.FragmentState this;
+        android.os.Parcel $u4;
+        java.lang.String $u-1;
+        int $u-1#5;
+        boolean $u1, $u0;
+        android.os.Bundle $u-1#24;
+
+        this := @this: androidx.fragment.app.FragmentState;
+
+        $u4 := @parameter0: android.os.Parcel;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u-1 = virtualinvoke $u4.<android.os.Parcel: java.lang.String readString()>();
+
+        this.<androidx.fragment.app.FragmentState: java.lang.String mClassName> = $u-1;
+
+        $u-1 = virtualinvoke $u4.<android.os.Parcel: java.lang.String readString()>();
+
+        this.<androidx.fragment.app.FragmentState: java.lang.String mWho> = $u-1;
+
+        $u-1#5 = virtualinvoke $u4.<android.os.Parcel: int readInt()>();
+
+        $u1 = 1;
+
+        if $u-1#5 == 0 goto label01;
+
+        $u0 = 1;
+
+        goto label02;
+
+     label01:
+        $u0 = 0;
+
+     label02:
+        this.<androidx.fragment.app.FragmentState: boolean mFromLayout> = $u0;
+
+        $u-1#5 = virtualinvoke $u4.<android.os.Parcel: int readInt()>();
+
+        this.<androidx.fragment.app.FragmentState: int mFragmentId> = $u-1#5;
+
+        $u-1#5 = virtualinvoke $u4.<android.os.Parcel: int readInt()>();
+
+        this.<androidx.fragment.app.FragmentState: int mContainerId> = $u-1#5;
+
+        $u-1 = virtualinvoke $u4.<android.os.Parcel: java.lang.String readString()>();
+
+        this.<androidx.fragment.app.FragmentState: java.lang.String mTag> = $u-1;
+
+        $u-1#5 = virtualinvoke $u4.<android.os.Parcel: int readInt()>();
+
+        if $u-1#5 == 0 goto label03;
+
+        $u0 = 1;
+
+        goto label04;
+
+     label03:
+        $u0 = 0;
+
+     label04:
+        this.<androidx.fragment.app.FragmentState: boolean mRetainInstance> = $u0;
+
+        $u-1#5 = virtualinvoke $u4.<android.os.Parcel: int readInt()>();
+
+        if $u-1#5 == 0 goto label05;
+
+        $u0 = 1;
+
+        goto label06;
+
+     label05:
+        $u0 = 0;
+
+     label06:
+        this.<androidx.fragment.app.FragmentState: boolean mRemoving> = $u0;
+
+        $u-1#5 = virtualinvoke $u4.<android.os.Parcel: int readInt()>();
+
+        if $u-1#5 == 0 goto label07;
+
+        $u0 = 1;
+
+        goto label08;
+
+     label07:
+        $u0 = 0;
+
+     label08:
+        this.<androidx.fragment.app.FragmentState: boolean mDetached> = $u0;
+
+        $u-1#24 = virtualinvoke $u4.<android.os.Parcel: android.os.Bundle readBundle()>();
+
+        this.<androidx.fragment.app.FragmentState: android.os.Bundle mArguments> = $u-1#24;
+
+        $u-1#5 = virtualinvoke $u4.<android.os.Parcel: int readInt()>();
+
+        if $u-1#5 == 0 goto label09;
+
+        goto label10;
+
+     label09:
+        $u1 = 0;
+
+     label10:
+        this.<androidx.fragment.app.FragmentState: boolean mHidden> = $u1;
+
+        $u-1#24 = virtualinvoke $u4.<android.os.Parcel: android.os.Bundle readBundle()>();
+
+        this.<androidx.fragment.app.FragmentState: android.os.Bundle mSavedFragmentState> = $u-1#24;
+
+        $u-1#5 = virtualinvoke $u4.<android.os.Parcel: int readInt()>();
+
+        this.<androidx.fragment.app.FragmentState: int mMaxLifecycleState> = $u-1#5;
+
+        return;
+    }
+
+    void <init>(androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.FragmentState this;
+        androidx.fragment.app.Fragment $u2;
+        java.lang.Class $u-1;
+        java.lang.String $u-1#3;
+        boolean $u0;
+        int $u0#7;
+        android.os.Bundle $u0#13;
+        androidx.lifecycle.Lifecycle$State $u0#15;
+
+        this := @this: androidx.fragment.app.FragmentState;
+
+        $u2 := @parameter0: androidx.fragment.app.Fragment;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u-1 = virtualinvoke $u2.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#3 = virtualinvoke $u-1.<java.lang.Class: java.lang.String getName()>();
+
+        this.<androidx.fragment.app.FragmentState: java.lang.String mClassName> = $u-1#3;
+
+        $u-1#3 = $u2.<androidx.fragment.app.Fragment: java.lang.String mWho>;
+
+        this.<androidx.fragment.app.FragmentState: java.lang.String mWho> = $u-1#3;
+
+        $u0 = $u2.<androidx.fragment.app.Fragment: boolean mFromLayout>;
+
+        this.<androidx.fragment.app.FragmentState: boolean mFromLayout> = $u0;
+
+        $u0#7 = $u2.<androidx.fragment.app.Fragment: int mFragmentId>;
+
+        this.<androidx.fragment.app.FragmentState: int mFragmentId> = $u0#7;
+
+        $u0#7 = $u2.<androidx.fragment.app.Fragment: int mContainerId>;
+
+        this.<androidx.fragment.app.FragmentState: int mContainerId> = $u0#7;
+
+        $u-1#3 = $u2.<androidx.fragment.app.Fragment: java.lang.String mTag>;
+
+        this.<androidx.fragment.app.FragmentState: java.lang.String mTag> = $u-1#3;
+
+        $u0 = $u2.<androidx.fragment.app.Fragment: boolean mRetainInstance>;
+
+        this.<androidx.fragment.app.FragmentState: boolean mRetainInstance> = $u0;
+
+        $u0 = $u2.<androidx.fragment.app.Fragment: boolean mRemoving>;
+
+        this.<androidx.fragment.app.FragmentState: boolean mRemoving> = $u0;
+
+        $u0 = $u2.<androidx.fragment.app.Fragment: boolean mDetached>;
+
+        this.<androidx.fragment.app.FragmentState: boolean mDetached> = $u0;
+
+        $u0#13 = $u2.<androidx.fragment.app.Fragment: android.os.Bundle mArguments>;
+
+        this.<androidx.fragment.app.FragmentState: android.os.Bundle mArguments> = $u0#13;
+
+        $u0 = $u2.<androidx.fragment.app.Fragment: boolean mHidden>;
+
+        this.<androidx.fragment.app.FragmentState: boolean mHidden> = $u0;
+
+        $u0#15 = $u2.<androidx.fragment.app.Fragment: androidx.lifecycle.Lifecycle$State mMaxState>;
+
+        $u0#7 = virtualinvoke $u0#15.<androidx.lifecycle.Lifecycle$State: int ordinal()>();
+
+        this.<androidx.fragment.app.FragmentState: int mMaxLifecycleState> = $u0#7;
+
+        return;
+    }
+
+    public int describeContents()
+    {
+        androidx.fragment.app.FragmentState this;
+
+        this := @this: androidx.fragment.app.FragmentState;
+
+        return 0;
+    }
+
+    public androidx.fragment.app.Fragment instantiate(java.lang.ClassLoader, androidx.fragment.app.FragmentFactory)
+    {
+        androidx.fragment.app.FragmentState this;
+        java.lang.ClassLoader $u4;
+        androidx.fragment.app.FragmentFactory $u5;
+        int $u2;
+        androidx.fragment.app.Fragment $u0;
+        android.os.Bundle $u0#2;
+        java.lang.String $u0#3;
+        boolean $u1;
+        androidx.lifecycle.Lifecycle$State[] $u-1;
+        androidx.lifecycle.Lifecycle$State $u1#35;
+        java.lang.StringBuilder $u0#37;
+
+        this := @this: androidx.fragment.app.FragmentState;
+
+        $u4 := @parameter0: java.lang.ClassLoader;
+
+        $u5 := @parameter1: androidx.fragment.app.FragmentFactory;
+
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        if $u0 != null goto label4;
+
+        $u0#2 = this.<androidx.fragment.app.FragmentState: android.os.Bundle mArguments>;
+
+        if $u0#2 == null goto label1;
+
+        virtualinvoke $u0#2.<android.os.Bundle: void setClassLoader(java.lang.ClassLoader)>($u4);
+
+     label1:
+        $u0#3 = this.<androidx.fragment.app.FragmentState: java.lang.String mClassName>;
+
+        $u0 = virtualinvoke $u5.<androidx.fragment.app.FragmentFactory: androidx.fragment.app.Fragment instantiate(java.lang.ClassLoader,java.lang.String)>($u4, $u0#3);
+
+        this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance> = $u0;
+
+        $u0#2 = this.<androidx.fragment.app.FragmentState: android.os.Bundle mArguments>;
+
+        virtualinvoke $u0.<androidx.fragment.app.Fragment: void setArguments(android.os.Bundle)>($u0#2);
+
+        $u0#2 = this.<androidx.fragment.app.FragmentState: android.os.Bundle mSavedFragmentState>;
+
+        if $u0#2 == null goto label2;
+
+        virtualinvoke $u0#2.<android.os.Bundle: void setClassLoader(java.lang.ClassLoader)>($u4);
+
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        $u0#2 = this.<androidx.fragment.app.FragmentState: android.os.Bundle mSavedFragmentState>;
+
+        $u0.<androidx.fragment.app.Fragment: android.os.Bundle mSavedFragmentState> = $u0#2;
+
+        goto label3;
+
+     label2:
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        $u0#2 = new android.os.Bundle;
+
+        specialinvoke $u0#2.<android.os.Bundle: void <init>()>();
+
+        $u0.<androidx.fragment.app.Fragment: android.os.Bundle mSavedFragmentState> = $u0#2;
+
+     label3:
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        $u0#3 = this.<androidx.fragment.app.FragmentState: java.lang.String mWho>;
+
+        $u0.<androidx.fragment.app.Fragment: java.lang.String mWho> = $u0#3;
+
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        $u1 = this.<androidx.fragment.app.FragmentState: boolean mFromLayout>;
+
+        $u0.<androidx.fragment.app.Fragment: boolean mFromLayout> = $u1;
+
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        $u0.<androidx.fragment.app.Fragment: boolean mRestored> = 1;
+
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        $u2 = this.<androidx.fragment.app.FragmentState: int mFragmentId>;
+
+        $u0.<androidx.fragment.app.Fragment: int mFragmentId> = $u2;
+
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        $u2 = this.<androidx.fragment.app.FragmentState: int mContainerId>;
+
+        $u0.<androidx.fragment.app.Fragment: int mContainerId> = $u2;
+
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        $u0#3 = this.<androidx.fragment.app.FragmentState: java.lang.String mTag>;
+
+        $u0.<androidx.fragment.app.Fragment: java.lang.String mTag> = $u0#3;
+
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        $u1 = this.<androidx.fragment.app.FragmentState: boolean mRetainInstance>;
+
+        $u0.<androidx.fragment.app.Fragment: boolean mRetainInstance> = $u1;
+
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        $u1 = this.<androidx.fragment.app.FragmentState: boolean mRemoving>;
+
+        $u0.<androidx.fragment.app.Fragment: boolean mRemoving> = $u1;
+
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        $u1 = this.<androidx.fragment.app.FragmentState: boolean mDetached>;
+
+        $u0.<androidx.fragment.app.Fragment: boolean mDetached> = $u1;
+
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        $u1 = this.<androidx.fragment.app.FragmentState: boolean mHidden>;
+
+        $u0.<androidx.fragment.app.Fragment: boolean mHidden> = $u1;
+
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        $u-1 = staticinvoke <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State[] values()>();
+
+        $u2 = this.<androidx.fragment.app.FragmentState: int mMaxLifecycleState>;
+
+        $u1#35 = $u-1[$u2];
+
+        $u0.<androidx.fragment.app.Fragment: androidx.lifecycle.Lifecycle$State mMaxState> = $u1#35;
+
+        $u1 = <androidx.fragment.app.FragmentManagerImpl: boolean DEBUG>;
+
+        if $u1 == 0 goto label4;
+
+        $u0#37 = new java.lang.StringBuilder;
+
+        specialinvoke $u0#37.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u0#37.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Instantiated fragment ");
+
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        virtualinvoke $u0#37.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u0);
+
+        $u0#3 = virtualinvoke $u0#37.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("FragmentManager", $u0#3);
+
+     label4:
+        $u0 = this.<androidx.fragment.app.FragmentState: androidx.fragment.app.Fragment mInstance>;
+
+        return $u0;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.fragment.app.FragmentState this;
+        java.lang.StringBuilder sb;
+        java.lang.String $u1;
+        boolean $u1#7;
+        int $u1#9;
+
+        this := @this: androidx.fragment.app.FragmentState;
+
+        sb = new java.lang.StringBuilder;
+
+        specialinvoke sb.<java.lang.StringBuilder: void <init>(int)>(128);
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("FragmentState{");
+
+        $u1 = this.<androidx.fragment.app.FragmentState: java.lang.String mClassName>;
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u1);
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" (");
+
+        $u1 = this.<androidx.fragment.app.FragmentState: java.lang.String mWho>;
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u1);
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")}:");
+
+        $u1#7 = this.<androidx.fragment.app.FragmentState: boolean mFromLayout>;
+
+        if $u1#7 == 0 goto label1;
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" fromLayout");
+
+     label1:
+        $u1#9 = this.<androidx.fragment.app.FragmentState: int mContainerId>;
+
+        if $u1#9 == 0 goto label2;
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" id=0x");
+
+        $u1#9 = this.<androidx.fragment.app.FragmentState: int mContainerId>;
+
+        $u1 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($u1#9);
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u1);
+
+     label2:
+        $u1 = this.<androidx.fragment.app.FragmentState: java.lang.String mTag>;
+
+        if $u1 == null goto label3;
+
+        $u1#7 = virtualinvoke $u1.<java.lang.String: boolean isEmpty()>();
+
+        if $u1#7 != 0 goto label3;
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" tag=");
+
+        $u1 = this.<androidx.fragment.app.FragmentState: java.lang.String mTag>;
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u1);
+
+     label3:
+        $u1#7 = this.<androidx.fragment.app.FragmentState: boolean mRetainInstance>;
+
+        if $u1#7 == 0 goto label4;
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" retainInstance");
+
+     label4:
+        $u1#7 = this.<androidx.fragment.app.FragmentState: boolean mRemoving>;
+
+        if $u1#7 == 0 goto label5;
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" removing");
+
+     label5:
+        $u1#7 = this.<androidx.fragment.app.FragmentState: boolean mDetached>;
+
+        if $u1#7 == 0 goto label6;
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" detached");
+
+     label6:
+        $u1#7 = this.<androidx.fragment.app.FragmentState: boolean mHidden>;
+
+        if $u1#7 == 0 goto label7;
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" hidden");
+
+     label7:
+        $u1 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u1;
+    }
+
+    public void writeToParcel(android.os.Parcel, int)
+    {
+        androidx.fragment.app.FragmentState this;
+        android.os.Parcel $u2;
+        int $u3;
+        java.lang.String $u0;
+        boolean $u0#3;
+        android.os.Bundle $u0#10;
+
+        this := @this: androidx.fragment.app.FragmentState;
+
+        $u2 := @parameter0: android.os.Parcel;
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.fragment.app.FragmentState: java.lang.String mClassName>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeString(java.lang.String)>($u0);
+
+        $u0 = this.<androidx.fragment.app.FragmentState: java.lang.String mWho>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeString(java.lang.String)>($u0);
+
+        $u0#3 = this.<androidx.fragment.app.FragmentState: boolean mFromLayout>;
+
+        $u3 = (int) $u0#3;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeInt(int)>($u3);
+
+        $u3 = this.<androidx.fragment.app.FragmentState: int mFragmentId>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeInt(int)>($u3);
+
+        $u3 = this.<androidx.fragment.app.FragmentState: int mContainerId>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeInt(int)>($u3);
+
+        $u0 = this.<androidx.fragment.app.FragmentState: java.lang.String mTag>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeString(java.lang.String)>($u0);
+
+        $u0#3 = this.<androidx.fragment.app.FragmentState: boolean mRetainInstance>;
+
+        $u3 = (int) $u0#3;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeInt(int)>($u3);
+
+        $u0#3 = this.<androidx.fragment.app.FragmentState: boolean mRemoving>;
+
+        $u3 = (int) $u0#3;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeInt(int)>($u3);
+
+        $u0#3 = this.<androidx.fragment.app.FragmentState: boolean mDetached>;
+
+        $u3 = (int) $u0#3;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeInt(int)>($u3);
+
+        $u0#10 = this.<androidx.fragment.app.FragmentState: android.os.Bundle mArguments>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeBundle(android.os.Bundle)>($u0#10);
+
+        $u0#3 = this.<androidx.fragment.app.FragmentState: boolean mHidden>;
+
+        $u3 = (int) $u0#3;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeInt(int)>($u3);
+
+        $u0#10 = this.<androidx.fragment.app.FragmentState: android.os.Bundle mSavedFragmentState>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeBundle(android.os.Bundle)>($u0#10);
+
+        $u3 = this.<androidx.fragment.app.FragmentState: int mMaxLifecycleState>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeInt(int)>($u3);
+
+        return;
+    }
+}

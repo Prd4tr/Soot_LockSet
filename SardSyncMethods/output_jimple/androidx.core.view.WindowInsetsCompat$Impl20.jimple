@@ -1,0 +1,147 @@
+class androidx.core.view.WindowInsetsCompat$Impl20 extends androidx.core.view.WindowInsetsCompat$Impl
+{
+    final android.view.WindowInsets mPlatformInsets;
+    private androidx.core.graphics.Insets mSystemWindowInsets;
+
+    void <init>(androidx.core.view.WindowInsetsCompat, android.view.WindowInsets)
+    {
+        androidx.core.view.WindowInsetsCompat$Impl20 this;
+        androidx.core.view.WindowInsetsCompat $u2;
+        android.view.WindowInsets $u3;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl20;
+
+        $u2 := @parameter0: androidx.core.view.WindowInsetsCompat;
+
+        $u3 := @parameter1: android.view.WindowInsets;
+
+        specialinvoke this.<androidx.core.view.WindowInsetsCompat$Impl: void <init>(androidx.core.view.WindowInsetsCompat)>($u2);
+
+        this.<androidx.core.view.WindowInsetsCompat$Impl20: androidx.core.graphics.Insets mSystemWindowInsets> = null;
+
+        this.<androidx.core.view.WindowInsetsCompat$Impl20: android.view.WindowInsets mPlatformInsets> = $u3;
+
+        return;
+    }
+
+    void <init>(androidx.core.view.WindowInsetsCompat, androidx.core.view.WindowInsetsCompat$Impl20)
+    {
+        androidx.core.view.WindowInsetsCompat$Impl20 this, $u4;
+        androidx.core.view.WindowInsetsCompat $u3;
+        android.view.WindowInsets $u0, $u1;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl20;
+
+        $u3 := @parameter0: androidx.core.view.WindowInsetsCompat;
+
+        $u4 := @parameter1: androidx.core.view.WindowInsetsCompat$Impl20;
+
+        $u0 = new android.view.WindowInsets;
+
+        $u1 = $u4.<androidx.core.view.WindowInsetsCompat$Impl20: android.view.WindowInsets mPlatformInsets>;
+
+        specialinvoke $u0.<android.view.WindowInsets: void <init>(android.view.WindowInsets)>($u1);
+
+        specialinvoke this.<androidx.core.view.WindowInsetsCompat$Impl20: void <init>(androidx.core.view.WindowInsetsCompat,android.view.WindowInsets)>($u3, $u0);
+
+        return;
+    }
+
+    final androidx.core.graphics.Insets getSystemWindowInsets()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl20 this;
+        androidx.core.graphics.Insets $u0;
+        android.view.WindowInsets $u0#2;
+        int $u-1, $u-1#6, $u-1#9, $u-1#12;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl20;
+
+        $u0 = this.<androidx.core.view.WindowInsetsCompat$Impl20: androidx.core.graphics.Insets mSystemWindowInsets>;
+
+        if $u0 != null goto label1;
+
+        $u0#2 = this.<androidx.core.view.WindowInsetsCompat$Impl20: android.view.WindowInsets mPlatformInsets>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.WindowInsets: int getSystemWindowInsetLeft()>();
+
+        $u0#2 = this.<androidx.core.view.WindowInsetsCompat$Impl20: android.view.WindowInsets mPlatformInsets>;
+
+        $u-1#6 = virtualinvoke $u0#2.<android.view.WindowInsets: int getSystemWindowInsetTop()>();
+
+        $u0#2 = this.<androidx.core.view.WindowInsetsCompat$Impl20: android.view.WindowInsets mPlatformInsets>;
+
+        $u-1#9 = virtualinvoke $u0#2.<android.view.WindowInsets: int getSystemWindowInsetRight()>();
+
+        $u0#2 = this.<androidx.core.view.WindowInsetsCompat$Impl20: android.view.WindowInsets mPlatformInsets>;
+
+        $u-1#12 = virtualinvoke $u0#2.<android.view.WindowInsets: int getSystemWindowInsetBottom()>();
+
+        $u0 = staticinvoke <androidx.core.graphics.Insets: androidx.core.graphics.Insets of(int,int,int,int)>($u-1, $u-1#6, $u-1#9, $u-1#12);
+
+        this.<androidx.core.view.WindowInsetsCompat$Impl20: androidx.core.graphics.Insets mSystemWindowInsets> = $u0;
+
+     label1:
+        $u0 = this.<androidx.core.view.WindowInsetsCompat$Impl20: androidx.core.graphics.Insets mSystemWindowInsets>;
+
+        return $u0;
+    }
+
+    androidx.core.view.WindowInsetsCompat inset(int, int, int, int)
+    {
+        androidx.core.view.WindowInsetsCompat$Impl20 this;
+        int $u3, $u4, $u5, $u6;
+        androidx.core.view.WindowInsetsCompat$Builder b;
+        android.view.WindowInsets $u1;
+        androidx.core.view.WindowInsetsCompat $u-1;
+        androidx.core.graphics.Insets $u-1#4;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl20;
+
+        $u3 := @parameter0: int;
+
+        $u4 := @parameter1: int;
+
+        $u5 := @parameter2: int;
+
+        $u6 := @parameter3: int;
+
+        b = new androidx.core.view.WindowInsetsCompat$Builder;
+
+        $u1 = this.<androidx.core.view.WindowInsetsCompat$Impl20: android.view.WindowInsets mPlatformInsets>;
+
+        $u-1 = staticinvoke <androidx.core.view.WindowInsetsCompat: androidx.core.view.WindowInsetsCompat toWindowInsetsCompat(android.view.WindowInsets)>($u1);
+
+        specialinvoke b.<androidx.core.view.WindowInsetsCompat$Builder: void <init>(androidx.core.view.WindowInsetsCompat)>($u-1);
+
+        $u-1#4 = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl20: androidx.core.graphics.Insets getSystemWindowInsets()>();
+
+        $u-1#4 = staticinvoke <androidx.core.view.WindowInsetsCompat: androidx.core.graphics.Insets insetInsets(androidx.core.graphics.Insets,int,int,int,int)>($u-1#4, $u3, $u4, $u5, $u6);
+
+        virtualinvoke b.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$Builder setSystemWindowInsets(androidx.core.graphics.Insets)>($u-1#4);
+
+        $u-1#4 = virtualinvoke this.<androidx.core.view.WindowInsetsCompat$Impl20: androidx.core.graphics.Insets getStableInsets()>();
+
+        $u-1#4 = staticinvoke <androidx.core.view.WindowInsetsCompat: androidx.core.graphics.Insets insetInsets(androidx.core.graphics.Insets,int,int,int,int)>($u-1#4, $u3, $u4, $u5, $u6);
+
+        virtualinvoke b.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat$Builder setStableInsets(androidx.core.graphics.Insets)>($u-1#4);
+
+        $u-1 = virtualinvoke b.<androidx.core.view.WindowInsetsCompat$Builder: androidx.core.view.WindowInsetsCompat build()>();
+
+        return $u-1;
+    }
+
+    boolean isRound()
+    {
+        androidx.core.view.WindowInsetsCompat$Impl20 this;
+        boolean $u-1;
+        android.view.WindowInsets $u0;
+
+        this := @this: androidx.core.view.WindowInsetsCompat$Impl20;
+
+        $u0 = this.<androidx.core.view.WindowInsetsCompat$Impl20: android.view.WindowInsets mPlatformInsets>;
+
+        $u-1 = virtualinvoke $u0.<android.view.WindowInsets: boolean isRound()>();
+
+        return $u-1;
+    }
+}

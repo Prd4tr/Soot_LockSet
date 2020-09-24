@@ -1,0 +1,360 @@
+public final class androidx.appcompat.widget.ViewStubCompat extends android.view.View
+{
+    private androidx.appcompat.widget.ViewStubCompat$OnInflateListener mInflateListener;
+    private int mInflatedId;
+    private java.lang.ref.WeakReference mInflatedViewRef;
+    private android.view.LayoutInflater mInflater;
+    private int mLayoutResource;
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.appcompat.widget.ViewStubCompat: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, 0);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        android.content.Context $u5;
+        android.util.AttributeSet $u6;
+        int $u7;
+        int[] a;
+        android.content.res.TypedArray $u-1;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        $u5 := @parameter0: android.content.Context;
+
+        $u6 := @parameter1: android.util.AttributeSet;
+
+        $u7 := @parameter2: int;
+
+        specialinvoke this.<android.view.View: void <init>(android.content.Context,android.util.AttributeSet,int)>($u5, $u6, $u7);
+
+        this.<androidx.appcompat.widget.ViewStubCompat: int mLayoutResource> = 0;
+
+        a = <androidx.appcompat.R$styleable: int[] ViewStubCompat>;
+
+        $u-1 = virtualinvoke $u5.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[],int,int)>($u6, a, $u7, 0);
+
+        $u7 = <androidx.appcompat.R$styleable: int ViewStubCompat_android_inflatedId>;
+
+        $u7 = virtualinvoke $u-1.<android.content.res.TypedArray: int getResourceId(int,int)>($u7, -1);
+
+        this.<androidx.appcompat.widget.ViewStubCompat: int mInflatedId> = $u7;
+
+        $u7 = <androidx.appcompat.R$styleable: int ViewStubCompat_android_layout>;
+
+        $u7 = virtualinvoke $u-1.<android.content.res.TypedArray: int getResourceId(int,int)>($u7, 0);
+
+        this.<androidx.appcompat.widget.ViewStubCompat: int mLayoutResource> = $u7;
+
+        $u7 = <androidx.appcompat.R$styleable: int ViewStubCompat_android_id>;
+
+        $u7 = virtualinvoke $u-1.<android.content.res.TypedArray: int getResourceId(int,int)>($u7, -1);
+
+        virtualinvoke this.<androidx.appcompat.widget.ViewStubCompat: void setId(int)>($u7);
+
+        virtualinvoke $u-1.<android.content.res.TypedArray: void recycle()>();
+
+        virtualinvoke this.<androidx.appcompat.widget.ViewStubCompat: void setVisibility(int)>(8);
+
+        virtualinvoke this.<androidx.appcompat.widget.ViewStubCompat: void setWillNotDraw(boolean)>(1);
+
+        return;
+    }
+
+    protected void dispatchDraw(android.graphics.Canvas)
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        android.graphics.Canvas $u1;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        $u1 := @parameter0: android.graphics.Canvas;
+
+        return;
+    }
+
+    public void draw(android.graphics.Canvas)
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        android.graphics.Canvas $u1;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        $u1 := @parameter0: android.graphics.Canvas;
+
+        return;
+    }
+
+    public int getInflatedId()
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        int ret0;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        ret0 = this.<androidx.appcompat.widget.ViewStubCompat: int mInflatedId>;
+
+        return ret0;
+    }
+
+    public android.view.LayoutInflater getLayoutInflater()
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        android.view.LayoutInflater ret0;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        ret0 = this.<androidx.appcompat.widget.ViewStubCompat: android.view.LayoutInflater mInflater>;
+
+        return ret0;
+    }
+
+    public int getLayoutResource()
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        int ret0;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        ret0 = this.<androidx.appcompat.widget.ViewStubCompat: int mLayoutResource>;
+
+        return ret0;
+    }
+
+    public android.view.View inflate()
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        android.view.ViewParent $u-1;
+        boolean parent;
+        int parent#3;
+        android.view.ViewGroup parent#5;
+        android.view.LayoutInflater factory;
+        android.content.Context $u-1#8;
+        android.view.View $u-1#13;
+        android.view.ViewGroup$LayoutParams $u-1#19;
+        java.lang.ref.WeakReference $u6;
+        androidx.appcompat.widget.ViewStubCompat$OnInflateListener $u6#22;
+        java.lang.IllegalArgumentException parent#23;
+        java.lang.IllegalStateException parent#25;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ViewStubCompat: android.view.ViewParent getParent()>();
+
+        parent = $u-1 instanceof android.view.ViewGroup;
+
+        if parent == 0 goto label7;
+
+        parent#3 = this.<androidx.appcompat.widget.ViewStubCompat: int mLayoutResource>;
+
+        if parent#3 == 0 goto label6;
+
+        parent#5 = (android.view.ViewGroup) $u-1;
+
+        factory = this.<androidx.appcompat.widget.ViewStubCompat: android.view.LayoutInflater mInflater>;
+
+        if factory == null goto label1;
+
+        factory = this.<androidx.appcompat.widget.ViewStubCompat: android.view.LayoutInflater mInflater>;
+
+        goto label2;
+
+     label1:
+        $u-1#8 = virtualinvoke this.<androidx.appcompat.widget.ViewStubCompat: android.content.Context getContext()>();
+
+        factory = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($u-1#8);
+
+     label2:
+        parent#3 = this.<androidx.appcompat.widget.ViewStubCompat: int mLayoutResource>;
+
+        $u-1#13 = virtualinvoke factory.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>(parent#3, parent#5, 0);
+
+        parent#3 = this.<androidx.appcompat.widget.ViewStubCompat: int mInflatedId>;
+
+        if parent#3 == -1 goto label3;
+
+        virtualinvoke $u-1#13.<android.view.View: void setId(int)>(parent#3);
+
+     label3:
+        parent#3 = virtualinvoke parent#5.<android.view.ViewGroup: int indexOfChild(android.view.View)>(this);
+
+        virtualinvoke parent#5.<android.view.ViewGroup: void removeViewInLayout(android.view.View)>(this);
+
+        $u-1#19 = virtualinvoke this.<androidx.appcompat.widget.ViewStubCompat: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        if $u-1#19 == null goto label4;
+
+        virtualinvoke parent#5.<android.view.ViewGroup: void addView(android.view.View,int,android.view.ViewGroup$LayoutParams)>($u-1#13, parent#3, $u-1#19);
+
+        goto label5;
+
+     label4:
+        virtualinvoke parent#5.<android.view.ViewGroup: void addView(android.view.View,int)>($u-1#13, parent#3);
+
+     label5:
+        $u6 = new java.lang.ref.WeakReference;
+
+        specialinvoke $u6.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>($u-1#13);
+
+        this.<androidx.appcompat.widget.ViewStubCompat: java.lang.ref.WeakReference mInflatedViewRef> = $u6;
+
+        $u6#22 = this.<androidx.appcompat.widget.ViewStubCompat: androidx.appcompat.widget.ViewStubCompat$OnInflateListener mInflateListener>;
+
+        if $u6#22 == null goto label8;
+
+        interfaceinvoke $u6#22.<androidx.appcompat.widget.ViewStubCompat$OnInflateListener: void onInflate(androidx.appcompat.widget.ViewStubCompat,android.view.View)>(this, $u-1#13);
+
+        return $u-1#13;
+
+     label6:
+        parent#23 = new java.lang.IllegalArgumentException;
+
+        specialinvoke parent#23.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("ViewStub must have a valid layoutResource");
+
+        throw parent#23;
+
+     label7:
+        parent#25 = new java.lang.IllegalStateException;
+
+        specialinvoke parent#25.<java.lang.IllegalStateException: void <init>(java.lang.String)>("ViewStub must have a non-null ViewGroup viewParent");
+
+        throw parent#25;
+
+     label8:
+        return $u-1#13;
+    }
+
+    protected void onMeasure(int, int)
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        int $u2, $u3;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        virtualinvoke this.<androidx.appcompat.widget.ViewStubCompat: void setMeasuredDimension(int,int)>(0, 0);
+
+        return;
+    }
+
+    public void setInflatedId(int)
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        int $u1;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.appcompat.widget.ViewStubCompat: int mInflatedId> = $u1;
+
+        return;
+    }
+
+    public void setLayoutInflater(android.view.LayoutInflater)
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        android.view.LayoutInflater $u1;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        $u1 := @parameter0: android.view.LayoutInflater;
+
+        this.<androidx.appcompat.widget.ViewStubCompat: android.view.LayoutInflater mInflater> = $u1;
+
+        return;
+    }
+
+    public void setLayoutResource(int)
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        int $u1;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.appcompat.widget.ViewStubCompat: int mLayoutResource> = $u1;
+
+        return;
+    }
+
+    public void setOnInflateListener(androidx.appcompat.widget.ViewStubCompat$OnInflateListener)
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        androidx.appcompat.widget.ViewStubCompat$OnInflateListener $u1;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        $u1 := @parameter0: androidx.appcompat.widget.ViewStubCompat$OnInflateListener;
+
+        this.<androidx.appcompat.widget.ViewStubCompat: androidx.appcompat.widget.ViewStubCompat$OnInflateListener mInflateListener> = $u1;
+
+        return;
+    }
+
+    public void setVisibility(int)
+    {
+        androidx.appcompat.widget.ViewStubCompat this;
+        int $u4;
+        java.lang.IllegalStateException $u1;
+        java.lang.Object $u-1;
+        java.lang.ref.WeakReference view;
+        android.view.View view#3;
+
+        this := @this: androidx.appcompat.widget.ViewStubCompat;
+
+        $u4 := @parameter0: int;
+
+        view = this.<androidx.appcompat.widget.ViewStubCompat: java.lang.ref.WeakReference mInflatedViewRef>;
+
+        if view == null goto label2;
+
+        $u-1 = virtualinvoke view.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        view#3 = (android.view.View) $u-1;
+
+        if view#3 == null goto label1;
+
+        virtualinvoke view#3.<android.view.View: void setVisibility(int)>($u4);
+
+        return;
+
+     label1:
+        $u1 = new java.lang.IllegalStateException;
+
+        specialinvoke $u1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("setVisibility called on un-referenced view");
+
+        throw $u1;
+
+     label2:
+        specialinvoke this.<android.view.View: void setVisibility(int)>($u4);
+
+        if $u4 == 0 goto label3;
+
+        if $u4 != 4 goto label4;
+
+     label3:
+        virtualinvoke this.<androidx.appcompat.widget.ViewStubCompat: android.view.View inflate()>();
+
+     label4:
+        return;
+    }
+}

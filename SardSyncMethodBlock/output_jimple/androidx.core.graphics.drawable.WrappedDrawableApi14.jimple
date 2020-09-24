@@ -1,0 +1,929 @@
+class androidx.core.graphics.drawable.WrappedDrawableApi14 extends android.graphics.drawable.Drawable implements android.graphics.drawable.Drawable$Callback, androidx.core.graphics.drawable.WrappedDrawable, androidx.core.graphics.drawable.TintAwareDrawable
+{
+    static final android.graphics.PorterDuff$Mode DEFAULT_TINT_MODE;
+    private boolean mColorFilterSet;
+    private int mCurrentColor;
+    private android.graphics.PorterDuff$Mode mCurrentMode;
+    android.graphics.drawable.Drawable mDrawable;
+    private boolean mMutated;
+    androidx.core.graphics.drawable.WrappedDrawableState mState;
+
+    static void <clinit>()
+    {
+        android.graphics.PorterDuff$Mode $u0;
+
+        $u0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode SRC_IN>;
+
+        <androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.PorterDuff$Mode DEFAULT_TINT_MODE> = $u0;
+
+        return;
+    }
+
+    void <init>(android.graphics.drawable.Drawable)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.drawable.Drawable $u2;
+        androidx.core.graphics.drawable.WrappedDrawableState $u-1;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        specialinvoke this.<android.graphics.drawable.Drawable: void <init>()>();
+
+        $u-1 = specialinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mutateConstantState()>();
+
+        this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState> = $u-1;
+
+        virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: void setWrappedDrawable(android.graphics.drawable.Drawable)>($u2);
+
+        return;
+    }
+
+    void <init>(androidx.core.graphics.drawable.WrappedDrawableState, android.content.res.Resources)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        androidx.core.graphics.drawable.WrappedDrawableState $u1;
+        android.content.res.Resources $u2;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u1 := @parameter0: androidx.core.graphics.drawable.WrappedDrawableState;
+
+        $u2 := @parameter1: android.content.res.Resources;
+
+        specialinvoke this.<android.graphics.drawable.Drawable: void <init>()>();
+
+        this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState> = $u1;
+
+        specialinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: void updateLocalState(android.content.res.Resources)>($u2);
+
+        return;
+    }
+
+    private androidx.core.graphics.drawable.WrappedDrawableState mutateConstantState()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        androidx.core.graphics.drawable.WrappedDrawableState $u0, $u1;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u0 = new androidx.core.graphics.drawable.WrappedDrawableState;
+
+        $u1 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        specialinvoke $u0.<androidx.core.graphics.drawable.WrappedDrawableState: void <init>(androidx.core.graphics.drawable.WrappedDrawableState)>($u1);
+
+        return $u0;
+    }
+
+    private void updateLocalState(android.content.res.Resources)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.content.res.Resources $u2;
+        android.graphics.drawable.Drawable $u-1;
+        androidx.core.graphics.drawable.WrappedDrawableState $u0;
+        android.graphics.drawable.Drawable$ConstantState $u0#2;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: android.content.res.Resources;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        if $u0 == null goto label1;
+
+        $u0#2 = $u0.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.drawable.Drawable$ConstantState mDrawableState>;
+
+        if $u0#2 == null goto label1;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        $u0#2 = $u0.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.drawable.Drawable$ConstantState mDrawableState>;
+
+        $u-1 = virtualinvoke $u0#2.<android.graphics.drawable.Drawable$ConstantState: android.graphics.drawable.Drawable newDrawable(android.content.res.Resources)>($u2);
+
+        virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: void setWrappedDrawable(android.graphics.drawable.Drawable)>($u-1);
+
+     label1:
+        return;
+    }
+
+    private boolean updateTint(int[])
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        int[] $u6;
+        boolean $u-1;
+        androidx.core.graphics.drawable.WrappedDrawableState tintList;
+        android.content.res.ColorStateList tintList#5;
+        android.graphics.PorterDuff$Mode tintMode, $u4#14;
+        int $u-1#8, $u4;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u6 := @parameter0: int[];
+
+        $u-1 = virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: boolean isCompatTintEnabled()>();
+
+        if $u-1 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        tintList = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        tintList#5 = tintList.<androidx.core.graphics.drawable.WrappedDrawableState: android.content.res.ColorStateList mTint>;
+
+        tintList = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        tintMode = tintList.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.PorterDuff$Mode mTintMode>;
+
+        if tintList#5 == null goto label4;
+
+        if tintMode == null goto label4;
+
+        $u-1#8 = virtualinvoke tintList#5.<android.content.res.ColorStateList: int getDefaultColor()>();
+
+        $u-1#8 = virtualinvoke tintList#5.<android.content.res.ColorStateList: int getColorForState(int[],int)>($u6, $u-1#8);
+
+        $u-1 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: boolean mColorFilterSet>;
+
+        if $u-1 == 0 goto label3;
+
+        $u4 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: int mCurrentColor>;
+
+        if $u-1#8 != $u4 goto label3;
+
+        $u4#14 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.PorterDuff$Mode mCurrentMode>;
+
+        if tintMode == $u4#14 goto label2;
+
+        goto label3;
+
+     label2:
+        return 0;
+
+     label3:
+        virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: void setColorFilter(int,android.graphics.PorterDuff$Mode)>($u-1#8, tintMode);
+
+        this.<androidx.core.graphics.drawable.WrappedDrawableApi14: int mCurrentColor> = $u-1#8;
+
+        this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.PorterDuff$Mode mCurrentMode> = tintMode;
+
+        this.<androidx.core.graphics.drawable.WrappedDrawableApi14: boolean mColorFilterSet> = 1;
+
+        return 1;
+
+     label4:
+        this.<androidx.core.graphics.drawable.WrappedDrawableApi14: boolean mColorFilterSet> = 0;
+
+        virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: void clearColorFilter()>();
+
+        return 0;
+    }
+
+    public void draw(android.graphics.Canvas)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.Canvas $u2;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: android.graphics.Canvas;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>($u2);
+
+        return;
+    }
+
+    public int getChangingConfigurations()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        int $u-1, $u-1#4;
+        androidx.core.graphics.drawable.WrappedDrawableState $u1;
+        android.graphics.drawable.Drawable $u1#7;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u-1 = specialinvoke this.<android.graphics.drawable.Drawable: int getChangingConfigurations()>();
+
+        $u1 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        if $u1 == null goto label1;
+
+        $u-1#4 = virtualinvoke $u1.<androidx.core.graphics.drawable.WrappedDrawableState: int getChangingConfigurations()>();
+
+        goto label2;
+
+     label1:
+        $u-1#4 = 0;
+
+     label2:
+        $u-1 = $u-1 | $u-1#4;
+
+        $u1#7 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1#4 = virtualinvoke $u1#7.<android.graphics.drawable.Drawable: int getChangingConfigurations()>();
+
+        $u-1 = $u-1 | $u-1#4;
+
+        return $u-1;
+    }
+
+    public android.graphics.drawable.Drawable$ConstantState getConstantState()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        androidx.core.graphics.drawable.WrappedDrawableState $u0;
+        boolean $u-1;
+        int $u-1#5;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = virtualinvoke $u0.<androidx.core.graphics.drawable.WrappedDrawableState: boolean canConstantState()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        $u-1#5 = virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: int getChangingConfigurations()>();
+
+        $u0.<androidx.core.graphics.drawable.WrappedDrawableState: int mChangingConfigurations> = $u-1#5;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        return $u0;
+
+     label1:
+        return null;
+    }
+
+    public android.graphics.drawable.Drawable getCurrent()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.drawable.Drawable $u-1;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u-1 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1 = virtualinvoke $u-1.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable getCurrent()>();
+
+        return $u-1;
+    }
+
+    public int getIntrinsicHeight()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        int $u-1;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+        return $u-1;
+    }
+
+    public int getIntrinsicWidth()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        int $u-1;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: int getIntrinsicWidth()>();
+
+        return $u-1;
+    }
+
+    public int getMinimumHeight()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        int $u-1;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: int getMinimumHeight()>();
+
+        return $u-1;
+    }
+
+    public int getMinimumWidth()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        int $u-1;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: int getMinimumWidth()>();
+
+        return $u-1;
+    }
+
+    public int getOpacity()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        int $u-1;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: int getOpacity()>();
+
+        return $u-1;
+    }
+
+    public boolean getPadding(android.graphics.Rect)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.Rect $u2;
+        boolean $u-1;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: android.graphics.Rect;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>($u2);
+
+        return $u-1;
+    }
+
+    public int[] getState()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        int[] $u-1;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: int[] getState()>();
+
+        return $u-1;
+    }
+
+    public android.graphics.Region getTransparentRegion()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.Region $u-1;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: android.graphics.Region getTransparentRegion()>();
+
+        return $u-1;
+    }
+
+    public final android.graphics.drawable.Drawable getWrappedDrawable()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.drawable.Drawable ret0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        ret0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        return ret0;
+    }
+
+    public void invalidateDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.drawable.Drawable $u1;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u1 := @parameter0: android.graphics.drawable.Drawable;
+
+        virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: void invalidateSelf()>();
+
+        return;
+    }
+
+    public boolean isAutoMirrored()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        boolean $u-1;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean isAutoMirrored()>();
+
+        return $u-1;
+    }
+
+    protected boolean isCompatTintEnabled()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        return 1;
+    }
+
+    public boolean isStateful()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        boolean $u-1;
+        androidx.core.graphics.drawable.WrappedDrawableState tintList;
+        android.content.res.ColorStateList tintList#4;
+        android.graphics.drawable.Drawable $u1;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u-1 = virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: boolean isCompatTintEnabled()>();
+
+        if $u-1 == 0 goto label1;
+
+        tintList = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        if tintList == null goto label1;
+
+        tintList#4 = tintList.<androidx.core.graphics.drawable.WrappedDrawableState: android.content.res.ColorStateList mTint>;
+
+        goto label2;
+
+     label1:
+        tintList#4 = null;
+
+     label2:
+        if tintList#4 == null goto label3;
+
+        $u-1 = virtualinvoke tintList#4.<android.content.res.ColorStateList: boolean isStateful()>();
+
+        if $u-1 != 0 goto label4;
+
+     label3:
+        $u1 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1 = virtualinvoke $u1.<android.graphics.drawable.Drawable: boolean isStateful()>();
+
+        if $u-1 == 0 goto label5;
+
+     label4:
+        return 1;
+
+     label5:
+        return 0;
+    }
+
+    public void jumpToCurrentState()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void jumpToCurrentState()>();
+
+        return;
+    }
+
+    public android.graphics.drawable.Drawable mutate()
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        boolean $u0;
+        android.graphics.drawable.Drawable $u-1;
+        androidx.core.graphics.drawable.WrappedDrawableState $u-1#4;
+        android.graphics.drawable.Drawable$ConstantState $u-1#9;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: boolean mMutated>;
+
+        if $u0 != 0 goto label5;
+
+        $u-1 = specialinvoke this.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable mutate()>();
+
+        if $u-1 != this goto label5;
+
+        $u-1#4 = specialinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mutateConstantState()>();
+
+        this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState> = $u-1#4;
+
+        $u-1 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        if $u-1 == null goto label1;
+
+        virtualinvoke $u-1.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable mutate()>();
+
+     label1:
+        $u-1#4 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        if $u-1#4 == null goto label4;
+
+        $u-1 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        if $u-1 == null goto label2;
+
+        $u-1#9 = virtualinvoke $u-1.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable$ConstantState getConstantState()>();
+
+        goto label3;
+
+     label2:
+        $u-1#9 = null;
+
+     label3:
+        $u-1#4.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.drawable.Drawable$ConstantState mDrawableState> = $u-1#9;
+
+     label4:
+        this.<androidx.core.graphics.drawable.WrappedDrawableApi14: boolean mMutated> = 1;
+
+     label5:
+        return this;
+    }
+
+    protected void onBoundsChange(android.graphics.Rect)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.Rect $u2;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: android.graphics.Rect;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void setBounds(android.graphics.Rect)>($u2);
+
+     label1:
+        return;
+    }
+
+    protected boolean onLevelChange(int)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        int $u2;
+        boolean $u-1;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean setLevel(int)>($u2);
+
+        return $u-1;
+    }
+
+    public void scheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable, long)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.drawable.Drawable $u1;
+        java.lang.Runnable $u2;
+        long $u3;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u2 := @parameter1: java.lang.Runnable;
+
+        $u3 := @parameter2: long;
+
+        virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: void scheduleSelf(java.lang.Runnable,long)>($u2, $u3);
+
+        return;
+    }
+
+    public void setAlpha(int)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        int $u2;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void setAlpha(int)>($u2);
+
+        return;
+    }
+
+    public void setAutoMirrored(boolean)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        boolean $u2;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void setAutoMirrored(boolean)>($u2);
+
+        return;
+    }
+
+    public void setChangingConfigurations(int)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        int $u2;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void setChangingConfigurations(int)>($u2);
+
+        return;
+    }
+
+    public void setColorFilter(android.graphics.ColorFilter)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.ColorFilter $u2;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: android.graphics.ColorFilter;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void setColorFilter(android.graphics.ColorFilter)>($u2);
+
+        return;
+    }
+
+    public void setDither(boolean)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        boolean $u2;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void setDither(boolean)>($u2);
+
+        return;
+    }
+
+    public void setFilterBitmap(boolean)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        boolean $u2;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void setFilterBitmap(boolean)>($u2);
+
+        return;
+    }
+
+    public boolean setState(int[])
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        int[] $u3;
+        android.graphics.drawable.Drawable handled;
+        boolean $u-1, $u-1#4;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u3 := @parameter0: int[];
+
+        handled = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u-1 = virtualinvoke handled.<android.graphics.drawable.Drawable: boolean setState(int[])>($u3);
+
+        $u-1#4 = specialinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: boolean updateTint(int[])>($u3);
+
+        if $u-1#4 != 0 goto label2;
+
+        if $u-1 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        $u-1 = 0;
+
+        goto label3;
+
+     label2:
+        $u-1 = 1;
+
+     label3:
+        return $u-1;
+    }
+
+    public void setTint(int)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        int $u2;
+        android.content.res.ColorStateList $u-1;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: int;
+
+        $u-1 = staticinvoke <android.content.res.ColorStateList: android.content.res.ColorStateList valueOf(int)>($u2);
+
+        virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: void setTintList(android.content.res.ColorStateList)>($u-1);
+
+        return;
+    }
+
+    public void setTintList(android.content.res.ColorStateList)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.content.res.ColorStateList $u2;
+        int[] $u-1;
+        androidx.core.graphics.drawable.WrappedDrawableState $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: android.content.res.ColorStateList;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        $u0.<androidx.core.graphics.drawable.WrappedDrawableState: android.content.res.ColorStateList mTint> = $u2;
+
+        $u-1 = virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: int[] getState()>();
+
+        specialinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: boolean updateTint(int[])>($u-1);
+
+        return;
+    }
+
+    public void setTintMode(android.graphics.PorterDuff$Mode)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.PorterDuff$Mode $u2;
+        int[] $u-1;
+        androidx.core.graphics.drawable.WrappedDrawableState $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: android.graphics.PorterDuff$Mode;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        $u0.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.PorterDuff$Mode mTintMode> = $u2;
+
+        $u-1 = virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: int[] getState()>();
+
+        specialinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: boolean updateTint(int[])>($u-1);
+
+        return;
+    }
+
+    public boolean setVisible(boolean, boolean)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        boolean $u2, $u3, $u-1;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u2 := @parameter0: boolean;
+
+        $u3 := @parameter1: boolean;
+
+        $u-1 = specialinvoke this.<android.graphics.drawable.Drawable: boolean setVisible(boolean,boolean)>($u2, $u3);
+
+        if $u-1 != 0 goto label2;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        $u2 = virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean setVisible(boolean,boolean)>($u2, $u3);
+
+        if $u2 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    public final void setWrappedDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.drawable.Drawable $u3, $u0;
+        boolean $u-1;
+        int[] $u-1#6;
+        int $u-1#8;
+        android.graphics.Rect $u-1#10;
+        androidx.core.graphics.drawable.WrappedDrawableState $u0#12;
+        android.graphics.drawable.Drawable$ConstantState $u-1#13;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u3 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u0 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>(null);
+
+     label1:
+        this.<androidx.core.graphics.drawable.WrappedDrawableApi14: android.graphics.drawable.Drawable mDrawable> = $u3;
+
+        if $u3 == null goto label2;
+
+        virtualinvoke $u3.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>(this);
+
+        $u-1 = virtualinvoke $u3.<android.graphics.drawable.Drawable: boolean isVisible()>();
+
+        virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: boolean setVisible(boolean,boolean)>($u-1, 1);
+
+        $u-1#6 = virtualinvoke $u3.<android.graphics.drawable.Drawable: int[] getState()>();
+
+        virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: boolean setState(int[])>($u-1#6);
+
+        $u-1#8 = virtualinvoke $u3.<android.graphics.drawable.Drawable: int getLevel()>();
+
+        virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: boolean setLevel(int)>($u-1#8);
+
+        $u-1#10 = virtualinvoke $u3.<android.graphics.drawable.Drawable: android.graphics.Rect getBounds()>();
+
+        virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: void setBounds(android.graphics.Rect)>($u-1#10);
+
+        $u0#12 = this.<androidx.core.graphics.drawable.WrappedDrawableApi14: androidx.core.graphics.drawable.WrappedDrawableState mState>;
+
+        if $u0#12 == null goto label2;
+
+        $u-1#13 = virtualinvoke $u3.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable$ConstantState getConstantState()>();
+
+        $u0#12.<androidx.core.graphics.drawable.WrappedDrawableState: android.graphics.drawable.Drawable$ConstantState mDrawableState> = $u-1#13;
+
+     label2:
+        virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: void invalidateSelf()>();
+
+        return;
+    }
+
+    public void unscheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable)
+    {
+        androidx.core.graphics.drawable.WrappedDrawableApi14 this;
+        android.graphics.drawable.Drawable $u1;
+        java.lang.Runnable $u2;
+
+        this := @this: androidx.core.graphics.drawable.WrappedDrawableApi14;
+
+        $u1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u2 := @parameter1: java.lang.Runnable;
+
+        virtualinvoke this.<androidx.core.graphics.drawable.WrappedDrawableApi14: void unscheduleSelf(java.lang.Runnable)>($u2);
+
+        return;
+    }
+}

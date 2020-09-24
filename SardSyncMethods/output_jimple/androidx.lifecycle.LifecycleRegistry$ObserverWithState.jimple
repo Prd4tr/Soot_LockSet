@@ -1,0 +1,60 @@
+class androidx.lifecycle.LifecycleRegistry$ObserverWithState extends java.lang.Object
+{
+    androidx.lifecycle.LifecycleEventObserver mLifecycleObserver;
+    androidx.lifecycle.Lifecycle$State mState;
+
+    void <init>(androidx.lifecycle.LifecycleObserver, androidx.lifecycle.Lifecycle$State)
+    {
+        androidx.lifecycle.LifecycleRegistry$ObserverWithState this;
+        androidx.lifecycle.LifecycleObserver $u2;
+        androidx.lifecycle.Lifecycle$State $u3;
+        androidx.lifecycle.LifecycleEventObserver $u-1;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry$ObserverWithState;
+
+        $u2 := @parameter0: androidx.lifecycle.LifecycleObserver;
+
+        $u3 := @parameter1: androidx.lifecycle.Lifecycle$State;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u-1 = staticinvoke <androidx.lifecycle.Lifecycling: androidx.lifecycle.LifecycleEventObserver lifecycleEventObserver(java.lang.Object)>($u2);
+
+        this.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.LifecycleEventObserver mLifecycleObserver> = $u-1;
+
+        this.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState> = $u3;
+
+        return;
+    }
+
+    void dispatchEvent(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Lifecycle$Event)
+    {
+        androidx.lifecycle.LifecycleRegistry$ObserverWithState this;
+        androidx.lifecycle.LifecycleOwner $u3;
+        androidx.lifecycle.Lifecycle$Event $u4;
+        androidx.lifecycle.Lifecycle$State $u-1, $u1;
+        androidx.lifecycle.LifecycleEventObserver $u1#5;
+
+        this := @this: androidx.lifecycle.LifecycleRegistry$ObserverWithState;
+
+        $u3 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        $u4 := @parameter1: androidx.lifecycle.Lifecycle$Event;
+
+        $u-1 = staticinvoke <androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State getStateAfter(androidx.lifecycle.Lifecycle$Event)>($u4);
+
+        $u1 = this.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState>;
+
+        $u1 = staticinvoke <androidx.lifecycle.LifecycleRegistry: androidx.lifecycle.Lifecycle$State min(androidx.lifecycle.Lifecycle$State,androidx.lifecycle.Lifecycle$State)>($u1, $u-1);
+
+        this.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState> = $u1;
+
+        $u1#5 = this.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.LifecycleEventObserver mLifecycleObserver>;
+
+        interfaceinvoke $u1#5.<androidx.lifecycle.LifecycleEventObserver: void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event)>($u3, $u4);
+
+        this.<androidx.lifecycle.LifecycleRegistry$ObserverWithState: androidx.lifecycle.Lifecycle$State mState> = $u-1;
+
+        return;
+    }
+}

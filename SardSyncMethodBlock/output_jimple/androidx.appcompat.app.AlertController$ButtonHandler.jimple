@@ -1,0 +1,86 @@
+final class androidx.appcompat.app.AlertController$ButtonHandler extends android.os.Handler
+{
+    private static final int MSG_DISMISS_DIALOG;
+    private java.lang.ref.WeakReference mDialog;
+
+    public void <init>(android.content.DialogInterface)
+    {
+        androidx.appcompat.app.AlertController$ButtonHandler this;
+        android.content.DialogInterface $u2;
+        java.lang.ref.WeakReference $u0;
+
+        this := @this: androidx.appcompat.app.AlertController$ButtonHandler;
+
+        $u2 := @parameter0: android.content.DialogInterface;
+
+        specialinvoke this.<android.os.Handler: void <init>()>();
+
+        $u0 = new java.lang.ref.WeakReference;
+
+        specialinvoke $u0.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>($u2);
+
+        this.<androidx.appcompat.app.AlertController$ButtonHandler: java.lang.ref.WeakReference mDialog> = $u0;
+
+        return;
+    }
+
+    public void handleMessage(android.os.Message)
+    {
+        androidx.appcompat.app.AlertController$ButtonHandler this;
+        android.os.Message $u4;
+        int $u2;
+        java.lang.Object $u-1;
+        android.content.DialogInterface $u0;
+        android.content.DialogInterface$OnClickListener $u0#9;
+        java.lang.ref.WeakReference $u1;
+
+        this := @this: androidx.appcompat.app.AlertController$ButtonHandler;
+
+        $u4 := @parameter0: android.os.Message;
+
+        $u2 = $u4.<android.os.Message: int what>;
+
+        if $u2 == -3 goto label2;
+
+        if $u2 == -2 goto label2;
+
+        if $u2 == -1 goto label2;
+
+        if $u2 == 1 goto label1;
+
+        return;
+
+     label1:
+        $u-1 = $u4.<android.os.Message: java.lang.Object obj>;
+
+        $u0 = (android.content.DialogInterface) $u-1;
+
+        interfaceinvoke $u0.<android.content.DialogInterface: void dismiss()>();
+
+        return;
+
+     label2:
+        $u-1 = $u4.<android.os.Message: java.lang.Object obj>;
+
+        $u0#9 = (android.content.DialogInterface$OnClickListener) $u-1;
+
+        $u1 = this.<androidx.appcompat.app.AlertController$ButtonHandler: java.lang.ref.WeakReference mDialog>;
+
+        $u-1 = virtualinvoke $u1.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $u0 = (android.content.DialogInterface) $u-1;
+
+        $u2 = $u4.<android.os.Message: int what>;
+
+        interfaceinvoke $u0#9.<android.content.DialogInterface$OnClickListener: void onClick(android.content.DialogInterface,int)>($u0, $u2);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.app.AlertController$ButtonHandler: int MSG_DISMISS_DIALOG> = 1;
+
+        return;
+    }
+}

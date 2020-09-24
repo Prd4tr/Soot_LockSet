@@ -1,0 +1,601 @@
+class androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick extends java.lang.Object implements android.view.View$OnClickListener
+{
+    public static final int ANIM_TOGGLE;
+    public static final int ANIM_TO_END;
+    public static final int ANIM_TO_START;
+    public static final int JUMP_TO_END;
+    public static final int JUMP_TO_START;
+    int mMode;
+    int mTargetId;
+    private final androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition;
+
+    public void <init>(android.content.Context, androidx.constraintlayout.motion.widget.MotionScene$Transition, org.xmlpull.v1.XmlPullParser)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick this;
+        android.content.Context $u6;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u7;
+        org.xmlpull.v1.XmlPullParser $u8;
+        android.util.AttributeSet $u-1;
+        int[] N;
+        android.content.res.TypedArray $u-1#6;
+        int $u-1#8, i, $u-1#11, $u4;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick;
+
+        $u6 := @parameter0: android.content.Context;
+
+        $u7 := @parameter1: androidx.constraintlayout.motion.widget.MotionScene$Transition;
+
+        $u8 := @parameter2: org.xmlpull.v1.XmlPullParser;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mTargetId> = -1;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode> = 17;
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition> = $u7;
+
+        $u-1 = staticinvoke <android.util.Xml: android.util.AttributeSet asAttributeSet(org.xmlpull.v1.XmlPullParser)>($u8);
+
+        N = <androidx.constraintlayout.widget.R$styleable: int[] OnClick>;
+
+        $u-1#6 = virtualinvoke $u6.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[])>($u-1, N);
+
+        $u-1#8 = virtualinvoke $u-1#6.<android.content.res.TypedArray: int getIndexCount()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1#8 goto label4;
+
+        $u-1#11 = virtualinvoke $u-1#6.<android.content.res.TypedArray: int getIndex(int)>(i);
+
+        $u4 = <androidx.constraintlayout.widget.R$styleable: int OnClick_targetId>;
+
+        if $u-1#11 != $u4 goto label2;
+
+        $u4 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mTargetId>;
+
+        $u-1#11 = virtualinvoke $u-1#6.<android.content.res.TypedArray: int getResourceId(int,int)>($u-1#11, $u4);
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mTargetId> = $u-1#11;
+
+        goto label3;
+
+     label2:
+        $u4 = <androidx.constraintlayout.widget.R$styleable: int OnClick_clickAction>;
+
+        if $u-1#11 != $u4 goto label3;
+
+        $u4 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode>;
+
+        $u-1#11 = virtualinvoke $u-1#6.<android.content.res.TypedArray: int getInt(int,int)>($u-1#11, $u4);
+
+        this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode> = $u-1#11;
+
+     label3:
+        i = i + 1;
+
+        goto label1;
+
+     label4:
+        virtualinvoke $u-1#6.<android.content.res.TypedArray: void recycle()>();
+
+        return;
+    }
+
+    public void addOnClickListeners(androidx.constraintlayout.motion.widget.MotionLayout, int, androidx.constraintlayout.motion.widget.MotionScene$Transition)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick this;
+        androidx.constraintlayout.motion.widget.MotionLayout $u8;
+        int $u9, v, $u-1#11, listen#14, $u6#22;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u10;
+        android.view.View v#3;
+        java.lang.StringBuilder listen;
+        java.lang.String $u-1;
+        byte $u4, listen#17, $u6;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick;
+
+        $u8 := @parameter0: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        $u9 := @parameter1: int;
+
+        $u10 := @parameter2: androidx.constraintlayout.motion.widget.MotionScene$Transition;
+
+        v = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mTargetId>;
+
+        if v != -1 goto label01;
+
+        v#3 = $u8;
+
+        goto label02;
+
+     label01:
+        v#3 = virtualinvoke $u8.<androidx.constraintlayout.motion.widget.MotionLayout: android.view.View findViewById(int)>(v);
+
+     label02:
+        if v#3 != null goto label03;
+
+        listen = new java.lang.StringBuilder;
+
+        specialinvoke listen.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke listen.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("OnClick could not find id ");
+
+        $u9 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mTargetId>;
+
+        virtualinvoke listen.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u9);
+
+        $u-1 = virtualinvoke listen.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("MotionScene", $u-1);
+
+        return;
+
+     label03:
+        $u-1#11 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$100(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u10);
+
+        v = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$000(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u10);
+
+        if $u-1#11 != -1 goto label04;
+
+        virtualinvoke v#3.<android.view.View: void setOnClickListener(android.view.View$OnClickListener)>(this);
+
+        return;
+
+     label04:
+        listen#14 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode>;
+
+        $u4 = 1;
+
+        listen#14 = listen#14 & 1;
+
+        if listen#14 == 0 goto label05;
+
+        if $u9 != $u-1#11 goto label05;
+
+        listen#17 = 1;
+
+        goto label06;
+
+     label05:
+        listen#17 = 0;
+
+     label06:
+        listen#14 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode>;
+
+        listen#14 = listen#14 & 256;
+
+        if listen#14 == 0 goto label07;
+
+        if $u9 != $u-1#11 goto label07;
+
+        $u6 = 1;
+
+        goto label08;
+
+     label07:
+        $u6 = 0;
+
+     label08:
+        listen#14 = listen#17 | $u6;
+
+        $u6#22 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode>;
+
+        $u6#22 = $u6#22 & 1;
+
+        if $u6#22 == 0 goto label09;
+
+        if $u9 != $u-1#11 goto label09;
+
+        listen#17 = 1;
+
+        goto label10;
+
+     label09:
+        listen#17 = 0;
+
+     label10:
+        $u-1#11 = listen#14 | listen#17;
+
+        listen#14 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode>;
+
+        listen#14 = listen#14 & 16;
+
+        if listen#14 == 0 goto label11;
+
+        if $u9 != v goto label11;
+
+        listen#17 = 1;
+
+        goto label12;
+
+     label11:
+        listen#17 = 0;
+
+     label12:
+        $u-1#11 = $u-1#11 | listen#17;
+
+        listen#14 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode>;
+
+        listen#14 = listen#14 & 4096;
+
+        if listen#14 == 0 goto label13;
+
+        if $u9 != v goto label13;
+
+        goto label14;
+
+     label13:
+        $u4 = 0;
+
+     label14:
+        $u9 = $u-1#11 | $u4;
+
+        if $u9 == 0 goto label15;
+
+        virtualinvoke v#3.<android.view.View: void setOnClickListener(android.view.View$OnClickListener)>(this);
+
+     label15:
+        return;
+    }
+
+    boolean isTransitionViable(androidx.constraintlayout.motion.widget.MotionScene$Transition, androidx.constraintlayout.motion.widget.MotionLayout)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick this;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition $u6, dest;
+        androidx.constraintlayout.motion.widget.MotionLayout $u7;
+        int $u-1, $u-1#6, $u3;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick;
+
+        $u6 := @parameter0: androidx.constraintlayout.motion.widget.MotionScene$Transition;
+
+        $u7 := @parameter1: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        dest = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        if dest != $u6 goto label1;
+
+        return 1;
+
+     label1:
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$000(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(dest);
+
+        $u6 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        $u-1#6 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$100(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u6);
+
+        if $u-1#6 != -1 goto label3;
+
+        $u-1#6 = $u7.<androidx.constraintlayout.motion.widget.MotionLayout: int mCurrentState>;
+
+        if $u-1#6 == $u-1 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+
+     label3:
+        $u3 = $u7.<androidx.constraintlayout.motion.widget.MotionLayout: int mCurrentState>;
+
+        if $u3 == $u-1#6 goto label5;
+
+        $u-1#6 = $u7.<androidx.constraintlayout.motion.widget.MotionLayout: int mCurrentState>;
+
+        if $u-1#6 != $u-1 goto label4;
+
+        return 1;
+
+     label4:
+        return 0;
+
+     label5:
+        return 1;
+    }
+
+    public void onClick(android.view.View)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick this;
+        android.view.View $u9;
+        androidx.constraintlayout.motion.widget.MotionScene$Transition tl, backward, $u7;
+        androidx.constraintlayout.motion.widget.MotionScene $u-1;
+        androidx.constraintlayout.motion.widget.MotionLayout $u-1#4;
+        boolean $u-1#6, bidirectional, backward#38;
+        int $u-1#9, backward#30;
+        float $u-1#48;
+        byte $u6;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick;
+
+        $u9 := @parameter0: android.view.View;
+
+        tl = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.MotionScene access$700(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(tl);
+
+        $u-1#4 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionLayout access$800(androidx.constraintlayout.motion.widget.MotionScene)>($u-1);
+
+        $u-1#6 = virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: boolean isInteractionEnabled()>();
+
+        if $u-1#6 != 0 goto label01;
+
+        return;
+
+     label01:
+        tl = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        $u-1#9 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$100(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(tl);
+
+        if $u-1#9 != -1 goto label03;
+
+        $u-1#9 = virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: int getCurrentState()>();
+
+        if $u-1#9 != -1 goto label02;
+
+        tl = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        $u-1#9 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$000(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(tl);
+
+        virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: void transitionToState(int)>($u-1#9);
+
+        return;
+
+     label02:
+        tl = new androidx.constraintlayout.motion.widget.MotionScene$Transition;
+
+        backward = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.MotionScene access$700(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(backward);
+
+        backward = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        specialinvoke tl.<androidx.constraintlayout.motion.widget.MotionScene$Transition: void <init>(androidx.constraintlayout.motion.widget.MotionScene,androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u-1, backward);
+
+        staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$102(androidx.constraintlayout.motion.widget.MotionScene$Transition,int)>(tl, $u-1#9);
+
+        backward = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        $u-1#9 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$000(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(backward);
+
+        staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: int access$002(androidx.constraintlayout.motion.widget.MotionScene$Transition,int)>(tl, $u-1#9);
+
+        virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: void setTransition(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(tl);
+
+        virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: void transitionToEnd()>();
+
+        return;
+
+     label03:
+        tl = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.MotionScene access$700(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(tl);
+
+        tl = $u-1.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u-1#9 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode>;
+
+        backward#30 = $u-1#9 & 1;
+
+        bidirectional = 0;
+
+        if backward#30 != 0 goto label05;
+
+        $u-1#9 = $u-1#9 & 256;
+
+        if $u-1#9 == 0 goto label04;
+
+        goto label05;
+
+     label04:
+        $u-1#6 = 0;
+
+        goto label06;
+
+     label05:
+        $u-1#6 = 1;
+
+     label06:
+        $u-1#9 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode>;
+
+        backward#30 = $u-1#9 & 16;
+
+        if backward#30 != 0 goto label08;
+
+        $u-1#9 = $u-1#9 & 4096;
+
+        if $u-1#9 == 0 goto label07;
+
+        goto label08;
+
+     label07:
+        backward#38 = 0;
+
+        goto label09;
+
+     label08:
+        backward#38 = 1;
+
+     label09:
+        if $u-1#6 == 0 goto label10;
+
+        if backward#38 == 0 goto label10;
+
+        bidirectional = 1;
+
+     label10:
+        if bidirectional == 0 goto label14;
+
+        backward = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionScene$Transition: androidx.constraintlayout.motion.widget.MotionScene access$700(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(backward);
+
+        backward = $u-1.<androidx.constraintlayout.motion.widget.MotionScene: androidx.constraintlayout.motion.widget.MotionScene$Transition mCurrentTransition>;
+
+        $u7 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        if backward == $u7 goto label11;
+
+        virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: void setTransition(androidx.constraintlayout.motion.widget.MotionScene$Transition)>($u7);
+
+     label11:
+        $u-1#9 = virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: int getCurrentState()>();
+
+        backward#30 = virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: int getEndState()>();
+
+        if $u-1#9 == backward#30 goto label13;
+
+        $u-1#48 = virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: float getProgress()>();
+
+        $u6 = $u-1#48 cmpl 0.5F;
+
+        if $u6 <= 0 goto label12;
+
+        goto label13;
+
+     label12:
+        backward#38 = 0;
+
+        goto label14;
+
+     label13:
+        $u-1#6 = 0;
+
+     label14:
+        bidirectional = virtualinvoke this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: boolean isTransitionViable(androidx.constraintlayout.motion.widget.MotionScene$Transition,androidx.constraintlayout.motion.widget.MotionLayout)>(tl, $u-1#4);
+
+        if bidirectional == 0 goto label18;
+
+        if $u-1#6 == 0 goto label15;
+
+        $u-1#9 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode>;
+
+        $u-1#9 = 1 & $u-1#9;
+
+        if $u-1#9 == 0 goto label15;
+
+        tl = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: void setTransition(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(tl);
+
+        virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: void transitionToEnd()>();
+
+        return;
+
+     label15:
+        if backward#38 == 0 goto label16;
+
+        $u-1#9 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode>;
+
+        $u-1#9 = $u-1#9 & 16;
+
+        if $u-1#9 == 0 goto label16;
+
+        tl = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: void setTransition(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(tl);
+
+        virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: void transitionToStart()>();
+
+        return;
+
+     label16:
+        if $u-1#6 == 0 goto label17;
+
+        $u-1#9 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode>;
+
+        $u-1#9 = $u-1#9 & 256;
+
+        if $u-1#9 == 0 goto label17;
+
+        tl = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: void setTransition(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(tl);
+
+        virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: void setProgress(float)>(1.0F);
+
+        return;
+
+     label17:
+        if backward#38 == 0 goto label18;
+
+        $u-1#9 = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mMode>;
+
+        $u-1#9 = $u-1#9 & 4096;
+
+        if $u-1#9 == 0 goto label18;
+
+        tl = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: androidx.constraintlayout.motion.widget.MotionScene$Transition mTransition>;
+
+        virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: void setTransition(androidx.constraintlayout.motion.widget.MotionScene$Transition)>(tl);
+
+        virtualinvoke $u-1#4.<androidx.constraintlayout.motion.widget.MotionLayout: void setProgress(float)>(0.0F);
+
+     label18:
+        return;
+    }
+
+    public void removeOnClickListeners(androidx.constraintlayout.motion.widget.MotionLayout)
+    {
+        androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick this;
+        androidx.constraintlayout.motion.widget.MotionLayout $u4;
+        int v;
+        android.view.View $u-1;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1#8;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick;
+
+        $u4 := @parameter0: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        v = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mTargetId>;
+
+        if v != -1 goto label1;
+
+        return;
+
+     label1:
+        $u-1 = virtualinvoke $u4.<androidx.constraintlayout.motion.widget.MotionLayout: android.view.View findViewById(int)>(v);
+
+        if $u-1 != null goto label2;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" (*)  could not find id ");
+
+        v = this.<androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int mTargetId>;
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(v);
+
+        $u-1#8 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("MotionScene", $u-1#8);
+
+        return;
+
+     label2:
+        virtualinvoke $u-1.<android.view.View: void setOnClickListener(android.view.View$OnClickListener)>(null);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int JUMP_TO_START> = 4096;
+
+        <androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int JUMP_TO_END> = 256;
+
+        <androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int ANIM_TO_START> = 16;
+
+        <androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int ANIM_TO_END> = 1;
+
+        <androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick: int ANIM_TOGGLE> = 17;
+
+        return;
+    }
+}

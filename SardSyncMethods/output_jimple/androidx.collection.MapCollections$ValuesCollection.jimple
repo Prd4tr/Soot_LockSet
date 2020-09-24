@@ -1,0 +1,335 @@
+final class androidx.collection.MapCollections$ValuesCollection extends java.lang.Object implements java.util.Collection
+{
+    final androidx.collection.MapCollections this$0;
+
+    void <init>(androidx.collection.MapCollections)
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        androidx.collection.MapCollections $u1;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        $u1 := @parameter0: androidx.collection.MapCollections;
+
+        this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean add(java.lang.Object)
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        java.lang.Object object;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        object := @parameter0: java.lang.Object;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public boolean addAll(java.util.Collection)
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        java.util.Collection collection;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        collection := @parameter0: java.util.Collection;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public void clear()
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        androidx.collection.MapCollections $u0;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        $u0 = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        virtualinvoke $u0.<androidx.collection.MapCollections: void colClear()>();
+
+        return;
+    }
+
+    public boolean contains(java.lang.Object)
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        java.lang.Object $u2;
+        int $u-1;
+        androidx.collection.MapCollections $u0;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        $u0 = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.collection.MapCollections: int colIndexOfValue(java.lang.Object)>($u2);
+
+        if $u-1 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean containsAll(java.util.Collection)
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        java.util.Collection collection;
+        java.util.Iterator $u-1;
+        boolean $u-1#2;
+        java.lang.Object $u-1#4;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        collection := @parameter0: java.util.Collection;
+
+        $u-1 = interfaceinvoke collection.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#2 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#2 == 0 goto label2;
+
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        $u-1#2 = virtualinvoke this.<androidx.collection.MapCollections$ValuesCollection: boolean contains(java.lang.Object)>($u-1#4);
+
+        if $u-1#2 != 0 goto label1;
+
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    public boolean isEmpty()
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        int $u-1;
+        androidx.collection.MapCollections $u0;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        $u0 = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.collection.MapCollections: int colGetSize()>();
+
+        if $u-1 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public java.util.Iterator iterator()
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        androidx.collection.MapCollections$ArrayIterator $u0;
+        androidx.collection.MapCollections $u1;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        $u0 = new androidx.collection.MapCollections$ArrayIterator;
+
+        $u1 = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        specialinvoke $u0.<androidx.collection.MapCollections$ArrayIterator: void <init>(androidx.collection.MapCollections,int)>($u1, 1);
+
+        return $u0;
+    }
+
+    public boolean remove(java.lang.Object)
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        java.lang.Object $u3;
+        int $u-1;
+        androidx.collection.MapCollections index;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        $u3 := @parameter0: java.lang.Object;
+
+        index = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke index.<androidx.collection.MapCollections: int colIndexOfValue(java.lang.Object)>($u3);
+
+        if $u-1 < 0 goto label1;
+
+        index = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        virtualinvoke index.<androidx.collection.MapCollections: void colRemoveAt(int)>($u-1);
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean removeAll(java.util.Collection)
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        java.util.Collection collection;
+        androidx.collection.MapCollections N;
+        int $u-1, i;
+        boolean changed, $u-1#9;
+        java.lang.Object $u-1#7;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        collection := @parameter0: java.util.Collection;
+
+        N = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke N.<androidx.collection.MapCollections: int colGetSize()>();
+
+        changed = 0;
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label3;
+
+        N = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        $u-1#7 = virtualinvoke N.<androidx.collection.MapCollections: java.lang.Object colGetEntry(int,int)>(i, 1);
+
+        $u-1#9 = interfaceinvoke collection.<java.util.Collection: boolean contains(java.lang.Object)>($u-1#7);
+
+        if $u-1#9 == 0 goto label2;
+
+        N = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        virtualinvoke N.<androidx.collection.MapCollections: void colRemoveAt(int)>(i);
+
+        i = i + -1;
+
+        $u-1 = $u-1 + -1;
+
+        changed = 1;
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        return changed;
+    }
+
+    public boolean retainAll(java.util.Collection)
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        java.util.Collection collection;
+        androidx.collection.MapCollections N;
+        int $u-1, i;
+        boolean changed, $u-1#9;
+        java.lang.Object $u-1#7;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        collection := @parameter0: java.util.Collection;
+
+        N = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke N.<androidx.collection.MapCollections: int colGetSize()>();
+
+        changed = 0;
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label3;
+
+        N = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        $u-1#7 = virtualinvoke N.<androidx.collection.MapCollections: java.lang.Object colGetEntry(int,int)>(i, 1);
+
+        $u-1#9 = interfaceinvoke collection.<java.util.Collection: boolean contains(java.lang.Object)>($u-1#7);
+
+        if $u-1#9 != 0 goto label2;
+
+        N = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        virtualinvoke N.<androidx.collection.MapCollections: void colRemoveAt(int)>(i);
+
+        i = i + -1;
+
+        $u-1 = $u-1 + -1;
+
+        changed = 1;
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        return changed;
+    }
+
+    public int size()
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        int $u-1;
+        androidx.collection.MapCollections $u0;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        $u0 = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.collection.MapCollections: int colGetSize()>();
+
+        return $u-1;
+    }
+
+    public java.lang.Object[] toArray()
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        java.lang.Object[] $u-1;
+        androidx.collection.MapCollections $u0;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        $u0 = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.collection.MapCollections: java.lang.Object[] toArrayHelper(int)>(1);
+
+        return $u-1;
+    }
+
+    public java.lang.Object[] toArray(java.lang.Object[])
+    {
+        androidx.collection.MapCollections$ValuesCollection this;
+        java.lang.Object[] array;
+        androidx.collection.MapCollections $u0;
+
+        this := @this: androidx.collection.MapCollections$ValuesCollection;
+
+        array := @parameter0: java.lang.Object[];
+
+        $u0 = this.<androidx.collection.MapCollections$ValuesCollection: androidx.collection.MapCollections this$0>;
+
+        array = virtualinvoke $u0.<androidx.collection.MapCollections: java.lang.Object[] toArrayHelper(java.lang.Object[],int)>(array, 1);
+
+        return array;
+    }
+}

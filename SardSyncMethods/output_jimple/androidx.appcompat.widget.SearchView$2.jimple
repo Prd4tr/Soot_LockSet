@@ -1,0 +1,47 @@
+class androidx.appcompat.widget.SearchView$2 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.appcompat.widget.SearchView this$0;
+
+    void <init>(androidx.appcompat.widget.SearchView)
+    {
+        androidx.appcompat.widget.SearchView$2 this;
+        androidx.appcompat.widget.SearchView $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView$2;
+
+        $u1 := @parameter0: androidx.appcompat.widget.SearchView;
+
+        this.<androidx.appcompat.widget.SearchView$2: androidx.appcompat.widget.SearchView this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.appcompat.widget.SearchView$2 this;
+        androidx.appcompat.widget.SearchView $u0;
+        androidx.cursoradapter.widget.CursorAdapter $u0#2;
+        boolean $u0#3;
+
+        this := @this: androidx.appcompat.widget.SearchView$2;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView$2: androidx.appcompat.widget.SearchView this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.SearchView: androidx.cursoradapter.widget.CursorAdapter mSuggestionsAdapter>;
+
+        $u0#3 = $u0#2 instanceof androidx.appcompat.widget.SuggestionsAdapter;
+
+        if $u0#3 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView$2: androidx.appcompat.widget.SearchView this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.SearchView: androidx.cursoradapter.widget.CursorAdapter mSuggestionsAdapter>;
+
+        virtualinvoke $u0#2.<androidx.cursoradapter.widget.CursorAdapter: void changeCursor(android.database.Cursor)>(null);
+
+     label1:
+        return;
+    }
+}

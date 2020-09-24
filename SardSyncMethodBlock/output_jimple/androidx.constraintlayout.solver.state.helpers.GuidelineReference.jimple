@@ -1,0 +1,246 @@
+public class androidx.constraintlayout.solver.state.helpers.GuidelineReference extends java.lang.Object implements androidx.constraintlayout.solver.state.Reference
+{
+    private java.lang.Object key;
+    private int mEnd;
+    private androidx.constraintlayout.solver.widgets.Guideline mGuidelineWidget;
+    private int mOrientation;
+    private float mPercent;
+    private int mStart;
+    final androidx.constraintlayout.solver.state.State mState;
+
+    public void <init>(androidx.constraintlayout.solver.state.State)
+    {
+        androidx.constraintlayout.solver.state.helpers.GuidelineReference this;
+        androidx.constraintlayout.solver.state.State $u2;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.GuidelineReference;
+
+        $u2 := @parameter0: androidx.constraintlayout.solver.state.State;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: int mStart> = -1;
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: int mEnd> = -1;
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: float mPercent> = 0.0F;
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: androidx.constraintlayout.solver.state.State mState> = $u2;
+
+        return;
+    }
+
+    public void apply()
+    {
+        androidx.constraintlayout.solver.state.helpers.GuidelineReference this;
+        androidx.constraintlayout.solver.widgets.Guideline $u0;
+        int $u1;
+        float $u1#9;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.GuidelineReference;
+
+        $u0 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: androidx.constraintlayout.solver.widgets.Guideline mGuidelineWidget>;
+
+        $u1 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: int mOrientation>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.solver.widgets.Guideline: void setOrientation(int)>($u1);
+
+        $u1 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: int mStart>;
+
+        if $u1 == -1 goto label1;
+
+        $u0 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: androidx.constraintlayout.solver.widgets.Guideline mGuidelineWidget>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.solver.widgets.Guideline: void setGuideBegin(int)>($u1);
+
+        return;
+
+     label1:
+        $u1 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: int mEnd>;
+
+        if $u1 == -1 goto label2;
+
+        $u0 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: androidx.constraintlayout.solver.widgets.Guideline mGuidelineWidget>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.solver.widgets.Guideline: void setGuideEnd(int)>($u1);
+
+        return;
+
+     label2:
+        $u0 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: androidx.constraintlayout.solver.widgets.Guideline mGuidelineWidget>;
+
+        $u1#9 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: float mPercent>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.solver.widgets.Guideline: void setGuidePercent(float)>($u1#9);
+
+        return;
+    }
+
+    public void end(java.lang.Object)
+    {
+        androidx.constraintlayout.solver.state.helpers.GuidelineReference this;
+        java.lang.Object $u2;
+        int $u-1;
+        androidx.constraintlayout.solver.state.State $u0;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.GuidelineReference;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: int mStart> = -1;
+
+        $u0 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: androidx.constraintlayout.solver.state.State mState>;
+
+        $u-1 = virtualinvoke $u0.<androidx.constraintlayout.solver.state.State: int convertDimension(java.lang.Object)>($u2);
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: int mEnd> = $u-1;
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: float mPercent> = 0.0F;
+
+        return;
+    }
+
+    public androidx.constraintlayout.solver.widgets.ConstraintWidget getConstraintWidget()
+    {
+        androidx.constraintlayout.solver.state.helpers.GuidelineReference this;
+        androidx.constraintlayout.solver.widgets.Guideline $u0;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.GuidelineReference;
+
+        $u0 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: androidx.constraintlayout.solver.widgets.Guideline mGuidelineWidget>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new androidx.constraintlayout.solver.widgets.Guideline;
+
+        specialinvoke $u0.<androidx.constraintlayout.solver.widgets.Guideline: void <init>()>();
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: androidx.constraintlayout.solver.widgets.Guideline mGuidelineWidget> = $u0;
+
+     label1:
+        $u0 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: androidx.constraintlayout.solver.widgets.Guideline mGuidelineWidget>;
+
+        return $u0;
+    }
+
+    public java.lang.Object getKey()
+    {
+        androidx.constraintlayout.solver.state.helpers.GuidelineReference this;
+        java.lang.Object ret0;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.GuidelineReference;
+
+        ret0 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: java.lang.Object key>;
+
+        return ret0;
+    }
+
+    public int getOrientation()
+    {
+        androidx.constraintlayout.solver.state.helpers.GuidelineReference this;
+        int ret0;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.GuidelineReference;
+
+        ret0 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: int mOrientation>;
+
+        return ret0;
+    }
+
+    public void percent(float)
+    {
+        androidx.constraintlayout.solver.state.helpers.GuidelineReference this;
+        float $u2;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.GuidelineReference;
+
+        $u2 := @parameter0: float;
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: int mStart> = -1;
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: int mEnd> = -1;
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: float mPercent> = $u2;
+
+        return;
+    }
+
+    public void setConstraintWidget(androidx.constraintlayout.solver.widgets.ConstraintWidget)
+    {
+        androidx.constraintlayout.solver.state.helpers.GuidelineReference this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u2;
+        boolean $u0;
+        androidx.constraintlayout.solver.widgets.Guideline $u0#3;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.GuidelineReference;
+
+        $u2 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $u0 = $u2 instanceof androidx.constraintlayout.solver.widgets.Guideline;
+
+        if $u0 == 0 goto label1;
+
+        $u0#3 = (androidx.constraintlayout.solver.widgets.Guideline) $u2;
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: androidx.constraintlayout.solver.widgets.Guideline mGuidelineWidget> = $u0#3;
+
+        return;
+
+     label1:
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: androidx.constraintlayout.solver.widgets.Guideline mGuidelineWidget> = null;
+
+        return;
+    }
+
+    public void setKey(java.lang.Object)
+    {
+        androidx.constraintlayout.solver.state.helpers.GuidelineReference this;
+        java.lang.Object $u1;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.GuidelineReference;
+
+        $u1 := @parameter0: java.lang.Object;
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: java.lang.Object key> = $u1;
+
+        return;
+    }
+
+    public void setOrientation(int)
+    {
+        androidx.constraintlayout.solver.state.helpers.GuidelineReference this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.GuidelineReference;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: int mOrientation> = $u1;
+
+        return;
+    }
+
+    public void start(java.lang.Object)
+    {
+        androidx.constraintlayout.solver.state.helpers.GuidelineReference this;
+        java.lang.Object $u2;
+        int $u-1;
+        androidx.constraintlayout.solver.state.State $u0;
+
+        this := @this: androidx.constraintlayout.solver.state.helpers.GuidelineReference;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        $u0 = this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: androidx.constraintlayout.solver.state.State mState>;
+
+        $u-1 = virtualinvoke $u0.<androidx.constraintlayout.solver.state.State: int convertDimension(java.lang.Object)>($u2);
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: int mStart> = $u-1;
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: int mEnd> = -1;
+
+        this.<androidx.constraintlayout.solver.state.helpers.GuidelineReference: float mPercent> = 0.0F;
+
+        return;
+    }
+}

@@ -1,0 +1,74 @@
+public class com.example.sardsyncmethodblock.MainActivity extends androidx.appcompat.app.AppCompatActivity
+{
+    java.lang.Runnable b;
+    java.lang.Runnable c;
+    com.example.sardsyncmethodblock.SyncRunnable obj;
+
+    public void <init>()
+    {
+        com.example.sardsyncmethodblock.MainActivity this;
+        com.example.sardsyncmethodblock.SyncRunnable $u0;
+        com.example.sardsyncmethodblock.MainActivity$1 $u0#2;
+        com.example.sardsyncmethodblock.MainActivity$2 $u0#3;
+
+        this := @this: com.example.sardsyncmethodblock.MainActivity;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatActivity: void <init>()>();
+
+        $u0 = new com.example.sardsyncmethodblock.SyncRunnable;
+
+        specialinvoke $u0.<com.example.sardsyncmethodblock.SyncRunnable: void <init>()>();
+
+        this.<com.example.sardsyncmethodblock.MainActivity: com.example.sardsyncmethodblock.SyncRunnable obj> = $u0;
+
+        $u0#2 = new com.example.sardsyncmethodblock.MainActivity$1;
+
+        specialinvoke $u0#2.<com.example.sardsyncmethodblock.MainActivity$1: void <init>(com.example.sardsyncmethodblock.MainActivity)>(this);
+
+        this.<com.example.sardsyncmethodblock.MainActivity: java.lang.Runnable c> = $u0#2;
+
+        $u0#3 = new com.example.sardsyncmethodblock.MainActivity$2;
+
+        specialinvoke $u0#3.<com.example.sardsyncmethodblock.MainActivity$2: void <init>(com.example.sardsyncmethodblock.MainActivity)>(this);
+
+        this.<com.example.sardsyncmethodblock.MainActivity: java.lang.Runnable b> = $u0#3;
+
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.example.sardsyncmethodblock.MainActivity this;
+        android.os.Bundle $u3;
+        android.os.Looper $u-1;
+        android.os.Handler handler;
+        com.example.sardsyncmethodblock.SyncRunnable $u1;
+        java.lang.Runnable $u1#5;
+
+        this := @this: com.example.sardsyncmethodblock.MainActivity;
+
+        $u3 := @parameter0: android.os.Bundle;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatActivity: void onCreate(android.os.Bundle)>($u3);
+
+        virtualinvoke this.<com.example.sardsyncmethodblock.MainActivity: void setContentView(int)>(2131361820);
+
+        handler = new android.os.Handler;
+
+        $u-1 = virtualinvoke this.<com.example.sardsyncmethodblock.MainActivity: android.os.Looper getMainLooper()>();
+
+        specialinvoke handler.<android.os.Handler: void <init>(android.os.Looper)>($u-1);
+
+        $u1 = this.<com.example.sardsyncmethodblock.MainActivity: com.example.sardsyncmethodblock.SyncRunnable obj>;
+
+        $u1#5 = $u1.<com.example.sardsyncmethodblock.SyncRunnable: java.lang.Runnable a>;
+
+        virtualinvoke handler.<android.os.Handler: boolean post(java.lang.Runnable)>($u1#5);
+
+        $u1#5 = this.<com.example.sardsyncmethodblock.MainActivity: java.lang.Runnable b>;
+
+        virtualinvoke handler.<android.os.Handler: boolean post(java.lang.Runnable)>($u1#5);
+
+        return;
+    }
+}

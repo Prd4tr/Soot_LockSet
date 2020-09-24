@@ -1,0 +1,98 @@
+public class com.example.sardsyncmethods.SyncRunnable extends java.lang.Object
+{
+    public java.lang.Runnable a;
+    public java.lang.Runnable c;
+    java.lang.Integer p;
+
+    public void <init>()
+    {
+        com.example.sardsyncmethods.SyncRunnable this;
+        java.lang.Integer $u0;
+        com.example.sardsyncmethods.SyncRunnable$1 $u0#2;
+        com.example.sardsyncmethods.SyncRunnable$2 $u0#3;
+
+        this := @this: com.example.sardsyncmethods.SyncRunnable;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new java.lang.Integer;
+
+        specialinvoke $u0.<java.lang.Integer: void <init>(int)>(1);
+
+        this.<com.example.sardsyncmethods.SyncRunnable: java.lang.Integer p> = $u0;
+
+        $u0#2 = new com.example.sardsyncmethods.SyncRunnable$1;
+
+        specialinvoke $u0#2.<com.example.sardsyncmethods.SyncRunnable$1: void <init>(com.example.sardsyncmethods.SyncRunnable)>(this);
+
+        this.<com.example.sardsyncmethods.SyncRunnable: java.lang.Runnable a> = $u0#2;
+
+        $u0#3 = new com.example.sardsyncmethods.SyncRunnable$2;
+
+        specialinvoke $u0#3.<com.example.sardsyncmethods.SyncRunnable$2: void <init>(com.example.sardsyncmethods.SyncRunnable)>(this);
+
+        this.<com.example.sardsyncmethods.SyncRunnable: java.lang.Runnable c> = $u0#3;
+
+        return;
+    }
+
+    public void a1()
+    {
+        com.example.sardsyncmethods.SyncRunnable this;
+        java.lang.Integer $u-1;
+        java.lang.Throwable $u0;
+
+        this := @this: com.example.sardsyncmethods.SyncRunnable;
+
+        entermonitor this;
+
+     label1:
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+
+        this.<com.example.sardsyncmethods.SyncRunnable: java.lang.Integer p> = $u-1;
+
+     label2:
+        exitmonitor this;
+
+        return;
+
+     label3:
+        $u0 := @caughtexception;
+
+        exitmonitor this;
+
+        throw $u0;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public void c1()
+    {
+        com.example.sardsyncmethods.SyncRunnable this;
+        java.lang.Integer $u-1;
+        java.lang.Throwable $u0;
+
+        this := @this: com.example.sardsyncmethods.SyncRunnable;
+
+        entermonitor this;
+
+     label1:
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(10);
+
+        this.<com.example.sardsyncmethods.SyncRunnable: java.lang.Integer p> = $u-1;
+
+     label2:
+        exitmonitor this;
+
+        return;
+
+     label3:
+        $u0 := @caughtexception;
+
+        exitmonitor this;
+
+        throw $u0;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

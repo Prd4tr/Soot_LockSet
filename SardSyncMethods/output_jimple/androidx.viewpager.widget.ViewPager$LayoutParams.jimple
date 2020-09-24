@@ -1,0 +1,54 @@
+public class androidx.viewpager.widget.ViewPager$LayoutParams extends android.view.ViewGroup$LayoutParams
+{
+    int childIndex;
+    public int gravity;
+    public boolean isDecor;
+    boolean needsMeasure;
+    int position;
+    float widthFactor;
+
+    public void <init>()
+    {
+        androidx.viewpager.widget.ViewPager$LayoutParams this;
+
+        this := @this: androidx.viewpager.widget.ViewPager$LayoutParams;
+
+        specialinvoke this.<android.view.ViewGroup$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        this.<androidx.viewpager.widget.ViewPager$LayoutParams: float widthFactor> = 0.0F;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.viewpager.widget.ViewPager$LayoutParams this;
+        android.content.Context $u4;
+        android.util.AttributeSet $u5;
+        int[] a;
+        android.content.res.TypedArray $u-1;
+        int $u-1#6;
+
+        this := @this: androidx.viewpager.widget.ViewPager$LayoutParams;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<android.view.ViewGroup$LayoutParams: void <init>(android.content.Context,android.util.AttributeSet)>($u4, $u5);
+
+        this.<androidx.viewpager.widget.ViewPager$LayoutParams: float widthFactor> = 0.0F;
+
+        a = <androidx.viewpager.widget.ViewPager: int[] LAYOUT_ATTRS>;
+
+        $u-1 = virtualinvoke $u4.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[])>($u5, a);
+
+        $u-1#6 = virtualinvoke $u-1.<android.content.res.TypedArray: int getInteger(int,int)>(0, 48);
+
+        this.<androidx.viewpager.widget.ViewPager$LayoutParams: int gravity> = $u-1#6;
+
+        virtualinvoke $u-1.<android.content.res.TypedArray: void recycle()>();
+
+        return;
+    }
+}

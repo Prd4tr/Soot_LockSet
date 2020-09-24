@@ -1,0 +1,576 @@
+public class androidx.appcompat.widget.ContentFrameLayout extends android.widget.FrameLayout
+{
+    private androidx.appcompat.widget.ContentFrameLayout$OnAttachListener mAttachListener;
+    private final android.graphics.Rect mDecorPadding;
+    private android.util.TypedValue mFixedHeightMajor;
+    private android.util.TypedValue mFixedHeightMinor;
+    private android.util.TypedValue mFixedWidthMajor;
+    private android.util.TypedValue mFixedWidthMinor;
+    private android.util.TypedValue mMinWidthMajor;
+    private android.util.TypedValue mMinWidthMinor;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        android.content.Context $u2;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.appcompat.widget.ContentFrameLayout: void <init>(android.content.Context,android.util.AttributeSet)>($u2, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.appcompat.widget.ContentFrameLayout: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, 0);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        int $u4;
+        android.graphics.Rect $u0;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u4 := @parameter2: int;
+
+        specialinvoke this.<android.widget.FrameLayout: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, $u4);
+
+        $u0 = new android.graphics.Rect;
+
+        specialinvoke $u0.<android.graphics.Rect: void <init>()>();
+
+        this.<androidx.appcompat.widget.ContentFrameLayout: android.graphics.Rect mDecorPadding> = $u0;
+
+        return;
+    }
+
+    public void dispatchFitSystemWindows(android.graphics.Rect)
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        android.graphics.Rect $u1;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        $u1 := @parameter0: android.graphics.Rect;
+
+        virtualinvoke this.<androidx.appcompat.widget.ContentFrameLayout: boolean fitSystemWindows(android.graphics.Rect)>($u1);
+
+        return;
+    }
+
+    public android.util.TypedValue getFixedHeightMajor()
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        android.util.TypedValue $u0;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedHeightMajor>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new android.util.TypedValue;
+
+        specialinvoke $u0.<android.util.TypedValue: void <init>()>();
+
+        this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedHeightMajor> = $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedHeightMajor>;
+
+        return $u0;
+    }
+
+    public android.util.TypedValue getFixedHeightMinor()
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        android.util.TypedValue $u0;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedHeightMinor>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new android.util.TypedValue;
+
+        specialinvoke $u0.<android.util.TypedValue: void <init>()>();
+
+        this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedHeightMinor> = $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedHeightMinor>;
+
+        return $u0;
+    }
+
+    public android.util.TypedValue getFixedWidthMajor()
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        android.util.TypedValue $u0;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedWidthMajor>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new android.util.TypedValue;
+
+        specialinvoke $u0.<android.util.TypedValue: void <init>()>();
+
+        this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedWidthMajor> = $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedWidthMajor>;
+
+        return $u0;
+    }
+
+    public android.util.TypedValue getFixedWidthMinor()
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        android.util.TypedValue $u0;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedWidthMinor>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new android.util.TypedValue;
+
+        specialinvoke $u0.<android.util.TypedValue: void <init>()>();
+
+        this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedWidthMinor> = $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedWidthMinor>;
+
+        return $u0;
+    }
+
+    public android.util.TypedValue getMinWidthMajor()
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        android.util.TypedValue $u0;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mMinWidthMajor>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new android.util.TypedValue;
+
+        specialinvoke $u0.<android.util.TypedValue: void <init>()>();
+
+        this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mMinWidthMajor> = $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mMinWidthMajor>;
+
+        return $u0;
+    }
+
+    public android.util.TypedValue getMinWidthMinor()
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        android.util.TypedValue $u0;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mMinWidthMinor>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new android.util.TypedValue;
+
+        specialinvoke $u0.<android.util.TypedValue: void <init>()>();
+
+        this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mMinWidthMinor> = $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mMinWidthMinor>;
+
+        return $u0;
+    }
+
+    protected void onAttachedToWindow()
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        androidx.appcompat.widget.ContentFrameLayout$OnAttachListener $u0;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        specialinvoke this.<android.widget.FrameLayout: void onAttachedToWindow()>();
+
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: androidx.appcompat.widget.ContentFrameLayout$OnAttachListener mAttachListener>;
+
+        if $u0 == null goto label1;
+
+        interfaceinvoke $u0.<androidx.appcompat.widget.ContentFrameLayout$OnAttachListener: void onAttachedFromWindow()>();
+
+     label1:
+        return;
+    }
+
+    protected void onDetachedFromWindow()
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        androidx.appcompat.widget.ContentFrameLayout$OnAttachListener $u0;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        specialinvoke this.<android.widget.FrameLayout: void onDetachedFromWindow()>();
+
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: androidx.appcompat.widget.ContentFrameLayout$OnAttachListener mAttachListener>;
+
+        if $u0 == null goto label1;
+
+        interfaceinvoke $u0.<androidx.appcompat.widget.ContentFrameLayout$OnAttachListener: void onDetachedFromWindow()>();
+
+     label1:
+        return;
+    }
+
+    protected void onMeasure(int, int)
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        int $u14, $u15, isPortrait, widthMode, w, widthSize, $u12#35;
+        android.content.Context $u-1;
+        android.content.res.Resources $u-1#5;
+        android.util.DisplayMetrics $u-1#7;
+        boolean isPortrait#11, fixedWidth, w#69;
+        android.util.TypedValue tvw;
+        float $u-1#23, $u12;
+        android.graphics.Rect widthSize#32;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        $u14 := @parameter0: int;
+
+        $u15 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ContentFrameLayout: android.content.Context getContext()>();
+
+        $u-1#5 = virtualinvoke $u-1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#7 = virtualinvoke $u-1#5.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        isPortrait = $u-1#7.<android.util.DisplayMetrics: int widthPixels>;
+
+        widthMode = $u-1#7.<android.util.DisplayMetrics: int heightPixels>;
+
+        if isPortrait >= widthMode goto label01;
+
+        isPortrait#11 = 1;
+
+        goto label02;
+
+     label01:
+        isPortrait#11 = 0;
+
+     label02:
+        isPortrait = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($u14);
+
+        widthMode = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($u15);
+
+        fixedWidth = 0;
+
+        if isPortrait != -2147483648 goto label07;
+
+        if isPortrait#11 == 0 goto label03;
+
+        tvw = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedWidthMinor>;
+
+        goto label04;
+
+     label03:
+        tvw = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedWidthMajor>;
+
+     label04:
+        if tvw == null goto label07;
+
+        w = tvw.<android.util.TypedValue: int type>;
+
+        if w == 0 goto label07;
+
+        w = 0;
+
+        widthSize = tvw.<android.util.TypedValue: int type>;
+
+        if widthSize != 5 goto label05;
+
+        $u-1#23 = virtualinvoke tvw.<android.util.TypedValue: float getDimension(android.util.DisplayMetrics)>($u-1#7);
+
+        w = (int) $u-1#23;
+
+        goto label06;
+
+     label05:
+        widthSize = tvw.<android.util.TypedValue: int type>;
+
+        if widthSize != 6 goto label06;
+
+        w = $u-1#7.<android.util.DisplayMetrics: int widthPixels>;
+
+        $u-1#23 = (float) w;
+
+        w = $u-1#7.<android.util.DisplayMetrics: int widthPixels>;
+
+        $u12 = (float) w;
+
+        $u-1#23 = virtualinvoke tvw.<android.util.TypedValue: float getFraction(float,float)>($u-1#23, $u12);
+
+        w = (int) $u-1#23;
+
+     label06:
+        if w <= 0 goto label07;
+
+        widthSize#32 = this.<androidx.appcompat.widget.ContentFrameLayout: android.graphics.Rect mDecorPadding>;
+
+        widthSize = widthSize#32.<android.graphics.Rect: int left>;
+
+        widthSize#32 = this.<androidx.appcompat.widget.ContentFrameLayout: android.graphics.Rect mDecorPadding>;
+
+        $u12#35 = widthSize#32.<android.graphics.Rect: int right>;
+
+        widthSize = widthSize + $u12#35;
+
+        w = w - widthSize;
+
+        $u14 = staticinvoke <android.view.View$MeasureSpec: int getSize(int)>($u14);
+
+        $u14 = staticinvoke <java.lang.Math: int min(int,int)>(w, $u14);
+
+        $u14 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($u14, 1073741824);
+
+        fixedWidth = 1;
+
+     label07:
+        if widthMode != -2147483648 goto label12;
+
+        if isPortrait#11 == 0 goto label08;
+
+        tvw = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedHeightMajor>;
+
+        goto label09;
+
+     label08:
+        tvw = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mFixedHeightMinor>;
+
+     label09:
+        if tvw == null goto label12;
+
+        widthMode = tvw.<android.util.TypedValue: int type>;
+
+        if widthMode == 0 goto label12;
+
+        widthMode = 0;
+
+        w = tvw.<android.util.TypedValue: int type>;
+
+        if w != 5 goto label10;
+
+        $u-1#23 = virtualinvoke tvw.<android.util.TypedValue: float getDimension(android.util.DisplayMetrics)>($u-1#7);
+
+        widthMode = (int) $u-1#23;
+
+        goto label11;
+
+     label10:
+        w = tvw.<android.util.TypedValue: int type>;
+
+        if w != 6 goto label11;
+
+        widthMode = $u-1#7.<android.util.DisplayMetrics: int heightPixels>;
+
+        $u-1#23 = (float) widthMode;
+
+        widthMode = $u-1#7.<android.util.DisplayMetrics: int heightPixels>;
+
+        $u12 = (float) widthMode;
+
+        $u-1#23 = virtualinvoke tvw.<android.util.TypedValue: float getFraction(float,float)>($u-1#23, $u12);
+
+        widthMode = (int) $u-1#23;
+
+     label11:
+        if widthMode <= 0 goto label12;
+
+        widthSize#32 = this.<androidx.appcompat.widget.ContentFrameLayout: android.graphics.Rect mDecorPadding>;
+
+        w = widthSize#32.<android.graphics.Rect: int top>;
+
+        widthSize#32 = this.<androidx.appcompat.widget.ContentFrameLayout: android.graphics.Rect mDecorPadding>;
+
+        widthSize = widthSize#32.<android.graphics.Rect: int bottom>;
+
+        w = w + widthSize;
+
+        widthMode = widthMode - w;
+
+        $u15 = staticinvoke <android.view.View$MeasureSpec: int getSize(int)>($u15);
+
+        $u15 = staticinvoke <java.lang.Math: int min(int,int)>(widthMode, $u15);
+
+        $u15 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($u15, 1073741824);
+
+     label12:
+        specialinvoke this.<android.widget.FrameLayout: void onMeasure(int,int)>($u14, $u15);
+
+        $u14 = virtualinvoke this.<androidx.appcompat.widget.ContentFrameLayout: int getMeasuredWidth()>();
+
+        w#69 = 0;
+
+        widthMode = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($u14, 1073741824);
+
+        if fixedWidth != 0 goto label18;
+
+        if isPortrait != -2147483648 goto label18;
+
+        if isPortrait#11 == 0 goto label13;
+
+        tvw = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mMinWidthMinor>;
+
+        goto label14;
+
+     label13:
+        tvw = this.<androidx.appcompat.widget.ContentFrameLayout: android.util.TypedValue mMinWidthMajor>;
+
+     label14:
+        if tvw == null goto label18;
+
+        isPortrait = tvw.<android.util.TypedValue: int type>;
+
+        if isPortrait == 0 goto label18;
+
+        isPortrait = 0;
+
+        w = tvw.<android.util.TypedValue: int type>;
+
+        if w != 5 goto label15;
+
+        $u-1#23 = virtualinvoke tvw.<android.util.TypedValue: float getDimension(android.util.DisplayMetrics)>($u-1#7);
+
+        isPortrait = (int) $u-1#23;
+
+        goto label16;
+
+     label15:
+        w = tvw.<android.util.TypedValue: int type>;
+
+        if w != 6 goto label16;
+
+        isPortrait = $u-1#7.<android.util.DisplayMetrics: int widthPixels>;
+
+        $u-1#23 = (float) isPortrait;
+
+        isPortrait = $u-1#7.<android.util.DisplayMetrics: int widthPixels>;
+
+        $u12 = (float) isPortrait;
+
+        $u-1#23 = virtualinvoke tvw.<android.util.TypedValue: float getFraction(float,float)>($u-1#23, $u12);
+
+        isPortrait = (int) $u-1#23;
+
+     label16:
+        if isPortrait <= 0 goto label17;
+
+        widthSize#32 = this.<androidx.appcompat.widget.ContentFrameLayout: android.graphics.Rect mDecorPadding>;
+
+        w = widthSize#32.<android.graphics.Rect: int left>;
+
+        widthSize#32 = this.<androidx.appcompat.widget.ContentFrameLayout: android.graphics.Rect mDecorPadding>;
+
+        widthSize = widthSize#32.<android.graphics.Rect: int right>;
+
+        w = w + widthSize;
+
+        isPortrait = isPortrait - w;
+
+     label17:
+        if $u14 >= isPortrait goto label18;
+
+        widthMode = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>(isPortrait, 1073741824);
+
+        w#69 = 1;
+
+     label18:
+        if w#69 == 0 goto label19;
+
+        specialinvoke this.<android.widget.FrameLayout: void onMeasure(int,int)>(widthMode, $u15);
+
+     label19:
+        return;
+    }
+
+    public void setAttachListener(androidx.appcompat.widget.ContentFrameLayout$OnAttachListener)
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        androidx.appcompat.widget.ContentFrameLayout$OnAttachListener $u1;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        $u1 := @parameter0: androidx.appcompat.widget.ContentFrameLayout$OnAttachListener;
+
+        this.<androidx.appcompat.widget.ContentFrameLayout: androidx.appcompat.widget.ContentFrameLayout$OnAttachListener mAttachListener> = $u1;
+
+        return;
+    }
+
+    public void setDecorPadding(int, int, int, int)
+    {
+        androidx.appcompat.widget.ContentFrameLayout this;
+        int $u2, $u3, $u4, $u5;
+        boolean $u-1;
+        android.graphics.Rect $u0;
+
+        this := @this: androidx.appcompat.widget.ContentFrameLayout;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        $u0 = this.<androidx.appcompat.widget.ContentFrameLayout: android.graphics.Rect mDecorPadding>;
+
+        virtualinvoke $u0.<android.graphics.Rect: void set(int,int,int,int)>($u2, $u3, $u4, $u5);
+
+        $u-1 = staticinvoke <androidx.core.view.ViewCompat: boolean isLaidOut(android.view.View)>(this);
+
+        if $u-1 == 0 goto label1;
+
+        virtualinvoke this.<androidx.appcompat.widget.ContentFrameLayout: void requestLayout()>();
+
+     label1:
+        return;
+    }
+}

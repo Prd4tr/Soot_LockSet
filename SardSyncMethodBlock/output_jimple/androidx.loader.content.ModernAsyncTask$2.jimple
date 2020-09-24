@@ -1,0 +1,87 @@
+class androidx.loader.content.ModernAsyncTask$2 extends androidx.loader.content.ModernAsyncTask$WorkerRunnable
+{
+    final androidx.loader.content.ModernAsyncTask this$0;
+
+    void <init>(androidx.loader.content.ModernAsyncTask)
+    {
+        androidx.loader.content.ModernAsyncTask$2 this;
+        androidx.loader.content.ModernAsyncTask $u1;
+
+        this := @this: androidx.loader.content.ModernAsyncTask$2;
+
+        $u1 := @parameter0: androidx.loader.content.ModernAsyncTask;
+
+        this.<androidx.loader.content.ModernAsyncTask$2: androidx.loader.content.ModernAsyncTask this$0> = $u1;
+
+        specialinvoke this.<androidx.loader.content.ModernAsyncTask$WorkerRunnable: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.Object call() throws java.lang.Exception
+    {
+        androidx.loader.content.ModernAsyncTask$2 this;
+        java.lang.Object $u-1, result#4;
+        androidx.loader.content.ModernAsyncTask result;
+        java.util.concurrent.atomic.AtomicBoolean result#2;
+        java.lang.Object[] $u3;
+        java.lang.Throwable tr, $u1;
+
+        this := @this: androidx.loader.content.ModernAsyncTask$2;
+
+        result = this.<androidx.loader.content.ModernAsyncTask$2: androidx.loader.content.ModernAsyncTask this$0>;
+
+        result#2 = result.<androidx.loader.content.ModernAsyncTask: java.util.concurrent.atomic.AtomicBoolean mTaskInvoked>;
+
+        virtualinvoke result#2.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>(1);
+
+        result#4 = null;
+
+     label1:
+        staticinvoke <android.os.Process: void setThreadPriority(int)>(10);
+
+        result = this.<androidx.loader.content.ModernAsyncTask$2: androidx.loader.content.ModernAsyncTask this$0>;
+
+        $u3 = this.<androidx.loader.content.ModernAsyncTask$2: java.lang.Object[] mParams>;
+
+        $u-1 = virtualinvoke result.<androidx.loader.content.ModernAsyncTask: java.lang.Object doInBackground(java.lang.Object[])>($u3);
+
+     label2:
+        result#4 = $u-1;
+
+     label3:
+        staticinvoke <android.os.Binder: void flushPendingCommands()>();
+
+     label4:
+        result = this.<androidx.loader.content.ModernAsyncTask$2: androidx.loader.content.ModernAsyncTask this$0>;
+
+        virtualinvoke result.<androidx.loader.content.ModernAsyncTask: java.lang.Object postResult(java.lang.Object)>($u-1);
+
+        return $u-1;
+
+     label5:
+        tr := @caughtexception;
+
+     label6:
+        result = this.<androidx.loader.content.ModernAsyncTask$2: androidx.loader.content.ModernAsyncTask this$0>;
+
+        result#2 = result.<androidx.loader.content.ModernAsyncTask: java.util.concurrent.atomic.AtomicBoolean mCancelled>;
+
+        virtualinvoke result#2.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>(1);
+
+        throw tr;
+
+     label7:
+        $u1 := @caughtexception;
+
+        result = this.<androidx.loader.content.ModernAsyncTask$2: androidx.loader.content.ModernAsyncTask this$0>;
+
+        virtualinvoke result.<androidx.loader.content.ModernAsyncTask: java.lang.Object postResult(java.lang.Object)>(result#4);
+
+        throw $u1;
+
+        catch java.lang.Throwable from label1 to label2 with label5;
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label6 to label7 with label7;
+    }
+}

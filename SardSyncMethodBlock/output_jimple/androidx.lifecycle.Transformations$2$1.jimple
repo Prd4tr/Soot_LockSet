@@ -1,0 +1,40 @@
+class androidx.lifecycle.Transformations$2$1 extends java.lang.Object implements androidx.lifecycle.Observer
+{
+    final androidx.lifecycle.Transformations$2 this$0;
+
+    void <init>(androidx.lifecycle.Transformations$2)
+    {
+        androidx.lifecycle.Transformations$2$1 this;
+        androidx.lifecycle.Transformations$2 $u1;
+
+        this := @this: androidx.lifecycle.Transformations$2$1;
+
+        $u1 := @parameter0: androidx.lifecycle.Transformations$2;
+
+        this.<androidx.lifecycle.Transformations$2$1: androidx.lifecycle.Transformations$2 this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onChanged(java.lang.Object)
+    {
+        androidx.lifecycle.Transformations$2$1 this;
+        java.lang.Object y;
+        androidx.lifecycle.Transformations$2 $u0;
+        androidx.lifecycle.MediatorLiveData $u0#2;
+
+        this := @this: androidx.lifecycle.Transformations$2$1;
+
+        y := @parameter0: java.lang.Object;
+
+        $u0 = this.<androidx.lifecycle.Transformations$2$1: androidx.lifecycle.Transformations$2 this$0>;
+
+        $u0#2 = $u0.<androidx.lifecycle.Transformations$2: androidx.lifecycle.MediatorLiveData val$result>;
+
+        virtualinvoke $u0#2.<androidx.lifecycle.MediatorLiveData: void setValue(java.lang.Object)>(y);
+
+        return;
+    }
+}

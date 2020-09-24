@@ -1,0 +1,418 @@
+public class androidx.core.graphics.TypefaceCompat extends java.lang.Object
+{
+    private static final androidx.collection.LruCache sTypefaceCache;
+    private static final androidx.core.graphics.TypefaceCompatBaseImpl sTypefaceCompatImpl;
+
+    static void <clinit>()
+    {
+        boolean $u-1;
+        int $u0;
+        androidx.core.graphics.TypefaceCompatApi29Impl $u0#3;
+        androidx.core.graphics.TypefaceCompatApi28Impl $u0#6;
+        androidx.core.graphics.TypefaceCompatApi26Impl $u0#9;
+        androidx.core.graphics.TypefaceCompatApi24Impl $u0#13;
+        androidx.core.graphics.TypefaceCompatApi21Impl $u0#16;
+        androidx.core.graphics.TypefaceCompatBaseImpl $u0#17;
+        androidx.collection.LruCache $u0#18;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 29 goto label1;
+
+        $u0#3 = new androidx.core.graphics.TypefaceCompatApi29Impl;
+
+        specialinvoke $u0#3.<androidx.core.graphics.TypefaceCompatApi29Impl: void <init>()>();
+
+        <androidx.core.graphics.TypefaceCompat: androidx.core.graphics.TypefaceCompatBaseImpl sTypefaceCompatImpl> = $u0#3;
+
+        goto label6;
+
+     label1:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 28 goto label2;
+
+        $u0#6 = new androidx.core.graphics.TypefaceCompatApi28Impl;
+
+        specialinvoke $u0#6.<androidx.core.graphics.TypefaceCompatApi28Impl: void <init>()>();
+
+        <androidx.core.graphics.TypefaceCompat: androidx.core.graphics.TypefaceCompatBaseImpl sTypefaceCompatImpl> = $u0#6;
+
+        goto label6;
+
+     label2:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 26 goto label3;
+
+        $u0#9 = new androidx.core.graphics.TypefaceCompatApi26Impl;
+
+        specialinvoke $u0#9.<androidx.core.graphics.TypefaceCompatApi26Impl: void <init>()>();
+
+        <androidx.core.graphics.TypefaceCompat: androidx.core.graphics.TypefaceCompatBaseImpl sTypefaceCompatImpl> = $u0#9;
+
+        goto label6;
+
+     label3:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 24 goto label4;
+
+        $u-1 = staticinvoke <androidx.core.graphics.TypefaceCompatApi24Impl: boolean isUsable()>();
+
+        if $u-1 == 0 goto label4;
+
+        $u0#13 = new androidx.core.graphics.TypefaceCompatApi24Impl;
+
+        specialinvoke $u0#13.<androidx.core.graphics.TypefaceCompatApi24Impl: void <init>()>();
+
+        <androidx.core.graphics.TypefaceCompat: androidx.core.graphics.TypefaceCompatBaseImpl sTypefaceCompatImpl> = $u0#13;
+
+        goto label6;
+
+     label4:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label5;
+
+        $u0#16 = new androidx.core.graphics.TypefaceCompatApi21Impl;
+
+        specialinvoke $u0#16.<androidx.core.graphics.TypefaceCompatApi21Impl: void <init>()>();
+
+        <androidx.core.graphics.TypefaceCompat: androidx.core.graphics.TypefaceCompatBaseImpl sTypefaceCompatImpl> = $u0#16;
+
+        goto label6;
+
+     label5:
+        $u0#17 = new androidx.core.graphics.TypefaceCompatBaseImpl;
+
+        specialinvoke $u0#17.<androidx.core.graphics.TypefaceCompatBaseImpl: void <init>()>();
+
+        <androidx.core.graphics.TypefaceCompat: androidx.core.graphics.TypefaceCompatBaseImpl sTypefaceCompatImpl> = $u0#17;
+
+     label6:
+        $u0#18 = new androidx.collection.LruCache;
+
+        specialinvoke $u0#18.<androidx.collection.LruCache: void <init>(int)>(16);
+
+        <androidx.core.graphics.TypefaceCompat: androidx.collection.LruCache sTypefaceCache> = $u0#18;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.core.graphics.TypefaceCompat this;
+
+        this := @this: androidx.core.graphics.TypefaceCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.graphics.Typeface create(android.content.Context, android.graphics.Typeface, int)
+    {
+        android.content.Context $u3;
+        android.graphics.Typeface $u4, $u-1;
+        int $u5, $u1;
+        java.lang.IllegalArgumentException typefaceFromFamily;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u4 := @parameter1: android.graphics.Typeface;
+
+        $u5 := @parameter2: int;
+
+        if $u3 == null goto label2;
+
+        $u1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u1 >= 21 goto label1;
+
+        $u-1 = staticinvoke <androidx.core.graphics.TypefaceCompat: android.graphics.Typeface getBestFontFromFamily(android.content.Context,android.graphics.Typeface,int)>($u3, $u4, $u5);
+
+        if $u-1 == null goto label1;
+
+        return $u-1;
+
+     label1:
+        $u4 = staticinvoke <android.graphics.Typeface: android.graphics.Typeface create(android.graphics.Typeface,int)>($u4, $u5);
+
+        return $u4;
+
+     label2:
+        typefaceFromFamily = new java.lang.IllegalArgumentException;
+
+        specialinvoke typefaceFromFamily.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Context cannot be null");
+
+        throw typefaceFromFamily;
+    }
+
+    public static android.graphics.Typeface createFromFontInfo(android.content.Context, android.os.CancellationSignal, androidx.core.provider.FontsContractCompat$FontInfo[], int)
+    {
+        android.content.Context $u1;
+        android.os.CancellationSignal $u2;
+        androidx.core.provider.FontsContractCompat$FontInfo[] $u3;
+        int $u4;
+        android.graphics.Typeface $u-1;
+        androidx.core.graphics.TypefaceCompatBaseImpl $u0;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: android.os.CancellationSignal;
+
+        $u3 := @parameter2: androidx.core.provider.FontsContractCompat$FontInfo[];
+
+        $u4 := @parameter3: int;
+
+        $u0 = <androidx.core.graphics.TypefaceCompat: androidx.core.graphics.TypefaceCompatBaseImpl sTypefaceCompatImpl>;
+
+        $u-1 = virtualinvoke $u0.<androidx.core.graphics.TypefaceCompatBaseImpl: android.graphics.Typeface createFromFontInfo(android.content.Context,android.os.CancellationSignal,androidx.core.provider.FontsContractCompat$FontInfo[],int)>($u1, $u2, $u3, $u4);
+
+        return $u-1;
+    }
+
+    public static android.graphics.Typeface createFromResourcesFamilyXml(android.content.Context, androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry, android.content.res.Resources, int, int, androidx.core.content.res.ResourcesCompat$FontCallback, android.os.Handler, boolean)
+    {
+        android.content.Context $u11;
+        androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry $u12;
+        android.content.res.Resources $u13;
+        int $u14, $u15, $u-1;
+        androidx.core.content.res.ResourcesCompat$FontCallback $u16;
+        android.os.Handler $u17;
+        boolean $u18, typeface;
+        androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry providerEntry;
+        androidx.core.provider.FontRequest $u-1#13;
+        android.graphics.Typeface $u-1#18, $u-1#29;
+        androidx.core.graphics.TypefaceCompatBaseImpl typeface#23;
+        androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry $u2;
+        androidx.collection.LruCache $u2#31;
+        java.lang.String $u-1#32;
+
+        $u11 := @parameter0: android.content.Context;
+
+        $u12 := @parameter1: androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry;
+
+        $u13 := @parameter2: android.content.res.Resources;
+
+        $u14 := @parameter3: int;
+
+        $u15 := @parameter4: int;
+
+        $u16 := @parameter5: androidx.core.content.res.ResourcesCompat$FontCallback;
+
+        $u17 := @parameter6: android.os.Handler;
+
+        $u18 := @parameter7: boolean;
+
+        typeface = $u12 instanceof androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry;
+
+        if typeface == 0 goto label07;
+
+        providerEntry = (androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry) $u12;
+
+        if $u18 == 0 goto label02;
+
+        $u-1 = virtualinvoke providerEntry.<androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry: int getFetchStrategy()>();
+
+        if $u-1 != 0 goto label01;
+
+        typeface = 1;
+
+        goto label04;
+
+     label01:
+        typeface = 0;
+
+        goto label04;
+
+     label02:
+        if $u16 != null goto label03;
+
+        typeface = 1;
+
+        goto label04;
+
+     label03:
+        typeface = 0;
+
+     label04:
+        if $u18 == 0 goto label05;
+
+        $u-1 = virtualinvoke providerEntry.<androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry: int getTimeout()>();
+
+        goto label06;
+
+     label05:
+        $u-1 = -1;
+
+     label06:
+        $u-1#13 = virtualinvoke providerEntry.<androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry: androidx.core.provider.FontRequest getRequest()>();
+
+        $u-1#18 = staticinvoke <androidx.core.provider.FontsContractCompat: android.graphics.Typeface getFontSync(android.content.Context,androidx.core.provider.FontRequest,androidx.core.content.res.ResourcesCompat$FontCallback,android.os.Handler,boolean,int,int)>($u11, $u-1#13, $u16, $u17, typeface, $u-1, $u15);
+
+        goto label09;
+
+     label07:
+        typeface#23 = <androidx.core.graphics.TypefaceCompat: androidx.core.graphics.TypefaceCompatBaseImpl sTypefaceCompatImpl>;
+
+        $u2 = (androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry) $u12;
+
+        $u-1#29 = virtualinvoke typeface#23.<androidx.core.graphics.TypefaceCompatBaseImpl: android.graphics.Typeface createFromFontFamilyFilesResourceEntry(android.content.Context,androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry,android.content.res.Resources,int)>($u11, $u2, $u13, $u15);
+
+        $u-1#18 = $u-1#29;
+
+        if $u16 == null goto label09;
+
+        if $u-1#29 == null goto label08;
+
+        virtualinvoke $u16.<androidx.core.content.res.ResourcesCompat$FontCallback: void callbackSuccessAsync(android.graphics.Typeface,android.os.Handler)>($u-1#29, $u17);
+
+        goto label09;
+
+     label08:
+        virtualinvoke $u16.<androidx.core.content.res.ResourcesCompat$FontCallback: void callbackFailAsync(int,android.os.Handler)>(-3, $u17);
+
+     label09:
+        if $u-1#18 == null goto label10;
+
+        $u2#31 = <androidx.core.graphics.TypefaceCompat: androidx.collection.LruCache sTypefaceCache>;
+
+        $u-1#32 = staticinvoke <androidx.core.graphics.TypefaceCompat: java.lang.String createResourceUid(android.content.res.Resources,int,int)>($u13, $u14, $u15);
+
+        virtualinvoke $u2#31.<androidx.collection.LruCache: java.lang.Object put(java.lang.Object,java.lang.Object)>($u-1#32, $u-1#18);
+
+     label10:
+        return $u-1#18;
+    }
+
+    public static android.graphics.Typeface createFromResourcesFontFile(android.content.Context, android.content.res.Resources, int, java.lang.String, int)
+    {
+        android.content.Context $u6;
+        android.content.res.Resources $u7;
+        int $u8, $u10;
+        java.lang.String $u9;
+        androidx.core.graphics.TypefaceCompatBaseImpl typeface;
+        android.graphics.Typeface $u-1;
+        androidx.collection.LruCache $u2;
+
+        $u6 := @parameter0: android.content.Context;
+
+        $u7 := @parameter1: android.content.res.Resources;
+
+        $u8 := @parameter2: int;
+
+        $u9 := @parameter3: java.lang.String;
+
+        $u10 := @parameter4: int;
+
+        typeface = <androidx.core.graphics.TypefaceCompat: androidx.core.graphics.TypefaceCompatBaseImpl sTypefaceCompatImpl>;
+
+        $u-1 = virtualinvoke typeface.<androidx.core.graphics.TypefaceCompatBaseImpl: android.graphics.Typeface createFromResourcesFontFile(android.content.Context,android.content.res.Resources,int,java.lang.String,int)>($u6, $u7, $u8, $u9, $u10);
+
+        if $u-1 == null goto label1;
+
+        $u9 = staticinvoke <androidx.core.graphics.TypefaceCompat: java.lang.String createResourceUid(android.content.res.Resources,int,int)>($u7, $u8, $u10);
+
+        $u2 = <androidx.core.graphics.TypefaceCompat: androidx.collection.LruCache sTypefaceCache>;
+
+        virtualinvoke $u2.<androidx.collection.LruCache: java.lang.Object put(java.lang.Object,java.lang.Object)>($u9, $u-1);
+
+     label1:
+        return $u-1;
+    }
+
+    private static java.lang.String createResourceUid(android.content.res.Resources, int, int)
+    {
+        android.content.res.Resources $u2;
+        int $u3, $u4;
+        java.lang.StringBuilder $u0;
+        java.lang.String $u-1;
+
+        $u2 := @parameter0: android.content.res.Resources;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u0 = new java.lang.StringBuilder;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1 = virtualinvoke $u2.<android.content.res.Resources: java.lang.String getResourcePackageName(int)>($u3);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("-");
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u3);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("-");
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u4);
+
+        $u-1 = virtualinvoke $u0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1;
+    }
+
+    public static android.graphics.Typeface findFromCache(android.content.res.Resources, int, int)
+    {
+        android.content.res.Resources $u2;
+        int $u3, $u4;
+        androidx.collection.LruCache $u0;
+        java.lang.String $u-1;
+        java.lang.Object $u-1#3;
+        android.graphics.Typeface $u0#5;
+
+        $u2 := @parameter0: android.content.res.Resources;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u0 = <androidx.core.graphics.TypefaceCompat: androidx.collection.LruCache sTypefaceCache>;
+
+        $u-1 = staticinvoke <androidx.core.graphics.TypefaceCompat: java.lang.String createResourceUid(android.content.res.Resources,int,int)>($u2, $u3, $u4);
+
+        $u-1#3 = virtualinvoke $u0.<androidx.collection.LruCache: java.lang.Object get(java.lang.Object)>($u-1);
+
+        $u0#5 = (android.graphics.Typeface) $u-1#3;
+
+        return $u0#5;
+    }
+
+    private static android.graphics.Typeface getBestFontFromFamily(android.content.Context, android.graphics.Typeface, int)
+    {
+        android.content.Context $u3;
+        android.graphics.Typeface $u4;
+        int $u5;
+        androidx.core.graphics.TypefaceCompatBaseImpl families;
+        androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry $u-1;
+        android.content.res.Resources $u-1#6;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u4 := @parameter1: android.graphics.Typeface;
+
+        $u5 := @parameter2: int;
+
+        families = <androidx.core.graphics.TypefaceCompat: androidx.core.graphics.TypefaceCompatBaseImpl sTypefaceCompatImpl>;
+
+        $u-1 = virtualinvoke families.<androidx.core.graphics.TypefaceCompatBaseImpl: androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry getFontFamily(android.graphics.Typeface)>($u4);
+
+        if $u-1 != null goto label1;
+
+        return null;
+
+     label1:
+        families = <androidx.core.graphics.TypefaceCompat: androidx.core.graphics.TypefaceCompatBaseImpl sTypefaceCompatImpl>;
+
+        $u-1#6 = virtualinvoke $u3.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u4 = virtualinvoke families.<androidx.core.graphics.TypefaceCompatBaseImpl: android.graphics.Typeface createFromFontFamilyFilesResourceEntry(android.content.Context,androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry,android.content.res.Resources,int)>($u3, $u-1, $u-1#6, $u5);
+
+        return $u4;
+    }
+}

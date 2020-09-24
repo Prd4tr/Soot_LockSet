@@ -1,0 +1,709 @@
+public abstract class androidx.cursoradapter.widget.CursorAdapter extends android.widget.BaseAdapter implements android.widget.Filterable, androidx.cursoradapter.widget.CursorFilter$CursorFilterClient
+{
+    public static final int FLAG_AUTO_REQUERY;
+    public static final int FLAG_REGISTER_CONTENT_OBSERVER;
+    protected boolean mAutoRequery;
+    protected androidx.cursoradapter.widget.CursorAdapter$ChangeObserver mChangeObserver;
+    protected android.content.Context mContext;
+    protected android.database.Cursor mCursor;
+    protected androidx.cursoradapter.widget.CursorFilter mCursorFilter;
+    protected android.database.DataSetObserver mDataSetObserver;
+    protected boolean mDataValid;
+    protected android.widget.FilterQueryProvider mFilterQueryProvider;
+    protected int mRowIDColumn;
+
+    public void <init>(android.content.Context, android.database.Cursor)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        android.content.Context $u2;
+        android.database.Cursor $u3;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.database.Cursor;
+
+        specialinvoke this.<android.widget.BaseAdapter: void <init>()>();
+
+        virtualinvoke this.<androidx.cursoradapter.widget.CursorAdapter: void init(android.content.Context,android.database.Cursor,int)>($u2, $u3, 1);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.database.Cursor, int)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        android.content.Context $u1;
+        android.database.Cursor $u2;
+        int $u3;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: android.database.Cursor;
+
+        $u3 := @parameter2: int;
+
+        specialinvoke this.<android.widget.BaseAdapter: void <init>()>();
+
+        virtualinvoke this.<androidx.cursoradapter.widget.CursorAdapter: void init(android.content.Context,android.database.Cursor,int)>($u1, $u2, $u3);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.database.Cursor, boolean)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        android.content.Context $u2;
+        android.database.Cursor $u3;
+        boolean $u4;
+        byte $u0;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.database.Cursor;
+
+        $u4 := @parameter2: boolean;
+
+        specialinvoke this.<android.widget.BaseAdapter: void <init>()>();
+
+        if $u4 == 0 goto label1;
+
+        $u0 = 1;
+
+        goto label2;
+
+     label1:
+        $u0 = 2;
+
+     label2:
+        virtualinvoke this.<androidx.cursoradapter.widget.CursorAdapter: void init(android.content.Context,android.database.Cursor,int)>($u2, $u3, $u0);
+
+        return;
+    }
+
+    public abstract void bindView(android.view.View, android.content.Context, android.database.Cursor);
+
+    public void changeCursor(android.database.Cursor)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        android.database.Cursor $u2;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u2 := @parameter0: android.database.Cursor;
+
+        $u2 = virtualinvoke this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor swapCursor(android.database.Cursor)>($u2);
+
+        if $u2 == null goto label1;
+
+        interfaceinvoke $u2.<android.database.Cursor: void close()>();
+
+     label1:
+        return;
+    }
+
+    public java.lang.CharSequence convertToString(android.database.Cursor)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        android.database.Cursor $u2;
+        java.lang.String $u-1;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u2 := @parameter0: android.database.Cursor;
+
+        if $u2 != null goto label1;
+
+        return "";
+
+     label1:
+        $u-1 = virtualinvoke $u2.<java.lang.Object: java.lang.String toString()>();
+
+        return $u-1;
+    }
+
+    public int getCount()
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        int $u-1;
+        boolean $u0;
+        android.database.Cursor $u0#2;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u0 = this.<androidx.cursoradapter.widget.CursorAdapter: boolean mDataValid>;
+
+        if $u0 == 0 goto label1;
+
+        $u0#2 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        if $u0#2 == null goto label1;
+
+        $u-1 = interfaceinvoke $u0#2.<android.database.Cursor: int getCount()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public android.database.Cursor getCursor()
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        android.database.Cursor ret0;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        ret0 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        return ret0;
+    }
+
+    public android.view.View getDropDownView(int, android.view.View, android.view.ViewGroup)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        int $u4;
+        android.view.View $u5;
+        android.view.ViewGroup $u6;
+        android.database.Cursor $u2;
+        boolean v;
+        android.content.Context v#3;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: android.view.View;
+
+        $u6 := @parameter2: android.view.ViewGroup;
+
+        v = this.<androidx.cursoradapter.widget.CursorAdapter: boolean mDataValid>;
+
+        if v == 0 goto label2;
+
+        $u2 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        interfaceinvoke $u2.<android.database.Cursor: boolean moveToPosition(int)>($u4);
+
+        if $u5 != null goto label1;
+
+        v#3 = this.<androidx.cursoradapter.widget.CursorAdapter: android.content.Context mContext>;
+
+        $u2 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        $u5 = virtualinvoke this.<androidx.cursoradapter.widget.CursorAdapter: android.view.View newDropDownView(android.content.Context,android.database.Cursor,android.view.ViewGroup)>(v#3, $u2, $u6);
+
+        goto label1;
+
+     label1:
+        v#3 = this.<androidx.cursoradapter.widget.CursorAdapter: android.content.Context mContext>;
+
+        $u2 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        virtualinvoke this.<androidx.cursoradapter.widget.CursorAdapter: void bindView(android.view.View,android.content.Context,android.database.Cursor)>($u5, v#3, $u2);
+
+        return $u5;
+
+     label2:
+        return null;
+    }
+
+    public android.widget.Filter getFilter()
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        androidx.cursoradapter.widget.CursorFilter $u0;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u0 = this.<androidx.cursoradapter.widget.CursorAdapter: androidx.cursoradapter.widget.CursorFilter mCursorFilter>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new androidx.cursoradapter.widget.CursorFilter;
+
+        specialinvoke $u0.<androidx.cursoradapter.widget.CursorFilter: void <init>(androidx.cursoradapter.widget.CursorFilter$CursorFilterClient)>(this);
+
+        this.<androidx.cursoradapter.widget.CursorAdapter: androidx.cursoradapter.widget.CursorFilter mCursorFilter> = $u0;
+
+     label1:
+        $u0 = this.<androidx.cursoradapter.widget.CursorAdapter: androidx.cursoradapter.widget.CursorFilter mCursorFilter>;
+
+        return $u0;
+    }
+
+    public android.widget.FilterQueryProvider getFilterQueryProvider()
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        android.widget.FilterQueryProvider ret0;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        ret0 = this.<androidx.cursoradapter.widget.CursorAdapter: android.widget.FilterQueryProvider mFilterQueryProvider>;
+
+        return ret0;
+    }
+
+    public java.lang.Object getItem(int)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        int $u2;
+        boolean $u0;
+        android.database.Cursor $u0#2;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.cursoradapter.widget.CursorAdapter: boolean mDataValid>;
+
+        if $u0 == 0 goto label1;
+
+        $u0#2 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        if $u0#2 == null goto label1;
+
+        interfaceinvoke $u0#2.<android.database.Cursor: boolean moveToPosition(int)>($u2);
+
+        $u0#2 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        return $u0#2;
+
+     label1:
+        return null;
+    }
+
+    public long getItemId(int)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        int $u4;
+        boolean $u0;
+        android.database.Cursor $u0#3;
+        long $u-1;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u4 := @parameter0: int;
+
+        $u0 = this.<androidx.cursoradapter.widget.CursorAdapter: boolean mDataValid>;
+
+        if $u0 == 0 goto label1;
+
+        $u0#3 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        if $u0#3 == null goto label1;
+
+        $u0 = interfaceinvoke $u0#3.<android.database.Cursor: boolean moveToPosition(int)>($u4);
+
+        if $u0 == 0 goto label1;
+
+        $u0#3 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        $u4 = this.<androidx.cursoradapter.widget.CursorAdapter: int mRowIDColumn>;
+
+        $u-1 = interfaceinvoke $u0#3.<android.database.Cursor: long getLong(int)>($u4);
+
+        return $u-1;
+
+     label1:
+        return 0L;
+    }
+
+    public android.view.View getView(int, android.view.View, android.view.ViewGroup)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        int $u4;
+        android.view.View $u5;
+        android.view.ViewGroup $u6;
+        boolean v;
+        android.database.Cursor v#2;
+        android.content.Context v#5;
+        java.lang.IllegalStateException v#11;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: android.view.View;
+
+        $u6 := @parameter2: android.view.ViewGroup;
+
+        v = this.<androidx.cursoradapter.widget.CursorAdapter: boolean mDataValid>;
+
+        if v == 0 goto label3;
+
+        v#2 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        v = interfaceinvoke v#2.<android.database.Cursor: boolean moveToPosition(int)>($u4);
+
+        if v == 0 goto label2;
+
+        if $u5 != null goto label1;
+
+        v#5 = this.<androidx.cursoradapter.widget.CursorAdapter: android.content.Context mContext>;
+
+        v#2 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        $u5 = virtualinvoke this.<androidx.cursoradapter.widget.CursorAdapter: android.view.View newView(android.content.Context,android.database.Cursor,android.view.ViewGroup)>(v#5, v#2, $u6);
+
+        goto label1;
+
+     label1:
+        v#5 = this.<androidx.cursoradapter.widget.CursorAdapter: android.content.Context mContext>;
+
+        v#2 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        virtualinvoke this.<androidx.cursoradapter.widget.CursorAdapter: void bindView(android.view.View,android.content.Context,android.database.Cursor)>($u5, v#5, v#2);
+
+        return $u5;
+
+     label2:
+        v#11 = new java.lang.IllegalStateException;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("couldn\'t move cursor to position ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u4);
+
+        $u-1 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke v#11.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u-1);
+
+        throw v#11;
+
+     label3:
+        v#11 = new java.lang.IllegalStateException;
+
+        specialinvoke v#11.<java.lang.IllegalStateException: void <init>(java.lang.String)>("this should only be called when the cursor is valid");
+
+        throw v#11;
+    }
+
+    public boolean hasStableIds()
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        return 1;
+    }
+
+    void init(android.content.Context, android.database.Cursor, int)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        android.content.Context $u4;
+        android.database.Cursor $u5;
+        int $u-1, $u6;
+        boolean $u1, cursorPresent;
+        androidx.cursoradapter.widget.CursorAdapter$ChangeObserver $u1#10;
+        androidx.cursoradapter.widget.CursorAdapter$MyDataSetObserver $u1#11;
+        android.database.DataSetObserver $u1#14;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: android.database.Cursor;
+
+        $u6 := @parameter2: int;
+
+        $u-1 = $u6 & 1;
+
+        $u1 = 0;
+
+        if $u-1 != 1 goto label1;
+
+        $u6 = $u6 | 2;
+
+        this.<androidx.cursoradapter.widget.CursorAdapter: boolean mAutoRequery> = 1;
+
+        goto label2;
+
+     label1:
+        this.<androidx.cursoradapter.widget.CursorAdapter: boolean mAutoRequery> = 0;
+
+     label2:
+        if $u5 == null goto label3;
+
+        $u1 = 1;
+
+     label3:
+        cursorPresent = $u1;
+
+        this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor> = $u5;
+
+        this.<androidx.cursoradapter.widget.CursorAdapter: boolean mDataValid> = $u1;
+
+        this.<androidx.cursoradapter.widget.CursorAdapter: android.content.Context mContext> = $u4;
+
+        if $u1 == 0 goto label4;
+
+        $u-1 = interfaceinvoke $u5.<android.database.Cursor: int getColumnIndexOrThrow(java.lang.String)>("_id");
+
+        goto label5;
+
+     label4:
+        $u-1 = -1;
+
+     label5:
+        this.<androidx.cursoradapter.widget.CursorAdapter: int mRowIDColumn> = $u-1;
+
+        $u6 = $u6 & 2;
+
+        if $u6 != 2 goto label6;
+
+        $u1#10 = new androidx.cursoradapter.widget.CursorAdapter$ChangeObserver;
+
+        specialinvoke $u1#10.<androidx.cursoradapter.widget.CursorAdapter$ChangeObserver: void <init>(androidx.cursoradapter.widget.CursorAdapter)>(this);
+
+        this.<androidx.cursoradapter.widget.CursorAdapter: androidx.cursoradapter.widget.CursorAdapter$ChangeObserver mChangeObserver> = $u1#10;
+
+        $u1#11 = new androidx.cursoradapter.widget.CursorAdapter$MyDataSetObserver;
+
+        specialinvoke $u1#11.<androidx.cursoradapter.widget.CursorAdapter$MyDataSetObserver: void <init>(androidx.cursoradapter.widget.CursorAdapter)>(this);
+
+        this.<androidx.cursoradapter.widget.CursorAdapter: android.database.DataSetObserver mDataSetObserver> = $u1#11;
+
+        goto label7;
+
+     label6:
+        this.<androidx.cursoradapter.widget.CursorAdapter: androidx.cursoradapter.widget.CursorAdapter$ChangeObserver mChangeObserver> = null;
+
+        this.<androidx.cursoradapter.widget.CursorAdapter: android.database.DataSetObserver mDataSetObserver> = null;
+
+     label7:
+        if cursorPresent == 0 goto label9;
+
+        $u1#10 = this.<androidx.cursoradapter.widget.CursorAdapter: androidx.cursoradapter.widget.CursorAdapter$ChangeObserver mChangeObserver>;
+
+        if $u1#10 == null goto label8;
+
+        interfaceinvoke $u5.<android.database.Cursor: void registerContentObserver(android.database.ContentObserver)>($u1#10);
+
+     label8:
+        $u1#14 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.DataSetObserver mDataSetObserver>;
+
+        if $u1#14 == null goto label9;
+
+        interfaceinvoke $u5.<android.database.Cursor: void registerDataSetObserver(android.database.DataSetObserver)>($u1#14);
+
+     label9:
+        return;
+    }
+
+    protected void init(android.content.Context, android.database.Cursor, boolean)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        android.content.Context $u2;
+        android.database.Cursor $u3;
+        boolean $u4;
+        byte $u0;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.database.Cursor;
+
+        $u4 := @parameter2: boolean;
+
+        if $u4 == 0 goto label1;
+
+        $u0 = 1;
+
+        goto label2;
+
+     label1:
+        $u0 = 2;
+
+     label2:
+        virtualinvoke this.<androidx.cursoradapter.widget.CursorAdapter: void init(android.content.Context,android.database.Cursor,int)>($u2, $u3, $u0);
+
+        return;
+    }
+
+    public android.view.View newDropDownView(android.content.Context, android.database.Cursor, android.view.ViewGroup)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        android.content.Context $u2;
+        android.database.Cursor $u3;
+        android.view.ViewGroup $u4;
+        android.view.View $u-1;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.database.Cursor;
+
+        $u4 := @parameter2: android.view.ViewGroup;
+
+        $u-1 = virtualinvoke this.<androidx.cursoradapter.widget.CursorAdapter: android.view.View newView(android.content.Context,android.database.Cursor,android.view.ViewGroup)>($u2, $u3, $u4);
+
+        return $u-1;
+    }
+
+    public abstract android.view.View newView(android.content.Context, android.database.Cursor, android.view.ViewGroup);
+
+    protected void onContentChanged()
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        boolean $u0;
+        android.database.Cursor $u0#2;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u0 = this.<androidx.cursoradapter.widget.CursorAdapter: boolean mAutoRequery>;
+
+        if $u0 == 0 goto label1;
+
+        $u0#2 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        if $u0#2 == null goto label1;
+
+        $u0 = interfaceinvoke $u0#2.<android.database.Cursor: boolean isClosed()>();
+
+        if $u0 != 0 goto label1;
+
+        $u0#2 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        $u0 = interfaceinvoke $u0#2.<android.database.Cursor: boolean requery()>();
+
+        this.<androidx.cursoradapter.widget.CursorAdapter: boolean mDataValid> = $u0;
+
+     label1:
+        return;
+    }
+
+    public android.database.Cursor runQueryOnBackgroundThread(java.lang.CharSequence)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        java.lang.CharSequence $u2;
+        android.database.Cursor $u-1;
+        android.widget.FilterQueryProvider $u0;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.cursoradapter.widget.CursorAdapter: android.widget.FilterQueryProvider mFilterQueryProvider>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = interfaceinvoke $u0.<android.widget.FilterQueryProvider: android.database.Cursor runQuery(java.lang.CharSequence)>($u2);
+
+        return $u-1;
+
+     label1:
+        $u-1 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        return $u-1;
+    }
+
+    public void setFilterQueryProvider(android.widget.FilterQueryProvider)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        android.widget.FilterQueryProvider $u1;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u1 := @parameter0: android.widget.FilterQueryProvider;
+
+        this.<androidx.cursoradapter.widget.CursorAdapter: android.widget.FilterQueryProvider mFilterQueryProvider> = $u1;
+
+        return;
+    }
+
+    public android.database.Cursor swapCursor(android.database.Cursor)
+    {
+        androidx.cursoradapter.widget.CursorAdapter this;
+        android.database.Cursor $u3, oldCursor;
+        int $u-1;
+        androidx.cursoradapter.widget.CursorAdapter$ChangeObserver $u1;
+        android.database.DataSetObserver $u1#5;
+
+        this := @this: androidx.cursoradapter.widget.CursorAdapter;
+
+        $u3 := @parameter0: android.database.Cursor;
+
+        oldCursor = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        if $u3 != oldCursor goto label1;
+
+        return null;
+
+     label1:
+        oldCursor = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor>;
+
+        if oldCursor == null goto label3;
+
+        $u1 = this.<androidx.cursoradapter.widget.CursorAdapter: androidx.cursoradapter.widget.CursorAdapter$ChangeObserver mChangeObserver>;
+
+        if $u1 == null goto label2;
+
+        interfaceinvoke oldCursor.<android.database.Cursor: void unregisterContentObserver(android.database.ContentObserver)>($u1);
+
+     label2:
+        $u1#5 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.DataSetObserver mDataSetObserver>;
+
+        if $u1#5 == null goto label3;
+
+        interfaceinvoke oldCursor.<android.database.Cursor: void unregisterDataSetObserver(android.database.DataSetObserver)>($u1#5);
+
+     label3:
+        this.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor mCursor> = $u3;
+
+        if $u3 == null goto label6;
+
+        $u1 = this.<androidx.cursoradapter.widget.CursorAdapter: androidx.cursoradapter.widget.CursorAdapter$ChangeObserver mChangeObserver>;
+
+        if $u1 == null goto label4;
+
+        interfaceinvoke $u3.<android.database.Cursor: void registerContentObserver(android.database.ContentObserver)>($u1);
+
+     label4:
+        $u1#5 = this.<androidx.cursoradapter.widget.CursorAdapter: android.database.DataSetObserver mDataSetObserver>;
+
+        if $u1#5 == null goto label5;
+
+        interfaceinvoke $u3.<android.database.Cursor: void registerDataSetObserver(android.database.DataSetObserver)>($u1#5);
+
+     label5:
+        $u-1 = interfaceinvoke $u3.<android.database.Cursor: int getColumnIndexOrThrow(java.lang.String)>("_id");
+
+        this.<androidx.cursoradapter.widget.CursorAdapter: int mRowIDColumn> = $u-1;
+
+        this.<androidx.cursoradapter.widget.CursorAdapter: boolean mDataValid> = 1;
+
+        virtualinvoke this.<androidx.cursoradapter.widget.CursorAdapter: void notifyDataSetChanged()>();
+
+        return oldCursor;
+
+     label6:
+        this.<androidx.cursoradapter.widget.CursorAdapter: int mRowIDColumn> = -1;
+
+        this.<androidx.cursoradapter.widget.CursorAdapter: boolean mDataValid> = 0;
+
+        virtualinvoke this.<androidx.cursoradapter.widget.CursorAdapter: void notifyDataSetInvalidated()>();
+
+        return oldCursor;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.cursoradapter.widget.CursorAdapter: int FLAG_REGISTER_CONTENT_OBSERVER> = 2;
+
+        <androidx.cursoradapter.widget.CursorAdapter: int FLAG_AUTO_REQUERY> = 1;
+
+        return;
+    }
+}

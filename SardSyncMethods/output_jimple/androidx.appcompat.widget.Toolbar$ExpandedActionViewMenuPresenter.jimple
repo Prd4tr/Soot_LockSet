@@ -1,0 +1,407 @@
+class androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter extends java.lang.Object implements androidx.appcompat.view.menu.MenuPresenter
+{
+    androidx.appcompat.view.menu.MenuItemImpl mCurrentExpandedItem;
+    androidx.appcompat.view.menu.MenuBuilder mMenu;
+    final androidx.appcompat.widget.Toolbar this$0;
+
+    void <init>(androidx.appcompat.widget.Toolbar)
+    {
+        androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter this;
+        androidx.appcompat.widget.Toolbar $u1;
+
+        this := @this: androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter;
+
+        $u1 := @parameter0: androidx.appcompat.widget.Toolbar;
+
+        this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean collapseItemActionView(androidx.appcompat.view.menu.MenuBuilder, androidx.appcompat.view.menu.MenuItemImpl)
+    {
+        androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter this;
+        androidx.appcompat.view.menu.MenuBuilder $u3;
+        androidx.appcompat.view.menu.MenuItemImpl $u4;
+        androidx.appcompat.widget.Toolbar $u0;
+        android.view.View $u0#2;
+        boolean $u0#3;
+        androidx.appcompat.view.CollapsibleActionView $u0#6;
+        android.widget.ImageButton $u1;
+
+        this := @this: androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter;
+
+        $u3 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u4 := @parameter1: androidx.appcompat.view.menu.MenuItemImpl;
+
+        $u0 = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.Toolbar: android.view.View mExpandedActionView>;
+
+        $u0#3 = $u0#2 instanceof androidx.appcompat.view.CollapsibleActionView;
+
+        if $u0#3 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.Toolbar: android.view.View mExpandedActionView>;
+
+        $u0#6 = (androidx.appcompat.view.CollapsibleActionView) $u0#2;
+
+        interfaceinvoke $u0#6.<androidx.appcompat.view.CollapsibleActionView: void onActionViewCollapsed()>();
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.Toolbar: android.view.View mExpandedActionView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.Toolbar: void removeView(android.view.View)>($u0#2);
+
+        $u0 = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        $u1 = $u0.<androidx.appcompat.widget.Toolbar: android.widget.ImageButton mCollapseButtonView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.Toolbar: void removeView(android.view.View)>($u1);
+
+        $u0 = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        $u0.<androidx.appcompat.widget.Toolbar: android.view.View mExpandedActionView> = null;
+
+        $u0 = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.Toolbar: void addChildrenForExpandedActionView()>();
+
+        this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.view.menu.MenuItemImpl mCurrentExpandedItem> = null;
+
+        $u0 = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.Toolbar: void requestLayout()>();
+
+        virtualinvoke $u4.<androidx.appcompat.view.menu.MenuItemImpl: void setActionViewExpanded(boolean)>(0);
+
+        return 1;
+    }
+
+    public boolean expandItemActionView(androidx.appcompat.view.menu.MenuBuilder, androidx.appcompat.view.menu.MenuItemImpl)
+    {
+        androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter this;
+        androidx.appcompat.view.menu.MenuBuilder $u6;
+        androidx.appcompat.view.menu.MenuItemImpl $u7;
+        androidx.appcompat.widget.Toolbar collapseButtonParent;
+        android.widget.ImageButton collapseButtonParent#3;
+        android.view.ViewParent $u-1;
+        boolean lp;
+        android.view.ViewGroup lp#9;
+        android.view.View $u-1#14;
+        androidx.appcompat.widget.Toolbar$LayoutParams $u-1#26;
+        int $u4;
+        androidx.appcompat.view.CollapsibleActionView $u3;
+
+        this := @this: androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter;
+
+        $u6 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u7 := @parameter1: androidx.appcompat.view.menu.MenuItemImpl;
+
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        virtualinvoke collapseButtonParent.<androidx.appcompat.widget.Toolbar: void ensureCollapseButtonView()>();
+
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        collapseButtonParent#3 = collapseButtonParent.<androidx.appcompat.widget.Toolbar: android.widget.ImageButton mCollapseButtonView>;
+
+        $u-1 = virtualinvoke collapseButtonParent#3.<android.widget.ImageButton: android.view.ViewParent getParent()>();
+
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        if $u-1 == collapseButtonParent goto label2;
+
+        lp = $u-1 instanceof android.view.ViewGroup;
+
+        if lp == 0 goto label1;
+
+        lp#9 = (android.view.ViewGroup) $u-1;
+
+        collapseButtonParent#3 = collapseButtonParent.<androidx.appcompat.widget.Toolbar: android.widget.ImageButton mCollapseButtonView>;
+
+        virtualinvoke lp#9.<android.view.ViewGroup: void removeView(android.view.View)>(collapseButtonParent#3);
+
+     label1:
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        collapseButtonParent#3 = collapseButtonParent.<androidx.appcompat.widget.Toolbar: android.widget.ImageButton mCollapseButtonView>;
+
+        virtualinvoke collapseButtonParent.<androidx.appcompat.widget.Toolbar: void addView(android.view.View)>(collapseButtonParent#3);
+
+     label2:
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        $u-1#14 = virtualinvoke $u7.<androidx.appcompat.view.menu.MenuItemImpl: android.view.View getActionView()>();
+
+        collapseButtonParent.<androidx.appcompat.widget.Toolbar: android.view.View mExpandedActionView> = $u-1#14;
+
+        this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.view.menu.MenuItemImpl mCurrentExpandedItem> = $u7;
+
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        $u-1#14 = collapseButtonParent.<androidx.appcompat.widget.Toolbar: android.view.View mExpandedActionView>;
+
+        $u-1 = virtualinvoke $u-1#14.<android.view.View: android.view.ViewParent getParent()>();
+
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        if $u-1 == collapseButtonParent goto label4;
+
+        lp = $u-1 instanceof android.view.ViewGroup;
+
+        if lp == 0 goto label3;
+
+        lp#9 = (android.view.ViewGroup) $u-1;
+
+        $u-1#14 = collapseButtonParent.<androidx.appcompat.widget.Toolbar: android.view.View mExpandedActionView>;
+
+        virtualinvoke lp#9.<android.view.ViewGroup: void removeView(android.view.View)>($u-1#14);
+
+     label3:
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        $u-1#26 = virtualinvoke collapseButtonParent.<androidx.appcompat.widget.Toolbar: androidx.appcompat.widget.Toolbar$LayoutParams generateDefaultLayoutParams()>();
+
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        $u4 = collapseButtonParent.<androidx.appcompat.widget.Toolbar: int mButtonGravity>;
+
+        $u4 = $u4 & 112;
+
+        $u4 = 8388611 | $u4;
+
+        $u-1#26.<androidx.appcompat.widget.Toolbar$LayoutParams: int gravity> = $u4;
+
+        $u-1#26.<androidx.appcompat.widget.Toolbar$LayoutParams: int mViewType> = 2;
+
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        $u-1#14 = collapseButtonParent.<androidx.appcompat.widget.Toolbar: android.view.View mExpandedActionView>;
+
+        virtualinvoke $u-1#14.<android.view.View: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($u-1#26);
+
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        $u-1#14 = collapseButtonParent.<androidx.appcompat.widget.Toolbar: android.view.View mExpandedActionView>;
+
+        virtualinvoke collapseButtonParent.<androidx.appcompat.widget.Toolbar: void addView(android.view.View)>($u-1#14);
+
+     label4:
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        virtualinvoke collapseButtonParent.<androidx.appcompat.widget.Toolbar: void removeChildrenForExpandedActionView()>();
+
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        virtualinvoke collapseButtonParent.<androidx.appcompat.widget.Toolbar: void requestLayout()>();
+
+        virtualinvoke $u7.<androidx.appcompat.view.menu.MenuItemImpl: void setActionViewExpanded(boolean)>(1);
+
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        $u-1#14 = collapseButtonParent.<androidx.appcompat.widget.Toolbar: android.view.View mExpandedActionView>;
+
+        lp = $u-1#14 instanceof androidx.appcompat.view.CollapsibleActionView;
+
+        if lp == 0 goto label5;
+
+        collapseButtonParent = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.widget.Toolbar this$0>;
+
+        $u-1#14 = collapseButtonParent.<androidx.appcompat.widget.Toolbar: android.view.View mExpandedActionView>;
+
+        $u3 = (androidx.appcompat.view.CollapsibleActionView) $u-1#14;
+
+        interfaceinvoke $u3.<androidx.appcompat.view.CollapsibleActionView: void onActionViewExpanded()>();
+
+     label5:
+        return 1;
+    }
+
+    public boolean flagActionItems()
+    {
+        androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter this;
+
+        this := @this: androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter;
+
+        return 0;
+    }
+
+    public int getId()
+    {
+        androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter this;
+
+        this := @this: androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter;
+
+        return 0;
+    }
+
+    public androidx.appcompat.view.menu.MenuView getMenuView(android.view.ViewGroup)
+    {
+        androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter this;
+        android.view.ViewGroup $u2;
+
+        this := @this: androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter;
+
+        $u2 := @parameter0: android.view.ViewGroup;
+
+        return null;
+    }
+
+    public void initForMenu(android.content.Context, androidx.appcompat.view.menu.MenuBuilder)
+    {
+        androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter this;
+        android.content.Context $u3;
+        androidx.appcompat.view.menu.MenuBuilder $u4, $u0;
+        androidx.appcompat.view.menu.MenuItemImpl $u1;
+
+        this := @this: androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u4 := @parameter1: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u0 = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.view.menu.MenuBuilder mMenu>;
+
+        if $u0 == null goto label1;
+
+        $u1 = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.view.menu.MenuItemImpl mCurrentExpandedItem>;
+
+        if $u1 == null goto label1;
+
+        virtualinvoke $u0.<androidx.appcompat.view.menu.MenuBuilder: boolean collapseItemActionView(androidx.appcompat.view.menu.MenuItemImpl)>($u1);
+
+     label1:
+        this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.view.menu.MenuBuilder mMenu> = $u4;
+
+        return;
+    }
+
+    public void onCloseMenu(androidx.appcompat.view.menu.MenuBuilder, boolean)
+    {
+        androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter this;
+        androidx.appcompat.view.menu.MenuBuilder $u1;
+        boolean $u2;
+
+        this := @this: androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter;
+
+        $u1 := @parameter0: androidx.appcompat.view.menu.MenuBuilder;
+
+        $u2 := @parameter1: boolean;
+
+        return;
+    }
+
+    public void onRestoreInstanceState(android.os.Parcelable)
+    {
+        androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter this;
+        android.os.Parcelable $u1;
+
+        this := @this: androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter;
+
+        $u1 := @parameter0: android.os.Parcelable;
+
+        return;
+    }
+
+    public android.os.Parcelable onSaveInstanceState()
+    {
+        androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter this;
+
+        this := @this: androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter;
+
+        return null;
+    }
+
+    public boolean onSubMenuSelected(androidx.appcompat.view.menu.SubMenuBuilder)
+    {
+        androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter this;
+        androidx.appcompat.view.menu.SubMenuBuilder $u2;
+
+        this := @this: androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter;
+
+        $u2 := @parameter0: androidx.appcompat.view.menu.SubMenuBuilder;
+
+        return 0;
+    }
+
+    public void setCallback(androidx.appcompat.view.menu.MenuPresenter$Callback)
+    {
+        androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter this;
+        androidx.appcompat.view.menu.MenuPresenter$Callback $u1;
+
+        this := @this: androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter;
+
+        $u1 := @parameter0: androidx.appcompat.view.menu.MenuPresenter$Callback;
+
+        return;
+    }
+
+    public void updateMenuView(boolean)
+    {
+        androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter this;
+        boolean $u6;
+        androidx.appcompat.view.menu.MenuItemImpl $u4;
+        androidx.appcompat.view.menu.MenuBuilder count;
+        int $u-1, i;
+        android.view.MenuItem $u-1#8;
+
+        this := @this: androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter;
+
+        $u6 := @parameter0: boolean;
+
+        $u4 = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.view.menu.MenuItemImpl mCurrentExpandedItem>;
+
+        if $u4 == null goto label4;
+
+        $u6 = 0;
+
+        count = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.view.menu.MenuBuilder mMenu>;
+
+        if count == null goto label3;
+
+        $u-1 = virtualinvoke count.<androidx.appcompat.view.menu.MenuBuilder: int size()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label3;
+
+        count = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.view.menu.MenuBuilder mMenu>;
+
+        $u-1#8 = virtualinvoke count.<androidx.appcompat.view.menu.MenuBuilder: android.view.MenuItem getItem(int)>(i);
+
+        $u4 = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.view.menu.MenuItemImpl mCurrentExpandedItem>;
+
+        if $u-1#8 != $u4 goto label2;
+
+        $u6 = 1;
+
+        goto label3;
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        if $u6 != 0 goto label4;
+
+        count = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.view.menu.MenuBuilder mMenu>;
+
+        $u4 = this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: androidx.appcompat.view.menu.MenuItemImpl mCurrentExpandedItem>;
+
+        virtualinvoke this.<androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter: boolean collapseItemActionView(androidx.appcompat.view.menu.MenuBuilder,androidx.appcompat.view.menu.MenuItemImpl)>(count, $u4);
+
+     label4:
+        return;
+    }
+}

@@ -1,0 +1,445 @@
+public class androidx.constraintlayout.solver.widgets.analyzer.DependencyNode extends java.lang.Object implements androidx.constraintlayout.solver.widgets.analyzer.Dependency
+{
+    public boolean delegateToWidgetRun;
+    java.util.List dependencies;
+    int margin;
+    androidx.constraintlayout.solver.widgets.analyzer.DimensionDependency marginDependency;
+    int marginFactor;
+    public boolean readyToSolve;
+    public boolean resolved;
+    androidx.constraintlayout.solver.widgets.analyzer.WidgetRun run;
+    java.util.List targets;
+    androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type type;
+    public androidx.constraintlayout.solver.widgets.analyzer.Dependency updateDelegate;
+    public int value;
+
+    public void <init>(androidx.constraintlayout.solver.widgets.analyzer.WidgetRun)
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode this;
+        androidx.constraintlayout.solver.widgets.analyzer.WidgetRun $u4;
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type $u2;
+        java.util.ArrayList $u0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode;
+
+        $u4 := @parameter0: androidx.constraintlayout.solver.widgets.analyzer.WidgetRun;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.Dependency updateDelegate> = null;
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean delegateToWidgetRun> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean readyToSolve> = 0;
+
+        $u2 = <androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type UNKNOWN>;
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type type> = $u2;
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: int marginFactor> = 1;
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.DimensionDependency marginDependency> = null;
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean resolved> = 0;
+
+        $u0 = new java.util.ArrayList;
+
+        specialinvoke $u0.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List dependencies> = $u0;
+
+        $u0 = new java.util.ArrayList;
+
+        specialinvoke $u0.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List targets> = $u0;
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.WidgetRun run> = $u4;
+
+        return;
+    }
+
+    public void addDependency(androidx.constraintlayout.solver.widgets.analyzer.Dependency)
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode this;
+        androidx.constraintlayout.solver.widgets.analyzer.Dependency $u2;
+        java.util.List $u0;
+        boolean $u0#2;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode;
+
+        $u2 := @parameter0: androidx.constraintlayout.solver.widgets.analyzer.Dependency;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List dependencies>;
+
+        interfaceinvoke $u0.<java.util.List: boolean add(java.lang.Object)>($u2);
+
+        $u0#2 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean resolved>;
+
+        if $u0#2 == 0 goto label1;
+
+        interfaceinvoke $u2.<androidx.constraintlayout.solver.widgets.analyzer.Dependency: void update(androidx.constraintlayout.solver.widgets.analyzer.Dependency)>($u2);
+
+     label1:
+        return;
+    }
+
+    public void clear()
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode this;
+        java.util.List $u0;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List targets>;
+
+        interfaceinvoke $u0.<java.util.List: void clear()>();
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List dependencies>;
+
+        interfaceinvoke $u0.<java.util.List: void clear()>();
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean resolved> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: int value> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean readyToSolve> = 0;
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean delegateToWidgetRun> = 0;
+
+        return;
+    }
+
+    public java.lang.String name()
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode this;
+        androidx.constraintlayout.solver.widgets.analyzer.WidgetRun definition;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget definition#2;
+        java.lang.String $u-1;
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type $u1, $u2;
+        java.lang.StringBuilder $u1#9;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode;
+
+        definition = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.WidgetRun run>;
+
+        definition#2 = definition.<androidx.constraintlayout.solver.widgets.analyzer.WidgetRun: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        $u-1 = virtualinvoke definition#2.<androidx.constraintlayout.solver.widgets.ConstraintWidget: java.lang.String getDebugName()>();
+
+        $u1 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type type>;
+
+        $u2 = <androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type LEFT>;
+
+        if $u1 == $u2 goto label2;
+
+        $u1 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type type>;
+
+        $u2 = <androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type RIGHT>;
+
+        if $u1 != $u2 goto label1;
+
+        goto label2;
+
+     label1:
+        $u1#9 = new java.lang.StringBuilder;
+
+        specialinvoke $u1#9.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke $u1#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("_VERTICAL");
+
+        $u-1 = virtualinvoke $u1#9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        goto label3;
+
+     label2:
+        $u1#9 = new java.lang.StringBuilder;
+
+        specialinvoke $u1#9.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke $u1#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("_HORIZONTAL");
+
+        $u-1 = virtualinvoke $u1#9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label3:
+        $u1#9 = new java.lang.StringBuilder;
+
+        specialinvoke $u1#9.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke $u1#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $u1 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type type>;
+
+        $u-1 = virtualinvoke $u1.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type: java.lang.String name()>();
+
+        virtualinvoke $u1#9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        $u-1 = virtualinvoke $u1#9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1;
+    }
+
+    public void resolve(int)
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode this;
+        int $u3;
+        boolean $u0;
+        java.util.List $u0#3;
+        java.util.Iterator $u-1;
+        java.lang.Object $u-1#8;
+        androidx.constraintlayout.solver.widgets.analyzer.Dependency node;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean resolved>;
+
+        if $u0 == 0 goto label1;
+
+        return;
+
+     label1:
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean resolved> = 1;
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: int value> = $u3;
+
+        $u0#3 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List dependencies>;
+
+        $u-1 = interfaceinvoke $u0#3.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        $u0 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u0 == 0 goto label3;
+
+        $u-1#8 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        node = (androidx.constraintlayout.solver.widgets.analyzer.Dependency) $u-1#8;
+
+        interfaceinvoke node.<androidx.constraintlayout.solver.widgets.analyzer.Dependency: void update(androidx.constraintlayout.solver.widgets.analyzer.Dependency)>(node);
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode this;
+        java.lang.StringBuilder $u0;
+        androidx.constraintlayout.solver.widgets.analyzer.WidgetRun $u1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u1#3;
+        java.lang.String $u-1;
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type $u1#7;
+        boolean $u1#9;
+        int $u1#10;
+        java.lang.Comparable $u1#12;
+        java.util.List $u1#14;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode;
+
+        $u0 = new java.lang.StringBuilder;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        $u1 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.WidgetRun run>;
+
+        $u1#3 = $u1.<androidx.constraintlayout.solver.widgets.analyzer.WidgetRun: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        $u-1 = virtualinvoke $u1#3.<androidx.constraintlayout.solver.widgets.ConstraintWidget: java.lang.String getDebugName()>();
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $u1#7 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode$Type type>;
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u1#7);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(");
+
+        $u1#9 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean resolved>;
+
+        if $u1#9 == 0 goto label1;
+
+        $u1#10 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: int value>;
+
+        $u1#12 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u1#10);
+
+        goto label2;
+
+     label1:
+        $u1#12 = "unresolved";
+
+     label2:
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u1#12);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") <t=");
+
+        $u1#14 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List targets>;
+
+        $u1#10 = interfaceinvoke $u1#14.<java.util.List: int size()>();
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u1#10);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":d=");
+
+        $u1#14 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List dependencies>;
+
+        $u1#10 = interfaceinvoke $u1#14.<java.util.List: int size()>();
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u1#10);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(">");
+
+        $u-1 = virtualinvoke $u0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1;
+    }
+
+    public void update(androidx.constraintlayout.solver.widgets.analyzer.Dependency)
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.DependencyNode this, target, t;
+        androidx.constraintlayout.solver.widgets.analyzer.Dependency $u7;
+        boolean $u5;
+        java.util.List $u0;
+        java.util.Iterator $u-1;
+        java.lang.Object $u-1#6;
+        androidx.constraintlayout.solver.widgets.analyzer.WidgetRun $u0#13;
+        int numTargets, $u3;
+        androidx.constraintlayout.solver.widgets.analyzer.DimensionDependency $u0#25;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.DependencyNode;
+
+        $u7 := @parameter0: androidx.constraintlayout.solver.widgets.analyzer.Dependency;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List targets>;
+
+        $u-1 = interfaceinvoke $u0.<java.util.List: java.util.Iterator iterator()>();
+
+     label01:
+        $u5 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u5 == 0 goto label02;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        target = (androidx.constraintlayout.solver.widgets.analyzer.DependencyNode) $u-1#6;
+
+        $u5 = target.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean resolved>;
+
+        if $u5 != 0 goto label01;
+
+        return;
+
+     label02:
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean readyToSolve> = 1;
+
+        $u7 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.Dependency updateDelegate>;
+
+        if $u7 == null goto label03;
+
+        interfaceinvoke $u7.<androidx.constraintlayout.solver.widgets.analyzer.Dependency: void update(androidx.constraintlayout.solver.widgets.analyzer.Dependency)>(this);
+
+     label03:
+        $u5 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean delegateToWidgetRun>;
+
+        if $u5 == 0 goto label04;
+
+        $u0#13 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.WidgetRun run>;
+
+        virtualinvoke $u0#13.<androidx.constraintlayout.solver.widgets.analyzer.WidgetRun: void update(androidx.constraintlayout.solver.widgets.analyzer.Dependency)>(this);
+
+        return;
+
+     label04:
+        target = null;
+
+        numTargets = 0;
+
+        $u0 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: java.util.List targets>;
+
+        $u-1 = interfaceinvoke $u0.<java.util.List: java.util.Iterator iterator()>();
+
+     label05:
+        $u5 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u5 == 0 goto label07;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        t = (androidx.constraintlayout.solver.widgets.analyzer.DependencyNode) $u-1#6;
+
+        $u5 = t instanceof androidx.constraintlayout.solver.widgets.analyzer.DimensionDependency;
+
+        if $u5 == 0 goto label06;
+
+        goto label05;
+
+     label06:
+        target = t;
+
+        numTargets = numTargets + 1;
+
+        goto label05;
+
+     label07:
+        if target == null goto label10;
+
+        if numTargets != 1 goto label10;
+
+        $u5 = target.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: boolean resolved>;
+
+        if $u5 == 0 goto label10;
+
+        $u0#25 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.DimensionDependency marginDependency>;
+
+        if $u0#25 == null goto label09;
+
+        $u5 = $u0#25.<androidx.constraintlayout.solver.widgets.analyzer.DimensionDependency: boolean resolved>;
+
+        if $u5 == 0 goto label08;
+
+        numTargets = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: int marginFactor>;
+
+        $u0#25 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.DimensionDependency marginDependency>;
+
+        $u3 = $u0#25.<androidx.constraintlayout.solver.widgets.analyzer.DimensionDependency: int value>;
+
+        numTargets = numTargets * $u3;
+
+        this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: int margin> = numTargets;
+
+        goto label09;
+
+     label08:
+        return;
+
+     label09:
+        numTargets = target.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: int value>;
+
+        $u3 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: int margin>;
+
+        numTargets = numTargets + $u3;
+
+        virtualinvoke this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: void resolve(int)>(numTargets);
+
+     label10:
+        $u7 = this.<androidx.constraintlayout.solver.widgets.analyzer.DependencyNode: androidx.constraintlayout.solver.widgets.analyzer.Dependency updateDelegate>;
+
+        if $u7 == null goto label11;
+
+        interfaceinvoke $u7.<androidx.constraintlayout.solver.widgets.analyzer.Dependency: void update(androidx.constraintlayout.solver.widgets.analyzer.Dependency)>(this);
+
+     label11:
+        return;
+    }
+}

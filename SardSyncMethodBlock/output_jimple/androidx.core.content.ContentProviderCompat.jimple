@@ -1,0 +1,36 @@
+public final class androidx.core.content.ContentProviderCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.content.ContentProviderCompat this;
+
+        this := @this: androidx.core.content.ContentProviderCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.content.Context requireContext(android.content.ContentProvider)
+    {
+        android.content.ContentProvider $u3;
+        java.lang.IllegalStateException $u1;
+        android.content.Context $u-1;
+
+        $u3 := @parameter0: android.content.ContentProvider;
+
+        $u-1 = virtualinvoke $u3.<android.content.ContentProvider: android.content.Context getContext()>();
+
+        if $u-1 == null goto label1;
+
+        return $u-1;
+
+     label1:
+        $u1 = new java.lang.IllegalStateException;
+
+        specialinvoke $u1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Cannot find context from the provider.");
+
+        throw $u1;
+    }
+}

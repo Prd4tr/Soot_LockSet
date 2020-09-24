@@ -1,0 +1,130 @@
+public class androidx.lifecycle.ViewModelStore extends java.lang.Object
+{
+    private final java.util.HashMap mMap;
+
+    public void <init>()
+    {
+        androidx.lifecycle.ViewModelStore this;
+        java.util.HashMap $u0;
+
+        this := @this: androidx.lifecycle.ViewModelStore;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new java.util.HashMap;
+
+        specialinvoke $u0.<java.util.HashMap: void <init>()>();
+
+        this.<androidx.lifecycle.ViewModelStore: java.util.HashMap mMap> = $u0;
+
+        return;
+    }
+
+    public final void clear()
+    {
+        androidx.lifecycle.ViewModelStore this;
+        java.util.HashMap $u0;
+        java.util.Collection $u-1;
+        java.util.Iterator $u-1#4;
+        boolean $u-1#6;
+        java.lang.Object $u-1#8;
+        androidx.lifecycle.ViewModel vm;
+
+        this := @this: androidx.lifecycle.ViewModelStore;
+
+        $u0 = this.<androidx.lifecycle.ViewModelStore: java.util.HashMap mMap>;
+
+        $u-1 = virtualinvoke $u0.<java.util.HashMap: java.util.Collection values()>();
+
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#6 == 0 goto label2;
+
+        $u-1#8 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        vm = (androidx.lifecycle.ViewModel) $u-1#8;
+
+        virtualinvoke vm.<androidx.lifecycle.ViewModel: void clear()>();
+
+        goto label1;
+
+     label2:
+        $u0 = this.<androidx.lifecycle.ViewModelStore: java.util.HashMap mMap>;
+
+        virtualinvoke $u0.<java.util.HashMap: void clear()>();
+
+        return;
+    }
+
+    final androidx.lifecycle.ViewModel get(java.lang.String)
+    {
+        androidx.lifecycle.ViewModelStore this;
+        java.lang.String $u2;
+        java.lang.Object $u-1;
+        java.util.HashMap $u0;
+        androidx.lifecycle.ViewModel $u0#3;
+
+        this := @this: androidx.lifecycle.ViewModelStore;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u0 = this.<androidx.lifecycle.ViewModelStore: java.util.HashMap mMap>;
+
+        $u-1 = virtualinvoke $u0.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($u2);
+
+        $u0#3 = (androidx.lifecycle.ViewModel) $u-1;
+
+        return $u0#3;
+    }
+
+    java.util.Set keys()
+    {
+        androidx.lifecycle.ViewModelStore this;
+        java.util.HashSet $u0;
+        java.util.Set $u-1;
+        java.util.HashMap $u1;
+
+        this := @this: androidx.lifecycle.ViewModelStore;
+
+        $u0 = new java.util.HashSet;
+
+        $u1 = this.<androidx.lifecycle.ViewModelStore: java.util.HashMap mMap>;
+
+        $u-1 = virtualinvoke $u1.<java.util.HashMap: java.util.Set keySet()>();
+
+        specialinvoke $u0.<java.util.HashSet: void <init>(java.util.Collection)>($u-1);
+
+        return $u0;
+    }
+
+    final void put(java.lang.String, androidx.lifecycle.ViewModel)
+    {
+        androidx.lifecycle.ViewModelStore this;
+        java.lang.String $u2;
+        androidx.lifecycle.ViewModel $u3;
+        java.lang.Object $u-1;
+        java.util.HashMap oldViewModel;
+
+        this := @this: androidx.lifecycle.ViewModelStore;
+
+        $u2 := @parameter0: java.lang.String;
+
+        $u3 := @parameter1: androidx.lifecycle.ViewModel;
+
+        oldViewModel = this.<androidx.lifecycle.ViewModelStore: java.util.HashMap mMap>;
+
+        $u-1 = virtualinvoke oldViewModel.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u2, $u3);
+
+        $u3 = (androidx.lifecycle.ViewModel) $u-1;
+
+        if $u3 == null goto label1;
+
+        virtualinvoke $u3.<androidx.lifecycle.ViewModel: void onCleared()>();
+
+     label1:
+        return;
+    }
+}

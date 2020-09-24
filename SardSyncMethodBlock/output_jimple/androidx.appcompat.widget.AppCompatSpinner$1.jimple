@@ -1,0 +1,66 @@
+class androidx.appcompat.widget.AppCompatSpinner$1 extends androidx.appcompat.widget.ForwardingListener
+{
+    final androidx.appcompat.widget.AppCompatSpinner this$0;
+    final androidx.appcompat.widget.AppCompatSpinner$DropdownPopup val$popup;
+
+    void <init>(androidx.appcompat.widget.AppCompatSpinner, android.view.View, androidx.appcompat.widget.AppCompatSpinner$DropdownPopup)
+    {
+        androidx.appcompat.widget.AppCompatSpinner$1 this;
+        androidx.appcompat.widget.AppCompatSpinner $u1;
+        android.view.View $u2;
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup $u3;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$1;
+
+        $u1 := @parameter0: androidx.appcompat.widget.AppCompatSpinner;
+
+        $u2 := @parameter1: android.view.View;
+
+        $u3 := @parameter2: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup;
+
+        this.<androidx.appcompat.widget.AppCompatSpinner$1: androidx.appcompat.widget.AppCompatSpinner this$0> = $u1;
+
+        this.<androidx.appcompat.widget.AppCompatSpinner$1: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup val$popup> = $u3;
+
+        specialinvoke this.<androidx.appcompat.widget.ForwardingListener: void <init>(android.view.View)>($u2);
+
+        return;
+    }
+
+    public androidx.appcompat.view.menu.ShowableListMenu getPopup()
+    {
+        androidx.appcompat.widget.AppCompatSpinner$1 this;
+        androidx.appcompat.widget.AppCompatSpinner$DropdownPopup ret0;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$1;
+
+        ret0 = this.<androidx.appcompat.widget.AppCompatSpinner$1: androidx.appcompat.widget.AppCompatSpinner$DropdownPopup val$popup>;
+
+        return ret0;
+    }
+
+    public boolean onForwardingStarted()
+    {
+        androidx.appcompat.widget.AppCompatSpinner$1 this;
+        androidx.appcompat.widget.AppCompatSpinner $u0;
+        androidx.appcompat.widget.AppCompatSpinner$SpinnerPopup $u-1;
+        boolean $u-1#4;
+
+        this := @this: androidx.appcompat.widget.AppCompatSpinner$1;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSpinner$1: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.AppCompatSpinner: androidx.appcompat.widget.AppCompatSpinner$SpinnerPopup getInternalPopup()>();
+
+        $u-1#4 = interfaceinvoke $u-1.<androidx.appcompat.widget.AppCompatSpinner$SpinnerPopup: boolean isShowing()>();
+
+        if $u-1#4 != 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatSpinner$1: androidx.appcompat.widget.AppCompatSpinner this$0>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatSpinner: void showPopup()>();
+
+     label1:
+        return 1;
+    }
+}

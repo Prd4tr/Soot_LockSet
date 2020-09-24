@@ -1,0 +1,82 @@
+final class androidx.fragment.app.FragmentTransaction$Op extends java.lang.Object
+{
+    int mCmd;
+    androidx.lifecycle.Lifecycle$State mCurrentMaxState;
+    int mEnterAnim;
+    int mExitAnim;
+    androidx.fragment.app.Fragment mFragment;
+    androidx.lifecycle.Lifecycle$State mOldMaxState;
+    int mPopEnterAnim;
+    int mPopExitAnim;
+
+    void <init>()
+    {
+        androidx.fragment.app.FragmentTransaction$Op this;
+
+        this := @this: androidx.fragment.app.FragmentTransaction$Op;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    void <init>(int, androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.FragmentTransaction$Op this;
+        int $u2;
+        androidx.fragment.app.Fragment $u3;
+        androidx.lifecycle.Lifecycle$State $u0;
+
+        this := @this: androidx.fragment.app.FragmentTransaction$Op;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: androidx.fragment.app.Fragment;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.fragment.app.FragmentTransaction$Op: int mCmd> = $u2;
+
+        this.<androidx.fragment.app.FragmentTransaction$Op: androidx.fragment.app.Fragment mFragment> = $u3;
+
+        $u0 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State RESUMED>;
+
+        this.<androidx.fragment.app.FragmentTransaction$Op: androidx.lifecycle.Lifecycle$State mOldMaxState> = $u0;
+
+        $u0 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State RESUMED>;
+
+        this.<androidx.fragment.app.FragmentTransaction$Op: androidx.lifecycle.Lifecycle$State mCurrentMaxState> = $u0;
+
+        return;
+    }
+
+    void <init>(int, androidx.fragment.app.Fragment, androidx.lifecycle.Lifecycle$State)
+    {
+        androidx.fragment.app.FragmentTransaction$Op this;
+        int $u2;
+        androidx.fragment.app.Fragment $u3;
+        androidx.lifecycle.Lifecycle$State $u4, $u0;
+
+        this := @this: androidx.fragment.app.FragmentTransaction$Op;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: androidx.fragment.app.Fragment;
+
+        $u4 := @parameter2: androidx.lifecycle.Lifecycle$State;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.fragment.app.FragmentTransaction$Op: int mCmd> = $u2;
+
+        this.<androidx.fragment.app.FragmentTransaction$Op: androidx.fragment.app.Fragment mFragment> = $u3;
+
+        $u0 = $u3.<androidx.fragment.app.Fragment: androidx.lifecycle.Lifecycle$State mMaxState>;
+
+        this.<androidx.fragment.app.FragmentTransaction$Op: androidx.lifecycle.Lifecycle$State mOldMaxState> = $u0;
+
+        this.<androidx.fragment.app.FragmentTransaction$Op: androidx.lifecycle.Lifecycle$State mCurrentMaxState> = $u4;
+
+        return;
+    }
+}

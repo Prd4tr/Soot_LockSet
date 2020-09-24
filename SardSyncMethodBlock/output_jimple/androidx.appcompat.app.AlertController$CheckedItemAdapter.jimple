@@ -1,0 +1,49 @@
+class androidx.appcompat.app.AlertController$CheckedItemAdapter extends android.widget.ArrayAdapter
+{
+
+    public void <init>(android.content.Context, int, int, java.lang.CharSequence[])
+    {
+        androidx.appcompat.app.AlertController$CheckedItemAdapter this;
+        android.content.Context $u1;
+        int $u2, $u3;
+        java.lang.CharSequence[] $u4;
+
+        this := @this: androidx.appcompat.app.AlertController$CheckedItemAdapter;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: int;
+
+        $u3 := @parameter2: int;
+
+        $u4 := @parameter3: java.lang.CharSequence[];
+
+        specialinvoke this.<android.widget.ArrayAdapter: void <init>(android.content.Context,int,int,java.lang.Object[])>($u1, $u2, $u3, $u4);
+
+        return;
+    }
+
+    public long getItemId(int)
+    {
+        androidx.appcompat.app.AlertController$CheckedItemAdapter this;
+        int $u3;
+        long $u0;
+
+        this := @this: androidx.appcompat.app.AlertController$CheckedItemAdapter;
+
+        $u3 := @parameter0: int;
+
+        $u0 = (long) $u3;
+
+        return $u0;
+    }
+
+    public boolean hasStableIds()
+    {
+        androidx.appcompat.app.AlertController$CheckedItemAdapter this;
+
+        this := @this: androidx.appcompat.app.AlertController$CheckedItemAdapter;
+
+        return 1;
+    }
+}

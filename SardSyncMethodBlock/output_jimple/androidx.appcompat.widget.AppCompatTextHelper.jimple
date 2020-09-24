@@ -1,0 +1,1918 @@
+class androidx.appcompat.widget.AppCompatTextHelper extends java.lang.Object
+{
+    private static final int MONOSPACE;
+    private static final int SANS;
+    private static final int SERIF;
+    private static final int TEXT_FONT_WEIGHT_UNSPECIFIED;
+    private boolean mAsyncFontPending;
+    private final androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper;
+    private androidx.appcompat.widget.TintInfo mDrawableBottomTint;
+    private androidx.appcompat.widget.TintInfo mDrawableEndTint;
+    private androidx.appcompat.widget.TintInfo mDrawableLeftTint;
+    private androidx.appcompat.widget.TintInfo mDrawableRightTint;
+    private androidx.appcompat.widget.TintInfo mDrawableStartTint;
+    private androidx.appcompat.widget.TintInfo mDrawableTint;
+    private androidx.appcompat.widget.TintInfo mDrawableTopTint;
+    private android.graphics.Typeface mFontTypeface;
+    private int mFontWeight;
+    private int mStyle;
+    private final android.widget.TextView mView;
+
+    void <init>(android.widget.TextView)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        android.widget.TextView $u3;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u3 := @parameter0: android.widget.TextView;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: int mStyle> = 0;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: int mFontWeight> = -1;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView> = $u3;
+
+        $u0 = new androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper;
+
+        $u3 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void <init>(android.widget.TextView)>($u3);
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper> = $u0;
+
+        return;
+    }
+
+    private void applyCompoundDrawableTint(android.graphics.drawable.Drawable, androidx.appcompat.widget.TintInfo)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        android.graphics.drawable.Drawable $u2;
+        androidx.appcompat.widget.TintInfo $u3;
+        int[] $u-1;
+        android.widget.TextView $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u3 := @parameter1: androidx.appcompat.widget.TintInfo;
+
+        if $u2 == null goto label1;
+
+        if $u3 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u-1 = virtualinvoke $u0.<android.widget.TextView: int[] getDrawableState()>();
+
+        staticinvoke <androidx.appcompat.widget.AppCompatDrawableManager: void tintDrawable(android.graphics.drawable.Drawable,androidx.appcompat.widget.TintInfo,int[])>($u2, $u3, $u-1);
+
+     label1:
+        return;
+    }
+
+    private static androidx.appcompat.widget.TintInfo createTintInfo(android.content.Context, androidx.appcompat.widget.AppCompatDrawableManager, int)
+    {
+        android.content.Context $u3;
+        androidx.appcompat.widget.AppCompatDrawableManager $u4;
+        int $u5;
+        android.content.res.ColorStateList $u-1;
+        androidx.appcompat.widget.TintInfo tintInfo;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u4 := @parameter1: androidx.appcompat.widget.AppCompatDrawableManager;
+
+        $u5 := @parameter2: int;
+
+        $u-1 = virtualinvoke $u4.<androidx.appcompat.widget.AppCompatDrawableManager: android.content.res.ColorStateList getTintList(android.content.Context,int)>($u3, $u5);
+
+        if $u-1 == null goto label1;
+
+        tintInfo = new androidx.appcompat.widget.TintInfo;
+
+        specialinvoke tintInfo.<androidx.appcompat.widget.TintInfo: void <init>()>();
+
+        tintInfo.<androidx.appcompat.widget.TintInfo: boolean mHasTintList> = 1;
+
+        tintInfo.<androidx.appcompat.widget.TintInfo: android.content.res.ColorStateList mTintList> = $u-1;
+
+        return tintInfo;
+
+     label1:
+        return null;
+    }
+
+    private void setCompoundDrawables(android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        android.graphics.drawable.Drawable $u7, $u8, $u9, $u10, $u11, $u12;
+        int existingRel;
+        android.widget.TextView existingRel#7;
+        android.graphics.drawable.Drawable[] $u-1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u7 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u8 := @parameter1: android.graphics.drawable.Drawable;
+
+        $u9 := @parameter2: android.graphics.drawable.Drawable;
+
+        $u10 := @parameter3: android.graphics.drawable.Drawable;
+
+        $u11 := @parameter4: android.graphics.drawable.Drawable;
+
+        $u12 := @parameter5: android.graphics.drawable.Drawable;
+
+        existingRel = <android.os.Build$VERSION: int SDK_INT>;
+
+        if existingRel < 17 goto label10;
+
+        if $u11 != null goto label01;
+
+        if $u12 == null goto label10;
+
+     label01:
+        existingRel#7 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u-1 = virtualinvoke existingRel#7.<android.widget.TextView: android.graphics.drawable.Drawable[] getCompoundDrawablesRelative()>();
+
+        existingRel#7 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        if $u11 == null goto label02;
+
+        $u7 = $u11;
+
+        goto label03;
+
+     label02:
+        $u7 = $u-1[0];
+
+     label03:
+        if $u8 == null goto label04;
+
+        goto label05;
+
+     label04:
+        $u8 = $u-1[1];
+
+     label05:
+        if $u12 == null goto label06;
+
+        $u9 = $u12;
+
+        goto label07;
+
+     label06:
+        $u9 = $u-1[2];
+
+     label07:
+        if $u10 == null goto label08;
+
+        goto label09;
+
+     label08:
+        $u10 = $u-1[3];
+
+     label09:
+        virtualinvoke existingRel#7.<android.widget.TextView: void setCompoundDrawablesRelativeWithIntrinsicBounds(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($u7, $u8, $u9, $u10);
+
+        goto label11;
+
+     label10:
+        if $u7 != null goto label12;
+
+        if $u8 != null goto label12;
+
+        if $u9 != null goto label12;
+
+        if $u10 == null goto label11;
+
+        goto label12;
+
+     label11:
+        return;
+
+     label12:
+        existingRel = <android.os.Build$VERSION: int SDK_INT>;
+
+        if existingRel < 17 goto label18;
+
+        existingRel#7 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u-1 = virtualinvoke existingRel#7.<android.widget.TextView: android.graphics.drawable.Drawable[] getCompoundDrawablesRelative()>();
+
+        $u11 = $u-1[0];
+
+        if $u11 != null goto label13;
+
+        $u11 = $u-1[2];
+
+        if $u11 == null goto label18;
+
+     label13:
+        existingRel#7 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u7 = $u-1[0];
+
+        if $u8 == null goto label14;
+
+        goto label15;
+
+     label14:
+        $u8 = $u-1[1];
+
+     label15:
+        $u9 = $u-1[2];
+
+        if $u10 == null goto label16;
+
+        goto label17;
+
+     label16:
+        $u10 = $u-1[3];
+
+     label17:
+        virtualinvoke existingRel#7.<android.widget.TextView: void setCompoundDrawablesRelativeWithIntrinsicBounds(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($u7, $u8, $u9, $u10);
+
+        return;
+
+     label18:
+        existingRel#7 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u-1 = virtualinvoke existingRel#7.<android.widget.TextView: android.graphics.drawable.Drawable[] getCompoundDrawables()>();
+
+        existingRel#7 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        if $u7 == null goto label19;
+
+        goto label20;
+
+     label19:
+        $u7 = $u-1[0];
+
+     label20:
+        if $u8 == null goto label21;
+
+        goto label22;
+
+     label21:
+        $u8 = $u-1[1];
+
+     label22:
+        if $u9 == null goto label23;
+
+        goto label24;
+
+     label23:
+        $u9 = $u-1[2];
+
+     label24:
+        if $u10 == null goto label25;
+
+        goto label26;
+
+     label25:
+        $u10 = $u-1[3];
+
+     label26:
+        virtualinvoke existingRel#7.<android.widget.TextView: void setCompoundDrawablesWithIntrinsicBounds(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($u7, $u8, $u9, $u10);
+
+        return;
+    }
+
+    private void setCompoundTints()
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        androidx.appcompat.widget.TintInfo $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTint>;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableLeftTint> = $u0;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTopTint> = $u0;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableRightTint> = $u0;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableBottomTint> = $u0;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableStartTint> = $u0;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableEndTint> = $u0;
+
+        return;
+    }
+
+    private void setTextSizeInternal(int, float)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        int $u2;
+        float $u3;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: float;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void setTextSizeInternal(int,float)>($u2, $u3);
+
+        return;
+    }
+
+    private void updateTypefaceAndStyle(android.content.Context, androidx.appcompat.widget.TintTypedArray)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        android.content.Context $u17;
+        androidx.appcompat.widget.TintTypedArray $u18;
+        int fontFamilyId, fontWeight, style, $u14;
+        boolean $u6, $u-1;
+        android.graphics.Typeface $u3;
+        java.lang.ref.WeakReference typefaceIndex;
+        android.widget.TextView textViewWeak;
+        androidx.appcompat.widget.AppCompatTextHelper$1 typefaceIndex#42;
+        android.content.res.Resources$NotFoundException typefaceIndex#57;
+        java.lang.UnsupportedOperationException typefaceIndex#58;
+        java.lang.String $u-1#60;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u17 := @parameter0: android.content.Context;
+
+        $u18 := @parameter1: androidx.appcompat.widget.TintTypedArray;
+
+        fontFamilyId = <androidx.appcompat.R$styleable: int TextAppearance_android_textStyle>;
+
+        $u14 = this.<androidx.appcompat.widget.AppCompatTextHelper: int mStyle>;
+
+        fontFamilyId = virtualinvoke $u18.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>(fontFamilyId, $u14);
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: int mStyle> = fontFamilyId;
+
+        fontFamilyId = <android.os.Build$VERSION: int SDK_INT>;
+
+        $u6 = 0;
+
+        if fontFamilyId < 28 goto label01;
+
+        fontFamilyId = <androidx.appcompat.R$styleable: int TextAppearance_android_textFontWeight>;
+
+        fontFamilyId = virtualinvoke $u18.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>(fontFamilyId, -1);
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: int mFontWeight> = fontFamilyId;
+
+        if fontFamilyId == -1 goto label01;
+
+        fontFamilyId = this.<androidx.appcompat.widget.AppCompatTextHelper: int mStyle>;
+
+        fontFamilyId = fontFamilyId & 2;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: int mStyle> = fontFamilyId;
+
+     label01:
+        fontFamilyId = <androidx.appcompat.R$styleable: int TextAppearance_android_fontFamily>;
+
+        $u-1 = virtualinvoke $u18.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(fontFamilyId);
+
+        if $u-1 != 0 goto label06;
+
+        fontFamilyId = <androidx.appcompat.R$styleable: int TextAppearance_fontFamily>;
+
+        $u-1 = virtualinvoke $u18.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(fontFamilyId);
+
+        if $u-1 == 0 goto label02;
+
+        goto label06;
+
+     label02:
+        fontFamilyId = <androidx.appcompat.R$styleable: int TextAppearance_android_typeface>;
+
+        $u6 = virtualinvoke $u18.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(fontFamilyId);
+
+        if $u6 == 0 goto label25;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: boolean mAsyncFontPending> = 0;
+
+        fontFamilyId = <androidx.appcompat.R$styleable: int TextAppearance_android_typeface>;
+
+        fontFamilyId = virtualinvoke $u18.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>(fontFamilyId, 1);
+
+        if fontFamilyId == 1 goto label05;
+
+        if fontFamilyId == 2 goto label04;
+
+        if fontFamilyId == 3 goto label03;
+
+        return;
+
+     label03:
+        $u3 = <android.graphics.Typeface: android.graphics.Typeface MONOSPACE>;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.Typeface mFontTypeface> = $u3;
+
+        return;
+
+     label04:
+        $u3 = <android.graphics.Typeface: android.graphics.Typeface SERIF>;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.Typeface mFontTypeface> = $u3;
+
+        return;
+
+     label05:
+        $u3 = <android.graphics.Typeface: android.graphics.Typeface SANS_SERIF>;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.Typeface mFontTypeface> = $u3;
+
+        return;
+
+     label06:
+        this.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.Typeface mFontTypeface> = null;
+
+        fontFamilyId = <androidx.appcompat.R$styleable: int TextAppearance_fontFamily>;
+
+        $u-1 = virtualinvoke $u18.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(fontFamilyId);
+
+        if $u-1 == 0 goto label07;
+
+        $u14 = <androidx.appcompat.R$styleable: int TextAppearance_fontFamily>;
+
+        goto label08;
+
+     label07:
+        $u14 = <androidx.appcompat.R$styleable: int TextAppearance_android_fontFamily>;
+
+     label08:
+        fontFamilyId = $u14;
+
+        fontWeight = this.<androidx.appcompat.widget.AppCompatTextHelper: int mFontWeight>;
+
+        style = this.<androidx.appcompat.widget.AppCompatTextHelper: int mStyle>;
+
+        $u-1 = virtualinvoke $u17.<android.content.Context: boolean isRestricted()>();
+
+        if $u-1 != 0 goto label22;
+
+        typefaceIndex = new java.lang.ref.WeakReference;
+
+        textViewWeak = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        specialinvoke typefaceIndex.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>(textViewWeak);
+
+        typefaceIndex#42 = new androidx.appcompat.widget.AppCompatTextHelper$1;
+
+        specialinvoke typefaceIndex#42.<androidx.appcompat.widget.AppCompatTextHelper$1: void <init>(androidx.appcompat.widget.AppCompatTextHelper,int,int,java.lang.ref.WeakReference)>(this, fontWeight, style, typefaceIndex);
+
+        fontWeight = this.<androidx.appcompat.widget.AppCompatTextHelper: int mStyle>;
+
+     label09:
+        $u3 = virtualinvoke $u18.<androidx.appcompat.widget.TintTypedArray: android.graphics.Typeface getFont(int,int,androidx.core.content.res.ResourcesCompat$FontCallback)>($u14, fontWeight, typefaceIndex#42);
+
+     label10:
+        if $u3 == null goto label17;
+
+        $u14 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u14 < 28 goto label16;
+
+        $u14 = this.<androidx.appcompat.widget.AppCompatTextHelper: int mFontWeight>;
+
+        if $u14 == -1 goto label16;
+
+     label11:
+        $u3 = staticinvoke <android.graphics.Typeface: android.graphics.Typeface create(android.graphics.Typeface,int)>($u3, 0);
+
+     label12:
+        $u14 = this.<androidx.appcompat.widget.AppCompatTextHelper: int mFontWeight>;
+
+        fontWeight = this.<androidx.appcompat.widget.AppCompatTextHelper: int mStyle>;
+
+        fontWeight = fontWeight & 2;
+
+        if fontWeight == 0 goto label13;
+
+        $u-1 = 1;
+
+        goto label14;
+
+     label13:
+        $u-1 = 0;
+
+     label14:
+        $u3 = staticinvoke <android.graphics.Typeface: android.graphics.Typeface create(android.graphics.Typeface,int,boolean)>($u3, $u14, $u-1);
+
+     label15:
+        this.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.Typeface mFontTypeface> = $u3;
+
+        goto label17;
+
+     label16:
+        this.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.Typeface mFontTypeface> = $u3;
+
+     label17:
+        $u3 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.Typeface mFontTypeface>;
+
+        if $u3 != null goto label18;
+
+        $u-1 = 1;
+
+        goto label19;
+
+     label18:
+        $u-1 = 0;
+
+     label19:
+        this.<androidx.appcompat.widget.AppCompatTextHelper: boolean mAsyncFontPending> = $u-1;
+
+        goto label22;
+
+     label20:
+        typefaceIndex#57 := @caughtexception;
+
+        goto label22;
+
+     label21:
+        typefaceIndex#58 := @caughtexception;
+
+     label22:
+        $u3 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.Typeface mFontTypeface>;
+
+        if $u3 != null goto label25;
+
+        $u-1#60 = virtualinvoke $u18.<androidx.appcompat.widget.TintTypedArray: java.lang.String getString(int)>(fontFamilyId);
+
+        if $u-1#60 == null goto label25;
+
+        fontFamilyId = <android.os.Build$VERSION: int SDK_INT>;
+
+        if fontFamilyId < 28 goto label24;
+
+        fontFamilyId = this.<androidx.appcompat.widget.AppCompatTextHelper: int mFontWeight>;
+
+        if fontFamilyId == -1 goto label24;
+
+        $u3 = staticinvoke <android.graphics.Typeface: android.graphics.Typeface create(java.lang.String,int)>($u-1#60, 0);
+
+        fontFamilyId = this.<androidx.appcompat.widget.AppCompatTextHelper: int mFontWeight>;
+
+        $u14 = this.<androidx.appcompat.widget.AppCompatTextHelper: int mStyle>;
+
+        $u14 = 2 & $u14;
+
+        if $u14 == 0 goto label23;
+
+        $u6 = 1;
+
+     label23:
+        $u3 = staticinvoke <android.graphics.Typeface: android.graphics.Typeface create(android.graphics.Typeface,int,boolean)>($u3, fontFamilyId, $u6);
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.Typeface mFontTypeface> = $u3;
+
+        return;
+
+     label24:
+        fontFamilyId = this.<androidx.appcompat.widget.AppCompatTextHelper: int mStyle>;
+
+        $u3 = staticinvoke <android.graphics.Typeface: android.graphics.Typeface create(java.lang.String,int)>($u-1#60, fontFamilyId);
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.Typeface mFontTypeface> = $u3;
+
+     label25:
+        return;
+
+        catch java.lang.UnsupportedOperationException from label09 to label10 with label21;
+        catch java.lang.UnsupportedOperationException from label11 to label12 with label21;
+        catch java.lang.UnsupportedOperationException from label14 to label15 with label21;
+        catch android.content.res.Resources$NotFoundException from label09 to label10 with label20;
+        catch android.content.res.Resources$NotFoundException from label11 to label12 with label20;
+        catch android.content.res.Resources$NotFoundException from label14 to label15 with label20;
+    }
+
+    void applyCompoundDrawablesTints()
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        androidx.appcompat.widget.TintInfo compoundDrawables;
+        android.widget.TextView compoundDrawables#7;
+        android.graphics.drawable.Drawable[] $u-1;
+        android.graphics.drawable.Drawable $u3;
+        int compoundDrawables#20;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        compoundDrawables = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableLeftTint>;
+
+        if compoundDrawables != null goto label1;
+
+        compoundDrawables = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTopTint>;
+
+        if compoundDrawables != null goto label1;
+
+        compoundDrawables = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableRightTint>;
+
+        if compoundDrawables != null goto label1;
+
+        compoundDrawables = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableBottomTint>;
+
+        if compoundDrawables == null goto label2;
+
+     label1:
+        compoundDrawables#7 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u-1 = virtualinvoke compoundDrawables#7.<android.widget.TextView: android.graphics.drawable.Drawable[] getCompoundDrawables()>();
+
+        $u3 = $u-1[0];
+
+        compoundDrawables = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableLeftTint>;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void applyCompoundDrawableTint(android.graphics.drawable.Drawable,androidx.appcompat.widget.TintInfo)>($u3, compoundDrawables);
+
+        $u3 = $u-1[1];
+
+        compoundDrawables = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTopTint>;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void applyCompoundDrawableTint(android.graphics.drawable.Drawable,androidx.appcompat.widget.TintInfo)>($u3, compoundDrawables);
+
+        $u3 = $u-1[2];
+
+        compoundDrawables = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableRightTint>;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void applyCompoundDrawableTint(android.graphics.drawable.Drawable,androidx.appcompat.widget.TintInfo)>($u3, compoundDrawables);
+
+        $u3 = $u-1[3];
+
+        compoundDrawables = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableBottomTint>;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void applyCompoundDrawableTint(android.graphics.drawable.Drawable,androidx.appcompat.widget.TintInfo)>($u3, compoundDrawables);
+
+     label2:
+        compoundDrawables#20 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if compoundDrawables#20 < 17 goto label4;
+
+        compoundDrawables = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableStartTint>;
+
+        if compoundDrawables != null goto label3;
+
+        compoundDrawables = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableEndTint>;
+
+        if compoundDrawables == null goto label4;
+
+     label3:
+        compoundDrawables#7 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u-1 = virtualinvoke compoundDrawables#7.<android.widget.TextView: android.graphics.drawable.Drawable[] getCompoundDrawablesRelative()>();
+
+        $u3 = $u-1[0];
+
+        compoundDrawables = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableStartTint>;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void applyCompoundDrawableTint(android.graphics.drawable.Drawable,androidx.appcompat.widget.TintInfo)>($u3, compoundDrawables);
+
+        $u3 = $u-1[2];
+
+        compoundDrawables = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableEndTint>;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void applyCompoundDrawableTint(android.graphics.drawable.Drawable,androidx.appcompat.widget.TintInfo)>($u3, compoundDrawables);
+
+     label4:
+        return;
+    }
+
+    void autoSizeText()
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void autoSizeText()>();
+
+        return;
+    }
+
+    int getAutoSizeMaxTextSize()
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        int $u-1;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int getAutoSizeMaxTextSize()>();
+
+        return $u-1;
+    }
+
+    int getAutoSizeMinTextSize()
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        int $u-1;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int getAutoSizeMinTextSize()>();
+
+        return $u-1;
+    }
+
+    int getAutoSizeStepGranularity()
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        int $u-1;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int getAutoSizeStepGranularity()>();
+
+        return $u-1;
+    }
+
+    int[] getAutoSizeTextAvailableSizes()
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        int[] $u-1;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] getAutoSizeTextAvailableSizes()>();
+
+        return $u-1;
+    }
+
+    int getAutoSizeTextType()
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        int $u-1;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int getAutoSizeTextType()>();
+
+        return $u-1;
+    }
+
+    android.content.res.ColorStateList getCompoundDrawableTintList()
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        androidx.appcompat.widget.TintInfo $u0;
+        android.content.res.ColorStateList ret0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTint>;
+
+        if $u0 == null goto label1;
+
+        ret0 = $u0.<androidx.appcompat.widget.TintInfo: android.content.res.ColorStateList mTintList>;
+
+        return ret0;
+
+     label1:
+        return null;
+    }
+
+    android.graphics.PorterDuff$Mode getCompoundDrawableTintMode()
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        androidx.appcompat.widget.TintInfo $u0;
+        android.graphics.PorterDuff$Mode ret0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTint>;
+
+        if $u0 == null goto label1;
+
+        ret0 = $u0.<androidx.appcompat.widget.TintInfo: android.graphics.PorterDuff$Mode mTintMode>;
+
+        return ret0;
+
+     label1:
+        return null;
+    }
+
+    boolean isAutoSizeEnabled()
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        boolean $u-1;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: boolean isAutoSizeEnabled()>();
+
+        return $u-1;
+    }
+
+    void loadFromAttributes(android.util.AttributeSet, int)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        android.util.AttributeSet $u37;
+        int $u38, allCaps#18, allCaps#22;
+        android.widget.TextView allCaps;
+        android.content.Context $u-1, $u-1#10;
+        androidx.appcompat.widget.AppCompatDrawableManager $u-1#3, allCapsSet#268;
+        int[] allCaps#5;
+        androidx.appcompat.widget.TintTypedArray $u-1#7;
+        android.content.res.TypedArray $u-1#13;
+        boolean $u-1#23, allCaps#76, allCapsSet, $u-1#87;
+        androidx.appcompat.widget.TintInfo $u-1#28;
+        android.text.method.TransformationMethod $u-1#73;
+        android.content.res.ColorStateList textColor, textColorHint, textColorLink;
+        java.lang.String fontVariation, localeListString;
+        android.graphics.Typeface allCaps#191;
+        android.os.LocaleList $u-1#201;
+        java.util.Locale $u-1#212;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper allCaps#214;
+        float drawableManager;
+        byte drawableManager#228;
+        android.graphics.drawable.Drawable a, ap, drawableLeft, drawableTop, drawableRight, $u-1#286;
+        android.graphics.PorterDuff$Mode $u-1#320;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u37 := @parameter0: android.util.AttributeSet;
+
+        $u38 := @parameter1: int;
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u-1 = virtualinvoke allCaps.<android.widget.TextView: android.content.Context getContext()>();
+
+        $u-1#3 = staticinvoke <androidx.appcompat.widget.AppCompatDrawableManager: androidx.appcompat.widget.AppCompatDrawableManager get()>();
+
+        allCaps#5 = <androidx.appcompat.R$styleable: int[] AppCompatTextHelper>;
+
+        $u-1#7 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[],int,int)>($u-1, $u37, allCaps#5, $u38, 0);
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u-1#10 = virtualinvoke allCaps.<android.widget.TextView: android.content.Context getContext()>();
+
+        allCaps#5 = <androidx.appcompat.R$styleable: int[] AppCompatTextHelper>;
+
+        $u-1#13 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: android.content.res.TypedArray getWrappedTypeArray()>();
+
+        staticinvoke <androidx.core.view.ViewCompat: void saveAttributeDataForStyleable(android.view.View,android.content.Context,int[],android.util.AttributeSet,android.content.res.TypedArray,int,int)>(allCaps, $u-1#10, allCaps#5, $u37, $u-1#13, $u38, 0);
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int AppCompatTextHelper_android_textAppearance>;
+
+        allCaps#18 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>(allCaps#18, -1);
+
+        allCaps#22 = <androidx.appcompat.R$styleable: int AppCompatTextHelper_android_drawableLeft>;
+
+        $u-1#23 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#22);
+
+        if $u-1#23 == 0 goto label01;
+
+        allCaps#22 = <androidx.appcompat.R$styleable: int AppCompatTextHelper_android_drawableLeft>;
+
+        allCaps#22 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>(allCaps#22, 0);
+
+        $u-1#28 = staticinvoke <androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo createTintInfo(android.content.Context,androidx.appcompat.widget.AppCompatDrawableManager,int)>($u-1, $u-1#3, allCaps#22);
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableLeftTint> = $u-1#28;
+
+     label01:
+        allCaps#22 = <androidx.appcompat.R$styleable: int AppCompatTextHelper_android_drawableTop>;
+
+        $u-1#23 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#22);
+
+        if $u-1#23 == 0 goto label02;
+
+        allCaps#22 = <androidx.appcompat.R$styleable: int AppCompatTextHelper_android_drawableTop>;
+
+        allCaps#22 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>(allCaps#22, 0);
+
+        $u-1#28 = staticinvoke <androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo createTintInfo(android.content.Context,androidx.appcompat.widget.AppCompatDrawableManager,int)>($u-1, $u-1#3, allCaps#22);
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTopTint> = $u-1#28;
+
+     label02:
+        allCaps#22 = <androidx.appcompat.R$styleable: int AppCompatTextHelper_android_drawableRight>;
+
+        $u-1#23 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#22);
+
+        if $u-1#23 == 0 goto label03;
+
+        allCaps#22 = <androidx.appcompat.R$styleable: int AppCompatTextHelper_android_drawableRight>;
+
+        allCaps#22 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>(allCaps#22, 0);
+
+        $u-1#28 = staticinvoke <androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo createTintInfo(android.content.Context,androidx.appcompat.widget.AppCompatDrawableManager,int)>($u-1, $u-1#3, allCaps#22);
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableRightTint> = $u-1#28;
+
+     label03:
+        allCaps#22 = <androidx.appcompat.R$styleable: int AppCompatTextHelper_android_drawableBottom>;
+
+        $u-1#23 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#22);
+
+        if $u-1#23 == 0 goto label04;
+
+        allCaps#22 = <androidx.appcompat.R$styleable: int AppCompatTextHelper_android_drawableBottom>;
+
+        allCaps#22 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>(allCaps#22, 0);
+
+        $u-1#28 = staticinvoke <androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo createTintInfo(android.content.Context,androidx.appcompat.widget.AppCompatDrawableManager,int)>($u-1, $u-1#3, allCaps#22);
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableBottomTint> = $u-1#28;
+
+     label04:
+        allCaps#22 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if allCaps#22 < 17 goto label06;
+
+        allCaps#22 = <androidx.appcompat.R$styleable: int AppCompatTextHelper_android_drawableStart>;
+
+        $u-1#23 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#22);
+
+        if $u-1#23 == 0 goto label05;
+
+        allCaps#22 = <androidx.appcompat.R$styleable: int AppCompatTextHelper_android_drawableStart>;
+
+        allCaps#22 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>(allCaps#22, 0);
+
+        $u-1#28 = staticinvoke <androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo createTintInfo(android.content.Context,androidx.appcompat.widget.AppCompatDrawableManager,int)>($u-1, $u-1#3, allCaps#22);
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableStartTint> = $u-1#28;
+
+     label05:
+        allCaps#22 = <androidx.appcompat.R$styleable: int AppCompatTextHelper_android_drawableEnd>;
+
+        $u-1#23 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#22);
+
+        if $u-1#23 == 0 goto label06;
+
+        allCaps#22 = <androidx.appcompat.R$styleable: int AppCompatTextHelper_android_drawableEnd>;
+
+        allCaps#22 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>(allCaps#22, 0);
+
+        $u-1#28 = staticinvoke <androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo createTintInfo(android.content.Context,androidx.appcompat.widget.AppCompatDrawableManager,int)>($u-1, $u-1#3, allCaps#22);
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableEndTint> = $u-1#28;
+
+     label06:
+        virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u-1#73 = virtualinvoke allCaps.<android.widget.TextView: android.text.method.TransformationMethod getTransformationMethod()>();
+
+        $u-1#23 = $u-1#73 instanceof android.text.method.PasswordTransformationMethod;
+
+        allCaps#76 = 0;
+
+        allCapsSet = 0;
+
+        textColor = null;
+
+        textColorHint = null;
+
+        textColorLink = null;
+
+        fontVariation = null;
+
+        localeListString = null;
+
+        if allCaps#18 == -1 goto label13;
+
+        allCaps#5 = <androidx.appcompat.R$styleable: int[] TextAppearance>;
+
+        $u-1#7 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,int,int[])>($u-1, allCaps#18, allCaps#5);
+
+        if $u-1#23 != 0 goto label07;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_textAllCaps>;
+
+        $u-1#87 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#18);
+
+        if $u-1#87 == 0 goto label07;
+
+        allCapsSet = 1;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_textAllCaps>;
+
+        allCaps#76 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean getBoolean(int,boolean)>(allCaps#18, 0);
+
+     label07:
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void updateTypefaceAndStyle(android.content.Context,androidx.appcompat.widget.TintTypedArray)>($u-1, $u-1#7);
+
+        allCaps#18 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if allCaps#18 >= 23 goto label10;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColor>;
+
+        $u-1#87 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#18);
+
+        if $u-1#87 == 0 goto label08;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColor>;
+
+        textColor = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: android.content.res.ColorStateList getColorStateList(int)>(allCaps#18);
+
+     label08:
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColorHint>;
+
+        $u-1#87 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#18);
+
+        if $u-1#87 == 0 goto label09;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColorHint>;
+
+        textColorHint = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: android.content.res.ColorStateList getColorStateList(int)>(allCaps#18);
+
+     label09:
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColorLink>;
+
+        $u-1#87 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#18);
+
+        if $u-1#87 == 0 goto label10;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColorLink>;
+
+        textColorLink = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: android.content.res.ColorStateList getColorStateList(int)>(allCaps#18);
+
+     label10:
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_textLocale>;
+
+        $u-1#87 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#18);
+
+        if $u-1#87 == 0 goto label11;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_textLocale>;
+
+        localeListString = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: java.lang.String getString(int)>(allCaps#18);
+
+     label11:
+        allCaps#18 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if allCaps#18 < 26 goto label12;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_fontVariationSettings>;
+
+        $u-1#87 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#18);
+
+        if $u-1#87 == 0 goto label12;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_fontVariationSettings>;
+
+        fontVariation = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: java.lang.String getString(int)>(allCaps#18);
+
+     label12:
+        virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+     label13:
+        allCaps#5 = <androidx.appcompat.R$styleable: int[] TextAppearance>;
+
+        $u-1#7 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[],int,int)>($u-1, $u37, allCaps#5, $u38, 0);
+
+        if $u-1#23 != 0 goto label14;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_textAllCaps>;
+
+        $u-1#87 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#18);
+
+        if $u-1#87 == 0 goto label14;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_textAllCaps>;
+
+        allCaps#76 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean getBoolean(int,boolean)>(allCaps#18, 0);
+
+        allCapsSet = 1;
+
+        goto label14;
+
+     label14:
+        allCaps#18 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if allCaps#18 >= 23 goto label18;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColor>;
+
+        $u-1#87 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#18);
+
+        if $u-1#87 == 0 goto label15;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColor>;
+
+        textColor = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: android.content.res.ColorStateList getColorStateList(int)>(allCaps#18);
+
+     label15:
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColorHint>;
+
+        $u-1#87 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#18);
+
+        if $u-1#87 == 0 goto label16;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColorHint>;
+
+        textColorHint = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: android.content.res.ColorStateList getColorStateList(int)>(allCaps#18);
+
+     label16:
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColorLink>;
+
+        $u-1#87 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#18);
+
+        if $u-1#87 == 0 goto label17;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColorLink>;
+
+        textColorLink = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: android.content.res.ColorStateList getColorStateList(int)>(allCaps#18);
+
+        goto label18;
+
+     label17:
+        goto label18;
+
+     label18:
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_textLocale>;
+
+        $u-1#87 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#18);
+
+        if $u-1#87 == 0 goto label19;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_textLocale>;
+
+        localeListString = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: java.lang.String getString(int)>(allCaps#18);
+
+        goto label19;
+
+     label19:
+        allCaps#18 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if allCaps#18 < 26 goto label20;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_fontVariationSettings>;
+
+        $u-1#87 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#18);
+
+        if $u-1#87 == 0 goto label20;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_fontVariationSettings>;
+
+        fontVariation = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: java.lang.String getString(int)>(allCaps#18);
+
+        goto label20;
+
+     label20:
+        allCaps#18 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if allCaps#18 < 28 goto label23;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textSize>;
+
+        $u-1#87 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>(allCaps#18);
+
+        if $u-1#87 == 0 goto label22;
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int TextAppearance_android_textSize>;
+
+        allCaps#18 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getDimensionPixelSize(int,int)>(allCaps#18, -1);
+
+        if allCaps#18 != 0 goto label21;
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        virtualinvoke allCaps.<android.widget.TextView: void setTextSize(int,float)>(0, 0.0F);
+
+        goto label23;
+
+     label21:
+        goto label23;
+
+     label22:
+        goto label23;
+
+     label23:
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void updateTypefaceAndStyle(android.content.Context,androidx.appcompat.widget.TintTypedArray)>($u-1, $u-1#7);
+
+        virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        if textColor == null goto label24;
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        virtualinvoke allCaps.<android.widget.TextView: void setTextColor(android.content.res.ColorStateList)>(textColor);
+
+     label24:
+        if textColorHint == null goto label25;
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        virtualinvoke allCaps.<android.widget.TextView: void setHintTextColor(android.content.res.ColorStateList)>(textColorHint);
+
+     label25:
+        if textColorLink == null goto label26;
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        virtualinvoke allCaps.<android.widget.TextView: void setLinkTextColor(android.content.res.ColorStateList)>(textColorLink);
+
+     label26:
+        if $u-1#23 != 0 goto label27;
+
+        if allCapsSet == 0 goto label27;
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void setAllCaps(boolean)>(allCaps#76);
+
+     label27:
+        allCaps#191 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.Typeface mFontTypeface>;
+
+        if allCaps#191 == null goto label29;
+
+        allCaps#18 = this.<androidx.appcompat.widget.AppCompatTextHelper: int mFontWeight>;
+
+        if allCaps#18 != -1 goto label28;
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        allCaps#18 = this.<androidx.appcompat.widget.AppCompatTextHelper: int mStyle>;
+
+        virtualinvoke allCaps.<android.widget.TextView: void setTypeface(android.graphics.Typeface,int)>(allCaps#191, allCaps#18);
+
+        goto label29;
+
+     label28:
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        virtualinvoke allCaps.<android.widget.TextView: void setTypeface(android.graphics.Typeface)>(allCaps#191);
+
+     label29:
+        if fontVariation == null goto label30;
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        virtualinvoke allCaps.<android.widget.TextView: boolean setFontVariationSettings(java.lang.String)>(fontVariation);
+
+     label30:
+        if localeListString == null goto label32;
+
+        allCaps#18 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if allCaps#18 < 24 goto label31;
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u-1#201 = staticinvoke <android.os.LocaleList: android.os.LocaleList forLanguageTags(java.lang.String)>(localeListString);
+
+        virtualinvoke allCaps.<android.widget.TextView: void setTextLocales(android.os.LocaleList)>($u-1#201);
+
+        goto label32;
+
+     label31:
+        allCaps#18 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if allCaps#18 < 21 goto label32;
+
+        allCaps#18 = virtualinvoke localeListString.<java.lang.String: int indexOf(int)>(44);
+
+        fontVariation = virtualinvoke localeListString.<java.lang.String: java.lang.String substring(int,int)>(0, allCaps#18);
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u-1#212 = staticinvoke <java.util.Locale: java.util.Locale forLanguageTag(java.lang.String)>(fontVariation);
+
+        virtualinvoke allCaps.<android.widget.TextView: void setTextLocale(java.util.Locale)>($u-1#212);
+
+     label32:
+        allCaps#214 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        virtualinvoke allCaps#214.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void loadFromAttributes(android.util.AttributeSet,int)>($u37, $u38);
+
+        $u-1#23 = <androidx.core.widget.AutoSizeableTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $u-1#23 == 0 goto label36;
+
+        allCaps#214 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        $u38 = virtualinvoke allCaps#214.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int getAutoSizeTextType()>();
+
+        if $u38 == 0 goto label35;
+
+        allCaps#214 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        allCaps#5 = virtualinvoke allCaps#214.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int[] getAutoSizeTextAvailableSizes()>();
+
+        $u38 = lengthof allCaps#5;
+
+        if $u38 <= 0 goto label34;
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u38 = virtualinvoke allCaps.<android.widget.TextView: int getAutoSizeStepGranularity()>();
+
+        drawableManager = (float) $u38;
+
+        drawableManager#228 = drawableManager cmpl -1.0F;
+
+        if drawableManager#228 == 0 goto label33;
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        allCaps#214 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        $u38 = virtualinvoke allCaps#214.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int getAutoSizeMinTextSize()>();
+
+        allCaps#214 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        allCaps#18 = virtualinvoke allCaps#214.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int getAutoSizeMaxTextSize()>();
+
+        allCaps#214 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        allCaps#22 = virtualinvoke allCaps#214.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: int getAutoSizeStepGranularity()>();
+
+        virtualinvoke allCaps.<android.widget.TextView: void setAutoSizeTextTypeUniformWithConfiguration(int,int,int,int)>($u38, allCaps#18, allCaps#22, 0);
+
+        goto label36;
+
+     label33:
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        virtualinvoke allCaps.<android.widget.TextView: void setAutoSizeTextTypeUniformWithPresetSizes(int[],int)>(allCaps#5, 0);
+
+        goto label36;
+
+     label34:
+        goto label36;
+
+     label35:
+        goto label36;
+
+     label36:
+        allCaps#5 = <androidx.appcompat.R$styleable: int[] AppCompatTextView>;
+
+        $u-1#7 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[])>($u-1, $u37, allCaps#5);
+
+        a = null;
+
+        ap = null;
+
+        drawableLeft = null;
+
+        $u38 = <androidx.appcompat.R$styleable: int AppCompatTextView_drawableLeftCompat>;
+
+        drawableTop = null;
+
+        $u38 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u38, -1);
+
+        if $u38 == -1 goto label37;
+
+        allCapsSet#268 = $u-1#3;
+
+        drawableLeft = virtualinvoke $u-1#3.<androidx.appcompat.widget.AppCompatDrawableManager: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u38);
+
+        goto label38;
+
+     label37:
+        allCapsSet#268 = $u-1#3;
+
+     label38:
+        $u38 = <androidx.appcompat.R$styleable: int AppCompatTextView_drawableTopCompat>;
+
+        drawableRight = null;
+
+        $u38 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u38, -1);
+
+        if $u38 == -1 goto label39;
+
+        drawableTop = virtualinvoke allCapsSet#268.<androidx.appcompat.widget.AppCompatDrawableManager: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u38);
+
+     label39:
+        $u38 = <androidx.appcompat.R$styleable: int AppCompatTextView_drawableRightCompat>;
+
+        $u38 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u38, -1);
+
+        if $u38 == -1 goto label40;
+
+        drawableRight = virtualinvoke allCapsSet#268.<androidx.appcompat.widget.AppCompatDrawableManager: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u38);
+
+     label40:
+        $u38 = <androidx.appcompat.R$styleable: int AppCompatTextView_drawableBottomCompat>;
+
+        $u38 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u38, -1);
+
+        if $u38 == -1 goto label41;
+
+        $u-1#286 = virtualinvoke allCapsSet#268.<androidx.appcompat.widget.AppCompatDrawableManager: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u38);
+
+        goto label42;
+
+     label41:
+        $u-1#286 = null;
+
+     label42:
+        $u38 = <androidx.appcompat.R$styleable: int AppCompatTextView_drawableStartCompat>;
+
+        $u38 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u38, -1);
+
+        if $u38 == -1 goto label43;
+
+        a = virtualinvoke allCapsSet#268.<androidx.appcompat.widget.AppCompatDrawableManager: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u38);
+
+     label43:
+        $u38 = <androidx.appcompat.R$styleable: int AppCompatTextView_drawableEndCompat>;
+
+        $u38 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u38, -1);
+
+        if $u38 == -1 goto label44;
+
+        ap = virtualinvoke allCapsSet#268.<androidx.appcompat.widget.AppCompatDrawableManager: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u38);
+
+     label44:
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void setCompoundDrawables(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>(drawableLeft, drawableTop, drawableRight, $u-1#286, a, ap);
+
+        $u38 = <androidx.appcompat.R$styleable: int AppCompatTextView_drawableTint>;
+
+        $u-1#23 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>($u38);
+
+        if $u-1#23 == 0 goto label45;
+
+        $u38 = <androidx.appcompat.R$styleable: int AppCompatTextView_drawableTint>;
+
+        textColorHint = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: android.content.res.ColorStateList getColorStateList(int)>($u38);
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        staticinvoke <androidx.core.widget.TextViewCompat: void setCompoundDrawableTintList(android.widget.TextView,android.content.res.ColorStateList)>(allCaps, textColorHint);
+
+     label45:
+        $u38 = <androidx.appcompat.R$styleable: int AppCompatTextView_drawableTintMode>;
+
+        $u-1#23 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>($u38);
+
+        if $u-1#23 == 0 goto label46;
+
+        $u38 = <androidx.appcompat.R$styleable: int AppCompatTextView_drawableTintMode>;
+
+        $u38 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>($u38, -1);
+
+        $u-1#320 = staticinvoke <androidx.appcompat.widget.DrawableUtils: android.graphics.PorterDuff$Mode parseTintMode(int,android.graphics.PorterDuff$Mode)>($u38, null);
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        staticinvoke <androidx.core.widget.TextViewCompat: void setCompoundDrawableTintMode(android.widget.TextView,android.graphics.PorterDuff$Mode)>(allCaps, $u-1#320);
+
+     label46:
+        $u38 = <androidx.appcompat.R$styleable: int AppCompatTextView_firstBaselineToTopHeight>;
+
+        $u38 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getDimensionPixelSize(int,int)>($u38, -1);
+
+        allCaps#18 = <androidx.appcompat.R$styleable: int AppCompatTextView_lastBaselineToBottomHeight>;
+
+        allCaps#18 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getDimensionPixelSize(int,int)>(allCaps#18, -1);
+
+        allCaps#22 = <androidx.appcompat.R$styleable: int AppCompatTextView_lineHeight>;
+
+        allCaps#22 = virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: int getDimensionPixelSize(int,int)>(allCaps#22, -1);
+
+        virtualinvoke $u-1#7.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        if $u38 == -1 goto label47;
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        staticinvoke <androidx.core.widget.TextViewCompat: void setFirstBaselineToTopHeight(android.widget.TextView,int)>(allCaps, $u38);
+
+     label47:
+        if allCaps#18 == -1 goto label48;
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        staticinvoke <androidx.core.widget.TextViewCompat: void setLastBaselineToBottomHeight(android.widget.TextView,int)>(allCaps, allCaps#18);
+
+     label48:
+        if allCaps#22 == -1 goto label49;
+
+        allCaps = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        staticinvoke <androidx.core.widget.TextViewCompat: void setLineHeight(android.widget.TextView,int)>(allCaps, allCaps#22);
+
+     label49:
+        return;
+    }
+
+    void onAsyncTypefaceReceived(java.lang.ref.WeakReference, android.graphics.Typeface)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        java.lang.ref.WeakReference textViewWeak;
+        android.graphics.Typeface $u4;
+        int $u1;
+        java.lang.Object $u-1;
+        boolean textView;
+        android.widget.TextView textView#3;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        textViewWeak := @parameter0: java.lang.ref.WeakReference;
+
+        $u4 := @parameter1: android.graphics.Typeface;
+
+        textView = this.<androidx.appcompat.widget.AppCompatTextHelper: boolean mAsyncFontPending>;
+
+        if textView == 0 goto label1;
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.Typeface mFontTypeface> = $u4;
+
+        $u-1 = virtualinvoke textViewWeak.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        textView#3 = (android.widget.TextView) $u-1;
+
+        if textView#3 == null goto label1;
+
+        $u1 = this.<androidx.appcompat.widget.AppCompatTextHelper: int mStyle>;
+
+        virtualinvoke textView#3.<android.widget.TextView: void setTypeface(android.graphics.Typeface,int)>($u4, $u1);
+
+     label1:
+        return;
+    }
+
+    void onLayout(boolean, int, int, int, int)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        boolean $u2;
+        int $u3, $u4, $u5, $u6;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u2 := @parameter0: boolean;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        $u6 := @parameter4: int;
+
+        $u2 = <androidx.core.widget.AutoSizeableTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $u2 != 0 goto label1;
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void autoSizeText()>();
+
+     label1:
+        return;
+    }
+
+    void onSetCompoundDrawables()
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void applyCompoundDrawablesTints()>();
+
+        return;
+    }
+
+    void onSetTextAppearance(android.content.Context, int)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        android.content.Context $u5;
+        int $u6;
+        int[] a;
+        androidx.appcompat.widget.TintTypedArray $u-1;
+        boolean $u-1#5;
+        android.content.res.ColorStateList $u-1#17;
+        android.widget.TextView $u3;
+        java.lang.String $u-1#35;
+        android.graphics.Typeface textColor;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u5 := @parameter0: android.content.Context;
+
+        $u6 := @parameter1: int;
+
+        a = <androidx.appcompat.R$styleable: int[] TextAppearance>;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,int,int[])>($u5, $u6, a);
+
+        $u6 = <androidx.appcompat.R$styleable: int TextAppearance_textAllCaps>;
+
+        $u-1#5 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>($u6);
+
+        if $u-1#5 == 0 goto label1;
+
+        $u6 = <androidx.appcompat.R$styleable: int TextAppearance_textAllCaps>;
+
+        $u-1#5 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: boolean getBoolean(int,boolean)>($u6, 0);
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void setAllCaps(boolean)>($u-1#5);
+
+     label1:
+        $u6 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u6 >= 23 goto label2;
+
+        $u6 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColor>;
+
+        $u-1#5 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>($u6);
+
+        if $u-1#5 == 0 goto label2;
+
+        $u6 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColor>;
+
+        $u-1#17 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: android.content.res.ColorStateList getColorStateList(int)>($u6);
+
+        if $u-1#17 == null goto label2;
+
+        $u3 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        virtualinvoke $u3.<android.widget.TextView: void setTextColor(android.content.res.ColorStateList)>($u-1#17);
+
+     label2:
+        $u6 = <androidx.appcompat.R$styleable: int TextAppearance_android_textSize>;
+
+        $u-1#5 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>($u6);
+
+        if $u-1#5 == 0 goto label3;
+
+        $u6 = <androidx.appcompat.R$styleable: int TextAppearance_android_textSize>;
+
+        $u6 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getDimensionPixelSize(int,int)>($u6, -1);
+
+        if $u6 != 0 goto label3;
+
+        $u3 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        virtualinvoke $u3.<android.widget.TextView: void setTextSize(int,float)>(0, 0.0F);
+
+     label3:
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void updateTypefaceAndStyle(android.content.Context,androidx.appcompat.widget.TintTypedArray)>($u5, $u-1);
+
+        $u6 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u6 < 26 goto label4;
+
+        $u6 = <androidx.appcompat.R$styleable: int TextAppearance_fontVariationSettings>;
+
+        $u-1#5 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: boolean hasValue(int)>($u6);
+
+        if $u-1#5 == 0 goto label4;
+
+        $u6 = <androidx.appcompat.R$styleable: int TextAppearance_fontVariationSettings>;
+
+        $u-1#35 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: java.lang.String getString(int)>($u6);
+
+        if $u-1#35 == null goto label4;
+
+        $u3 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        virtualinvoke $u3.<android.widget.TextView: boolean setFontVariationSettings(java.lang.String)>($u-1#35);
+
+     label4:
+        virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        textColor = this.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.Typeface mFontTypeface>;
+
+        if textColor == null goto label5;
+
+        $u3 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        $u6 = this.<androidx.appcompat.widget.AppCompatTextHelper: int mStyle>;
+
+        virtualinvoke $u3.<android.widget.TextView: void setTypeface(android.graphics.Typeface,int)>(textColor, $u6);
+
+     label5:
+        return;
+    }
+
+    void setAllCaps(boolean)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        boolean $u2;
+        android.widget.TextView $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: android.widget.TextView mView>;
+
+        virtualinvoke $u0.<android.widget.TextView: void setAllCaps(boolean)>($u2);
+
+        return;
+    }
+
+    void setAutoSizeTextTypeUniformWithConfiguration(int, int, int, int) throws java.lang.IllegalArgumentException
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        int $u2, $u3, $u4, $u5;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void setAutoSizeTextTypeUniformWithConfiguration(int,int,int,int)>($u2, $u3, $u4, $u5);
+
+        return;
+    }
+
+    void setAutoSizeTextTypeUniformWithPresetSizes(int[], int) throws java.lang.IllegalArgumentException
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        int[] $u2;
+        int $u3;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u2 := @parameter0: int[];
+
+        $u3 := @parameter1: int;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void setAutoSizeTextTypeUniformWithPresetSizes(int[],int)>($u2, $u3);
+
+        return;
+    }
+
+    void setAutoSizeTextTypeWithDefaults(int)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        int $u2;
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper mAutoSizeTextHelper>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: void setAutoSizeTextTypeWithDefaults(int)>($u2);
+
+        return;
+    }
+
+    void setCompoundDrawableTintList(android.content.res.ColorStateList)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        android.content.res.ColorStateList $u3;
+        androidx.appcompat.widget.TintInfo $u0;
+        boolean $u1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u3 := @parameter0: android.content.res.ColorStateList;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTint>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new androidx.appcompat.widget.TintInfo;
+
+        specialinvoke $u0.<androidx.appcompat.widget.TintInfo: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTint> = $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTint>;
+
+        $u0.<androidx.appcompat.widget.TintInfo: android.content.res.ColorStateList mTintList> = $u3;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTint>;
+
+        if $u3 == null goto label2;
+
+        $u1 = 1;
+
+        goto label3;
+
+     label2:
+        $u1 = 0;
+
+     label3:
+        $u0.<androidx.appcompat.widget.TintInfo: boolean mHasTintList> = $u1;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void setCompoundTints()>();
+
+        return;
+    }
+
+    void setCompoundDrawableTintMode(android.graphics.PorterDuff$Mode)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        android.graphics.PorterDuff$Mode $u3;
+        androidx.appcompat.widget.TintInfo $u0;
+        boolean $u1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u3 := @parameter0: android.graphics.PorterDuff$Mode;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTint>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new androidx.appcompat.widget.TintInfo;
+
+        specialinvoke $u0.<androidx.appcompat.widget.TintInfo: void <init>()>();
+
+        this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTint> = $u0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTint>;
+
+        $u0.<androidx.appcompat.widget.TintInfo: android.graphics.PorterDuff$Mode mTintMode> = $u3;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextHelper: androidx.appcompat.widget.TintInfo mDrawableTint>;
+
+        if $u3 == null goto label2;
+
+        $u1 = 1;
+
+        goto label3;
+
+     label2:
+        $u1 = 0;
+
+     label3:
+        $u0.<androidx.appcompat.widget.TintInfo: boolean mHasTintMode> = $u1;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void setCompoundTints()>();
+
+        return;
+    }
+
+    void setTextSize(int, float)
+    {
+        androidx.appcompat.widget.AppCompatTextHelper this;
+        int $u2;
+        float $u3;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextHelper;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: float;
+
+        $u-1 = <androidx.core.widget.AutoSizeableTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $u-1 != 0 goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: boolean isAutoSizeEnabled()>();
+
+        if $u-1 != 0 goto label1;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextHelper: void setTextSizeInternal(int,float)>($u2, $u3);
+
+     label1:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.widget.AppCompatTextHelper: int TEXT_FONT_WEIGHT_UNSPECIFIED> = -1;
+
+        <androidx.appcompat.widget.AppCompatTextHelper: int SERIF> = 2;
+
+        <androidx.appcompat.widget.AppCompatTextHelper: int SANS> = 1;
+
+        <androidx.appcompat.widget.AppCompatTextHelper: int MONOSPACE> = 3;
+
+        return;
+    }
+}

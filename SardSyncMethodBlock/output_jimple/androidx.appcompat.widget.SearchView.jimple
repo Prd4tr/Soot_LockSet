@@ -1,0 +1,3482 @@
+public class androidx.appcompat.widget.SearchView extends androidx.appcompat.widget.LinearLayoutCompat implements androidx.appcompat.view.CollapsibleActionView
+{
+    static final boolean DBG;
+    private static final java.lang.String IME_OPTION_NO_MICROPHONE;
+    static final java.lang.String LOG_TAG;
+    static final androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector PRE_API_29_HIDDEN_METHOD_INVOKER;
+    private android.os.Bundle mAppSearchData;
+    private boolean mClearingFocus;
+    final android.widget.ImageView mCloseButton;
+    private final android.widget.ImageView mCollapsedIcon;
+    private int mCollapsedImeOptions;
+    private final java.lang.CharSequence mDefaultQueryHint;
+    private final android.view.View mDropDownAnchor;
+    private boolean mExpandedInActionView;
+    final android.widget.ImageView mGoButton;
+    private boolean mIconified;
+    private boolean mIconifiedByDefault;
+    private int mMaxWidth;
+    private java.lang.CharSequence mOldQueryText;
+    private final android.view.View$OnClickListener mOnClickListener;
+    private androidx.appcompat.widget.SearchView$OnCloseListener mOnCloseListener;
+    private final android.widget.TextView$OnEditorActionListener mOnEditorActionListener;
+    private final android.widget.AdapterView$OnItemClickListener mOnItemClickListener;
+    private final android.widget.AdapterView$OnItemSelectedListener mOnItemSelectedListener;
+    private androidx.appcompat.widget.SearchView$OnQueryTextListener mOnQueryChangeListener;
+    android.view.View$OnFocusChangeListener mOnQueryTextFocusChangeListener;
+    private android.view.View$OnClickListener mOnSearchClickListener;
+    private androidx.appcompat.widget.SearchView$OnSuggestionListener mOnSuggestionListener;
+    private final java.util.WeakHashMap mOutsideDrawablesCache;
+    private java.lang.CharSequence mQueryHint;
+    private boolean mQueryRefinement;
+    private java.lang.Runnable mReleaseCursorRunnable;
+    final android.widget.ImageView mSearchButton;
+    private final android.view.View mSearchEditFrame;
+    private final android.graphics.drawable.Drawable mSearchHintIcon;
+    private final android.view.View mSearchPlate;
+    final androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView;
+    private android.graphics.Rect mSearchSrcTextViewBounds;
+    private android.graphics.Rect mSearchSrtTextViewBoundsExpanded;
+    android.app.SearchableInfo mSearchable;
+    private final android.view.View mSubmitArea;
+    private boolean mSubmitButtonEnabled;
+    private final int mSuggestionCommitIconResId;
+    private final int mSuggestionRowLayout;
+    androidx.cursoradapter.widget.CursorAdapter mSuggestionsAdapter;
+    private int[] mTemp;
+    private int[] mTemp2;
+    android.view.View$OnKeyListener mTextKeyListener;
+    private android.text.TextWatcher mTextWatcher;
+    private androidx.appcompat.widget.SearchView$UpdatableTouchDelegate mTouchDelegate;
+    private final java.lang.Runnable mUpdateDrawableStateRunnable;
+    private java.lang.CharSequence mUserQuery;
+    private final android.content.Intent mVoiceAppSearchIntent;
+    final android.widget.ImageView mVoiceButton;
+    private boolean mVoiceButtonEnabled;
+    private final android.content.Intent mVoiceWebSearchIntent;
+
+    static void <clinit>()
+    {
+        int $u0;
+        androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector $u0#2;
+
+        <androidx.appcompat.widget.SearchView: java.lang.String LOG_TAG> = "SearchView";
+
+        <androidx.appcompat.widget.SearchView: java.lang.String IME_OPTION_NO_MICROPHONE> = "nm";
+
+        <androidx.appcompat.widget.SearchView: boolean DBG> = 0;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 >= 29 goto label1;
+
+        $u0#2 = new androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector;
+
+        specialinvoke $u0#2.<androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: void <init>()>();
+
+        goto label2;
+
+     label1:
+        $u0#2 = null;
+
+     label2:
+        <androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector PRE_API_29_HIDDEN_METHOD_INVOKER> = $u0#2;
+
+        return;
+    }
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.content.Context $u2;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void <init>(android.content.Context,android.util.AttributeSet)>($u2, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        int $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = <androidx.appcompat.R$attr: int searchViewStyle>;
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, $u0);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.content.Context $u12;
+        android.util.AttributeSet $u13;
+        int $u14, focusable;
+        android.graphics.Rect a;
+        int[] maxWidth;
+        androidx.appcompat.widget.SearchView$1 a#6;
+        androidx.appcompat.widget.SearchView$2 a#7;
+        java.util.WeakHashMap a#8;
+        androidx.appcompat.widget.SearchView$5 a#9;
+        androidx.appcompat.widget.SearchView$6 a#10;
+        androidx.appcompat.widget.SearchView$7 a#11;
+        androidx.appcompat.widget.SearchView$8 a#12;
+        androidx.appcompat.widget.SearchView$9 a#13;
+        androidx.appcompat.widget.SearchView$10 a#14;
+        androidx.appcompat.widget.TintTypedArray $u-1;
+        android.view.LayoutInflater $u-1#19;
+        android.view.View $u-1#26;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete imeOptions;
+        android.widget.ImageView imeOptions#41;
+        android.graphics.drawable.Drawable $u-1#60;
+        android.content.res.Resources $u-1#90;
+        java.lang.String $u-1#93;
+        android.view.View$OnClickListener imeOptions#103;
+        android.text.TextWatcher imeOptions#113;
+        android.widget.TextView$OnEditorActionListener imeOptions#115;
+        android.widget.AdapterView$OnItemClickListener imeOptions#117;
+        android.widget.AdapterView$OnItemSelectedListener imeOptions#119;
+        android.view.View$OnKeyListener imeOptions#121;
+        androidx.appcompat.widget.SearchView$3 imeOptions#123;
+        boolean $u-1#125;
+        java.lang.CharSequence $u-1#132;
+        android.content.Intent $u7;
+        androidx.appcompat.widget.SearchView$4 $u8;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u12 := @parameter0: android.content.Context;
+
+        $u13 := @parameter1: android.util.AttributeSet;
+
+        $u14 := @parameter2: int;
+
+        specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: void <init>(android.content.Context,android.util.AttributeSet,int)>($u12, $u13, $u14);
+
+        a = new android.graphics.Rect;
+
+        specialinvoke a.<android.graphics.Rect: void <init>()>();
+
+        this.<androidx.appcompat.widget.SearchView: android.graphics.Rect mSearchSrcTextViewBounds> = a;
+
+        a = new android.graphics.Rect;
+
+        specialinvoke a.<android.graphics.Rect: void <init>()>();
+
+        this.<androidx.appcompat.widget.SearchView: android.graphics.Rect mSearchSrtTextViewBoundsExpanded> = a;
+
+        maxWidth = newarray (int)[2];
+
+        this.<androidx.appcompat.widget.SearchView: int[] mTemp> = maxWidth;
+
+        maxWidth = newarray (int)[2];
+
+        this.<androidx.appcompat.widget.SearchView: int[] mTemp2> = maxWidth;
+
+        a#6 = new androidx.appcompat.widget.SearchView$1;
+
+        specialinvoke a#6.<androidx.appcompat.widget.SearchView$1: void <init>(androidx.appcompat.widget.SearchView)>(this);
+
+        this.<androidx.appcompat.widget.SearchView: java.lang.Runnable mUpdateDrawableStateRunnable> = a#6;
+
+        a#7 = new androidx.appcompat.widget.SearchView$2;
+
+        specialinvoke a#7.<androidx.appcompat.widget.SearchView$2: void <init>(androidx.appcompat.widget.SearchView)>(this);
+
+        this.<androidx.appcompat.widget.SearchView: java.lang.Runnable mReleaseCursorRunnable> = a#7;
+
+        a#8 = new java.util.WeakHashMap;
+
+        specialinvoke a#8.<java.util.WeakHashMap: void <init>()>();
+
+        this.<androidx.appcompat.widget.SearchView: java.util.WeakHashMap mOutsideDrawablesCache> = a#8;
+
+        a#9 = new androidx.appcompat.widget.SearchView$5;
+
+        specialinvoke a#9.<androidx.appcompat.widget.SearchView$5: void <init>(androidx.appcompat.widget.SearchView)>(this);
+
+        this.<androidx.appcompat.widget.SearchView: android.view.View$OnClickListener mOnClickListener> = a#9;
+
+        a#10 = new androidx.appcompat.widget.SearchView$6;
+
+        specialinvoke a#10.<androidx.appcompat.widget.SearchView$6: void <init>(androidx.appcompat.widget.SearchView)>(this);
+
+        this.<androidx.appcompat.widget.SearchView: android.view.View$OnKeyListener mTextKeyListener> = a#10;
+
+        a#11 = new androidx.appcompat.widget.SearchView$7;
+
+        specialinvoke a#11.<androidx.appcompat.widget.SearchView$7: void <init>(androidx.appcompat.widget.SearchView)>(this);
+
+        this.<androidx.appcompat.widget.SearchView: android.widget.TextView$OnEditorActionListener mOnEditorActionListener> = a#11;
+
+        a#12 = new androidx.appcompat.widget.SearchView$8;
+
+        specialinvoke a#12.<androidx.appcompat.widget.SearchView$8: void <init>(androidx.appcompat.widget.SearchView)>(this);
+
+        this.<androidx.appcompat.widget.SearchView: android.widget.AdapterView$OnItemClickListener mOnItemClickListener> = a#12;
+
+        a#13 = new androidx.appcompat.widget.SearchView$9;
+
+        specialinvoke a#13.<androidx.appcompat.widget.SearchView$9: void <init>(androidx.appcompat.widget.SearchView)>(this);
+
+        this.<androidx.appcompat.widget.SearchView: android.widget.AdapterView$OnItemSelectedListener mOnItemSelectedListener> = a#13;
+
+        a#14 = new androidx.appcompat.widget.SearchView$10;
+
+        specialinvoke a#14.<androidx.appcompat.widget.SearchView$10: void <init>(androidx.appcompat.widget.SearchView)>(this);
+
+        this.<androidx.appcompat.widget.SearchView: android.text.TextWatcher mTextWatcher> = a#14;
+
+        maxWidth = <androidx.appcompat.R$styleable: int[] SearchView>;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[],int,int)>($u12, $u13, maxWidth, $u14, 0);
+
+        $u-1#19 = staticinvoke <android.view.LayoutInflater: android.view.LayoutInflater 'from'(android.content.Context)>($u12);
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_layout>;
+
+        focusable = <androidx.appcompat.R$layout: int abc_search_view>;
+
+        $u14 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u14, focusable);
+
+        virtualinvoke $u-1#19.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>($u14, this, 1);
+
+        $u14 = <androidx.appcompat.R$id: int search_src_text>;
+
+        $u-1#26 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.view.View findViewById(int)>($u14);
+
+        imeOptions = (androidx.appcompat.widget.SearchView$SearchAutoComplete) $u-1#26;
+
+        this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView> = imeOptions;
+
+        virtualinvoke imeOptions.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setSearchView(androidx.appcompat.widget.SearchView)>(this);
+
+        $u14 = <androidx.appcompat.R$id: int search_edit_frame>;
+
+        $u-1#26 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.view.View findViewById(int)>($u14);
+
+        this.<androidx.appcompat.widget.SearchView: android.view.View mSearchEditFrame> = $u-1#26;
+
+        $u14 = <androidx.appcompat.R$id: int search_plate>;
+
+        $u-1#26 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.view.View findViewById(int)>($u14);
+
+        this.<androidx.appcompat.widget.SearchView: android.view.View mSearchPlate> = $u-1#26;
+
+        $u14 = <androidx.appcompat.R$id: int submit_area>;
+
+        $u-1#26 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.view.View findViewById(int)>($u14);
+
+        this.<androidx.appcompat.widget.SearchView: android.view.View mSubmitArea> = $u-1#26;
+
+        $u14 = <androidx.appcompat.R$id: int search_button>;
+
+        $u-1#26 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.view.View findViewById(int)>($u14);
+
+        imeOptions#41 = (android.widget.ImageView) $u-1#26;
+
+        this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mSearchButton> = imeOptions#41;
+
+        $u14 = <androidx.appcompat.R$id: int search_go_btn>;
+
+        $u-1#26 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.view.View findViewById(int)>($u14);
+
+        imeOptions#41 = (android.widget.ImageView) $u-1#26;
+
+        this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mGoButton> = imeOptions#41;
+
+        $u14 = <androidx.appcompat.R$id: int search_close_btn>;
+
+        $u-1#26 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.view.View findViewById(int)>($u14);
+
+        imeOptions#41 = (android.widget.ImageView) $u-1#26;
+
+        this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mCloseButton> = imeOptions#41;
+
+        $u14 = <androidx.appcompat.R$id: int search_voice_btn>;
+
+        $u-1#26 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.view.View findViewById(int)>($u14);
+
+        imeOptions#41 = (android.widget.ImageView) $u-1#26;
+
+        this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mVoiceButton> = imeOptions#41;
+
+        $u14 = <androidx.appcompat.R$id: int search_mag_icon>;
+
+        $u-1#26 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.view.View findViewById(int)>($u14);
+
+        imeOptions#41 = (android.widget.ImageView) $u-1#26;
+
+        this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mCollapsedIcon> = imeOptions#41;
+
+        $u-1#26 = this.<androidx.appcompat.widget.SearchView: android.view.View mSearchPlate>;
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_queryBackground>;
+
+        $u-1#60 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>($u14);
+
+        staticinvoke <androidx.core.view.ViewCompat: void setBackground(android.view.View,android.graphics.drawable.Drawable)>($u-1#26, $u-1#60);
+
+        $u-1#26 = this.<androidx.appcompat.widget.SearchView: android.view.View mSubmitArea>;
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_submitBackground>;
+
+        $u-1#60 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>($u14);
+
+        staticinvoke <androidx.core.view.ViewCompat: void setBackground(android.view.View,android.graphics.drawable.Drawable)>($u-1#26, $u-1#60);
+
+        imeOptions#41 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mSearchButton>;
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_searchIcon>;
+
+        $u-1#60 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>($u14);
+
+        virtualinvoke imeOptions#41.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($u-1#60);
+
+        imeOptions#41 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mGoButton>;
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_goIcon>;
+
+        $u-1#60 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>($u14);
+
+        virtualinvoke imeOptions#41.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($u-1#60);
+
+        imeOptions#41 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mCloseButton>;
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_closeIcon>;
+
+        $u-1#60 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>($u14);
+
+        virtualinvoke imeOptions#41.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($u-1#60);
+
+        imeOptions#41 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mVoiceButton>;
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_voiceIcon>;
+
+        $u-1#60 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>($u14);
+
+        virtualinvoke imeOptions#41.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($u-1#60);
+
+        imeOptions#41 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mCollapsedIcon>;
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_searchIcon>;
+
+        $u-1#60 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>($u14);
+
+        virtualinvoke imeOptions#41.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($u-1#60);
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_searchHintIcon>;
+
+        $u-1#60 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>($u14);
+
+        this.<androidx.appcompat.widget.SearchView: android.graphics.drawable.Drawable mSearchHintIcon> = $u-1#60;
+
+        imeOptions#41 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mSearchButton>;
+
+        $u-1#90 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.content.res.Resources getResources()>();
+
+        $u14 = <androidx.appcompat.R$string: int abc_searchview_description_search>;
+
+        $u-1#93 = virtualinvoke $u-1#90.<android.content.res.Resources: java.lang.String getString(int)>($u14);
+
+        staticinvoke <androidx.appcompat.widget.TooltipCompat: void setTooltipText(android.view.View,java.lang.CharSequence)>(imeOptions#41, $u-1#93);
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_suggestionRowLayout>;
+
+        focusable = <androidx.appcompat.R$layout: int abc_search_dropdown_item_icons_2line>;
+
+        $u14 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u14, focusable);
+
+        this.<androidx.appcompat.widget.SearchView: int mSuggestionRowLayout> = $u14;
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_commitIcon>;
+
+        $u14 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>($u14, 0);
+
+        this.<androidx.appcompat.widget.SearchView: int mSuggestionCommitIconResId> = $u14;
+
+        imeOptions#41 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mSearchButton>;
+
+        imeOptions#103 = this.<androidx.appcompat.widget.SearchView: android.view.View$OnClickListener mOnClickListener>;
+
+        virtualinvoke imeOptions#41.<android.widget.ImageView: void setOnClickListener(android.view.View$OnClickListener)>(imeOptions#103);
+
+        imeOptions#41 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mCloseButton>;
+
+        imeOptions#103 = this.<androidx.appcompat.widget.SearchView: android.view.View$OnClickListener mOnClickListener>;
+
+        virtualinvoke imeOptions#41.<android.widget.ImageView: void setOnClickListener(android.view.View$OnClickListener)>(imeOptions#103);
+
+        imeOptions#41 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mGoButton>;
+
+        imeOptions#103 = this.<androidx.appcompat.widget.SearchView: android.view.View$OnClickListener mOnClickListener>;
+
+        virtualinvoke imeOptions#41.<android.widget.ImageView: void setOnClickListener(android.view.View$OnClickListener)>(imeOptions#103);
+
+        imeOptions#41 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mVoiceButton>;
+
+        imeOptions#103 = this.<androidx.appcompat.widget.SearchView: android.view.View$OnClickListener mOnClickListener>;
+
+        virtualinvoke imeOptions#41.<android.widget.ImageView: void setOnClickListener(android.view.View$OnClickListener)>(imeOptions#103);
+
+        imeOptions = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        imeOptions#103 = this.<androidx.appcompat.widget.SearchView: android.view.View$OnClickListener mOnClickListener>;
+
+        virtualinvoke imeOptions.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setOnClickListener(android.view.View$OnClickListener)>(imeOptions#103);
+
+        imeOptions = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        imeOptions#113 = this.<androidx.appcompat.widget.SearchView: android.text.TextWatcher mTextWatcher>;
+
+        virtualinvoke imeOptions.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void addTextChangedListener(android.text.TextWatcher)>(imeOptions#113);
+
+        imeOptions = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        imeOptions#115 = this.<androidx.appcompat.widget.SearchView: android.widget.TextView$OnEditorActionListener mOnEditorActionListener>;
+
+        virtualinvoke imeOptions.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setOnEditorActionListener(android.widget.TextView$OnEditorActionListener)>(imeOptions#115);
+
+        imeOptions = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        imeOptions#117 = this.<androidx.appcompat.widget.SearchView: android.widget.AdapterView$OnItemClickListener mOnItemClickListener>;
+
+        virtualinvoke imeOptions.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setOnItemClickListener(android.widget.AdapterView$OnItemClickListener)>(imeOptions#117);
+
+        imeOptions = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        imeOptions#119 = this.<androidx.appcompat.widget.SearchView: android.widget.AdapterView$OnItemSelectedListener mOnItemSelectedListener>;
+
+        virtualinvoke imeOptions.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setOnItemSelectedListener(android.widget.AdapterView$OnItemSelectedListener)>(imeOptions#119);
+
+        imeOptions = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        imeOptions#121 = this.<androidx.appcompat.widget.SearchView: android.view.View$OnKeyListener mTextKeyListener>;
+
+        virtualinvoke imeOptions.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setOnKeyListener(android.view.View$OnKeyListener)>(imeOptions#121);
+
+        imeOptions = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        imeOptions#123 = new androidx.appcompat.widget.SearchView$3;
+
+        specialinvoke imeOptions#123.<androidx.appcompat.widget.SearchView$3: void <init>(androidx.appcompat.widget.SearchView)>(this);
+
+        virtualinvoke imeOptions.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setOnFocusChangeListener(android.view.View$OnFocusChangeListener)>(imeOptions#123);
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_iconifiedByDefault>;
+
+        $u-1#125 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: boolean getBoolean(int,boolean)>($u14, 1);
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void setIconifiedByDefault(boolean)>($u-1#125);
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_android_maxWidth>;
+
+        $u14 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getDimensionPixelSize(int,int)>($u14, -1);
+
+        if $u14 == -1 goto label1;
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void setMaxWidth(int)>($u14);
+
+     label1:
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_defaultQueryHint>;
+
+        $u-1#132 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: java.lang.CharSequence getText(int)>($u14);
+
+        this.<androidx.appcompat.widget.SearchView: java.lang.CharSequence mDefaultQueryHint> = $u-1#132;
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_queryHint>;
+
+        $u-1#132 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: java.lang.CharSequence getText(int)>($u14);
+
+        this.<androidx.appcompat.widget.SearchView: java.lang.CharSequence mQueryHint> = $u-1#132;
+
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_android_imeOptions>;
+
+        $u14 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>($u14, -1);
+
+        if $u14 == -1 goto label2;
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void setImeOptions(int)>($u14);
+
+     label2:
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_android_inputType>;
+
+        $u14 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>($u14, -1);
+
+        if $u14 == -1 goto label3;
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void setInputType(int)>($u14);
+
+     label3:
+        $u14 = <androidx.appcompat.R$styleable: int SearchView_android_focusable>;
+
+        $u-1#125 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: boolean getBoolean(int,boolean)>($u14, 1);
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void setFocusable(boolean)>($u-1#125);
+
+        virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        $u7 = new android.content.Intent;
+
+        specialinvoke $u7.<android.content.Intent: void <init>(java.lang.String)>("android.speech.action.WEB_SEARCH");
+
+        this.<androidx.appcompat.widget.SearchView: android.content.Intent mVoiceWebSearchIntent> = $u7;
+
+        virtualinvoke $u7.<android.content.Intent: android.content.Intent addFlags(int)>(268435456);
+
+        $u7 = this.<androidx.appcompat.widget.SearchView: android.content.Intent mVoiceWebSearchIntent>;
+
+        virtualinvoke $u7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("android.speech.extra.LANGUAGE_MODEL", "web_search");
+
+        $u7 = new android.content.Intent;
+
+        specialinvoke $u7.<android.content.Intent: void <init>(java.lang.String)>("android.speech.action.RECOGNIZE_SPEECH");
+
+        this.<androidx.appcompat.widget.SearchView: android.content.Intent mVoiceAppSearchIntent> = $u7;
+
+        virtualinvoke $u7.<android.content.Intent: android.content.Intent addFlags(int)>(268435456);
+
+        imeOptions = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u14 = virtualinvoke imeOptions.<androidx.appcompat.widget.SearchView$SearchAutoComplete: int getDropDownAnchor()>();
+
+        $u-1#26 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.view.View findViewById(int)>($u14);
+
+        this.<androidx.appcompat.widget.SearchView: android.view.View mDropDownAnchor> = $u-1#26;
+
+        if $u-1#26 == null goto label4;
+
+        $u8 = new androidx.appcompat.widget.SearchView$4;
+
+        specialinvoke $u8.<androidx.appcompat.widget.SearchView$4: void <init>(androidx.appcompat.widget.SearchView)>(this);
+
+        virtualinvoke $u-1#26.<android.view.View: void addOnLayoutChangeListener(android.view.View$OnLayoutChangeListener)>($u8);
+
+     label4:
+        $u-1#125 = this.<androidx.appcompat.widget.SearchView: boolean mIconifiedByDefault>;
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateViewsVisibility(boolean)>($u-1#125);
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateQueryHint()>();
+
+        return;
+    }
+
+    private android.content.Intent createIntent(java.lang.String, android.net.Uri, java.lang.String, java.lang.String, int, java.lang.String)
+    {
+        androidx.appcompat.widget.SearchView this;
+        java.lang.String $u4, $u6, $u7, $u9;
+        android.net.Uri $u5;
+        int $u8;
+        android.content.Intent intent;
+        android.content.ComponentName $u-1;
+        java.lang.CharSequence $u1;
+        android.os.Bundle $u1#6;
+        android.app.SearchableInfo $u1#10;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u4 := @parameter0: java.lang.String;
+
+        $u5 := @parameter1: android.net.Uri;
+
+        $u6 := @parameter2: java.lang.String;
+
+        $u7 := @parameter3: java.lang.String;
+
+        $u8 := @parameter4: int;
+
+        $u9 := @parameter5: java.lang.String;
+
+        intent = new android.content.Intent;
+
+        specialinvoke intent.<android.content.Intent: void <init>(java.lang.String)>($u4);
+
+        virtualinvoke intent.<android.content.Intent: android.content.Intent addFlags(int)>(268435456);
+
+        if $u5 == null goto label1;
+
+        virtualinvoke intent.<android.content.Intent: android.content.Intent setData(android.net.Uri)>($u5);
+
+     label1:
+        $u1 = this.<androidx.appcompat.widget.SearchView: java.lang.CharSequence mUserQuery>;
+
+        virtualinvoke intent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.CharSequence)>("user_query", $u1);
+
+        if $u7 == null goto label2;
+
+        virtualinvoke intent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("query", $u7);
+
+     label2:
+        if $u6 == null goto label3;
+
+        virtualinvoke intent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("intent_extra_data_key", $u6);
+
+     label3:
+        $u1#6 = this.<androidx.appcompat.widget.SearchView: android.os.Bundle mAppSearchData>;
+
+        if $u1#6 == null goto label4;
+
+        virtualinvoke intent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Bundle)>("app_data", $u1#6);
+
+     label4:
+        if $u8 == 0 goto label5;
+
+        virtualinvoke intent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("action_key", $u8);
+
+        virtualinvoke intent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("action_msg", $u9);
+
+     label5:
+        $u1#10 = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        $u-1 = virtualinvoke $u1#10.<android.app.SearchableInfo: android.content.ComponentName getSearchActivity()>();
+
+        virtualinvoke intent.<android.content.Intent: android.content.Intent setComponent(android.content.ComponentName)>($u-1);
+
+        return intent;
+    }
+
+    private android.content.Intent createIntentFromSuggestion(android.database.Cursor, int, java.lang.String)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.database.Cursor $u11;
+        int $u12;
+        java.lang.String $u13, $u-1, action, $u-1#10;
+        android.app.SearchableInfo data;
+        java.lang.StringBuilder dataUri;
+        android.net.Uri dataUri#26;
+        android.content.Intent $u-1#36;
+        java.lang.RuntimeException action#38, data#41;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u11 := @parameter0: android.database.Cursor;
+
+        $u12 := @parameter1: int;
+
+        $u13 := @parameter2: java.lang.String;
+
+     label01:
+        $u-1 = staticinvoke <androidx.appcompat.widget.SuggestionsAdapter: java.lang.String getColumnString(android.database.Cursor,java.lang.String)>($u11, "suggest_intent_action");
+
+     label02:
+        action = $u-1;
+
+        if $u-1 != null goto label04;
+
+     label03:
+        data = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        action = virtualinvoke data.<android.app.SearchableInfo: java.lang.String getSuggestIntentAction()>();
+
+     label04:
+        if action != null goto label05;
+
+        action = "android.intent.action.SEARCH";
+
+     label05:
+        $u-1#10 = staticinvoke <androidx.appcompat.widget.SuggestionsAdapter: java.lang.String getColumnString(android.database.Cursor,java.lang.String)>($u11, "suggest_intent_data");
+
+     label06:
+        $u-1 = $u-1#10;
+
+        if $u-1#10 != null goto label08;
+
+     label07:
+        data = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        $u-1 = virtualinvoke data.<android.app.SearchableInfo: java.lang.String getSuggestIntentData()>();
+
+     label08:
+        if $u-1 == null goto label13;
+
+     label09:
+        $u-1#10 = staticinvoke <androidx.appcompat.widget.SuggestionsAdapter: java.lang.String getColumnString(android.database.Cursor,java.lang.String)>($u11, "suggest_intent_data_id");
+
+     label10:
+        if $u-1#10 == null goto label13;
+
+        dataUri = new java.lang.StringBuilder;
+
+     label11:
+        specialinvoke dataUri.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke dataUri.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke dataUri.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $u-1 = staticinvoke <android.net.Uri: java.lang.String encode(java.lang.String)>($u-1#10);
+
+        virtualinvoke dataUri.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        $u-1 = virtualinvoke dataUri.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label12:
+        goto label13;
+
+     label13:
+        if $u-1 != null goto label14;
+
+        dataUri#26 = null;
+
+        goto label15;
+
+     label14:
+        dataUri#26 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($u-1);
+
+     label15:
+        $u-1 = staticinvoke <androidx.appcompat.widget.SuggestionsAdapter: java.lang.String getColumnString(android.database.Cursor,java.lang.String)>($u11, "suggest_intent_query");
+
+        $u-1#10 = staticinvoke <androidx.appcompat.widget.SuggestionsAdapter: java.lang.String getColumnString(android.database.Cursor,java.lang.String)>($u11, "suggest_intent_extra_data");
+
+        $u-1#36 = specialinvoke this.<androidx.appcompat.widget.SearchView: android.content.Intent createIntent(java.lang.String,android.net.Uri,java.lang.String,java.lang.String,int,java.lang.String)>(action, dataUri#26, $u-1#10, $u-1, $u12, $u13);
+
+     label16:
+        return $u-1#36;
+
+     label17:
+        action#38 := @caughtexception;
+
+     label18:
+        $u12 = interfaceinvoke $u11.<android.database.Cursor: int getPosition()>();
+
+     label19:
+        goto label21;
+
+     label20:
+        data#41 := @caughtexception;
+
+        $u12 = -1;
+
+     label21:
+        dataUri = new java.lang.StringBuilder;
+
+        specialinvoke dataUri.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke dataUri.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Search suggestions cursor at row ");
+
+        virtualinvoke dataUri.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u12);
+
+        virtualinvoke dataUri.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" returned exception.");
+
+        $u13 = virtualinvoke dataUri.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("SearchView", $u13, action#38);
+
+        return null;
+
+        catch java.lang.RuntimeException from label01 to label02 with label17;
+        catch java.lang.RuntimeException from label03 to label04 with label17;
+        catch java.lang.RuntimeException from label05 to label06 with label17;
+        catch java.lang.RuntimeException from label07 to label08 with label17;
+        catch java.lang.RuntimeException from label09 to label10 with label17;
+        catch java.lang.RuntimeException from label11 to label12 with label17;
+        catch java.lang.RuntimeException from label14 to label15 with label17;
+        catch java.lang.RuntimeException from label15 to label16 with label17;
+        catch java.lang.RuntimeException from label18 to label19 with label20;
+    }
+
+    private android.content.Intent createVoiceAppSearchIntent(android.content.Intent, android.app.SearchableInfo)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.content.Intent $u13, queryIntent;
+        android.app.SearchableInfo $u14;
+        android.content.ComponentName $u-1;
+        android.content.Context $u-1#3;
+        android.app.PendingIntent $u-1#7;
+        android.os.Bundle queryExtras, voiceIntent;
+        java.lang.String languageModel, prompt, language;
+        int maxResults, $u-1#18;
+        android.content.res.Resources $u-1#17;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u13 := @parameter0: android.content.Intent;
+
+        $u14 := @parameter1: android.app.SearchableInfo;
+
+        $u-1 = virtualinvoke $u14.<android.app.SearchableInfo: android.content.ComponentName getSearchActivity()>();
+
+        queryIntent = new android.content.Intent;
+
+        specialinvoke queryIntent.<android.content.Intent: void <init>(java.lang.String)>("android.intent.action.SEARCH");
+
+        virtualinvoke queryIntent.<android.content.Intent: android.content.Intent setComponent(android.content.ComponentName)>($u-1);
+
+        $u-1#3 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.content.Context getContext()>();
+
+        $u-1#7 = staticinvoke <android.app.PendingIntent: android.app.PendingIntent getActivity(android.content.Context,int,android.content.Intent,int)>($u-1#3, 0, queryIntent, 1073741824);
+
+        queryExtras = new android.os.Bundle;
+
+        specialinvoke queryExtras.<android.os.Bundle: void <init>()>();
+
+        voiceIntent = this.<androidx.appcompat.widget.SearchView: android.os.Bundle mAppSearchData>;
+
+        if voiceIntent == null goto label1;
+
+        virtualinvoke queryExtras.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("app_data", voiceIntent);
+
+     label1:
+        queryIntent = new android.content.Intent;
+
+        specialinvoke queryIntent.<android.content.Intent: void <init>(android.content.Intent)>($u13);
+
+        languageModel = "free_form";
+
+        prompt = null;
+
+        language = null;
+
+        maxResults = 1;
+
+        $u-1#17 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.content.res.Resources getResources()>();
+
+        $u-1#18 = virtualinvoke $u14.<android.app.SearchableInfo: int getVoiceLanguageModeId()>();
+
+        if $u-1#18 == 0 goto label2;
+
+        $u-1#18 = virtualinvoke $u14.<android.app.SearchableInfo: int getVoiceLanguageModeId()>();
+
+        languageModel = virtualinvoke $u-1#17.<android.content.res.Resources: java.lang.String getString(int)>($u-1#18);
+
+     label2:
+        $u-1#18 = virtualinvoke $u14.<android.app.SearchableInfo: int getVoicePromptTextId()>();
+
+        if $u-1#18 == 0 goto label3;
+
+        $u-1#18 = virtualinvoke $u14.<android.app.SearchableInfo: int getVoicePromptTextId()>();
+
+        prompt = virtualinvoke $u-1#17.<android.content.res.Resources: java.lang.String getString(int)>($u-1#18);
+
+     label3:
+        $u-1#18 = virtualinvoke $u14.<android.app.SearchableInfo: int getVoiceLanguageId()>();
+
+        if $u-1#18 == 0 goto label4;
+
+        $u-1#18 = virtualinvoke $u14.<android.app.SearchableInfo: int getVoiceLanguageId()>();
+
+        language = virtualinvoke $u-1#17.<android.content.res.Resources: java.lang.String getString(int)>($u-1#18);
+
+     label4:
+        $u-1#18 = virtualinvoke $u14.<android.app.SearchableInfo: int getVoiceMaxResults()>();
+
+        if $u-1#18 == 0 goto label5;
+
+        maxResults = virtualinvoke $u14.<android.app.SearchableInfo: int getVoiceMaxResults()>();
+
+     label5:
+        virtualinvoke queryIntent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("android.speech.extra.LANGUAGE_MODEL", languageModel);
+
+        virtualinvoke queryIntent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("android.speech.extra.PROMPT", prompt);
+
+        virtualinvoke queryIntent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("android.speech.extra.LANGUAGE", language);
+
+        virtualinvoke queryIntent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("android.speech.extra.MAX_RESULTS", maxResults);
+
+        if $u-1 != null goto label6;
+
+        languageModel = null;
+
+        goto label7;
+
+     label6:
+        languageModel = virtualinvoke $u-1.<android.content.ComponentName: java.lang.String flattenToShortString()>();
+
+     label7:
+        virtualinvoke queryIntent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("calling_package", languageModel);
+
+        virtualinvoke queryIntent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.speech.extra.RESULTS_PENDINGINTENT", $u-1#7);
+
+        virtualinvoke queryIntent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Bundle)>("android.speech.extra.RESULTS_PENDINGINTENT_BUNDLE", queryExtras);
+
+        return queryIntent;
+    }
+
+    private android.content.Intent createVoiceWebSearchIntent(android.content.Intent, android.app.SearchableInfo)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.content.Intent $u5, voiceIntent;
+        android.app.SearchableInfo $u6;
+        android.content.ComponentName $u-1;
+        java.lang.String $u2;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u5 := @parameter0: android.content.Intent;
+
+        $u6 := @parameter1: android.app.SearchableInfo;
+
+        voiceIntent = new android.content.Intent;
+
+        specialinvoke voiceIntent.<android.content.Intent: void <init>(android.content.Intent)>($u5);
+
+        $u-1 = virtualinvoke $u6.<android.app.SearchableInfo: android.content.ComponentName getSearchActivity()>();
+
+        if $u-1 != null goto label1;
+
+        $u2 = null;
+
+        goto label2;
+
+     label1:
+        $u2 = virtualinvoke $u-1.<android.content.ComponentName: java.lang.String flattenToShortString()>();
+
+     label2:
+        virtualinvoke voiceIntent.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("calling_package", $u2);
+
+        return voiceIntent;
+    }
+
+    private void dismissSuggestions()
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void dismissDropDown()>();
+
+        return;
+    }
+
+    private void getChildBoundsWithinSearchView(android.view.View, android.graphics.Rect)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.view.View $u5;
+        android.graphics.Rect $u6;
+        int[] left, $u3;
+        int top, $u1, $u1#11, $u-1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u5 := @parameter0: android.view.View;
+
+        $u6 := @parameter1: android.graphics.Rect;
+
+        left = this.<androidx.appcompat.widget.SearchView: int[] mTemp>;
+
+        virtualinvoke $u5.<android.view.View: void getLocationInWindow(int[])>(left);
+
+        left = this.<androidx.appcompat.widget.SearchView: int[] mTemp2>;
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void getLocationInWindow(int[])>(left);
+
+        left = this.<androidx.appcompat.widget.SearchView: int[] mTemp>;
+
+        top = left[1];
+
+        $u3 = this.<androidx.appcompat.widget.SearchView: int[] mTemp2>;
+
+        $u1 = $u3[1];
+
+        top = top - $u1;
+
+        $u1 = left[0];
+
+        $u1#11 = $u3[0];
+
+        $u1 = $u1 - $u1#11;
+
+        $u1#11 = virtualinvoke $u5.<android.view.View: int getWidth()>();
+
+        $u1#11 = $u1#11 + $u1;
+
+        $u-1 = virtualinvoke $u5.<android.view.View: int getHeight()>();
+
+        $u-1 = $u-1 + top;
+
+        virtualinvoke $u6.<android.graphics.Rect: void set(int,int,int,int)>($u1, top, $u1#11, $u-1);
+
+        return;
+    }
+
+    private java.lang.CharSequence getDecoratedHint(java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.SearchView this;
+        java.lang.CharSequence $u7;
+        float $u-1;
+        boolean textSize;
+        android.graphics.drawable.Drawable textSize#2;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete textSize#3;
+        double textSize#5;
+        int textSize#8;
+        android.text.SpannableStringBuilder ssb;
+        android.text.style.ImageSpan $u2;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u7 := @parameter0: java.lang.CharSequence;
+
+        textSize = this.<androidx.appcompat.widget.SearchView: boolean mIconifiedByDefault>;
+
+        if textSize == 0 goto label2;
+
+        textSize#2 = this.<androidx.appcompat.widget.SearchView: android.graphics.drawable.Drawable mSearchHintIcon>;
+
+        if textSize#2 != null goto label1;
+
+        return $u7;
+
+     label1:
+        textSize#3 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke textSize#3.<androidx.appcompat.widget.SearchView$SearchAutoComplete: float getTextSize()>();
+
+        textSize#5 = (double) $u-1;
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(textSize#5);
+
+        textSize#5 = textSize#5 * 1.25;
+
+        textSize#8 = (int) textSize#5;
+
+        textSize#2 = this.<androidx.appcompat.widget.SearchView: android.graphics.drawable.Drawable mSearchHintIcon>;
+
+        virtualinvoke textSize#2.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>(0, 0, textSize#8, textSize#8);
+
+        ssb = new android.text.SpannableStringBuilder;
+
+        specialinvoke ssb.<android.text.SpannableStringBuilder: void <init>(java.lang.CharSequence)>("   ");
+
+        $u2 = new android.text.style.ImageSpan;
+
+        textSize#2 = this.<androidx.appcompat.widget.SearchView: android.graphics.drawable.Drawable mSearchHintIcon>;
+
+        specialinvoke $u2.<android.text.style.ImageSpan: void <init>(android.graphics.drawable.Drawable)>(textSize#2);
+
+        virtualinvoke ssb.<android.text.SpannableStringBuilder: void setSpan(java.lang.Object,int,int,int)>($u2, 1, 2, 33);
+
+        virtualinvoke ssb.<android.text.SpannableStringBuilder: android.text.SpannableStringBuilder append(java.lang.CharSequence)>($u7);
+
+        return ssb;
+
+     label2:
+        return $u7;
+    }
+
+    private int getPreferredHeight()
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u1;
+        android.content.Context $u-1;
+        android.content.res.Resources $u-1#3;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.content.Context getContext()>();
+
+        $u-1#3 = virtualinvoke $u-1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u1 = <androidx.appcompat.R$dimen: int abc_search_view_preferred_height>;
+
+        $u1 = virtualinvoke $u-1#3.<android.content.res.Resources: int getDimensionPixelSize(int)>($u1);
+
+        return $u1;
+    }
+
+    private int getPreferredWidth()
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u1;
+        android.content.Context $u-1;
+        android.content.res.Resources $u-1#3;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.content.Context getContext()>();
+
+        $u-1#3 = virtualinvoke $u-1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u1 = <androidx.appcompat.R$dimen: int abc_search_view_preferred_width>;
+
+        $u1 = virtualinvoke $u-1#3.<android.content.res.Resources: int getDimensionPixelSize(int)>($u1);
+
+        return $u1;
+    }
+
+    private boolean hasVoiceSearch()
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.app.SearchableInfo testIntent;
+        boolean $u-1;
+        android.content.Intent testIntent#5;
+        android.content.Context $u-1#12;
+        android.content.pm.PackageManager $u-1#14;
+        android.content.pm.ResolveInfo $u-1#16;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        testIntent = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        if testIntent == null goto label3;
+
+        $u-1 = virtualinvoke testIntent.<android.app.SearchableInfo: boolean getVoiceSearchEnabled()>();
+
+        if $u-1 == 0 goto label3;
+
+        testIntent#5 = null;
+
+        testIntent = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        $u-1 = virtualinvoke testIntent.<android.app.SearchableInfo: boolean getVoiceSearchLaunchWebSearch()>();
+
+        if $u-1 == 0 goto label1;
+
+        testIntent#5 = this.<androidx.appcompat.widget.SearchView: android.content.Intent mVoiceWebSearchIntent>;
+
+        goto label2;
+
+     label1:
+        testIntent = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        $u-1 = virtualinvoke testIntent.<android.app.SearchableInfo: boolean getVoiceSearchLaunchRecognizer()>();
+
+        if $u-1 == 0 goto label2;
+
+        testIntent#5 = this.<androidx.appcompat.widget.SearchView: android.content.Intent mVoiceAppSearchIntent>;
+
+     label2:
+        if testIntent#5 == null goto label3;
+
+        $u-1#12 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.content.Context getContext()>();
+
+        $u-1#14 = virtualinvoke $u-1#12.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $u-1#16 = virtualinvoke $u-1#14.<android.content.pm.PackageManager: android.content.pm.ResolveInfo resolveActivity(android.content.Intent,int)>(testIntent#5, 65536);
+
+        if $u-1#16 == null goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    static boolean isLandscapeMode(android.content.Context)
+    {
+        android.content.Context $u2;
+        android.content.res.Resources $u-1;
+        android.content.res.Configuration $u-1#3;
+        int $u0;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u-1 = virtualinvoke $u2.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#3 = virtualinvoke $u-1.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        $u0 = $u-1#3.<android.content.res.Configuration: int orientation>;
+
+        if $u0 != 2 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private boolean isSubmitAreaEnabled()
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u-1 = this.<androidx.appcompat.widget.SearchView: boolean mSubmitButtonEnabled>;
+
+        if $u-1 != 0 goto label1;
+
+        $u-1 = this.<androidx.appcompat.widget.SearchView: boolean mVoiceButtonEnabled>;
+
+        if $u-1 == 0 goto label2;
+
+     label1:
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean isIconified()>();
+
+        if $u-1 != 0 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    private void launchIntent(android.content.Intent)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.content.Intent $u4;
+        android.content.Context $u-1;
+        java.lang.RuntimeException ex;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1#6;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u4 := @parameter0: android.content.Intent;
+
+        if $u4 != null goto label1;
+
+        return;
+
+     label1:
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.content.Context getContext()>();
+
+        virtualinvoke $u-1.<android.content.Context: void startActivity(android.content.Intent)>($u4);
+
+     label2:
+        return;
+
+     label3:
+        ex := @caughtexception;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed launch activity: ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u4);
+
+        $u-1#6 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("SearchView", $u-1#6, ex);
+
+        return;
+
+        catch java.lang.RuntimeException from label1 to label2 with label3;
+    }
+
+    private boolean launchSuggestion(int, int, java.lang.String)
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u4, $u5;
+        java.lang.String $u6;
+        androidx.cursoradapter.widget.CursorAdapter c;
+        android.database.Cursor $u-1;
+        boolean $u-1#4;
+        android.content.Intent $u-1#6;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: int;
+
+        $u6 := @parameter2: java.lang.String;
+
+        c = this.<androidx.appcompat.widget.SearchView: androidx.cursoradapter.widget.CursorAdapter mSuggestionsAdapter>;
+
+        $u-1 = virtualinvoke c.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor getCursor()>();
+
+        if $u-1 == null goto label1;
+
+        $u-1#4 = interfaceinvoke $u-1.<android.database.Cursor: boolean moveToPosition(int)>($u4);
+
+        if $u-1#4 == 0 goto label1;
+
+        $u-1#6 = specialinvoke this.<androidx.appcompat.widget.SearchView: android.content.Intent createIntentFromSuggestion(android.database.Cursor,int,java.lang.String)>($u-1, $u5, $u6);
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void launchIntent(android.content.Intent)>($u-1#6);
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private void postUpdateFocusedState()
+    {
+        androidx.appcompat.widget.SearchView this;
+        java.lang.Runnable $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: java.lang.Runnable mUpdateDrawableStateRunnable>;
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean post(java.lang.Runnable)>($u0);
+
+        return;
+    }
+
+    private void rewriteQueryFromSuggestion(int)
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u4;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete oldQuery;
+        android.text.Editable $u-1;
+        androidx.cursoradapter.widget.CursorAdapter c;
+        android.database.Cursor $u-1#5;
+        boolean $u-1#7;
+        java.lang.CharSequence $u-1#10;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u4 := @parameter0: int;
+
+        oldQuery = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke oldQuery.<androidx.appcompat.widget.SearchView$SearchAutoComplete: android.text.Editable getText()>();
+
+        c = this.<androidx.appcompat.widget.SearchView: androidx.cursoradapter.widget.CursorAdapter mSuggestionsAdapter>;
+
+        $u-1#5 = virtualinvoke c.<androidx.cursoradapter.widget.CursorAdapter: android.database.Cursor getCursor()>();
+
+        if $u-1#5 != null goto label1;
+
+        return;
+
+     label1:
+        $u-1#7 = interfaceinvoke $u-1#5.<android.database.Cursor: boolean moveToPosition(int)>($u4);
+
+        if $u-1#7 == 0 goto label4;
+
+        c = this.<androidx.appcompat.widget.SearchView: androidx.cursoradapter.widget.CursorAdapter mSuggestionsAdapter>;
+
+        $u-1#10 = virtualinvoke c.<androidx.cursoradapter.widget.CursorAdapter: java.lang.CharSequence convertToString(android.database.Cursor)>($u-1#5);
+
+        if $u-1#10 == null goto label2;
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void setQuery(java.lang.CharSequence)>($u-1#10);
+
+        goto label3;
+
+     label2:
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void setQuery(java.lang.CharSequence)>($u-1);
+
+     label3:
+        return;
+
+     label4:
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void setQuery(java.lang.CharSequence)>($u-1);
+
+        return;
+    }
+
+    private void setQuery(java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.SearchView this;
+        java.lang.CharSequence $u3;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+        boolean $u-1;
+        int $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u3 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setText(java.lang.CharSequence)>($u3);
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u3);
+
+        if $u-1 == 0 goto label1;
+
+        $u1 = 0;
+
+        goto label2;
+
+     label1:
+        $u1 = interfaceinvoke $u3.<java.lang.CharSequence: int length()>();
+
+     label2:
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setSelection(int)>($u1);
+
+        return;
+    }
+
+    private void updateCloseButton()
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete hasText;
+        android.text.Editable $u-1;
+        boolean $u-1#4, showClose, $u3;
+        int closeButtonImg;
+        android.widget.ImageView $u3#11;
+        android.graphics.drawable.Drawable $u-1#13;
+        int[] $u3#15;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        hasText = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke hasText.<androidx.appcompat.widget.SearchView$SearchAutoComplete: android.text.Editable getText()>();
+
+        $u-1#4 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u-1);
+
+        showClose = 1;
+
+        $u-1#4 = $u-1#4 ^ 1;
+
+        closeButtonImg = 0;
+
+        if $u-1#4 != 0 goto label2;
+
+        $u3 = this.<androidx.appcompat.widget.SearchView: boolean mIconifiedByDefault>;
+
+        if $u3 == 0 goto label1;
+
+        $u3 = this.<androidx.appcompat.widget.SearchView: boolean mExpandedInActionView>;
+
+        if $u3 != 0 goto label1;
+
+        goto label2;
+
+     label1:
+        showClose = 0;
+
+     label2:
+        $u3#11 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mCloseButton>;
+
+        if showClose == 0 goto label3;
+
+        goto label4;
+
+     label3:
+        closeButtonImg = 8;
+
+     label4:
+        virtualinvoke $u3#11.<android.widget.ImageView: void setVisibility(int)>(closeButtonImg);
+
+        $u3#11 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mCloseButton>;
+
+        $u-1#13 = virtualinvoke $u3#11.<android.widget.ImageView: android.graphics.drawable.Drawable getDrawable()>();
+
+        if $u-1#13 == null goto label7;
+
+        if $u-1#4 == 0 goto label5;
+
+        $u3#15 = <androidx.appcompat.widget.SearchView: int[] ENABLED_STATE_SET>;
+
+        goto label6;
+
+     label5:
+        $u3#15 = <androidx.appcompat.widget.SearchView: int[] EMPTY_STATE_SET>;
+
+     label6:
+        virtualinvoke $u-1#13.<android.graphics.drawable.Drawable: boolean setState(int[])>($u3#15);
+
+     label7:
+        return;
+    }
+
+    private void updateQueryHint()
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u1;
+        java.lang.CharSequence $u-1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SearchView: java.lang.CharSequence getQueryHint()>();
+
+        $u1 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        if $u-1 != null goto label1;
+
+        $u-1 = "";
+
+        goto label1;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.SearchView: java.lang.CharSequence getDecoratedHint(java.lang.CharSequence)>($u-1);
+
+        virtualinvoke $u1.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setHint(java.lang.CharSequence)>($u-1);
+
+        return;
+    }
+
+    private void updateSearchAutoComplete()
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.app.SearchableInfo $u4;
+        java.util.WeakHashMap $u5;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete inputType;
+        int $u-1, inputType#11, $u1;
+        byte $u2;
+        java.lang.String $u-1#16;
+        androidx.cursoradapter.widget.CursorAdapter $u1#22;
+        androidx.appcompat.widget.SuggestionsAdapter $u1#27;
+        android.content.Context $u-1#28;
+        boolean $u3;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        inputType = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u4 = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        $u-1 = virtualinvoke $u4.<android.app.SearchableInfo: int getSuggestThreshold()>();
+
+        virtualinvoke inputType.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setThreshold(int)>($u-1);
+
+        inputType = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u4 = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        $u-1 = virtualinvoke $u4.<android.app.SearchableInfo: int getImeOptions()>();
+
+        virtualinvoke inputType.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setImeOptions(int)>($u-1);
+
+        $u4 = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        $u-1 = virtualinvoke $u4.<android.app.SearchableInfo: int getInputType()>();
+
+        inputType#11 = $u-1;
+
+        $u1 = $u-1 & 15;
+
+        $u2 = 1;
+
+        if $u1 != 1 goto label1;
+
+        inputType#11 = $u-1 & -65537;
+
+        $u4 = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        $u-1#16 = virtualinvoke $u4.<android.app.SearchableInfo: java.lang.String getSuggestAuthority()>();
+
+        if $u-1#16 == null goto label1;
+
+        $u-1 = inputType#11 | 65536;
+
+        inputType#11 = $u-1 | 524288;
+
+     label1:
+        inputType = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke inputType.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setInputType(int)>(inputType#11);
+
+        $u1#22 = this.<androidx.appcompat.widget.SearchView: androidx.cursoradapter.widget.CursorAdapter mSuggestionsAdapter>;
+
+        if $u1#22 == null goto label2;
+
+        virtualinvoke $u1#22.<androidx.cursoradapter.widget.CursorAdapter: void changeCursor(android.database.Cursor)>(null);
+
+     label2:
+        $u4 = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        $u-1#16 = virtualinvoke $u4.<android.app.SearchableInfo: java.lang.String getSuggestAuthority()>();
+
+        if $u-1#16 == null goto label4;
+
+        $u1#27 = new androidx.appcompat.widget.SuggestionsAdapter;
+
+        $u-1#28 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.content.Context getContext()>();
+
+        $u4 = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        $u5 = this.<androidx.appcompat.widget.SearchView: java.util.WeakHashMap mOutsideDrawablesCache>;
+
+        specialinvoke $u1#27.<androidx.appcompat.widget.SuggestionsAdapter: void <init>(android.content.Context,androidx.appcompat.widget.SearchView,android.app.SearchableInfo,java.util.WeakHashMap)>($u-1#28, this, $u4, $u5);
+
+        this.<androidx.appcompat.widget.SearchView: androidx.cursoradapter.widget.CursorAdapter mSuggestionsAdapter> = $u1#27;
+
+        inputType = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke inputType.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setAdapter(android.widget.ListAdapter)>($u1#27);
+
+        $u1#22 = this.<androidx.appcompat.widget.SearchView: androidx.cursoradapter.widget.CursorAdapter mSuggestionsAdapter>;
+
+        $u1#27 = (androidx.appcompat.widget.SuggestionsAdapter) $u1#22;
+
+        $u3 = this.<androidx.appcompat.widget.SearchView: boolean mQueryRefinement>;
+
+        if $u3 == 0 goto label3;
+
+        $u2 = 2;
+
+        goto label3;
+
+     label3:
+        virtualinvoke $u1#27.<androidx.appcompat.widget.SuggestionsAdapter: void setQueryRefinement(int)>($u2);
+
+     label4:
+        return;
+    }
+
+    private void updateSubmitArea()
+    {
+        androidx.appcompat.widget.SearchView this;
+        byte visibility;
+        boolean $u-1;
+        android.widget.ImageView $u1;
+        int $u-1#5;
+        android.view.View $u1#10;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        visibility = 8;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.SearchView: boolean isSubmitAreaEnabled()>();
+
+        if $u-1 == 0 goto label2;
+
+        $u1 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mGoButton>;
+
+        $u-1#5 = virtualinvoke $u1.<android.widget.ImageView: int getVisibility()>();
+
+        if $u-1#5 == 0 goto label1;
+
+        $u1 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mVoiceButton>;
+
+        $u-1#5 = virtualinvoke $u1.<android.widget.ImageView: int getVisibility()>();
+
+        if $u-1#5 != 0 goto label2;
+
+     label1:
+        visibility = 0;
+
+     label2:
+        $u1#10 = this.<androidx.appcompat.widget.SearchView: android.view.View mSubmitArea>;
+
+        virtualinvoke $u1#10.<android.view.View: void setVisibility(int)>(visibility);
+
+        return;
+    }
+
+    private void updateSubmitButton(boolean)
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean $u3, $u1;
+        byte visibility;
+        android.widget.ImageView $u1#8;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u3 := @parameter0: boolean;
+
+        visibility = 8;
+
+        $u1 = this.<androidx.appcompat.widget.SearchView: boolean mSubmitButtonEnabled>;
+
+        if $u1 == 0 goto label2;
+
+        $u1 = specialinvoke this.<androidx.appcompat.widget.SearchView: boolean isSubmitAreaEnabled()>();
+
+        if $u1 == 0 goto label2;
+
+        $u1 = virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean hasFocus()>();
+
+        if $u1 == 0 goto label2;
+
+        if $u3 != 0 goto label1;
+
+        $u3 = this.<androidx.appcompat.widget.SearchView: boolean mVoiceButtonEnabled>;
+
+        if $u3 != 0 goto label2;
+
+     label1:
+        visibility = 0;
+
+     label2:
+        $u1#8 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mGoButton>;
+
+        virtualinvoke $u1#8.<android.widget.ImageView: void setVisibility(int)>(visibility);
+
+        return;
+    }
+
+    private void updateViewsVisibility(boolean)
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean $u7, $u1, $u-1#7;
+        int iconVisibility, visCollapsed;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete hasText;
+        android.text.Editable $u-1;
+        android.widget.ImageView $u5;
+        android.view.View $u5#11;
+        android.graphics.drawable.Drawable $u-1#13;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u7 := @parameter0: boolean;
+
+        this.<androidx.appcompat.widget.SearchView: boolean mIconified> = $u7;
+
+        iconVisibility = 8;
+
+        $u1 = 0;
+
+        if $u7 == 0 goto label1;
+
+        visCollapsed = 0;
+
+        goto label2;
+
+     label1:
+        visCollapsed = 8;
+
+     label2:
+        hasText = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke hasText.<androidx.appcompat.widget.SearchView$SearchAutoComplete: android.text.Editable getText()>();
+
+        $u-1#7 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u-1);
+
+        $u-1#7 = $u-1#7 ^ 1;
+
+        $u5 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mSearchButton>;
+
+        virtualinvoke $u5.<android.widget.ImageView: void setVisibility(int)>(visCollapsed);
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateSubmitButton(boolean)>($u-1#7);
+
+        $u5#11 = this.<androidx.appcompat.widget.SearchView: android.view.View mSearchEditFrame>;
+
+        if $u7 == 0 goto label3;
+
+        goto label4;
+
+     label3:
+        iconVisibility = 0;
+
+     label4:
+        virtualinvoke $u5#11.<android.view.View: void setVisibility(int)>(iconVisibility);
+
+        $u5 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mCollapsedIcon>;
+
+        $u-1#13 = virtualinvoke $u5.<android.widget.ImageView: android.graphics.drawable.Drawable getDrawable()>();
+
+        if $u-1#13 == null goto label6;
+
+        $u7 = this.<androidx.appcompat.widget.SearchView: boolean mIconifiedByDefault>;
+
+        if $u7 == 0 goto label5;
+
+        goto label6;
+
+     label5:
+        iconVisibility = 0;
+
+        goto label7;
+
+     label6:
+        iconVisibility = 8;
+
+     label7:
+        $u5 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mCollapsedIcon>;
+
+        virtualinvoke $u5.<android.widget.ImageView: void setVisibility(int)>(iconVisibility);
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateCloseButton()>();
+
+        if $u-1#7 != 0 goto label8;
+
+        $u1 = 1;
+
+     label8:
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateVoiceButton(boolean)>($u1);
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateSubmitArea()>();
+
+        return;
+    }
+
+    private void updateVoiceButton(boolean)
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean $u4, $u-1;
+        byte visibility;
+        android.widget.ImageView $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u4 := @parameter0: boolean;
+
+        visibility = 8;
+
+        $u-1 = this.<androidx.appcompat.widget.SearchView: boolean mVoiceButtonEnabled>;
+
+        if $u-1 == 0 goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean isIconified()>();
+
+        if $u-1 != 0 goto label1;
+
+        if $u4 == 0 goto label1;
+
+        visibility = 0;
+
+        $u1 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mGoButton>;
+
+        virtualinvoke $u1.<android.widget.ImageView: void setVisibility(int)>(8);
+
+     label1:
+        $u1 = this.<androidx.appcompat.widget.SearchView: android.widget.ImageView mVoiceButton>;
+
+        virtualinvoke $u1.<android.widget.ImageView: void setVisibility(int)>(visibility);
+
+        return;
+    }
+
+    void adjustDropDownSizeAndPosition()
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.graphics.Rect dropDownPadding;
+        android.view.View res;
+        int $u-1, iconOffset#14, offset, $u7;
+        android.content.Context $u-1#5;
+        android.content.res.Resources $u-1#7;
+        boolean $u-1#12, iconOffset;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete offset#21;
+        android.graphics.drawable.Drawable $u-1#22;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        res = this.<androidx.appcompat.widget.SearchView: android.view.View mDropDownAnchor>;
+
+        $u-1 = virtualinvoke res.<android.view.View: int getWidth()>();
+
+        if $u-1 <= 1 goto label5;
+
+        $u-1#5 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.content.Context getContext()>();
+
+        $u-1#7 = virtualinvoke $u-1#5.<android.content.Context: android.content.res.Resources getResources()>();
+
+        res = this.<androidx.appcompat.widget.SearchView: android.view.View mSearchPlate>;
+
+        $u-1 = virtualinvoke res.<android.view.View: int getPaddingLeft()>();
+
+        dropDownPadding = new android.graphics.Rect;
+
+        specialinvoke dropDownPadding.<android.graphics.Rect: void <init>()>();
+
+        $u-1#12 = staticinvoke <androidx.appcompat.widget.ViewUtils: boolean isLayoutRtl(android.view.View)>(this);
+
+        iconOffset = this.<androidx.appcompat.widget.SearchView: boolean mIconifiedByDefault>;
+
+        if iconOffset == 0 goto label1;
+
+        iconOffset#14 = <androidx.appcompat.R$dimen: int abc_dropdownitem_icon_width>;
+
+        iconOffset#14 = virtualinvoke $u-1#7.<android.content.res.Resources: int getDimensionPixelSize(int)>(iconOffset#14);
+
+        offset = <androidx.appcompat.R$dimen: int abc_dropdownitem_text_padding_left>;
+
+        offset = virtualinvoke $u-1#7.<android.content.res.Resources: int getDimensionPixelSize(int)>(offset);
+
+        iconOffset#14 = iconOffset#14 + offset;
+
+        goto label2;
+
+     label1:
+        iconOffset#14 = 0;
+
+     label2:
+        offset#21 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1#22 = virtualinvoke offset#21.<androidx.appcompat.widget.SearchView$SearchAutoComplete: android.graphics.drawable.Drawable getDropDownBackground()>();
+
+        virtualinvoke $u-1#22.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>(dropDownPadding);
+
+        if $u-1#12 == 0 goto label3;
+
+        offset = dropDownPadding.<android.graphics.Rect: int left>;
+
+        offset = neg offset;
+
+        goto label4;
+
+     label3:
+        offset = dropDownPadding.<android.graphics.Rect: int left>;
+
+        offset = offset + iconOffset#14;
+
+        offset = $u-1 - offset;
+
+     label4:
+        offset#21 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke offset#21.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setDropDownHorizontalOffset(int)>(offset);
+
+        res = this.<androidx.appcompat.widget.SearchView: android.view.View mDropDownAnchor>;
+
+        offset = virtualinvoke res.<android.view.View: int getWidth()>();
+
+        $u7 = dropDownPadding.<android.graphics.Rect: int left>;
+
+        offset = offset + $u7;
+
+        $u7 = dropDownPadding.<android.graphics.Rect: int right>;
+
+        offset = offset + $u7;
+
+        iconOffset#14 = offset + iconOffset#14;
+
+        $u-1 = iconOffset#14 - $u-1;
+
+        offset#21 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke offset#21.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setDropDownWidth(int)>($u-1);
+
+     label5:
+        return;
+    }
+
+    public void clearFocus()
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        this.<androidx.appcompat.widget.SearchView: boolean mClearingFocus> = 1;
+
+        specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: void clearFocus()>();
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void clearFocus()>();
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setImeVisibility(boolean)>(0);
+
+        this.<androidx.appcompat.widget.SearchView: boolean mClearingFocus> = 0;
+
+        return;
+    }
+
+    void forceSuggestionQuery()
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u0;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0#3;
+        androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector $u0#4;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 29 goto label1;
+
+        $u0#3 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0#3.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void refreshAutoCompleteResults()>();
+
+        return;
+
+     label1:
+        $u0#4 = <androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector PRE_API_29_HIDDEN_METHOD_INVOKER>;
+
+        $u0#3 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0#4.<androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: void doBeforeTextChanged(android.widget.AutoCompleteTextView)>($u0#3);
+
+        $u0#4 = <androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector PRE_API_29_HIDDEN_METHOD_INVOKER>;
+
+        $u0#3 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0#4.<androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: void doAfterTextChanged(android.widget.AutoCompleteTextView)>($u0#3);
+
+        return;
+    }
+
+    public int getImeOptions()
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u-1;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: int getImeOptions()>();
+
+        return $u-1;
+    }
+
+    public int getInputType()
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u-1;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: int getInputType()>();
+
+        return $u-1;
+    }
+
+    public int getMaxWidth()
+    {
+        androidx.appcompat.widget.SearchView this;
+        int ret0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        ret0 = this.<androidx.appcompat.widget.SearchView: int mMaxWidth>;
+
+        return ret0;
+    }
+
+    public java.lang.CharSequence getQuery()
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.text.Editable $u-1;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: android.text.Editable getText()>();
+
+        return $u-1;
+    }
+
+    public java.lang.CharSequence getQueryHint()
+    {
+        androidx.appcompat.widget.SearchView this;
+        java.lang.CharSequence hint;
+        android.app.SearchableInfo hint#3;
+        int $u-1;
+        android.content.Context $u-1#6;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        hint = this.<androidx.appcompat.widget.SearchView: java.lang.CharSequence mQueryHint>;
+
+        if hint == null goto label1;
+
+        hint = this.<androidx.appcompat.widget.SearchView: java.lang.CharSequence mQueryHint>;
+
+        return hint;
+
+     label1:
+        hint#3 = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        if hint#3 == null goto label2;
+
+        $u-1 = virtualinvoke hint#3.<android.app.SearchableInfo: int getHintId()>();
+
+        if $u-1 == 0 goto label2;
+
+        $u-1#6 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.content.Context getContext()>();
+
+        hint#3 = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        $u-1 = virtualinvoke hint#3.<android.app.SearchableInfo: int getHintId()>();
+
+        hint = virtualinvoke $u-1#6.<android.content.Context: java.lang.CharSequence getText(int)>($u-1);
+
+        return hint;
+
+     label2:
+        hint = this.<androidx.appcompat.widget.SearchView: java.lang.CharSequence mDefaultQueryHint>;
+
+        return hint;
+    }
+
+    int getSuggestionCommitIconResId()
+    {
+        androidx.appcompat.widget.SearchView this;
+        int ret0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        ret0 = this.<androidx.appcompat.widget.SearchView: int mSuggestionCommitIconResId>;
+
+        return ret0;
+    }
+
+    int getSuggestionRowLayout()
+    {
+        androidx.appcompat.widget.SearchView this;
+        int ret0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        ret0 = this.<androidx.appcompat.widget.SearchView: int mSuggestionRowLayout>;
+
+        return ret0;
+    }
+
+    public androidx.cursoradapter.widget.CursorAdapter getSuggestionsAdapter()
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.cursoradapter.widget.CursorAdapter ret0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        ret0 = this.<androidx.appcompat.widget.SearchView: androidx.cursoradapter.widget.CursorAdapter mSuggestionsAdapter>;
+
+        return ret0;
+    }
+
+    public boolean isIconfiedByDefault()
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        ret0 = this.<androidx.appcompat.widget.SearchView: boolean mIconifiedByDefault>;
+
+        return ret0;
+    }
+
+    public boolean isIconified()
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        ret0 = this.<androidx.appcompat.widget.SearchView: boolean mIconified>;
+
+        return ret0;
+    }
+
+    public boolean isQueryRefinementEnabled()
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        ret0 = this.<androidx.appcompat.widget.SearchView: boolean mQueryRefinement>;
+
+        return ret0;
+    }
+
+    public boolean isSubmitButtonEnabled()
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        ret0 = this.<androidx.appcompat.widget.SearchView: boolean mSubmitButtonEnabled>;
+
+        return ret0;
+    }
+
+    void launchQuerySearch(int, java.lang.String, java.lang.String)
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u9;
+        java.lang.String $u10, $u11;
+        android.content.Intent $u-1;
+        android.content.Context $u-1#5;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u9 := @parameter0: int;
+
+        $u10 := @parameter1: java.lang.String;
+
+        $u11 := @parameter2: java.lang.String;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.SearchView: android.content.Intent createIntent(java.lang.String,android.net.Uri,java.lang.String,java.lang.String,int,java.lang.String)>("android.intent.action.SEARCH", null, null, $u11, $u9, $u10);
+
+        $u-1#5 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.content.Context getContext()>();
+
+        virtualinvoke $u-1#5.<android.content.Context: void startActivity(android.content.Intent)>($u-1);
+
+        return;
+    }
+
+    public void onActionViewCollapsed()
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u2;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void setQuery(java.lang.CharSequence,boolean)>("", 0);
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void clearFocus()>();
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateViewsVisibility(boolean)>(1);
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u2 = this.<androidx.appcompat.widget.SearchView: int mCollapsedImeOptions>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setImeOptions(int)>($u2);
+
+        this.<androidx.appcompat.widget.SearchView: boolean mExpandedInActionView> = 0;
+
+        return;
+    }
+
+    public void onActionViewExpanded()
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u-1;
+        boolean $u0;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0#3;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: boolean mExpandedInActionView>;
+
+        if $u0 == 0 goto label1;
+
+        return;
+
+     label1:
+        this.<androidx.appcompat.widget.SearchView: boolean mExpandedInActionView> = 1;
+
+        $u0#3 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke $u0#3.<androidx.appcompat.widget.SearchView$SearchAutoComplete: int getImeOptions()>();
+
+        this.<androidx.appcompat.widget.SearchView: int mCollapsedImeOptions> = $u-1;
+
+        $u0#3 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = $u-1 | 33554432;
+
+        virtualinvoke $u0#3.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setImeOptions(int)>($u-1);
+
+        $u0#3 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0#3.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setText(java.lang.CharSequence)>("");
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void setIconified(boolean)>(0);
+
+        return;
+    }
+
+    void onCloseClicked()
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete text;
+        android.text.Editable $u-1;
+        boolean $u-1#4;
+        androidx.appcompat.widget.SearchView$OnCloseListener $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        text = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke text.<androidx.appcompat.widget.SearchView$SearchAutoComplete: android.text.Editable getText()>();
+
+        $u-1#4 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u-1);
+
+        if $u-1#4 == 0 goto label2;
+
+        $u-1#4 = this.<androidx.appcompat.widget.SearchView: boolean mIconifiedByDefault>;
+
+        if $u-1#4 == 0 goto label3;
+
+        $u1 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$OnCloseListener mOnCloseListener>;
+
+        if $u1 == null goto label1;
+
+        $u-1#4 = interfaceinvoke $u1.<androidx.appcompat.widget.SearchView$OnCloseListener: boolean onClose()>();
+
+        if $u-1#4 != 0 goto label3;
+
+     label1:
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void clearFocus()>();
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateViewsVisibility(boolean)>(1);
+
+        return;
+
+     label2:
+        text = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke text.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setText(java.lang.CharSequence)>("");
+
+        text = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke text.<androidx.appcompat.widget.SearchView$SearchAutoComplete: boolean requestFocus()>();
+
+        text = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke text.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setImeVisibility(boolean)>(1);
+
+     label3:
+        return;
+    }
+
+    protected void onDetachedFromWindow()
+    {
+        androidx.appcompat.widget.SearchView this;
+        java.lang.Runnable $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: java.lang.Runnable mUpdateDrawableStateRunnable>;
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean removeCallbacks(java.lang.Runnable)>($u0);
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: java.lang.Runnable mReleaseCursorRunnable>;
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean post(java.lang.Runnable)>($u0);
+
+        specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: void onDetachedFromWindow()>();
+
+        return;
+    }
+
+    boolean onItemClicked(int, int, java.lang.String)
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u3, $u4;
+        java.lang.String $u5;
+        boolean $u-1;
+        androidx.appcompat.widget.SearchView$OnSuggestionListener $u0;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0#4;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u3 := @parameter0: int;
+
+        $u4 := @parameter1: int;
+
+        $u5 := @parameter2: java.lang.String;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$OnSuggestionListener mOnSuggestionListener>;
+
+        if $u0 == null goto label2;
+
+        $u-1 = interfaceinvoke $u0.<androidx.appcompat.widget.SearchView$OnSuggestionListener: boolean onSuggestionClick(int)>($u3);
+
+        if $u-1 != 0 goto label1;
+
+        goto label2;
+
+     label1:
+        return 0;
+
+     label2:
+        specialinvoke this.<androidx.appcompat.widget.SearchView: boolean launchSuggestion(int,int,java.lang.String)>($u3, 0, null);
+
+        $u0#4 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0#4.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setImeVisibility(boolean)>(0);
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void dismissSuggestions()>();
+
+        return 1;
+    }
+
+    boolean onItemSelected(int)
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u2;
+        boolean $u-1;
+        androidx.appcompat.widget.SearchView$OnSuggestionListener $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$OnSuggestionListener mOnSuggestionListener>;
+
+        if $u0 == null goto label2;
+
+        $u-1 = interfaceinvoke $u0.<androidx.appcompat.widget.SearchView$OnSuggestionListener: boolean onSuggestionSelect(int)>($u2);
+
+        if $u-1 != 0 goto label1;
+
+        goto label2;
+
+     label1:
+        return 0;
+
+     label2:
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void rewriteQueryFromSuggestion(int)>($u2);
+
+        return 1;
+    }
+
+    protected void onLayout(boolean, int, int, int, int)
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean $u6;
+        int $u7, $u8, $u9, $u10;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+        android.graphics.Rect $u1, $u1#4;
+        androidx.appcompat.widget.SearchView$UpdatableTouchDelegate $u0#9;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u6 := @parameter0: boolean;
+
+        $u7 := @parameter1: int;
+
+        $u8 := @parameter2: int;
+
+        $u9 := @parameter3: int;
+
+        $u10 := @parameter4: int;
+
+        specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: void onLayout(boolean,int,int,int,int)>($u6, $u7, $u8, $u9, $u10);
+
+        if $u6 == 0 goto label2;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u1 = this.<androidx.appcompat.widget.SearchView: android.graphics.Rect mSearchSrcTextViewBounds>;
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void getChildBoundsWithinSearchView(android.view.View,android.graphics.Rect)>($u0, $u1);
+
+        $u1 = this.<androidx.appcompat.widget.SearchView: android.graphics.Rect mSearchSrtTextViewBoundsExpanded>;
+
+        $u1#4 = this.<androidx.appcompat.widget.SearchView: android.graphics.Rect mSearchSrcTextViewBounds>;
+
+        $u7 = $u1#4.<android.graphics.Rect: int left>;
+
+        $u1#4 = this.<androidx.appcompat.widget.SearchView: android.graphics.Rect mSearchSrcTextViewBounds>;
+
+        $u9 = $u1#4.<android.graphics.Rect: int right>;
+
+        $u8 = $u10 - $u8;
+
+        virtualinvoke $u1.<android.graphics.Rect: void set(int,int,int,int)>($u7, 0, $u9, $u8);
+
+        $u0#9 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$UpdatableTouchDelegate mTouchDelegate>;
+
+        if $u0#9 != null goto label1;
+
+        $u0#9 = new androidx.appcompat.widget.SearchView$UpdatableTouchDelegate;
+
+        $u1 = this.<androidx.appcompat.widget.SearchView: android.graphics.Rect mSearchSrtTextViewBoundsExpanded>;
+
+        $u1#4 = this.<androidx.appcompat.widget.SearchView: android.graphics.Rect mSearchSrcTextViewBounds>;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        specialinvoke $u0#9.<androidx.appcompat.widget.SearchView$UpdatableTouchDelegate: void <init>(android.graphics.Rect,android.graphics.Rect,android.view.View)>($u1, $u1#4, $u0);
+
+        this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$UpdatableTouchDelegate mTouchDelegate> = $u0#9;
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void setTouchDelegate(android.view.TouchDelegate)>($u0#9);
+
+        return;
+
+     label1:
+        $u1 = this.<androidx.appcompat.widget.SearchView: android.graphics.Rect mSearchSrtTextViewBoundsExpanded>;
+
+        $u1#4 = this.<androidx.appcompat.widget.SearchView: android.graphics.Rect mSearchSrcTextViewBounds>;
+
+        virtualinvoke $u0#9.<androidx.appcompat.widget.SearchView$UpdatableTouchDelegate: void setBounds(android.graphics.Rect,android.graphics.Rect)>($u1, $u1#4);
+
+     label2:
+        return;
+    }
+
+    protected void onMeasure(int, int)
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u7, $u8, $u-1#3, $u-1#5;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u7 := @parameter0: int;
+
+        $u8 := @parameter1: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean isIconified()>();
+
+        if $u-1 == 0 goto label01;
+
+        specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: void onMeasure(int,int)>($u7, $u8);
+
+        return;
+
+     label01:
+        $u-1#3 = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($u7);
+
+        $u-1#5 = staticinvoke <android.view.View$MeasureSpec: int getSize(int)>($u7);
+
+        $u7 = $u-1#5;
+
+        if $u-1#3 == -2147483648 goto label06;
+
+        if $u-1#3 == 0 goto label03;
+
+        if $u-1#3 == 1073741824 goto label02;
+
+        goto label08;
+
+     label02:
+        $u-1#3 = this.<androidx.appcompat.widget.SearchView: int mMaxWidth>;
+
+        if $u-1#3 <= 0 goto label08;
+
+        $u7 = staticinvoke <java.lang.Math: int min(int,int)>($u-1#3, $u-1#5);
+
+        goto label08;
+
+     label03:
+        $u7 = this.<androidx.appcompat.widget.SearchView: int mMaxWidth>;
+
+        if $u7 <= 0 goto label04;
+
+        goto label05;
+
+     label04:
+        $u7 = specialinvoke this.<androidx.appcompat.widget.SearchView: int getPreferredWidth()>();
+
+     label05:
+        goto label08;
+
+     label06:
+        $u7 = this.<androidx.appcompat.widget.SearchView: int mMaxWidth>;
+
+        if $u7 <= 0 goto label07;
+
+        $u7 = staticinvoke <java.lang.Math: int min(int,int)>($u7, $u-1#5);
+
+        goto label08;
+
+     label07:
+        $u7 = specialinvoke this.<androidx.appcompat.widget.SearchView: int getPreferredWidth()>();
+
+        $u7 = staticinvoke <java.lang.Math: int min(int,int)>($u7, $u-1#5);
+
+     label08:
+        $u-1#5 = staticinvoke <android.view.View$MeasureSpec: int getMode(int)>($u8);
+
+        $u8 = staticinvoke <android.view.View$MeasureSpec: int getSize(int)>($u8);
+
+        $u-1#3 = $u8;
+
+        if $u-1#5 == -2147483648 goto label10;
+
+        if $u-1#5 == 0 goto label09;
+
+        goto label11;
+
+     label09:
+        $u-1#3 = specialinvoke this.<androidx.appcompat.widget.SearchView: int getPreferredHeight()>();
+
+        goto label11;
+
+     label10:
+        $u-1#5 = specialinvoke this.<androidx.appcompat.widget.SearchView: int getPreferredHeight()>();
+
+        $u-1#3 = staticinvoke <java.lang.Math: int min(int,int)>($u-1#5, $u8);
+
+     label11:
+        $u7 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($u7, 1073741824);
+
+        $u8 = staticinvoke <android.view.View$MeasureSpec: int makeMeasureSpec(int,int)>($u-1#3, 1073741824);
+
+        specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: void onMeasure(int,int)>($u7, $u8);
+
+        return;
+    }
+
+    void onQueryRefine(java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.SearchView this;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void setQuery(java.lang.CharSequence)>($u1);
+
+        return;
+    }
+
+    protected void onRestoreInstanceState(android.os.Parcelable)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.os.Parcelable $u3;
+        boolean ss;
+        androidx.appcompat.widget.SearchView$SavedState ss#3;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u3 := @parameter0: android.os.Parcelable;
+
+        ss = $u3 instanceof androidx.appcompat.widget.SearchView$SavedState;
+
+        if ss != 0 goto label1;
+
+        specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: void onRestoreInstanceState(android.os.Parcelable)>($u3);
+
+        return;
+
+     label1:
+        ss#3 = (androidx.appcompat.widget.SearchView$SavedState) $u3;
+
+        $u3 = virtualinvoke ss#3.<androidx.appcompat.widget.SearchView$SavedState: android.os.Parcelable getSuperState()>();
+
+        specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: void onRestoreInstanceState(android.os.Parcelable)>($u3);
+
+        ss = ss#3.<androidx.appcompat.widget.SearchView$SavedState: boolean isIconified>;
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateViewsVisibility(boolean)>(ss);
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void requestLayout()>();
+
+        return;
+    }
+
+    protected android.os.Parcelable onSaveInstanceState()
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.appcompat.widget.SearchView$SavedState ss;
+        android.os.Parcelable $u-1;
+        boolean $u-1#2;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: android.os.Parcelable onSaveInstanceState()>();
+
+        ss = new androidx.appcompat.widget.SearchView$SavedState;
+
+        specialinvoke ss.<androidx.appcompat.widget.SearchView$SavedState: void <init>(android.os.Parcelable)>($u-1);
+
+        $u-1#2 = virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean isIconified()>();
+
+        ss.<androidx.appcompat.widget.SearchView$SavedState: boolean isIconified> = $u-1#2;
+
+        return ss;
+    }
+
+    void onSearchClicked()
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+        android.view.View$OnClickListener $u0#4;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateViewsVisibility(boolean)>(0);
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: boolean requestFocus()>();
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setImeVisibility(boolean)>(1);
+
+        $u0#4 = this.<androidx.appcompat.widget.SearchView: android.view.View$OnClickListener mOnSearchClickListener>;
+
+        if $u0#4 == null goto label1;
+
+        interfaceinvoke $u0#4.<android.view.View$OnClickListener: void onClick(android.view.View)>(this);
+
+     label1:
+        return;
+    }
+
+    void onSubmitQuery()
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete query;
+        android.text.Editable $u-1;
+        int $u-1#4;
+        androidx.appcompat.widget.SearchView$OnQueryTextListener $u1;
+        java.lang.String $u-1#7;
+        boolean $u-1#9;
+        android.app.SearchableInfo $u1#11;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        query = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke query.<androidx.appcompat.widget.SearchView$SearchAutoComplete: android.text.Editable getText()>();
+
+        if $u-1 == null goto label3;
+
+        $u-1#4 = staticinvoke <android.text.TextUtils: int getTrimmedLength(java.lang.CharSequence)>($u-1);
+
+        if $u-1#4 <= 0 goto label3;
+
+        $u1 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$OnQueryTextListener mOnQueryChangeListener>;
+
+        if $u1 == null goto label1;
+
+        $u-1#7 = interfaceinvoke $u-1.<java.lang.CharSequence: java.lang.String toString()>();
+
+        $u-1#9 = interfaceinvoke $u1.<androidx.appcompat.widget.SearchView$OnQueryTextListener: boolean onQueryTextSubmit(java.lang.String)>($u-1#7);
+
+        if $u-1#9 != 0 goto label3;
+
+     label1:
+        $u1#11 = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        if $u1#11 == null goto label2;
+
+        $u-1#7 = interfaceinvoke $u-1.<java.lang.CharSequence: java.lang.String toString()>();
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void launchQuerySearch(int,java.lang.String,java.lang.String)>(0, null, $u-1#7);
+
+     label2:
+        query = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke query.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setImeVisibility(boolean)>(0);
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void dismissSuggestions()>();
+
+     label3:
+        return;
+    }
+
+    boolean onSuggestionsKey(android.view.View, int, android.view.KeyEvent)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.view.View $u4;
+        int $u5, $u-1;
+        android.view.KeyEvent $u6;
+        android.app.SearchableInfo selPoint;
+        androidx.cursoradapter.widget.CursorAdapter selPoint#3;
+        boolean $u-1#6;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete selPoint#14;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u4 := @parameter0: android.view.View;
+
+        $u5 := @parameter1: int;
+
+        $u6 := @parameter2: android.view.KeyEvent;
+
+        selPoint = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        if selPoint != null goto label1;
+
+        return 0;
+
+     label1:
+        selPoint#3 = this.<androidx.appcompat.widget.SearchView: androidx.cursoradapter.widget.CursorAdapter mSuggestionsAdapter>;
+
+        if selPoint#3 != null goto label2;
+
+        return 0;
+
+     label2:
+        $u-1 = virtualinvoke $u6.<android.view.KeyEvent: int getAction()>();
+
+        if $u-1 != 0 goto label9;
+
+        $u-1#6 = virtualinvoke $u6.<android.view.KeyEvent: boolean hasNoModifiers()>();
+
+        if $u-1#6 == 0 goto label9;
+
+        if $u5 == 66 goto label8;
+
+        if $u5 == 84 goto label8;
+
+        if $u5 != 61 goto label3;
+
+        goto label8;
+
+     label3:
+        if $u5 == 21 goto label5;
+
+        if $u5 != 22 goto label4;
+
+        goto label5;
+
+     label4:
+        if $u5 != 19 goto label9;
+
+        selPoint#14 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u5 = virtualinvoke selPoint#14.<androidx.appcompat.widget.SearchView$SearchAutoComplete: int getListSelection()>();
+
+        if $u5 != 0 goto label9;
+
+        return 0;
+
+     label5:
+        if $u5 != 21 goto label6;
+
+        $u5 = 0;
+
+        goto label7;
+
+     label6:
+        selPoint#14 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u5 = virtualinvoke selPoint#14.<androidx.appcompat.widget.SearchView$SearchAutoComplete: int length()>();
+
+     label7:
+        selPoint#14 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke selPoint#14.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setSelection(int)>($u5);
+
+        selPoint#14 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke selPoint#14.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setListSelection(int)>(0);
+
+        selPoint#14 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke selPoint#14.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void clearListSelection()>();
+
+        selPoint#14 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke selPoint#14.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void ensureImeVisible()>();
+
+        return 1;
+
+     label8:
+        selPoint#14 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u5 = virtualinvoke selPoint#14.<androidx.appcompat.widget.SearchView$SearchAutoComplete: int getListSelection()>();
+
+        $u-1#6 = virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean onItemClicked(int,int,java.lang.String)>($u5, 0, null);
+
+        return $u-1#6;
+
+     label9:
+        return 0;
+    }
+
+    void onTextChanged(java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.SearchView this;
+        java.lang.CharSequence $u5, $u2#9;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete text;
+        android.text.Editable $u-1;
+        boolean $u-1#4, $u2;
+        androidx.appcompat.widget.SearchView$OnQueryTextListener $u2#8;
+        java.lang.String $u-1#13;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u5 := @parameter0: java.lang.CharSequence;
+
+        text = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke text.<androidx.appcompat.widget.SearchView$SearchAutoComplete: android.text.Editable getText()>();
+
+        this.<androidx.appcompat.widget.SearchView: java.lang.CharSequence mUserQuery> = $u-1;
+
+        $u-1#4 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u-1);
+
+        $u2 = 1;
+
+        $u-1#4 = $u-1#4 ^ 1;
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateSubmitButton(boolean)>($u-1#4);
+
+        if $u-1#4 != 0 goto label1;
+
+        goto label2;
+
+     label1:
+        $u2 = 0;
+
+     label2:
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateVoiceButton(boolean)>($u2);
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateCloseButton()>();
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateSubmitArea()>();
+
+        $u2#8 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$OnQueryTextListener mOnQueryChangeListener>;
+
+        if $u2#8 == null goto label3;
+
+        $u2#9 = this.<androidx.appcompat.widget.SearchView: java.lang.CharSequence mOldQueryText>;
+
+        $u2 = staticinvoke <android.text.TextUtils: boolean equals(java.lang.CharSequence,java.lang.CharSequence)>($u5, $u2#9);
+
+        if $u2 != 0 goto label3;
+
+        $u2#8 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$OnQueryTextListener mOnQueryChangeListener>;
+
+        $u-1#13 = interfaceinvoke $u5.<java.lang.CharSequence: java.lang.String toString()>();
+
+        interfaceinvoke $u2#8.<androidx.appcompat.widget.SearchView$OnQueryTextListener: boolean onQueryTextChange(java.lang.String)>($u-1#13);
+
+     label3:
+        $u-1#13 = interfaceinvoke $u5.<java.lang.CharSequence: java.lang.String toString()>();
+
+        this.<androidx.appcompat.widget.SearchView: java.lang.CharSequence mOldQueryText> = $u-1#13;
+
+        return;
+    }
+
+    void onTextFocusChanged()
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean $u-1;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean isIconified()>();
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateViewsVisibility(boolean)>($u-1);
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void postUpdateFocusedState()>();
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: boolean hasFocus()>();
+
+        if $u-1 == 0 goto label1;
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void forceSuggestionQuery()>();
+
+     label1:
+        return;
+    }
+
+    void onVoiceClicked()
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.app.SearchableInfo searchable;
+        boolean $u-1;
+        android.content.Intent webSearchIntent;
+        android.content.Context $u-1#8;
+        android.content.ActivityNotFoundException webSearchIntent#17;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        searchable = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+        if searchable != null goto label01;
+
+        return;
+
+     label01:
+        searchable = this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable>;
+
+     label02:
+        $u-1 = virtualinvoke searchable.<android.app.SearchableInfo: boolean getVoiceSearchLaunchWebSearch()>();
+
+     label03:
+        if $u-1 == 0 goto label06;
+
+        webSearchIntent = this.<androidx.appcompat.widget.SearchView: android.content.Intent mVoiceWebSearchIntent>;
+
+     label04:
+        webSearchIntent = specialinvoke this.<androidx.appcompat.widget.SearchView: android.content.Intent createVoiceWebSearchIntent(android.content.Intent,android.app.SearchableInfo)>(webSearchIntent, searchable);
+
+        $u-1#8 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.content.Context getContext()>();
+
+        virtualinvoke $u-1#8.<android.content.Context: void startActivity(android.content.Intent)>(webSearchIntent);
+
+     label05:
+        goto label10;
+
+     label06:
+        $u-1 = virtualinvoke searchable.<android.app.SearchableInfo: boolean getVoiceSearchLaunchRecognizer()>();
+
+     label07:
+        if $u-1 == 0 goto label10;
+
+        webSearchIntent = this.<androidx.appcompat.widget.SearchView: android.content.Intent mVoiceAppSearchIntent>;
+
+     label08:
+        webSearchIntent = specialinvoke this.<androidx.appcompat.widget.SearchView: android.content.Intent createVoiceAppSearchIntent(android.content.Intent,android.app.SearchableInfo)>(webSearchIntent, searchable);
+
+        $u-1#8 = virtualinvoke this.<androidx.appcompat.widget.SearchView: android.content.Context getContext()>();
+
+        virtualinvoke $u-1#8.<android.content.Context: void startActivity(android.content.Intent)>(webSearchIntent);
+
+     label09:
+        goto label10;
+
+     label10:
+        return;
+
+     label11:
+        webSearchIntent#17 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("SearchView", "Could not find voice search activity");
+
+        return;
+
+        catch android.content.ActivityNotFoundException from label02 to label03 with label11;
+        catch android.content.ActivityNotFoundException from label04 to label05 with label11;
+        catch android.content.ActivityNotFoundException from label06 to label07 with label11;
+        catch android.content.ActivityNotFoundException from label08 to label09 with label11;
+    }
+
+    public void onWindowFocusChanged(boolean)
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u1 := @parameter0: boolean;
+
+        specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: void onWindowFocusChanged(boolean)>($u1);
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void postUpdateFocusedState()>();
+
+        return;
+    }
+
+    public boolean requestFocus(int, android.graphics.Rect)
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u3;
+        android.graphics.Rect $u4;
+        boolean result;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete result#6;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u3 := @parameter0: int;
+
+        $u4 := @parameter1: android.graphics.Rect;
+
+        result = this.<androidx.appcompat.widget.SearchView: boolean mClearingFocus>;
+
+        if result == 0 goto label1;
+
+        return 0;
+
+     label1:
+        result = virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean isFocusable()>();
+
+        if result != 0 goto label2;
+
+        return 0;
+
+     label2:
+        result = virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean isIconified()>();
+
+        if result != 0 goto label3;
+
+        result#6 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        result = virtualinvoke result#6.<androidx.appcompat.widget.SearchView$SearchAutoComplete: boolean requestFocus(int,android.graphics.Rect)>($u3, $u4);
+
+        if result == 0 goto label4;
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateViewsVisibility(boolean)>(0);
+
+        return result;
+
+     label3:
+        result = specialinvoke this.<androidx.appcompat.widget.LinearLayoutCompat: boolean requestFocus(int,android.graphics.Rect)>($u3, $u4);
+
+     label4:
+        return result;
+    }
+
+    public void setAppSearchData(android.os.Bundle)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.os.Bundle $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u1 := @parameter0: android.os.Bundle;
+
+        this.<androidx.appcompat.widget.SearchView: android.os.Bundle mAppSearchData> = $u1;
+
+        return;
+    }
+
+    public void setIconified(boolean)
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u1 := @parameter0: boolean;
+
+        if $u1 == 0 goto label1;
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void onCloseClicked()>();
+
+        return;
+
+     label1:
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void onSearchClicked()>();
+
+        return;
+    }
+
+    public void setIconifiedByDefault(boolean)
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean $u2, $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: boolean mIconifiedByDefault>;
+
+        if $u0 != $u2 goto label1;
+
+        return;
+
+     label1:
+        this.<androidx.appcompat.widget.SearchView: boolean mIconifiedByDefault> = $u2;
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateViewsVisibility(boolean)>($u2);
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateQueryHint()>();
+
+        return;
+    }
+
+    public void setImeOptions(int)
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u2;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setImeOptions(int)>($u2);
+
+        return;
+    }
+
+    public void setInputType(int)
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u2;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setInputType(int)>($u2);
+
+        return;
+    }
+
+    public void setMaxWidth(int)
+    {
+        androidx.appcompat.widget.SearchView this;
+        int $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.appcompat.widget.SearchView: int mMaxWidth> = $u1;
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void requestLayout()>();
+
+        return;
+    }
+
+    public void setOnCloseListener(androidx.appcompat.widget.SearchView$OnCloseListener)
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.appcompat.widget.SearchView$OnCloseListener $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u1 := @parameter0: androidx.appcompat.widget.SearchView$OnCloseListener;
+
+        this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$OnCloseListener mOnCloseListener> = $u1;
+
+        return;
+    }
+
+    public void setOnQueryTextFocusChangeListener(android.view.View$OnFocusChangeListener)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.view.View$OnFocusChangeListener $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u1 := @parameter0: android.view.View$OnFocusChangeListener;
+
+        this.<androidx.appcompat.widget.SearchView: android.view.View$OnFocusChangeListener mOnQueryTextFocusChangeListener> = $u1;
+
+        return;
+    }
+
+    public void setOnQueryTextListener(androidx.appcompat.widget.SearchView$OnQueryTextListener)
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.appcompat.widget.SearchView$OnQueryTextListener $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u1 := @parameter0: androidx.appcompat.widget.SearchView$OnQueryTextListener;
+
+        this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$OnQueryTextListener mOnQueryChangeListener> = $u1;
+
+        return;
+    }
+
+    public void setOnSearchClickListener(android.view.View$OnClickListener)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.view.View$OnClickListener $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u1 := @parameter0: android.view.View$OnClickListener;
+
+        this.<androidx.appcompat.widget.SearchView: android.view.View$OnClickListener mOnSearchClickListener> = $u1;
+
+        return;
+    }
+
+    public void setOnSuggestionListener(androidx.appcompat.widget.SearchView$OnSuggestionListener)
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.appcompat.widget.SearchView$OnSuggestionListener $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u1 := @parameter0: androidx.appcompat.widget.SearchView$OnSuggestionListener;
+
+        this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$OnSuggestionListener mOnSuggestionListener> = $u1;
+
+        return;
+    }
+
+    public void setQuery(java.lang.CharSequence, boolean)
+    {
+        androidx.appcompat.widget.SearchView this;
+        java.lang.CharSequence $u3;
+        boolean $u4;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+        int $u-1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u3 := @parameter0: java.lang.CharSequence;
+
+        $u4 := @parameter1: boolean;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setText(java.lang.CharSequence)>($u3);
+
+        if $u3 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: int length()>();
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setSelection(int)>($u-1);
+
+        this.<androidx.appcompat.widget.SearchView: java.lang.CharSequence mUserQuery> = $u3;
+
+     label1:
+        if $u4 == 0 goto label2;
+
+        $u4 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u3);
+
+        if $u4 != 0 goto label2;
+
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void onSubmitQuery()>();
+
+     label2:
+        return;
+    }
+
+    public void setQueryHint(java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.SearchView this;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        this.<androidx.appcompat.widget.SearchView: java.lang.CharSequence mQueryHint> = $u1;
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateQueryHint()>();
+
+        return;
+    }
+
+    public void setQueryRefinementEnabled(boolean)
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean $u3, $u1;
+        androidx.cursoradapter.widget.CursorAdapter $u0;
+        androidx.appcompat.widget.SuggestionsAdapter $u0#3;
+        byte $u1#4;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u3 := @parameter0: boolean;
+
+        this.<androidx.appcompat.widget.SearchView: boolean mQueryRefinement> = $u3;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.cursoradapter.widget.CursorAdapter mSuggestionsAdapter>;
+
+        $u1 = $u0 instanceof androidx.appcompat.widget.SuggestionsAdapter;
+
+        if $u1 == 0 goto label3;
+
+        $u0#3 = (androidx.appcompat.widget.SuggestionsAdapter) $u0;
+
+        if $u3 == 0 goto label1;
+
+        $u1#4 = 2;
+
+        goto label2;
+
+     label1:
+        $u1#4 = 1;
+
+     label2:
+        virtualinvoke $u0#3.<androidx.appcompat.widget.SuggestionsAdapter: void setQueryRefinement(int)>($u1#4);
+
+     label3:
+        return;
+    }
+
+    public void setSearchableInfo(android.app.SearchableInfo)
+    {
+        androidx.appcompat.widget.SearchView this;
+        android.app.SearchableInfo $u3;
+        boolean $u-1;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u3 := @parameter0: android.app.SearchableInfo;
+
+        this.<androidx.appcompat.widget.SearchView: android.app.SearchableInfo mSearchable> = $u3;
+
+        if $u3 == null goto label1;
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateSearchAutoComplete()>();
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateQueryHint()>();
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.SearchView: boolean hasVoiceSearch()>();
+
+        this.<androidx.appcompat.widget.SearchView: boolean mVoiceButtonEnabled> = $u-1;
+
+        if $u-1 == 0 goto label2;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setPrivateImeOptions(java.lang.String)>("nm");
+
+     label2:
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean isIconified()>();
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateViewsVisibility(boolean)>($u-1);
+
+        return;
+    }
+
+    public void setSubmitButtonEnabled(boolean)
+    {
+        androidx.appcompat.widget.SearchView this;
+        boolean $u2;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u2 := @parameter0: boolean;
+
+        this.<androidx.appcompat.widget.SearchView: boolean mSubmitButtonEnabled> = $u2;
+
+        $u2 = virtualinvoke this.<androidx.appcompat.widget.SearchView: boolean isIconified()>();
+
+        specialinvoke this.<androidx.appcompat.widget.SearchView: void updateViewsVisibility(boolean)>($u2);
+
+        return;
+    }
+
+    public void setSuggestionsAdapter(androidx.cursoradapter.widget.CursorAdapter)
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.cursoradapter.widget.CursorAdapter $u2;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        $u2 := @parameter0: androidx.cursoradapter.widget.CursorAdapter;
+
+        this.<androidx.appcompat.widget.SearchView: androidx.cursoradapter.widget.CursorAdapter mSuggestionsAdapter> = $u2;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView$SearchAutoComplete: void setAdapter(android.widget.ListAdapter)>($u2);
+
+        return;
+    }
+
+    void updateFocusedState()
+    {
+        androidx.appcompat.widget.SearchView this;
+        androidx.appcompat.widget.SearchView$SearchAutoComplete focused;
+        boolean $u-1;
+        int[] stateSet;
+        android.view.View searchPlateBg;
+        android.graphics.drawable.Drawable $u-1#6;
+
+        this := @this: androidx.appcompat.widget.SearchView;
+
+        focused = this.<androidx.appcompat.widget.SearchView: androidx.appcompat.widget.SearchView$SearchAutoComplete mSearchSrcTextView>;
+
+        $u-1 = virtualinvoke focused.<androidx.appcompat.widget.SearchView$SearchAutoComplete: boolean hasFocus()>();
+
+        if $u-1 == 0 goto label1;
+
+        stateSet = <androidx.appcompat.widget.SearchView: int[] FOCUSED_STATE_SET>;
+
+        goto label2;
+
+     label1:
+        stateSet = <androidx.appcompat.widget.SearchView: int[] EMPTY_STATE_SET>;
+
+     label2:
+        searchPlateBg = this.<androidx.appcompat.widget.SearchView: android.view.View mSearchPlate>;
+
+        $u-1#6 = virtualinvoke searchPlateBg.<android.view.View: android.graphics.drawable.Drawable getBackground()>();
+
+        if $u-1#6 == null goto label3;
+
+        virtualinvoke $u-1#6.<android.graphics.drawable.Drawable: boolean setState(int[])>(stateSet);
+
+     label3:
+        searchPlateBg = this.<androidx.appcompat.widget.SearchView: android.view.View mSubmitArea>;
+
+        $u-1#6 = virtualinvoke searchPlateBg.<android.view.View: android.graphics.drawable.Drawable getBackground()>();
+
+        if $u-1#6 == null goto label4;
+
+        virtualinvoke $u-1#6.<android.graphics.drawable.Drawable: boolean setState(int[])>(stateSet);
+
+     label4:
+        virtualinvoke this.<androidx.appcompat.widget.SearchView: void invalidate()>();
+
+        return;
+    }
+}

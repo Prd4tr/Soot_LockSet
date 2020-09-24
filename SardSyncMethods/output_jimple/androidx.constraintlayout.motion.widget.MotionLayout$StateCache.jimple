@@ -1,0 +1,297 @@
+class androidx.constraintlayout.motion.widget.MotionLayout$StateCache extends java.lang.Object
+{
+    final java.lang.String KeyEndState;
+    final java.lang.String KeyProgress;
+    final java.lang.String KeyStartState;
+    final java.lang.String KeyVelocity;
+    int endState;
+    float mProgress;
+    float mVelocity;
+    int startState;
+    final androidx.constraintlayout.motion.widget.MotionLayout this$0;
+
+    void <init>(androidx.constraintlayout.motion.widget.MotionLayout)
+    {
+        androidx.constraintlayout.motion.widget.MotionLayout$StateCache this;
+        androidx.constraintlayout.motion.widget.MotionLayout $u2;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionLayout$StateCache;
+
+        $u2 := @parameter0: androidx.constraintlayout.motion.widget.MotionLayout;
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: androidx.constraintlayout.motion.widget.MotionLayout this$0> = $u2;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mProgress> = #NaNF;
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mVelocity> = #NaNF;
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int startState> = -1;
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int endState> = -1;
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: java.lang.String KeyProgress> = "motion.progress";
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: java.lang.String KeyVelocity> = "motion.velocity";
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: java.lang.String KeyStartState> = "motion.StartState";
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: java.lang.String KeyEndState> = "motion.EndState";
+
+        return;
+    }
+
+    void apply()
+    {
+        androidx.constraintlayout.motion.widget.MotionLayout$StateCache this;
+        int $u0, $u2;
+        androidx.constraintlayout.motion.widget.MotionLayout $u0#5;
+        androidx.constraintlayout.motion.widget.MotionLayout$TransitionState $u2#11;
+        float $u0#12, $u3;
+        boolean $u-1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionLayout$StateCache;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int startState>;
+
+        if $u0 != -1 goto label1;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int endState>;
+
+        if $u0 == -1 goto label5;
+
+     label1:
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int startState>;
+
+        if $u0 != -1 goto label2;
+
+        $u0#5 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: androidx.constraintlayout.motion.widget.MotionLayout this$0>;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int endState>;
+
+        virtualinvoke $u0#5.<androidx.constraintlayout.motion.widget.MotionLayout: void transitionToState(int)>($u0);
+
+        goto label4;
+
+     label2:
+        $u2 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int endState>;
+
+        if $u2 != -1 goto label3;
+
+        $u0#5 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: androidx.constraintlayout.motion.widget.MotionLayout this$0>;
+
+        virtualinvoke $u0#5.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(int,int,int)>($u0, -1, -1);
+
+        goto label4;
+
+     label3:
+        $u0#5 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: androidx.constraintlayout.motion.widget.MotionLayout this$0>;
+
+        virtualinvoke $u0#5.<androidx.constraintlayout.motion.widget.MotionLayout: void setTransition(int,int)>($u0, $u2);
+
+     label4:
+        $u0#5 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: androidx.constraintlayout.motion.widget.MotionLayout this$0>;
+
+        $u2#11 = <androidx.constraintlayout.motion.widget.MotionLayout$TransitionState: androidx.constraintlayout.motion.widget.MotionLayout$TransitionState SETUP>;
+
+        virtualinvoke $u0#5.<androidx.constraintlayout.motion.widget.MotionLayout: void setState(androidx.constraintlayout.motion.widget.MotionLayout$TransitionState)>($u2#11);
+
+     label5:
+        $u0#12 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mVelocity>;
+
+        $u-1 = staticinvoke <java.lang.Float: boolean isNaN(float)>($u0#12);
+
+        if $u-1 == 0 goto label7;
+
+        $u0#12 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mProgress>;
+
+        $u-1 = staticinvoke <java.lang.Float: boolean isNaN(float)>($u0#12);
+
+        if $u-1 == 0 goto label6;
+
+        return;
+
+     label6:
+        $u0#5 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: androidx.constraintlayout.motion.widget.MotionLayout this$0>;
+
+        $u0#12 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mProgress>;
+
+        virtualinvoke $u0#5.<androidx.constraintlayout.motion.widget.MotionLayout: void setProgress(float)>($u0#12);
+
+        return;
+
+     label7:
+        $u0#5 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: androidx.constraintlayout.motion.widget.MotionLayout this$0>;
+
+        $u0#12 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mProgress>;
+
+        $u3 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mVelocity>;
+
+        virtualinvoke $u0#5.<androidx.constraintlayout.motion.widget.MotionLayout: void setProgress(float,float)>($u0#12, $u3);
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mProgress> = #NaNF;
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mVelocity> = #NaNF;
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int startState> = -1;
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int endState> = -1;
+
+        return;
+    }
+
+    public android.os.Bundle getTransitionState()
+    {
+        androidx.constraintlayout.motion.widget.MotionLayout$StateCache this;
+        android.os.Bundle bundle;
+        float $u1;
+        int $u1#5;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionLayout$StateCache;
+
+        bundle = new android.os.Bundle;
+
+        specialinvoke bundle.<android.os.Bundle: void <init>()>();
+
+        $u1 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mProgress>;
+
+        virtualinvoke bundle.<android.os.Bundle: void putFloat(java.lang.String,float)>("motion.progress", $u1);
+
+        $u1 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mVelocity>;
+
+        virtualinvoke bundle.<android.os.Bundle: void putFloat(java.lang.String,float)>("motion.velocity", $u1);
+
+        $u1#5 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int startState>;
+
+        virtualinvoke bundle.<android.os.Bundle: void putInt(java.lang.String,int)>("motion.StartState", $u1#5);
+
+        $u1#5 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int endState>;
+
+        virtualinvoke bundle.<android.os.Bundle: void putInt(java.lang.String,int)>("motion.EndState", $u1#5);
+
+        return bundle;
+    }
+
+    public void recordState()
+    {
+        androidx.constraintlayout.motion.widget.MotionLayout$StateCache this;
+        androidx.constraintlayout.motion.widget.MotionLayout $u0;
+        int $u-1;
+        float $u-1#8;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionLayout$StateCache;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: androidx.constraintlayout.motion.widget.MotionLayout this$0>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionLayout: int access$000(androidx.constraintlayout.motion.widget.MotionLayout)>($u0);
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int endState> = $u-1;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: androidx.constraintlayout.motion.widget.MotionLayout this$0>;
+
+        $u-1 = staticinvoke <androidx.constraintlayout.motion.widget.MotionLayout: int access$100(androidx.constraintlayout.motion.widget.MotionLayout)>($u0);
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int startState> = $u-1;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: androidx.constraintlayout.motion.widget.MotionLayout this$0>;
+
+        $u-1#8 = virtualinvoke $u0.<androidx.constraintlayout.motion.widget.MotionLayout: float getVelocity()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mVelocity> = $u-1#8;
+
+        $u0 = this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: androidx.constraintlayout.motion.widget.MotionLayout this$0>;
+
+        $u-1#8 = virtualinvoke $u0.<androidx.constraintlayout.motion.widget.MotionLayout: float getProgress()>();
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mProgress> = $u-1#8;
+
+        return;
+    }
+
+    public void setEndState(int)
+    {
+        androidx.constraintlayout.motion.widget.MotionLayout$StateCache this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionLayout$StateCache;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int endState> = $u1;
+
+        return;
+    }
+
+    public void setProgress(float)
+    {
+        androidx.constraintlayout.motion.widget.MotionLayout$StateCache this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionLayout$StateCache;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mProgress> = $u1;
+
+        return;
+    }
+
+    public void setStartState(int)
+    {
+        androidx.constraintlayout.motion.widget.MotionLayout$StateCache this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionLayout$StateCache;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int startState> = $u1;
+
+        return;
+    }
+
+    public void setTransitionState(android.os.Bundle)
+    {
+        androidx.constraintlayout.motion.widget.MotionLayout$StateCache this;
+        android.os.Bundle $u2;
+        float $u-1;
+        int $u-1#8;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionLayout$StateCache;
+
+        $u2 := @parameter0: android.os.Bundle;
+
+        $u-1 = virtualinvoke $u2.<android.os.Bundle: float getFloat(java.lang.String)>("motion.progress");
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mProgress> = $u-1;
+
+        $u-1 = virtualinvoke $u2.<android.os.Bundle: float getFloat(java.lang.String)>("motion.velocity");
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mVelocity> = $u-1;
+
+        $u-1#8 = virtualinvoke $u2.<android.os.Bundle: int getInt(java.lang.String)>("motion.StartState");
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int startState> = $u-1#8;
+
+        $u-1#8 = virtualinvoke $u2.<android.os.Bundle: int getInt(java.lang.String)>("motion.EndState");
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: int endState> = $u-1#8;
+
+        return;
+    }
+
+    public void setVelocity(float)
+    {
+        androidx.constraintlayout.motion.widget.MotionLayout$StateCache this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.motion.widget.MotionLayout$StateCache;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.motion.widget.MotionLayout$StateCache: float mVelocity> = $u1;
+
+        return;
+    }
+}

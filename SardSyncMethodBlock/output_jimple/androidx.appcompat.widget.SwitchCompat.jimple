@@ -1,0 +1,3050 @@
+public class androidx.appcompat.widget.SwitchCompat extends android.widget.CompoundButton
+{
+    private static final java.lang.String ACCESSIBILITY_EVENT_CLASS_NAME;
+    private static final int[] CHECKED_STATE_SET;
+    private static final int MONOSPACE;
+    private static final int SANS;
+    private static final int SERIF;
+    private static final int THUMB_ANIMATION_DURATION;
+    private static final android.util.Property THUMB_POS;
+    private static final int TOUCH_MODE_DOWN;
+    private static final int TOUCH_MODE_DRAGGING;
+    private static final int TOUCH_MODE_IDLE;
+    private boolean mHasThumbTint;
+    private boolean mHasThumbTintMode;
+    private boolean mHasTrackTint;
+    private boolean mHasTrackTintMode;
+    private int mMinFlingVelocity;
+    private android.text.Layout mOffLayout;
+    private android.text.Layout mOnLayout;
+    android.animation.ObjectAnimator mPositionAnimator;
+    private boolean mShowText;
+    private boolean mSplitTrack;
+    private int mSwitchBottom;
+    private int mSwitchHeight;
+    private int mSwitchLeft;
+    private int mSwitchMinWidth;
+    private int mSwitchPadding;
+    private int mSwitchRight;
+    private int mSwitchTop;
+    private android.text.method.TransformationMethod mSwitchTransformationMethod;
+    private int mSwitchWidth;
+    private final android.graphics.Rect mTempRect;
+    private android.content.res.ColorStateList mTextColors;
+    private final androidx.appcompat.widget.AppCompatTextHelper mTextHelper;
+    private java.lang.CharSequence mTextOff;
+    private java.lang.CharSequence mTextOn;
+    private final android.text.TextPaint mTextPaint;
+    private android.graphics.drawable.Drawable mThumbDrawable;
+    float mThumbPosition;
+    private int mThumbTextPadding;
+    private android.content.res.ColorStateList mThumbTintList;
+    private android.graphics.PorterDuff$Mode mThumbTintMode;
+    private int mThumbWidth;
+    private int mTouchMode;
+    private int mTouchSlop;
+    private float mTouchX;
+    private float mTouchY;
+    private android.graphics.drawable.Drawable mTrackDrawable;
+    private android.content.res.ColorStateList mTrackTintList;
+    private android.graphics.PorterDuff$Mode mTrackTintMode;
+    private android.view.VelocityTracker mVelocityTracker;
+
+    static void <clinit>()
+    {
+        androidx.appcompat.widget.SwitchCompat$1 $u0;
+        int[] $u0#3;
+
+        <androidx.appcompat.widget.SwitchCompat: int TOUCH_MODE_DRAGGING> = 2;
+
+        <androidx.appcompat.widget.SwitchCompat: int TOUCH_MODE_DOWN> = 1;
+
+        <androidx.appcompat.widget.SwitchCompat: int THUMB_ANIMATION_DURATION> = 250;
+
+        <androidx.appcompat.widget.SwitchCompat: int SERIF> = 2;
+
+        <androidx.appcompat.widget.SwitchCompat: int SANS> = 1;
+
+        <androidx.appcompat.widget.SwitchCompat: int MONOSPACE> = 3;
+
+        <androidx.appcompat.widget.SwitchCompat: java.lang.String ACCESSIBILITY_EVENT_CLASS_NAME> = "android.widget.Switch";
+
+        $u0 = new androidx.appcompat.widget.SwitchCompat$1;
+
+        specialinvoke $u0.<androidx.appcompat.widget.SwitchCompat$1: void <init>(java.lang.Class,java.lang.String)>(class "Ljava/lang/Float;", "thumbPos");
+
+        <androidx.appcompat.widget.SwitchCompat: android.util.Property THUMB_POS> = $u0;
+
+        $u0#3 = newarray (int)[1];
+
+        $u0#3[0] = 16842912;
+
+        <androidx.appcompat.widget.SwitchCompat: int[] CHECKED_STATE_SET> = $u0#3;
+
+        return;
+    }
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.content.Context $u2;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.appcompat.widget.SwitchCompat: void <init>(android.content.Context,android.util.AttributeSet)>($u2, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        int $u0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u0 = <androidx.appcompat.R$attr: int switchStyle>;
+
+        specialinvoke this.<androidx.appcompat.widget.SwitchCompat: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, $u0);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.content.Context $u13, $u-1#6;
+        android.util.AttributeSet $u14;
+        int $u15, thumbTintList#25;
+        android.view.VelocityTracker $u-1;
+        android.graphics.Rect res;
+        android.text.TextPaint res#8;
+        android.content.res.Resources $u-1#10;
+        android.util.DisplayMetrics $u-1#13;
+        float thumbTintList;
+        int[] a;
+        androidx.appcompat.widget.TintTypedArray $u-1#17;
+        android.content.res.TypedArray $u-1#20;
+        android.graphics.drawable.Drawable $u-1#26;
+        java.lang.CharSequence $u-1#32;
+        boolean $u-1#38;
+        android.content.res.ColorStateList $u-1#53;
+        android.graphics.PorterDuff$Mode $u-1#59, trackTintList;
+        androidx.appcompat.widget.AppCompatTextHelper config;
+        android.view.ViewConfiguration $u-1#79;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u13 := @parameter0: android.content.Context;
+
+        $u14 := @parameter1: android.util.AttributeSet;
+
+        $u15 := @parameter2: int;
+
+        specialinvoke this.<android.widget.CompoundButton: void <init>(android.content.Context,android.util.AttributeSet,int)>($u13, $u14, $u15);
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList mThumbTintList> = null;
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.graphics.PorterDuff$Mode mThumbTintMode> = null;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mHasThumbTint> = 0;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mHasThumbTintMode> = 0;
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList mTrackTintList> = null;
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.graphics.PorterDuff$Mode mTrackTintMode> = null;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mHasTrackTint> = 0;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mHasTrackTintMode> = 0;
+
+        $u-1 = staticinvoke <android.view.VelocityTracker: android.view.VelocityTracker obtain()>();
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.view.VelocityTracker mVelocityTracker> = $u-1;
+
+        res = new android.graphics.Rect;
+
+        specialinvoke res.<android.graphics.Rect: void <init>()>();
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.graphics.Rect mTempRect> = res;
+
+        $u-1#6 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: android.content.Context getContext()>();
+
+        staticinvoke <androidx.appcompat.widget.ThemeUtils: void checkAppCompatTheme(android.view.View,android.content.Context)>(this, $u-1#6);
+
+        res#8 = new android.text.TextPaint;
+
+        specialinvoke res#8.<android.text.TextPaint: void <init>(int)>(1);
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint> = res#8;
+
+        $u-1#10 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: android.content.res.Resources getResources()>();
+
+        res#8 = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        $u-1#13 = virtualinvoke $u-1#10.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        thumbTintList = $u-1#13.<android.util.DisplayMetrics: float density>;
+
+        res#8.<android.text.TextPaint: float density> = thumbTintList;
+
+        a = <androidx.appcompat.R$styleable: int[] SwitchCompat>;
+
+        $u-1#17 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,android.util.AttributeSet,int[],int,int)>($u13, $u14, a, $u15, 0);
+
+        a = <androidx.appcompat.R$styleable: int[] SwitchCompat>;
+
+        $u-1#20 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: android.content.res.TypedArray getWrappedTypeArray()>();
+
+        staticinvoke <androidx.core.view.ViewCompat: void saveAttributeDataForStyleable(android.view.View,android.content.Context,int[],android.util.AttributeSet,android.content.res.TypedArray,int,int)>(this, $u13, a, $u14, $u-1#20, $u15, 0);
+
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_android_thumb>;
+
+        $u-1#26 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>(thumbTintList#25);
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable> = $u-1#26;
+
+        if $u-1#26 == null goto label01;
+
+        virtualinvoke $u-1#26.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>(this);
+
+     label01:
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_track>;
+
+        $u-1#26 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: android.graphics.drawable.Drawable getDrawable(int)>(thumbTintList#25);
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable> = $u-1#26;
+
+        if $u-1#26 == null goto label02;
+
+        virtualinvoke $u-1#26.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>(this);
+
+     label02:
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_android_textOn>;
+
+        $u-1#32 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: java.lang.CharSequence getText(int)>(thumbTintList#25);
+
+        this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence mTextOn> = $u-1#32;
+
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_android_textOff>;
+
+        $u-1#32 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: java.lang.CharSequence getText(int)>(thumbTintList#25);
+
+        this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence mTextOff> = $u-1#32;
+
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_showText>;
+
+        $u-1#38 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: boolean getBoolean(int,boolean)>(thumbTintList#25, 1);
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mShowText> = $u-1#38;
+
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_thumbTextPadding>;
+
+        thumbTintList#25 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: int getDimensionPixelSize(int,int)>(thumbTintList#25, 0);
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mThumbTextPadding> = thumbTintList#25;
+
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_switchMinWidth>;
+
+        thumbTintList#25 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: int getDimensionPixelSize(int,int)>(thumbTintList#25, 0);
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mSwitchMinWidth> = thumbTintList#25;
+
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_switchPadding>;
+
+        thumbTintList#25 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: int getDimensionPixelSize(int,int)>(thumbTintList#25, 0);
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mSwitchPadding> = thumbTintList#25;
+
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_splitTrack>;
+
+        $u-1#38 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: boolean getBoolean(int,boolean)>(thumbTintList#25, 0);
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mSplitTrack> = $u-1#38;
+
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_thumbTint>;
+
+        $u-1#53 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: android.content.res.ColorStateList getColorStateList(int)>(thumbTintList#25);
+
+        if $u-1#53 == null goto label03;
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList mThumbTintList> = $u-1#53;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mHasThumbTint> = 1;
+
+     label03:
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_thumbTintMode>;
+
+        thumbTintList#25 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>(thumbTintList#25, -1);
+
+        $u-1#59 = staticinvoke <androidx.appcompat.widget.DrawableUtils: android.graphics.PorterDuff$Mode parseTintMode(int,android.graphics.PorterDuff$Mode)>(thumbTintList#25, null);
+
+        trackTintList = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.PorterDuff$Mode mThumbTintMode>;
+
+        if trackTintList == $u-1#59 goto label04;
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.graphics.PorterDuff$Mode mThumbTintMode> = $u-1#59;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mHasThumbTintMode> = 1;
+
+     label04:
+        $u-1#38 = this.<androidx.appcompat.widget.SwitchCompat: boolean mHasThumbTint>;
+
+        if $u-1#38 != 0 goto label05;
+
+        $u-1#38 = this.<androidx.appcompat.widget.SwitchCompat: boolean mHasThumbTintMode>;
+
+        if $u-1#38 == 0 goto label06;
+
+     label05:
+        specialinvoke this.<androidx.appcompat.widget.SwitchCompat: void applyThumbTint()>();
+
+     label06:
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_trackTint>;
+
+        $u-1#53 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: android.content.res.ColorStateList getColorStateList(int)>(thumbTintList#25);
+
+        if $u-1#53 == null goto label07;
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList mTrackTintList> = $u-1#53;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mHasTrackTint> = 1;
+
+     label07:
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_trackTintMode>;
+
+        thumbTintList#25 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>(thumbTintList#25, -1);
+
+        $u-1#59 = staticinvoke <androidx.appcompat.widget.DrawableUtils: android.graphics.PorterDuff$Mode parseTintMode(int,android.graphics.PorterDuff$Mode)>(thumbTintList#25, null);
+
+        trackTintList = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.PorterDuff$Mode mTrackTintMode>;
+
+        if trackTintList == $u-1#59 goto label08;
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.graphics.PorterDuff$Mode mTrackTintMode> = $u-1#59;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mHasTrackTintMode> = 1;
+
+     label08:
+        $u-1#38 = this.<androidx.appcompat.widget.SwitchCompat: boolean mHasTrackTint>;
+
+        if $u-1#38 != 0 goto label09;
+
+        $u-1#38 = this.<androidx.appcompat.widget.SwitchCompat: boolean mHasTrackTintMode>;
+
+        if $u-1#38 == 0 goto label10;
+
+     label09:
+        specialinvoke this.<androidx.appcompat.widget.SwitchCompat: void applyTrackTint()>();
+
+     label10:
+        thumbTintList#25 = <androidx.appcompat.R$styleable: int SwitchCompat_switchTextAppearance>;
+
+        thumbTintList#25 = virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: int getResourceId(int,int)>(thumbTintList#25, 0);
+
+        if thumbTintList#25 == 0 goto label11;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void setSwitchTextAppearance(android.content.Context,int)>($u13, thumbTintList#25);
+
+     label11:
+        config = new androidx.appcompat.widget.AppCompatTextHelper;
+
+        specialinvoke config.<androidx.appcompat.widget.AppCompatTextHelper: void <init>(android.widget.TextView)>(this);
+
+        this.<androidx.appcompat.widget.SwitchCompat: androidx.appcompat.widget.AppCompatTextHelper mTextHelper> = config;
+
+        virtualinvoke config.<androidx.appcompat.widget.AppCompatTextHelper: void loadFromAttributes(android.util.AttributeSet,int)>($u14, $u15);
+
+        virtualinvoke $u-1#17.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        $u-1#79 = staticinvoke <android.view.ViewConfiguration: android.view.ViewConfiguration get(android.content.Context)>($u13);
+
+        $u15 = virtualinvoke $u-1#79.<android.view.ViewConfiguration: int getScaledTouchSlop()>();
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mTouchSlop> = $u15;
+
+        $u15 = virtualinvoke $u-1#79.<android.view.ViewConfiguration: int getScaledMinimumFlingVelocity()>();
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mMinFlingVelocity> = $u15;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void refreshDrawableState()>();
+
+        $u-1#38 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: boolean isChecked()>();
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void setChecked(boolean)>($u-1#38);
+
+        return;
+    }
+
+    private void animateThumbToCheckedState(boolean)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        boolean $u6;
+        android.animation.ObjectAnimator $u-1;
+        float targetPosition;
+        android.util.Property $u1;
+        float[] $u3;
+        int $u1#6;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u6 := @parameter0: boolean;
+
+        if $u6 == 0 goto label1;
+
+        targetPosition = 1.0F;
+
+        goto label2;
+
+     label1:
+        targetPosition = 0.0F;
+
+     label2:
+        $u1 = <androidx.appcompat.widget.SwitchCompat: android.util.Property THUMB_POS>;
+
+        $u3 = newarray (float)[1];
+
+        $u3[0] = targetPosition;
+
+        $u-1 = staticinvoke <android.animation.ObjectAnimator: android.animation.ObjectAnimator ofFloat(java.lang.Object,android.util.Property,float[])>(this, $u1, $u3);
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.animation.ObjectAnimator mPositionAnimator> = $u-1;
+
+        virtualinvoke $u-1.<android.animation.ObjectAnimator: android.animation.ObjectAnimator setDuration(long)>(250L);
+
+        $u1#6 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u1#6 < 18 goto label3;
+
+        $u-1 = this.<androidx.appcompat.widget.SwitchCompat: android.animation.ObjectAnimator mPositionAnimator>;
+
+        virtualinvoke $u-1.<android.animation.ObjectAnimator: void setAutoCancel(boolean)>(1);
+
+     label3:
+        $u-1 = this.<androidx.appcompat.widget.SwitchCompat: android.animation.ObjectAnimator mPositionAnimator>;
+
+        virtualinvoke $u-1.<android.animation.ObjectAnimator: void start()>();
+
+        return;
+    }
+
+    private void applyThumbTint()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.drawable.Drawable $u0;
+        boolean $u0#2;
+        android.content.res.ColorStateList $u1;
+        android.graphics.PorterDuff$Mode $u1#13;
+        int[] $u-1;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if $u0 == null goto label4;
+
+        $u0#2 = this.<androidx.appcompat.widget.SwitchCompat: boolean mHasThumbTint>;
+
+        if $u0#2 != 0 goto label1;
+
+        $u0#2 = this.<androidx.appcompat.widget.SwitchCompat: boolean mHasThumbTintMode>;
+
+        if $u0#2 == 0 goto label4;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        $u0 = staticinvoke <androidx.core.graphics.drawable.DrawableCompat: android.graphics.drawable.Drawable wrap(android.graphics.drawable.Drawable)>($u0);
+
+        $u0 = virtualinvoke $u0.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable mutate()>();
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable> = $u0;
+
+        $u0#2 = this.<androidx.appcompat.widget.SwitchCompat: boolean mHasThumbTint>;
+
+        if $u0#2 == 0 goto label2;
+
+        $u1 = this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList mThumbTintList>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintList(android.graphics.drawable.Drawable,android.content.res.ColorStateList)>($u0, $u1);
+
+     label2:
+        $u0#2 = this.<androidx.appcompat.widget.SwitchCompat: boolean mHasThumbTintMode>;
+
+        if $u0#2 == 0 goto label3;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        $u1#13 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.PorterDuff$Mode mThumbTintMode>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintMode(android.graphics.drawable.Drawable,android.graphics.PorterDuff$Mode)>($u0, $u1#13);
+
+     label3:
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        $u0#2 = virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean isStateful()>();
+
+        if $u0#2 == 0 goto label4;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int[] getDrawableState()>();
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean setState(int[])>($u-1);
+
+     label4:
+        return;
+    }
+
+    private void applyTrackTint()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.drawable.Drawable $u0;
+        boolean $u0#2;
+        android.content.res.ColorStateList $u1;
+        android.graphics.PorterDuff$Mode $u1#13;
+        int[] $u-1;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        if $u0 == null goto label4;
+
+        $u0#2 = this.<androidx.appcompat.widget.SwitchCompat: boolean mHasTrackTint>;
+
+        if $u0#2 != 0 goto label1;
+
+        $u0#2 = this.<androidx.appcompat.widget.SwitchCompat: boolean mHasTrackTintMode>;
+
+        if $u0#2 == 0 goto label4;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        $u0 = staticinvoke <androidx.core.graphics.drawable.DrawableCompat: android.graphics.drawable.Drawable wrap(android.graphics.drawable.Drawable)>($u0);
+
+        $u0 = virtualinvoke $u0.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable mutate()>();
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable> = $u0;
+
+        $u0#2 = this.<androidx.appcompat.widget.SwitchCompat: boolean mHasTrackTint>;
+
+        if $u0#2 == 0 goto label2;
+
+        $u1 = this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList mTrackTintList>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintList(android.graphics.drawable.Drawable,android.content.res.ColorStateList)>($u0, $u1);
+
+     label2:
+        $u0#2 = this.<androidx.appcompat.widget.SwitchCompat: boolean mHasTrackTintMode>;
+
+        if $u0#2 == 0 goto label3;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        $u1#13 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.PorterDuff$Mode mTrackTintMode>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintMode(android.graphics.drawable.Drawable,android.graphics.PorterDuff$Mode)>($u0, $u1#13);
+
+     label3:
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        $u0#2 = virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean isStateful()>();
+
+        if $u0#2 == 0 goto label4;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int[] getDrawableState()>();
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean setState(int[])>($u-1);
+
+     label4:
+        return;
+    }
+
+    private void cancelPositionAnimator()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.animation.ObjectAnimator $u0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.animation.ObjectAnimator mPositionAnimator>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.animation.ObjectAnimator: void cancel()>();
+
+     label1:
+        return;
+    }
+
+    private void cancelSuperTouch(android.view.MotionEvent)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.view.MotionEvent $u3;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u3 := @parameter0: android.view.MotionEvent;
+
+        $u3 = staticinvoke <android.view.MotionEvent: android.view.MotionEvent obtain(android.view.MotionEvent)>($u3);
+
+        virtualinvoke $u3.<android.view.MotionEvent: void setAction(int)>(3);
+
+        specialinvoke this.<android.widget.CompoundButton: boolean onTouchEvent(android.view.MotionEvent)>($u3);
+
+        virtualinvoke $u3.<android.view.MotionEvent: void recycle()>();
+
+        return;
+    }
+
+    private static float constrain(float, float, float)
+    {
+        float $u1, $u2, $u3;
+        byte $u0;
+
+        $u1 := @parameter0: float;
+
+        $u2 := @parameter1: float;
+
+        $u3 := @parameter2: float;
+
+        $u0 = $u1 cmpg $u2;
+
+        if $u0 >= 0 goto label1;
+
+        return $u2;
+
+     label1:
+        $u0 = $u1 cmpl $u3;
+
+        if $u0 <= 0 goto label2;
+
+        return $u3;
+
+     label2:
+        return $u1;
+    }
+
+    private boolean getTargetCheckedState()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        float $u0;
+        byte $u0#2;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: float mThumbPosition>;
+
+        $u0#2 = $u0 cmpl 0.5F;
+
+        if $u0#2 <= 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private int getThumbOffset()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        boolean $u-1;
+        float $u1, $u1#8;
+        int $u-1#6;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.ViewUtils: boolean isLayoutRtl(android.view.View)>(this);
+
+        if $u-1 == 0 goto label1;
+
+        $u1 = this.<androidx.appcompat.widget.SwitchCompat: float mThumbPosition>;
+
+        $u1 = 1.0F - $u1;
+
+        goto label2;
+
+     label1:
+        $u1 = this.<androidx.appcompat.widget.SwitchCompat: float mThumbPosition>;
+
+     label2:
+        $u-1#6 = specialinvoke this.<androidx.appcompat.widget.SwitchCompat: int getThumbScrollRange()>();
+
+        $u1#8 = (float) $u-1#6;
+
+        $u1 = $u1#8 * $u1;
+
+        $u1 = $u1 + 0.5F;
+
+        $u-1#6 = (int) $u1;
+
+        return $u-1#6;
+    }
+
+    private int getThumbScrollRange()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.Rect padding, $u-1;
+        android.graphics.drawable.Drawable insets;
+        int $u2, $u3;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        insets = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        if insets == null goto label3;
+
+        padding = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.Rect mTempRect>;
+
+        virtualinvoke insets.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>(padding);
+
+        insets = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if insets == null goto label1;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.DrawableUtils: android.graphics.Rect getOpticalBounds(android.graphics.drawable.Drawable)>(insets);
+
+        goto label2;
+
+     label1:
+        $u-1 = <androidx.appcompat.widget.DrawableUtils: android.graphics.Rect INSETS_NONE>;
+
+     label2:
+        $u2 = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchWidth>;
+
+        $u3 = this.<androidx.appcompat.widget.SwitchCompat: int mThumbWidth>;
+
+        $u2 = $u2 - $u3;
+
+        $u3 = padding.<android.graphics.Rect: int left>;
+
+        $u2 = $u2 - $u3;
+
+        $u3 = padding.<android.graphics.Rect: int right>;
+
+        $u2 = $u2 - $u3;
+
+        $u3 = $u-1.<android.graphics.Rect: int left>;
+
+        $u2 = $u2 - $u3;
+
+        $u3 = $u-1.<android.graphics.Rect: int right>;
+
+        $u2 = $u2 - $u3;
+
+        return $u2;
+
+     label3:
+        return 0;
+    }
+
+    private boolean hitThumb(float, float)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        float $u8, $u9, $u5;
+        int $u-1, thumbTop, thumbRight#7, thumbLeft, thumbBottom;
+        android.graphics.drawable.Drawable thumbOffset;
+        android.graphics.Rect thumbRight;
+        byte $u5#25;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u8 := @parameter0: float;
+
+        $u9 := @parameter1: float;
+
+        thumbOffset = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if thumbOffset != null goto label1;
+
+        return 0;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.SwitchCompat: int getThumbOffset()>();
+
+        thumbOffset = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        thumbRight = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.Rect mTempRect>;
+
+        virtualinvoke thumbOffset.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>(thumbRight);
+
+        thumbTop = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchTop>;
+
+        thumbRight#7 = this.<androidx.appcompat.widget.SwitchCompat: int mTouchSlop>;
+
+        thumbTop = thumbTop - thumbRight#7;
+
+        thumbLeft = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchLeft>;
+
+        $u-1 = thumbLeft + $u-1;
+
+        thumbRight#7 = $u-1 - thumbRight#7;
+
+        $u-1 = this.<androidx.appcompat.widget.SwitchCompat: int mThumbWidth>;
+
+        $u-1 = $u-1 + thumbRight#7;
+
+        thumbRight = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.Rect mTempRect>;
+
+        thumbLeft = thumbRight.<android.graphics.Rect: int left>;
+
+        $u-1 = $u-1 + thumbLeft;
+
+        thumbRight = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.Rect mTempRect>;
+
+        thumbLeft = thumbRight.<android.graphics.Rect: int right>;
+
+        thumbLeft = $u-1 + thumbLeft;
+
+        $u-1 = this.<androidx.appcompat.widget.SwitchCompat: int mTouchSlop>;
+
+        thumbLeft = thumbLeft + $u-1;
+
+        thumbBottom = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchBottom>;
+
+        $u-1 = thumbBottom + $u-1;
+
+        $u5 = (float) thumbRight#7;
+
+        $u5#25 = $u8 cmpl $u5;
+
+        if $u5#25 <= 0 goto label2;
+
+        $u5 = (float) thumbLeft;
+
+        $u5#25 = $u8 cmpg $u5;
+
+        if $u5#25 >= 0 goto label2;
+
+        $u8 = (float) thumbTop;
+
+        $u5#25 = $u9 cmpl $u8;
+
+        if $u5#25 <= 0 goto label2;
+
+        $u8 = (float) $u-1;
+
+        $u5#25 = $u9 cmpg $u8;
+
+        if $u5#25 >= 0 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    private android.text.Layout makeLayout(java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        java.lang.CharSequence $u11;
+        android.text.TextPaint $u3;
+        android.text.Layout$Alignment $u5;
+        android.text.StaticLayout $u9;
+        android.text.method.TransformationMethod transformed;
+        float $u-1;
+        double $u1;
+        int $u1#9;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u11 := @parameter0: java.lang.CharSequence;
+
+        transformed = this.<androidx.appcompat.widget.SwitchCompat: android.text.method.TransformationMethod mSwitchTransformationMethod>;
+
+        if transformed == null goto label1;
+
+        $u11 = interfaceinvoke transformed.<android.text.method.TransformationMethod: java.lang.CharSequence getTransformation(java.lang.CharSequence,android.view.View)>($u11, this);
+
+        goto label1;
+
+     label1:
+        $u9 = new android.text.StaticLayout;
+
+        $u3 = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        if $u11 == null goto label2;
+
+        $u-1 = staticinvoke <android.text.Layout: float getDesiredWidth(java.lang.CharSequence,android.text.TextPaint)>($u11, $u3);
+
+        $u1 = (double) $u-1;
+
+        $u1 = staticinvoke <java.lang.Math: double ceil(double)>($u1);
+
+        $u1#9 = (int) $u1;
+
+        goto label3;
+
+     label2:
+        $u1#9 = 0;
+
+     label3:
+        $u5 = <android.text.Layout$Alignment: android.text.Layout$Alignment ALIGN_NORMAL>;
+
+        specialinvoke $u9.<android.text.StaticLayout: void <init>(java.lang.CharSequence,android.text.TextPaint,int,android.text.Layout$Alignment,float,float,boolean)>($u11, $u3, $u1#9, $u5, 1.0F, 0.0F, 1);
+
+        return $u9;
+    }
+
+    private void setSwitchTypefaceByIndex(int, int)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        int $u3, $u4;
+        android.graphics.Typeface tf;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u3 := @parameter0: int;
+
+        $u4 := @parameter1: int;
+
+        tf = null;
+
+        if $u3 == 1 goto label3;
+
+        if $u3 == 2 goto label2;
+
+        if $u3 == 3 goto label1;
+
+        goto label4;
+
+     label1:
+        tf = <android.graphics.Typeface: android.graphics.Typeface MONOSPACE>;
+
+        goto label4;
+
+     label2:
+        tf = <android.graphics.Typeface: android.graphics.Typeface SERIF>;
+
+        goto label4;
+
+     label3:
+        tf = <android.graphics.Typeface: android.graphics.Typeface SANS_SERIF>;
+
+     label4:
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void setSwitchTypeface(android.graphics.Typeface,int)>(tf, $u4);
+
+        return;
+    }
+
+    private void stopDrag(android.view.MotionEvent)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.view.MotionEvent $u8;
+        int $u-1;
+        boolean newState, $u-1#4, commitChange;
+        android.view.VelocityTracker xvel;
+        float $u-1#11, $u-1#13, $u6;
+        byte $u5;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u8 := @parameter0: android.view.MotionEvent;
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mTouchMode> = 0;
+
+        $u-1 = virtualinvoke $u8.<android.view.MotionEvent: int getAction()>();
+
+        newState = 1;
+
+        if $u-1 != 1 goto label01;
+
+        $u-1#4 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: boolean isEnabled()>();
+
+        if $u-1#4 == 0 goto label01;
+
+        commitChange = 1;
+
+        goto label02;
+
+     label01:
+        commitChange = 0;
+
+     label02:
+        $u-1#4 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: boolean isChecked()>();
+
+        if commitChange == 0 goto label09;
+
+        xvel = this.<androidx.appcompat.widget.SwitchCompat: android.view.VelocityTracker mVelocityTracker>;
+
+        virtualinvoke xvel.<android.view.VelocityTracker: void computeCurrentVelocity(int)>(1000);
+
+        xvel = this.<androidx.appcompat.widget.SwitchCompat: android.view.VelocityTracker mVelocityTracker>;
+
+        $u-1#11 = virtualinvoke xvel.<android.view.VelocityTracker: float getXVelocity()>();
+
+        $u-1#13 = staticinvoke <java.lang.Math: float abs(float)>($u-1#11);
+
+        $u-1 = this.<androidx.appcompat.widget.SwitchCompat: int mMinFlingVelocity>;
+
+        $u6 = (float) $u-1;
+
+        $u5 = $u-1#13 cmpl $u6;
+
+        if $u5 <= 0 goto label07;
+
+        commitChange = staticinvoke <androidx.appcompat.widget.ViewUtils: boolean isLayoutRtl(android.view.View)>(this);
+
+        if commitChange == 0 goto label03;
+
+        $u5 = $u-1#11 cmpg 0.0F;
+
+        if $u5 >= 0 goto label05;
+
+        goto label04;
+
+     label03:
+        $u5 = $u-1#11 cmpl 0.0F;
+
+        if $u5 <= 0 goto label05;
+
+     label04:
+        goto label06;
+
+     label05:
+        newState = 0;
+
+     label06:
+        goto label08;
+
+     label07:
+        newState = specialinvoke this.<androidx.appcompat.widget.SwitchCompat: boolean getTargetCheckedState()>();
+
+     label08:
+        goto label10;
+
+     label09:
+        newState = $u-1#4;
+
+     label10:
+        if newState == $u-1#4 goto label11;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void playSoundEffect(int)>(0);
+
+     label11:
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void setChecked(boolean)>(newState);
+
+        specialinvoke this.<androidx.appcompat.widget.SwitchCompat: void cancelSuperTouch(android.view.MotionEvent)>($u8);
+
+        return;
+    }
+
+    public void draw(android.graphics.Canvas)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.Canvas $u14;
+        android.graphics.Rect padding, $u-1#5;
+        int switchLeft, switchTop, switchRight, switchBottom, $u-1, trackLeft, trackTop, trackRight, trackBottom, $u11, $u12;
+        android.graphics.drawable.Drawable thumbInsets;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u14 := @parameter0: android.graphics.Canvas;
+
+        padding = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.Rect mTempRect>;
+
+        switchLeft = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchLeft>;
+
+        switchTop = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchTop>;
+
+        switchRight = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchRight>;
+
+        switchBottom = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchBottom>;
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.SwitchCompat: int getThumbOffset()>();
+
+        $u-1 = $u-1 + switchLeft;
+
+        thumbInsets = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if thumbInsets == null goto label1;
+
+        $u-1#5 = staticinvoke <androidx.appcompat.widget.DrawableUtils: android.graphics.Rect getOpticalBounds(android.graphics.drawable.Drawable)>(thumbInsets);
+
+        goto label2;
+
+     label1:
+        $u-1#5 = <androidx.appcompat.widget.DrawableUtils: android.graphics.Rect INSETS_NONE>;
+
+     label2:
+        thumbInsets = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        if thumbInsets == null goto label7;
+
+        virtualinvoke thumbInsets.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>(padding);
+
+        trackLeft = padding.<android.graphics.Rect: int left>;
+
+        $u-1 = $u-1 + trackLeft;
+
+        trackLeft = switchLeft;
+
+        trackTop = switchTop;
+
+        trackRight = switchRight;
+
+        trackBottom = switchBottom;
+
+        if $u-1#5 == null goto label6;
+
+        $u11 = $u-1#5.<android.graphics.Rect: int left>;
+
+        $u12 = padding.<android.graphics.Rect: int left>;
+
+        if $u11 <= $u12 goto label3;
+
+        trackLeft = $u-1#5.<android.graphics.Rect: int left>;
+
+        $u11 = padding.<android.graphics.Rect: int left>;
+
+        trackLeft = trackLeft - $u11;
+
+        trackLeft = switchLeft + trackLeft;
+
+     label3:
+        switchLeft = $u-1#5.<android.graphics.Rect: int top>;
+
+        $u11 = padding.<android.graphics.Rect: int top>;
+
+        if switchLeft <= $u11 goto label4;
+
+        trackTop = $u-1#5.<android.graphics.Rect: int top>;
+
+        switchLeft = padding.<android.graphics.Rect: int top>;
+
+        trackTop = trackTop - switchLeft;
+
+        trackTop = switchTop + trackTop;
+
+     label4:
+        switchLeft = $u-1#5.<android.graphics.Rect: int right>;
+
+        $u11 = padding.<android.graphics.Rect: int right>;
+
+        if switchLeft <= $u11 goto label5;
+
+        trackRight = $u-1#5.<android.graphics.Rect: int right>;
+
+        switchLeft = padding.<android.graphics.Rect: int right>;
+
+        trackRight = trackRight - switchLeft;
+
+        trackRight = switchRight - trackRight;
+
+     label5:
+        switchRight = $u-1#5.<android.graphics.Rect: int bottom>;
+
+        switchLeft = padding.<android.graphics.Rect: int bottom>;
+
+        if switchRight <= switchLeft goto label6;
+
+        switchRight = $u-1#5.<android.graphics.Rect: int bottom>;
+
+        trackBottom = padding.<android.graphics.Rect: int bottom>;
+
+        switchRight = switchRight - trackBottom;
+
+        trackBottom = switchBottom - switchRight;
+
+     label6:
+        thumbInsets = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        virtualinvoke thumbInsets.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>(trackLeft, trackTop, trackRight, trackBottom);
+
+     label7:
+        thumbInsets = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if thumbInsets == null goto label8;
+
+        virtualinvoke thumbInsets.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>(padding);
+
+        switchRight = padding.<android.graphics.Rect: int left>;
+
+        switchRight = $u-1 - switchRight;
+
+        trackLeft = this.<androidx.appcompat.widget.SwitchCompat: int mThumbWidth>;
+
+        $u-1 = trackLeft + $u-1;
+
+        trackLeft = padding.<android.graphics.Rect: int right>;
+
+        $u-1 = $u-1 + trackLeft;
+
+        thumbInsets = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        virtualinvoke thumbInsets.<android.graphics.drawable.Drawable: void setBounds(int,int,int,int)>(switchRight, switchTop, $u-1, switchBottom);
+
+        thumbInsets = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable getBackground()>();
+
+        if thumbInsets == null goto label8;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setHotspotBounds(android.graphics.drawable.Drawable,int,int,int,int)>(thumbInsets, switchRight, switchTop, $u-1, switchBottom);
+
+     label8:
+        specialinvoke this.<android.widget.CompoundButton: void draw(android.graphics.Canvas)>($u14);
+
+        return;
+    }
+
+    public void drawableHotspotChanged(float, float)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        float $u3, $u4;
+        int $u0;
+        android.graphics.drawable.Drawable $u0#2;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u3 := @parameter0: float;
+
+        $u4 := @parameter1: float;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label1;
+
+        specialinvoke this.<android.widget.CompoundButton: void drawableHotspotChanged(float,float)>($u3, $u4);
+
+     label1:
+        $u0#2 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if $u0#2 == null goto label2;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setHotspot(android.graphics.drawable.Drawable,float,float)>($u0#2, $u3, $u4);
+
+     label2:
+        $u0#2 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        if $u0#2 == null goto label3;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setHotspot(android.graphics.drawable.Drawable,float,float)>($u0#2, $u3, $u4);
+
+     label3:
+        return;
+    }
+
+    protected void drawableStateChanged()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.drawable.Drawable thumbDrawable;
+        int[] $u-1;
+        boolean changed, $u-1#3;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        specialinvoke this.<android.widget.CompoundButton: void drawableStateChanged()>();
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int[] getDrawableState()>();
+
+        changed = 0;
+
+        thumbDrawable = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if thumbDrawable == null goto label1;
+
+        $u-1#3 = virtualinvoke thumbDrawable.<android.graphics.drawable.Drawable: boolean isStateful()>();
+
+        if $u-1#3 == 0 goto label1;
+
+        changed = virtualinvoke thumbDrawable.<android.graphics.drawable.Drawable: boolean setState(int[])>($u-1);
+
+     label1:
+        thumbDrawable = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        if thumbDrawable == null goto label2;
+
+        $u-1#3 = virtualinvoke thumbDrawable.<android.graphics.drawable.Drawable: boolean isStateful()>();
+
+        if $u-1#3 == 0 goto label2;
+
+        $u-1#3 = virtualinvoke thumbDrawable.<android.graphics.drawable.Drawable: boolean setState(int[])>($u-1);
+
+        changed = changed | $u-1#3;
+
+     label2:
+        if changed == 0 goto label3;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void invalidate()>();
+
+     label3:
+        return;
+    }
+
+    public int getCompoundPaddingLeft()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        boolean $u-1;
+        int $u-1#3, $u1;
+        java.lang.CharSequence $u-1#9;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.ViewUtils: boolean isLayoutRtl(android.view.View)>(this);
+
+        if $u-1 != 0 goto label1;
+
+        $u-1#3 = specialinvoke this.<android.widget.CompoundButton: int getCompoundPaddingLeft()>();
+
+        return $u-1#3;
+
+     label1:
+        $u-1#3 = specialinvoke this.<android.widget.CompoundButton: int getCompoundPaddingLeft()>();
+
+        $u1 = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchWidth>;
+
+        $u-1#3 = $u-1#3 + $u1;
+
+        $u-1#9 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence getText()>();
+
+        $u-1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u-1#9);
+
+        if $u-1 != 0 goto label2;
+
+        $u1 = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchPadding>;
+
+        $u-1#3 = $u-1#3 + $u1;
+
+     label2:
+        return $u-1#3;
+    }
+
+    public int getCompoundPaddingRight()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        boolean $u-1;
+        int $u-1#3, $u1;
+        java.lang.CharSequence $u-1#9;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.ViewUtils: boolean isLayoutRtl(android.view.View)>(this);
+
+        if $u-1 == 0 goto label1;
+
+        $u-1#3 = specialinvoke this.<android.widget.CompoundButton: int getCompoundPaddingRight()>();
+
+        return $u-1#3;
+
+     label1:
+        $u-1#3 = specialinvoke this.<android.widget.CompoundButton: int getCompoundPaddingRight()>();
+
+        $u1 = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchWidth>;
+
+        $u-1#3 = $u-1#3 + $u1;
+
+        $u-1#9 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence getText()>();
+
+        $u-1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u-1#9);
+
+        if $u-1 != 0 goto label2;
+
+        $u1 = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchPadding>;
+
+        $u-1#3 = $u-1#3 + $u1;
+
+     label2:
+        return $u-1#3;
+    }
+
+    public boolean getShowText()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        ret0 = this.<androidx.appcompat.widget.SwitchCompat: boolean mShowText>;
+
+        return ret0;
+    }
+
+    public boolean getSplitTrack()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        ret0 = this.<androidx.appcompat.widget.SwitchCompat: boolean mSplitTrack>;
+
+        return ret0;
+    }
+
+    public int getSwitchMinWidth()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        int ret0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        ret0 = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchMinWidth>;
+
+        return ret0;
+    }
+
+    public int getSwitchPadding()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        int ret0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        ret0 = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchPadding>;
+
+        return ret0;
+    }
+
+    public java.lang.CharSequence getTextOff()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        java.lang.CharSequence ret0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        ret0 = this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence mTextOff>;
+
+        return ret0;
+    }
+
+    public java.lang.CharSequence getTextOn()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        java.lang.CharSequence ret0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        ret0 = this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence mTextOn>;
+
+        return ret0;
+    }
+
+    public android.graphics.drawable.Drawable getThumbDrawable()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.drawable.Drawable ret0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        ret0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        return ret0;
+    }
+
+    public int getThumbTextPadding()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        int ret0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        ret0 = this.<androidx.appcompat.widget.SwitchCompat: int mThumbTextPadding>;
+
+        return ret0;
+    }
+
+    public android.content.res.ColorStateList getThumbTintList()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.content.res.ColorStateList ret0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        ret0 = this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList mThumbTintList>;
+
+        return ret0;
+    }
+
+    public android.graphics.PorterDuff$Mode getThumbTintMode()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.PorterDuff$Mode ret0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        ret0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.PorterDuff$Mode mThumbTintMode>;
+
+        return ret0;
+    }
+
+    public android.graphics.drawable.Drawable getTrackDrawable()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.drawable.Drawable ret0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        ret0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        return ret0;
+    }
+
+    public android.content.res.ColorStateList getTrackTintList()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.content.res.ColorStateList ret0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        ret0 = this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList mTrackTintList>;
+
+        return ret0;
+    }
+
+    public android.graphics.PorterDuff$Mode getTrackTintMode()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.PorterDuff$Mode ret0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        ret0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.PorterDuff$Mode mTrackTintMode>;
+
+        return ret0;
+    }
+
+    public void jumpDrawablesToCurrentState()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        boolean $u-1;
+        android.graphics.drawable.Drawable $u0;
+        android.animation.ObjectAnimator $u0#3;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        specialinvoke this.<android.widget.CompoundButton: void jumpDrawablesToCurrentState()>();
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void jumpToCurrentState()>();
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        if $u0 == null goto label2;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void jumpToCurrentState()>();
+
+     label2:
+        $u0#3 = this.<androidx.appcompat.widget.SwitchCompat: android.animation.ObjectAnimator mPositionAnimator>;
+
+        if $u0#3 == null goto label3;
+
+        $u-1 = virtualinvoke $u0#3.<android.animation.ObjectAnimator: boolean isStarted()>();
+
+        if $u-1 == 0 goto label3;
+
+        $u0#3 = this.<androidx.appcompat.widget.SwitchCompat: android.animation.ObjectAnimator mPositionAnimator>;
+
+        virtualinvoke $u0#3.<android.animation.ObjectAnimator: void end()>();
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.animation.ObjectAnimator mPositionAnimator> = null;
+
+     label3:
+        return;
+    }
+
+    protected int[] onCreateDrawableState(int)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        int $u3;
+        int[] $u-1, $u1;
+        boolean $u-1#4;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u3 := @parameter0: int;
+
+        $u3 = $u3 + 1;
+
+        $u-1 = specialinvoke this.<android.widget.CompoundButton: int[] onCreateDrawableState(int)>($u3);
+
+        $u-1#4 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: boolean isChecked()>();
+
+        if $u-1#4 == 0 goto label1;
+
+        $u1 = <androidx.appcompat.widget.SwitchCompat: int[] CHECKED_STATE_SET>;
+
+        staticinvoke <androidx.appcompat.widget.SwitchCompat: int[] mergeDrawableStates(int[],int[])>($u-1, $u1);
+
+     label1:
+        return $u-1;
+    }
+
+    protected void onDraw(android.graphics.Canvas)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.Canvas $u17;
+        android.graphics.Rect padding, $u-1;
+        android.graphics.drawable.Drawable trackDrawable, thumbDrawable;
+        int switchTop, switchBottom, switchInnerTop, drawableState, top;
+        boolean insets;
+        android.graphics.Region$Op drawableState#17;
+        android.text.Layout saveCount;
+        int[] $u-1#23;
+        android.content.res.ColorStateList bounds;
+        android.text.TextPaint cX;
+        float $u15, $u0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u17 := @parameter0: android.graphics.Canvas;
+
+        specialinvoke this.<android.widget.CompoundButton: void onDraw(android.graphics.Canvas)>($u17);
+
+        padding = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.Rect mTempRect>;
+
+        trackDrawable = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        if trackDrawable == null goto label01;
+
+        virtualinvoke trackDrawable.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>(padding);
+
+        goto label02;
+
+     label01:
+        virtualinvoke padding.<android.graphics.Rect: void setEmpty()>();
+
+     label02:
+        switchTop = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchTop>;
+
+        switchBottom = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchBottom>;
+
+        switchInnerTop = padding.<android.graphics.Rect: int top>;
+
+        switchTop = switchInnerTop + switchTop;
+
+        switchInnerTop = padding.<android.graphics.Rect: int bottom>;
+
+        switchBottom = switchBottom - switchInnerTop;
+
+        thumbDrawable = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if trackDrawable == null goto label04;
+
+        insets = this.<androidx.appcompat.widget.SwitchCompat: boolean mSplitTrack>;
+
+        if insets == 0 goto label03;
+
+        if thumbDrawable == null goto label03;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.DrawableUtils: android.graphics.Rect getOpticalBounds(android.graphics.drawable.Drawable)>(thumbDrawable);
+
+        virtualinvoke thumbDrawable.<android.graphics.drawable.Drawable: void copyBounds(android.graphics.Rect)>(padding);
+
+        switchInnerTop = padding.<android.graphics.Rect: int left>;
+
+        drawableState = $u-1.<android.graphics.Rect: int left>;
+
+        switchInnerTop = switchInnerTop + drawableState;
+
+        padding.<android.graphics.Rect: int left> = switchInnerTop;
+
+        switchInnerTop = padding.<android.graphics.Rect: int right>;
+
+        drawableState = $u-1.<android.graphics.Rect: int right>;
+
+        switchInnerTop = switchInnerTop - drawableState;
+
+        padding.<android.graphics.Rect: int right> = switchInnerTop;
+
+        switchInnerTop = virtualinvoke $u17.<android.graphics.Canvas: int save()>();
+
+        drawableState#17 = <android.graphics.Region$Op: android.graphics.Region$Op DIFFERENCE>;
+
+        virtualinvoke $u17.<android.graphics.Canvas: boolean clipRect(android.graphics.Rect,android.graphics.Region$Op)>(padding, drawableState#17);
+
+        virtualinvoke trackDrawable.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>($u17);
+
+        virtualinvoke $u17.<android.graphics.Canvas: void restoreToCount(int)>(switchInnerTop);
+
+        goto label04;
+
+     label03:
+        virtualinvoke trackDrawable.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>($u17);
+
+     label04:
+        switchInnerTop = virtualinvoke $u17.<android.graphics.Canvas: int save()>();
+
+        if thumbDrawable == null goto label05;
+
+        virtualinvoke thumbDrawable.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>($u17);
+
+     label05:
+        insets = specialinvoke this.<androidx.appcompat.widget.SwitchCompat: boolean getTargetCheckedState()>();
+
+        if insets == 0 goto label06;
+
+        saveCount = this.<androidx.appcompat.widget.SwitchCompat: android.text.Layout mOnLayout>;
+
+        goto label07;
+
+     label06:
+        saveCount = this.<androidx.appcompat.widget.SwitchCompat: android.text.Layout mOffLayout>;
+
+     label07:
+        if saveCount == null goto label11;
+
+        $u-1#23 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int[] getDrawableState()>();
+
+        bounds = this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList mTextColors>;
+
+        if bounds == null goto label08;
+
+        cX = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        drawableState = virtualinvoke bounds.<android.content.res.ColorStateList: int getColorForState(int[],int)>($u-1#23, 0);
+
+        virtualinvoke cX.<android.text.TextPaint: void setColor(int)>(drawableState);
+
+     label08:
+        cX = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        cX.<android.text.TextPaint: int[] drawableState> = $u-1#23;
+
+        if thumbDrawable == null goto label09;
+
+        padding = virtualinvoke thumbDrawable.<android.graphics.drawable.Drawable: android.graphics.Rect getBounds()>();
+
+        drawableState = padding.<android.graphics.Rect: int left>;
+
+        top = padding.<android.graphics.Rect: int right>;
+
+        drawableState = drawableState + top;
+
+        goto label10;
+
+     label09:
+        drawableState = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int getWidth()>();
+
+     label10:
+        drawableState = drawableState / 2;
+
+        top = virtualinvoke saveCount.<android.text.Layout: int getWidth()>();
+
+        top = top / 2;
+
+        drawableState = drawableState - top;
+
+        switchTop = switchTop + switchBottom;
+
+        switchTop = switchTop / 2;
+
+        switchBottom = virtualinvoke saveCount.<android.text.Layout: int getHeight()>();
+
+        switchBottom = switchBottom / 2;
+
+        switchTop = switchTop - switchBottom;
+
+        $u15 = (float) drawableState;
+
+        $u0 = (float) switchTop;
+
+        virtualinvoke $u17.<android.graphics.Canvas: void translate(float,float)>($u15, $u0);
+
+        virtualinvoke saveCount.<android.text.Layout: void draw(android.graphics.Canvas)>($u17);
+
+     label11:
+        virtualinvoke $u17.<android.graphics.Canvas: void restoreToCount(int)>(switchInnerTop);
+
+        return;
+    }
+
+    public void onInitializeAccessibilityEvent(android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.view.accessibility.AccessibilityEvent $u2;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        specialinvoke this.<android.widget.CompoundButton: void onInitializeAccessibilityEvent(android.view.accessibility.AccessibilityEvent)>($u2);
+
+        virtualinvoke $u2.<android.view.accessibility.AccessibilityEvent: void setClassName(java.lang.CharSequence)>("android.widget.Switch");
+
+        return;
+    }
+
+    public void onInitializeAccessibilityNodeInfo(android.view.accessibility.AccessibilityNodeInfo)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.view.accessibility.AccessibilityNodeInfo $u5;
+        boolean $u-1;
+        java.lang.CharSequence switchText, $u-1#7;
+        java.lang.StringBuilder newText;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u5 := @parameter0: android.view.accessibility.AccessibilityNodeInfo;
+
+        specialinvoke this.<android.widget.CompoundButton: void onInitializeAccessibilityNodeInfo(android.view.accessibility.AccessibilityNodeInfo)>($u5);
+
+        virtualinvoke $u5.<android.view.accessibility.AccessibilityNodeInfo: void setClassName(java.lang.CharSequence)>("android.widget.Switch");
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: boolean isChecked()>();
+
+        if $u-1 == 0 goto label1;
+
+        switchText = this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence mTextOn>;
+
+        goto label2;
+
+     label1:
+        switchText = this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence mTextOff>;
+
+     label2:
+        $u-1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>(switchText);
+
+        if $u-1 != 0 goto label4;
+
+        $u-1#7 = virtualinvoke $u5.<android.view.accessibility.AccessibilityNodeInfo: java.lang.CharSequence getText()>();
+
+        $u-1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u-1#7);
+
+        if $u-1 == 0 goto label3;
+
+        virtualinvoke $u5.<android.view.accessibility.AccessibilityNodeInfo: void setText(java.lang.CharSequence)>(switchText);
+
+        return;
+
+     label3:
+        newText = new java.lang.StringBuilder;
+
+        specialinvoke newText.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke newText.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence)>($u-1#7);
+
+        virtualinvoke newText.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(32);
+
+        virtualinvoke newText.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence)>(switchText);
+
+        virtualinvoke $u5.<android.view.accessibility.AccessibilityNodeInfo: void setText(java.lang.CharSequence)>(newText);
+
+     label4:
+        return;
+    }
+
+    protected void onLayout(boolean, int, int, int, int)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        boolean $u8;
+        int $u9, $u10, $u11, $u12, switchBottom;
+        android.graphics.drawable.Drawable trackPadding;
+        android.graphics.Rect trackPadding#4, $u-1;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u8 := @parameter0: boolean;
+
+        $u9 := @parameter1: int;
+
+        $u10 := @parameter2: int;
+
+        $u11 := @parameter3: int;
+
+        $u12 := @parameter4: int;
+
+        specialinvoke this.<android.widget.CompoundButton: void onLayout(boolean,int,int,int,int)>($u8, $u9, $u10, $u11, $u12);
+
+        $u11 = 0;
+
+        $u12 = 0;
+
+        trackPadding = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if trackPadding == null goto label3;
+
+        trackPadding#4 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.Rect mTempRect>;
+
+        trackPadding = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        if trackPadding == null goto label1;
+
+        virtualinvoke trackPadding.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>(trackPadding#4);
+
+        goto label2;
+
+     label1:
+        virtualinvoke trackPadding#4.<android.graphics.Rect: void setEmpty()>();
+
+     label2:
+        trackPadding = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.DrawableUtils: android.graphics.Rect getOpticalBounds(android.graphics.drawable.Drawable)>(trackPadding);
+
+        $u9 = $u-1.<android.graphics.Rect: int left>;
+
+        $u10 = trackPadding#4.<android.graphics.Rect: int left>;
+
+        $u9 = $u9 - $u10;
+
+        $u11 = staticinvoke <java.lang.Math: int max(int,int)>(0, $u9);
+
+        $u9 = $u-1.<android.graphics.Rect: int right>;
+
+        $u10 = trackPadding#4.<android.graphics.Rect: int right>;
+
+        $u9 = $u9 - $u10;
+
+        $u12 = staticinvoke <java.lang.Math: int max(int,int)>(0, $u9);
+
+     label3:
+        $u8 = staticinvoke <androidx.appcompat.widget.ViewUtils: boolean isLayoutRtl(android.view.View)>(this);
+
+        if $u8 == 0 goto label4;
+
+        $u9 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int getPaddingLeft()>();
+
+        $u9 = $u9 + $u11;
+
+        $u10 = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchWidth>;
+
+        $u10 = $u10 + $u9;
+
+        $u10 = $u10 - $u11;
+
+        $u10 = $u10 - $u12;
+
+        goto label5;
+
+     label4:
+        $u9 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int getWidth()>();
+
+        $u10 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int getPaddingRight()>();
+
+        $u9 = $u9 - $u10;
+
+        $u10 = $u9 - $u12;
+
+        $u9 = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchWidth>;
+
+        $u9 = $u10 - $u9;
+
+        $u9 = $u9 + $u11;
+
+        $u9 = $u9 + $u12;
+
+     label5:
+        $u11 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int getGravity()>();
+
+        $u11 = $u11 & 112;
+
+        if $u11 == 16 goto label7;
+
+        if $u11 == 80 goto label6;
+
+        $u12 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int getPaddingTop()>();
+
+        $u11 = $u12;
+
+        switchBottom = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchHeight>;
+
+        $u12 = switchBottom + $u12;
+
+        goto label8;
+
+     label6:
+        $u11 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int getHeight()>();
+
+        $u12 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int getPaddingBottom()>();
+
+        $u12 = $u11 - $u12;
+
+        $u11 = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchHeight>;
+
+        $u11 = $u12 - $u11;
+
+        goto label8;
+
+     label7:
+        $u11 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int getPaddingTop()>();
+
+        $u12 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int getHeight()>();
+
+        $u11 = $u11 + $u12;
+
+        $u12 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int getPaddingBottom()>();
+
+        $u11 = $u11 - $u12;
+
+        $u11 = $u11 / 2;
+
+        $u12 = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchHeight>;
+
+        switchBottom = $u12 / 2;
+
+        $u11 = $u11 - switchBottom;
+
+        $u12 = $u12 + $u11;
+
+     label8:
+        this.<androidx.appcompat.widget.SwitchCompat: int mSwitchLeft> = $u9;
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mSwitchTop> = $u11;
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mSwitchBottom> = $u12;
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mSwitchRight> = $u10;
+
+        return;
+    }
+
+    public void onMeasure(int, int)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        int $u12, $u13, $u-1, thumbHeight, $u-1#24, $u-1#27, switchHeight, switchHeight#50;
+        boolean padding;
+        android.text.Layout padding#2;
+        java.lang.CharSequence padding#3;
+        android.graphics.Rect padding#10;
+        android.graphics.drawable.Drawable thumbWidth;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u12 := @parameter0: int;
+
+        $u13 := @parameter1: int;
+
+        padding = this.<androidx.appcompat.widget.SwitchCompat: boolean mShowText>;
+
+        if padding == 0 goto label02;
+
+        padding#2 = this.<androidx.appcompat.widget.SwitchCompat: android.text.Layout mOnLayout>;
+
+        if padding#2 != null goto label01;
+
+        padding#3 = this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence mTextOn>;
+
+        padding#2 = specialinvoke this.<androidx.appcompat.widget.SwitchCompat: android.text.Layout makeLayout(java.lang.CharSequence)>(padding#3);
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.text.Layout mOnLayout> = padding#2;
+
+     label01:
+        padding#2 = this.<androidx.appcompat.widget.SwitchCompat: android.text.Layout mOffLayout>;
+
+        if padding#2 != null goto label02;
+
+        padding#3 = this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence mTextOff>;
+
+        padding#2 = specialinvoke this.<androidx.appcompat.widget.SwitchCompat: android.text.Layout makeLayout(java.lang.CharSequence)>(padding#3);
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.text.Layout mOffLayout> = padding#2;
+
+     label02:
+        padding#10 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.Rect mTempRect>;
+
+        thumbWidth = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if thumbWidth == null goto label03;
+
+        virtualinvoke thumbWidth.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>(padding#10);
+
+        thumbWidth = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        $u-1 = virtualinvoke thumbWidth.<android.graphics.drawable.Drawable: int getIntrinsicWidth()>();
+
+        thumbHeight = padding#10.<android.graphics.Rect: int left>;
+
+        $u-1 = $u-1 - thumbHeight;
+
+        thumbHeight = padding#10.<android.graphics.Rect: int right>;
+
+        thumbHeight = $u-1 - thumbHeight;
+
+        thumbWidth = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        $u-1 = virtualinvoke thumbWidth.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+        goto label04;
+
+     label03:
+        thumbHeight = 0;
+
+        $u-1 = 0;
+
+     label04:
+        padding = this.<androidx.appcompat.widget.SwitchCompat: boolean mShowText>;
+
+        if padding == 0 goto label05;
+
+        padding#2 = this.<androidx.appcompat.widget.SwitchCompat: android.text.Layout mOnLayout>;
+
+        $u-1#24 = virtualinvoke padding#2.<android.text.Layout: int getWidth()>();
+
+        padding#2 = this.<androidx.appcompat.widget.SwitchCompat: android.text.Layout mOffLayout>;
+
+        $u-1#27 = virtualinvoke padding#2.<android.text.Layout: int getWidth()>();
+
+        $u-1#24 = staticinvoke <java.lang.Math: int max(int,int)>($u-1#24, $u-1#27);
+
+        $u-1#27 = this.<androidx.appcompat.widget.SwitchCompat: int mThumbTextPadding>;
+
+        $u-1#27 = $u-1#27 * 2;
+
+        $u-1#24 = $u-1#24 + $u-1#27;
+
+        goto label06;
+
+     label05:
+        $u-1#24 = 0;
+
+     label06:
+        thumbHeight = staticinvoke <java.lang.Math: int max(int,int)>($u-1#24, thumbHeight);
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mThumbWidth> = thumbHeight;
+
+        thumbWidth = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        if thumbWidth == null goto label07;
+
+        virtualinvoke thumbWidth.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>(padding#10);
+
+        thumbWidth = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        thumbHeight = virtualinvoke thumbWidth.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+        goto label08;
+
+     label07:
+        virtualinvoke padding#10.<android.graphics.Rect: void setEmpty()>();
+
+        thumbHeight = 0;
+
+     label08:
+        $u-1#27 = padding#10.<android.graphics.Rect: int left>;
+
+        $u-1#24 = padding#10.<android.graphics.Rect: int right>;
+
+        thumbWidth = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if thumbWidth == null goto label09;
+
+        padding#10 = staticinvoke <androidx.appcompat.widget.DrawableUtils: android.graphics.Rect getOpticalBounds(android.graphics.drawable.Drawable)>(thumbWidth);
+
+        switchHeight = padding#10.<android.graphics.Rect: int left>;
+
+        $u-1#27 = staticinvoke <java.lang.Math: int max(int,int)>($u-1#27, switchHeight);
+
+        switchHeight = padding#10.<android.graphics.Rect: int right>;
+
+        $u-1#24 = staticinvoke <java.lang.Math: int max(int,int)>($u-1#24, switchHeight);
+
+     label09:
+        switchHeight = this.<androidx.appcompat.widget.SwitchCompat: int mSwitchMinWidth>;
+
+        switchHeight#50 = this.<androidx.appcompat.widget.SwitchCompat: int mThumbWidth>;
+
+        switchHeight#50 = switchHeight#50 * 2;
+
+        $u-1#27 = switchHeight#50 + $u-1#27;
+
+        $u-1#24 = $u-1#27 + $u-1#24;
+
+        $u-1#24 = staticinvoke <java.lang.Math: int max(int,int)>(switchHeight, $u-1#24);
+
+        $u-1 = staticinvoke <java.lang.Math: int max(int,int)>(thumbHeight, $u-1);
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mSwitchWidth> = $u-1#24;
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mSwitchHeight> = $u-1;
+
+        specialinvoke this.<android.widget.CompoundButton: void onMeasure(int,int)>($u12, $u13);
+
+        $u12 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int getMeasuredHeight()>();
+
+        if $u12 >= $u-1 goto label10;
+
+        $u12 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: int getMeasuredWidthAndState()>();
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void setMeasuredDimension(int,int)>($u12, $u-1);
+
+     label10:
+        return;
+    }
+
+    public void onPopulateAccessibilityEvent(android.view.accessibility.AccessibilityEvent)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.view.accessibility.AccessibilityEvent $u3;
+        boolean $u-1;
+        java.lang.CharSequence text;
+        java.util.List $u-1#4;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u3 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        specialinvoke this.<android.widget.CompoundButton: void onPopulateAccessibilityEvent(android.view.accessibility.AccessibilityEvent)>($u3);
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: boolean isChecked()>();
+
+        if $u-1 == 0 goto label1;
+
+        text = this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence mTextOn>;
+
+        goto label2;
+
+     label1:
+        text = this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence mTextOff>;
+
+     label2:
+        if text == null goto label3;
+
+        $u-1#4 = virtualinvoke $u3.<android.view.accessibility.AccessibilityEvent: java.util.List getText()>();
+
+        interfaceinvoke $u-1#4.<java.util.List: boolean add(java.lang.Object)>(text);
+
+     label3:
+        return;
+    }
+
+    public boolean onTouchEvent(android.view.MotionEvent)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.view.MotionEvent $u10;
+        android.view.VelocityTracker action;
+        int $u-1;
+        float $u-1#8, thumbScrollOffset, dPos, $u6;
+        byte dPos#18;
+        boolean $u-1#19;
+        android.view.ViewParent $u-1#45;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u10 := @parameter0: android.view.MotionEvent;
+
+        action = this.<androidx.appcompat.widget.SwitchCompat: android.view.VelocityTracker mVelocityTracker>;
+
+        virtualinvoke action.<android.view.VelocityTracker: void addMovement(android.view.MotionEvent)>($u10);
+
+        $u-1 = virtualinvoke $u10.<android.view.MotionEvent: int getActionMasked()>();
+
+        if $u-1 == 0 goto label12;
+
+        if $u-1 == 1 goto label10;
+
+        if $u-1 == 2 goto label01;
+
+        if $u-1 == 3 goto label10;
+
+        goto label13;
+
+     label01:
+        $u-1 = this.<androidx.appcompat.widget.SwitchCompat: int mTouchMode>;
+
+        if $u-1 == 1 goto label07;
+
+        if $u-1 == 2 goto label02;
+
+        goto label08;
+
+     label02:
+        $u-1#8 = virtualinvoke $u10.<android.view.MotionEvent: float getX()>();
+
+        $u-1 = specialinvoke this.<androidx.appcompat.widget.SwitchCompat: int getThumbScrollRange()>();
+
+        thumbScrollOffset = this.<androidx.appcompat.widget.SwitchCompat: float mTouchX>;
+
+        thumbScrollOffset = $u-1#8 - thumbScrollOffset;
+
+        if $u-1 == 0 goto label03;
+
+        dPos = (float) $u-1;
+
+        thumbScrollOffset = thumbScrollOffset / dPos;
+
+        goto label05;
+
+     label03:
+        dPos#18 = thumbScrollOffset cmpl 0.0F;
+
+        if dPos#18 <= 0 goto label04;
+
+        thumbScrollOffset = 1.0F;
+
+        goto label05;
+
+     label04:
+        thumbScrollOffset = -1.0F;
+
+     label05:
+        $u-1#19 = staticinvoke <androidx.appcompat.widget.ViewUtils: boolean isLayoutRtl(android.view.View)>(this);
+
+        if $u-1#19 == 0 goto label06;
+
+        thumbScrollOffset = neg thumbScrollOffset;
+
+     label06:
+        dPos = this.<androidx.appcompat.widget.SwitchCompat: float mThumbPosition>;
+
+        thumbScrollOffset = dPos + thumbScrollOffset;
+
+        thumbScrollOffset = staticinvoke <androidx.appcompat.widget.SwitchCompat: float constrain(float,float,float)>(thumbScrollOffset, 0.0F, 1.0F);
+
+        dPos = this.<androidx.appcompat.widget.SwitchCompat: float mThumbPosition>;
+
+        dPos#18 = thumbScrollOffset cmpl dPos;
+
+        if dPos#18 == 0 goto label14;
+
+        this.<androidx.appcompat.widget.SwitchCompat: float mTouchX> = $u-1#8;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void setThumbPosition(float)>(thumbScrollOffset);
+
+        return 1;
+
+     label07:
+        $u-1#8 = virtualinvoke $u10.<android.view.MotionEvent: float getX()>();
+
+        thumbScrollOffset = virtualinvoke $u10.<android.view.MotionEvent: float getY()>();
+
+        dPos = this.<androidx.appcompat.widget.SwitchCompat: float mTouchX>;
+
+        dPos = $u-1#8 - dPos;
+
+        dPos = staticinvoke <java.lang.Math: float abs(float)>(dPos);
+
+        $u-1 = this.<androidx.appcompat.widget.SwitchCompat: int mTouchSlop>;
+
+        $u6 = (float) $u-1;
+
+        dPos#18 = dPos cmpl $u6;
+
+        if dPos#18 > 0 goto label09;
+
+        dPos = this.<androidx.appcompat.widget.SwitchCompat: float mTouchY>;
+
+        dPos = thumbScrollOffset - dPos;
+
+        dPos = staticinvoke <java.lang.Math: float abs(float)>(dPos);
+
+        $u-1 = this.<androidx.appcompat.widget.SwitchCompat: int mTouchSlop>;
+
+        $u6 = (float) $u-1;
+
+        dPos#18 = dPos cmpl $u6;
+
+        if dPos#18 <= 0 goto label08;
+
+        goto label09;
+
+     label08:
+        goto label13;
+
+     label09:
+        this.<androidx.appcompat.widget.SwitchCompat: int mTouchMode> = 2;
+
+        $u-1#45 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: android.view.ViewParent getParent()>();
+
+        interfaceinvoke $u-1#45.<android.view.ViewParent: void requestDisallowInterceptTouchEvent(boolean)>(1);
+
+        this.<androidx.appcompat.widget.SwitchCompat: float mTouchX> = $u-1#8;
+
+        this.<androidx.appcompat.widget.SwitchCompat: float mTouchY> = thumbScrollOffset;
+
+        return 1;
+
+     label10:
+        $u-1 = this.<androidx.appcompat.widget.SwitchCompat: int mTouchMode>;
+
+        if $u-1 != 2 goto label11;
+
+        specialinvoke this.<androidx.appcompat.widget.SwitchCompat: void stopDrag(android.view.MotionEvent)>($u10);
+
+        specialinvoke this.<android.widget.CompoundButton: boolean onTouchEvent(android.view.MotionEvent)>($u10);
+
+        return 1;
+
+     label11:
+        this.<androidx.appcompat.widget.SwitchCompat: int mTouchMode> = 0;
+
+        action = this.<androidx.appcompat.widget.SwitchCompat: android.view.VelocityTracker mVelocityTracker>;
+
+        virtualinvoke action.<android.view.VelocityTracker: void clear()>();
+
+        goto label13;
+
+     label12:
+        $u-1#8 = virtualinvoke $u10.<android.view.MotionEvent: float getX()>();
+
+        thumbScrollOffset = virtualinvoke $u10.<android.view.MotionEvent: float getY()>();
+
+        $u-1#19 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: boolean isEnabled()>();
+
+        if $u-1#19 == 0 goto label13;
+
+        $u-1#19 = specialinvoke this.<androidx.appcompat.widget.SwitchCompat: boolean hitThumb(float,float)>($u-1#8, thumbScrollOffset);
+
+        if $u-1#19 == 0 goto label13;
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mTouchMode> = 1;
+
+        this.<androidx.appcompat.widget.SwitchCompat: float mTouchX> = $u-1#8;
+
+        this.<androidx.appcompat.widget.SwitchCompat: float mTouchY> = thumbScrollOffset;
+
+     label13:
+        $u-1#19 = specialinvoke this.<android.widget.CompoundButton: boolean onTouchEvent(android.view.MotionEvent)>($u10);
+
+        return $u-1#19;
+
+     label14:
+        return 1;
+    }
+
+    public void setChecked(boolean)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        boolean $u2, $u-1#6;
+        android.os.IBinder $u-1;
+        float $u0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: boolean;
+
+        specialinvoke this.<android.widget.CompoundButton: void setChecked(boolean)>($u2);
+
+        $u2 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: boolean isChecked()>();
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: android.os.IBinder getWindowToken()>();
+
+        if $u-1 == null goto label1;
+
+        $u-1#6 = staticinvoke <androidx.core.view.ViewCompat: boolean isLaidOut(android.view.View)>(this);
+
+        if $u-1#6 == 0 goto label1;
+
+        specialinvoke this.<androidx.appcompat.widget.SwitchCompat: void animateThumbToCheckedState(boolean)>($u2);
+
+        return;
+
+     label1:
+        specialinvoke this.<androidx.appcompat.widget.SwitchCompat: void cancelPositionAnimator()>();
+
+        if $u2 == 0 goto label2;
+
+        $u0 = 1.0F;
+
+        goto label3;
+
+     label2:
+        $u0 = 0.0F;
+
+     label3:
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void setThumbPosition(float)>($u0);
+
+        return;
+    }
+
+    public void setCustomSelectionActionModeCallback(android.view.ActionMode$Callback)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.view.ActionMode$Callback $u2;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: android.view.ActionMode$Callback;
+
+        $u2 = staticinvoke <androidx.core.widget.TextViewCompat: android.view.ActionMode$Callback wrapCustomSelectionActionModeCallback(android.widget.TextView,android.view.ActionMode$Callback)>(this, $u2);
+
+        specialinvoke this.<android.widget.CompoundButton: void setCustomSelectionActionModeCallback(android.view.ActionMode$Callback)>($u2);
+
+        return;
+    }
+
+    public void setShowText(boolean)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        boolean $u2, $u0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: boolean mShowText>;
+
+        if $u0 == $u2 goto label1;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mShowText> = $u2;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void requestLayout()>();
+
+     label1:
+        return;
+    }
+
+    public void setSplitTrack(boolean)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        boolean $u1;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u1 := @parameter0: boolean;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mSplitTrack> = $u1;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void invalidate()>();
+
+        return;
+    }
+
+    public void setSwitchMinWidth(int)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        int $u1;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mSwitchMinWidth> = $u1;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void requestLayout()>();
+
+        return;
+    }
+
+    public void setSwitchPadding(int)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        int $u1;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mSwitchPadding> = $u1;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void requestLayout()>();
+
+        return;
+    }
+
+    public void setSwitchTextAppearance(android.content.Context, int)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.content.Context $u9;
+        int $u10, $u6;
+        int[] appearance;
+        androidx.appcompat.widget.TintTypedArray $u-1;
+        android.content.res.ColorStateList $u-1#5;
+        float typefaceIndex, $u-1#15;
+        android.text.TextPaint styleIndex;
+        byte typefaceIndex#17;
+        boolean $u-1#28;
+        androidx.appcompat.text.AllCapsTransformationMethod $u6#30;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u9 := @parameter0: android.content.Context;
+
+        $u10 := @parameter1: int;
+
+        appearance = <androidx.appcompat.R$styleable: int[] TextAppearance>;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.TintTypedArray: androidx.appcompat.widget.TintTypedArray obtainStyledAttributes(android.content.Context,int,int[])>($u9, $u10, appearance);
+
+        $u10 = <androidx.appcompat.R$styleable: int TextAppearance_android_textColor>;
+
+        $u-1#5 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: android.content.res.ColorStateList getColorStateList(int)>($u10);
+
+        if $u-1#5 == null goto label1;
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList mTextColors> = $u-1#5;
+
+        goto label2;
+
+     label1:
+        $u-1#5 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList getTextColors()>();
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList mTextColors> = $u-1#5;
+
+     label2:
+        $u10 = <androidx.appcompat.R$styleable: int TextAppearance_android_textSize>;
+
+        $u10 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getDimensionPixelSize(int,int)>($u10, 0);
+
+        if $u10 == 0 goto label3;
+
+        typefaceIndex = (float) $u10;
+
+        styleIndex = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        $u-1#15 = virtualinvoke styleIndex.<android.text.TextPaint: float getTextSize()>();
+
+        typefaceIndex#17 = typefaceIndex cmpl $u-1#15;
+
+        if typefaceIndex#17 == 0 goto label3;
+
+        styleIndex = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        typefaceIndex = (float) $u10;
+
+        virtualinvoke styleIndex.<android.text.TextPaint: void setTextSize(float)>(typefaceIndex);
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void requestLayout()>();
+
+     label3:
+        $u10 = <androidx.appcompat.R$styleable: int TextAppearance_android_typeface>;
+
+        $u10 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>($u10, -1);
+
+        $u6 = <androidx.appcompat.R$styleable: int TextAppearance_android_textStyle>;
+
+        $u6 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: int getInt(int,int)>($u6, -1);
+
+        specialinvoke this.<androidx.appcompat.widget.SwitchCompat: void setSwitchTypefaceByIndex(int,int)>($u10, $u6);
+
+        $u10 = <androidx.appcompat.R$styleable: int TextAppearance_textAllCaps>;
+
+        $u-1#28 = virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: boolean getBoolean(int,boolean)>($u10, 0);
+
+        if $u-1#28 == 0 goto label4;
+
+        $u6#30 = new androidx.appcompat.text.AllCapsTransformationMethod;
+
+        $u9 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: android.content.Context getContext()>();
+
+        specialinvoke $u6#30.<androidx.appcompat.text.AllCapsTransformationMethod: void <init>(android.content.Context)>($u9);
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.text.method.TransformationMethod mSwitchTransformationMethod> = $u6#30;
+
+        goto label5;
+
+     label4:
+        this.<androidx.appcompat.widget.SwitchCompat: android.text.method.TransformationMethod mSwitchTransformationMethod> = null;
+
+     label5:
+        virtualinvoke $u-1.<androidx.appcompat.widget.TintTypedArray: void recycle()>();
+
+        return;
+    }
+
+    public void setSwitchTypeface(android.graphics.Typeface)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.Typeface $u2, $u-1;
+        android.text.TextPaint $u0;
+        boolean $u-1#7;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: android.graphics.Typeface;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        $u-1 = virtualinvoke $u0.<android.text.TextPaint: android.graphics.Typeface getTypeface()>();
+
+        if $u-1 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        $u-1 = virtualinvoke $u0.<android.text.TextPaint: android.graphics.Typeface getTypeface()>();
+
+        $u-1#7 = virtualinvoke $u-1.<android.graphics.Typeface: boolean equals(java.lang.Object)>($u2);
+
+        if $u-1#7 == 0 goto label2;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        $u-1 = virtualinvoke $u0.<android.text.TextPaint: android.graphics.Typeface getTypeface()>();
+
+        if $u-1 != null goto label3;
+
+        if $u2 == null goto label3;
+
+     label2:
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        virtualinvoke $u0.<android.text.TextPaint: android.graphics.Typeface setTypeface(android.graphics.Typeface)>($u2);
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void requestLayout()>();
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void invalidate()>();
+
+     label3:
+        return;
+    }
+
+    public void setSwitchTypeface(android.graphics.Typeface, int)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        int $u8, $u-1;
+        android.graphics.Typeface $u7;
+        float $u0;
+        boolean $u1;
+        android.text.TextPaint $u4;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u7 := @parameter0: android.graphics.Typeface;
+
+        $u8 := @parameter1: int;
+
+        $u0 = 0.0F;
+
+        $u1 = 0;
+
+        if $u8 <= 0 goto label7;
+
+        if $u7 != null goto label1;
+
+        $u7 = staticinvoke <android.graphics.Typeface: android.graphics.Typeface defaultFromStyle(int)>($u8);
+
+        goto label2;
+
+     label1:
+        $u7 = staticinvoke <android.graphics.Typeface: android.graphics.Typeface create(android.graphics.Typeface,int)>($u7, $u8);
+
+     label2:
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void setSwitchTypeface(android.graphics.Typeface)>($u7);
+
+        if $u7 == null goto label3;
+
+        $u-1 = virtualinvoke $u7.<android.graphics.Typeface: int getStyle()>();
+
+        goto label4;
+
+     label3:
+        $u-1 = 0;
+
+     label4:
+        $u-1 = $u-1 ^ -1;
+
+        $u-1 = $u-1 & $u8;
+
+        $u4 = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        $u8 = $u-1 & 1;
+
+        if $u8 == 0 goto label5;
+
+        $u1 = 1;
+
+     label5:
+        virtualinvoke $u4.<android.text.TextPaint: void setFakeBoldText(boolean)>($u1);
+
+        $u4 = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        $u8 = $u-1 & 2;
+
+        if $u8 == 0 goto label6;
+
+        $u0 = -0.25F;
+
+     label6:
+        virtualinvoke $u4.<android.text.TextPaint: void setTextSkewX(float)>($u0);
+
+        return;
+
+     label7:
+        $u4 = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        virtualinvoke $u4.<android.text.TextPaint: void setFakeBoldText(boolean)>(0);
+
+        $u4 = this.<androidx.appcompat.widget.SwitchCompat: android.text.TextPaint mTextPaint>;
+
+        virtualinvoke $u4.<android.text.TextPaint: void setTextSkewX(float)>(0.0F);
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void setSwitchTypeface(android.graphics.Typeface)>($u7);
+
+        return;
+    }
+
+    public void setTextOff(java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence mTextOff> = $u1;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void requestLayout()>();
+
+        return;
+    }
+
+    public void setTextOn(java.lang.CharSequence)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        this.<androidx.appcompat.widget.SwitchCompat: java.lang.CharSequence mTextOn> = $u1;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void requestLayout()>();
+
+        return;
+    }
+
+    public void setThumbDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.drawable.Drawable $u3, $u0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u3 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>(null);
+
+     label1:
+        this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable> = $u3;
+
+        if $u3 == null goto label2;
+
+        virtualinvoke $u3.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>(this);
+
+     label2:
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void requestLayout()>();
+
+        return;
+    }
+
+    void setThumbPosition(float)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        float $u1;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.appcompat.widget.SwitchCompat: float mThumbPosition> = $u1;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void invalidate()>();
+
+        return;
+    }
+
+    public void setThumbResource(int)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        int $u2;
+        android.content.Context $u-1;
+        android.graphics.drawable.Drawable $u-1#3;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: android.content.Context getContext()>();
+
+        $u-1#3 = staticinvoke <androidx.appcompat.content.res.AppCompatResources: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u2);
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void setThumbDrawable(android.graphics.drawable.Drawable)>($u-1#3);
+
+        return;
+    }
+
+    public void setThumbTextPadding(int)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        int $u1;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.appcompat.widget.SwitchCompat: int mThumbTextPadding> = $u1;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void requestLayout()>();
+
+        return;
+    }
+
+    public void setThumbTintList(android.content.res.ColorStateList)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.content.res.ColorStateList $u2;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: android.content.res.ColorStateList;
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList mThumbTintList> = $u2;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mHasThumbTint> = 1;
+
+        specialinvoke this.<androidx.appcompat.widget.SwitchCompat: void applyThumbTint()>();
+
+        return;
+    }
+
+    public void setThumbTintMode(android.graphics.PorterDuff$Mode)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.PorterDuff$Mode $u2;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: android.graphics.PorterDuff$Mode;
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.graphics.PorterDuff$Mode mThumbTintMode> = $u2;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mHasThumbTintMode> = 1;
+
+        specialinvoke this.<androidx.appcompat.widget.SwitchCompat: void applyThumbTint()>();
+
+        return;
+    }
+
+    public void setTrackDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.drawable.Drawable $u3, $u0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u3 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>(null);
+
+     label1:
+        this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable> = $u3;
+
+        if $u3 == null goto label2;
+
+        virtualinvoke $u3.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>(this);
+
+     label2:
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void requestLayout()>();
+
+        return;
+    }
+
+    public void setTrackResource(int)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        int $u2;
+        android.content.Context $u-1;
+        android.graphics.drawable.Drawable $u-1#3;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: android.content.Context getContext()>();
+
+        $u-1#3 = staticinvoke <androidx.appcompat.content.res.AppCompatResources: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u2);
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void setTrackDrawable(android.graphics.drawable.Drawable)>($u-1#3);
+
+        return;
+    }
+
+    public void setTrackTintList(android.content.res.ColorStateList)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.content.res.ColorStateList $u2;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: android.content.res.ColorStateList;
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.content.res.ColorStateList mTrackTintList> = $u2;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mHasTrackTint> = 1;
+
+        specialinvoke this.<androidx.appcompat.widget.SwitchCompat: void applyTrackTint()>();
+
+        return;
+    }
+
+    public void setTrackTintMode(android.graphics.PorterDuff$Mode)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.PorterDuff$Mode $u2;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: android.graphics.PorterDuff$Mode;
+
+        this.<androidx.appcompat.widget.SwitchCompat: android.graphics.PorterDuff$Mode mTrackTintMode> = $u2;
+
+        this.<androidx.appcompat.widget.SwitchCompat: boolean mHasTrackTintMode> = 1;
+
+        specialinvoke this.<androidx.appcompat.widget.SwitchCompat: void applyTrackTint()>();
+
+        return;
+    }
+
+    public void toggle()
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: boolean isChecked()>();
+
+        $u-1 = $u-1 ^ 1;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat: void setChecked(boolean)>($u-1);
+
+        return;
+    }
+
+    protected boolean verifyDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.SwitchCompat this;
+        android.graphics.drawable.Drawable $u2, $u0;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u-1 = specialinvoke this.<android.widget.CompoundButton: boolean verifyDrawable(android.graphics.drawable.Drawable)>($u2);
+
+        if $u-1 != 0 goto label2;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mThumbDrawable>;
+
+        if $u2 == $u0 goto label2;
+
+        $u0 = this.<androidx.appcompat.widget.SwitchCompat: android.graphics.drawable.Drawable mTrackDrawable>;
+
+        if $u2 != $u0 goto label1;
+
+        goto label2;
+
+     label1:
+        return 0;
+
+     label2:
+        return 1;
+    }
+}

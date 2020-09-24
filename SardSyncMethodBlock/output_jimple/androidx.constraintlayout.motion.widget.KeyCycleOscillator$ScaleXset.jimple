@@ -1,0 +1,33 @@
+class androidx.constraintlayout.motion.widget.KeyCycleOscillator$ScaleXset extends androidx.constraintlayout.motion.widget.KeyCycleOscillator
+{
+
+    void <init>()
+    {
+        androidx.constraintlayout.motion.widget.KeyCycleOscillator$ScaleXset this;
+
+        this := @this: androidx.constraintlayout.motion.widget.KeyCycleOscillator$ScaleXset;
+
+        specialinvoke this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator: void <init>()>();
+
+        return;
+    }
+
+    public void setProperty(android.view.View, float)
+    {
+        androidx.constraintlayout.motion.widget.KeyCycleOscillator$ScaleXset this;
+        android.view.View $u2;
+        float $u3;
+
+        this := @this: androidx.constraintlayout.motion.widget.KeyCycleOscillator$ScaleXset;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: float;
+
+        $u3 = virtualinvoke this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$ScaleXset: float get(float)>($u3);
+
+        virtualinvoke $u2.<android.view.View: void setScaleX(float)>($u3);
+
+        return;
+    }
+}

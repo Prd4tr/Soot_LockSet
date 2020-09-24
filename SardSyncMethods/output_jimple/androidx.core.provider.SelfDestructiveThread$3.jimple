@@ -1,0 +1,113 @@
+class androidx.core.provider.SelfDestructiveThread$3 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.core.provider.SelfDestructiveThread this$0;
+    final java.util.concurrent.Callable val$callable;
+    final java.util.concurrent.locks.Condition val$cond;
+    final java.util.concurrent.atomic.AtomicReference val$holder;
+    final java.util.concurrent.locks.ReentrantLock val$lock;
+    final java.util.concurrent.atomic.AtomicBoolean val$running;
+
+    void <init>(androidx.core.provider.SelfDestructiveThread, java.util.concurrent.atomic.AtomicReference, java.util.concurrent.Callable, java.util.concurrent.locks.ReentrantLock, java.util.concurrent.atomic.AtomicBoolean, java.util.concurrent.locks.Condition)
+    {
+        androidx.core.provider.SelfDestructiveThread$3 this;
+        androidx.core.provider.SelfDestructiveThread $u1;
+        java.util.concurrent.atomic.AtomicReference $u2;
+        java.util.concurrent.Callable $u3;
+        java.util.concurrent.locks.ReentrantLock $u4;
+        java.util.concurrent.atomic.AtomicBoolean $u5;
+        java.util.concurrent.locks.Condition $u6;
+
+        this := @this: androidx.core.provider.SelfDestructiveThread$3;
+
+        $u1 := @parameter0: androidx.core.provider.SelfDestructiveThread;
+
+        $u2 := @parameter1: java.util.concurrent.atomic.AtomicReference;
+
+        $u3 := @parameter2: java.util.concurrent.Callable;
+
+        $u4 := @parameter3: java.util.concurrent.locks.ReentrantLock;
+
+        $u5 := @parameter4: java.util.concurrent.atomic.AtomicBoolean;
+
+        $u6 := @parameter5: java.util.concurrent.locks.Condition;
+
+        this.<androidx.core.provider.SelfDestructiveThread$3: androidx.core.provider.SelfDestructiveThread this$0> = $u1;
+
+        this.<androidx.core.provider.SelfDestructiveThread$3: java.util.concurrent.atomic.AtomicReference val$holder> = $u2;
+
+        this.<androidx.core.provider.SelfDestructiveThread$3: java.util.concurrent.Callable val$callable> = $u3;
+
+        this.<androidx.core.provider.SelfDestructiveThread$3: java.util.concurrent.locks.ReentrantLock val$lock> = $u4;
+
+        this.<androidx.core.provider.SelfDestructiveThread$3: java.util.concurrent.atomic.AtomicBoolean val$running> = $u5;
+
+        this.<androidx.core.provider.SelfDestructiveThread$3: java.util.concurrent.locks.Condition val$cond> = $u6;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.core.provider.SelfDestructiveThread$3 this;
+        java.lang.Object $u-1;
+        java.util.concurrent.atomic.AtomicReference $u0;
+        java.util.concurrent.Callable $u1;
+        java.lang.Exception $u0#4;
+        java.util.concurrent.locks.ReentrantLock $u0#5;
+        java.util.concurrent.atomic.AtomicBoolean $u0#6;
+        java.util.concurrent.locks.Condition $u0#8;
+        java.lang.Throwable $u0#10;
+
+        this := @this: androidx.core.provider.SelfDestructiveThread$3;
+
+     label1:
+        $u0 = this.<androidx.core.provider.SelfDestructiveThread$3: java.util.concurrent.atomic.AtomicReference val$holder>;
+
+        $u1 = this.<androidx.core.provider.SelfDestructiveThread$3: java.util.concurrent.Callable val$callable>;
+
+        $u-1 = interfaceinvoke $u1.<java.util.concurrent.Callable: java.lang.Object call()>();
+
+        virtualinvoke $u0.<java.util.concurrent.atomic.AtomicReference: void set(java.lang.Object)>($u-1);
+
+     label2:
+        goto label4;
+
+     label3:
+        $u0#4 := @caughtexception;
+
+     label4:
+        $u0#5 = this.<androidx.core.provider.SelfDestructiveThread$3: java.util.concurrent.locks.ReentrantLock val$lock>;
+
+        virtualinvoke $u0#5.<java.util.concurrent.locks.ReentrantLock: void lock()>();
+
+     label5:
+        $u0#6 = this.<androidx.core.provider.SelfDestructiveThread$3: java.util.concurrent.atomic.AtomicBoolean val$running>;
+
+        virtualinvoke $u0#6.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>(0);
+
+        $u0#8 = this.<androidx.core.provider.SelfDestructiveThread$3: java.util.concurrent.locks.Condition val$cond>;
+
+        interfaceinvoke $u0#8.<java.util.concurrent.locks.Condition: void signal()>();
+
+     label6:
+        $u0#5 = this.<androidx.core.provider.SelfDestructiveThread$3: java.util.concurrent.locks.ReentrantLock val$lock>;
+
+        virtualinvoke $u0#5.<java.util.concurrent.locks.ReentrantLock: void unlock()>();
+
+        return;
+
+     label7:
+        $u0#10 := @caughtexception;
+
+        $u0#5 = this.<androidx.core.provider.SelfDestructiveThread$3: java.util.concurrent.locks.ReentrantLock val$lock>;
+
+        virtualinvoke $u0#5.<java.util.concurrent.locks.ReentrantLock: void unlock()>();
+
+        throw $u0#10;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+        catch java.lang.Throwable from label5 to label6 with label7;
+    }
+}

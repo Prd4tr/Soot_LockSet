@@ -1,0 +1,195 @@
+class androidx.appcompat.app.ActionBarDrawerToggleHoneycomb extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    private static final int[] THEME_ATTRS;
+
+    static void <clinit>()
+    {
+        int[] $u0;
+
+        <androidx.appcompat.app.ActionBarDrawerToggleHoneycomb: java.lang.String TAG> = "ActionBarDrawerToggleHC";
+
+        $u0 = newarray (int)[1];
+
+        $u0[0] = 16843531;
+
+        <androidx.appcompat.app.ActionBarDrawerToggleHoneycomb: int[] THEME_ATTRS> = $u0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.appcompat.app.ActionBarDrawerToggleHoneycomb this;
+
+        this := @this: androidx.appcompat.app.ActionBarDrawerToggleHoneycomb;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.graphics.drawable.Drawable getThemeUpIndicator(android.app.Activity)
+    {
+        android.app.Activity $u2;
+        int[] a;
+        android.content.res.TypedArray $u-1;
+        android.graphics.drawable.Drawable $u-1#5;
+
+        $u2 := @parameter0: android.app.Activity;
+
+        a = <androidx.appcompat.app.ActionBarDrawerToggleHoneycomb: int[] THEME_ATTRS>;
+
+        $u-1 = virtualinvoke $u2.<android.app.Activity: android.content.res.TypedArray obtainStyledAttributes(int[])>(a);
+
+        $u-1#5 = virtualinvoke $u-1.<android.content.res.TypedArray: android.graphics.drawable.Drawable getDrawable(int)>(0);
+
+        virtualinvoke $u-1.<android.content.res.TypedArray: void recycle()>();
+
+        return $u-1#5;
+    }
+
+    public static androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo setActionBarDescription(androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo, android.app.Activity, int)
+    {
+        android.app.Activity $u6;
+        int $u7;
+        androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo $u5;
+        java.lang.reflect.Method actionBar;
+        android.app.ActionBar $u-1;
+        java.lang.Object[] $u2;
+        java.lang.Integer $u-1#9;
+        java.lang.CharSequence $u-1#12;
+        java.lang.Exception actionBar#14;
+
+        $u5 := @parameter0: androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo;
+
+        $u6 := @parameter1: android.app.Activity;
+
+        $u7 := @parameter2: int;
+
+        if $u5 != null goto label1;
+
+        $u5 = new androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo;
+
+        specialinvoke $u5.<androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo: void <init>(android.app.Activity)>($u6);
+
+     label1:
+        actionBar = $u5.<androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo: java.lang.reflect.Method setHomeAsUpIndicator>;
+
+        if actionBar == null goto label7;
+
+     label2:
+        $u-1 = virtualinvoke $u6.<android.app.Activity: android.app.ActionBar getActionBar()>();
+
+        actionBar = $u5.<androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo: java.lang.reflect.Method setHomeActionContentDescription>;
+
+        $u2 = newarray (java.lang.Object)[1];
+
+        $u-1#9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u7);
+
+        $u2[0] = $u-1#9;
+
+        virtualinvoke actionBar.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u-1, $u2);
+
+     label3:
+        $u7 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u7 > 19 goto label5;
+
+     label4:
+        $u-1#12 = virtualinvoke $u-1.<android.app.ActionBar: java.lang.CharSequence getSubtitle()>();
+
+        virtualinvoke $u-1.<android.app.ActionBar: void setSubtitle(java.lang.CharSequence)>($u-1#12);
+
+     label5:
+        return $u5;
+
+     label6:
+        actionBar#14 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("ActionBarDrawerToggleHC", "Couldn\'t set content description via JB-MR2 API", actionBar#14);
+
+     label7:
+        return $u5;
+
+        catch java.lang.Exception from label2 to label3 with label6;
+        catch java.lang.Exception from label4 to label5 with label6;
+    }
+
+    public static androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo setActionBarUpIndicator(android.app.Activity, android.graphics.drawable.Drawable, int)
+    {
+        android.app.Activity $u7;
+        android.graphics.drawable.Drawable $u8;
+        int $u9;
+        androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo info;
+        java.lang.reflect.Method actionBar;
+        android.app.ActionBar $u-1;
+        java.lang.Object[] $u5;
+        java.lang.Integer $u-1#9;
+        java.lang.Exception actionBar#11;
+        android.widget.ImageView actionBar#13;
+
+        $u7 := @parameter0: android.app.Activity;
+
+        $u8 := @parameter1: android.graphics.drawable.Drawable;
+
+        $u9 := @parameter2: int;
+
+        info = new androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo;
+
+        specialinvoke info.<androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo: void <init>(android.app.Activity)>($u7);
+
+        actionBar = info.<androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo: java.lang.reflect.Method setHomeAsUpIndicator>;
+
+        if actionBar == null goto label4;
+
+     label1:
+        $u-1 = virtualinvoke $u7.<android.app.Activity: android.app.ActionBar getActionBar()>();
+
+        actionBar = info.<androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo: java.lang.reflect.Method setHomeAsUpIndicator>;
+
+        $u5 = newarray (java.lang.Object)[1];
+
+        $u5[0] = $u8;
+
+        virtualinvoke actionBar.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u-1, $u5);
+
+        actionBar = info.<androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo: java.lang.reflect.Method setHomeActionContentDescription>;
+
+        $u5 = newarray (java.lang.Object)[1];
+
+        $u-1#9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u9);
+
+        $u5[0] = $u-1#9;
+
+        virtualinvoke actionBar.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u-1, $u5);
+
+     label2:
+        return info;
+
+     label3:
+        actionBar#11 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("ActionBarDrawerToggleHC", "Couldn\'t set home-as-up indicator via JB-MR2 API", actionBar#11);
+
+        return info;
+
+     label4:
+        actionBar#13 = info.<androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo: android.widget.ImageView upIndicatorView>;
+
+        if actionBar#13 == null goto label5;
+
+        actionBar#13 = info.<androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo: android.widget.ImageView upIndicatorView>;
+
+        virtualinvoke actionBar#13.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($u8);
+
+        return info;
+
+     label5:
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("ActionBarDrawerToggleHC", "Couldn\'t set home-as-up indicator");
+
+        return info;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+}

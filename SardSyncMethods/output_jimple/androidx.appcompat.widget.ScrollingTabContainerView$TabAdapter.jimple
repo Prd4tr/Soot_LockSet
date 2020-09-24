@@ -1,0 +1,123 @@
+class androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter extends android.widget.BaseAdapter
+{
+    final androidx.appcompat.widget.ScrollingTabContainerView this$0;
+
+    void <init>(androidx.appcompat.widget.ScrollingTabContainerView)
+    {
+        androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter this;
+        androidx.appcompat.widget.ScrollingTabContainerView $u1;
+
+        this := @this: androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter;
+
+        $u1 := @parameter0: androidx.appcompat.widget.ScrollingTabContainerView;
+
+        this.<androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter: androidx.appcompat.widget.ScrollingTabContainerView this$0> = $u1;
+
+        specialinvoke this.<android.widget.BaseAdapter: void <init>()>();
+
+        return;
+    }
+
+    public int getCount()
+    {
+        androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter this;
+        int $u-1;
+        androidx.appcompat.widget.ScrollingTabContainerView $u0;
+        androidx.appcompat.widget.LinearLayoutCompat $u0#2;
+
+        this := @this: androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter;
+
+        $u0 = this.<androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter: androidx.appcompat.widget.ScrollingTabContainerView this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ScrollingTabContainerView: androidx.appcompat.widget.LinearLayoutCompat mTabLayout>;
+
+        $u-1 = virtualinvoke $u0#2.<androidx.appcompat.widget.LinearLayoutCompat: int getChildCount()>();
+
+        return $u-1;
+    }
+
+    public java.lang.Object getItem(int)
+    {
+        androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter this;
+        int $u2;
+        androidx.appcompat.widget.ScrollingTabContainerView $u0;
+        androidx.appcompat.widget.LinearLayoutCompat $u0#2;
+        android.view.View $u-1;
+        androidx.appcompat.widget.ScrollingTabContainerView$TabView $u0#5;
+        androidx.appcompat.app.ActionBar$Tab $u-1#6;
+
+        this := @this: androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter: androidx.appcompat.widget.ScrollingTabContainerView this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ScrollingTabContainerView: androidx.appcompat.widget.LinearLayoutCompat mTabLayout>;
+
+        $u-1 = virtualinvoke $u0#2.<androidx.appcompat.widget.LinearLayoutCompat: android.view.View getChildAt(int)>($u2);
+
+        $u0#5 = (androidx.appcompat.widget.ScrollingTabContainerView$TabView) $u-1;
+
+        $u-1#6 = virtualinvoke $u0#5.<androidx.appcompat.widget.ScrollingTabContainerView$TabView: androidx.appcompat.app.ActionBar$Tab getTab()>();
+
+        return $u-1#6;
+    }
+
+    public long getItemId(int)
+    {
+        androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter this;
+        int $u3;
+        long $u0;
+
+        this := @this: androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter;
+
+        $u3 := @parameter0: int;
+
+        $u0 = (long) $u3;
+
+        return $u0;
+    }
+
+    public android.view.View getView(int, android.view.View, android.view.ViewGroup)
+    {
+        androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter this;
+        int $u4;
+        android.view.ViewGroup $u6;
+        android.view.View $u5;
+        androidx.appcompat.widget.ScrollingTabContainerView $u0;
+        java.lang.Object $u-1;
+        androidx.appcompat.app.ActionBar$Tab $u1;
+        androidx.appcompat.widget.ScrollingTabContainerView$TabView $u-1#6;
+
+        this := @this: androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter;
+
+        $u4 := @parameter0: int;
+
+        $u5 := @parameter1: android.view.View;
+
+        $u6 := @parameter2: android.view.ViewGroup;
+
+        if $u5 != null goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter: androidx.appcompat.widget.ScrollingTabContainerView this$0>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter: java.lang.Object getItem(int)>($u4);
+
+        $u1 = (androidx.appcompat.app.ActionBar$Tab) $u-1;
+
+        $u-1#6 = virtualinvoke $u0.<androidx.appcompat.widget.ScrollingTabContainerView: androidx.appcompat.widget.ScrollingTabContainerView$TabView createTabView(androidx.appcompat.app.ActionBar$Tab,boolean)>($u1, 1);
+
+        return $u-1#6;
+
+     label1:
+        $u-1#6 = (androidx.appcompat.widget.ScrollingTabContainerView$TabView) $u5;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.ScrollingTabContainerView$TabAdapter: java.lang.Object getItem(int)>($u4);
+
+        $u1 = (androidx.appcompat.app.ActionBar$Tab) $u-1;
+
+        virtualinvoke $u-1#6.<androidx.appcompat.widget.ScrollingTabContainerView$TabView: void bindTab(androidx.appcompat.app.ActionBar$Tab)>($u1);
+
+        return $u5;
+    }
+}

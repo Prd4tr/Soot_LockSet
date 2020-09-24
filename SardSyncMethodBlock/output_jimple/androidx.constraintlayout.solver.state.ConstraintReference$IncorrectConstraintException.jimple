@@ -1,0 +1,64 @@
+class androidx.constraintlayout.solver.state.ConstraintReference$IncorrectConstraintException extends java.lang.Exception
+{
+    private final java.util.ArrayList mErrors;
+    final androidx.constraintlayout.solver.state.ConstraintReference this$0;
+
+    public void <init>(androidx.constraintlayout.solver.state.ConstraintReference, java.util.ArrayList)
+    {
+        androidx.constraintlayout.solver.state.ConstraintReference$IncorrectConstraintException this;
+        androidx.constraintlayout.solver.state.ConstraintReference $u1;
+        java.util.ArrayList errors;
+
+        this := @this: androidx.constraintlayout.solver.state.ConstraintReference$IncorrectConstraintException;
+
+        $u1 := @parameter0: androidx.constraintlayout.solver.state.ConstraintReference;
+
+        errors := @parameter1: java.util.ArrayList;
+
+        this.<androidx.constraintlayout.solver.state.ConstraintReference$IncorrectConstraintException: androidx.constraintlayout.solver.state.ConstraintReference this$0> = $u1;
+
+        specialinvoke this.<java.lang.Exception: void <init>()>();
+
+        this.<androidx.constraintlayout.solver.state.ConstraintReference$IncorrectConstraintException: java.util.ArrayList mErrors> = errors;
+
+        return;
+    }
+
+    public java.util.ArrayList getErrors()
+    {
+        androidx.constraintlayout.solver.state.ConstraintReference$IncorrectConstraintException this;
+        java.util.ArrayList ret0;
+
+        this := @this: androidx.constraintlayout.solver.state.ConstraintReference$IncorrectConstraintException;
+
+        ret0 = this.<androidx.constraintlayout.solver.state.ConstraintReference$IncorrectConstraintException: java.util.ArrayList mErrors>;
+
+        return ret0;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.constraintlayout.solver.state.ConstraintReference$IncorrectConstraintException this;
+        java.lang.StringBuilder $u0;
+        java.util.ArrayList $u1;
+        java.lang.String $u-1;
+
+        this := @this: androidx.constraintlayout.solver.state.ConstraintReference$IncorrectConstraintException;
+
+        $u0 = new java.lang.StringBuilder;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("IncorrectConstraintException: ");
+
+        $u1 = this.<androidx.constraintlayout.solver.state.ConstraintReference$IncorrectConstraintException: java.util.ArrayList mErrors>;
+
+        $u-1 = virtualinvoke $u1.<java.util.ArrayList: java.lang.String toString()>();
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        $u-1 = virtualinvoke $u0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1;
+    }
+}

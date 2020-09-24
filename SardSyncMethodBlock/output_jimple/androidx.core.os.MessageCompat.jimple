@@ -1,0 +1,113 @@
+public final class androidx.core.os.MessageCompat extends java.lang.Object
+{
+    private static boolean sTryIsAsynchronous;
+    private static boolean sTrySetAsynchronous;
+
+    static void <clinit>()
+    {
+        <androidx.core.os.MessageCompat: boolean sTrySetAsynchronous> = 1;
+
+        <androidx.core.os.MessageCompat: boolean sTryIsAsynchronous> = 1;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.core.os.MessageCompat this;
+
+        this := @this: androidx.core.os.MessageCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static boolean isAsynchronous(android.os.Message)
+    {
+        android.os.Message $u3;
+        int e;
+        boolean $u-1;
+        java.lang.NoSuchMethodError e#10;
+
+        $u3 := @parameter0: android.os.Message;
+
+        e = <android.os.Build$VERSION: int SDK_INT>;
+
+        if e < 22 goto label1;
+
+        $u-1 = virtualinvoke $u3.<android.os.Message: boolean isAsynchronous()>();
+
+        return $u-1;
+
+     label1:
+        $u-1 = <androidx.core.os.MessageCompat: boolean sTryIsAsynchronous>;
+
+        if $u-1 == 0 goto label5;
+
+        e = <android.os.Build$VERSION: int SDK_INT>;
+
+        if e < 16 goto label5;
+
+     label2:
+        $u-1 = virtualinvoke $u3.<android.os.Message: boolean isAsynchronous()>();
+
+     label3:
+        return $u-1;
+
+     label4:
+        e#10 := @caughtexception;
+
+        <androidx.core.os.MessageCompat: boolean sTryIsAsynchronous> = 0;
+
+     label5:
+        return 0;
+
+        catch java.lang.NoSuchMethodError from label2 to label3 with label4;
+    }
+
+    public static void setAsynchronous(android.os.Message, boolean)
+    {
+        android.os.Message $u2;
+        boolean $u3, e#3;
+        int e;
+        java.lang.NoSuchMethodError e#6;
+
+        $u2 := @parameter0: android.os.Message;
+
+        $u3 := @parameter1: boolean;
+
+        e = <android.os.Build$VERSION: int SDK_INT>;
+
+        if e < 22 goto label1;
+
+        virtualinvoke $u2.<android.os.Message: void setAsynchronous(boolean)>($u3);
+
+        return;
+
+     label1:
+        e#3 = <androidx.core.os.MessageCompat: boolean sTrySetAsynchronous>;
+
+        if e#3 == 0 goto label5;
+
+        e = <android.os.Build$VERSION: int SDK_INT>;
+
+        if e < 16 goto label5;
+
+     label2:
+        virtualinvoke $u2.<android.os.Message: void setAsynchronous(boolean)>($u3);
+
+     label3:
+        return;
+
+     label4:
+        e#6 := @caughtexception;
+
+        <androidx.core.os.MessageCompat: boolean sTrySetAsynchronous> = 0;
+
+     label5:
+        return;
+
+        catch java.lang.NoSuchMethodError from label2 to label3 with label4;
+    }
+}

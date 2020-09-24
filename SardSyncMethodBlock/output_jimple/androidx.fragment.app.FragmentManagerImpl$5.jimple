@@ -1,0 +1,81 @@
+class androidx.fragment.app.FragmentManagerImpl$5 extends android.animation.AnimatorListenerAdapter
+{
+    final androidx.fragment.app.FragmentManagerImpl this$0;
+    final android.view.View val$animatingView;
+    final android.view.ViewGroup val$container;
+    final androidx.fragment.app.Fragment val$fragment;
+
+    void <init>(androidx.fragment.app.FragmentManagerImpl, android.view.ViewGroup, android.view.View, androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.FragmentManagerImpl$5 this;
+        androidx.fragment.app.FragmentManagerImpl $u1;
+        android.view.ViewGroup $u2;
+        android.view.View $u3;
+        androidx.fragment.app.Fragment $u4;
+
+        this := @this: androidx.fragment.app.FragmentManagerImpl$5;
+
+        $u1 := @parameter0: androidx.fragment.app.FragmentManagerImpl;
+
+        $u2 := @parameter1: android.view.ViewGroup;
+
+        $u3 := @parameter2: android.view.View;
+
+        $u4 := @parameter3: androidx.fragment.app.Fragment;
+
+        this.<androidx.fragment.app.FragmentManagerImpl$5: androidx.fragment.app.FragmentManagerImpl this$0> = $u1;
+
+        this.<androidx.fragment.app.FragmentManagerImpl$5: android.view.ViewGroup val$container> = $u2;
+
+        this.<androidx.fragment.app.FragmentManagerImpl$5: android.view.View val$animatingView> = $u3;
+
+        this.<androidx.fragment.app.FragmentManagerImpl$5: androidx.fragment.app.Fragment val$fragment> = $u4;
+
+        specialinvoke this.<android.animation.AnimatorListenerAdapter: void <init>()>();
+
+        return;
+    }
+
+    public void onAnimationEnd(android.animation.Animator)
+    {
+        androidx.fragment.app.FragmentManagerImpl$5 this;
+        android.animation.Animator $u3;
+        android.view.ViewGroup $u0;
+        android.view.View $u1;
+        androidx.fragment.app.Fragment $u0#3;
+        boolean $u0#6;
+
+        this := @this: androidx.fragment.app.FragmentManagerImpl$5;
+
+        $u3 := @parameter0: android.animation.Animator;
+
+        $u0 = this.<androidx.fragment.app.FragmentManagerImpl$5: android.view.ViewGroup val$container>;
+
+        $u1 = this.<androidx.fragment.app.FragmentManagerImpl$5: android.view.View val$animatingView>;
+
+        virtualinvoke $u0.<android.view.ViewGroup: void endViewTransition(android.view.View)>($u1);
+
+        virtualinvoke $u3.<android.animation.Animator: void removeListener(android.animation.Animator$AnimatorListener)>(this);
+
+        $u0#3 = this.<androidx.fragment.app.FragmentManagerImpl$5: androidx.fragment.app.Fragment val$fragment>;
+
+        $u1 = $u0#3.<androidx.fragment.app.Fragment: android.view.View mView>;
+
+        if $u1 == null goto label1;
+
+        $u0#3 = this.<androidx.fragment.app.FragmentManagerImpl$5: androidx.fragment.app.Fragment val$fragment>;
+
+        $u0#6 = $u0#3.<androidx.fragment.app.Fragment: boolean mHidden>;
+
+        if $u0#6 == 0 goto label1;
+
+        $u0#3 = this.<androidx.fragment.app.FragmentManagerImpl$5: androidx.fragment.app.Fragment val$fragment>;
+
+        $u1 = $u0#3.<androidx.fragment.app.Fragment: android.view.View mView>;
+
+        virtualinvoke $u1.<android.view.View: void setVisibility(int)>(8);
+
+     label1:
+        return;
+    }
+}

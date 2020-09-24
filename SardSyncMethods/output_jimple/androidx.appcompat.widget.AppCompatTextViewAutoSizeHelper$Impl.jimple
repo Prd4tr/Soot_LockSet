@@ -1,0 +1,52 @@
+class androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl extends java.lang.Object
+{
+
+    void <init>()
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl this;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    void computeAndSetTextDirection(android.text.StaticLayout$Builder, android.widget.TextView)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl this;
+        android.text.StaticLayout$Builder $u1;
+        android.widget.TextView $u2;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl;
+
+        $u1 := @parameter0: android.text.StaticLayout$Builder;
+
+        $u2 := @parameter1: android.widget.TextView;
+
+        return;
+    }
+
+    boolean isHorizontallyScrollable(android.widget.TextView)
+    {
+        androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl this;
+        android.widget.TextView $u3;
+        java.lang.Boolean $u-1;
+        java.lang.Object $u-1#4;
+        boolean $u-1#7;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper$Impl;
+
+        $u3 := @parameter0: android.widget.TextView;
+
+        $u-1 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        $u-1#4 = staticinvoke <androidx.appcompat.widget.AppCompatTextViewAutoSizeHelper: java.lang.Object invokeAndReturnWithDefault(java.lang.Object,java.lang.String,java.lang.Object)>($u3, "getHorizontallyScrolling", $u-1);
+
+        $u-1 = (java.lang.Boolean) $u-1#4;
+
+        $u-1#7 = virtualinvoke $u-1.<java.lang.Boolean: boolean booleanValue()>();
+
+        return $u-1#7;
+    }
+}

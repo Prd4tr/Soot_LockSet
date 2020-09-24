@@ -1,0 +1,277 @@
+public final class androidx.core.view.accessibility.AccessibilityEventCompat extends java.lang.Object
+{
+    public static final int CONTENT_CHANGE_TYPE_CONTENT_DESCRIPTION;
+    public static final int CONTENT_CHANGE_TYPE_PANE_APPEARED;
+    public static final int CONTENT_CHANGE_TYPE_PANE_DISAPPEARED;
+    public static final int CONTENT_CHANGE_TYPE_PANE_TITLE;
+    public static final int CONTENT_CHANGE_TYPE_SUBTREE;
+    public static final int CONTENT_CHANGE_TYPE_TEXT;
+    public static final int CONTENT_CHANGE_TYPE_UNDEFINED;
+    public static final int TYPES_ALL_MASK;
+    public static final int TYPE_ANNOUNCEMENT;
+    public static final int TYPE_ASSIST_READING_CONTEXT;
+    public static final int TYPE_GESTURE_DETECTION_END;
+    public static final int TYPE_GESTURE_DETECTION_START;
+    public static final int TYPE_TOUCH_EXPLORATION_GESTURE_END;
+    public static final int TYPE_TOUCH_EXPLORATION_GESTURE_START;
+    public static final int TYPE_TOUCH_INTERACTION_END;
+    public static final int TYPE_TOUCH_INTERACTION_START;
+    public static final int TYPE_VIEW_ACCESSIBILITY_FOCUSED;
+    public static final int TYPE_VIEW_ACCESSIBILITY_FOCUS_CLEARED;
+    public static final int TYPE_VIEW_CONTEXT_CLICKED;
+    public static final int TYPE_VIEW_HOVER_ENTER;
+    public static final int TYPE_VIEW_HOVER_EXIT;
+    public static final int TYPE_VIEW_SCROLLED;
+    public static final int TYPE_VIEW_TEXT_SELECTION_CHANGED;
+    public static final int TYPE_VIEW_TEXT_TRAVERSED_AT_MOVEMENT_GRANULARITY;
+    public static final int TYPE_WINDOWS_CHANGED;
+    public static final int TYPE_WINDOW_CONTENT_CHANGED;
+
+    private void <init>()
+    {
+        androidx.core.view.accessibility.AccessibilityEventCompat this;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityEventCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void appendRecord(android.view.accessibility.AccessibilityEvent, androidx.core.view.accessibility.AccessibilityRecordCompat)
+    {
+        android.view.accessibility.AccessibilityEvent $u1;
+        androidx.core.view.accessibility.AccessibilityRecordCompat $u2;
+        java.lang.Object $u-1;
+        android.view.accessibility.AccessibilityRecord $u0;
+
+        $u1 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        $u2 := @parameter1: androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $u-1 = virtualinvoke $u2.<androidx.core.view.accessibility.AccessibilityRecordCompat: java.lang.Object getImpl()>();
+
+        $u0 = (android.view.accessibility.AccessibilityRecord) $u-1;
+
+        virtualinvoke $u1.<android.view.accessibility.AccessibilityEvent: void appendRecord(android.view.accessibility.AccessibilityRecord)>($u0);
+
+        return;
+    }
+
+    public static androidx.core.view.accessibility.AccessibilityRecordCompat asRecord(android.view.accessibility.AccessibilityEvent)
+    {
+        android.view.accessibility.AccessibilityEvent $u1;
+        androidx.core.view.accessibility.AccessibilityRecordCompat $u0;
+
+        $u1 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        $u0 = new androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        specialinvoke $u0.<androidx.core.view.accessibility.AccessibilityRecordCompat: void <init>(java.lang.Object)>($u1);
+
+        return $u0;
+    }
+
+    public static int getAction(android.view.accessibility.AccessibilityEvent)
+    {
+        android.view.accessibility.AccessibilityEvent $u2;
+        int $u-1;
+
+        $u2 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 16 goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.view.accessibility.AccessibilityEvent: int getAction()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public static int getContentChangeTypes(android.view.accessibility.AccessibilityEvent)
+    {
+        android.view.accessibility.AccessibilityEvent $u2;
+        int $u-1;
+
+        $u2 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 19 goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.view.accessibility.AccessibilityEvent: int getContentChangeTypes()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public static int getMovementGranularity(android.view.accessibility.AccessibilityEvent)
+    {
+        android.view.accessibility.AccessibilityEvent $u2;
+        int $u-1;
+
+        $u2 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 16 goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.view.accessibility.AccessibilityEvent: int getMovementGranularity()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public static androidx.core.view.accessibility.AccessibilityRecordCompat getRecord(android.view.accessibility.AccessibilityEvent, int)
+    {
+        android.view.accessibility.AccessibilityEvent $u2;
+        int $u3;
+        androidx.core.view.accessibility.AccessibilityRecordCompat $u0;
+        android.view.accessibility.AccessibilityRecord $u-1;
+
+        $u2 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        $u3 := @parameter1: int;
+
+        $u0 = new androidx.core.view.accessibility.AccessibilityRecordCompat;
+
+        $u-1 = virtualinvoke $u2.<android.view.accessibility.AccessibilityEvent: android.view.accessibility.AccessibilityRecord getRecord(int)>($u3);
+
+        specialinvoke $u0.<androidx.core.view.accessibility.AccessibilityRecordCompat: void <init>(java.lang.Object)>($u-1);
+
+        return $u0;
+    }
+
+    public static int getRecordCount(android.view.accessibility.AccessibilityEvent)
+    {
+        android.view.accessibility.AccessibilityEvent $u1;
+        int $u-1;
+
+        $u1 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        $u-1 = virtualinvoke $u1.<android.view.accessibility.AccessibilityEvent: int getRecordCount()>();
+
+        return $u-1;
+    }
+
+    public static void setAction(android.view.accessibility.AccessibilityEvent, int)
+    {
+        android.view.accessibility.AccessibilityEvent $u2;
+        int $u3, $u0;
+
+        $u2 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        $u3 := @parameter1: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        virtualinvoke $u2.<android.view.accessibility.AccessibilityEvent: void setAction(int)>($u3);
+
+     label1:
+        return;
+    }
+
+    public static void setContentChangeTypes(android.view.accessibility.AccessibilityEvent, int)
+    {
+        android.view.accessibility.AccessibilityEvent $u2;
+        int $u3, $u0;
+
+        $u2 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        $u3 := @parameter1: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        virtualinvoke $u2.<android.view.accessibility.AccessibilityEvent: void setContentChangeTypes(int)>($u3);
+
+     label1:
+        return;
+    }
+
+    public static void setMovementGranularity(android.view.accessibility.AccessibilityEvent, int)
+    {
+        android.view.accessibility.AccessibilityEvent $u2;
+        int $u3, $u0;
+
+        $u2 := @parameter0: android.view.accessibility.AccessibilityEvent;
+
+        $u3 := @parameter1: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        virtualinvoke $u2.<android.view.accessibility.AccessibilityEvent: void setMovementGranularity(int)>($u3);
+
+     label1:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_WINDOW_CONTENT_CHANGED> = 2048;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_WINDOWS_CHANGED> = 4194304;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_VIEW_TEXT_TRAVERSED_AT_MOVEMENT_GRANULARITY> = 131072;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_VIEW_TEXT_SELECTION_CHANGED> = 8192;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_VIEW_SCROLLED> = 4096;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_VIEW_HOVER_EXIT> = 256;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_VIEW_HOVER_ENTER> = 128;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_VIEW_CONTEXT_CLICKED> = 8388608;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_VIEW_ACCESSIBILITY_FOCUS_CLEARED> = 65536;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_VIEW_ACCESSIBILITY_FOCUSED> = 32768;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_TOUCH_INTERACTION_START> = 1048576;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_TOUCH_INTERACTION_END> = 2097152;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_TOUCH_EXPLORATION_GESTURE_START> = 512;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_TOUCH_EXPLORATION_GESTURE_END> = 1024;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_GESTURE_DETECTION_START> = 262144;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_GESTURE_DETECTION_END> = 524288;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_ASSIST_READING_CONTEXT> = 16777216;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPE_ANNOUNCEMENT> = 16384;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int TYPES_ALL_MASK> = -1;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int CONTENT_CHANGE_TYPE_UNDEFINED> = 0;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int CONTENT_CHANGE_TYPE_TEXT> = 2;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int CONTENT_CHANGE_TYPE_SUBTREE> = 1;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int CONTENT_CHANGE_TYPE_PANE_TITLE> = 8;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int CONTENT_CHANGE_TYPE_PANE_DISAPPEARED> = 32;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int CONTENT_CHANGE_TYPE_PANE_APPEARED> = 16;
+
+        <androidx.core.view.accessibility.AccessibilityEventCompat: int CONTENT_CHANGE_TYPE_CONTENT_DESCRIPTION> = 4;
+
+        return;
+    }
+}

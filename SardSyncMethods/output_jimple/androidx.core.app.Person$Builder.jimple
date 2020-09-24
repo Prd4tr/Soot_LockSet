@@ -1,0 +1,160 @@
+public class androidx.core.app.Person$Builder extends java.lang.Object
+{
+    androidx.core.graphics.drawable.IconCompat mIcon;
+    boolean mIsBot;
+    boolean mIsImportant;
+    java.lang.String mKey;
+    java.lang.CharSequence mName;
+    java.lang.String mUri;
+
+    public void <init>()
+    {
+        androidx.core.app.Person$Builder this;
+
+        this := @this: androidx.core.app.Person$Builder;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    void <init>(androidx.core.app.Person)
+    {
+        androidx.core.app.Person$Builder this;
+        androidx.core.app.Person $u2;
+        java.lang.CharSequence $u0;
+        androidx.core.graphics.drawable.IconCompat $u0#2;
+        java.lang.String $u0#3;
+        boolean $u0#5;
+
+        this := @this: androidx.core.app.Person$Builder;
+
+        $u2 := @parameter0: androidx.core.app.Person;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = $u2.<androidx.core.app.Person: java.lang.CharSequence mName>;
+
+        this.<androidx.core.app.Person$Builder: java.lang.CharSequence mName> = $u0;
+
+        $u0#2 = $u2.<androidx.core.app.Person: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        this.<androidx.core.app.Person$Builder: androidx.core.graphics.drawable.IconCompat mIcon> = $u0#2;
+
+        $u0#3 = $u2.<androidx.core.app.Person: java.lang.String mUri>;
+
+        this.<androidx.core.app.Person$Builder: java.lang.String mUri> = $u0#3;
+
+        $u0#3 = $u2.<androidx.core.app.Person: java.lang.String mKey>;
+
+        this.<androidx.core.app.Person$Builder: java.lang.String mKey> = $u0#3;
+
+        $u0#5 = $u2.<androidx.core.app.Person: boolean mIsBot>;
+
+        this.<androidx.core.app.Person$Builder: boolean mIsBot> = $u0#5;
+
+        $u0#5 = $u2.<androidx.core.app.Person: boolean mIsImportant>;
+
+        this.<androidx.core.app.Person$Builder: boolean mIsImportant> = $u0#5;
+
+        return;
+    }
+
+    public androidx.core.app.Person build()
+    {
+        androidx.core.app.Person$Builder this;
+        androidx.core.app.Person $u0;
+
+        this := @this: androidx.core.app.Person$Builder;
+
+        $u0 = new androidx.core.app.Person;
+
+        specialinvoke $u0.<androidx.core.app.Person: void <init>(androidx.core.app.Person$Builder)>(this);
+
+        return $u0;
+    }
+
+    public androidx.core.app.Person$Builder setBot(boolean)
+    {
+        androidx.core.app.Person$Builder this;
+        boolean $u1;
+
+        this := @this: androidx.core.app.Person$Builder;
+
+        $u1 := @parameter0: boolean;
+
+        this.<androidx.core.app.Person$Builder: boolean mIsBot> = $u1;
+
+        return this;
+    }
+
+    public androidx.core.app.Person$Builder setIcon(androidx.core.graphics.drawable.IconCompat)
+    {
+        androidx.core.app.Person$Builder this;
+        androidx.core.graphics.drawable.IconCompat $u1;
+
+        this := @this: androidx.core.app.Person$Builder;
+
+        $u1 := @parameter0: androidx.core.graphics.drawable.IconCompat;
+
+        this.<androidx.core.app.Person$Builder: androidx.core.graphics.drawable.IconCompat mIcon> = $u1;
+
+        return this;
+    }
+
+    public androidx.core.app.Person$Builder setImportant(boolean)
+    {
+        androidx.core.app.Person$Builder this;
+        boolean $u1;
+
+        this := @this: androidx.core.app.Person$Builder;
+
+        $u1 := @parameter0: boolean;
+
+        this.<androidx.core.app.Person$Builder: boolean mIsImportant> = $u1;
+
+        return this;
+    }
+
+    public androidx.core.app.Person$Builder setKey(java.lang.String)
+    {
+        androidx.core.app.Person$Builder this;
+        java.lang.String $u1;
+
+        this := @this: androidx.core.app.Person$Builder;
+
+        $u1 := @parameter0: java.lang.String;
+
+        this.<androidx.core.app.Person$Builder: java.lang.String mKey> = $u1;
+
+        return this;
+    }
+
+    public androidx.core.app.Person$Builder setName(java.lang.CharSequence)
+    {
+        androidx.core.app.Person$Builder this;
+        java.lang.CharSequence $u1;
+
+        this := @this: androidx.core.app.Person$Builder;
+
+        $u1 := @parameter0: java.lang.CharSequence;
+
+        this.<androidx.core.app.Person$Builder: java.lang.CharSequence mName> = $u1;
+
+        return this;
+    }
+
+    public androidx.core.app.Person$Builder setUri(java.lang.String)
+    {
+        androidx.core.app.Person$Builder this;
+        java.lang.String $u1;
+
+        this := @this: androidx.core.app.Person$Builder;
+
+        $u1 := @parameter0: java.lang.String;
+
+        this.<androidx.core.app.Person$Builder: java.lang.String mUri> = $u1;
+
+        return this;
+    }
+}

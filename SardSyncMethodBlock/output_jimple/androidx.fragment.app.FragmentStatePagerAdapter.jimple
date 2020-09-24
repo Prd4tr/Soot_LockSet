@@ -1,0 +1,681 @@
+public abstract class androidx.fragment.app.FragmentStatePagerAdapter extends androidx.viewpager.widget.PagerAdapter
+{
+    public static final int BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
+    public static final int BEHAVIOR_SET_USER_VISIBLE_HINT;
+    private static final boolean DEBUG;
+    private static final java.lang.String TAG;
+    private final int mBehavior;
+    private androidx.fragment.app.FragmentTransaction mCurTransaction;
+    private androidx.fragment.app.Fragment mCurrentPrimaryItem;
+    private final androidx.fragment.app.FragmentManager mFragmentManager;
+    private java.util.ArrayList mFragments;
+    private java.util.ArrayList mSavedState;
+
+    public void <init>(androidx.fragment.app.FragmentManager)
+    {
+        androidx.fragment.app.FragmentStatePagerAdapter this;
+        androidx.fragment.app.FragmentManager $u2;
+
+        this := @this: androidx.fragment.app.FragmentStatePagerAdapter;
+
+        $u2 := @parameter0: androidx.fragment.app.FragmentManager;
+
+        specialinvoke this.<androidx.fragment.app.FragmentStatePagerAdapter: void <init>(androidx.fragment.app.FragmentManager,int)>($u2, 0);
+
+        return;
+    }
+
+    public void <init>(androidx.fragment.app.FragmentManager, int)
+    {
+        androidx.fragment.app.FragmentStatePagerAdapter this;
+        androidx.fragment.app.FragmentManager $u3;
+        int $u4;
+        java.util.ArrayList $u1;
+
+        this := @this: androidx.fragment.app.FragmentStatePagerAdapter;
+
+        $u3 := @parameter0: androidx.fragment.app.FragmentManager;
+
+        $u4 := @parameter1: int;
+
+        specialinvoke this.<androidx.viewpager.widget.PagerAdapter: void <init>()>();
+
+        this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction> = null;
+
+        $u1 = new java.util.ArrayList;
+
+        specialinvoke $u1.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mSavedState> = $u1;
+
+        $u1 = new java.util.ArrayList;
+
+        specialinvoke $u1.<java.util.ArrayList: void <init>()>();
+
+        this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mFragments> = $u1;
+
+        this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.Fragment mCurrentPrimaryItem> = null;
+
+        this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentManager mFragmentManager> = $u3;
+
+        this.<androidx.fragment.app.FragmentStatePagerAdapter: int mBehavior> = $u4;
+
+        return;
+    }
+
+    public void destroyItem(android.view.ViewGroup, int, java.lang.Object)
+    {
+        androidx.fragment.app.FragmentStatePagerAdapter this;
+        android.view.ViewGroup $u5;
+        int $u6, $u-1;
+        java.lang.Object $u7;
+        androidx.fragment.app.Fragment fragment, $u1#19;
+        androidx.fragment.app.FragmentTransaction $u1;
+        androidx.fragment.app.FragmentManager $u1#4;
+        java.util.ArrayList $u1#7;
+        boolean $u-1#12;
+        androidx.fragment.app.Fragment$SavedState $u-1#15;
+
+        this := @this: androidx.fragment.app.FragmentStatePagerAdapter;
+
+        $u5 := @parameter0: android.view.ViewGroup;
+
+        $u6 := @parameter1: int;
+
+        $u7 := @parameter2: java.lang.Object;
+
+        fragment = (androidx.fragment.app.Fragment) $u7;
+
+        $u1 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction>;
+
+        if $u1 != null goto label1;
+
+        $u1#4 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentManager mFragmentManager>;
+
+        $u1 = virtualinvoke $u1#4.<androidx.fragment.app.FragmentManager: androidx.fragment.app.FragmentTransaction beginTransaction()>();
+
+        this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction> = $u1;
+
+     label1:
+        $u1#7 = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mSavedState>;
+
+        $u-1 = virtualinvoke $u1#7.<java.util.ArrayList: int size()>();
+
+        if $u-1 > $u6 goto label2;
+
+        $u1#7 = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mSavedState>;
+
+        virtualinvoke $u1#7.<java.util.ArrayList: boolean add(java.lang.Object)>(null);
+
+        goto label1;
+
+     label2:
+        $u1#7 = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mSavedState>;
+
+        $u-1#12 = virtualinvoke fragment.<androidx.fragment.app.Fragment: boolean isAdded()>();
+
+        if $u-1#12 == 0 goto label3;
+
+        $u1#4 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentManager mFragmentManager>;
+
+        $u-1#15 = virtualinvoke $u1#4.<androidx.fragment.app.FragmentManager: androidx.fragment.app.Fragment$SavedState saveFragmentInstanceState(androidx.fragment.app.Fragment)>(fragment);
+
+        goto label4;
+
+     label3:
+        $u-1#15 = null;
+
+     label4:
+        virtualinvoke $u1#7.<java.util.ArrayList: java.lang.Object set(int,java.lang.Object)>($u6, $u-1#15);
+
+        $u1#7 = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mFragments>;
+
+        virtualinvoke $u1#7.<java.util.ArrayList: java.lang.Object set(int,java.lang.Object)>($u6, null);
+
+        $u1 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction>;
+
+        virtualinvoke $u1.<androidx.fragment.app.FragmentTransaction: androidx.fragment.app.FragmentTransaction remove(androidx.fragment.app.Fragment)>(fragment);
+
+        $u1#19 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.Fragment mCurrentPrimaryItem>;
+
+        if fragment != $u1#19 goto label5;
+
+        this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.Fragment mCurrentPrimaryItem> = null;
+
+     label5:
+        return;
+    }
+
+    public void finishUpdate(android.view.ViewGroup)
+    {
+        androidx.fragment.app.FragmentStatePagerAdapter this;
+        android.view.ViewGroup $u2;
+        androidx.fragment.app.FragmentTransaction $u0;
+
+        this := @this: androidx.fragment.app.FragmentStatePagerAdapter;
+
+        $u2 := @parameter0: android.view.ViewGroup;
+
+        $u0 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.fragment.app.FragmentTransaction: void commitNowAllowingStateLoss()>();
+
+        this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction> = null;
+
+     label1:
+        return;
+    }
+
+    public abstract androidx.fragment.app.Fragment getItem(int);
+
+    public java.lang.Object instantiateItem(android.view.ViewGroup, int)
+    {
+        androidx.fragment.app.FragmentStatePagerAdapter this;
+        android.view.ViewGroup $u4;
+        int $u5, $u-1;
+        java.util.ArrayList f;
+        java.lang.Object $u-1#5;
+        androidx.fragment.app.Fragment f#7;
+        androidx.fragment.app.FragmentTransaction f#8;
+        androidx.fragment.app.FragmentManager f#9;
+        androidx.fragment.app.Fragment$SavedState fss;
+        androidx.lifecycle.Lifecycle$State $u2;
+
+        this := @this: androidx.fragment.app.FragmentStatePagerAdapter;
+
+        $u4 := @parameter0: android.view.ViewGroup;
+
+        $u5 := @parameter1: int;
+
+        f = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mFragments>;
+
+        $u-1 = virtualinvoke f.<java.util.ArrayList: int size()>();
+
+        if $u-1 <= $u5 goto label1;
+
+        f = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mFragments>;
+
+        $u-1#5 = virtualinvoke f.<java.util.ArrayList: java.lang.Object get(int)>($u5);
+
+        f#7 = (androidx.fragment.app.Fragment) $u-1#5;
+
+        if f#7 == null goto label1;
+
+        return f#7;
+
+     label1:
+        f#8 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction>;
+
+        if f#8 != null goto label2;
+
+        f#9 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentManager mFragmentManager>;
+
+        f#8 = virtualinvoke f#9.<androidx.fragment.app.FragmentManager: androidx.fragment.app.FragmentTransaction beginTransaction()>();
+
+        this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction> = f#8;
+
+     label2:
+        f#7 = virtualinvoke this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.Fragment getItem(int)>($u5);
+
+        f = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mSavedState>;
+
+        $u-1 = virtualinvoke f.<java.util.ArrayList: int size()>();
+
+        if $u-1 <= $u5 goto label3;
+
+        f = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mSavedState>;
+
+        $u-1#5 = virtualinvoke f.<java.util.ArrayList: java.lang.Object get(int)>($u5);
+
+        fss = (androidx.fragment.app.Fragment$SavedState) $u-1#5;
+
+        if fss == null goto label3;
+
+        virtualinvoke f#7.<androidx.fragment.app.Fragment: void setInitialSavedState(androidx.fragment.app.Fragment$SavedState)>(fss);
+
+     label3:
+        f = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mFragments>;
+
+        $u-1 = virtualinvoke f.<java.util.ArrayList: int size()>();
+
+        if $u-1 > $u5 goto label4;
+
+        f = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mFragments>;
+
+        virtualinvoke f.<java.util.ArrayList: boolean add(java.lang.Object)>(null);
+
+        goto label3;
+
+     label4:
+        virtualinvoke f#7.<androidx.fragment.app.Fragment: void setMenuVisibility(boolean)>(0);
+
+        $u-1 = this.<androidx.fragment.app.FragmentStatePagerAdapter: int mBehavior>;
+
+        if $u-1 != 0 goto label5;
+
+        virtualinvoke f#7.<androidx.fragment.app.Fragment: void setUserVisibleHint(boolean)>(0);
+
+     label5:
+        f = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mFragments>;
+
+        virtualinvoke f.<java.util.ArrayList: java.lang.Object set(int,java.lang.Object)>($u5, f#7);
+
+        f#8 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction>;
+
+        $u5 = virtualinvoke $u4.<android.view.ViewGroup: int getId()>();
+
+        virtualinvoke f#8.<androidx.fragment.app.FragmentTransaction: androidx.fragment.app.FragmentTransaction add(int,androidx.fragment.app.Fragment)>($u5, f#7);
+
+        $u5 = this.<androidx.fragment.app.FragmentStatePagerAdapter: int mBehavior>;
+
+        if $u5 != 1 goto label6;
+
+        f#8 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction>;
+
+        $u2 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State STARTED>;
+
+        virtualinvoke f#8.<androidx.fragment.app.FragmentTransaction: androidx.fragment.app.FragmentTransaction setMaxLifecycle(androidx.fragment.app.Fragment,androidx.lifecycle.Lifecycle$State)>(f#7, $u2);
+
+     label6:
+        return f#7;
+    }
+
+    public boolean isViewFromObject(android.view.View, java.lang.Object)
+    {
+        androidx.fragment.app.FragmentStatePagerAdapter this;
+        android.view.View $u2, $u-1;
+        java.lang.Object $u3;
+        androidx.fragment.app.Fragment $u0;
+
+        this := @this: androidx.fragment.app.FragmentStatePagerAdapter;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: java.lang.Object;
+
+        $u0 = (androidx.fragment.app.Fragment) $u3;
+
+        $u-1 = virtualinvoke $u0.<androidx.fragment.app.Fragment: android.view.View getView()>();
+
+        if $u-1 != $u2 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void restoreState(android.os.Parcelable, java.lang.ClassLoader)
+    {
+        androidx.fragment.app.FragmentStatePagerAdapter this;
+        android.os.Parcelable $u10;
+        java.lang.ClassLoader $u11;
+        android.os.Bundle bundle;
+        android.os.Parcelable[] $u-1;
+        java.util.ArrayList i;
+        int i#8, $u3;
+        androidx.fragment.app.Fragment$SavedState key;
+        java.util.Set $u-1#13;
+        java.util.Iterator $u-1#15;
+        boolean $u-1#17;
+        java.lang.Object $u-1#19;
+        java.lang.String key#21, $u-1#26;
+        androidx.fragment.app.FragmentManager f;
+        androidx.fragment.app.Fragment $u-1#31;
+        java.lang.StringBuilder $u7;
+
+        this := @this: androidx.fragment.app.FragmentStatePagerAdapter;
+
+        $u10 := @parameter0: android.os.Parcelable;
+
+        $u11 := @parameter1: java.lang.ClassLoader;
+
+        if $u10 == null goto label7;
+
+        bundle = (android.os.Bundle) $u10;
+
+        virtualinvoke bundle.<android.os.Bundle: void setClassLoader(java.lang.ClassLoader)>($u11);
+
+        $u-1 = virtualinvoke bundle.<android.os.Bundle: android.os.Parcelable[] getParcelableArray(java.lang.String)>("states");
+
+        i = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mSavedState>;
+
+        virtualinvoke i.<java.util.ArrayList: void clear()>();
+
+        i = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mFragments>;
+
+        virtualinvoke i.<java.util.ArrayList: void clear()>();
+
+        if $u-1 == null goto label2;
+
+        i#8 = 0;
+
+     label1:
+        $u3 = lengthof $u-1;
+
+        if i#8 >= $u3 goto label2;
+
+        i = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mSavedState>;
+
+        $u10 = $u-1[i#8];
+
+        key = (androidx.fragment.app.Fragment$SavedState) $u10;
+
+        virtualinvoke i.<java.util.ArrayList: boolean add(java.lang.Object)>(key);
+
+        i#8 = i#8 + 1;
+
+        goto label1;
+
+     label2:
+        $u-1#13 = virtualinvoke bundle.<android.os.Bundle: java.util.Set keySet()>();
+
+        $u-1#15 = interfaceinvoke $u-1#13.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+     label3:
+        $u-1#17 = interfaceinvoke $u-1#15.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#17 == 0 goto label7;
+
+        $u-1#19 = interfaceinvoke $u-1#15.<java.util.Iterator: java.lang.Object next()>();
+
+        key#21 = (java.lang.String) $u-1#19;
+
+        $u-1#17 = virtualinvoke key#21.<java.lang.String: boolean startsWith(java.lang.String)>("f");
+
+        if $u-1#17 == 0 goto label3;
+
+        $u-1#26 = virtualinvoke key#21.<java.lang.String: java.lang.String substring(int)>(1);
+
+        i#8 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($u-1#26);
+
+        f = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentManager mFragmentManager>;
+
+        $u-1#31 = virtualinvoke f.<androidx.fragment.app.FragmentManager: androidx.fragment.app.Fragment getFragment(android.os.Bundle,java.lang.String)>(bundle, key#21);
+
+        if $u-1#31 == null goto label6;
+
+     label4:
+        i = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mFragments>;
+
+        $u3 = virtualinvoke i.<java.util.ArrayList: int size()>();
+
+        if $u3 > i#8 goto label5;
+
+        i = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mFragments>;
+
+        virtualinvoke i.<java.util.ArrayList: boolean add(java.lang.Object)>(null);
+
+        goto label4;
+
+     label5:
+        virtualinvoke $u-1#31.<androidx.fragment.app.Fragment: void setMenuVisibility(boolean)>(0);
+
+        i = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mFragments>;
+
+        virtualinvoke i.<java.util.ArrayList: java.lang.Object set(int,java.lang.Object)>(i#8, $u-1#31);
+
+        goto label3;
+
+     label6:
+        $u7 = new java.lang.StringBuilder;
+
+        specialinvoke $u7.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Bad fragment at key ");
+
+        virtualinvoke $u7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(key#21);
+
+        key#21 = virtualinvoke $u7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("FragmentStatePagerAdapt", key#21);
+
+        goto label3;
+
+     label7:
+        return;
+    }
+
+    public android.os.Parcelable saveState()
+    {
+        androidx.fragment.app.FragmentStatePagerAdapter this;
+        android.os.Bundle state, fss#5;
+        java.util.ArrayList fss;
+        int $u-1, $u-1#14;
+        androidx.fragment.app.Fragment$SavedState[] fss#9;
+        java.lang.Object $u-1#17;
+        androidx.fragment.app.Fragment f;
+        boolean $u-1#20;
+        java.lang.StringBuilder key;
+        java.lang.String $u-1#25;
+        androidx.fragment.app.FragmentManager $u4;
+
+        this := @this: androidx.fragment.app.FragmentStatePagerAdapter;
+
+        state = null;
+
+        fss = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mSavedState>;
+
+        $u-1 = virtualinvoke fss.<java.util.ArrayList: int size()>();
+
+        if $u-1 <= 0 goto label1;
+
+        fss#5 = new android.os.Bundle;
+
+        specialinvoke fss#5.<android.os.Bundle: void <init>()>();
+
+        state = fss#5;
+
+        fss = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mSavedState>;
+
+        $u-1 = virtualinvoke fss.<java.util.ArrayList: int size()>();
+
+        fss#9 = newarray (androidx.fragment.app.Fragment$SavedState)[$u-1];
+
+        fss = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mSavedState>;
+
+        virtualinvoke fss.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>(fss#9);
+
+        virtualinvoke fss#5.<android.os.Bundle: void putParcelableArray(java.lang.String,android.os.Parcelable[])>("states", fss#9);
+
+     label1:
+        $u-1 = 0;
+
+     label2:
+        fss = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mFragments>;
+
+        $u-1#14 = virtualinvoke fss.<java.util.ArrayList: int size()>();
+
+        if $u-1 >= $u-1#14 goto label5;
+
+        fss = this.<androidx.fragment.app.FragmentStatePagerAdapter: java.util.ArrayList mFragments>;
+
+        $u-1#17 = virtualinvoke fss.<java.util.ArrayList: java.lang.Object get(int)>($u-1);
+
+        f = (androidx.fragment.app.Fragment) $u-1#17;
+
+        if f == null goto label4;
+
+        $u-1#20 = virtualinvoke f.<androidx.fragment.app.Fragment: boolean isAdded()>();
+
+        if $u-1#20 == 0 goto label4;
+
+        if state != null goto label3;
+
+        state = new android.os.Bundle;
+
+        specialinvoke state.<android.os.Bundle: void <init>()>();
+
+     label3:
+        key = new java.lang.StringBuilder;
+
+        specialinvoke key.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("f");
+
+        virtualinvoke key.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u-1);
+
+        $u-1#25 = virtualinvoke key.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $u4 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentManager mFragmentManager>;
+
+        virtualinvoke $u4.<androidx.fragment.app.FragmentManager: void putFragment(android.os.Bundle,java.lang.String,androidx.fragment.app.Fragment)>(state, $u-1#25, f);
+
+     label4:
+        $u-1 = $u-1 + 1;
+
+        goto label2;
+
+     label5:
+        return state;
+    }
+
+    public void setPrimaryItem(android.view.ViewGroup, int, java.lang.Object)
+    {
+        androidx.fragment.app.FragmentStatePagerAdapter this;
+        android.view.ViewGroup $u6;
+        int $u7;
+        java.lang.Object $u8;
+        androidx.lifecycle.Lifecycle$State $u4;
+        androidx.fragment.app.Fragment fragment, $u1;
+        androidx.fragment.app.FragmentTransaction $u1#7;
+        androidx.fragment.app.FragmentManager $u1#8;
+
+        this := @this: androidx.fragment.app.FragmentStatePagerAdapter;
+
+        $u6 := @parameter0: android.view.ViewGroup;
+
+        $u7 := @parameter1: int;
+
+        $u8 := @parameter2: java.lang.Object;
+
+        fragment = (androidx.fragment.app.Fragment) $u8;
+
+        $u1 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.Fragment mCurrentPrimaryItem>;
+
+        if fragment == $u1 goto label7;
+
+        if $u1 == null goto label3;
+
+        virtualinvoke $u1.<androidx.fragment.app.Fragment: void setMenuVisibility(boolean)>(0);
+
+        $u7 = this.<androidx.fragment.app.FragmentStatePagerAdapter: int mBehavior>;
+
+        if $u7 != 1 goto label2;
+
+        $u1#7 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction>;
+
+        if $u1#7 != null goto label1;
+
+        $u1#8 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentManager mFragmentManager>;
+
+        $u1#7 = virtualinvoke $u1#8.<androidx.fragment.app.FragmentManager: androidx.fragment.app.FragmentTransaction beginTransaction()>();
+
+        this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction> = $u1#7;
+
+     label1:
+        $u1#7 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction>;
+
+        $u1 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.Fragment mCurrentPrimaryItem>;
+
+        $u4 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State STARTED>;
+
+        virtualinvoke $u1#7.<androidx.fragment.app.FragmentTransaction: androidx.fragment.app.FragmentTransaction setMaxLifecycle(androidx.fragment.app.Fragment,androidx.lifecycle.Lifecycle$State)>($u1, $u4);
+
+        goto label3;
+
+     label2:
+        $u1 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.Fragment mCurrentPrimaryItem>;
+
+        virtualinvoke $u1.<androidx.fragment.app.Fragment: void setUserVisibleHint(boolean)>(0);
+
+     label3:
+        virtualinvoke fragment.<androidx.fragment.app.Fragment: void setMenuVisibility(boolean)>(1);
+
+        $u7 = this.<androidx.fragment.app.FragmentStatePagerAdapter: int mBehavior>;
+
+        if $u7 != 1 goto label5;
+
+        $u1#7 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction>;
+
+        if $u1#7 != null goto label4;
+
+        $u1#8 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentManager mFragmentManager>;
+
+        $u1#7 = virtualinvoke $u1#8.<androidx.fragment.app.FragmentManager: androidx.fragment.app.FragmentTransaction beginTransaction()>();
+
+        this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction> = $u1#7;
+
+     label4:
+        $u1#7 = this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.FragmentTransaction mCurTransaction>;
+
+        $u4 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State RESUMED>;
+
+        virtualinvoke $u1#7.<androidx.fragment.app.FragmentTransaction: androidx.fragment.app.FragmentTransaction setMaxLifecycle(androidx.fragment.app.Fragment,androidx.lifecycle.Lifecycle$State)>(fragment, $u4);
+
+        goto label6;
+
+     label5:
+        virtualinvoke fragment.<androidx.fragment.app.Fragment: void setUserVisibleHint(boolean)>(1);
+
+     label6:
+        this.<androidx.fragment.app.FragmentStatePagerAdapter: androidx.fragment.app.Fragment mCurrentPrimaryItem> = fragment;
+
+     label7:
+        return;
+    }
+
+    public void startUpdate(android.view.ViewGroup)
+    {
+        androidx.fragment.app.FragmentStatePagerAdapter this;
+        android.view.ViewGroup $u4;
+        int $u-1;
+        java.lang.IllegalStateException $u0;
+        java.lang.StringBuilder $u1;
+        java.lang.String $u-1#8;
+
+        this := @this: androidx.fragment.app.FragmentStatePagerAdapter;
+
+        $u4 := @parameter0: android.view.ViewGroup;
+
+        $u-1 = virtualinvoke $u4.<android.view.ViewGroup: int getId()>();
+
+        if $u-1 == -1 goto label1;
+
+        return;
+
+     label1:
+        $u0 = new java.lang.IllegalStateException;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ViewPager with adapter ");
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(this);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" requires a view id");
+
+        $u-1#8 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u0.<java.lang.IllegalStateException: void <init>(java.lang.String)>($u-1#8);
+
+        throw $u0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.fragment.app.FragmentStatePagerAdapter: java.lang.String TAG> = "FragmentStatePagerAdapt";
+
+        <androidx.fragment.app.FragmentStatePagerAdapter: boolean DEBUG> = 0;
+
+        <androidx.fragment.app.FragmentStatePagerAdapter: int BEHAVIOR_SET_USER_VISIBLE_HINT> = 0;
+
+        <androidx.fragment.app.FragmentStatePagerAdapter: int BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT> = 1;
+
+        return;
+    }
+}

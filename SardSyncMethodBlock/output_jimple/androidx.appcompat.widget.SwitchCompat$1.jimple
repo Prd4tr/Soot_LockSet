@@ -1,0 +1,98 @@
+class androidx.appcompat.widget.SwitchCompat$1 extends android.util.Property
+{
+
+    void <init>(java.lang.Class, java.lang.String)
+    {
+        androidx.appcompat.widget.SwitchCompat$1 this;
+        java.lang.Class arg0;
+        java.lang.String $u2;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat$1;
+
+        arg0 := @parameter0: java.lang.Class;
+
+        $u2 := @parameter1: java.lang.String;
+
+        specialinvoke this.<android.util.Property: void <init>(java.lang.Class,java.lang.String)>(arg0, $u2);
+
+        return;
+    }
+
+    public java.lang.Float get(androidx.appcompat.widget.SwitchCompat)
+    {
+        androidx.appcompat.widget.SwitchCompat$1 this;
+        androidx.appcompat.widget.SwitchCompat $u2;
+        java.lang.Float $u-1;
+        float $u0;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat$1;
+
+        $u2 := @parameter0: androidx.appcompat.widget.SwitchCompat;
+
+        $u0 = $u2.<androidx.appcompat.widget.SwitchCompat: float mThumbPosition>;
+
+        $u-1 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>($u0);
+
+        return $u-1;
+    }
+
+    public volatile java.lang.Object get(java.lang.Object)
+    {
+        androidx.appcompat.widget.SwitchCompat$1 this;
+        java.lang.Float $u-1;
+        java.lang.Object $u1;
+        androidx.appcompat.widget.SwitchCompat $u1#2;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat$1;
+
+        $u1 := @parameter0: java.lang.Object;
+
+        $u1#2 = (androidx.appcompat.widget.SwitchCompat) $u1;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.SwitchCompat$1: java.lang.Float get(androidx.appcompat.widget.SwitchCompat)>($u1#2);
+
+        return $u-1;
+    }
+
+    public void set(androidx.appcompat.widget.SwitchCompat, java.lang.Float)
+    {
+        androidx.appcompat.widget.SwitchCompat$1 this;
+        androidx.appcompat.widget.SwitchCompat $u2;
+        java.lang.Float $u3;
+        float $u-1;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat$1;
+
+        $u2 := @parameter0: androidx.appcompat.widget.SwitchCompat;
+
+        $u3 := @parameter1: java.lang.Float;
+
+        $u-1 = virtualinvoke $u3.<java.lang.Float: float floatValue()>();
+
+        virtualinvoke $u2.<androidx.appcompat.widget.SwitchCompat: void setThumbPosition(float)>($u-1);
+
+        return;
+    }
+
+    public volatile void set(java.lang.Object, java.lang.Object)
+    {
+        androidx.appcompat.widget.SwitchCompat$1 this;
+        java.lang.Object $u1, $u2;
+        androidx.appcompat.widget.SwitchCompat $u1#3;
+        java.lang.Float $u2#4;
+
+        this := @this: androidx.appcompat.widget.SwitchCompat$1;
+
+        $u1 := @parameter0: java.lang.Object;
+
+        $u2 := @parameter1: java.lang.Object;
+
+        $u1#3 = (androidx.appcompat.widget.SwitchCompat) $u1;
+
+        $u2#4 = (java.lang.Float) $u2;
+
+        virtualinvoke this.<androidx.appcompat.widget.SwitchCompat$1: void set(androidx.appcompat.widget.SwitchCompat,java.lang.Float)>($u1#3, $u2#4);
+
+        return;
+    }
+}

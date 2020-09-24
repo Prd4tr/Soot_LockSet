@@ -1,0 +1,24 @@
+public class androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure extends java.lang.Object
+{
+    public androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour horizontalBehavior;
+    public int horizontalDimension;
+    public int measuredBaseline;
+    public boolean measuredHasBaseline;
+    public int measuredHeight;
+    public boolean measuredNeedsSolverPass;
+    public int measuredWidth;
+    public boolean useCurrentDimensions;
+    public androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour verticalBehavior;
+    public int verticalDimension;
+
+    public void <init>()
+    {
+        androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure this;
+
+        this := @this: androidx.constraintlayout.solver.widgets.analyzer.BasicMeasure$Measure;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

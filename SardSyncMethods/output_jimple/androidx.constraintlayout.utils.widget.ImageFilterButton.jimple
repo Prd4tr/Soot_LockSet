@@ -1,0 +1,870 @@
+public class androidx.constraintlayout.utils.widget.ImageFilterButton extends androidx.appcompat.widget.AppCompatImageButton
+{
+    private float mCrossfade;
+    private androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix;
+    android.graphics.drawable.LayerDrawable mLayer;
+    android.graphics.drawable.Drawable[] mLayers;
+    private boolean mOverlay;
+    private android.graphics.Path mPath;
+    android.graphics.RectF mRect;
+    private float mRound;
+    private float mRoundPercent;
+    android.view.ViewOutlineProvider mViewOutlineProvider;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        android.content.Context $u2;
+        androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix $u0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatImageButton: void <init>(android.content.Context)>($u2);
+
+        $u0 = new androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix;
+
+        specialinvoke $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: void <init>()>();
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix> = $u0;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mCrossfade> = 0.0F;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRoundPercent> = 0.0F;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRound> = #NaNF;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: boolean mOverlay> = 1;
+
+        specialinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void init(android.content.Context,android.util.AttributeSet)>($u2, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix $u0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatImageButton: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        $u0 = new androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix;
+
+        specialinvoke $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: void <init>()>();
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix> = $u0;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mCrossfade> = 0.0F;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRoundPercent> = 0.0F;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRound> = #NaNF;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: boolean mOverlay> = 1;
+
+        specialinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void init(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        int $u4;
+        androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix $u0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u4 := @parameter2: int;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatImageButton: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, $u4);
+
+        $u0 = new androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix;
+
+        specialinvoke $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: void <init>()>();
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix> = $u0;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mCrossfade> = 0.0F;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRoundPercent> = 0.0F;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRound> = #NaNF;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: boolean mOverlay> = 1;
+
+        specialinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void init(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        return;
+    }
+
+    static float access$000(androidx.constraintlayout.utils.widget.ImageFilterButton)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton $u1;
+        float ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        ret0 = $u1.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRoundPercent>;
+
+        return ret0;
+    }
+
+    static float access$100(androidx.constraintlayout.utils.widget.ImageFilterButton)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton $u1;
+        float ret0;
+
+        $u1 := @parameter0: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        ret0 = $u1.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRound>;
+
+        return ret0;
+    }
+
+    private void init(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        android.content.Context $u9;
+        android.util.AttributeSet $u10;
+        int[] N;
+        android.content.res.TypedArray $u-1;
+        int $u-1#7, drawable, $u-1#13, $u6;
+        android.graphics.drawable.Drawable $u-1#10, $u-1#39;
+        float $u-1#16;
+        boolean $u6#34;
+        android.graphics.drawable.Drawable[] i;
+        android.graphics.drawable.LayerDrawable $u0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u9 := @parameter0: android.content.Context;
+
+        $u10 := @parameter1: android.util.AttributeSet;
+
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setPadding(int,int,int,int)>(0, 0, 0, 0);
+
+        if $u10 == null goto label10;
+
+        $u9 = virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.content.Context getContext()>();
+
+        N = <androidx.constraintlayout.widget.R$styleable: int[] ImageFilterView>;
+
+        $u-1 = virtualinvoke $u9.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[])>($u10, N);
+
+        $u-1#7 = virtualinvoke $u-1.<android.content.res.TypedArray: int getIndexCount()>();
+
+        drawable = <androidx.constraintlayout.widget.R$styleable: int ImageFilterView_altSrc>;
+
+        $u-1#10 = virtualinvoke $u-1.<android.content.res.TypedArray: android.graphics.drawable.Drawable getDrawable(int)>(drawable);
+
+        drawable = 0;
+
+     label01:
+        if drawable >= $u-1#7 goto label09;
+
+        $u-1#13 = virtualinvoke $u-1.<android.content.res.TypedArray: int getIndex(int)>(drawable);
+
+        $u6 = <androidx.constraintlayout.widget.R$styleable: int ImageFilterView_crossfade>;
+
+        if $u-1#13 != $u6 goto label02;
+
+        $u-1#16 = virtualinvoke $u-1.<android.content.res.TypedArray: float getFloat(int,float)>($u-1#13, 0.0F);
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mCrossfade> = $u-1#16;
+
+        goto label08;
+
+     label02:
+        $u6 = <androidx.constraintlayout.widget.R$styleable: int ImageFilterView_warmth>;
+
+        if $u-1#13 != $u6 goto label03;
+
+        $u-1#16 = virtualinvoke $u-1.<android.content.res.TypedArray: float getFloat(int,float)>($u-1#13, 0.0F);
+
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setWarmth(float)>($u-1#16);
+
+        goto label08;
+
+     label03:
+        $u6 = <androidx.constraintlayout.widget.R$styleable: int ImageFilterView_saturation>;
+
+        if $u-1#13 != $u6 goto label04;
+
+        $u-1#16 = virtualinvoke $u-1.<android.content.res.TypedArray: float getFloat(int,float)>($u-1#13, 0.0F);
+
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setSaturation(float)>($u-1#16);
+
+        goto label08;
+
+     label04:
+        $u6 = <androidx.constraintlayout.widget.R$styleable: int ImageFilterView_contrast>;
+
+        if $u-1#13 != $u6 goto label05;
+
+        $u-1#16 = virtualinvoke $u-1.<android.content.res.TypedArray: float getFloat(int,float)>($u-1#13, 0.0F);
+
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setContrast(float)>($u-1#16);
+
+        goto label08;
+
+     label05:
+        $u6 = <androidx.constraintlayout.widget.R$styleable: int ImageFilterView_round>;
+
+        if $u-1#13 != $u6 goto label06;
+
+        $u-1#16 = virtualinvoke $u-1.<android.content.res.TypedArray: float getDimension(int,float)>($u-1#13, 0.0F);
+
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setRound(float)>($u-1#16);
+
+        goto label08;
+
+     label06:
+        $u6 = <androidx.constraintlayout.widget.R$styleable: int ImageFilterView_roundPercent>;
+
+        if $u-1#13 != $u6 goto label07;
+
+        $u-1#16 = virtualinvoke $u-1.<android.content.res.TypedArray: float getFloat(int,float)>($u-1#13, 0.0F);
+
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setRoundPercent(float)>($u-1#16);
+
+        goto label08;
+
+     label07:
+        $u6 = <androidx.constraintlayout.widget.R$styleable: int ImageFilterView_overlay>;
+
+        if $u-1#13 != $u6 goto label08;
+
+        $u6#34 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: boolean mOverlay>;
+
+        $u6#34 = virtualinvoke $u-1.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($u-1#13, $u6#34);
+
+        specialinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setOverlay(boolean)>($u6#34);
+
+     label08:
+        drawable = drawable + 1;
+
+        goto label01;
+
+     label09:
+        virtualinvoke $u-1.<android.content.res.TypedArray: void recycle()>();
+
+        if $u-1#10 == null goto label10;
+
+        i = newarray (android.graphics.drawable.Drawable)[2];
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.drawable.Drawable[] mLayers> = i;
+
+        $u-1#39 = virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.drawable.Drawable getDrawable()>();
+
+        i[0] = $u-1#39;
+
+        i = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.drawable.Drawable[] mLayers>;
+
+        i[1] = $u-1#10;
+
+        $u0 = new android.graphics.drawable.LayerDrawable;
+
+        i = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.drawable.Drawable[] mLayers>;
+
+        specialinvoke $u0.<android.graphics.drawable.LayerDrawable: void <init>(android.graphics.drawable.Drawable[])>(i);
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.drawable.LayerDrawable mLayer> = $u0;
+
+        $u-1#10 = virtualinvoke $u0.<android.graphics.drawable.LayerDrawable: android.graphics.drawable.Drawable getDrawable(int)>(1);
+
+        $u-1#16 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mCrossfade>;
+
+        $u-1#16 = $u-1#16 * 255.0F;
+
+        $u-1#7 = (int) $u-1#16;
+
+        virtualinvoke $u-1#10.<android.graphics.drawable.Drawable: void setAlpha(int)>($u-1#7);
+
+        $u0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.drawable.LayerDrawable mLayer>;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatImageButton: void setImageDrawable(android.graphics.drawable.Drawable)>($u0);
+
+     label10:
+        return;
+    }
+
+    private void setOverlay(boolean)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        boolean $u1;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u1 := @parameter0: boolean;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: boolean mOverlay> = $u1;
+
+        return;
+    }
+
+    public void draw(android.graphics.Canvas)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        android.graphics.Canvas $u4;
+        boolean clip;
+        int $u1;
+        float $u1#4;
+        byte $u1#6;
+        android.graphics.Path $u1#7;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u4 := @parameter0: android.graphics.Canvas;
+
+        clip = 0;
+
+        $u1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u1 >= 21 goto label1;
+
+        $u1#4 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRound>;
+
+        $u1#6 = $u1#4 cmpl 0.0F;
+
+        if $u1#6 == 0 goto label1;
+
+        $u1#7 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.Path mPath>;
+
+        if $u1#7 == null goto label1;
+
+        clip = 1;
+
+        virtualinvoke $u4.<android.graphics.Canvas: int save()>();
+
+        $u1#7 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.Path mPath>;
+
+        virtualinvoke $u4.<android.graphics.Canvas: boolean clipPath(android.graphics.Path)>($u1#7);
+
+     label1:
+        specialinvoke this.<androidx.appcompat.widget.AppCompatImageButton: void draw(android.graphics.Canvas)>($u4);
+
+        if clip == 0 goto label2;
+
+        virtualinvoke $u4.<android.graphics.Canvas: void restore()>();
+
+     label2:
+        return;
+    }
+
+    public float getContrast()
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix $u0;
+        float ret0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix>;
+
+        ret0 = $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: float mContrast>;
+
+        return ret0;
+    }
+
+    public float getCrossfade()
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        float ret0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        ret0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mCrossfade>;
+
+        return ret0;
+    }
+
+    public float getRound()
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        float ret0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        ret0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRound>;
+
+        return ret0;
+    }
+
+    public float getRoundPercent()
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        float ret0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        ret0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRoundPercent>;
+
+        return ret0;
+    }
+
+    public float getSaturation()
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix $u0;
+        float ret0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix>;
+
+        ret0 = $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: float mSaturation>;
+
+        return ret0;
+    }
+
+    public float getWarmth()
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix $u0;
+        float ret0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix>;
+
+        ret0 = $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: float mWarmth>;
+
+        return ret0;
+    }
+
+    public void setBrightness(float)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        float $u2;
+        androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix $u0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u2 := @parameter0: float;
+
+        $u0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix>;
+
+        $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: float mBrightness> = $u2;
+
+        $u0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: void updateMatrix(android.widget.ImageView)>(this);
+
+        return;
+    }
+
+    public void setContrast(float)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        float $u2;
+        androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix $u0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u2 := @parameter0: float;
+
+        $u0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix>;
+
+        $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: float mContrast> = $u2;
+
+        $u0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: void updateMatrix(android.widget.ImageView)>(this);
+
+        return;
+    }
+
+    public void setCrossfade(float)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        float $u5;
+        android.graphics.drawable.Drawable[] $u0;
+        boolean $u0#2;
+        android.graphics.drawable.LayerDrawable $u0#4;
+        android.graphics.drawable.Drawable $u-1;
+        int $u2;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u5 := @parameter0: float;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mCrossfade> = $u5;
+
+        $u0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.drawable.Drawable[] mLayers>;
+
+        if $u0 == null goto label2;
+
+        $u0#2 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: boolean mOverlay>;
+
+        if $u0#2 != 0 goto label1;
+
+        $u0#4 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.drawable.LayerDrawable mLayer>;
+
+        $u-1 = virtualinvoke $u0#4.<android.graphics.drawable.LayerDrawable: android.graphics.drawable.Drawable getDrawable(int)>(0);
+
+        $u5 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mCrossfade>;
+
+        $u5 = 1.0F - $u5;
+
+        $u5 = $u5 * 255.0F;
+
+        $u2 = (int) $u5;
+
+        virtualinvoke $u-1.<android.graphics.drawable.Drawable: void setAlpha(int)>($u2);
+
+     label1:
+        $u0#4 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.drawable.LayerDrawable mLayer>;
+
+        $u-1 = virtualinvoke $u0#4.<android.graphics.drawable.LayerDrawable: android.graphics.drawable.Drawable getDrawable(int)>(1);
+
+        $u5 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mCrossfade>;
+
+        $u5 = $u5 * 255.0F;
+
+        $u2 = (int) $u5;
+
+        virtualinvoke $u-1.<android.graphics.drawable.Drawable: void setAlpha(int)>($u2);
+
+        $u0#4 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.drawable.LayerDrawable mLayer>;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatImageButton: void setImageDrawable(android.graphics.drawable.Drawable)>($u0#4);
+
+     label2:
+        return;
+    }
+
+    public void setRound(float)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        float $u9, tmp;
+        boolean $u-1;
+        byte tmp#8;
+        android.graphics.Path h;
+        android.graphics.RectF h#14;
+        int h#16, $u-1#21;
+        android.view.ViewOutlineProvider h#17;
+        androidx.constraintlayout.utils.widget.ImageFilterButton$2 h#18;
+        android.graphics.Path$Direction $u7;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u9 := @parameter0: float;
+
+        $u-1 = staticinvoke <java.lang.Float: boolean isNaN(float)>($u9);
+
+        if $u-1 == 0 goto label01;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRound> = $u9;
+
+        $u9 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRoundPercent>;
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRoundPercent> = -1.0F;
+
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setRoundPercent(float)>($u9);
+
+        return;
+
+     label01:
+        tmp = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRound>;
+
+        tmp#8 = tmp cmpl $u9;
+
+        if tmp#8 == 0 goto label02;
+
+        $u-1 = 1;
+
+        goto label03;
+
+     label02:
+        $u-1 = 0;
+
+     label03:
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRound> = $u9;
+
+        tmp#8 = $u9 cmpl 0.0F;
+
+        if tmp#8 == 0 goto label08;
+
+        h = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.Path mPath>;
+
+        if h != null goto label04;
+
+        h = new android.graphics.Path;
+
+        specialinvoke h.<android.graphics.Path: void <init>()>();
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.Path mPath> = h;
+
+     label04:
+        h#14 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.RectF mRect>;
+
+        if h#14 != null goto label05;
+
+        h#14 = new android.graphics.RectF;
+
+        specialinvoke h#14.<android.graphics.RectF: void <init>()>();
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.RectF mRect> = h#14;
+
+     label05:
+        h#16 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if h#16 < 21 goto label07;
+
+        h#17 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.view.ViewOutlineProvider mViewOutlineProvider>;
+
+        if h#17 != null goto label06;
+
+        h#18 = new androidx.constraintlayout.utils.widget.ImageFilterButton$2;
+
+        specialinvoke h#18.<androidx.constraintlayout.utils.widget.ImageFilterButton$2: void <init>(androidx.constraintlayout.utils.widget.ImageFilterButton)>(this);
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.view.ViewOutlineProvider mViewOutlineProvider> = h#18;
+
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setOutlineProvider(android.view.ViewOutlineProvider)>(h#18);
+
+     label06:
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setClipToOutline(boolean)>(1);
+
+     label07:
+        h#16 = virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: int getWidth()>();
+
+        $u-1#21 = virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: int getHeight()>();
+
+        h#14 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.RectF mRect>;
+
+        $u9 = (float) h#16;
+
+        tmp = (float) $u-1#21;
+
+        virtualinvoke h#14.<android.graphics.RectF: void set(float,float,float,float)>(0.0F, 0.0F, $u9, tmp);
+
+        h = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.Path mPath>;
+
+        virtualinvoke h.<android.graphics.Path: void reset()>();
+
+        h = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.Path mPath>;
+
+        h#14 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.RectF mRect>;
+
+        $u9 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRound>;
+
+        $u7 = <android.graphics.Path$Direction: android.graphics.Path$Direction CW>;
+
+        virtualinvoke h.<android.graphics.Path: void addRoundRect(android.graphics.RectF,float,float,android.graphics.Path$Direction)>(h#14, $u9, $u9, $u7);
+
+        goto label09;
+
+     label08:
+        h#16 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if h#16 < 21 goto label09;
+
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setClipToOutline(boolean)>(0);
+
+     label09:
+        if $u-1 == 0 goto label10;
+
+        h#16 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if h#16 < 21 goto label10;
+
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void invalidateOutline()>();
+
+     label10:
+        return;
+    }
+
+    public void setRoundPercent(float)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        float $u10, change, $u7;
+        byte change#4;
+        boolean change#5;
+        android.graphics.Path h;
+        android.graphics.RectF h#10;
+        int h#12, $u-1, $u-1#19;
+        android.view.ViewOutlineProvider h#13;
+        androidx.constraintlayout.utils.widget.ImageFilterButton$1 h#14;
+        android.graphics.Path$Direction $u7#31;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u10 := @parameter0: float;
+
+        change = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRoundPercent>;
+
+        change#4 = change cmpl $u10;
+
+        if change#4 == 0 goto label1;
+
+        change#5 = 1;
+
+        goto label2;
+
+     label1:
+        change#5 = 0;
+
+     label2:
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRoundPercent> = $u10;
+
+        change#4 = $u10 cmpl 0.0F;
+
+        if change#4 == 0 goto label7;
+
+        h = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.Path mPath>;
+
+        if h != null goto label3;
+
+        h = new android.graphics.Path;
+
+        specialinvoke h.<android.graphics.Path: void <init>()>();
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.Path mPath> = h;
+
+     label3:
+        h#10 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.RectF mRect>;
+
+        if h#10 != null goto label4;
+
+        h#10 = new android.graphics.RectF;
+
+        specialinvoke h#10.<android.graphics.RectF: void <init>()>();
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.RectF mRect> = h#10;
+
+     label4:
+        h#12 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if h#12 < 21 goto label6;
+
+        h#13 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.view.ViewOutlineProvider mViewOutlineProvider>;
+
+        if h#13 != null goto label5;
+
+        h#14 = new androidx.constraintlayout.utils.widget.ImageFilterButton$1;
+
+        specialinvoke h#14.<androidx.constraintlayout.utils.widget.ImageFilterButton$1: void <init>(androidx.constraintlayout.utils.widget.ImageFilterButton)>(this);
+
+        this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.view.ViewOutlineProvider mViewOutlineProvider> = h#14;
+
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setOutlineProvider(android.view.ViewOutlineProvider)>(h#14);
+
+     label5:
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setClipToOutline(boolean)>(1);
+
+     label6:
+        h#12 = virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: int getWidth()>();
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: int getHeight()>();
+
+        $u-1#19 = staticinvoke <java.lang.Math: int min(int,int)>(h#12, $u-1);
+
+        $u10 = (float) $u-1#19;
+
+        change = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: float mRoundPercent>;
+
+        $u10 = $u10 * change;
+
+        change = $u10 / 2.0F;
+
+        h#10 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.RectF mRect>;
+
+        $u7 = (float) h#12;
+
+        $u10 = (float) $u-1;
+
+        virtualinvoke h#10.<android.graphics.RectF: void set(float,float,float,float)>(0.0F, 0.0F, $u7, $u10);
+
+        h = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.Path mPath>;
+
+        virtualinvoke h.<android.graphics.Path: void reset()>();
+
+        h = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.Path mPath>;
+
+        h#10 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: android.graphics.RectF mRect>;
+
+        $u7#31 = <android.graphics.Path$Direction: android.graphics.Path$Direction CW>;
+
+        virtualinvoke h.<android.graphics.Path: void addRoundRect(android.graphics.RectF,float,float,android.graphics.Path$Direction)>(h#10, change, change, $u7#31);
+
+        goto label8;
+
+     label7:
+        h#12 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if h#12 < 21 goto label8;
+
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void setClipToOutline(boolean)>(0);
+
+     label8:
+        if change#5 == 0 goto label9;
+
+        h#12 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if h#12 < 21 goto label9;
+
+        virtualinvoke this.<androidx.constraintlayout.utils.widget.ImageFilterButton: void invalidateOutline()>();
+
+     label9:
+        return;
+    }
+
+    public void setSaturation(float)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        float $u2;
+        androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix $u0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u2 := @parameter0: float;
+
+        $u0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix>;
+
+        $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: float mSaturation> = $u2;
+
+        $u0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: void updateMatrix(android.widget.ImageView)>(this);
+
+        return;
+    }
+
+    public void setWarmth(float)
+    {
+        androidx.constraintlayout.utils.widget.ImageFilterButton this;
+        float $u2;
+        androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix $u0;
+
+        this := @this: androidx.constraintlayout.utils.widget.ImageFilterButton;
+
+        $u2 := @parameter0: float;
+
+        $u0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix>;
+
+        $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: float mWarmth> = $u2;
+
+        $u0 = this.<androidx.constraintlayout.utils.widget.ImageFilterButton: androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix mImageMatrix>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.utils.widget.ImageFilterView$ImageMatrix: void updateMatrix(android.widget.ImageView)>(this);
+
+        return;
+    }
+}

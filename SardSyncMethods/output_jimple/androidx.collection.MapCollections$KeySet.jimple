@@ -1,0 +1,324 @@
+final class androidx.collection.MapCollections$KeySet extends java.lang.Object implements java.util.Set
+{
+    final androidx.collection.MapCollections this$0;
+
+    void <init>(androidx.collection.MapCollections)
+    {
+        androidx.collection.MapCollections$KeySet this;
+        androidx.collection.MapCollections $u1;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        $u1 := @parameter0: androidx.collection.MapCollections;
+
+        this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean add(java.lang.Object)
+    {
+        androidx.collection.MapCollections$KeySet this;
+        java.lang.Object object;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        object := @parameter0: java.lang.Object;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public boolean addAll(java.util.Collection)
+    {
+        androidx.collection.MapCollections$KeySet this;
+        java.util.Collection collection;
+        java.lang.UnsupportedOperationException $u0;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        collection := @parameter0: java.util.Collection;
+
+        $u0 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $u0.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $u0;
+    }
+
+    public void clear()
+    {
+        androidx.collection.MapCollections$KeySet this;
+        androidx.collection.MapCollections $u0;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        $u0 = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        virtualinvoke $u0.<androidx.collection.MapCollections: void colClear()>();
+
+        return;
+    }
+
+    public boolean contains(java.lang.Object)
+    {
+        androidx.collection.MapCollections$KeySet this;
+        java.lang.Object $u2;
+        int $u-1;
+        androidx.collection.MapCollections $u0;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        $u0 = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.collection.MapCollections: int colIndexOfKey(java.lang.Object)>($u2);
+
+        if $u-1 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean containsAll(java.util.Collection)
+    {
+        androidx.collection.MapCollections$KeySet this;
+        java.util.Collection collection;
+        androidx.collection.MapCollections $u0;
+        java.util.Map $u-1;
+        boolean $u-1#4;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        collection := @parameter0: java.util.Collection;
+
+        $u0 = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.collection.MapCollections: java.util.Map colGetMap()>();
+
+        $u-1#4 = staticinvoke <androidx.collection.MapCollections: boolean containsAllHelper(java.util.Map,java.util.Collection)>($u-1, collection);
+
+        return $u-1#4;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.collection.MapCollections$KeySet this;
+        java.lang.Object $u2;
+        boolean $u-1;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        $u-1 = staticinvoke <androidx.collection.MapCollections: boolean equalsSetHelper(java.util.Set,java.lang.Object)>(this, $u2);
+
+        return $u-1;
+    }
+
+    public int hashCode()
+    {
+        androidx.collection.MapCollections$KeySet this;
+        int result, $u-1, $u3;
+        androidx.collection.MapCollections i;
+        java.lang.Object $u-1#8;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        result = 0;
+
+        i = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke i.<androidx.collection.MapCollections: int colGetSize()>();
+
+        $u-1 = $u-1 + -1;
+
+     label1:
+        if $u-1 < 0 goto label4;
+
+        i = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        $u3 = 0;
+
+        $u-1#8 = virtualinvoke i.<androidx.collection.MapCollections: java.lang.Object colGetEntry(int,int)>($u-1, 0);
+
+        if $u-1#8 != null goto label2;
+
+        goto label3;
+
+     label2:
+        $u3 = virtualinvoke $u-1#8.<java.lang.Object: int hashCode()>();
+
+     label3:
+        result = result + $u3;
+
+        $u-1 = $u-1 + -1;
+
+        goto label1;
+
+     label4:
+        return result;
+    }
+
+    public boolean isEmpty()
+    {
+        androidx.collection.MapCollections$KeySet this;
+        int $u-1;
+        androidx.collection.MapCollections $u0;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        $u0 = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.collection.MapCollections: int colGetSize()>();
+
+        if $u-1 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public java.util.Iterator iterator()
+    {
+        androidx.collection.MapCollections$KeySet this;
+        androidx.collection.MapCollections$ArrayIterator $u0;
+        androidx.collection.MapCollections $u1;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        $u0 = new androidx.collection.MapCollections$ArrayIterator;
+
+        $u1 = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        specialinvoke $u0.<androidx.collection.MapCollections$ArrayIterator: void <init>(androidx.collection.MapCollections,int)>($u1, 0);
+
+        return $u0;
+    }
+
+    public boolean remove(java.lang.Object)
+    {
+        androidx.collection.MapCollections$KeySet this;
+        java.lang.Object $u3;
+        int $u-1;
+        androidx.collection.MapCollections index;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        $u3 := @parameter0: java.lang.Object;
+
+        index = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke index.<androidx.collection.MapCollections: int colIndexOfKey(java.lang.Object)>($u3);
+
+        if $u-1 < 0 goto label1;
+
+        index = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        virtualinvoke index.<androidx.collection.MapCollections: void colRemoveAt(int)>($u-1);
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean removeAll(java.util.Collection)
+    {
+        androidx.collection.MapCollections$KeySet this;
+        java.util.Collection collection;
+        androidx.collection.MapCollections $u0;
+        java.util.Map $u-1;
+        boolean $u-1#4;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        collection := @parameter0: java.util.Collection;
+
+        $u0 = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.collection.MapCollections: java.util.Map colGetMap()>();
+
+        $u-1#4 = staticinvoke <androidx.collection.MapCollections: boolean removeAllHelper(java.util.Map,java.util.Collection)>($u-1, collection);
+
+        return $u-1#4;
+    }
+
+    public boolean retainAll(java.util.Collection)
+    {
+        androidx.collection.MapCollections$KeySet this;
+        java.util.Collection collection;
+        androidx.collection.MapCollections $u0;
+        java.util.Map $u-1;
+        boolean $u-1#4;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        collection := @parameter0: java.util.Collection;
+
+        $u0 = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.collection.MapCollections: java.util.Map colGetMap()>();
+
+        $u-1#4 = staticinvoke <androidx.collection.MapCollections: boolean retainAllHelper(java.util.Map,java.util.Collection)>($u-1, collection);
+
+        return $u-1#4;
+    }
+
+    public int size()
+    {
+        androidx.collection.MapCollections$KeySet this;
+        int $u-1;
+        androidx.collection.MapCollections $u0;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        $u0 = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.collection.MapCollections: int colGetSize()>();
+
+        return $u-1;
+    }
+
+    public java.lang.Object[] toArray()
+    {
+        androidx.collection.MapCollections$KeySet this;
+        java.lang.Object[] $u-1;
+        androidx.collection.MapCollections $u0;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        $u0 = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        $u-1 = virtualinvoke $u0.<androidx.collection.MapCollections: java.lang.Object[] toArrayHelper(int)>(0);
+
+        return $u-1;
+    }
+
+    public java.lang.Object[] toArray(java.lang.Object[])
+    {
+        androidx.collection.MapCollections$KeySet this;
+        java.lang.Object[] array;
+        androidx.collection.MapCollections $u0;
+
+        this := @this: androidx.collection.MapCollections$KeySet;
+
+        array := @parameter0: java.lang.Object[];
+
+        $u0 = this.<androidx.collection.MapCollections$KeySet: androidx.collection.MapCollections this$0>;
+
+        array = virtualinvoke $u0.<androidx.collection.MapCollections: java.lang.Object[] toArrayHelper(java.lang.Object[],int)>(array, 0);
+
+        return array;
+    }
+}

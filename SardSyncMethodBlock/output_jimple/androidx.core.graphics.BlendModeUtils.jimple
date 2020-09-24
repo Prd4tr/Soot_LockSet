@@ -1,0 +1,349 @@
+class androidx.core.graphics.BlendModeUtils extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.graphics.BlendModeUtils this;
+
+        this := @this: androidx.core.graphics.BlendModeUtils;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static android.graphics.BlendMode obtainBlendModeFromCompat(androidx.core.graphics.BlendModeCompat)
+    {
+        androidx.core.graphics.BlendModeCompat $u2;
+        int $u-1;
+        int[] $u0;
+        android.graphics.BlendMode ret0;
+
+        $u2 := @parameter0: androidx.core.graphics.BlendModeCompat;
+
+        $u0 = <androidx.core.graphics.BlendModeUtils$1: int[] $SwitchMap$androidx$core$graphics$BlendModeCompat>;
+
+        $u-1 = virtualinvoke $u2.<androidx.core.graphics.BlendModeCompat: int ordinal()>();
+
+        $u-1 = $u0[$u-1];
+
+        lookupswitch($u-1)
+        {
+            case 1: goto label30;
+            case 2: goto label29;
+            case 3: goto label28;
+            case 4: goto label27;
+            case 5: goto label26;
+            case 6: goto label25;
+            case 7: goto label24;
+            case 8: goto label23;
+            case 9: goto label22;
+            case 10: goto label21;
+            case 11: goto label20;
+            case 12: goto label19;
+            case 13: goto label18;
+            case 14: goto label17;
+            case 15: goto label16;
+            case 16: goto label15;
+            case 17: goto label14;
+            case 18: goto label13;
+            case 19: goto label12;
+            case 20: goto label11;
+            case 21: goto label10;
+            case 22: goto label09;
+            case 23: goto label08;
+            case 24: goto label07;
+            case 25: goto label06;
+            case 26: goto label05;
+            case 27: goto label04;
+            case 28: goto label03;
+            case 29: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        return null;
+
+     label02:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode LUMINOSITY>;
+
+        return ret0;
+
+     label03:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode COLOR>;
+
+        return ret0;
+
+     label04:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode SATURATION>;
+
+        return ret0;
+
+     label05:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode HUE>;
+
+        return ret0;
+
+     label06:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode MULTIPLY>;
+
+        return ret0;
+
+     label07:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode EXCLUSION>;
+
+        return ret0;
+
+     label08:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode DIFFERENCE>;
+
+        return ret0;
+
+     label09:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode SOFT_LIGHT>;
+
+        return ret0;
+
+     label10:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode HARD_LIGHT>;
+
+        return ret0;
+
+     label11:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode COLOR_BURN>;
+
+        return ret0;
+
+     label12:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode COLOR_DODGE>;
+
+        return ret0;
+
+     label13:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode LIGHTEN>;
+
+        return ret0;
+
+     label14:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode DARKEN>;
+
+        return ret0;
+
+     label15:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode OVERLAY>;
+
+        return ret0;
+
+     label16:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode SCREEN>;
+
+        return ret0;
+
+     label17:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode MODULATE>;
+
+        return ret0;
+
+     label18:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode PLUS>;
+
+        return ret0;
+
+     label19:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode XOR>;
+
+        return ret0;
+
+     label20:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode DST_ATOP>;
+
+        return ret0;
+
+     label21:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode SRC_ATOP>;
+
+        return ret0;
+
+     label22:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode DST_OUT>;
+
+        return ret0;
+
+     label23:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode SRC_OUT>;
+
+        return ret0;
+
+     label24:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode DST_IN>;
+
+        return ret0;
+
+     label25:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode SRC_IN>;
+
+        return ret0;
+
+     label26:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode DST_OVER>;
+
+        return ret0;
+
+     label27:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode SRC_OVER>;
+
+        return ret0;
+
+     label28:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode DST>;
+
+        return ret0;
+
+     label29:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode SRC>;
+
+        return ret0;
+
+     label30:
+        ret0 = <android.graphics.BlendMode: android.graphics.BlendMode CLEAR>;
+
+        return ret0;
+    }
+
+    static android.graphics.PorterDuff$Mode obtainPorterDuffFromCompat(androidx.core.graphics.BlendModeCompat)
+    {
+        androidx.core.graphics.BlendModeCompat $u3;
+        int $u-1;
+        int[] $u1;
+        android.graphics.PorterDuff$Mode ret0;
+
+        $u3 := @parameter0: androidx.core.graphics.BlendModeCompat;
+
+        if $u3 == null goto label20;
+
+        $u1 = <androidx.core.graphics.BlendModeUtils$1: int[] $SwitchMap$androidx$core$graphics$BlendModeCompat>;
+
+        $u-1 = virtualinvoke $u3.<androidx.core.graphics.BlendModeCompat: int ordinal()>();
+
+        $u-1 = $u1[$u-1];
+
+        lookupswitch($u-1)
+        {
+            case 1: goto label19;
+            case 2: goto label18;
+            case 3: goto label17;
+            case 4: goto label16;
+            case 5: goto label15;
+            case 6: goto label14;
+            case 7: goto label13;
+            case 8: goto label12;
+            case 9: goto label11;
+            case 10: goto label10;
+            case 11: goto label09;
+            case 12: goto label08;
+            case 13: goto label07;
+            case 14: goto label06;
+            case 15: goto label05;
+            case 16: goto label04;
+            case 17: goto label03;
+            case 18: goto label02;
+            default: goto label01;
+        };
+
+     label01:
+        return null;
+
+     label02:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode LIGHTEN>;
+
+        return ret0;
+
+     label03:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode DARKEN>;
+
+        return ret0;
+
+     label04:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode OVERLAY>;
+
+        return ret0;
+
+     label05:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode SCREEN>;
+
+        return ret0;
+
+     label06:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode MULTIPLY>;
+
+        return ret0;
+
+     label07:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode ADD>;
+
+        return ret0;
+
+     label08:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode XOR>;
+
+        return ret0;
+
+     label09:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode DST_ATOP>;
+
+        return ret0;
+
+     label10:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode SRC_ATOP>;
+
+        return ret0;
+
+     label11:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode DST_OUT>;
+
+        return ret0;
+
+     label12:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode SRC_OUT>;
+
+        return ret0;
+
+     label13:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode DST_IN>;
+
+        return ret0;
+
+     label14:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode SRC_IN>;
+
+        return ret0;
+
+     label15:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode DST_OVER>;
+
+        return ret0;
+
+     label16:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode SRC_OVER>;
+
+        return ret0;
+
+     label17:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode DST>;
+
+        return ret0;
+
+     label18:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode SRC>;
+
+        return ret0;
+
+     label19:
+        ret0 = <android.graphics.PorterDuff$Mode: android.graphics.PorterDuff$Mode CLEAR>;
+
+        return ret0;
+
+     label20:
+        return null;
+    }
+}

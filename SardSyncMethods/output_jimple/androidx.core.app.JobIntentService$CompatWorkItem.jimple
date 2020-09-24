@@ -1,0 +1,61 @@
+final class androidx.core.app.JobIntentService$CompatWorkItem extends java.lang.Object implements androidx.core.app.JobIntentService$GenericWorkItem
+{
+    final android.content.Intent mIntent;
+    final int mStartId;
+    final androidx.core.app.JobIntentService this$0;
+
+    void <init>(androidx.core.app.JobIntentService, android.content.Intent, int)
+    {
+        androidx.core.app.JobIntentService$CompatWorkItem this;
+        androidx.core.app.JobIntentService $u1;
+        android.content.Intent $u2;
+        int $u3;
+
+        this := @this: androidx.core.app.JobIntentService$CompatWorkItem;
+
+        $u1 := @parameter0: androidx.core.app.JobIntentService;
+
+        $u2 := @parameter1: android.content.Intent;
+
+        $u3 := @parameter2: int;
+
+        this.<androidx.core.app.JobIntentService$CompatWorkItem: androidx.core.app.JobIntentService this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.app.JobIntentService$CompatWorkItem: android.content.Intent mIntent> = $u2;
+
+        this.<androidx.core.app.JobIntentService$CompatWorkItem: int mStartId> = $u3;
+
+        return;
+    }
+
+    public void complete()
+    {
+        androidx.core.app.JobIntentService$CompatWorkItem this;
+        androidx.core.app.JobIntentService $u0;
+        int $u1;
+
+        this := @this: androidx.core.app.JobIntentService$CompatWorkItem;
+
+        $u0 = this.<androidx.core.app.JobIntentService$CompatWorkItem: androidx.core.app.JobIntentService this$0>;
+
+        $u1 = this.<androidx.core.app.JobIntentService$CompatWorkItem: int mStartId>;
+
+        virtualinvoke $u0.<androidx.core.app.JobIntentService: void stopSelf(int)>($u1);
+
+        return;
+    }
+
+    public android.content.Intent getIntent()
+    {
+        androidx.core.app.JobIntentService$CompatWorkItem this;
+        android.content.Intent ret0;
+
+        this := @this: androidx.core.app.JobIntentService$CompatWorkItem;
+
+        ret0 = this.<androidx.core.app.JobIntentService$CompatWorkItem: android.content.Intent mIntent>;
+
+        return ret0;
+    }
+}

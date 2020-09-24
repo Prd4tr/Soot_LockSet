@@ -1,0 +1,408 @@
+public class androidx.vectordrawable.graphics.drawable.AnimationUtilsCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.vectordrawable.graphics.drawable.AnimationUtilsCompat this;
+
+        this := @this: androidx.vectordrawable.graphics.drawable.AnimationUtilsCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static android.view.animation.Interpolator createInterpolatorFromXml(android.content.Context, android.content.res.Resources, android.content.res.Resources$Theme, org.xmlpull.v1.XmlPullParser) throws org.xmlpull.v1.XmlPullParserException, java.io.IOException
+    {
+        android.content.Context $u8;
+        android.content.res.Resources $u9;
+        android.content.res.Resources$Theme $u10;
+        org.xmlpull.v1.XmlPullParser $u11;
+        android.view.animation.Interpolator interpolator;
+        int $u-1, $u-1#3, $u-1#6;
+        android.util.AttributeSet $u-1#10;
+        java.lang.String $u-1#12;
+        boolean $u-1#15;
+        android.view.animation.LinearInterpolator $u5;
+        android.view.animation.AccelerateInterpolator $u5#21;
+        android.view.animation.DecelerateInterpolator $u5#25;
+        android.view.animation.AccelerateDecelerateInterpolator $u5#29;
+        android.view.animation.CycleInterpolator $u5#33;
+        android.view.animation.AnticipateInterpolator $u5#37;
+        android.view.animation.OvershootInterpolator $u5#41;
+        android.view.animation.AnticipateOvershootInterpolator $u5#45;
+        android.view.animation.BounceInterpolator $u5#49;
+        androidx.vectordrawable.graphics.drawable.PathInterpolatorCompat $u5#53;
+        java.lang.RuntimeException $u5#54;
+        java.lang.StringBuilder $u6;
+
+        $u8 := @parameter0: android.content.Context;
+
+        $u9 := @parameter1: android.content.res.Resources;
+
+        $u10 := @parameter2: android.content.res.Resources$Theme;
+
+        $u11 := @parameter3: org.xmlpull.v1.XmlPullParser;
+
+        interpolator = null;
+
+        $u-1 = interfaceinvoke $u11.<org.xmlpull.v1.XmlPullParser: int getDepth()>();
+
+     label01:
+        $u-1#3 = interfaceinvoke $u11.<org.xmlpull.v1.XmlPullParser: int next()>();
+
+        if $u-1#3 != 3 goto label02;
+
+        $u-1#6 = interfaceinvoke $u11.<org.xmlpull.v1.XmlPullParser: int getDepth()>();
+
+        if $u-1#6 <= $u-1 goto label14;
+
+     label02:
+        if $u-1#3 == 1 goto label14;
+
+        if $u-1#3 == 2 goto label03;
+
+        goto label01;
+
+     label03:
+        $u-1#10 = staticinvoke <android.util.Xml: android.util.AttributeSet asAttributeSet(org.xmlpull.v1.XmlPullParser)>($u11);
+
+        $u-1#12 = interfaceinvoke $u11.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+        $u-1#15 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("linearInterpolator");
+
+        if $u-1#15 == 0 goto label04;
+
+        $u5 = new android.view.animation.LinearInterpolator;
+
+        specialinvoke $u5.<android.view.animation.LinearInterpolator: void <init>()>();
+
+        interpolator = $u5;
+
+        goto label01;
+
+     label04:
+        $u-1#15 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("accelerateInterpolator");
+
+        if $u-1#15 == 0 goto label05;
+
+        $u5#21 = new android.view.animation.AccelerateInterpolator;
+
+        specialinvoke $u5#21.<android.view.animation.AccelerateInterpolator: void <init>(android.content.Context,android.util.AttributeSet)>($u8, $u-1#10);
+
+        interpolator = $u5#21;
+
+        goto label01;
+
+     label05:
+        $u-1#15 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("decelerateInterpolator");
+
+        if $u-1#15 == 0 goto label06;
+
+        $u5#25 = new android.view.animation.DecelerateInterpolator;
+
+        specialinvoke $u5#25.<android.view.animation.DecelerateInterpolator: void <init>(android.content.Context,android.util.AttributeSet)>($u8, $u-1#10);
+
+        interpolator = $u5#25;
+
+        goto label01;
+
+     label06:
+        $u-1#15 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("accelerateDecelerateInterpolator");
+
+        if $u-1#15 == 0 goto label07;
+
+        $u5#29 = new android.view.animation.AccelerateDecelerateInterpolator;
+
+        specialinvoke $u5#29.<android.view.animation.AccelerateDecelerateInterpolator: void <init>()>();
+
+        interpolator = $u5#29;
+
+        goto label01;
+
+     label07:
+        $u-1#15 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("cycleInterpolator");
+
+        if $u-1#15 == 0 goto label08;
+
+        $u5#33 = new android.view.animation.CycleInterpolator;
+
+        specialinvoke $u5#33.<android.view.animation.CycleInterpolator: void <init>(android.content.Context,android.util.AttributeSet)>($u8, $u-1#10);
+
+        interpolator = $u5#33;
+
+        goto label01;
+
+     label08:
+        $u-1#15 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("anticipateInterpolator");
+
+        if $u-1#15 == 0 goto label09;
+
+        $u5#37 = new android.view.animation.AnticipateInterpolator;
+
+        specialinvoke $u5#37.<android.view.animation.AnticipateInterpolator: void <init>(android.content.Context,android.util.AttributeSet)>($u8, $u-1#10);
+
+        interpolator = $u5#37;
+
+        goto label01;
+
+     label09:
+        $u-1#15 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("overshootInterpolator");
+
+        if $u-1#15 == 0 goto label10;
+
+        $u5#41 = new android.view.animation.OvershootInterpolator;
+
+        specialinvoke $u5#41.<android.view.animation.OvershootInterpolator: void <init>(android.content.Context,android.util.AttributeSet)>($u8, $u-1#10);
+
+        interpolator = $u5#41;
+
+        goto label01;
+
+     label10:
+        $u-1#15 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("anticipateOvershootInterpolator");
+
+        if $u-1#15 == 0 goto label11;
+
+        $u5#45 = new android.view.animation.AnticipateOvershootInterpolator;
+
+        specialinvoke $u5#45.<android.view.animation.AnticipateOvershootInterpolator: void <init>(android.content.Context,android.util.AttributeSet)>($u8, $u-1#10);
+
+        interpolator = $u5#45;
+
+        goto label01;
+
+     label11:
+        $u-1#15 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("bounceInterpolator");
+
+        if $u-1#15 == 0 goto label12;
+
+        $u5#49 = new android.view.animation.BounceInterpolator;
+
+        specialinvoke $u5#49.<android.view.animation.BounceInterpolator: void <init>()>();
+
+        interpolator = $u5#49;
+
+        goto label01;
+
+     label12:
+        $u-1#15 = virtualinvoke $u-1#12.<java.lang.String: boolean equals(java.lang.Object)>("pathInterpolator");
+
+        if $u-1#15 == 0 goto label13;
+
+        $u5#53 = new androidx.vectordrawable.graphics.drawable.PathInterpolatorCompat;
+
+        specialinvoke $u5#53.<androidx.vectordrawable.graphics.drawable.PathInterpolatorCompat: void <init>(android.content.Context,android.util.AttributeSet,org.xmlpull.v1.XmlPullParser)>($u8, $u-1#10, $u11);
+
+        interpolator = $u5#53;
+
+        goto label01;
+
+     label13:
+        $u5#54 = new java.lang.RuntimeException;
+
+        $u6 = new java.lang.StringBuilder;
+
+        specialinvoke $u6.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unknown interpolator name: ");
+
+        $u-1#12 = interfaceinvoke $u11.<org.xmlpull.v1.XmlPullParser: java.lang.String getName()>();
+
+        virtualinvoke $u6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#12);
+
+        $u-1#12 = virtualinvoke $u6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u5#54.<java.lang.RuntimeException: void <init>(java.lang.String)>($u-1#12);
+
+        throw $u5#54;
+
+     label14:
+        return interpolator;
+    }
+
+    public static android.view.animation.Interpolator loadInterpolator(android.content.Context, int) throws android.content.res.Resources$NotFoundException
+    {
+        android.content.Context $u5;
+        int $u6, parser;
+        android.view.animation.Interpolator $u-1;
+        android.content.res.XmlResourceParser parser#5, $u-1#18;
+        androidx.interpolator.view.animation.FastOutLinearInInterpolator ex;
+        java.lang.Throwable ex#9;
+        java.io.IOException ex#10;
+        org.xmlpull.v1.XmlPullParserException ex#11;
+        androidx.interpolator.view.animation.FastOutSlowInInterpolator ex#13;
+        androidx.interpolator.view.animation.LinearOutSlowInInterpolator ex#15;
+        android.content.res.Resources $u-1#16;
+        android.content.res.Resources$Theme $u-1#22;
+        android.content.res.Resources$NotFoundException $u3;
+        java.lang.StringBuilder $u4;
+        java.lang.String $u-1#28;
+
+        $u5 := @parameter0: android.content.Context;
+
+        $u6 := @parameter1: int;
+
+        parser = <android.os.Build$VERSION: int SDK_INT>;
+
+        if parser < 21 goto label01;
+
+        $u-1 = staticinvoke <android.view.animation.AnimationUtils: android.view.animation.Interpolator loadInterpolator(android.content.Context,int)>($u5, $u6);
+
+        return $u-1;
+
+     label01:
+        parser#5 = null;
+
+        if $u6 != 17563663 goto label08;
+
+     label02:
+        ex = new androidx.interpolator.view.animation.FastOutLinearInInterpolator;
+
+     label03:
+        specialinvoke ex.<androidx.interpolator.view.animation.FastOutLinearInInterpolator: void <init>()>();
+
+     label04:
+        goto label24;
+
+     label05:
+        ex#9 := @caughtexception;
+
+        goto label22;
+
+     label06:
+        ex#10 := @caughtexception;
+
+        goto label20;
+
+     label07:
+        ex#11 := @caughtexception;
+
+        goto label21;
+
+     label08:
+        if $u6 != 17563661 goto label12;
+
+     label09:
+        ex#13 = new androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+
+     label10:
+        specialinvoke ex#13.<androidx.interpolator.view.animation.FastOutSlowInInterpolator: void <init>()>();
+
+     label11:
+        goto label25;
+
+     label12:
+        if $u6 != 17563662 goto label16;
+
+     label13:
+        ex#15 = new androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
+
+     label14:
+        specialinvoke ex#15.<androidx.interpolator.view.animation.LinearOutSlowInInterpolator: void <init>()>();
+
+     label15:
+        goto label26;
+
+     label16:
+        $u-1#16 = virtualinvoke $u5.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#18 = virtualinvoke $u-1#16.<android.content.res.Resources: android.content.res.XmlResourceParser getAnimation(int)>($u6);
+
+     label17:
+        parser#5 = $u-1#18;
+
+     label18:
+        $u-1#16 = virtualinvoke $u5.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#22 = virtualinvoke $u5.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        $u-1 = staticinvoke <androidx.vectordrawable.graphics.drawable.AnimationUtilsCompat: android.view.animation.Interpolator createInterpolatorFromXml(android.content.Context,android.content.res.Resources,android.content.res.Resources$Theme,org.xmlpull.v1.XmlPullParser)>($u5, $u-1#16, $u-1#22, $u-1#18);
+
+     label19:
+        if $u-1#18 == null goto label27;
+
+        interfaceinvoke $u-1#18.<android.content.res.XmlResourceParser: void close()>();
+
+        return $u-1;
+
+     label20:
+        $u3 = new android.content.res.Resources$NotFoundException;
+
+        $u4 = new java.lang.StringBuilder;
+
+        specialinvoke $u4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can\'t load animation resource ID #0x");
+
+        $u-1#28 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($u6);
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#28);
+
+        $u-1#28 = virtualinvoke $u4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u3.<android.content.res.Resources$NotFoundException: void <init>(java.lang.String)>($u-1#28);
+
+        virtualinvoke $u3.<android.content.res.Resources$NotFoundException: java.lang.Throwable initCause(java.lang.Throwable)>(ex#10);
+
+        throw $u3;
+
+     label21:
+        $u3 = new android.content.res.Resources$NotFoundException;
+
+        $u4 = new java.lang.StringBuilder;
+
+        specialinvoke $u4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can\'t load animation resource ID #0x");
+
+        $u-1#28 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($u6);
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#28);
+
+        $u-1#28 = virtualinvoke $u4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u3.<android.content.res.Resources$NotFoundException: void <init>(java.lang.String)>($u-1#28);
+
+        virtualinvoke $u3.<android.content.res.Resources$NotFoundException: java.lang.Throwable initCause(java.lang.Throwable)>(ex#11);
+
+        throw $u3;
+
+     label22:
+        if parser#5 == null goto label23;
+
+        interfaceinvoke parser#5.<android.content.res.XmlResourceParser: void close()>();
+
+     label23:
+        throw ex#9;
+
+     label24:
+        return ex;
+
+     label25:
+        return ex#13;
+
+     label26:
+        return ex#15;
+
+     label27:
+        return $u-1;
+
+        catch org.xmlpull.v1.XmlPullParserException from label03 to label04 with label07;
+        catch java.io.IOException from label03 to label04 with label06;
+        catch java.lang.Throwable from label02 to label04 with label05;
+        catch org.xmlpull.v1.XmlPullParserException from label10 to label11 with label07;
+        catch java.io.IOException from label10 to label11 with label06;
+        catch java.lang.Throwable from label09 to label11 with label05;
+        catch org.xmlpull.v1.XmlPullParserException from label14 to label15 with label07;
+        catch java.io.IOException from label14 to label15 with label06;
+        catch java.lang.Throwable from label13 to label15 with label05;
+        catch org.xmlpull.v1.XmlPullParserException from label16 to label17 with label07;
+        catch org.xmlpull.v1.XmlPullParserException from label18 to label19 with label07;
+        catch java.io.IOException from label16 to label17 with label06;
+        catch java.io.IOException from label18 to label19 with label06;
+        catch java.lang.Throwable from label16 to label17 with label05;
+        catch java.lang.Throwable from label18 to label19 with label05;
+        catch java.lang.Throwable from label20 to label22 with label05;
+    }
+}

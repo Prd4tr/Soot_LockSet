@@ -1,0 +1,196 @@
+class androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate extends java.lang.Object implements androidx.appcompat.app.ActionBarDrawerToggle$Delegate
+{
+    private final android.app.Activity mActivity;
+    private androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo mSetIndicatorInfo;
+
+    void <init>(android.app.Activity)
+    {
+        androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate this;
+        android.app.Activity $u1;
+
+        this := @this: androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate;
+
+        $u1 := @parameter0: android.app.Activity;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate: android.app.Activity mActivity> = $u1;
+
+        return;
+    }
+
+    public android.content.Context getActionBarThemedContext()
+    {
+        androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate this;
+        android.app.Activity actionBar;
+        android.app.ActionBar $u-1;
+        android.content.Context $u-1#4;
+
+        this := @this: androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate;
+
+        actionBar = this.<androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate: android.app.Activity mActivity>;
+
+        $u-1 = virtualinvoke actionBar.<android.app.Activity: android.app.ActionBar getActionBar()>();
+
+        if $u-1 == null goto label1;
+
+        $u-1#4 = virtualinvoke $u-1.<android.app.ActionBar: android.content.Context getThemedContext()>();
+
+        return $u-1#4;
+
+     label1:
+        actionBar = this.<androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate: android.app.Activity mActivity>;
+
+        return actionBar;
+    }
+
+    public android.graphics.drawable.Drawable getThemeUpIndicator()
+    {
+        androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate this;
+        int a;
+        android.content.Context $u-1;
+        int[] $u2;
+        android.content.res.TypedArray $u-1#8;
+        android.graphics.drawable.Drawable $u-1#10;
+        android.app.Activity a#12;
+
+        this := @this: androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate;
+
+        a = <android.os.Build$VERSION: int SDK_INT>;
+
+        if a < 18 goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate: android.content.Context getActionBarThemedContext()>();
+
+        $u2 = newarray (int)[1];
+
+        $u2[0] = 16843531;
+
+        $u-1#8 = virtualinvoke $u-1.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[],int,int)>(null, $u2, 16843470, 0);
+
+        $u-1#10 = virtualinvoke $u-1#8.<android.content.res.TypedArray: android.graphics.drawable.Drawable getDrawable(int)>(0);
+
+        virtualinvoke $u-1#8.<android.content.res.TypedArray: void recycle()>();
+
+        return $u-1#10;
+
+     label1:
+        a#12 = this.<androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate: android.app.Activity mActivity>;
+
+        $u-1#10 = staticinvoke <androidx.appcompat.app.ActionBarDrawerToggleHoneycomb: android.graphics.drawable.Drawable getThemeUpIndicator(android.app.Activity)>(a#12);
+
+        return $u-1#10;
+    }
+
+    public boolean isNavigationVisible()
+    {
+        androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate this;
+        android.app.Activity actionBar;
+        android.app.ActionBar $u-1;
+        int $u-1#4;
+
+        this := @this: androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate;
+
+        actionBar = this.<androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate: android.app.Activity mActivity>;
+
+        $u-1 = virtualinvoke actionBar.<android.app.Activity: android.app.ActionBar getActionBar()>();
+
+        if $u-1 == null goto label1;
+
+        $u-1#4 = virtualinvoke $u-1.<android.app.ActionBar: int getDisplayOptions()>();
+
+        $u-1#4 = $u-1#4 & 4;
+
+        if $u-1#4 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void setActionBarDescription(int)
+    {
+        androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate this;
+        int $u3, actionBar;
+        android.app.Activity actionBar#3;
+        android.app.ActionBar $u-1;
+        androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo actionBar#6;
+
+        this := @this: androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate;
+
+        $u3 := @parameter0: int;
+
+        actionBar = <android.os.Build$VERSION: int SDK_INT>;
+
+        if actionBar < 18 goto label2;
+
+        actionBar#3 = this.<androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate: android.app.Activity mActivity>;
+
+        $u-1 = virtualinvoke actionBar#3.<android.app.Activity: android.app.ActionBar getActionBar()>();
+
+        if $u-1 == null goto label1;
+
+        virtualinvoke $u-1.<android.app.ActionBar: void setHomeActionContentDescription(int)>($u3);
+
+     label1:
+        return;
+
+     label2:
+        actionBar#6 = this.<androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate: androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo mSetIndicatorInfo>;
+
+        actionBar#3 = this.<androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate: android.app.Activity mActivity>;
+
+        actionBar#6 = staticinvoke <androidx.appcompat.app.ActionBarDrawerToggleHoneycomb: androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo setActionBarDescription(androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo,android.app.Activity,int)>(actionBar#6, actionBar#3, $u3);
+
+        this.<androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate: androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo mSetIndicatorInfo> = actionBar#6;
+
+        return;
+    }
+
+    public void setActionBarUpIndicator(android.graphics.drawable.Drawable, int)
+    {
+        androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate this;
+        android.graphics.drawable.Drawable $u4;
+        int $u5, $u1;
+        android.app.Activity actionBar;
+        android.app.ActionBar $u-1;
+        androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo $u-1#7;
+
+        this := @this: androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate;
+
+        $u4 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u5 := @parameter1: int;
+
+        actionBar = this.<androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate: android.app.Activity mActivity>;
+
+        $u-1 = virtualinvoke actionBar.<android.app.Activity: android.app.ActionBar getActionBar()>();
+
+        if $u-1 == null goto label2;
+
+        $u1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u1 < 18 goto label1;
+
+        virtualinvoke $u-1.<android.app.ActionBar: void setHomeAsUpIndicator(android.graphics.drawable.Drawable)>($u4);
+
+        virtualinvoke $u-1.<android.app.ActionBar: void setHomeActionContentDescription(int)>($u5);
+
+        return;
+
+     label1:
+        virtualinvoke $u-1.<android.app.ActionBar: void setDisplayShowHomeEnabled(boolean)>(1);
+
+        actionBar = this.<androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate: android.app.Activity mActivity>;
+
+        $u-1#7 = staticinvoke <androidx.appcompat.app.ActionBarDrawerToggleHoneycomb: androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo setActionBarUpIndicator(android.app.Activity,android.graphics.drawable.Drawable,int)>(actionBar, $u4, $u5);
+
+        this.<androidx.appcompat.app.ActionBarDrawerToggle$FrameworkActionBarDelegate: androidx.appcompat.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo mSetIndicatorInfo> = $u-1#7;
+
+        virtualinvoke $u-1.<android.app.ActionBar: void setDisplayShowHomeEnabled(boolean)>(0);
+
+     label2:
+        return;
+    }
+}

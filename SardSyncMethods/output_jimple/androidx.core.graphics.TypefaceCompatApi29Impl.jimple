@@ -1,0 +1,480 @@
+public class androidx.core.graphics.TypefaceCompatApi29Impl extends androidx.core.graphics.TypefaceCompatBaseImpl
+{
+
+    public void <init>()
+    {
+        androidx.core.graphics.TypefaceCompatApi29Impl this;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi29Impl;
+
+        specialinvoke this.<androidx.core.graphics.TypefaceCompatBaseImpl: void <init>()>();
+
+        return;
+    }
+
+    public android.graphics.Typeface createFromFontFamilyFilesResourceEntry(android.content.Context, androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry, android.content.res.Resources, int)
+    {
+        androidx.core.graphics.TypefaceCompatApi29Impl this;
+        android.content.Context $u10;
+        androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry $u11;
+        android.content.res.Resources $u12;
+        int $u13, $u2, $u4, $u-1#9;
+        androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry entry;
+        android.graphics.fonts.FontFamily$Builder familyBuilder, $u7#29;
+        androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry[] $u-1;
+        byte $u3, platformFont;
+        android.graphics.fonts.Font$Builder $u7;
+        boolean $u-1#15;
+        java.lang.String $u-1#23;
+        android.graphics.fonts.Font $u-1#27;
+        java.io.IOException platformFont#30;
+        android.graphics.fonts.FontStyle defaultStyle;
+        short $u2#34;
+        android.graphics.Typeface$CustomFallbackBuilder $u2#36;
+        android.graphics.fonts.FontFamily $u-1#37;
+        android.graphics.Typeface $u-1#41;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi29Impl;
+
+        $u10 := @parameter0: android.content.Context;
+
+        $u11 := @parameter1: androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry;
+
+        $u12 := @parameter2: android.content.res.Resources;
+
+        $u13 := @parameter3: int;
+
+        familyBuilder = null;
+
+        $u-1 = virtualinvoke $u11.<androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry: androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry[] getEntries()>();
+
+        $u2 = lengthof $u-1;
+
+        $u3 = 0;
+
+        $u4 = 0;
+
+     label01:
+        platformFont = 1;
+
+        if $u4 >= $u2 goto label13;
+
+        entry = $u-1[$u4];
+
+        $u7 = new android.graphics.fonts.Font$Builder;
+
+     label02:
+        $u-1#9 = virtualinvoke entry.<androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry: int getResourceId()>();
+
+        specialinvoke $u7.<android.graphics.fonts.Font$Builder: void <init>(android.content.res.Resources,int)>($u12, $u-1#9);
+
+        $u-1#9 = virtualinvoke entry.<androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry: int getWeight()>();
+
+        $u7 = virtualinvoke $u7.<android.graphics.fonts.Font$Builder: android.graphics.fonts.Font$Builder setWeight(int)>($u-1#9);
+
+        $u-1#15 = virtualinvoke entry.<androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry: boolean isItalic()>();
+
+     label03:
+        if $u-1#15 == 0 goto label04;
+
+        goto label05;
+
+     label04:
+        platformFont = 0;
+
+     label05:
+        $u7 = virtualinvoke $u7.<android.graphics.fonts.Font$Builder: android.graphics.fonts.Font$Builder setSlant(int)>(platformFont);
+
+        $u-1#9 = virtualinvoke entry.<androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry: int getTtcIndex()>();
+
+        $u7 = virtualinvoke $u7.<android.graphics.fonts.Font$Builder: android.graphics.fonts.Font$Builder setTtcIndex(int)>($u-1#9);
+
+        $u-1#23 = virtualinvoke entry.<androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry: java.lang.String getVariationSettings()>();
+
+        $u7 = virtualinvoke $u7.<android.graphics.fonts.Font$Builder: android.graphics.fonts.Font$Builder setFontVariationSettings(java.lang.String)>($u-1#23);
+
+        $u-1#27 = virtualinvoke $u7.<android.graphics.fonts.Font$Builder: android.graphics.fonts.Font build()>();
+
+     label06:
+        if familyBuilder != null goto label09;
+
+        $u7#29 = new android.graphics.fonts.FontFamily$Builder;
+
+     label07:
+        specialinvoke $u7#29.<android.graphics.fonts.FontFamily$Builder: void <init>(android.graphics.fonts.Font)>($u-1#27);
+
+     label08:
+        familyBuilder = $u7#29;
+
+        goto label10;
+
+     label09:
+        virtualinvoke familyBuilder.<android.graphics.fonts.FontFamily$Builder: android.graphics.fonts.FontFamily$Builder addFont(android.graphics.fonts.Font)>($u-1#27);
+
+     label10:
+        goto label12;
+
+     label11:
+        platformFont#30 := @caughtexception;
+
+     label12:
+        $u4 = $u4 + 1;
+
+        goto label01;
+
+     label13:
+        if familyBuilder != null goto label14;
+
+        return null;
+
+     label14:
+        defaultStyle = new android.graphics.fonts.FontStyle;
+
+        $u2 = $u13 & 1;
+
+        if $u2 == 0 goto label15;
+
+        $u2#34 = 700;
+
+        goto label16;
+
+     label15:
+        $u2#34 = 400;
+
+     label16:
+        $u13 = $u13 & 2;
+
+        if $u13 == 0 goto label17;
+
+        $u3 = 1;
+
+        goto label17;
+
+     label17:
+        specialinvoke defaultStyle.<android.graphics.fonts.FontStyle: void <init>(int,int)>($u2#34, $u3);
+
+        $u2#36 = new android.graphics.Typeface$CustomFallbackBuilder;
+
+        $u-1#37 = virtualinvoke familyBuilder.<android.graphics.fonts.FontFamily$Builder: android.graphics.fonts.FontFamily build()>();
+
+        specialinvoke $u2#36.<android.graphics.Typeface$CustomFallbackBuilder: void <init>(android.graphics.fonts.FontFamily)>($u-1#37);
+
+        $u2#36 = virtualinvoke $u2#36.<android.graphics.Typeface$CustomFallbackBuilder: android.graphics.Typeface$CustomFallbackBuilder setStyle(android.graphics.fonts.FontStyle)>(defaultStyle);
+
+        $u-1#41 = virtualinvoke $u2#36.<android.graphics.Typeface$CustomFallbackBuilder: android.graphics.Typeface build()>();
+
+        return $u-1#41;
+
+        catch java.io.IOException from label02 to label03 with label11;
+        catch java.io.IOException from label05 to label06 with label11;
+        catch java.io.IOException from label07 to label08 with label11;
+        catch java.io.IOException from label09 to label10 with label11;
+    }
+
+    public android.graphics.Typeface createFromFontInfo(android.content.Context, android.os.CancellationSignal, androidx.core.provider.FontsContractCompat$FontInfo[], int)
+    {
+        androidx.core.graphics.TypefaceCompatApi29Impl this;
+        android.content.Context $u11;
+        android.os.CancellationSignal $u12;
+        androidx.core.provider.FontsContractCompat$FontInfo[] $u13;
+        int $u14, defaultStyle, $u4, $u-1#14;
+        android.graphics.fonts.FontFamily$Builder familyBuilder, $u8#28;
+        android.content.ContentResolver $u-1;
+        byte $u3, platformFont;
+        androidx.core.provider.FontsContractCompat$FontInfo font;
+        android.net.Uri $u-1#8;
+        android.os.ParcelFileDescriptor $u-1#11;
+        android.graphics.fonts.Font$Builder $u8;
+        boolean $u-1#18;
+        android.graphics.fonts.Font $u-1#26;
+        java.lang.Throwable platformFont#29, $u8#30;
+        java.io.IOException platformFont#31;
+        android.graphics.fonts.FontStyle defaultStyle#33;
+        short $u4#35;
+        android.graphics.Typeface$CustomFallbackBuilder $u3#37;
+        android.graphics.fonts.FontFamily $u-1#38;
+        android.graphics.Typeface $u-1#42;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi29Impl;
+
+        $u11 := @parameter0: android.content.Context;
+
+        $u12 := @parameter1: android.os.CancellationSignal;
+
+        $u13 := @parameter2: androidx.core.provider.FontsContractCompat$FontInfo[];
+
+        $u14 := @parameter3: int;
+
+        familyBuilder = null;
+
+        $u-1 = virtualinvoke $u11.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        defaultStyle = lengthof $u13;
+
+        $u3 = 0;
+
+        $u4 = 0;
+
+     label01:
+        platformFont = 1;
+
+        if $u4 >= defaultStyle goto label25;
+
+        font = $u13[$u4];
+
+     label02:
+        $u-1#8 = virtualinvoke font.<androidx.core.provider.FontsContractCompat$FontInfo: android.net.Uri getUri()>();
+
+        $u-1#11 = virtualinvoke $u-1.<android.content.ContentResolver: android.os.ParcelFileDescriptor openFileDescriptor(android.net.Uri,java.lang.String,android.os.CancellationSignal)>($u-1#8, "r", $u12);
+
+     label03:
+        if $u-1#11 != null goto label06;
+
+        if $u-1#11 == null goto label05;
+
+     label04:
+        virtualinvoke $u-1#11.<android.os.ParcelFileDescriptor: void close()>();
+
+     label05:
+        goto label24;
+
+     label06:
+        $u8 = new android.graphics.fonts.Font$Builder;
+
+        specialinvoke $u8.<android.graphics.fonts.Font$Builder: void <init>(android.os.ParcelFileDescriptor)>($u-1#11);
+
+        $u-1#14 = virtualinvoke font.<androidx.core.provider.FontsContractCompat$FontInfo: int getWeight()>();
+
+        $u8 = virtualinvoke $u8.<android.graphics.fonts.Font$Builder: android.graphics.fonts.Font$Builder setWeight(int)>($u-1#14);
+
+        $u-1#18 = virtualinvoke font.<androidx.core.provider.FontsContractCompat$FontInfo: boolean isItalic()>();
+
+     label07:
+        if $u-1#18 == 0 goto label08;
+
+        goto label09;
+
+     label08:
+        platformFont = 0;
+
+     label09:
+        $u8 = virtualinvoke $u8.<android.graphics.fonts.Font$Builder: android.graphics.fonts.Font$Builder setSlant(int)>(platformFont);
+
+        $u-1#14 = virtualinvoke font.<androidx.core.provider.FontsContractCompat$FontInfo: int getTtcIndex()>();
+
+        $u8 = virtualinvoke $u8.<android.graphics.fonts.Font$Builder: android.graphics.fonts.Font$Builder setTtcIndex(int)>($u-1#14);
+
+        $u-1#26 = virtualinvoke $u8.<android.graphics.fonts.Font$Builder: android.graphics.fonts.Font build()>();
+
+     label10:
+        if familyBuilder != null goto label13;
+
+     label11:
+        $u8#28 = new android.graphics.fonts.FontFamily$Builder;
+
+        specialinvoke $u8#28.<android.graphics.fonts.FontFamily$Builder: void <init>(android.graphics.fonts.Font)>($u-1#26);
+
+     label12:
+        familyBuilder = $u8#28;
+
+        goto label14;
+
+     label13:
+        virtualinvoke familyBuilder.<android.graphics.fonts.FontFamily$Builder: android.graphics.fonts.FontFamily$Builder addFont(android.graphics.fonts.Font)>($u-1#26);
+
+     label14:
+        if $u-1#11 == null goto label16;
+
+     label15:
+        virtualinvoke $u-1#11.<android.os.ParcelFileDescriptor: void close()>();
+
+     label16:
+        goto label24;
+
+     label17:
+        platformFont#29 := @caughtexception;
+
+        if $u-1#11 == null goto label22;
+
+     label18:
+        virtualinvoke $u-1#11.<android.os.ParcelFileDescriptor: void close()>();
+
+     label19:
+        goto label22;
+
+     label20:
+        $u8#30 := @caughtexception;
+
+     label21:
+        virtualinvoke platformFont#29.<java.lang.Throwable: void addSuppressed(java.lang.Throwable)>($u8#30);
+
+     label22:
+        throw platformFont#29;
+
+     label23:
+        platformFont#31 := @caughtexception;
+
+     label24:
+        $u4 = $u4 + 1;
+
+        goto label01;
+
+     label25:
+        if familyBuilder != null goto label26;
+
+        return null;
+
+     label26:
+        defaultStyle#33 = new android.graphics.fonts.FontStyle;
+
+        defaultStyle = $u14 & 1;
+
+        if defaultStyle == 0 goto label27;
+
+        $u4#35 = 700;
+
+        goto label28;
+
+     label27:
+        $u4#35 = 400;
+
+     label28:
+        $u14 = $u14 & 2;
+
+        if $u14 == 0 goto label29;
+
+        $u3 = 1;
+
+        goto label29;
+
+     label29:
+        specialinvoke defaultStyle#33.<android.graphics.fonts.FontStyle: void <init>(int,int)>($u4#35, $u3);
+
+        $u3#37 = new android.graphics.Typeface$CustomFallbackBuilder;
+
+        $u-1#38 = virtualinvoke familyBuilder.<android.graphics.fonts.FontFamily$Builder: android.graphics.fonts.FontFamily build()>();
+
+        specialinvoke $u3#37.<android.graphics.Typeface$CustomFallbackBuilder: void <init>(android.graphics.fonts.FontFamily)>($u-1#38);
+
+        $u3#37 = virtualinvoke $u3#37.<android.graphics.Typeface$CustomFallbackBuilder: android.graphics.Typeface$CustomFallbackBuilder setStyle(android.graphics.fonts.FontStyle)>(defaultStyle#33);
+
+        $u-1#42 = virtualinvoke $u3#37.<android.graphics.Typeface$CustomFallbackBuilder: android.graphics.Typeface build()>();
+
+        return $u-1#42;
+
+        catch java.io.IOException from label02 to label03 with label23;
+        catch java.io.IOException from label04 to label05 with label23;
+        catch java.lang.Throwable from label06 to label07 with label17;
+        catch java.lang.Throwable from label09 to label10 with label17;
+        catch java.lang.Throwable from label11 to label12 with label17;
+        catch java.lang.Throwable from label13 to label14 with label17;
+        catch java.io.IOException from label15 to label16 with label23;
+        catch java.lang.Throwable from label18 to label19 with label20;
+        catch java.io.IOException from label21 to label23 with label23;
+    }
+
+    protected android.graphics.Typeface createFromInputStream(android.content.Context, java.io.InputStream)
+    {
+        androidx.core.graphics.TypefaceCompatApi29Impl this;
+        android.content.Context $u3;
+        java.io.InputStream $u4;
+        java.lang.RuntimeException $u0;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi29Impl;
+
+        $u3 := @parameter0: android.content.Context;
+
+        $u4 := @parameter1: java.io.InputStream;
+
+        $u0 = new java.lang.RuntimeException;
+
+        specialinvoke $u0.<java.lang.RuntimeException: void <init>(java.lang.String)>("Do not use this function in API 29 or later.");
+
+        throw $u0;
+    }
+
+    public android.graphics.Typeface createFromResourcesFontFile(android.content.Context, android.content.res.Resources, int, java.lang.String, int)
+    {
+        androidx.core.graphics.TypefaceCompatApi29Impl this;
+        android.content.Context $u5;
+        android.content.res.Resources $u6;
+        int $u7, $u9;
+        java.lang.String $u8;
+        android.graphics.fonts.Font$Builder e;
+        android.graphics.fonts.Font $u-1;
+        android.graphics.fonts.FontFamily$Builder e#7;
+        android.graphics.fonts.FontFamily $u-1#8;
+        android.graphics.Typeface$CustomFallbackBuilder e#11;
+        android.graphics.fonts.FontStyle $u-1#12;
+        android.graphics.Typeface $u-1#16;
+        java.io.IOException e#18;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi29Impl;
+
+        $u5 := @parameter0: android.content.Context;
+
+        $u6 := @parameter1: android.content.res.Resources;
+
+        $u7 := @parameter2: int;
+
+        $u8 := @parameter3: java.lang.String;
+
+        $u9 := @parameter4: int;
+
+        e = new android.graphics.fonts.Font$Builder;
+
+     label1:
+        specialinvoke e.<android.graphics.fonts.Font$Builder: void <init>(android.content.res.Resources,int)>($u6, $u7);
+
+        $u-1 = virtualinvoke e.<android.graphics.fonts.Font$Builder: android.graphics.fonts.Font build()>();
+
+     label2:
+        e#7 = new android.graphics.fonts.FontFamily$Builder;
+
+     label3:
+        specialinvoke e#7.<android.graphics.fonts.FontFamily$Builder: void <init>(android.graphics.fonts.Font)>($u-1);
+
+        $u-1#8 = virtualinvoke e#7.<android.graphics.fonts.FontFamily$Builder: android.graphics.fonts.FontFamily build()>();
+
+     label4:
+        e#11 = new android.graphics.Typeface$CustomFallbackBuilder;
+
+        specialinvoke e#11.<android.graphics.Typeface$CustomFallbackBuilder: void <init>(android.graphics.fonts.FontFamily)>($u-1#8);
+
+        $u-1#12 = virtualinvoke $u-1.<android.graphics.fonts.Font: android.graphics.fonts.FontStyle getStyle()>();
+
+        e#11 = virtualinvoke e#11.<android.graphics.Typeface$CustomFallbackBuilder: android.graphics.Typeface$CustomFallbackBuilder setStyle(android.graphics.fonts.FontStyle)>($u-1#12);
+
+        $u-1#16 = virtualinvoke e#11.<android.graphics.Typeface$CustomFallbackBuilder: android.graphics.Typeface build()>();
+
+        return $u-1#16;
+
+     label5:
+        e#18 := @caughtexception;
+
+        return null;
+
+        catch java.io.IOException from label1 to label2 with label5;
+        catch java.io.IOException from label3 to label4 with label5;
+    }
+
+    protected androidx.core.provider.FontsContractCompat$FontInfo findBestInfo(androidx.core.provider.FontsContractCompat$FontInfo[], int)
+    {
+        androidx.core.graphics.TypefaceCompatApi29Impl this;
+        androidx.core.provider.FontsContractCompat$FontInfo[] $u3;
+        int $u4;
+        java.lang.RuntimeException $u0;
+
+        this := @this: androidx.core.graphics.TypefaceCompatApi29Impl;
+
+        $u3 := @parameter0: androidx.core.provider.FontsContractCompat$FontInfo[];
+
+        $u4 := @parameter1: int;
+
+        $u0 = new java.lang.RuntimeException;
+
+        specialinvoke $u0.<java.lang.RuntimeException: void <init>(java.lang.String)>("Do not use this function in API 29 or later.");
+
+        throw $u0;
+    }
+}

@@ -1,0 +1,364 @@
+public class androidx.appcompat.widget.ShareActionProvider extends androidx.core.view.ActionProvider
+{
+    private static final int DEFAULT_INITIAL_ACTIVITY_COUNT;
+    public static final java.lang.String DEFAULT_SHARE_HISTORY_FILE_NAME;
+    final android.content.Context mContext;
+    private int mMaxShownActivityCount;
+    private androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener mOnChooseActivityListener;
+    private final androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener mOnMenuItemClickListener;
+    androidx.appcompat.widget.ShareActionProvider$OnShareTargetSelectedListener mOnShareTargetSelectedListener;
+    java.lang.String mShareHistoryFileName;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.ShareActionProvider this;
+        android.content.Context $u2;
+        androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener $u0;
+
+        this := @this: androidx.appcompat.widget.ShareActionProvider;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.core.view.ActionProvider: void <init>(android.content.Context)>($u2);
+
+        this.<androidx.appcompat.widget.ShareActionProvider: int mMaxShownActivityCount> = 4;
+
+        $u0 = new androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener;
+
+        specialinvoke $u0.<androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener: void <init>(androidx.appcompat.widget.ShareActionProvider)>(this);
+
+        this.<androidx.appcompat.widget.ShareActionProvider: androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener mOnMenuItemClickListener> = $u0;
+
+        this.<androidx.appcompat.widget.ShareActionProvider: java.lang.String mShareHistoryFileName> = "share_history.xml";
+
+        this.<androidx.appcompat.widget.ShareActionProvider: android.content.Context mContext> = $u2;
+
+        return;
+    }
+
+    private void setActivityChooserPolicyIfNeeded()
+    {
+        androidx.appcompat.widget.ShareActionProvider this;
+        androidx.appcompat.widget.ActivityChooserModel $u-1;
+        androidx.appcompat.widget.ShareActionProvider$OnShareTargetSelectedListener dataModel;
+        androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener dataModel#2;
+        androidx.appcompat.widget.ShareActionProvider$ShareActivityChooserModelPolicy dataModel#3;
+        android.content.Context dataModel#4;
+        java.lang.String $u1;
+
+        this := @this: androidx.appcompat.widget.ShareActionProvider;
+
+        dataModel = this.<androidx.appcompat.widget.ShareActionProvider: androidx.appcompat.widget.ShareActionProvider$OnShareTargetSelectedListener mOnShareTargetSelectedListener>;
+
+        if dataModel != null goto label1;
+
+        return;
+
+     label1:
+        dataModel#2 = this.<androidx.appcompat.widget.ShareActionProvider: androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener mOnChooseActivityListener>;
+
+        if dataModel#2 != null goto label2;
+
+        dataModel#3 = new androidx.appcompat.widget.ShareActionProvider$ShareActivityChooserModelPolicy;
+
+        specialinvoke dataModel#3.<androidx.appcompat.widget.ShareActionProvider$ShareActivityChooserModelPolicy: void <init>(androidx.appcompat.widget.ShareActionProvider)>(this);
+
+        this.<androidx.appcompat.widget.ShareActionProvider: androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener mOnChooseActivityListener> = dataModel#3;
+
+     label2:
+        dataModel#4 = this.<androidx.appcompat.widget.ShareActionProvider: android.content.Context mContext>;
+
+        $u1 = this.<androidx.appcompat.widget.ShareActionProvider: java.lang.String mShareHistoryFileName>;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.ActivityChooserModel: androidx.appcompat.widget.ActivityChooserModel get(android.content.Context,java.lang.String)>(dataModel#4, $u1);
+
+        dataModel#2 = this.<androidx.appcompat.widget.ShareActionProvider: androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener mOnChooseActivityListener>;
+
+        virtualinvoke $u-1.<androidx.appcompat.widget.ActivityChooserModel: void setOnChooseActivityListener(androidx.appcompat.widget.ActivityChooserModel$OnChooseActivityListener)>(dataModel#2);
+
+        return;
+    }
+
+    public boolean hasSubMenu()
+    {
+        androidx.appcompat.widget.ShareActionProvider this;
+
+        this := @this: androidx.appcompat.widget.ShareActionProvider;
+
+        return 1;
+    }
+
+    public android.view.View onCreateActionView()
+    {
+        androidx.appcompat.widget.ShareActionProvider this;
+        androidx.appcompat.widget.ActivityChooserView activityChooserView;
+        android.content.Context dataModel;
+        boolean $u-1;
+        java.lang.String drawable;
+        androidx.appcompat.widget.ActivityChooserModel $u-1#6;
+        android.util.TypedValue dataModel#8;
+        android.content.res.Resources$Theme $u-1#10;
+        int $u3;
+        android.graphics.drawable.Drawable $u-1#15;
+
+        this := @this: androidx.appcompat.widget.ShareActionProvider;
+
+        activityChooserView = new androidx.appcompat.widget.ActivityChooserView;
+
+        dataModel = this.<androidx.appcompat.widget.ShareActionProvider: android.content.Context mContext>;
+
+        specialinvoke activityChooserView.<androidx.appcompat.widget.ActivityChooserView: void <init>(android.content.Context)>(dataModel);
+
+        $u-1 = virtualinvoke activityChooserView.<androidx.appcompat.widget.ActivityChooserView: boolean isInEditMode()>();
+
+        if $u-1 != 0 goto label1;
+
+        dataModel = this.<androidx.appcompat.widget.ShareActionProvider: android.content.Context mContext>;
+
+        drawable = this.<androidx.appcompat.widget.ShareActionProvider: java.lang.String mShareHistoryFileName>;
+
+        $u-1#6 = staticinvoke <androidx.appcompat.widget.ActivityChooserModel: androidx.appcompat.widget.ActivityChooserModel get(android.content.Context,java.lang.String)>(dataModel, drawable);
+
+        virtualinvoke activityChooserView.<androidx.appcompat.widget.ActivityChooserView: void setActivityChooserModel(androidx.appcompat.widget.ActivityChooserModel)>($u-1#6);
+
+     label1:
+        dataModel#8 = new android.util.TypedValue;
+
+        specialinvoke dataModel#8.<android.util.TypedValue: void <init>()>();
+
+        dataModel = this.<androidx.appcompat.widget.ShareActionProvider: android.content.Context mContext>;
+
+        $u-1#10 = virtualinvoke dataModel.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        $u3 = <androidx.appcompat.R$attr: int actionModeShareDrawable>;
+
+        virtualinvoke $u-1#10.<android.content.res.Resources$Theme: boolean resolveAttribute(int,android.util.TypedValue,boolean)>($u3, dataModel#8, 1);
+
+        dataModel = this.<androidx.appcompat.widget.ShareActionProvider: android.content.Context mContext>;
+
+        $u3 = dataModel#8.<android.util.TypedValue: int resourceId>;
+
+        $u-1#15 = staticinvoke <androidx.appcompat.content.res.AppCompatResources: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>(dataModel, $u3);
+
+        virtualinvoke activityChooserView.<androidx.appcompat.widget.ActivityChooserView: void setExpandActivityOverflowButtonDrawable(android.graphics.drawable.Drawable)>($u-1#15);
+
+        virtualinvoke activityChooserView.<androidx.appcompat.widget.ActivityChooserView: void setProvider(androidx.core.view.ActionProvider)>(this);
+
+        $u3 = <androidx.appcompat.R$string: int abc_shareactionprovider_share_with_application>;
+
+        virtualinvoke activityChooserView.<androidx.appcompat.widget.ActivityChooserView: void setDefaultActionButtonContentDescription(int)>($u3);
+
+        $u3 = <androidx.appcompat.R$string: int abc_shareactionprovider_share_with>;
+
+        virtualinvoke activityChooserView.<androidx.appcompat.widget.ActivityChooserView: void setExpandActivityOverflowButtonContentDescription(int)>($u3);
+
+        return activityChooserView;
+    }
+
+    public void onPrepareSubMenu(android.view.SubMenu)
+    {
+        androidx.appcompat.widget.ShareActionProvider this;
+        android.view.SubMenu $u11;
+        android.content.Context dataModel;
+        java.lang.String packageManager;
+        androidx.appcompat.widget.ActivityChooserModel $u-1;
+        android.content.pm.PackageManager $u-1#6;
+        int $u-1#8, collapsedActivityCount, i;
+        android.content.pm.ResolveInfo $u-1#14;
+        java.lang.CharSequence $u-1#16;
+        android.view.MenuItem $u-1#18;
+        android.graphics.drawable.Drawable $u-1#20;
+        androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener activity1;
+
+        this := @this: androidx.appcompat.widget.ShareActionProvider;
+
+        $u11 := @parameter0: android.view.SubMenu;
+
+        interfaceinvoke $u11.<android.view.SubMenu: void clear()>();
+
+        dataModel = this.<androidx.appcompat.widget.ShareActionProvider: android.content.Context mContext>;
+
+        packageManager = this.<androidx.appcompat.widget.ShareActionProvider: java.lang.String mShareHistoryFileName>;
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.ActivityChooserModel: androidx.appcompat.widget.ActivityChooserModel get(android.content.Context,java.lang.String)>(dataModel, packageManager);
+
+        dataModel = this.<androidx.appcompat.widget.ShareActionProvider: android.content.Context mContext>;
+
+        $u-1#6 = virtualinvoke dataModel.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $u-1#8 = virtualinvoke $u-1.<androidx.appcompat.widget.ActivityChooserModel: int getActivityCount()>();
+
+        collapsedActivityCount = this.<androidx.appcompat.widget.ShareActionProvider: int mMaxShownActivityCount>;
+
+        collapsedActivityCount = staticinvoke <java.lang.Math: int min(int,int)>($u-1#8, collapsedActivityCount);
+
+        i = 0;
+
+     label1:
+        if i >= collapsedActivityCount goto label2;
+
+        $u-1#14 = virtualinvoke $u-1.<androidx.appcompat.widget.ActivityChooserModel: android.content.pm.ResolveInfo getActivity(int)>(i);
+
+        $u-1#16 = virtualinvoke $u-1#14.<android.content.pm.ResolveInfo: java.lang.CharSequence loadLabel(android.content.pm.PackageManager)>($u-1#6);
+
+        $u-1#18 = interfaceinvoke $u11.<android.view.SubMenu: android.view.MenuItem add(int,int,int,java.lang.CharSequence)>(0, i, i, $u-1#16);
+
+        $u-1#20 = virtualinvoke $u-1#14.<android.content.pm.ResolveInfo: android.graphics.drawable.Drawable loadIcon(android.content.pm.PackageManager)>($u-1#6);
+
+        $u-1#18 = interfaceinvoke $u-1#18.<android.view.MenuItem: android.view.MenuItem setIcon(android.graphics.drawable.Drawable)>($u-1#20);
+
+        activity1 = this.<androidx.appcompat.widget.ShareActionProvider: androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener mOnMenuItemClickListener>;
+
+        interfaceinvoke $u-1#18.<android.view.MenuItem: android.view.MenuItem setOnMenuItemClickListener(android.view.MenuItem$OnMenuItemClickListener)>(activity1);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        if collapsedActivityCount >= $u-1#8 goto label4;
+
+        dataModel = this.<androidx.appcompat.widget.ShareActionProvider: android.content.Context mContext>;
+
+        i = <androidx.appcompat.R$string: int abc_activity_chooser_view_see_all>;
+
+        packageManager = virtualinvoke dataModel.<android.content.Context: java.lang.String getString(int)>(i);
+
+        $u11 = interfaceinvoke $u11.<android.view.SubMenu: android.view.SubMenu addSubMenu(int,int,int,java.lang.CharSequence)>(0, collapsedActivityCount, collapsedActivityCount, packageManager);
+
+        collapsedActivityCount = 0;
+
+     label3:
+        if collapsedActivityCount >= $u-1#8 goto label4;
+
+        $u-1#14 = virtualinvoke $u-1.<androidx.appcompat.widget.ActivityChooserModel: android.content.pm.ResolveInfo getActivity(int)>(collapsedActivityCount);
+
+        $u-1#16 = virtualinvoke $u-1#14.<android.content.pm.ResolveInfo: java.lang.CharSequence loadLabel(android.content.pm.PackageManager)>($u-1#6);
+
+        $u-1#18 = interfaceinvoke $u11.<android.view.SubMenu: android.view.MenuItem add(int,int,int,java.lang.CharSequence)>(0, collapsedActivityCount, collapsedActivityCount, $u-1#16);
+
+        $u-1#20 = virtualinvoke $u-1#14.<android.content.pm.ResolveInfo: android.graphics.drawable.Drawable loadIcon(android.content.pm.PackageManager)>($u-1#6);
+
+        $u-1#18 = interfaceinvoke $u-1#18.<android.view.MenuItem: android.view.MenuItem setIcon(android.graphics.drawable.Drawable)>($u-1#20);
+
+        activity1 = this.<androidx.appcompat.widget.ShareActionProvider: androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener mOnMenuItemClickListener>;
+
+        interfaceinvoke $u-1#18.<android.view.MenuItem: android.view.MenuItem setOnMenuItemClickListener(android.view.MenuItem$OnMenuItemClickListener)>(activity1);
+
+        collapsedActivityCount = collapsedActivityCount + 1;
+
+        goto label3;
+
+     label4:
+        return;
+    }
+
+    public void setOnShareTargetSelectedListener(androidx.appcompat.widget.ShareActionProvider$OnShareTargetSelectedListener)
+    {
+        androidx.appcompat.widget.ShareActionProvider this;
+        androidx.appcompat.widget.ShareActionProvider$OnShareTargetSelectedListener $u1;
+
+        this := @this: androidx.appcompat.widget.ShareActionProvider;
+
+        $u1 := @parameter0: androidx.appcompat.widget.ShareActionProvider$OnShareTargetSelectedListener;
+
+        this.<androidx.appcompat.widget.ShareActionProvider: androidx.appcompat.widget.ShareActionProvider$OnShareTargetSelectedListener mOnShareTargetSelectedListener> = $u1;
+
+        specialinvoke this.<androidx.appcompat.widget.ShareActionProvider: void setActivityChooserPolicyIfNeeded()>();
+
+        return;
+    }
+
+    public void setShareHistoryFileName(java.lang.String)
+    {
+        androidx.appcompat.widget.ShareActionProvider this;
+        java.lang.String $u1;
+
+        this := @this: androidx.appcompat.widget.ShareActionProvider;
+
+        $u1 := @parameter0: java.lang.String;
+
+        this.<androidx.appcompat.widget.ShareActionProvider: java.lang.String mShareHistoryFileName> = $u1;
+
+        specialinvoke this.<androidx.appcompat.widget.ShareActionProvider: void setActivityChooserPolicyIfNeeded()>();
+
+        return;
+    }
+
+    public void setShareIntent(android.content.Intent)
+    {
+        androidx.appcompat.widget.ShareActionProvider this;
+        android.content.Intent $u3;
+        java.lang.String $u-1, $u1;
+        boolean $u-1#4;
+        android.content.Context action;
+        androidx.appcompat.widget.ActivityChooserModel $u-1#11;
+
+        this := @this: androidx.appcompat.widget.ShareActionProvider;
+
+        $u3 := @parameter0: android.content.Intent;
+
+        if $u3 == null goto label2;
+
+        $u-1 = virtualinvoke $u3.<android.content.Intent: java.lang.String getAction()>();
+
+        $u1 = "android.intent.action.SEND";
+
+        $u-1#4 = virtualinvoke $u1.<java.lang.String: boolean equals(java.lang.Object)>($u-1);
+
+        if $u-1#4 != 0 goto label1;
+
+        $u1 = "android.intent.action.SEND_MULTIPLE";
+
+        $u-1#4 = virtualinvoke $u1.<java.lang.String: boolean equals(java.lang.Object)>($u-1);
+
+        if $u-1#4 == 0 goto label2;
+
+     label1:
+        virtualinvoke this.<androidx.appcompat.widget.ShareActionProvider: void updateIntent(android.content.Intent)>($u3);
+
+     label2:
+        action = this.<androidx.appcompat.widget.ShareActionProvider: android.content.Context mContext>;
+
+        $u-1 = this.<androidx.appcompat.widget.ShareActionProvider: java.lang.String mShareHistoryFileName>;
+
+        $u-1#11 = staticinvoke <androidx.appcompat.widget.ActivityChooserModel: androidx.appcompat.widget.ActivityChooserModel get(android.content.Context,java.lang.String)>(action, $u-1);
+
+        virtualinvoke $u-1#11.<androidx.appcompat.widget.ActivityChooserModel: void setIntent(android.content.Intent)>($u3);
+
+        return;
+    }
+
+    void updateIntent(android.content.Intent)
+    {
+        androidx.appcompat.widget.ShareActionProvider this;
+        android.content.Intent $u3;
+        int $u0;
+
+        this := @this: androidx.appcompat.widget.ShareActionProvider;
+
+        $u3 := @parameter0: android.content.Intent;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label1;
+
+        virtualinvoke $u3.<android.content.Intent: android.content.Intent addFlags(int)>(134742016);
+
+        return;
+
+     label1:
+        virtualinvoke $u3.<android.content.Intent: android.content.Intent addFlags(int)>(524288);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.widget.ShareActionProvider: java.lang.String DEFAULT_SHARE_HISTORY_FILE_NAME> = "share_history.xml";
+
+        <androidx.appcompat.widget.ShareActionProvider: int DEFAULT_INITIAL_ACTIVITY_COUNT> = 4;
+
+        return;
+    }
+}

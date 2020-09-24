@@ -1,0 +1,1305 @@
+public class androidx.appcompat.widget.AppCompatTextView extends android.widget.TextView implements androidx.core.view.TintableBackgroundView, androidx.core.widget.TintableCompoundDrawablesView, androidx.core.widget.AutoSizeableTextView
+{
+    private final androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper;
+    private java.util.concurrent.Future mPrecomputedTextFuture;
+    private final androidx.appcompat.widget.AppCompatTextClassifierHelper mTextClassifierHelper;
+    private final androidx.appcompat.widget.AppCompatTextHelper mTextHelper;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.content.Context $u2;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextView: void <init>(android.content.Context,android.util.AttributeSet)>($u2, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextView: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, 16842884);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        int $u4;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $u0;
+        androidx.appcompat.widget.AppCompatTextHelper $u0#6;
+        androidx.appcompat.widget.AppCompatTextClassifierHelper $u0#8;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u4 := @parameter2: int;
+
+        $u2 = staticinvoke <androidx.appcompat.widget.TintContextWrapper: android.content.Context wrap(android.content.Context)>($u2);
+
+        specialinvoke this.<android.widget.TextView: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, $u4);
+
+        $u2 = virtualinvoke this.<androidx.appcompat.widget.AppCompatTextView: android.content.Context getContext()>();
+
+        staticinvoke <androidx.appcompat.widget.ThemeUtils: void checkAppCompatTheme(android.view.View,android.content.Context)>(this, $u2);
+
+        $u0 = new androidx.appcompat.widget.AppCompatBackgroundHelper;
+
+        specialinvoke $u0.<androidx.appcompat.widget.AppCompatBackgroundHelper: void <init>(android.view.View)>(this);
+
+        this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper> = $u0;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatBackgroundHelper: void loadFromAttributes(android.util.AttributeSet,int)>($u3, $u4);
+
+        $u0#6 = new androidx.appcompat.widget.AppCompatTextHelper;
+
+        specialinvoke $u0#6.<androidx.appcompat.widget.AppCompatTextHelper: void <init>(android.widget.TextView)>(this);
+
+        this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper> = $u0#6;
+
+        virtualinvoke $u0#6.<androidx.appcompat.widget.AppCompatTextHelper: void loadFromAttributes(android.util.AttributeSet,int)>($u3, $u4);
+
+        $u0#6 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        virtualinvoke $u0#6.<androidx.appcompat.widget.AppCompatTextHelper: void applyCompoundDrawablesTints()>();
+
+        $u0#8 = new androidx.appcompat.widget.AppCompatTextClassifierHelper;
+
+        specialinvoke $u0#8.<androidx.appcompat.widget.AppCompatTextClassifierHelper: void <init>(android.widget.TextView)>(this);
+
+        this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextClassifierHelper mTextClassifierHelper> = $u0#8;
+
+        return;
+    }
+
+    private void consumeTextFutureAndSetBlocking()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        java.lang.Object $u-1;
+        java.util.concurrent.Future future;
+        androidx.core.text.PrecomputedTextCompat $u1;
+        java.util.concurrent.ExecutionException future#5;
+        java.lang.InterruptedException future#6;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        future = this.<androidx.appcompat.widget.AppCompatTextView: java.util.concurrent.Future mPrecomputedTextFuture>;
+
+        if future == null goto label7;
+
+        this.<androidx.appcompat.widget.AppCompatTextView: java.util.concurrent.Future mPrecomputedTextFuture> = null;
+
+     label1:
+        $u-1 = interfaceinvoke future.<java.util.concurrent.Future: java.lang.Object get()>();
+
+     label2:
+        $u1 = (androidx.core.text.PrecomputedTextCompat) $u-1;
+
+     label3:
+        staticinvoke <androidx.core.widget.TextViewCompat: void setPrecomputedText(android.widget.TextView,androidx.core.text.PrecomputedTextCompat)>(this, $u1);
+
+     label4:
+        return;
+
+     label5:
+        future#5 := @caughtexception;
+
+        return;
+
+     label6:
+        future#6 := @caughtexception;
+
+     label7:
+        return;
+
+        catch java.lang.InterruptedException from label1 to label2 with label6;
+        catch java.lang.InterruptedException from label3 to label4 with label6;
+        catch java.util.concurrent.ExecutionException from label1 to label2 with label5;
+        catch java.util.concurrent.ExecutionException from label3 to label4 with label5;
+    }
+
+    protected void drawableStateChanged()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $u0;
+        androidx.appcompat.widget.AppCompatTextHelper $u0#2;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        specialinvoke this.<android.widget.TextView: void drawableStateChanged()>();
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatBackgroundHelper: void applySupportBackgroundTint()>();
+
+     label1:
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0#2 == null goto label2;
+
+        virtualinvoke $u0#2.<androidx.appcompat.widget.AppCompatTextHelper: void applyCompoundDrawablesTints()>();
+
+     label2:
+        return;
+    }
+
+    public int getAutoSizeMaxTextSize()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        boolean $u0;
+        int $u-1;
+        androidx.appcompat.widget.AppCompatTextHelper $u0#4;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u0 = <androidx.appcompat.widget.AppCompatTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $u0 == 0 goto label1;
+
+        $u-1 = specialinvoke this.<android.widget.TextView: int getAutoSizeMaxTextSize()>();
+
+        return $u-1;
+
+     label1:
+        $u0#4 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0#4 == null goto label2;
+
+        $u-1 = virtualinvoke $u0#4.<androidx.appcompat.widget.AppCompatTextHelper: int getAutoSizeMaxTextSize()>();
+
+        return $u-1;
+
+     label2:
+        return -1;
+    }
+
+    public int getAutoSizeMinTextSize()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        boolean $u0;
+        int $u-1;
+        androidx.appcompat.widget.AppCompatTextHelper $u0#4;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u0 = <androidx.appcompat.widget.AppCompatTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $u0 == 0 goto label1;
+
+        $u-1 = specialinvoke this.<android.widget.TextView: int getAutoSizeMinTextSize()>();
+
+        return $u-1;
+
+     label1:
+        $u0#4 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0#4 == null goto label2;
+
+        $u-1 = virtualinvoke $u0#4.<androidx.appcompat.widget.AppCompatTextHelper: int getAutoSizeMinTextSize()>();
+
+        return $u-1;
+
+     label2:
+        return -1;
+    }
+
+    public int getAutoSizeStepGranularity()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        boolean $u0;
+        int $u-1;
+        androidx.appcompat.widget.AppCompatTextHelper $u0#4;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u0 = <androidx.appcompat.widget.AppCompatTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $u0 == 0 goto label1;
+
+        $u-1 = specialinvoke this.<android.widget.TextView: int getAutoSizeStepGranularity()>();
+
+        return $u-1;
+
+     label1:
+        $u0#4 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0#4 == null goto label2;
+
+        $u-1 = virtualinvoke $u0#4.<androidx.appcompat.widget.AppCompatTextHelper: int getAutoSizeStepGranularity()>();
+
+        return $u-1;
+
+     label2:
+        return -1;
+    }
+
+    public int[] getAutoSizeTextAvailableSizes()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        boolean $u0;
+        int[] $u-1;
+        androidx.appcompat.widget.AppCompatTextHelper $u0#4;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u0 = <androidx.appcompat.widget.AppCompatTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $u0 == 0 goto label1;
+
+        $u-1 = specialinvoke this.<android.widget.TextView: int[] getAutoSizeTextAvailableSizes()>();
+
+        return $u-1;
+
+     label1:
+        $u0#4 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0#4 == null goto label2;
+
+        $u-1 = virtualinvoke $u0#4.<androidx.appcompat.widget.AppCompatTextHelper: int[] getAutoSizeTextAvailableSizes()>();
+
+        return $u-1;
+
+     label2:
+        $u-1 = newarray (int)[0];
+
+        return $u-1;
+    }
+
+    public int getAutoSizeTextType()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        boolean $u0;
+        int $u-1;
+        androidx.appcompat.widget.AppCompatTextHelper $u0#6;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u0 = <androidx.appcompat.widget.AppCompatTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $u0 == 0 goto label2;
+
+        $u-1 = specialinvoke this.<android.widget.TextView: int getAutoSizeTextType()>();
+
+        if $u-1 != 1 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+
+     label2:
+        $u0#6 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0#6 == null goto label3;
+
+        $u-1 = virtualinvoke $u0#6.<androidx.appcompat.widget.AppCompatTextHelper: int getAutoSizeTextType()>();
+
+        return $u-1;
+
+     label3:
+        return 0;
+    }
+
+    public int getFirstBaselineToTopHeight()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int $u-1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u-1 = staticinvoke <androidx.core.widget.TextViewCompat: int getFirstBaselineToTopHeight(android.widget.TextView)>(this);
+
+        return $u-1;
+    }
+
+    public int getLastBaselineToBottomHeight()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int $u-1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u-1 = staticinvoke <androidx.core.widget.TextViewCompat: int getLastBaselineToBottomHeight(android.widget.TextView)>(this);
+
+        return $u-1;
+    }
+
+    public android.content.res.ColorStateList getSupportBackgroundTintList()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.content.res.ColorStateList $u-1;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.AppCompatBackgroundHelper: android.content.res.ColorStateList getSupportBackgroundTintList()>();
+
+        return $u-1;
+
+     label1:
+        return null;
+    }
+
+    public android.graphics.PorterDuff$Mode getSupportBackgroundTintMode()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.graphics.PorterDuff$Mode $u-1;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.AppCompatBackgroundHelper: android.graphics.PorterDuff$Mode getSupportBackgroundTintMode()>();
+
+        return $u-1;
+
+     label1:
+        return null;
+    }
+
+    public android.content.res.ColorStateList getSupportCompoundDrawablesTintList()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.content.res.ColorStateList $u-1;
+        androidx.appcompat.widget.AppCompatTextHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: android.content.res.ColorStateList getCompoundDrawableTintList()>();
+
+        return $u-1;
+    }
+
+    public android.graphics.PorterDuff$Mode getSupportCompoundDrawablesTintMode()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.graphics.PorterDuff$Mode $u-1;
+        androidx.appcompat.widget.AppCompatTextHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: android.graphics.PorterDuff$Mode getCompoundDrawableTintMode()>();
+
+        return $u-1;
+    }
+
+    public java.lang.CharSequence getText()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        java.lang.CharSequence $u-1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextView: void consumeTextFutureAndSetBlocking()>();
+
+        $u-1 = specialinvoke this.<android.widget.TextView: java.lang.CharSequence getText()>();
+
+        return $u-1;
+    }
+
+    public android.view.textclassifier.TextClassifier getTextClassifier()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int $u0;
+        androidx.appcompat.widget.AppCompatTextClassifierHelper $u0#2;
+        android.view.textclassifier.TextClassifier $u-1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 >= 28 goto label2;
+
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextClassifierHelper mTextClassifierHelper>;
+
+        if $u0#2 != null goto label1;
+
+        goto label2;
+
+     label1:
+        $u-1 = virtualinvoke $u0#2.<androidx.appcompat.widget.AppCompatTextClassifierHelper: android.view.textclassifier.TextClassifier getTextClassifier()>();
+
+        return $u-1;
+
+     label2:
+        $u-1 = specialinvoke this.<android.widget.TextView: android.view.textclassifier.TextClassifier getTextClassifier()>();
+
+        return $u-1;
+    }
+
+    public androidx.core.text.PrecomputedTextCompat$Params getTextMetricsParamsCompat()
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        androidx.core.text.PrecomputedTextCompat$Params $u-1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u-1 = staticinvoke <androidx.core.widget.TextViewCompat: androidx.core.text.PrecomputedTextCompat$Params getTextMetricsParams(android.widget.TextView)>(this);
+
+        return $u-1;
+    }
+
+    public android.view.inputmethod.InputConnection onCreateInputConnection(android.view.inputmethod.EditorInfo)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.view.inputmethod.EditorInfo $u2;
+        android.view.inputmethod.InputConnection $u-1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.view.inputmethod.EditorInfo;
+
+        $u-1 = specialinvoke this.<android.widget.TextView: android.view.inputmethod.InputConnection onCreateInputConnection(android.view.inputmethod.EditorInfo)>($u2);
+
+        $u-1 = staticinvoke <androidx.appcompat.widget.AppCompatHintHelper: android.view.inputmethod.InputConnection onCreateInputConnection(android.view.inputmethod.InputConnection,android.view.inputmethod.EditorInfo,android.view.View)>($u-1, $u2, this);
+
+        return $u-1;
+    }
+
+    protected void onLayout(boolean, int, int, int, int)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        boolean $u7;
+        int $u8, $u9, $u10, $u11;
+        androidx.appcompat.widget.AppCompatTextHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u7 := @parameter0: boolean;
+
+        $u8 := @parameter1: int;
+
+        $u9 := @parameter2: int;
+
+        $u10 := @parameter3: int;
+
+        $u11 := @parameter4: int;
+
+        specialinvoke this.<android.widget.TextView: void onLayout(boolean,int,int,int,int)>($u7, $u8, $u9, $u10, $u11);
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: void onLayout(boolean,int,int,int,int)>($u7, $u8, $u9, $u10, $u11);
+
+     label1:
+        return;
+    }
+
+    protected void onMeasure(int, int)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int $u1, $u2;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: int;
+
+        specialinvoke this.<androidx.appcompat.widget.AppCompatTextView: void consumeTextFutureAndSetBlocking()>();
+
+        specialinvoke this.<android.widget.TextView: void onMeasure(int,int)>($u1, $u2);
+
+        return;
+    }
+
+    protected void onTextChanged(java.lang.CharSequence, int, int, int)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        java.lang.CharSequence $u2;
+        int $u3, $u4, $u5;
+        boolean $u-1;
+        androidx.appcompat.widget.AppCompatTextHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        specialinvoke this.<android.widget.TextView: void onTextChanged(java.lang.CharSequence,int,int,int)>($u2, $u3, $u4, $u5);
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = <androidx.appcompat.widget.AppCompatTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $u-1 != 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: boolean isAutoSizeEnabled()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: void autoSizeText()>();
+
+     label1:
+        return;
+    }
+
+    public void setAutoSizeTextTypeUniformWithConfiguration(int, int, int, int) throws java.lang.IllegalArgumentException
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int $u2, $u3, $u4, $u5;
+        boolean $u0;
+        androidx.appcompat.widget.AppCompatTextHelper $u0#2;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        $u0 = <androidx.appcompat.widget.AppCompatTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $u0 == 0 goto label1;
+
+        specialinvoke this.<android.widget.TextView: void setAutoSizeTextTypeUniformWithConfiguration(int,int,int,int)>($u2, $u3, $u4, $u5);
+
+        return;
+
+     label1:
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0#2 == null goto label2;
+
+        virtualinvoke $u0#2.<androidx.appcompat.widget.AppCompatTextHelper: void setAutoSizeTextTypeUniformWithConfiguration(int,int,int,int)>($u2, $u3, $u4, $u5);
+
+     label2:
+        return;
+    }
+
+    public void setAutoSizeTextTypeUniformWithPresetSizes(int[], int) throws java.lang.IllegalArgumentException
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int[] $u2;
+        int $u3;
+        boolean $u0;
+        androidx.appcompat.widget.AppCompatTextHelper $u0#2;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: int[];
+
+        $u3 := @parameter1: int;
+
+        $u0 = <androidx.appcompat.widget.AppCompatTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $u0 == 0 goto label1;
+
+        specialinvoke this.<android.widget.TextView: void setAutoSizeTextTypeUniformWithPresetSizes(int[],int)>($u2, $u3);
+
+        return;
+
+     label1:
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0#2 == null goto label2;
+
+        virtualinvoke $u0#2.<androidx.appcompat.widget.AppCompatTextHelper: void setAutoSizeTextTypeUniformWithPresetSizes(int[],int)>($u2, $u3);
+
+     label2:
+        return;
+    }
+
+    public void setAutoSizeTextTypeWithDefaults(int)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int $u2;
+        boolean $u0;
+        androidx.appcompat.widget.AppCompatTextHelper $u0#2;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: int;
+
+        $u0 = <androidx.appcompat.widget.AppCompatTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $u0 == 0 goto label1;
+
+        specialinvoke this.<android.widget.TextView: void setAutoSizeTextTypeWithDefaults(int)>($u2);
+
+        return;
+
+     label1:
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0#2 == null goto label2;
+
+        virtualinvoke $u0#2.<androidx.appcompat.widget.AppCompatTextHelper: void setAutoSizeTextTypeWithDefaults(int)>($u2);
+
+     label2:
+        return;
+    }
+
+    public void setBackgroundDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.graphics.drawable.Drawable $u2;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        specialinvoke this.<android.widget.TextView: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($u2);
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatBackgroundHelper: void onSetBackgroundDrawable(android.graphics.drawable.Drawable)>($u2);
+
+     label1:
+        return;
+    }
+
+    public void setBackgroundResource(int)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int $u2;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: int;
+
+        specialinvoke this.<android.widget.TextView: void setBackgroundResource(int)>($u2);
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatBackgroundHelper: void onSetBackgroundResource(int)>($u2);
+
+     label1:
+        return;
+    }
+
+    public void setCompoundDrawables(android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.graphics.drawable.Drawable $u2, $u3, $u4, $u5;
+        androidx.appcompat.widget.AppCompatTextHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u3 := @parameter1: android.graphics.drawable.Drawable;
+
+        $u4 := @parameter2: android.graphics.drawable.Drawable;
+
+        $u5 := @parameter3: android.graphics.drawable.Drawable;
+
+        specialinvoke this.<android.widget.TextView: void setCompoundDrawables(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($u2, $u3, $u4, $u5);
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: void onSetCompoundDrawables()>();
+
+     label1:
+        return;
+    }
+
+    public void setCompoundDrawablesRelative(android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.graphics.drawable.Drawable $u2, $u3, $u4, $u5;
+        androidx.appcompat.widget.AppCompatTextHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u3 := @parameter1: android.graphics.drawable.Drawable;
+
+        $u4 := @parameter2: android.graphics.drawable.Drawable;
+
+        $u5 := @parameter3: android.graphics.drawable.Drawable;
+
+        specialinvoke this.<android.widget.TextView: void setCompoundDrawablesRelative(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($u2, $u3, $u4, $u5);
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: void onSetCompoundDrawables()>();
+
+     label1:
+        return;
+    }
+
+    public void setCompoundDrawablesRelativeWithIntrinsicBounds(int, int, int, int)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int $u6, $u7, $u8, $u9;
+        android.content.Context $u-1;
+        android.graphics.drawable.Drawable $u1, $u-1#3, $u-1#5, $u-1#7;
+        androidx.appcompat.widget.AppCompatTextHelper $u1#10;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u6 := @parameter0: int;
+
+        $u7 := @parameter1: int;
+
+        $u8 := @parameter2: int;
+
+        $u9 := @parameter3: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.AppCompatTextView: android.content.Context getContext()>();
+
+        $u1 = null;
+
+        if $u6 == 0 goto label1;
+
+        $u-1#3 = staticinvoke <androidx.appcompat.content.res.AppCompatResources: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u6);
+
+        goto label2;
+
+     label1:
+        $u-1#3 = null;
+
+     label2:
+        if $u7 == 0 goto label3;
+
+        $u-1#5 = staticinvoke <androidx.appcompat.content.res.AppCompatResources: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u7);
+
+        goto label4;
+
+     label3:
+        $u-1#5 = null;
+
+     label4:
+        if $u8 == 0 goto label5;
+
+        $u-1#7 = staticinvoke <androidx.appcompat.content.res.AppCompatResources: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u8);
+
+        goto label6;
+
+     label5:
+        $u-1#7 = null;
+
+     label6:
+        if $u9 == 0 goto label7;
+
+        $u1 = staticinvoke <androidx.appcompat.content.res.AppCompatResources: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u9);
+
+     label7:
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatTextView: void setCompoundDrawablesRelativeWithIntrinsicBounds(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($u-1#3, $u-1#5, $u-1#7, $u1);
+
+        $u1#10 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u1#10 == null goto label8;
+
+        virtualinvoke $u1#10.<androidx.appcompat.widget.AppCompatTextHelper: void onSetCompoundDrawables()>();
+
+     label8:
+        return;
+    }
+
+    public void setCompoundDrawablesRelativeWithIntrinsicBounds(android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.graphics.drawable.Drawable $u2, $u3, $u4, $u5;
+        androidx.appcompat.widget.AppCompatTextHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u3 := @parameter1: android.graphics.drawable.Drawable;
+
+        $u4 := @parameter2: android.graphics.drawable.Drawable;
+
+        $u5 := @parameter3: android.graphics.drawable.Drawable;
+
+        specialinvoke this.<android.widget.TextView: void setCompoundDrawablesRelativeWithIntrinsicBounds(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($u2, $u3, $u4, $u5);
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: void onSetCompoundDrawables()>();
+
+     label1:
+        return;
+    }
+
+    public void setCompoundDrawablesWithIntrinsicBounds(int, int, int, int)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int $u6, $u7, $u8, $u9;
+        android.content.Context $u-1;
+        android.graphics.drawable.Drawable $u1, $u-1#3, $u-1#5, $u-1#7;
+        androidx.appcompat.widget.AppCompatTextHelper $u1#10;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u6 := @parameter0: int;
+
+        $u7 := @parameter1: int;
+
+        $u8 := @parameter2: int;
+
+        $u9 := @parameter3: int;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.AppCompatTextView: android.content.Context getContext()>();
+
+        $u1 = null;
+
+        if $u6 == 0 goto label1;
+
+        $u-1#3 = staticinvoke <androidx.appcompat.content.res.AppCompatResources: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u6);
+
+        goto label2;
+
+     label1:
+        $u-1#3 = null;
+
+     label2:
+        if $u7 == 0 goto label3;
+
+        $u-1#5 = staticinvoke <androidx.appcompat.content.res.AppCompatResources: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u7);
+
+        goto label4;
+
+     label3:
+        $u-1#5 = null;
+
+     label4:
+        if $u8 == 0 goto label5;
+
+        $u-1#7 = staticinvoke <androidx.appcompat.content.res.AppCompatResources: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u8);
+
+        goto label6;
+
+     label5:
+        $u-1#7 = null;
+
+     label6:
+        if $u9 == 0 goto label7;
+
+        $u1 = staticinvoke <androidx.appcompat.content.res.AppCompatResources: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($u-1, $u9);
+
+     label7:
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatTextView: void setCompoundDrawablesWithIntrinsicBounds(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($u-1#3, $u-1#5, $u-1#7, $u1);
+
+        $u1#10 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u1#10 == null goto label8;
+
+        virtualinvoke $u1#10.<androidx.appcompat.widget.AppCompatTextHelper: void onSetCompoundDrawables()>();
+
+     label8:
+        return;
+    }
+
+    public void setCompoundDrawablesWithIntrinsicBounds(android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable, android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.graphics.drawable.Drawable $u2, $u3, $u4, $u5;
+        androidx.appcompat.widget.AppCompatTextHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u3 := @parameter1: android.graphics.drawable.Drawable;
+
+        $u4 := @parameter2: android.graphics.drawable.Drawable;
+
+        $u5 := @parameter3: android.graphics.drawable.Drawable;
+
+        specialinvoke this.<android.widget.TextView: void setCompoundDrawablesWithIntrinsicBounds(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)>($u2, $u3, $u4, $u5);
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: void onSetCompoundDrawables()>();
+
+     label1:
+        return;
+    }
+
+    public void setCustomSelectionActionModeCallback(android.view.ActionMode$Callback)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.view.ActionMode$Callback $u2;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.view.ActionMode$Callback;
+
+        $u2 = staticinvoke <androidx.core.widget.TextViewCompat: android.view.ActionMode$Callback wrapCustomSelectionActionModeCallback(android.widget.TextView,android.view.ActionMode$Callback)>(this, $u2);
+
+        specialinvoke this.<android.widget.TextView: void setCustomSelectionActionModeCallback(android.view.ActionMode$Callback)>($u2);
+
+        return;
+    }
+
+    public void setFirstBaselineToTopHeight(int)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int $u3, $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u3 := @parameter0: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 28 goto label1;
+
+        specialinvoke this.<android.widget.TextView: void setFirstBaselineToTopHeight(int)>($u3);
+
+        return;
+
+     label1:
+        staticinvoke <androidx.core.widget.TextViewCompat: void setFirstBaselineToTopHeight(android.widget.TextView,int)>(this, $u3);
+
+        return;
+    }
+
+    public void setLastBaselineToBottomHeight(int)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int $u3, $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u3 := @parameter0: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 28 goto label1;
+
+        specialinvoke this.<android.widget.TextView: void setLastBaselineToBottomHeight(int)>($u3);
+
+        return;
+
+     label1:
+        staticinvoke <androidx.core.widget.TextViewCompat: void setLastBaselineToBottomHeight(android.widget.TextView,int)>(this, $u3);
+
+        return;
+    }
+
+    public void setLineHeight(int)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int $u1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u1 := @parameter0: int;
+
+        staticinvoke <androidx.core.widget.TextViewCompat: void setLineHeight(android.widget.TextView,int)>(this, $u1);
+
+        return;
+    }
+
+    public void setPrecomputedText(androidx.core.text.PrecomputedTextCompat)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        androidx.core.text.PrecomputedTextCompat $u1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u1 := @parameter0: androidx.core.text.PrecomputedTextCompat;
+
+        staticinvoke <androidx.core.widget.TextViewCompat: void setPrecomputedText(android.widget.TextView,androidx.core.text.PrecomputedTextCompat)>(this, $u1);
+
+        return;
+    }
+
+    public void setSupportBackgroundTintList(android.content.res.ColorStateList)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.content.res.ColorStateList $u2;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.content.res.ColorStateList;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatBackgroundHelper: void setSupportBackgroundTintList(android.content.res.ColorStateList)>($u2);
+
+     label1:
+        return;
+    }
+
+    public void setSupportBackgroundTintMode(android.graphics.PorterDuff$Mode)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.graphics.PorterDuff$Mode $u2;
+        androidx.appcompat.widget.AppCompatBackgroundHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.graphics.PorterDuff$Mode;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatBackgroundHelper mBackgroundTintHelper>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatBackgroundHelper: void setSupportBackgroundTintMode(android.graphics.PorterDuff$Mode)>($u2);
+
+     label1:
+        return;
+    }
+
+    public void setSupportCompoundDrawablesTintList(android.content.res.ColorStateList)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.content.res.ColorStateList $u2;
+        androidx.appcompat.widget.AppCompatTextHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.content.res.ColorStateList;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: void setCompoundDrawableTintList(android.content.res.ColorStateList)>($u2);
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: void applyCompoundDrawablesTints()>();
+
+        return;
+    }
+
+    public void setSupportCompoundDrawablesTintMode(android.graphics.PorterDuff$Mode)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.graphics.PorterDuff$Mode $u2;
+        androidx.appcompat.widget.AppCompatTextHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.graphics.PorterDuff$Mode;
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: void setCompoundDrawableTintMode(android.graphics.PorterDuff$Mode)>($u2);
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: void applyCompoundDrawablesTints()>();
+
+        return;
+    }
+
+    public void setTextAppearance(android.content.Context, int)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.content.Context $u2;
+        int $u3;
+        androidx.appcompat.widget.AppCompatTextHelper $u0;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: int;
+
+        specialinvoke this.<android.widget.TextView: void setTextAppearance(android.content.Context,int)>($u2, $u3);
+
+        $u0 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.AppCompatTextHelper: void onSetTextAppearance(android.content.Context,int)>($u2, $u3);
+
+     label1:
+        return;
+    }
+
+    public void setTextClassifier(android.view.textclassifier.TextClassifier)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.view.textclassifier.TextClassifier $u3;
+        int $u0;
+        androidx.appcompat.widget.AppCompatTextClassifierHelper $u0#2;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u3 := @parameter0: android.view.textclassifier.TextClassifier;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 >= 28 goto label2;
+
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextClassifierHelper mTextClassifierHelper>;
+
+        if $u0#2 != null goto label1;
+
+        goto label2;
+
+     label1:
+        virtualinvoke $u0#2.<androidx.appcompat.widget.AppCompatTextClassifierHelper: void setTextClassifier(android.view.textclassifier.TextClassifier)>($u3);
+
+        return;
+
+     label2:
+        specialinvoke this.<android.widget.TextView: void setTextClassifier(android.view.textclassifier.TextClassifier)>($u3);
+
+        return;
+    }
+
+    public void setTextFuture(java.util.concurrent.Future)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        java.util.concurrent.Future future;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        future := @parameter0: java.util.concurrent.Future;
+
+        this.<androidx.appcompat.widget.AppCompatTextView: java.util.concurrent.Future mPrecomputedTextFuture> = future;
+
+        if future == null goto label1;
+
+        virtualinvoke this.<androidx.appcompat.widget.AppCompatTextView: void requestLayout()>();
+
+     label1:
+        return;
+    }
+
+    public void setTextMetricsParamsCompat(androidx.core.text.PrecomputedTextCompat$Params)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        androidx.core.text.PrecomputedTextCompat$Params $u1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u1 := @parameter0: androidx.core.text.PrecomputedTextCompat$Params;
+
+        staticinvoke <androidx.core.widget.TextViewCompat: void setTextMetricsParams(android.widget.TextView,androidx.core.text.PrecomputedTextCompat$Params)>(this, $u1);
+
+        return;
+    }
+
+    public void setTextSize(int, float)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        int $u2;
+        float $u3;
+        boolean $u0;
+        androidx.appcompat.widget.AppCompatTextHelper $u0#2;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: float;
+
+        $u0 = <androidx.appcompat.widget.AppCompatTextView: boolean PLATFORM_SUPPORTS_AUTOSIZE>;
+
+        if $u0 == 0 goto label1;
+
+        specialinvoke this.<android.widget.TextView: void setTextSize(int,float)>($u2, $u3);
+
+        return;
+
+     label1:
+        $u0#2 = this.<androidx.appcompat.widget.AppCompatTextView: androidx.appcompat.widget.AppCompatTextHelper mTextHelper>;
+
+        if $u0#2 == null goto label2;
+
+        virtualinvoke $u0#2.<androidx.appcompat.widget.AppCompatTextHelper: void setTextSize(int,float)>($u2, $u3);
+
+     label2:
+        return;
+    }
+
+    public void setTypeface(android.graphics.Typeface, int)
+    {
+        androidx.appcompat.widget.AppCompatTextView this;
+        android.graphics.Typeface $u3, finalTypeface;
+        int $u4;
+        android.content.Context $u-1;
+
+        this := @this: androidx.appcompat.widget.AppCompatTextView;
+
+        $u3 := @parameter0: android.graphics.Typeface;
+
+        $u4 := @parameter1: int;
+
+        finalTypeface = null;
+
+        if $u3 == null goto label1;
+
+        if $u4 <= 0 goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.widget.AppCompatTextView: android.content.Context getContext()>();
+
+        finalTypeface = staticinvoke <androidx.core.graphics.TypefaceCompat: android.graphics.Typeface create(android.content.Context,android.graphics.Typeface,int)>($u-1, $u3, $u4);
+
+     label1:
+        if finalTypeface == null goto label2;
+
+        $u3 = finalTypeface;
+
+        goto label2;
+
+     label2:
+        specialinvoke this.<android.widget.TextView: void setTypeface(android.graphics.Typeface,int)>($u3, $u4);
+
+        return;
+    }
+}

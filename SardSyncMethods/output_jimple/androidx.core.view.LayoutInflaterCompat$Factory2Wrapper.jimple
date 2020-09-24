@@ -1,0 +1,103 @@
+class androidx.core.view.LayoutInflaterCompat$Factory2Wrapper extends java.lang.Object implements android.view.LayoutInflater$Factory2
+{
+    final androidx.core.view.LayoutInflaterFactory mDelegateFactory;
+
+    void <init>(androidx.core.view.LayoutInflaterFactory)
+    {
+        androidx.core.view.LayoutInflaterCompat$Factory2Wrapper this;
+        androidx.core.view.LayoutInflaterFactory $u1;
+
+        this := @this: androidx.core.view.LayoutInflaterCompat$Factory2Wrapper;
+
+        $u1 := @parameter0: androidx.core.view.LayoutInflaterFactory;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.view.LayoutInflaterCompat$Factory2Wrapper: androidx.core.view.LayoutInflaterFactory mDelegateFactory> = $u1;
+
+        return;
+    }
+
+    public android.view.View onCreateView(android.view.View, java.lang.String, android.content.Context, android.util.AttributeSet)
+    {
+        androidx.core.view.LayoutInflaterCompat$Factory2Wrapper this;
+        android.view.View $u2;
+        java.lang.String $u3;
+        android.content.Context $u4;
+        android.util.AttributeSet $u5;
+        androidx.core.view.LayoutInflaterFactory $u0;
+
+        this := @this: androidx.core.view.LayoutInflaterCompat$Factory2Wrapper;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: java.lang.String;
+
+        $u4 := @parameter2: android.content.Context;
+
+        $u5 := @parameter3: android.util.AttributeSet;
+
+        $u0 = this.<androidx.core.view.LayoutInflaterCompat$Factory2Wrapper: androidx.core.view.LayoutInflaterFactory mDelegateFactory>;
+
+        $u2 = interfaceinvoke $u0.<androidx.core.view.LayoutInflaterFactory: android.view.View onCreateView(android.view.View,java.lang.String,android.content.Context,android.util.AttributeSet)>($u2, $u3, $u4, $u5);
+
+        return $u2;
+    }
+
+    public android.view.View onCreateView(java.lang.String, android.content.Context, android.util.AttributeSet)
+    {
+        androidx.core.view.LayoutInflaterCompat$Factory2Wrapper this;
+        java.lang.String $u3;
+        android.content.Context $u4;
+        android.util.AttributeSet $u5;
+        android.view.View $u-1;
+        androidx.core.view.LayoutInflaterFactory $u0;
+
+        this := @this: androidx.core.view.LayoutInflaterCompat$Factory2Wrapper;
+
+        $u3 := @parameter0: java.lang.String;
+
+        $u4 := @parameter1: android.content.Context;
+
+        $u5 := @parameter2: android.util.AttributeSet;
+
+        $u0 = this.<androidx.core.view.LayoutInflaterCompat$Factory2Wrapper: androidx.core.view.LayoutInflaterFactory mDelegateFactory>;
+
+        $u-1 = interfaceinvoke $u0.<androidx.core.view.LayoutInflaterFactory: android.view.View onCreateView(android.view.View,java.lang.String,android.content.Context,android.util.AttributeSet)>(null, $u3, $u4, $u5);
+
+        return $u-1;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.core.view.LayoutInflaterCompat$Factory2Wrapper this;
+        java.lang.StringBuilder $u0;
+        java.lang.Class $u-1;
+        java.lang.String $u-1#4;
+        androidx.core.view.LayoutInflaterFactory $u1;
+
+        this := @this: androidx.core.view.LayoutInflaterCompat$Factory2Wrapper;
+
+        $u0 = new java.lang.StringBuilder;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#4 = virtualinvoke $u-1.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#4);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("{");
+
+        $u1 = this.<androidx.core.view.LayoutInflaterCompat$Factory2Wrapper: androidx.core.view.LayoutInflaterFactory mDelegateFactory>;
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("}");
+
+        $u-1#4 = virtualinvoke $u0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1#4;
+    }
+}

@@ -1,0 +1,113 @@
+class androidx.core.graphics.drawable.RoundedBitmapDrawable21 extends androidx.core.graphics.drawable.RoundedBitmapDrawable
+{
+
+    protected void <init>(android.content.res.Resources, android.graphics.Bitmap)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable21 this;
+        android.content.res.Resources $u1;
+        android.graphics.Bitmap $u2;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable21;
+
+        $u1 := @parameter0: android.content.res.Resources;
+
+        $u2 := @parameter1: android.graphics.Bitmap;
+
+        specialinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable: void <init>(android.content.res.Resources,android.graphics.Bitmap)>($u1, $u2);
+
+        return;
+    }
+
+    public void getOutline(android.graphics.Outline)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable21 this;
+        android.graphics.Outline $u3;
+        android.graphics.Rect $u0;
+        float $u-1;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable21;
+
+        $u3 := @parameter0: android.graphics.Outline;
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable21: void updateDstRect()>();
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable21: android.graphics.Rect mDstRect>;
+
+        $u-1 = virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable21: float getCornerRadius()>();
+
+        virtualinvoke $u3.<android.graphics.Outline: void setRoundRect(android.graphics.Rect,float)>($u0, $u-1);
+
+        return;
+    }
+
+    void gravityCompatApply(int, int, int, android.graphics.Rect, android.graphics.Rect)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable21 this;
+        int $u7, $u8, $u9;
+        android.graphics.Rect $u10, $u11;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable21;
+
+        $u7 := @parameter0: int;
+
+        $u8 := @parameter1: int;
+
+        $u9 := @parameter2: int;
+
+        $u10 := @parameter3: android.graphics.Rect;
+
+        $u11 := @parameter4: android.graphics.Rect;
+
+        staticinvoke <android.view.Gravity: void apply(int,int,int,android.graphics.Rect,android.graphics.Rect,int)>($u7, $u8, $u9, $u10, $u11, 0);
+
+        return;
+    }
+
+    public boolean hasMipMap()
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable21 this;
+        boolean $u-1;
+        android.graphics.Bitmap $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable21;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable21: android.graphics.Bitmap mBitmap>;
+
+        if $u0 == null goto label1;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable21: android.graphics.Bitmap mBitmap>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.Bitmap: boolean hasMipMap()>();
+
+        if $u-1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void setMipMap(boolean)
+    {
+        androidx.core.graphics.drawable.RoundedBitmapDrawable21 this;
+        boolean $u2;
+        android.graphics.Bitmap $u0;
+
+        this := @this: androidx.core.graphics.drawable.RoundedBitmapDrawable21;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable21: android.graphics.Bitmap mBitmap>;
+
+        if $u0 == null goto label1;
+
+        $u0 = this.<androidx.core.graphics.drawable.RoundedBitmapDrawable21: android.graphics.Bitmap mBitmap>;
+
+        virtualinvoke $u0.<android.graphics.Bitmap: void setHasMipMap(boolean)>($u2);
+
+        virtualinvoke this.<androidx.core.graphics.drawable.RoundedBitmapDrawable21: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+}

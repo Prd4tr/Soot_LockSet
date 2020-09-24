@@ -1,0 +1,46 @@
+class androidx.appcompat.widget.SearchView$8 extends java.lang.Object implements android.widget.AdapterView$OnItemClickListener
+{
+    final androidx.appcompat.widget.SearchView this$0;
+
+    void <init>(androidx.appcompat.widget.SearchView)
+    {
+        androidx.appcompat.widget.SearchView$8 this;
+        androidx.appcompat.widget.SearchView $u1;
+
+        this := @this: androidx.appcompat.widget.SearchView$8;
+
+        $u1 := @parameter0: androidx.appcompat.widget.SearchView;
+
+        this.<androidx.appcompat.widget.SearchView$8: androidx.appcompat.widget.SearchView this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onItemClick(android.widget.AdapterView, android.view.View, int, long)
+    {
+        androidx.appcompat.widget.SearchView$8 this;
+        android.widget.AdapterView parent;
+        android.view.View $u5;
+        int $u6;
+        long $u7;
+        androidx.appcompat.widget.SearchView $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView$8;
+
+        parent := @parameter0: android.widget.AdapterView;
+
+        $u5 := @parameter1: android.view.View;
+
+        $u6 := @parameter2: int;
+
+        $u7 := @parameter3: long;
+
+        $u0 = this.<androidx.appcompat.widget.SearchView$8: androidx.appcompat.widget.SearchView this$0>;
+
+        virtualinvoke $u0.<androidx.appcompat.widget.SearchView: boolean onItemClicked(int,int,java.lang.String)>($u6, 0, null);
+
+        return;
+    }
+}

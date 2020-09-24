@@ -1,0 +1,29 @@
+public final class androidx.core.view.accessibility.AccessibilityViewCommand$SetProgressArguments extends androidx.core.view.accessibility.AccessibilityViewCommand$CommandArguments
+{
+
+    public void <init>()
+    {
+        androidx.core.view.accessibility.AccessibilityViewCommand$SetProgressArguments this;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityViewCommand$SetProgressArguments;
+
+        specialinvoke this.<androidx.core.view.accessibility.AccessibilityViewCommand$CommandArguments: void <init>()>();
+
+        return;
+    }
+
+    public float getProgress()
+    {
+        androidx.core.view.accessibility.AccessibilityViewCommand$SetProgressArguments this;
+        float $u-1;
+        android.os.Bundle $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityViewCommand$SetProgressArguments;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityViewCommand$SetProgressArguments: android.os.Bundle mBundle>;
+
+        $u-1 = virtualinvoke $u0.<android.os.Bundle: float getFloat(java.lang.String)>("android.view.accessibility.action.ARGUMENT_PROGRESS_VALUE");
+
+        return $u-1;
+    }
+}

@@ -1,0 +1,32 @@
+public final class androidx.core.hardware.fingerprint.FingerprintManagerCompat$AuthenticationResult extends java.lang.Object
+{
+    private final androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject mCryptoObject;
+
+    public void <init>(androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject)
+    {
+        androidx.core.hardware.fingerprint.FingerprintManagerCompat$AuthenticationResult this;
+        androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject $u1;
+
+        this := @this: androidx.core.hardware.fingerprint.FingerprintManagerCompat$AuthenticationResult;
+
+        $u1 := @parameter0: androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.hardware.fingerprint.FingerprintManagerCompat$AuthenticationResult: androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject mCryptoObject> = $u1;
+
+        return;
+    }
+
+    public androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject getCryptoObject()
+    {
+        androidx.core.hardware.fingerprint.FingerprintManagerCompat$AuthenticationResult this;
+        androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject ret0;
+
+        this := @this: androidx.core.hardware.fingerprint.FingerprintManagerCompat$AuthenticationResult;
+
+        ret0 = this.<androidx.core.hardware.fingerprint.FingerprintManagerCompat$AuthenticationResult: androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject mCryptoObject>;
+
+        return ret0;
+    }
+}

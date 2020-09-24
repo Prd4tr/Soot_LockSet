@@ -1,0 +1,228 @@
+class androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector extends java.lang.Object
+{
+    private java.lang.reflect.Method mDoAfterTextChanged;
+    private java.lang.reflect.Method mDoBeforeTextChanged;
+    private java.lang.reflect.Method mEnsureImeVisible;
+
+    void <init>()
+    {
+        androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector this;
+        java.lang.Class $u5, $u2#15;
+        java.lang.Class[] $u4;
+        java.lang.reflect.Method $u-1;
+        java.lang.NoSuchMethodException $u2, $u2#14, $u0;
+
+        this := @this: androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: java.lang.reflect.Method mDoBeforeTextChanged> = null;
+
+        this.<androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: java.lang.reflect.Method mDoAfterTextChanged> = null;
+
+        this.<androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: java.lang.reflect.Method mEnsureImeVisible> = null;
+
+        staticinvoke <androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: void preApi29Check()>();
+
+        $u5 = class "Landroid/widget/AutoCompleteTextView;";
+
+        $u4 = newarray (java.lang.Class)[0];
+
+     label01:
+        $u-1 = virtualinvoke $u5.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("doBeforeTextChanged", $u4);
+
+     label02:
+        this.<androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: java.lang.reflect.Method mDoBeforeTextChanged> = $u-1;
+
+     label03:
+        virtualinvoke $u-1.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label04:
+        goto label06;
+
+     label05:
+        $u2 := @caughtexception;
+
+     label06:
+        $u5 = class "Landroid/widget/AutoCompleteTextView;";
+
+        $u4 = newarray (java.lang.Class)[0];
+
+     label07:
+        $u-1 = virtualinvoke $u5.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("doAfterTextChanged", $u4);
+
+     label08:
+        this.<androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: java.lang.reflect.Method mDoAfterTextChanged> = $u-1;
+
+     label09:
+        virtualinvoke $u-1.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label10:
+        goto label12;
+
+     label11:
+        $u2#14 := @caughtexception;
+
+     label12:
+        $u2#15 = class "Landroid/widget/AutoCompleteTextView;";
+
+        $u4 = newarray (java.lang.Class)[1];
+
+        $u5 = <java.lang.Boolean: java.lang.Class TYPE>;
+
+        $u4[0] = $u5;
+
+     label13:
+        $u-1 = virtualinvoke $u2#15.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("ensureImeVisible", $u4);
+
+     label14:
+        this.<androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: java.lang.reflect.Method mEnsureImeVisible> = $u-1;
+
+     label15:
+        virtualinvoke $u-1.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+     label16:
+        return;
+
+     label17:
+        $u0 := @caughtexception;
+
+        return;
+
+        catch java.lang.NoSuchMethodException from label01 to label02 with label05;
+        catch java.lang.NoSuchMethodException from label03 to label04 with label05;
+        catch java.lang.NoSuchMethodException from label07 to label08 with label11;
+        catch java.lang.NoSuchMethodException from label09 to label10 with label11;
+        catch java.lang.NoSuchMethodException from label13 to label14 with label17;
+        catch java.lang.NoSuchMethodException from label15 to label16 with label17;
+    }
+
+    private static void preApi29Check()
+    {
+        int $u0;
+        java.lang.UnsupportedClassVersionError $u0#3;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 >= 29 goto label1;
+
+        return;
+
+     label1:
+        $u0#3 = new java.lang.UnsupportedClassVersionError;
+
+        specialinvoke $u0#3.<java.lang.UnsupportedClassVersionError: void <init>(java.lang.String)>("This function can only be used for API Level < 29.");
+
+        throw $u0#3;
+    }
+
+    void doAfterTextChanged(android.widget.AutoCompleteTextView)
+    {
+        androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector this;
+        android.widget.AutoCompleteTextView $u3;
+        java.lang.reflect.Method $u0;
+        java.lang.Object[] $u1;
+        java.lang.Exception $u0#4;
+
+        this := @this: androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector;
+
+        $u3 := @parameter0: android.widget.AutoCompleteTextView;
+
+        staticinvoke <androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: void preApi29Check()>();
+
+        $u0 = this.<androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: java.lang.reflect.Method mDoAfterTextChanged>;
+
+        if $u0 == null goto label4;
+
+     label1:
+        $u1 = newarray (java.lang.Object)[0];
+
+        virtualinvoke $u0.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u3, $u1);
+
+     label2:
+        return;
+
+     label3:
+        $u0#4 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    void doBeforeTextChanged(android.widget.AutoCompleteTextView)
+    {
+        androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector this;
+        android.widget.AutoCompleteTextView $u3;
+        java.lang.reflect.Method $u0;
+        java.lang.Object[] $u1;
+        java.lang.Exception $u0#4;
+
+        this := @this: androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector;
+
+        $u3 := @parameter0: android.widget.AutoCompleteTextView;
+
+        staticinvoke <androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: void preApi29Check()>();
+
+        $u0 = this.<androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: java.lang.reflect.Method mDoBeforeTextChanged>;
+
+        if $u0 == null goto label4;
+
+     label1:
+        $u1 = newarray (java.lang.Object)[0];
+
+        virtualinvoke $u0.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u3, $u1);
+
+     label2:
+        return;
+
+     label3:
+        $u0#4 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    void ensureImeVisible(android.widget.AutoCompleteTextView)
+    {
+        androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector this;
+        android.widget.AutoCompleteTextView $u5;
+        java.lang.Object[] $u2;
+        java.lang.Boolean $u-1;
+        java.lang.reflect.Method $u0;
+        java.lang.Exception $u0#4;
+
+        this := @this: androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector;
+
+        $u5 := @parameter0: android.widget.AutoCompleteTextView;
+
+        staticinvoke <androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: void preApi29Check()>();
+
+        $u0 = this.<androidx.appcompat.widget.SearchView$PreQAutoCompleteTextViewReflector: java.lang.reflect.Method mEnsureImeVisible>;
+
+        if $u0 == null goto label4;
+
+     label1:
+        $u2 = newarray (java.lang.Object)[1];
+
+        $u-1 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        $u2[0] = $u-1;
+
+        virtualinvoke $u0.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u5, $u2);
+
+     label2:
+        return;
+
+     label3:
+        $u0#4 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+}

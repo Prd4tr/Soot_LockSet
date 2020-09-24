@@ -1,0 +1,121 @@
+public class androidx.core.text.PrecomputedTextCompat$Params$Builder extends java.lang.Object
+{
+    private int mBreakStrategy;
+    private int mHyphenationFrequency;
+    private final android.text.TextPaint mPaint;
+    private android.text.TextDirectionHeuristic mTextDir;
+
+    public void <init>(android.text.TextPaint)
+    {
+        androidx.core.text.PrecomputedTextCompat$Params$Builder this;
+        android.text.TextPaint $u3;
+        int $u0;
+        android.text.TextDirectionHeuristic $u0#7;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat$Params$Builder;
+
+        $u3 := @parameter0: android.text.TextPaint;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: android.text.TextPaint mPaint> = $u3;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 23 goto label1;
+
+        this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: int mBreakStrategy> = 1;
+
+        this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: int mHyphenationFrequency> = 1;
+
+        goto label2;
+
+     label1:
+        this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: int mHyphenationFrequency> = 0;
+
+        this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: int mBreakStrategy> = 0;
+
+     label2:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 18 goto label3;
+
+        $u0#7 = <android.text.TextDirectionHeuristics: android.text.TextDirectionHeuristic FIRSTSTRONG_LTR>;
+
+        this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: android.text.TextDirectionHeuristic mTextDir> = $u0#7;
+
+        return;
+
+     label3:
+        this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: android.text.TextDirectionHeuristic mTextDir> = null;
+
+        return;
+    }
+
+    public androidx.core.text.PrecomputedTextCompat$Params build()
+    {
+        androidx.core.text.PrecomputedTextCompat$Params$Builder this;
+        androidx.core.text.PrecomputedTextCompat$Params $u0;
+        android.text.TextPaint $u1;
+        android.text.TextDirectionHeuristic $u2;
+        int $u3, $u4;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat$Params$Builder;
+
+        $u0 = new androidx.core.text.PrecomputedTextCompat$Params;
+
+        $u1 = this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: android.text.TextPaint mPaint>;
+
+        $u2 = this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: android.text.TextDirectionHeuristic mTextDir>;
+
+        $u3 = this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: int mBreakStrategy>;
+
+        $u4 = this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: int mHyphenationFrequency>;
+
+        specialinvoke $u0.<androidx.core.text.PrecomputedTextCompat$Params: void <init>(android.text.TextPaint,android.text.TextDirectionHeuristic,int,int)>($u1, $u2, $u3, $u4);
+
+        return $u0;
+    }
+
+    public androidx.core.text.PrecomputedTextCompat$Params$Builder setBreakStrategy(int)
+    {
+        androidx.core.text.PrecomputedTextCompat$Params$Builder this;
+        int $u1;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat$Params$Builder;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: int mBreakStrategy> = $u1;
+
+        return this;
+    }
+
+    public androidx.core.text.PrecomputedTextCompat$Params$Builder setHyphenationFrequency(int)
+    {
+        androidx.core.text.PrecomputedTextCompat$Params$Builder this;
+        int $u1;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat$Params$Builder;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: int mHyphenationFrequency> = $u1;
+
+        return this;
+    }
+
+    public androidx.core.text.PrecomputedTextCompat$Params$Builder setTextDirection(android.text.TextDirectionHeuristic)
+    {
+        androidx.core.text.PrecomputedTextCompat$Params$Builder this;
+        android.text.TextDirectionHeuristic $u1;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat$Params$Builder;
+
+        $u1 := @parameter0: android.text.TextDirectionHeuristic;
+
+        this.<androidx.core.text.PrecomputedTextCompat$Params$Builder: android.text.TextDirectionHeuristic mTextDir> = $u1;
+
+        return this;
+    }
+}

@@ -1,0 +1,38 @@
+public final class androidx.core.content.pm.PackageInfoCompat extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.content.pm.PackageInfoCompat this;
+
+        this := @this: androidx.core.content.pm.PackageInfoCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static long getLongVersionCode(android.content.pm.PackageInfo)
+    {
+        android.content.pm.PackageInfo $u2;
+        long $u-1;
+        int $u0;
+
+        $u2 := @parameter0: android.content.pm.PackageInfo;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 28 goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.content.pm.PackageInfo: long getLongVersionCode()>();
+
+        return $u-1;
+
+     label1:
+        $u0 = $u2.<android.content.pm.PackageInfo: int versionCode>;
+
+        $u-1 = (long) $u0;
+
+        return $u-1;
+    }
+}

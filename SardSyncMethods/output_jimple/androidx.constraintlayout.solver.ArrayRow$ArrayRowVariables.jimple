@@ -1,0 +1,33 @@
+public interface  androidx.constraintlayout.solver.ArrayRow$ArrayRowVariables extends java.lang.Object
+{
+
+    public abstract void add(androidx.constraintlayout.solver.SolverVariable, float, boolean);
+
+    public abstract void clear();
+
+    public abstract boolean contains(androidx.constraintlayout.solver.SolverVariable);
+
+    public abstract void display();
+
+    public abstract void divideByAmount(float);
+
+    public abstract float get(androidx.constraintlayout.solver.SolverVariable);
+
+    public abstract int getCurrentSize();
+
+    public abstract androidx.constraintlayout.solver.SolverVariable getVariable(int);
+
+    public abstract float getVariableValue(int);
+
+    public abstract int indexOf(androidx.constraintlayout.solver.SolverVariable);
+
+    public abstract void invert();
+
+    public abstract void put(androidx.constraintlayout.solver.SolverVariable, float);
+
+    public abstract float remove(androidx.constraintlayout.solver.SolverVariable, boolean);
+
+    public abstract int sizeInBytes();
+
+    public abstract float use(androidx.constraintlayout.solver.ArrayRow, boolean);
+}

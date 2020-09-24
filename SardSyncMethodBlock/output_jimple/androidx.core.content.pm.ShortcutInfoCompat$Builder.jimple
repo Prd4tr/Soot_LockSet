@@ -1,0 +1,558 @@
+public class androidx.core.content.pm.ShortcutInfoCompat$Builder extends java.lang.Object
+{
+    private final androidx.core.content.pm.ShortcutInfoCompat mInfo;
+
+    public void <init>(android.content.Context, android.content.pm.ShortcutInfo)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        android.content.Context $u4;
+        android.content.pm.ShortcutInfo $u5;
+        androidx.core.content.pm.ShortcutInfoCompat intents;
+        java.lang.String $u-1;
+        android.content.Intent[] $u-1#5;
+        int $u2;
+        java.lang.Object[] $u-1#9;
+        android.content.ComponentName $u-1#13;
+        java.lang.CharSequence $u-1#16;
+        java.util.Set $u-1#25;
+        android.os.PersistableBundle $u-1#28;
+        androidx.core.app.Person[] $u-1#30;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u4 := @parameter0: android.content.Context;
+
+        $u5 := @parameter1: android.content.pm.ShortcutInfo;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        intents = new androidx.core.content.pm.ShortcutInfoCompat;
+
+        specialinvoke intents.<androidx.core.content.pm.ShortcutInfoCompat: void <init>()>();
+
+        this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo> = intents;
+
+        intents.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Context mContext> = $u4;
+
+        intents = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u-1 = virtualinvoke $u5.<android.content.pm.ShortcutInfo: java.lang.String getId()>();
+
+        intents.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String mId> = $u-1;
+
+        $u-1#5 = virtualinvoke $u5.<android.content.pm.ShortcutInfo: android.content.Intent[] getIntents()>();
+
+        intents = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u2 = lengthof $u-1#5;
+
+        $u-1#9 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($u-1#5, $u2);
+
+        $u-1#5 = (android.content.Intent[]) $u-1#9;
+
+        intents.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents> = $u-1#5;
+
+        intents = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u-1#13 = virtualinvoke $u5.<android.content.pm.ShortcutInfo: android.content.ComponentName getActivity()>();
+
+        intents.<androidx.core.content.pm.ShortcutInfoCompat: android.content.ComponentName mActivity> = $u-1#13;
+
+        intents = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u-1#16 = virtualinvoke $u5.<android.content.pm.ShortcutInfo: java.lang.CharSequence getShortLabel()>();
+
+        intents.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLabel> = $u-1#16;
+
+        intents = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u-1#16 = virtualinvoke $u5.<android.content.pm.ShortcutInfo: java.lang.CharSequence getLongLabel()>();
+
+        intents.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLongLabel> = $u-1#16;
+
+        intents = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u-1#16 = virtualinvoke $u5.<android.content.pm.ShortcutInfo: java.lang.CharSequence getDisabledMessage()>();
+
+        intents.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mDisabledMessage> = $u-1#16;
+
+        intents = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u-1#25 = virtualinvoke $u5.<android.content.pm.ShortcutInfo: java.util.Set getCategories()>();
+
+        intents.<androidx.core.content.pm.ShortcutInfoCompat: java.util.Set mCategories> = $u-1#25;
+
+        intents = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u-1#28 = virtualinvoke $u5.<android.content.pm.ShortcutInfo: android.os.PersistableBundle getExtras()>();
+
+        $u-1#30 = staticinvoke <androidx.core.content.pm.ShortcutInfoCompat: androidx.core.app.Person[] getPersonsFromExtra(android.os.PersistableBundle)>($u-1#28);
+
+        intents.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.app.Person[] mPersons> = $u-1#30;
+
+        intents = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u2 = virtualinvoke $u5.<android.content.pm.ShortcutInfo: int getRank()>();
+
+        intents.<androidx.core.content.pm.ShortcutInfoCompat: int mRank> = $u2;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, java.lang.String)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        android.content.Context $u2;
+        java.lang.String $u3;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: java.lang.String;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new androidx.core.content.pm.ShortcutInfoCompat;
+
+        specialinvoke $u0.<androidx.core.content.pm.ShortcutInfoCompat: void <init>()>();
+
+        this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo> = $u0;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Context mContext> = $u2;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String mId> = $u3;
+
+        return;
+    }
+
+    public void <init>(androidx.core.content.pm.ShortcutInfoCompat)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        androidx.core.content.pm.ShortcutInfoCompat $u4, $u0;
+        android.content.Context $u1;
+        java.lang.String $u1#4;
+        android.content.Intent[] $u1#6, $u2;
+        int $u2#8;
+        java.lang.Object[] $u-1;
+        android.content.ComponentName $u1#13;
+        java.lang.CharSequence $u1#15;
+        androidx.core.graphics.drawable.IconCompat $u1#21;
+        boolean $u1#23;
+        androidx.core.app.Person[] $u0#28, $u2#31;
+        java.util.Set $u0#36;
+        java.util.HashSet $u1#38;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u4 := @parameter0: androidx.core.content.pm.ShortcutInfoCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new androidx.core.content.pm.ShortcutInfoCompat;
+
+        specialinvoke $u0.<androidx.core.content.pm.ShortcutInfoCompat: void <init>()>();
+
+        this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo> = $u0;
+
+        $u1 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Context mContext>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Context mContext> = $u1;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u1#4 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String mId>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.String mId> = $u1#4;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u1#6 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents>;
+
+        $u2 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents>;
+
+        $u2#8 = lengthof $u2;
+
+        $u-1 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($u1#6, $u2#8);
+
+        $u1#6 = (android.content.Intent[]) $u-1;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents> = $u1#6;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u1#13 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: android.content.ComponentName mActivity>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: android.content.ComponentName mActivity> = $u1#13;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u1#15 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLabel>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLabel> = $u1#15;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u1#15 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLongLabel>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLongLabel> = $u1#15;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u1#15 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mDisabledMessage>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mDisabledMessage> = $u1#15;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u1#21 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.graphics.drawable.IconCompat mIcon> = $u1#21;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u1#23 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: boolean mIsAlwaysBadged>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: boolean mIsAlwaysBadged> = $u1#23;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u1#23 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: boolean mIsLongLived>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: boolean mIsLongLived> = $u1#23;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u2#8 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: int mRank>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: int mRank> = $u2#8;
+
+        $u0#28 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.app.Person[] mPersons>;
+
+        if $u0#28 == null goto label1;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0#28 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.app.Person[] mPersons>;
+
+        $u2#31 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.app.Person[] mPersons>;
+
+        $u2#8 = lengthof $u2#31;
+
+        $u-1 = staticinvoke <java.util.Arrays: java.lang.Object[] copyOf(java.lang.Object[],int)>($u0#28, $u2#8);
+
+        $u0#28 = (androidx.core.app.Person[]) $u-1;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.app.Person[] mPersons> = $u0#28;
+
+     label1:
+        $u0#36 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: java.util.Set mCategories>;
+
+        if $u0#36 == null goto label2;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u1#38 = new java.util.HashSet;
+
+        $u0#36 = $u4.<androidx.core.content.pm.ShortcutInfoCompat: java.util.Set mCategories>;
+
+        specialinvoke $u1#38.<java.util.HashSet: void <init>(java.util.Collection)>($u0#36);
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: java.util.Set mCategories> = $u1#38;
+
+     label2:
+        return;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat build()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        boolean $u-1;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+        java.lang.CharSequence $u0#2;
+        android.content.Intent[] $u0#5;
+        int $u0#8;
+        java.lang.IllegalArgumentException $u0#10;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0#2 = $u0.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLabel>;
+
+        $u-1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($u0#2);
+
+        if $u-1 != 0 goto label2;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0#5 = $u0.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents>;
+
+        if $u0#5 == null goto label1;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0#5 = $u0.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents>;
+
+        $u0#8 = lengthof $u0#5;
+
+        if $u0#8 == 0 goto label1;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        return $u0;
+
+     label1:
+        $u0#10 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#10.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Shortcut must have an intent");
+
+        throw $u0#10;
+
+     label2:
+        $u0#10 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $u0#10.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Shortcut must have a non-empty label");
+
+        throw $u0#10;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setActivity(android.content.ComponentName)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        android.content.ComponentName $u2;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u2 := @parameter0: android.content.ComponentName;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: android.content.ComponentName mActivity> = $u2;
+
+        return this;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setAlwaysBadged()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: boolean mIsAlwaysBadged> = 1;
+
+        return this;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setCategories(java.util.Set)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        java.util.Set categories;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        categories := @parameter0: java.util.Set;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: java.util.Set mCategories> = categories;
+
+        return this;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setDisabledMessage(java.lang.CharSequence)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        java.lang.CharSequence $u2;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mDisabledMessage> = $u2;
+
+        return this;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setIcon(androidx.core.graphics.drawable.IconCompat)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        androidx.core.graphics.drawable.IconCompat $u2;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u2 := @parameter0: androidx.core.graphics.drawable.IconCompat;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.graphics.drawable.IconCompat mIcon> = $u2;
+
+        return this;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setIntent(android.content.Intent)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        android.content.Intent $u3;
+        android.content.Intent[] $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u3 := @parameter0: android.content.Intent;
+
+        $u0 = newarray (android.content.Intent)[1];
+
+        $u0[0] = $u3;
+
+        this = virtualinvoke this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat$Builder setIntents(android.content.Intent[])>($u0);
+
+        return this;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setIntents(android.content.Intent[])
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        android.content.Intent[] $u2;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u2 := @parameter0: android.content.Intent[];
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: android.content.Intent[] mIntents> = $u2;
+
+        return this;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setLongLabel(java.lang.CharSequence)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        java.lang.CharSequence $u2;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLongLabel> = $u2;
+
+        return this;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setLongLived()
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: boolean mIsLongLived> = 1;
+
+        return this;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setLongLived(boolean)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        boolean $u2;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: boolean mIsLongLived> = $u2;
+
+        return this;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setPerson(androidx.core.app.Person)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        androidx.core.app.Person $u3;
+        androidx.core.app.Person[] $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u3 := @parameter0: androidx.core.app.Person;
+
+        $u0 = newarray (androidx.core.app.Person)[1];
+
+        $u0[0] = $u3;
+
+        this = virtualinvoke this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat$Builder setPersons(androidx.core.app.Person[])>($u0);
+
+        return this;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setPersons(androidx.core.app.Person[])
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        androidx.core.app.Person[] $u2;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u2 := @parameter0: androidx.core.app.Person[];
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: androidx.core.app.Person[] mPersons> = $u2;
+
+        return this;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setRank(int)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        int $u2;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: int mRank> = $u2;
+
+        return this;
+    }
+
+    public androidx.core.content.pm.ShortcutInfoCompat$Builder setShortLabel(java.lang.CharSequence)
+    {
+        androidx.core.content.pm.ShortcutInfoCompat$Builder this;
+        java.lang.CharSequence $u2;
+        androidx.core.content.pm.ShortcutInfoCompat $u0;
+
+        this := @this: androidx.core.content.pm.ShortcutInfoCompat$Builder;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.core.content.pm.ShortcutInfoCompat$Builder: androidx.core.content.pm.ShortcutInfoCompat mInfo>;
+
+        $u0.<androidx.core.content.pm.ShortcutInfoCompat: java.lang.CharSequence mLabel> = $u2;
+
+        return this;
+    }
+}

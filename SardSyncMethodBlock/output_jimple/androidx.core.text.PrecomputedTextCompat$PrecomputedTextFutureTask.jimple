@@ -1,0 +1,25 @@
+class androidx.core.text.PrecomputedTextCompat$PrecomputedTextFutureTask extends java.util.concurrent.FutureTask
+{
+
+    void <init>(androidx.core.text.PrecomputedTextCompat$Params, java.lang.CharSequence)
+    {
+        androidx.core.text.PrecomputedTextCompat$PrecomputedTextFutureTask this;
+        androidx.core.text.PrecomputedTextCompat$Params $u2;
+        java.lang.CharSequence $u3;
+        androidx.core.text.PrecomputedTextCompat$PrecomputedTextFutureTask$PrecomputedTextCallback $u0;
+
+        this := @this: androidx.core.text.PrecomputedTextCompat$PrecomputedTextFutureTask;
+
+        $u2 := @parameter0: androidx.core.text.PrecomputedTextCompat$Params;
+
+        $u3 := @parameter1: java.lang.CharSequence;
+
+        $u0 = new androidx.core.text.PrecomputedTextCompat$PrecomputedTextFutureTask$PrecomputedTextCallback;
+
+        specialinvoke $u0.<androidx.core.text.PrecomputedTextCompat$PrecomputedTextFutureTask$PrecomputedTextCallback: void <init>(androidx.core.text.PrecomputedTextCompat$Params,java.lang.CharSequence)>($u2, $u3);
+
+        specialinvoke this.<java.util.concurrent.FutureTask: void <init>(java.util.concurrent.Callable)>($u0);
+
+        return;
+    }
+}

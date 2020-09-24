@@ -1,0 +1,36 @@
+class androidx.constraintlayout.motion.widget.KeyCycleOscillator$WavePoint extends java.lang.Object
+{
+    float mOffset;
+    float mPeriod;
+    int mPosition;
+    float mValue;
+
+    public void <init>(int, float, float, float)
+    {
+        androidx.constraintlayout.motion.widget.KeyCycleOscillator$WavePoint this;
+        int $u1;
+        float $u2, $u3, $u4;
+
+        this := @this: androidx.constraintlayout.motion.widget.KeyCycleOscillator$WavePoint;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: float;
+
+        $u3 := @parameter2: float;
+
+        $u4 := @parameter3: float;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$WavePoint: int mPosition> = $u1;
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$WavePoint: float mValue> = $u4;
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$WavePoint: float mOffset> = $u3;
+
+        this.<androidx.constraintlayout.motion.widget.KeyCycleOscillator$WavePoint: float mPeriod> = $u2;
+
+        return;
+    }
+}

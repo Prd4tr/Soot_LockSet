@@ -1,0 +1,1802 @@
+class androidx.appcompat.graphics.drawable.DrawableContainer extends android.graphics.drawable.Drawable implements android.graphics.drawable.Drawable$Callback
+{
+    private static final boolean DEBUG;
+    private static final boolean DEFAULT_DITHER;
+    private static final java.lang.String TAG;
+    private int mAlpha;
+    private java.lang.Runnable mAnimationRunnable;
+    private androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback mBlockInvalidateCallback;
+    private int mCurIndex;
+    private android.graphics.drawable.Drawable mCurrDrawable;
+    private androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState;
+    private long mEnterAnimationEnd;
+    private long mExitAnimationEnd;
+    private boolean mHasAlpha;
+    private android.graphics.Rect mHotspotBounds;
+    private android.graphics.drawable.Drawable mLastDrawable;
+    private boolean mMutated;
+
+    void <init>()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        specialinvoke this.<android.graphics.drawable.Drawable: void <init>()>();
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mAlpha> = 255;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mCurIndex> = -1;
+
+        return;
+    }
+
+    private void initializeDrawableForDisplay(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.graphics.drawable.Drawable $u6;
+        int $u3, $u4, $u1, $u2;
+        androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback hotspotBounds;
+        android.graphics.drawable.Drawable$Callback $u-1;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState hotspotBounds#8;
+        boolean hotspotBounds#10;
+        android.graphics.ColorFilter hotspotBounds#15;
+        android.content.res.ColorStateList hotspotBounds#19;
+        android.graphics.PorterDuff$Mode hotspotBounds#23;
+        int[] $u-1#29;
+        android.graphics.Rect $u-1#33;
+        java.lang.Throwable hotspotBounds#51;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u6 := @parameter0: android.graphics.drawable.Drawable;
+
+        hotspotBounds = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback mBlockInvalidateCallback>;
+
+        if hotspotBounds != null goto label01;
+
+        hotspotBounds = new androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback;
+
+        specialinvoke hotspotBounds.<androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback: void <init>()>();
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback mBlockInvalidateCallback> = hotspotBounds;
+
+     label01:
+        hotspotBounds = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback mBlockInvalidateCallback>;
+
+        $u-1 = virtualinvoke $u6.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable$Callback getCallback()>();
+
+        hotspotBounds = virtualinvoke hotspotBounds.<androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback: androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback wrap(android.graphics.drawable.Drawable$Callback)>($u-1);
+
+        virtualinvoke $u6.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>(hotspotBounds);
+
+     label02:
+        hotspotBounds#8 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u3 = hotspotBounds#8.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mEnterFadeDuration>;
+
+     label03:
+        if $u3 > 0 goto label07;
+
+     label04:
+        hotspotBounds#10 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: boolean mHasAlpha>;
+
+     label05:
+        if hotspotBounds#10 == 0 goto label07;
+
+     label06:
+        $u3 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mAlpha>;
+
+        virtualinvoke $u6.<android.graphics.drawable.Drawable: void setAlpha(int)>($u3);
+
+     label07:
+        hotspotBounds#8 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        hotspotBounds#10 = hotspotBounds#8.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mHasColorFilter>;
+
+     label08:
+        if hotspotBounds#10 == 0 goto label11;
+
+     label09:
+        hotspotBounds#8 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        hotspotBounds#15 = hotspotBounds#8.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.ColorFilter mColorFilter>;
+
+        virtualinvoke $u6.<android.graphics.drawable.Drawable: void setColorFilter(android.graphics.ColorFilter)>(hotspotBounds#15);
+
+     label10:
+        goto label17;
+
+     label11:
+        hotspotBounds#8 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        hotspotBounds#10 = hotspotBounds#8.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mHasTintList>;
+
+     label12:
+        if hotspotBounds#10 == 0 goto label14;
+
+     label13:
+        hotspotBounds#8 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        hotspotBounds#19 = hotspotBounds#8.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.content.res.ColorStateList mTintList>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintList(android.graphics.drawable.Drawable,android.content.res.ColorStateList)>($u6, hotspotBounds#19);
+
+     label14:
+        hotspotBounds#8 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        hotspotBounds#10 = hotspotBounds#8.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mHasTintMode>;
+
+     label15:
+        if hotspotBounds#10 == 0 goto label17;
+
+     label16:
+        hotspotBounds#8 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        hotspotBounds#23 = hotspotBounds#8.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.PorterDuff$Mode mTintMode>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintMode(android.graphics.drawable.Drawable,android.graphics.PorterDuff$Mode)>($u6, hotspotBounds#23);
+
+     label17:
+        hotspotBounds#10 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: boolean isVisible()>();
+
+        virtualinvoke $u6.<android.graphics.drawable.Drawable: boolean setVisible(boolean,boolean)>(hotspotBounds#10, 1);
+
+        hotspotBounds#8 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        hotspotBounds#10 = hotspotBounds#8.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mDither>;
+
+        virtualinvoke $u6.<android.graphics.drawable.Drawable: void setDither(boolean)>(hotspotBounds#10);
+
+        $u-1#29 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: int[] getState()>();
+
+        virtualinvoke $u6.<android.graphics.drawable.Drawable: boolean setState(int[])>($u-1#29);
+
+        $u3 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: int getLevel()>();
+
+        virtualinvoke $u6.<android.graphics.drawable.Drawable: boolean setLevel(int)>($u3);
+
+        $u-1#33 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.Rect getBounds()>();
+
+        virtualinvoke $u6.<android.graphics.drawable.Drawable: void setBounds(android.graphics.Rect)>($u-1#33);
+
+        $u3 = <android.os.Build$VERSION: int SDK_INT>;
+
+     label18:
+        if $u3 < 23 goto label20;
+
+     label19:
+        $u3 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: int getLayoutDirection()>();
+
+        virtualinvoke $u6.<android.graphics.drawable.Drawable: boolean setLayoutDirection(int)>($u3);
+
+     label20:
+        $u3 = <android.os.Build$VERSION: int SDK_INT>;
+
+     label21:
+        if $u3 < 19 goto label23;
+
+     label22:
+        hotspotBounds#8 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        hotspotBounds#10 = hotspotBounds#8.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mAutoMirrored>;
+
+        virtualinvoke $u6.<android.graphics.drawable.Drawable: void setAutoMirrored(boolean)>(hotspotBounds#10);
+
+     label23:
+        $u-1#33 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.Rect mHotspotBounds>;
+
+        $u3 = <android.os.Build$VERSION: int SDK_INT>;
+
+     label24:
+        if $u3 < 21 goto label26;
+
+        if $u-1#33 == null goto label26;
+
+     label25:
+        $u1 = $u-1#33.<android.graphics.Rect: int left>;
+
+        $u2 = $u-1#33.<android.graphics.Rect: int top>;
+
+        $u3 = $u-1#33.<android.graphics.Rect: int right>;
+
+        $u4 = $u-1#33.<android.graphics.Rect: int bottom>;
+
+        virtualinvoke $u6.<android.graphics.drawable.Drawable: void setHotspotBounds(int,int,int,int)>($u1, $u2, $u3, $u4);
+
+     label26:
+        hotspotBounds = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback mBlockInvalidateCallback>;
+
+        $u-1 = virtualinvoke hotspotBounds.<androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback: android.graphics.drawable.Drawable$Callback unwrap()>();
+
+        virtualinvoke $u6.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>($u-1);
+
+        return;
+
+     label27:
+        hotspotBounds#51 := @caughtexception;
+
+        hotspotBounds = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback mBlockInvalidateCallback>;
+
+        $u-1 = virtualinvoke hotspotBounds.<androidx.appcompat.graphics.drawable.DrawableContainer$BlockInvalidateCallback: android.graphics.drawable.Drawable$Callback unwrap()>();
+
+        virtualinvoke $u6.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>($u-1);
+
+        throw hotspotBounds#51;
+
+        catch java.lang.Throwable from label02 to label03 with label27;
+        catch java.lang.Throwable from label04 to label05 with label27;
+        catch java.lang.Throwable from label06 to label08 with label27;
+        catch java.lang.Throwable from label09 to label10 with label27;
+        catch java.lang.Throwable from label11 to label12 with label27;
+        catch java.lang.Throwable from label13 to label15 with label27;
+        catch java.lang.Throwable from label16 to label18 with label27;
+        catch java.lang.Throwable from label19 to label21 with label27;
+        catch java.lang.Throwable from label22 to label24 with label27;
+        catch java.lang.Throwable from label25 to label26 with label27;
+    }
+
+    private boolean needsMirroring()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        boolean $u-1;
+        int $u-1#4;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: boolean isAutoMirrored()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u-1#4 = staticinvoke <androidx.core.graphics.drawable.DrawableCompat: int getLayoutDirection(android.graphics.drawable.Drawable)>(this);
+
+        if $u-1#4 != 1 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    static int resolveDensity(android.content.res.Resources, int)
+    {
+        android.content.res.Resources $u2;
+        int $u3;
+        android.util.DisplayMetrics $u-1;
+
+        $u2 := @parameter0: android.content.res.Resources;
+
+        $u3 := @parameter1: int;
+
+        if $u2 != null goto label1;
+
+        goto label2;
+
+     label1:
+        $u-1 = virtualinvoke $u2.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $u3 = $u-1.<android.util.DisplayMetrics: int densityDpi>;
+
+     label2:
+        if $u3 != 0 goto label3;
+
+        return 160;
+
+     label3:
+        return $u3;
+    }
+
+    void animate(boolean)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        boolean $u12, animating;
+        long $u-1, $u8;
+        android.graphics.drawable.Drawable animAlpha;
+        byte $u10;
+        int $u8#9, $u8#14;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u8#13;
+        java.lang.Runnable animAlpha#37;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u12 := @parameter0: boolean;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: boolean mHasAlpha> = 1;
+
+        $u-1 = staticinvoke <android.os.SystemClock: long uptimeMillis()>();
+
+        animating = 0;
+
+        animAlpha = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if animAlpha == null goto label2;
+
+        $u8 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mEnterAnimationEnd>;
+
+        $u10 = $u8 cmp 0L;
+
+        if $u10 == 0 goto label3;
+
+        $u10 = $u8 cmp $u-1;
+
+        if $u10 > 0 goto label1;
+
+        $u8#9 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mAlpha>;
+
+        virtualinvoke animAlpha.<android.graphics.drawable.Drawable: void setAlpha(int)>($u8#9);
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mEnterAnimationEnd> = 0L;
+
+        goto label3;
+
+     label1:
+        $u8 = $u8 - $u-1;
+
+        $u8 = $u8 * 255L;
+
+        $u8#9 = (int) $u8;
+
+        $u8#13 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u8#14 = $u8#13.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mEnterFadeDuration>;
+
+        $u8#9 = $u8#9 / $u8#14;
+
+        animAlpha = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        $u8#9 = 255 - $u8#9;
+
+        $u8#14 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mAlpha>;
+
+        $u8#9 = $u8#9 * $u8#14;
+
+        $u8#9 = $u8#9 / 255;
+
+        virtualinvoke animAlpha.<android.graphics.drawable.Drawable: void setAlpha(int)>($u8#9);
+
+        animating = 1;
+
+        goto label3;
+
+     label2:
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mEnterAnimationEnd> = 0L;
+
+     label3:
+        animAlpha = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable>;
+
+        if animAlpha == null goto label5;
+
+        $u8 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mExitAnimationEnd>;
+
+        $u10 = $u8 cmp 0L;
+
+        if $u10 == 0 goto label6;
+
+        $u10 = $u8 cmp $u-1;
+
+        if $u10 > 0 goto label4;
+
+        virtualinvoke animAlpha.<android.graphics.drawable.Drawable: boolean setVisible(boolean,boolean)>(0, 0);
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable> = null;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mExitAnimationEnd> = 0L;
+
+        goto label6;
+
+     label4:
+        $u8 = $u8 - $u-1;
+
+        $u8 = $u8 * 255L;
+
+        $u8#9 = (int) $u8;
+
+        $u8#13 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u8#14 = $u8#13.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mExitFadeDuration>;
+
+        $u8#9 = $u8#9 / $u8#14;
+
+        animAlpha = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable>;
+
+        $u8#14 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mAlpha>;
+
+        $u8#9 = $u8#14 * $u8#9;
+
+        $u8#9 = $u8#9 / 255;
+
+        virtualinvoke animAlpha.<android.graphics.drawable.Drawable: void setAlpha(int)>($u8#9);
+
+        animating = 1;
+
+        goto label6;
+
+     label5:
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mExitAnimationEnd> = 0L;
+
+     label6:
+        if $u12 == 0 goto label7;
+
+        if animating == 0 goto label7;
+
+        animAlpha#37 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: java.lang.Runnable mAnimationRunnable>;
+
+        $u-1 = 16L + $u-1;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void scheduleSelf(java.lang.Runnable,long)>(animAlpha#37, $u-1);
+
+     label7:
+        return;
+    }
+
+    public void applyTheme(android.content.res.Resources$Theme)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.content.res.Resources$Theme $u2;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: android.content.res.Resources$Theme;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void applyTheme(android.content.res.Resources$Theme)>($u2);
+
+        return;
+    }
+
+    public boolean canApplyTheme()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        boolean $u-1;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean canApplyTheme()>();
+
+        return $u-1;
+    }
+
+    void clearMutated()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void clearMutated()>();
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: boolean mMutated> = 0;
+
+        return;
+    }
+
+    androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState cloneConstantState()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        return ret0;
+    }
+
+    public void draw(android.graphics.Canvas)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.graphics.Canvas $u2;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: android.graphics.Canvas;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>($u2);
+
+     label1:
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable>;
+
+        if $u0 == null goto label2;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void draw(android.graphics.Canvas)>($u2);
+
+     label2:
+        return;
+    }
+
+    public int getAlpha()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        int ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mAlpha>;
+
+        return ret0;
+    }
+
+    public int getChangingConfigurations()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        int $u-1, $u-1#4;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u1;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u-1 = specialinvoke this.<android.graphics.drawable.Drawable: int getChangingConfigurations()>();
+
+        $u1 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1#4 = virtualinvoke $u1.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int getChangingConfigurations()>();
+
+        $u-1 = $u-1 | $u-1#4;
+
+        return $u-1;
+    }
+
+    public final android.graphics.drawable.Drawable$ConstantState getConstantState()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+        boolean $u-1;
+        int $u-1#5;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean canConstantState()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1#5 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: int getChangingConfigurations()>();
+
+        $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mChangingConfigurations> = $u-1#5;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        return $u0;
+
+     label1:
+        return null;
+    }
+
+    public android.graphics.drawable.Drawable getCurrent()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.graphics.drawable.Drawable ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        return ret0;
+    }
+
+    int getCurrentIndex()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        int ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mCurIndex>;
+
+        return ret0;
+    }
+
+    public void getHotspotBounds(android.graphics.Rect)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.graphics.Rect $u2, $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: android.graphics.Rect;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.Rect mHotspotBounds>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u2.<android.graphics.Rect: void set(android.graphics.Rect)>($u0);
+
+        return;
+
+     label1:
+        specialinvoke this.<android.graphics.drawable.Drawable: void getHotspotBounds(android.graphics.Rect)>($u2);
+
+        return;
+    }
+
+    public int getIntrinsicHeight()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+        boolean $u-1;
+        int $u-1#5;
+        android.graphics.drawable.Drawable $u0#7;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean isConstantSize()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1#5 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int getConstantHeight()>();
+
+        return $u-1#5;
+
+     label1:
+        $u0#7 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0#7 == null goto label2;
+
+        $u-1#5 = virtualinvoke $u0#7.<android.graphics.drawable.Drawable: int getIntrinsicHeight()>();
+
+        return $u-1#5;
+
+     label2:
+        return -1;
+    }
+
+    public int getIntrinsicWidth()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+        boolean $u-1;
+        int $u-1#5;
+        android.graphics.drawable.Drawable $u0#7;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean isConstantSize()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1#5 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int getConstantWidth()>();
+
+        return $u-1#5;
+
+     label1:
+        $u0#7 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0#7 == null goto label2;
+
+        $u-1#5 = virtualinvoke $u0#7.<android.graphics.drawable.Drawable: int getIntrinsicWidth()>();
+
+        return $u-1#5;
+
+     label2:
+        return -1;
+    }
+
+    public int getMinimumHeight()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+        boolean $u-1;
+        int $u-1#5;
+        android.graphics.drawable.Drawable $u0#7;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean isConstantSize()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1#5 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int getConstantMinimumHeight()>();
+
+        return $u-1#5;
+
+     label1:
+        $u0#7 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0#7 == null goto label2;
+
+        $u-1#5 = virtualinvoke $u0#7.<android.graphics.drawable.Drawable: int getMinimumHeight()>();
+
+        return $u-1#5;
+
+     label2:
+        return 0;
+    }
+
+    public int getMinimumWidth()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+        boolean $u-1;
+        int $u-1#5;
+        android.graphics.drawable.Drawable $u0#7;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean isConstantSize()>();
+
+        if $u-1 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1#5 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int getConstantMinimumWidth()>();
+
+        return $u-1#5;
+
+     label1:
+        $u0#7 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0#7 == null goto label2;
+
+        $u-1#5 = virtualinvoke $u0#7.<android.graphics.drawable.Drawable: int getMinimumWidth()>();
+
+        return $u-1#5;
+
+     label2:
+        return 0;
+    }
+
+    public int getOpacity()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.graphics.drawable.Drawable $u0;
+        boolean $u-1;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0#4;
+        int $u-1#5;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0 == null goto label2;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean isVisible()>();
+
+        if $u-1 != 0 goto label1;
+
+        goto label2;
+
+     label1:
+        $u0#4 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1#5 = virtualinvoke $u0#4.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int getOpacity()>();
+
+        return $u-1#5;
+
+     label2:
+        return -2;
+    }
+
+    public void getOutline(android.graphics.Outline)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.graphics.Outline $u2;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: android.graphics.Outline;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void getOutline(android.graphics.Outline)>($u2);
+
+     label1:
+        return;
+    }
+
+    public boolean getPadding(android.graphics.Rect)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.graphics.Rect $u5, $u-1;
+        int right, left;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState r;
+        boolean result, $u-1#15;
+        android.graphics.drawable.Drawable result#12;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u5 := @parameter0: android.graphics.Rect;
+
+        r = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1 = virtualinvoke r.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.Rect getConstantPadding()>();
+
+        if $u-1 == null goto label3;
+
+        virtualinvoke $u5.<android.graphics.Rect: void set(android.graphics.Rect)>($u-1);
+
+        right = $u-1.<android.graphics.Rect: int left>;
+
+        left = $u-1.<android.graphics.Rect: int top>;
+
+        right = right | left;
+
+        left = $u-1.<android.graphics.Rect: int bottom>;
+
+        right = right | left;
+
+        left = $u-1.<android.graphics.Rect: int right>;
+
+        right = right | left;
+
+        if right == 0 goto label1;
+
+        result = 1;
+
+        goto label2;
+
+     label1:
+        result = 0;
+
+     label2:
+        goto label5;
+
+     label3:
+        result#12 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if result#12 == null goto label4;
+
+        result = virtualinvoke result#12.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>($u5);
+
+        goto label5;
+
+     label4:
+        result = specialinvoke this.<android.graphics.drawable.Drawable: boolean getPadding(android.graphics.Rect)>($u5);
+
+     label5:
+        $u-1#15 = specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: boolean needsMirroring()>();
+
+        if $u-1#15 == 0 goto label6;
+
+        left = $u5.<android.graphics.Rect: int left>;
+
+        right = $u5.<android.graphics.Rect: int right>;
+
+        $u5.<android.graphics.Rect: int left> = right;
+
+        $u5.<android.graphics.Rect: int right> = left;
+
+     label6:
+        return result;
+    }
+
+    public void invalidateDrawable(android.graphics.drawable.Drawable)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.graphics.drawable.Drawable $u2, $u0#2;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+        android.graphics.drawable.Drawable$Callback $u-1;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void invalidateCache()>();
+
+     label1:
+        $u0#2 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u2 != $u0#2 goto label2;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable$Callback getCallback()>();
+
+        if $u-1 == null goto label2;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable$Callback getCallback()>();
+
+        interfaceinvoke $u-1.<android.graphics.drawable.Drawable$Callback: void invalidateDrawable(android.graphics.drawable.Drawable)>(this);
+
+     label2:
+        return;
+    }
+
+    public boolean isAutoMirrored()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        ret0 = $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mAutoMirrored>;
+
+        return ret0;
+    }
+
+    public boolean isStateful()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        boolean $u-1;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean isStateful()>();
+
+        return $u-1;
+    }
+
+    public void jumpToCurrentState()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        int $u2;
+        boolean changed, $u1#5;
+        android.graphics.drawable.Drawable $u1;
+        long $u1#7;
+        byte $u5;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        changed = 0;
+
+        $u1 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable>;
+
+        if $u1 == null goto label1;
+
+        virtualinvoke $u1.<android.graphics.drawable.Drawable: void jumpToCurrentState()>();
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable> = null;
+
+        changed = 1;
+
+     label1:
+        $u1 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u1 == null goto label2;
+
+        virtualinvoke $u1.<android.graphics.drawable.Drawable: void jumpToCurrentState()>();
+
+        $u1#5 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: boolean mHasAlpha>;
+
+        if $u1#5 == 0 goto label2;
+
+        $u1 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        $u2 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mAlpha>;
+
+        virtualinvoke $u1.<android.graphics.drawable.Drawable: void setAlpha(int)>($u2);
+
+     label2:
+        $u1#7 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mExitAnimationEnd>;
+
+        $u5 = $u1#7 cmp 0L;
+
+        if $u5 == 0 goto label3;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mExitAnimationEnd> = 0L;
+
+        changed = 1;
+
+     label3:
+        $u1#7 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mEnterAnimationEnd>;
+
+        $u5 = $u1#7 cmp 0L;
+
+        if $u5 == 0 goto label4;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mEnterAnimationEnd> = 0L;
+
+        changed = 1;
+
+     label4:
+        if changed == 0 goto label5;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void invalidateSelf()>();
+
+     label5:
+        return;
+    }
+
+    public android.graphics.drawable.Drawable mutate()
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        boolean clone;
+        android.graphics.drawable.Drawable $u-1;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u-1#4;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        clone = this.<androidx.appcompat.graphics.drawable.DrawableContainer: boolean mMutated>;
+
+        if clone != 0 goto label1;
+
+        $u-1 = specialinvoke this.<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable mutate()>();
+
+        if $u-1 != this goto label1;
+
+        $u-1#4 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState cloneConstantState()>();
+
+        virtualinvoke $u-1#4.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void mutate()>();
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void setConstantState(androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState)>($u-1#4);
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: boolean mMutated> = 1;
+
+     label1:
+        return this;
+    }
+
+    protected void onBoundsChange(android.graphics.Rect)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.graphics.Rect $u2;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: android.graphics.Rect;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void setBounds(android.graphics.Rect)>($u2);
+
+     label1:
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0 == null goto label2;
+
+        virtualinvoke $u0.<android.graphics.drawable.Drawable: void setBounds(android.graphics.Rect)>($u2);
+
+     label2:
+        return;
+    }
+
+    public boolean onLayoutDirectionChanged(int)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        int $u3, $u-1;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+        boolean $u-1#3;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u3 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: int getCurrentIndex()>();
+
+        $u-1#3 = virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean setLayoutDirection(int,int)>($u3, $u-1);
+
+        return $u-1#3;
+    }
+
+    protected boolean onLevelChange(int)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        int $u2;
+        android.graphics.drawable.Drawable $u0;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean setLevel(int)>($u2);
+
+        return $u-1;
+
+     label1:
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0 == null goto label2;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean setLevel(int)>($u2);
+
+        return $u-1;
+
+     label2:
+        return 0;
+    }
+
+    protected boolean onStateChange(int[])
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        int[] $u2;
+        android.graphics.drawable.Drawable $u0;
+        boolean $u-1;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: int[];
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable>;
+
+        if $u0 == null goto label1;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean setState(int[])>($u2);
+
+        return $u-1;
+
+     label1:
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0 == null goto label2;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.drawable.Drawable: boolean setState(int[])>($u2);
+
+        return $u-1;
+
+     label2:
+        return 0;
+    }
+
+    public void scheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable, long)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.graphics.drawable.Drawable $u2, $u0;
+        java.lang.Runnable $u3;
+        long $u4;
+        android.graphics.drawable.Drawable$Callback $u-1;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u3 := @parameter1: java.lang.Runnable;
+
+        $u4 := @parameter2: long;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u2 != $u0 goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable$Callback getCallback()>();
+
+        if $u-1 == null goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable$Callback getCallback()>();
+
+        interfaceinvoke $u-1.<android.graphics.drawable.Drawable$Callback: void scheduleDrawable(android.graphics.drawable.Drawable,java.lang.Runnable,long)>(this, $u3, $u4);
+
+     label1:
+        return;
+    }
+
+    boolean selectDrawable(int)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        int $u10, d;
+        long $u-1, d#11;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState d#4;
+        android.graphics.drawable.Drawable d#7;
+        byte $u7;
+        java.lang.Runnable d#31;
+        androidx.appcompat.graphics.drawable.DrawableContainer$1 d#32;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u10 := @parameter0: int;
+
+        d = this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mCurIndex>;
+
+        if $u10 != d goto label01;
+
+        return 0;
+
+     label01:
+        $u-1 = staticinvoke <android.os.SystemClock: long uptimeMillis()>();
+
+        d#4 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        d = d#4.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mExitFadeDuration>;
+
+        if d <= 0 goto label04;
+
+        d#7 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable>;
+
+        if d#7 == null goto label02;
+
+        virtualinvoke d#7.<android.graphics.drawable.Drawable: boolean setVisible(boolean,boolean)>(0, 0);
+
+     label02:
+        d#7 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if d#7 == null goto label03;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable> = d#7;
+
+        d#4 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        d = d#4.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mExitFadeDuration>;
+
+        d#11 = (long) d;
+
+        d#11 = d#11 + $u-1;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mExitAnimationEnd> = d#11;
+
+        goto label05;
+
+     label03:
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable> = null;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mExitAnimationEnd> = 0L;
+
+        goto label05;
+
+     label04:
+        d#7 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if d#7 == null goto label05;
+
+        virtualinvoke d#7.<android.graphics.drawable.Drawable: boolean setVisible(boolean,boolean)>(0, 0);
+
+     label05:
+        if $u10 < 0 goto label08;
+
+        d#4 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        d = d#4.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mNumChildren>;
+
+        if $u10 >= d goto label08;
+
+        d#4 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        d#7 = virtualinvoke d#4.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable getChild(int)>($u10);
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable> = d#7;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mCurIndex> = $u10;
+
+        if d#7 == null goto label07;
+
+        d#4 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u10 = d#4.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mEnterFadeDuration>;
+
+        if $u10 <= 0 goto label06;
+
+        d#4 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u10 = d#4.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mEnterFadeDuration>;
+
+        d#11 = (long) $u10;
+
+        $u-1 = d#11 + $u-1;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mEnterAnimationEnd> = $u-1;
+
+     label06:
+        specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void initializeDrawableForDisplay(android.graphics.drawable.Drawable)>(d#7);
+
+     label07:
+        goto label09;
+
+     label08:
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable> = null;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mCurIndex> = -1;
+
+     label09:
+        $u-1 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mEnterAnimationEnd>;
+
+        $u7 = $u-1 cmp 0L;
+
+        if $u7 != 0 goto label10;
+
+        $u-1 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mExitAnimationEnd>;
+
+        $u7 = $u-1 cmp 0L;
+
+        if $u7 == 0 goto label13;
+
+     label10:
+        d#31 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: java.lang.Runnable mAnimationRunnable>;
+
+        if d#31 != null goto label11;
+
+        d#32 = new androidx.appcompat.graphics.drawable.DrawableContainer$1;
+
+        specialinvoke d#32.<androidx.appcompat.graphics.drawable.DrawableContainer$1: void <init>(androidx.appcompat.graphics.drawable.DrawableContainer)>(this);
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: java.lang.Runnable mAnimationRunnable> = d#32;
+
+        goto label12;
+
+     label11:
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void unscheduleSelf(java.lang.Runnable)>(d#31);
+
+     label12:
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void animate(boolean)>(1);
+
+     label13:
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void invalidateSelf()>();
+
+        return 1;
+    }
+
+    public void setAlpha(int)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        int $u7, $u0#2;
+        long $u1;
+        byte $u5;
+        boolean $u0;
+        android.graphics.drawable.Drawable $u0#4;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u7 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: boolean mHasAlpha>;
+
+        if $u0 == 0 goto label1;
+
+        $u0#2 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mAlpha>;
+
+        if $u0#2 == $u7 goto label3;
+
+     label1:
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: boolean mHasAlpha> = 1;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mAlpha> = $u7;
+
+        $u0#4 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0#4 == null goto label3;
+
+        $u1 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: long mEnterAnimationEnd>;
+
+        $u5 = $u1 cmp 0L;
+
+        if $u5 != 0 goto label2;
+
+        virtualinvoke $u0#4.<android.graphics.drawable.Drawable: void setAlpha(int)>($u7);
+
+        return;
+
+     label2:
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void animate(boolean)>(0);
+
+     label3:
+        return;
+    }
+
+    public void setAutoMirrored(boolean)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        boolean $u3, $u0#2;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+        android.graphics.drawable.Drawable $u0#4;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0#2 = $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mAutoMirrored>;
+
+        if $u0#2 == $u3 goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mAutoMirrored> = $u3;
+
+        $u0#4 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0#4 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u3 = $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mAutoMirrored>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setAutoMirrored(android.graphics.drawable.Drawable,boolean)>($u0#4, $u3);
+
+     label1:
+        return;
+    }
+
+    public void setColorFilter(android.graphics.ColorFilter)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.graphics.ColorFilter $u3, $u0#3;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+        android.graphics.drawable.Drawable $u0#5;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u3 := @parameter0: android.graphics.ColorFilter;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mHasColorFilter> = 1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0#3 = $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.ColorFilter mColorFilter>;
+
+        if $u0#3 == $u3 goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.ColorFilter mColorFilter> = $u3;
+
+        $u0#5 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0#5 == null goto label1;
+
+        virtualinvoke $u0#5.<android.graphics.drawable.Drawable: void setColorFilter(android.graphics.ColorFilter)>($u3);
+
+     label1:
+        return;
+    }
+
+    void setConstantState(androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u2;
+        android.graphics.drawable.Drawable $u-1;
+        int $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState;
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState> = $u2;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: int mCurIndex>;
+
+        if $u0 < 0 goto label1;
+
+        $u-1 = virtualinvoke $u2.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.drawable.Drawable getChild(int)>($u0);
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable> = $u-1;
+
+        if $u-1 == null goto label1;
+
+        specialinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: void initializeDrawableForDisplay(android.graphics.drawable.Drawable)>($u-1);
+
+     label1:
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable> = null;
+
+        return;
+    }
+
+    void setCurrentIndex(int)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        int $u1;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u1 := @parameter0: int;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: boolean selectDrawable(int)>($u1);
+
+        return;
+    }
+
+    public void setDither(boolean)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        boolean $u3, $u0#2;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+        android.graphics.drawable.Drawable $u0#4;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0#2 = $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mDither>;
+
+        if $u0#2 == $u3 goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mDither> = $u3;
+
+        $u0#4 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0#4 == null goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u3 = $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mDither>;
+
+        virtualinvoke $u0#4.<android.graphics.drawable.Drawable: void setDither(boolean)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setEnterFadeDuration(int)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        int $u2;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mEnterFadeDuration> = $u2;
+
+        return;
+    }
+
+    public void setExitFadeDuration(int)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        int $u2;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: int mExitFadeDuration> = $u2;
+
+        return;
+    }
+
+    public void setHotspot(float, float)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        float $u2, $u3;
+        android.graphics.drawable.Drawable $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: float;
+
+        $u3 := @parameter1: float;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0 == null goto label1;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setHotspot(android.graphics.drawable.Drawable,float,float)>($u0, $u2, $u3);
+
+     label1:
+        return;
+    }
+
+    public void setHotspotBounds(int, int, int, int)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        int $u2, $u3, $u4, $u5;
+        android.graphics.Rect $u0;
+        android.graphics.drawable.Drawable $u0#3;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: int;
+
+        $u3 := @parameter1: int;
+
+        $u4 := @parameter2: int;
+
+        $u5 := @parameter3: int;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.Rect mHotspotBounds>;
+
+        if $u0 != null goto label1;
+
+        $u0 = new android.graphics.Rect;
+
+        specialinvoke $u0.<android.graphics.Rect: void <init>(int,int,int,int)>($u2, $u3, $u4, $u5);
+
+        this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.Rect mHotspotBounds> = $u0;
+
+        goto label2;
+
+     label1:
+        virtualinvoke $u0.<android.graphics.Rect: void set(int,int,int,int)>($u2, $u3, $u4, $u5);
+
+     label2:
+        $u0#3 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u0#3 == null goto label3;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setHotspotBounds(android.graphics.drawable.Drawable,int,int,int,int)>($u0#3, $u2, $u3, $u4, $u5);
+
+     label3:
+        return;
+    }
+
+    public void setTintList(android.content.res.ColorStateList)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.content.res.ColorStateList $u3, $u0#3;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+        android.graphics.drawable.Drawable $u0#5;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u3 := @parameter0: android.content.res.ColorStateList;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mHasTintList> = 1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0#3 = $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.content.res.ColorStateList mTintList>;
+
+        if $u0#3 == $u3 goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.content.res.ColorStateList mTintList> = $u3;
+
+        $u0#5 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintList(android.graphics.drawable.Drawable,android.content.res.ColorStateList)>($u0#5, $u3);
+
+     label1:
+        return;
+    }
+
+    public void setTintMode(android.graphics.PorterDuff$Mode)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.graphics.PorterDuff$Mode $u3, $u0#3;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+        android.graphics.drawable.Drawable $u0#5;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u3 := @parameter0: android.graphics.PorterDuff$Mode;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: boolean mHasTintMode> = 1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0#3 = $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.PorterDuff$Mode mTintMode>;
+
+        if $u0#3 == $u3 goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: android.graphics.PorterDuff$Mode mTintMode> = $u3;
+
+        $u0#5 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        staticinvoke <androidx.core.graphics.drawable.DrawableCompat: void setTintMode(android.graphics.drawable.Drawable,android.graphics.PorterDuff$Mode)>($u0#5, $u3);
+
+     label1:
+        return;
+    }
+
+    public boolean setVisible(boolean, boolean)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        boolean $u3, $u4, $u-1;
+        android.graphics.drawable.Drawable $u1;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u3 := @parameter0: boolean;
+
+        $u4 := @parameter1: boolean;
+
+        $u-1 = specialinvoke this.<android.graphics.drawable.Drawable: boolean setVisible(boolean,boolean)>($u3, $u4);
+
+        $u1 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mLastDrawable>;
+
+        if $u1 == null goto label1;
+
+        virtualinvoke $u1.<android.graphics.drawable.Drawable: boolean setVisible(boolean,boolean)>($u3, $u4);
+
+     label1:
+        $u1 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u1 == null goto label2;
+
+        virtualinvoke $u1.<android.graphics.drawable.Drawable: boolean setVisible(boolean,boolean)>($u3, $u4);
+
+     label2:
+        return $u-1;
+    }
+
+    public void unscheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.graphics.drawable.Drawable $u2, $u0;
+        java.lang.Runnable $u3;
+        android.graphics.drawable.Drawable$Callback $u-1;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: android.graphics.drawable.Drawable;
+
+        $u3 := @parameter1: java.lang.Runnable;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable mCurrDrawable>;
+
+        if $u2 != $u0 goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable$Callback getCallback()>();
+
+        if $u-1 == null goto label1;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawableContainer: android.graphics.drawable.Drawable$Callback getCallback()>();
+
+        interfaceinvoke $u-1.<android.graphics.drawable.Drawable$Callback: void unscheduleDrawable(android.graphics.drawable.Drawable,java.lang.Runnable)>(this, $u3);
+
+     label1:
+        return;
+    }
+
+    final void updateDensity(android.content.res.Resources)
+    {
+        androidx.appcompat.graphics.drawable.DrawableContainer this;
+        android.content.res.Resources $u2;
+        androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawableContainer;
+
+        $u2 := @parameter0: android.content.res.Resources;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawableContainer: androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState mDrawableContainerState>;
+
+        virtualinvoke $u0.<androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState: void updateDensity(android.content.res.Resources)>($u2);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.appcompat.graphics.drawable.DrawableContainer: java.lang.String TAG> = "DrawableContainer";
+
+        <androidx.appcompat.graphics.drawable.DrawableContainer: boolean DEFAULT_DITHER> = 1;
+
+        <androidx.appcompat.graphics.drawable.DrawableContainer: boolean DEBUG> = 0;
+
+        return;
+    }
+}

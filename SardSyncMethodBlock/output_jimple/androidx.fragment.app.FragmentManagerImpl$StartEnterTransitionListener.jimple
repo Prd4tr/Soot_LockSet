@@ -1,0 +1,191 @@
+class androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener extends java.lang.Object implements androidx.fragment.app.Fragment$OnStartEnterTransitionListener
+{
+    final boolean mIsBack;
+    private int mNumPostponed;
+    final androidx.fragment.app.BackStackRecord mRecord;
+
+    void <init>(androidx.fragment.app.BackStackRecord, boolean)
+    {
+        androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener this;
+        androidx.fragment.app.BackStackRecord $u1;
+        boolean $u2;
+
+        this := @this: androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener;
+
+        $u1 := @parameter0: androidx.fragment.app.BackStackRecord;
+
+        $u2 := @parameter1: boolean;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: boolean mIsBack> = $u2;
+
+        this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: androidx.fragment.app.BackStackRecord mRecord> = $u1;
+
+        return;
+    }
+
+    public void cancelTransaction()
+    {
+        androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener this;
+        androidx.fragment.app.BackStackRecord $u1;
+        boolean $u2;
+        androidx.fragment.app.FragmentManagerImpl $u0;
+
+        this := @this: androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener;
+
+        $u1 = this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: androidx.fragment.app.BackStackRecord mRecord>;
+
+        $u0 = $u1.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        $u1 = this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: androidx.fragment.app.BackStackRecord mRecord>;
+
+        $u2 = this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: boolean mIsBack>;
+
+        virtualinvoke $u0.<androidx.fragment.app.FragmentManagerImpl: void completeExecute(androidx.fragment.app.BackStackRecord,boolean,boolean,boolean)>($u1, $u2, 0, 0);
+
+        return;
+    }
+
+    public void completeTransaction()
+    {
+        androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener this;
+        int canceled, i;
+        boolean $u1, canceled#3, $u-1#15;
+        androidx.fragment.app.BackStackRecord manager;
+        androidx.fragment.app.FragmentManagerImpl manager#5;
+        java.util.ArrayList numAdded;
+        java.lang.Object $u-1;
+        androidx.fragment.app.Fragment fragment;
+
+        this := @this: androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener;
+
+        canceled = this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: int mNumPostponed>;
+
+        $u1 = 0;
+
+        if canceled <= 0 goto label1;
+
+        canceled#3 = 1;
+
+        goto label2;
+
+     label1:
+        canceled#3 = 0;
+
+     label2:
+        manager = this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: androidx.fragment.app.BackStackRecord mRecord>;
+
+        manager#5 = manager.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        numAdded = manager#5.<androidx.fragment.app.FragmentManagerImpl: java.util.ArrayList mAdded>;
+
+        canceled = virtualinvoke numAdded.<java.util.ArrayList: int size()>();
+
+        i = 0;
+
+     label3:
+        if i >= canceled goto label5;
+
+        numAdded = manager#5.<androidx.fragment.app.FragmentManagerImpl: java.util.ArrayList mAdded>;
+
+        $u-1 = virtualinvoke numAdded.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        fragment = (androidx.fragment.app.Fragment) $u-1;
+
+        virtualinvoke fragment.<androidx.fragment.app.Fragment: void setOnStartEnterTransitionListener(androidx.fragment.app.Fragment$OnStartEnterTransitionListener)>(null);
+
+        if canceled#3 == 0 goto label4;
+
+        $u-1#15 = virtualinvoke fragment.<androidx.fragment.app.Fragment: boolean isPostponed()>();
+
+        if $u-1#15 == 0 goto label4;
+
+        virtualinvoke fragment.<androidx.fragment.app.Fragment: void startPostponedEnterTransition()>();
+
+     label4:
+        i = i + 1;
+
+        goto label3;
+
+     label5:
+        manager = this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: androidx.fragment.app.BackStackRecord mRecord>;
+
+        manager#5 = manager.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        manager = this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: androidx.fragment.app.BackStackRecord mRecord>;
+
+        $u-1#15 = this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: boolean mIsBack>;
+
+        if canceled#3 != 0 goto label6;
+
+        $u1 = 1;
+
+     label6:
+        virtualinvoke manager#5.<androidx.fragment.app.FragmentManagerImpl: void completeExecute(androidx.fragment.app.BackStackRecord,boolean,boolean,boolean)>(manager, $u-1#15, $u1, 1);
+
+        return;
+    }
+
+    public boolean isReady()
+    {
+        androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener this;
+        int $u0;
+
+        this := @this: androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener;
+
+        $u0 = this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: int mNumPostponed>;
+
+        if $u0 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void onStartEnterTransition()
+    {
+        androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener this;
+        int $u0;
+        androidx.fragment.app.BackStackRecord $u0#3;
+        androidx.fragment.app.FragmentManagerImpl $u0#4;
+
+        this := @this: androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener;
+
+        $u0 = this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: int mNumPostponed>;
+
+        $u0 = $u0 + -1;
+
+        this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: int mNumPostponed> = $u0;
+
+        if $u0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $u0#3 = this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: androidx.fragment.app.BackStackRecord mRecord>;
+
+        $u0#4 = $u0#3.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        virtualinvoke $u0#4.<androidx.fragment.app.FragmentManagerImpl: void scheduleCommit()>();
+
+        return;
+    }
+
+    public void startListening()
+    {
+        androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener this;
+        int $u0;
+
+        this := @this: androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener;
+
+        $u0 = this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: int mNumPostponed>;
+
+        $u0 = $u0 + 1;
+
+        this.<androidx.fragment.app.FragmentManagerImpl$StartEnterTransitionListener: int mNumPostponed> = $u0;
+
+        return;
+    }
+}

@@ -1,0 +1,557 @@
+class androidx.core.widget.TextViewCompat$OreoCallback extends java.lang.Object implements android.view.ActionMode$Callback
+{
+    private static final int MENU_ITEM_ORDER_PROCESS_TEXT_INTENT_ACTIONS_START;
+    private final android.view.ActionMode$Callback mCallback;
+    private boolean mCanUseMenuBuilderReferences;
+    private boolean mInitializedMenuBuilderReferences;
+    private java.lang.Class mMenuBuilderClass;
+    private java.lang.reflect.Method mMenuBuilderRemoveItemAtMethod;
+    private final android.widget.TextView mTextView;
+
+    void <init>(android.view.ActionMode$Callback, android.widget.TextView)
+    {
+        androidx.core.widget.TextViewCompat$OreoCallback this;
+        android.view.ActionMode$Callback $u2;
+        android.widget.TextView $u3;
+
+        this := @this: androidx.core.widget.TextViewCompat$OreoCallback;
+
+        $u2 := @parameter0: android.view.ActionMode$Callback;
+
+        $u3 := @parameter1: android.widget.TextView;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.widget.TextViewCompat$OreoCallback: android.view.ActionMode$Callback mCallback> = $u2;
+
+        this.<androidx.core.widget.TextViewCompat$OreoCallback: android.widget.TextView mTextView> = $u3;
+
+        this.<androidx.core.widget.TextViewCompat$OreoCallback: boolean mInitializedMenuBuilderReferences> = 0;
+
+        return;
+    }
+
+    private android.content.Intent createProcessTextIntent()
+    {
+        androidx.core.widget.TextViewCompat$OreoCallback this;
+        android.content.Intent $u0;
+
+        this := @this: androidx.core.widget.TextViewCompat$OreoCallback;
+
+        $u0 = new android.content.Intent;
+
+        specialinvoke $u0.<android.content.Intent: void <init>()>();
+
+        $u0 = virtualinvoke $u0.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("android.intent.action.PROCESS_TEXT");
+
+        $u0 = virtualinvoke $u0.<android.content.Intent: android.content.Intent setType(java.lang.String)>("text/plain");
+
+        return $u0;
+    }
+
+    private android.content.Intent createProcessTextIntentForResolveInfo(android.content.pm.ResolveInfo, android.widget.TextView)
+    {
+        androidx.core.widget.TextViewCompat$OreoCallback this;
+        android.content.pm.ResolveInfo $u4;
+        android.widget.TextView $u5;
+        android.content.Intent $u-1;
+        boolean $u-1#3;
+        android.content.pm.ActivityInfo $u1;
+        java.lang.String $u1#10, $u2;
+
+        this := @this: androidx.core.widget.TextViewCompat$OreoCallback;
+
+        $u4 := @parameter0: android.content.pm.ResolveInfo;
+
+        $u5 := @parameter1: android.widget.TextView;
+
+        $u-1 = specialinvoke this.<androidx.core.widget.TextViewCompat$OreoCallback: android.content.Intent createProcessTextIntent()>();
+
+        $u-1#3 = specialinvoke this.<androidx.core.widget.TextViewCompat$OreoCallback: boolean isEditable(android.widget.TextView)>($u5);
+
+        $u-1#3 = $u-1#3 ^ 1;
+
+        $u-1 = virtualinvoke $u-1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("android.intent.extra.PROCESS_TEXT_READONLY", $u-1#3);
+
+        $u1 = $u4.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        $u1#10 = $u1.<android.content.pm.ActivityInfo: java.lang.String packageName>;
+
+        $u1 = $u4.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        $u2 = $u1.<android.content.pm.ActivityInfo: java.lang.String name>;
+
+        $u-1 = virtualinvoke $u-1.<android.content.Intent: android.content.Intent setClassName(java.lang.String,java.lang.String)>($u1#10, $u2);
+
+        return $u-1;
+    }
+
+    private java.util.List getSupportedActivities(android.content.Context, android.content.pm.PackageManager)
+    {
+        androidx.core.widget.TextViewCompat$OreoCallback this;
+        android.content.Context $u7;
+        android.content.pm.PackageManager $u8;
+        java.util.ArrayList supportedActivities;
+        boolean canStartActivityForResult;
+        android.content.Intent $u-1;
+        java.util.List $u-1#4;
+        java.util.Iterator $u-1#6;
+        java.lang.Object $u-1#10;
+        android.content.pm.ResolveInfo info;
+
+        this := @this: androidx.core.widget.TextViewCompat$OreoCallback;
+
+        $u7 := @parameter0: android.content.Context;
+
+        $u8 := @parameter1: android.content.pm.PackageManager;
+
+        supportedActivities = new java.util.ArrayList;
+
+        specialinvoke supportedActivities.<java.util.ArrayList: void <init>()>();
+
+        canStartActivityForResult = $u7 instanceof android.app.Activity;
+
+        if canStartActivityForResult != 0 goto label1;
+
+        return supportedActivities;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.core.widget.TextViewCompat$OreoCallback: android.content.Intent createProcessTextIntent()>();
+
+        $u-1#4 = virtualinvoke $u8.<android.content.pm.PackageManager: java.util.List queryIntentActivities(android.content.Intent,int)>($u-1, 0);
+
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        canStartActivityForResult = interfaceinvoke $u-1#6.<java.util.Iterator: boolean hasNext()>();
+
+        if canStartActivityForResult == 0 goto label3;
+
+        $u-1#10 = interfaceinvoke $u-1#6.<java.util.Iterator: java.lang.Object next()>();
+
+        info = (android.content.pm.ResolveInfo) $u-1#10;
+
+        canStartActivityForResult = specialinvoke this.<androidx.core.widget.TextViewCompat$OreoCallback: boolean isSupportedActivity(android.content.pm.ResolveInfo,android.content.Context)>(info, $u7);
+
+        if canStartActivityForResult == 0 goto label2;
+
+        interfaceinvoke supportedActivities.<java.util.List: boolean add(java.lang.Object)>(info);
+
+        goto label2;
+
+     label3:
+        return supportedActivities;
+    }
+
+    private boolean isEditable(android.widget.TextView)
+    {
+        androidx.core.widget.TextViewCompat$OreoCallback this;
+        android.widget.TextView $u2;
+        boolean $u0;
+
+        this := @this: androidx.core.widget.TextViewCompat$OreoCallback;
+
+        $u2 := @parameter0: android.widget.TextView;
+
+        $u0 = $u2 instanceof android.text.Editable;
+
+        if $u0 == 0 goto label1;
+
+        $u0 = virtualinvoke $u2.<android.widget.TextView: boolean onCheckIsTextEditor()>();
+
+        if $u0 == 0 goto label1;
+
+        $u0 = virtualinvoke $u2.<android.widget.TextView: boolean isEnabled()>();
+
+        if $u0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private boolean isSupportedActivity(android.content.pm.ResolveInfo, android.content.Context)
+    {
+        androidx.core.widget.TextViewCompat$OreoCallback this;
+        android.content.pm.ResolveInfo $u4;
+        android.content.Context $u5;
+        java.lang.String $u-1, $u1#4;
+        android.content.pm.ActivityInfo $u1;
+        boolean $u-1#5;
+        int $u-1#14;
+
+        this := @this: androidx.core.widget.TextViewCompat$OreoCallback;
+
+        $u4 := @parameter0: android.content.pm.ResolveInfo;
+
+        $u5 := @parameter1: android.content.Context;
+
+        $u-1 = virtualinvoke $u5.<android.content.Context: java.lang.String getPackageName()>();
+
+        $u1 = $u4.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        $u1#4 = $u1.<android.content.pm.ActivityInfo: java.lang.String packageName>;
+
+        $u-1#5 = virtualinvoke $u-1.<java.lang.String: boolean equals(java.lang.Object)>($u1#4);
+
+        if $u-1#5 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $u1 = $u4.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        $u-1#5 = $u1.<android.content.pm.ActivityInfo: boolean exported>;
+
+        if $u-1#5 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        $u1 = $u4.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        $u-1 = $u1.<android.content.pm.ActivityInfo: java.lang.String permission>;
+
+        if $u-1 == null goto label4;
+
+        $u1 = $u4.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        $u-1 = $u1.<android.content.pm.ActivityInfo: java.lang.String permission>;
+
+        $u-1#14 = virtualinvoke $u5.<android.content.Context: int checkSelfPermission(java.lang.String)>($u-1);
+
+        if $u-1#14 != 0 goto label3;
+
+        goto label4;
+
+     label3:
+        return 0;
+
+     label4:
+        return 1;
+    }
+
+    private void recomputeProcessTextMenuItems(android.view.Menu)
+    {
+        androidx.core.widget.TextViewCompat$OreoCallback this;
+        android.view.Menu $u10;
+        android.widget.TextView context;
+        android.content.Context $u-1;
+        android.content.pm.PackageManager $u-1#4;
+        boolean e;
+        java.lang.Class $u-1#8, $u7;
+        java.lang.Class[] item;
+        java.lang.reflect.Method $u-1#12;
+        java.lang.NoSuchMethodException e#14, e#64;
+        java.lang.ClassNotFoundException e#15;
+        int $u-1#27, $u-1#47;
+        android.view.MenuItem $u-1#30;
+        android.content.Intent $u-1#32;
+        java.lang.String $u7#34, $u-1#37;
+        java.lang.Object[] $u7#41;
+        java.lang.Integer $u-1#42;
+        java.util.List $u-1#44;
+        java.lang.Object $u-1#49;
+        android.content.pm.ResolveInfo item#51;
+        java.lang.CharSequence $u-1#53;
+        java.lang.reflect.InvocationTargetException e#62;
+        java.lang.IllegalAccessException e#63;
+
+        this := @this: androidx.core.widget.TextViewCompat$OreoCallback;
+
+        $u10 := @parameter0: android.view.Menu;
+
+        context = this.<androidx.core.widget.TextViewCompat$OreoCallback: android.widget.TextView mTextView>;
+
+        $u-1 = virtualinvoke context.<android.widget.TextView: android.content.Context getContext()>();
+
+        $u-1#4 = virtualinvoke $u-1.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        e = this.<androidx.core.widget.TextViewCompat$OreoCallback: boolean mInitializedMenuBuilderReferences>;
+
+        if e != 0 goto label08;
+
+        this.<androidx.core.widget.TextViewCompat$OreoCallback: boolean mInitializedMenuBuilderReferences> = 1;
+
+     label01:
+        $u-1#8 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("com.android.internal.view.menu.MenuBuilder");
+
+     label02:
+        this.<androidx.core.widget.TextViewCompat$OreoCallback: java.lang.Class mMenuBuilderClass> = $u-1#8;
+
+        item = newarray (java.lang.Class)[1];
+
+        $u7 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        item[0] = $u7;
+
+     label03:
+        $u-1#12 = virtualinvoke $u-1#8.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("removeItemAt", item);
+
+     label04:
+        this.<androidx.core.widget.TextViewCompat$OreoCallback: java.lang.reflect.Method mMenuBuilderRemoveItemAtMethod> = $u-1#12;
+
+        this.<androidx.core.widget.TextViewCompat$OreoCallback: boolean mCanUseMenuBuilderReferences> = 1;
+
+        goto label08;
+
+     label05:
+        e#14 := @caughtexception;
+
+        goto label07;
+
+     label06:
+        e#15 := @caughtexception;
+
+     label07:
+        this.<androidx.core.widget.TextViewCompat$OreoCallback: java.lang.Class mMenuBuilderClass> = null;
+
+        this.<androidx.core.widget.TextViewCompat$OreoCallback: java.lang.reflect.Method mMenuBuilderRemoveItemAtMethod> = null;
+
+        this.<androidx.core.widget.TextViewCompat$OreoCallback: boolean mCanUseMenuBuilderReferences> = 0;
+
+     label08:
+        e = this.<androidx.core.widget.TextViewCompat$OreoCallback: boolean mCanUseMenuBuilderReferences>;
+
+        if e == 0 goto label11;
+
+        $u-1#8 = this.<androidx.core.widget.TextViewCompat$OreoCallback: java.lang.Class mMenuBuilderClass>;
+
+     label09:
+        e = virtualinvoke $u-1#8.<java.lang.Class: boolean isInstance(java.lang.Object)>($u10);
+
+     label10:
+        if e == 0 goto label11;
+
+        $u-1#12 = this.<androidx.core.widget.TextViewCompat$OreoCallback: java.lang.reflect.Method mMenuBuilderRemoveItemAtMethod>;
+
+        goto label14;
+
+     label11:
+        $u-1#8 = virtualinvoke $u10.<java.lang.Object: java.lang.Class getClass()>();
+
+     label12:
+        item = newarray (java.lang.Class)[1];
+
+        $u7 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        item[0] = $u7;
+
+     label13:
+        $u-1#12 = virtualinvoke $u-1#8.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("removeItemAt", item);
+
+     label14:
+        $u-1#27 = interfaceinvoke $u10.<android.view.Menu: int size()>();
+
+     label15:
+        $u-1#27 = $u-1#27 - 1;
+
+     label16:
+        if $u-1#27 < 0 goto label25;
+
+     label17:
+        $u-1#30 = interfaceinvoke $u10.<android.view.Menu: android.view.MenuItem getItem(int)>($u-1#27);
+
+        $u-1#32 = interfaceinvoke $u-1#30.<android.view.MenuItem: android.content.Intent getIntent()>();
+
+     label18:
+        if $u-1#32 == null goto label24;
+
+        $u7#34 = "android.intent.action.PROCESS_TEXT";
+
+     label19:
+        $u-1#32 = interfaceinvoke $u-1#30.<android.view.MenuItem: android.content.Intent getIntent()>();
+
+        $u-1#37 = virtualinvoke $u-1#32.<android.content.Intent: java.lang.String getAction()>();
+
+        e = virtualinvoke $u7#34.<java.lang.String: boolean equals(java.lang.Object)>($u-1#37);
+
+     label20:
+        if e == 0 goto label24;
+
+        $u7#41 = newarray (java.lang.Object)[1];
+
+     label21:
+        $u-1#42 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1#27);
+
+     label22:
+        $u7#41[0] = $u-1#42;
+
+     label23:
+        virtualinvoke $u-1#12.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u10, $u7#41);
+
+     label24:
+        $u-1#27 = $u-1#27 + -1;
+
+        goto label16;
+
+     label25:
+        $u-1#44 = specialinvoke this.<androidx.core.widget.TextViewCompat$OreoCallback: java.util.List getSupportedActivities(android.content.Context,android.content.pm.PackageManager)>($u-1, $u-1#4);
+
+        $u-1#27 = 0;
+
+     label26:
+        $u-1#47 = interfaceinvoke $u-1#44.<java.util.List: int size()>();
+
+        if $u-1#27 >= $u-1#47 goto label27;
+
+        $u-1#49 = interfaceinvoke $u-1#44.<java.util.List: java.lang.Object get(int)>($u-1#27);
+
+        item#51 = (android.content.pm.ResolveInfo) $u-1#49;
+
+        $u-1#47 = $u-1#27 + 100;
+
+        $u-1#53 = virtualinvoke item#51.<android.content.pm.ResolveInfo: java.lang.CharSequence loadLabel(android.content.pm.PackageManager)>($u-1#4);
+
+        $u-1#30 = interfaceinvoke $u10.<android.view.Menu: android.view.MenuItem add(int,int,int,java.lang.CharSequence)>(0, 0, $u-1#47, $u-1#53);
+
+        context = this.<androidx.core.widget.TextViewCompat$OreoCallback: android.widget.TextView mTextView>;
+
+        $u-1#32 = specialinvoke this.<androidx.core.widget.TextViewCompat$OreoCallback: android.content.Intent createProcessTextIntentForResolveInfo(android.content.pm.ResolveInfo,android.widget.TextView)>(item#51, context);
+
+        $u-1#30 = interfaceinvoke $u-1#30.<android.view.MenuItem: android.view.MenuItem setIntent(android.content.Intent)>($u-1#32);
+
+        interfaceinvoke $u-1#30.<android.view.MenuItem: void setShowAsAction(int)>(1);
+
+        $u-1#27 = $u-1#27 + 1;
+
+        goto label26;
+
+     label27:
+        return;
+
+     label28:
+        e#62 := @caughtexception;
+
+        return;
+
+     label29:
+        e#63 := @caughtexception;
+
+        return;
+
+     label30:
+        e#64 := @caughtexception;
+
+        return;
+
+        catch java.lang.ClassNotFoundException from label01 to label02 with label06;
+        catch java.lang.ClassNotFoundException from label03 to label04 with label06;
+        catch java.lang.NoSuchMethodException from label01 to label02 with label05;
+        catch java.lang.NoSuchMethodException from label03 to label04 with label05;
+        catch java.lang.NoSuchMethodException from label09 to label10 with label30;
+        catch java.lang.NoSuchMethodException from label11 to label12 with label30;
+        catch java.lang.NoSuchMethodException from label13 to label14 with label30;
+        catch java.lang.NoSuchMethodException from label14 to label15 with label30;
+        catch java.lang.NoSuchMethodException from label17 to label18 with label30;
+        catch java.lang.NoSuchMethodException from label19 to label20 with label30;
+        catch java.lang.NoSuchMethodException from label21 to label22 with label30;
+        catch java.lang.NoSuchMethodException from label23 to label24 with label30;
+        catch java.lang.IllegalAccessException from label09 to label10 with label29;
+        catch java.lang.IllegalAccessException from label11 to label12 with label29;
+        catch java.lang.IllegalAccessException from label13 to label14 with label29;
+        catch java.lang.IllegalAccessException from label14 to label15 with label29;
+        catch java.lang.IllegalAccessException from label17 to label18 with label29;
+        catch java.lang.IllegalAccessException from label19 to label20 with label29;
+        catch java.lang.IllegalAccessException from label21 to label22 with label29;
+        catch java.lang.IllegalAccessException from label23 to label24 with label29;
+        catch java.lang.reflect.InvocationTargetException from label09 to label10 with label28;
+        catch java.lang.reflect.InvocationTargetException from label11 to label12 with label28;
+        catch java.lang.reflect.InvocationTargetException from label13 to label14 with label28;
+        catch java.lang.reflect.InvocationTargetException from label14 to label15 with label28;
+        catch java.lang.reflect.InvocationTargetException from label17 to label18 with label28;
+        catch java.lang.reflect.InvocationTargetException from label19 to label20 with label28;
+        catch java.lang.reflect.InvocationTargetException from label21 to label22 with label28;
+        catch java.lang.reflect.InvocationTargetException from label23 to label24 with label28;
+    }
+
+    public boolean onActionItemClicked(android.view.ActionMode, android.view.MenuItem)
+    {
+        androidx.core.widget.TextViewCompat$OreoCallback this;
+        android.view.ActionMode $u2;
+        android.view.MenuItem $u3;
+        boolean $u-1;
+        android.view.ActionMode$Callback $u0;
+
+        this := @this: androidx.core.widget.TextViewCompat$OreoCallback;
+
+        $u2 := @parameter0: android.view.ActionMode;
+
+        $u3 := @parameter1: android.view.MenuItem;
+
+        $u0 = this.<androidx.core.widget.TextViewCompat$OreoCallback: android.view.ActionMode$Callback mCallback>;
+
+        $u-1 = interfaceinvoke $u0.<android.view.ActionMode$Callback: boolean onActionItemClicked(android.view.ActionMode,android.view.MenuItem)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public boolean onCreateActionMode(android.view.ActionMode, android.view.Menu)
+    {
+        androidx.core.widget.TextViewCompat$OreoCallback this;
+        android.view.ActionMode $u2;
+        android.view.Menu $u3;
+        boolean $u-1;
+        android.view.ActionMode$Callback $u0;
+
+        this := @this: androidx.core.widget.TextViewCompat$OreoCallback;
+
+        $u2 := @parameter0: android.view.ActionMode;
+
+        $u3 := @parameter1: android.view.Menu;
+
+        $u0 = this.<androidx.core.widget.TextViewCompat$OreoCallback: android.view.ActionMode$Callback mCallback>;
+
+        $u-1 = interfaceinvoke $u0.<android.view.ActionMode$Callback: boolean onCreateActionMode(android.view.ActionMode,android.view.Menu)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public void onDestroyActionMode(android.view.ActionMode)
+    {
+        androidx.core.widget.TextViewCompat$OreoCallback this;
+        android.view.ActionMode $u2;
+        android.view.ActionMode$Callback $u0;
+
+        this := @this: androidx.core.widget.TextViewCompat$OreoCallback;
+
+        $u2 := @parameter0: android.view.ActionMode;
+
+        $u0 = this.<androidx.core.widget.TextViewCompat$OreoCallback: android.view.ActionMode$Callback mCallback>;
+
+        interfaceinvoke $u0.<android.view.ActionMode$Callback: void onDestroyActionMode(android.view.ActionMode)>($u2);
+
+        return;
+    }
+
+    public boolean onPrepareActionMode(android.view.ActionMode, android.view.Menu)
+    {
+        androidx.core.widget.TextViewCompat$OreoCallback this;
+        android.view.ActionMode $u2;
+        android.view.Menu $u3;
+        boolean $u-1;
+        android.view.ActionMode$Callback $u0;
+
+        this := @this: androidx.core.widget.TextViewCompat$OreoCallback;
+
+        $u2 := @parameter0: android.view.ActionMode;
+
+        $u3 := @parameter1: android.view.Menu;
+
+        specialinvoke this.<androidx.core.widget.TextViewCompat$OreoCallback: void recomputeProcessTextMenuItems(android.view.Menu)>($u3);
+
+        $u0 = this.<androidx.core.widget.TextViewCompat$OreoCallback: android.view.ActionMode$Callback mCallback>;
+
+        $u-1 = interfaceinvoke $u0.<android.view.ActionMode$Callback: boolean onPrepareActionMode(android.view.ActionMode,android.view.Menu)>($u2, $u3);
+
+        return $u-1;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.widget.TextViewCompat$OreoCallback: int MENU_ITEM_ORDER_PROCESS_TEXT_INTENT_ACTIONS_START> = 100;
+
+        return;
+    }
+}

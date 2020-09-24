@@ -1,0 +1,155 @@
+public class androidx.core.util.Pair extends java.lang.Object
+{
+    public final java.lang.Object first;
+    public final java.lang.Object second;
+
+    public void <init>(java.lang.Object, java.lang.Object)
+    {
+        androidx.core.util.Pair this;
+        java.lang.Object first, second;
+
+        this := @this: androidx.core.util.Pair;
+
+        first := @parameter0: java.lang.Object;
+
+        second := @parameter1: java.lang.Object;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.util.Pair: java.lang.Object first> = first;
+
+        this.<androidx.core.util.Pair: java.lang.Object second> = second;
+
+        return;
+    }
+
+    public static androidx.core.util.Pair create(java.lang.Object, java.lang.Object)
+    {
+        java.lang.Object a, b;
+        androidx.core.util.Pair $u0;
+
+        a := @parameter0: java.lang.Object;
+
+        b := @parameter1: java.lang.Object;
+
+        $u0 = new androidx.core.util.Pair;
+
+        specialinvoke $u0.<androidx.core.util.Pair: void <init>(java.lang.Object,java.lang.Object)>(a, b);
+
+        return $u0;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.core.util.Pair this, p#4;
+        java.lang.Object $u5, $u3;
+        boolean p;
+
+        this := @this: androidx.core.util.Pair;
+
+        $u5 := @parameter0: java.lang.Object;
+
+        p = $u5 instanceof androidx.core.util.Pair;
+
+        if p != 0 goto label1;
+
+        return 0;
+
+     label1:
+        p#4 = (androidx.core.util.Pair) $u5;
+
+        $u5 = p#4.<androidx.core.util.Pair: java.lang.Object first>;
+
+        $u3 = this.<androidx.core.util.Pair: java.lang.Object first>;
+
+        p = staticinvoke <androidx.core.util.ObjectsCompat: boolean equals(java.lang.Object,java.lang.Object)>($u5, $u3);
+
+        if p == 0 goto label2;
+
+        $u5 = p#4.<androidx.core.util.Pair: java.lang.Object second>;
+
+        $u3 = this.<androidx.core.util.Pair: java.lang.Object second>;
+
+        p = staticinvoke <androidx.core.util.ObjectsCompat: boolean equals(java.lang.Object,java.lang.Object)>($u5, $u3);
+
+        if p == 0 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public int hashCode()
+    {
+        androidx.core.util.Pair this;
+        java.lang.Object $u2;
+        int $u1, $u0;
+
+        this := @this: androidx.core.util.Pair;
+
+        $u2 = this.<androidx.core.util.Pair: java.lang.Object first>;
+
+        $u1 = 0;
+
+        if $u2 != null goto label1;
+
+        $u0 = 0;
+
+        goto label2;
+
+     label1:
+        $u0 = virtualinvoke $u2.<java.lang.Object: int hashCode()>();
+
+     label2:
+        $u2 = this.<androidx.core.util.Pair: java.lang.Object second>;
+
+        if $u2 != null goto label3;
+
+        goto label4;
+
+     label3:
+        $u1 = virtualinvoke $u2.<java.lang.Object: int hashCode()>();
+
+     label4:
+        $u1 = $u0 ^ $u1;
+
+        return $u1;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.core.util.Pair this;
+        java.lang.StringBuilder $u0;
+        java.lang.Object $u1;
+        java.lang.String $u-1;
+
+        this := @this: androidx.core.util.Pair;
+
+        $u0 = new java.lang.StringBuilder;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Pair{");
+
+        $u1 = this.<androidx.core.util.Pair: java.lang.Object first>;
+
+        $u-1 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($u1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $u1 = this.<androidx.core.util.Pair: java.lang.Object second>;
+
+        $u-1 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($u1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("}");
+
+        $u-1 = virtualinvoke $u0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1;
+    }
+}

@@ -1,0 +1,104 @@
+public abstract class androidx.lifecycle.ComputableLiveData extends java.lang.Object
+{
+    final java.util.concurrent.atomic.AtomicBoolean mComputing;
+    final java.util.concurrent.Executor mExecutor;
+    final java.util.concurrent.atomic.AtomicBoolean mInvalid;
+    final java.lang.Runnable mInvalidationRunnable;
+    final androidx.lifecycle.LiveData mLiveData;
+    final java.lang.Runnable mRefreshRunnable;
+
+    public void <init>()
+    {
+        androidx.lifecycle.ComputableLiveData this;
+        java.util.concurrent.Executor $u-1;
+
+        this := @this: androidx.lifecycle.ComputableLiveData;
+
+        $u-1 = staticinvoke <androidx.arch.core.executor.ArchTaskExecutor: java.util.concurrent.Executor getIOThreadExecutor()>();
+
+        specialinvoke this.<androidx.lifecycle.ComputableLiveData: void <init>(java.util.concurrent.Executor)>($u-1);
+
+        return;
+    }
+
+    public void <init>(java.util.concurrent.Executor)
+    {
+        androidx.lifecycle.ComputableLiveData this;
+        java.util.concurrent.Executor $u3;
+        java.util.concurrent.atomic.AtomicBoolean $u0;
+        androidx.lifecycle.ComputableLiveData$2 $u0#5;
+        androidx.lifecycle.ComputableLiveData$3 $u0#6;
+        androidx.lifecycle.ComputableLiveData$1 $u0#7;
+
+        this := @this: androidx.lifecycle.ComputableLiveData;
+
+        $u3 := @parameter0: java.util.concurrent.Executor;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new java.util.concurrent.atomic.AtomicBoolean;
+
+        specialinvoke $u0.<java.util.concurrent.atomic.AtomicBoolean: void <init>(boolean)>(1);
+
+        this.<androidx.lifecycle.ComputableLiveData: java.util.concurrent.atomic.AtomicBoolean mInvalid> = $u0;
+
+        $u0 = new java.util.concurrent.atomic.AtomicBoolean;
+
+        specialinvoke $u0.<java.util.concurrent.atomic.AtomicBoolean: void <init>(boolean)>(0);
+
+        this.<androidx.lifecycle.ComputableLiveData: java.util.concurrent.atomic.AtomicBoolean mComputing> = $u0;
+
+        $u0#5 = new androidx.lifecycle.ComputableLiveData$2;
+
+        specialinvoke $u0#5.<androidx.lifecycle.ComputableLiveData$2: void <init>(androidx.lifecycle.ComputableLiveData)>(this);
+
+        this.<androidx.lifecycle.ComputableLiveData: java.lang.Runnable mRefreshRunnable> = $u0#5;
+
+        $u0#6 = new androidx.lifecycle.ComputableLiveData$3;
+
+        specialinvoke $u0#6.<androidx.lifecycle.ComputableLiveData$3: void <init>(androidx.lifecycle.ComputableLiveData)>(this);
+
+        this.<androidx.lifecycle.ComputableLiveData: java.lang.Runnable mInvalidationRunnable> = $u0#6;
+
+        this.<androidx.lifecycle.ComputableLiveData: java.util.concurrent.Executor mExecutor> = $u3;
+
+        $u0#7 = new androidx.lifecycle.ComputableLiveData$1;
+
+        specialinvoke $u0#7.<androidx.lifecycle.ComputableLiveData$1: void <init>(androidx.lifecycle.ComputableLiveData)>(this);
+
+        this.<androidx.lifecycle.ComputableLiveData: androidx.lifecycle.LiveData mLiveData> = $u0#7;
+
+        return;
+    }
+
+    protected abstract java.lang.Object compute();
+
+    public androidx.lifecycle.LiveData getLiveData()
+    {
+        androidx.lifecycle.ComputableLiveData this;
+        androidx.lifecycle.LiveData ret0;
+
+        this := @this: androidx.lifecycle.ComputableLiveData;
+
+        ret0 = this.<androidx.lifecycle.ComputableLiveData: androidx.lifecycle.LiveData mLiveData>;
+
+        return ret0;
+    }
+
+    public void invalidate()
+    {
+        androidx.lifecycle.ComputableLiveData this;
+        java.lang.Runnable $u1;
+        androidx.arch.core.executor.ArchTaskExecutor $u-1;
+
+        this := @this: androidx.lifecycle.ComputableLiveData;
+
+        $u-1 = staticinvoke <androidx.arch.core.executor.ArchTaskExecutor: androidx.arch.core.executor.ArchTaskExecutor getInstance()>();
+
+        $u1 = this.<androidx.lifecycle.ComputableLiveData: java.lang.Runnable mInvalidationRunnable>;
+
+        virtualinvoke $u-1.<androidx.arch.core.executor.ArchTaskExecutor: void executeOnMainThread(java.lang.Runnable)>($u1);
+
+        return;
+    }
+}

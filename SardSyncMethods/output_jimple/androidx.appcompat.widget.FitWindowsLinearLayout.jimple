@@ -1,0 +1,72 @@
+public class androidx.appcompat.widget.FitWindowsLinearLayout extends android.widget.LinearLayout implements androidx.appcompat.widget.FitWindowsViewGroup
+{
+    private androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener mListener;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.widget.FitWindowsLinearLayout this;
+        android.content.Context $u1;
+
+        this := @this: androidx.appcompat.widget.FitWindowsLinearLayout;
+
+        $u1 := @parameter0: android.content.Context;
+
+        specialinvoke this.<android.widget.LinearLayout: void <init>(android.content.Context)>($u1);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.appcompat.widget.FitWindowsLinearLayout this;
+        android.content.Context $u1;
+        android.util.AttributeSet $u2;
+
+        this := @this: androidx.appcompat.widget.FitWindowsLinearLayout;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<android.widget.LinearLayout: void <init>(android.content.Context,android.util.AttributeSet)>($u1, $u2);
+
+        return;
+    }
+
+    protected boolean fitSystemWindows(android.graphics.Rect)
+    {
+        androidx.appcompat.widget.FitWindowsLinearLayout this;
+        android.graphics.Rect $u2;
+        boolean $u-1;
+        androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener $u0;
+
+        this := @this: androidx.appcompat.widget.FitWindowsLinearLayout;
+
+        $u2 := @parameter0: android.graphics.Rect;
+
+        $u0 = this.<androidx.appcompat.widget.FitWindowsLinearLayout: androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener mListener>;
+
+        if $u0 == null goto label1;
+
+        interfaceinvoke $u0.<androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener: void onFitSystemWindows(android.graphics.Rect)>($u2);
+
+     label1:
+        $u-1 = specialinvoke this.<android.widget.LinearLayout: boolean fitSystemWindows(android.graphics.Rect)>($u2);
+
+        return $u-1;
+    }
+
+    public void setOnFitSystemWindowsListener(androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener)
+    {
+        androidx.appcompat.widget.FitWindowsLinearLayout this;
+        androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener $u1;
+
+        this := @this: androidx.appcompat.widget.FitWindowsLinearLayout;
+
+        $u1 := @parameter0: androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener;
+
+        this.<androidx.appcompat.widget.FitWindowsLinearLayout: androidx.appcompat.widget.FitWindowsViewGroup$OnFitSystemWindowsListener mListener> = $u1;
+
+        return;
+    }
+}

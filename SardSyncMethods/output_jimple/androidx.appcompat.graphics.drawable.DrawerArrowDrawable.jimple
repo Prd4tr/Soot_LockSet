@@ -1,0 +1,954 @@
+public class androidx.appcompat.graphics.drawable.DrawerArrowDrawable extends android.graphics.drawable.Drawable
+{
+    public static final int ARROW_DIRECTION_END;
+    public static final int ARROW_DIRECTION_LEFT;
+    public static final int ARROW_DIRECTION_RIGHT;
+    public static final int ARROW_DIRECTION_START;
+    private static final float ARROW_HEAD_ANGLE;
+    private float mArrowHeadLength;
+    private float mArrowShaftLength;
+    private float mBarGap;
+    private float mBarLength;
+    private int mDirection;
+    private float mMaxCutForBarSize;
+    private final android.graphics.Paint mPaint;
+    private final android.graphics.Path mPath;
+    private float mProgress;
+    private final int mSize;
+    private boolean mSpin;
+    private boolean mVerticalMirror;
+
+    static void <clinit>()
+    {
+        double $u-1;
+        float $u0;
+
+        <androidx.appcompat.graphics.drawable.DrawerArrowDrawable: int ARROW_DIRECTION_START> = 2;
+
+        <androidx.appcompat.graphics.drawable.DrawerArrowDrawable: int ARROW_DIRECTION_RIGHT> = 1;
+
+        <androidx.appcompat.graphics.drawable.DrawerArrowDrawable: int ARROW_DIRECTION_LEFT> = 0;
+
+        <androidx.appcompat.graphics.drawable.DrawerArrowDrawable: int ARROW_DIRECTION_END> = 3;
+
+        $u-1 = staticinvoke <java.lang.Math: double toRadians(double)>(45.0);
+
+        $u0 = (float) $u-1;
+
+        <androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float ARROW_HEAD_ANGLE> = $u0;
+
+        return;
+    }
+
+    public void <init>(android.content.Context)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        android.content.Context $u8;
+        int $u5, $u4;
+        android.graphics.Paint $u0;
+        android.graphics.Path $u0#2;
+        android.graphics.Paint$Style $u2;
+        android.graphics.Paint$Join $u2#8;
+        android.graphics.Paint$Cap $u2#10;
+        android.content.res.Resources$Theme $u-1;
+        int[] $u3;
+        android.content.res.TypedArray $u-1#17;
+        float $u-1#24;
+        boolean $u-1#27;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u8 := @parameter0: android.content.Context;
+
+        specialinvoke this.<android.graphics.drawable.Drawable: void <init>()>();
+
+        $u0 = new android.graphics.Paint;
+
+        specialinvoke $u0.<android.graphics.Paint: void <init>()>();
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint> = $u0;
+
+        $u0#2 = new android.graphics.Path;
+
+        specialinvoke $u0#2.<android.graphics.Path: void <init>()>();
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Path mPath> = $u0#2;
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: boolean mVerticalMirror> = 0;
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: int mDirection> = 2;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        $u2 = <android.graphics.Paint$Style: android.graphics.Paint$Style STROKE>;
+
+        virtualinvoke $u0.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($u2);
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        $u2#8 = <android.graphics.Paint$Join: android.graphics.Paint$Join MITER>;
+
+        virtualinvoke $u0.<android.graphics.Paint: void setStrokeJoin(android.graphics.Paint$Join)>($u2#8);
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        $u2#10 = <android.graphics.Paint$Cap: android.graphics.Paint$Cap BUTT>;
+
+        virtualinvoke $u0.<android.graphics.Paint: void setStrokeCap(android.graphics.Paint$Cap)>($u2#10);
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u0.<android.graphics.Paint: void setAntiAlias(boolean)>(1);
+
+        $u-1 = virtualinvoke $u8.<android.content.Context: android.content.res.Resources$Theme getTheme()>();
+
+        $u3 = <androidx.appcompat.R$styleable: int[] DrawerArrowToggle>;
+
+        $u4 = <androidx.appcompat.R$attr: int drawerArrowStyle>;
+
+        $u5 = <androidx.appcompat.R$style: int Base_Widget_AppCompat_DrawerArrowToggle>;
+
+        $u-1#17 = virtualinvoke $u-1.<android.content.res.Resources$Theme: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[],int,int)>(null, $u3, $u4, $u5);
+
+        $u5 = <androidx.appcompat.R$styleable: int DrawerArrowToggle_color>;
+
+        $u5 = virtualinvoke $u-1#17.<android.content.res.TypedArray: int getColor(int,int)>($u5, 0);
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void setColor(int)>($u5);
+
+        $u5 = <androidx.appcompat.R$styleable: int DrawerArrowToggle_thickness>;
+
+        $u-1#24 = virtualinvoke $u-1#17.<android.content.res.TypedArray: float getDimension(int,float)>($u5, 0.0F);
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void setBarThickness(float)>($u-1#24);
+
+        $u5 = <androidx.appcompat.R$styleable: int DrawerArrowToggle_spinBars>;
+
+        $u-1#27 = virtualinvoke $u-1#17.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($u5, 1);
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void setSpinEnabled(boolean)>($u-1#27);
+
+        $u5 = <androidx.appcompat.R$styleable: int DrawerArrowToggle_gapBetweenBars>;
+
+        $u-1#24 = virtualinvoke $u-1#17.<android.content.res.TypedArray: float getDimension(int,float)>($u5, 0.0F);
+
+        $u5 = staticinvoke <java.lang.Math: int round(float)>($u-1#24);
+
+        $u-1#24 = (float) $u5;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void setGapSize(float)>($u-1#24);
+
+        $u5 = <androidx.appcompat.R$styleable: int DrawerArrowToggle_drawableSize>;
+
+        $u5 = virtualinvoke $u-1#17.<android.content.res.TypedArray: int getDimensionPixelSize(int,int)>($u5, 0);
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: int mSize> = $u5;
+
+        $u5 = <androidx.appcompat.R$styleable: int DrawerArrowToggle_barLength>;
+
+        $u-1#24 = virtualinvoke $u-1#17.<android.content.res.TypedArray: float getDimension(int,float)>($u5, 0.0F);
+
+        $u5 = staticinvoke <java.lang.Math: int round(float)>($u-1#24);
+
+        $u-1#24 = (float) $u5;
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mBarLength> = $u-1#24;
+
+        $u5 = <androidx.appcompat.R$styleable: int DrawerArrowToggle_arrowHeadLength>;
+
+        $u-1#24 = virtualinvoke $u-1#17.<android.content.res.TypedArray: float getDimension(int,float)>($u5, 0.0F);
+
+        $u5 = staticinvoke <java.lang.Math: int round(float)>($u-1#24);
+
+        $u-1#24 = (float) $u5;
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mArrowHeadLength> = $u-1#24;
+
+        $u5 = <androidx.appcompat.R$styleable: int DrawerArrowToggle_arrowShaftLength>;
+
+        $u-1#24 = virtualinvoke $u-1#17.<android.content.res.TypedArray: float getDimension(int,float)>($u5, 0.0F);
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mArrowShaftLength> = $u-1#24;
+
+        virtualinvoke $u-1#17.<android.content.res.TypedArray: void recycle()>();
+
+        return;
+    }
+
+    private static float lerp(float, float, float)
+    {
+        float $u1, $u2, $u3;
+
+        $u1 := @parameter0: float;
+
+        $u2 := @parameter1: float;
+
+        $u3 := @parameter2: float;
+
+        $u2 = $u2 - $u1;
+
+        $u2 = $u2 * $u3;
+
+        $u1 = $u2 + $u1;
+
+        return $u1;
+    }
+
+    public void draw(android.graphics.Canvas)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        android.graphics.Canvas $u20;
+        android.graphics.Rect $u-1;
+        int flipToPointRight;
+        boolean remainingSpace, $u15;
+        float arrowHeadBarLength, arrowShaftLength#19, arrowShaftCut, $u-1#21, canvasRotate, $u-1#38, yOffset, yOffset#70;
+        double arrowShaftLength, arrowWidth;
+        long $u-1#51;
+        android.graphics.Path arrowHeadBarLength#62;
+        android.graphics.Paint arrowEdge;
+        byte $u12;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u20 := @parameter0: android.graphics.Canvas;
+
+        $u-1 = virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Rect getBounds()>();
+
+        flipToPointRight = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: int mDirection>;
+
+        if flipToPointRight == 0 goto label05;
+
+        if flipToPointRight == 1 goto label04;
+
+        remainingSpace = 0;
+
+        if flipToPointRight == 3 goto label02;
+
+        flipToPointRight = staticinvoke <androidx.core.graphics.drawable.DrawableCompat: int getLayoutDirection(android.graphics.drawable.Drawable)>(this);
+
+        if flipToPointRight != 1 goto label01;
+
+        remainingSpace = 1;
+
+     label01:
+        goto label06;
+
+     label02:
+        flipToPointRight = staticinvoke <androidx.core.graphics.drawable.DrawableCompat: int getLayoutDirection(android.graphics.drawable.Drawable)>(this);
+
+        if flipToPointRight != 0 goto label03;
+
+        remainingSpace = 1;
+
+     label03:
+        goto label06;
+
+     label04:
+        remainingSpace = 1;
+
+        goto label06;
+
+     label05:
+        remainingSpace = 0;
+
+     label06:
+        arrowHeadBarLength = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mArrowHeadLength>;
+
+        arrowHeadBarLength = arrowHeadBarLength * arrowHeadBarLength;
+
+        arrowHeadBarLength = arrowHeadBarLength * 2.0F;
+
+        arrowShaftLength = (double) arrowHeadBarLength;
+
+        arrowShaftLength = staticinvoke <java.lang.Math: double sqrt(double)>(arrowShaftLength);
+
+        arrowHeadBarLength = (float) arrowShaftLength;
+
+        arrowShaftLength#19 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mBarLength>;
+
+        arrowShaftCut = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mProgress>;
+
+        $u-1#21 = staticinvoke <androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float lerp(float,float,float)>(arrowShaftLength#19, arrowHeadBarLength, arrowShaftCut);
+
+        arrowHeadBarLength = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mBarLength>;
+
+        arrowShaftLength#19 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mArrowShaftLength>;
+
+        arrowShaftCut = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mProgress>;
+
+        arrowShaftLength#19 = staticinvoke <androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float lerp(float,float,float)>(arrowHeadBarLength, arrowShaftLength#19, arrowShaftCut);
+
+        arrowHeadBarLength = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mMaxCutForBarSize>;
+
+        arrowShaftCut = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mProgress>;
+
+        arrowHeadBarLength = staticinvoke <androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float lerp(float,float,float)>(0.0F, arrowHeadBarLength, arrowShaftCut);
+
+        flipToPointRight = staticinvoke <java.lang.Math: int round(float)>(arrowHeadBarLength);
+
+        arrowShaftCut = (float) flipToPointRight;
+
+        arrowHeadBarLength = <androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float ARROW_HEAD_ANGLE>;
+
+        canvasRotate = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mProgress>;
+
+        $u-1#38 = staticinvoke <androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float lerp(float,float,float)>(0.0F, arrowHeadBarLength, canvasRotate);
+
+        if remainingSpace == 0 goto label07;
+
+        arrowHeadBarLength = 0.0F;
+
+        goto label08;
+
+     label07:
+        arrowHeadBarLength = -180.0F;
+
+     label08:
+        if remainingSpace == 0 goto label09;
+
+        canvasRotate = 180.0F;
+
+        goto label10;
+
+     label09:
+        canvasRotate = 0.0F;
+
+     label10:
+        yOffset = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mProgress>;
+
+        arrowHeadBarLength = staticinvoke <androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float lerp(float,float,float)>(arrowHeadBarLength, canvasRotate, yOffset);
+
+        arrowShaftLength = (double) $u-1#21;
+
+        arrowWidth = (double) $u-1#38;
+
+        arrowWidth = staticinvoke <java.lang.Math: double cos(double)>(arrowWidth);
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(arrowShaftLength);
+
+        arrowShaftLength = arrowShaftLength * arrowWidth;
+
+        $u-1#51 = staticinvoke <java.lang.Math: long round(double)>(arrowShaftLength);
+
+        canvasRotate = (float) $u-1#51;
+
+        arrowShaftLength = (double) $u-1#21;
+
+        arrowWidth = (double) $u-1#38;
+
+        arrowWidth = staticinvoke <java.lang.Math: double sin(double)>(arrowWidth);
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>(arrowShaftLength);
+
+        arrowShaftLength = arrowShaftLength * arrowWidth;
+
+        $u-1#51 = staticinvoke <java.lang.Math: long round(double)>(arrowShaftLength);
+
+        $u-1#21 = (float) $u-1#51;
+
+        arrowHeadBarLength#62 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Path mPath>;
+
+        virtualinvoke arrowHeadBarLength#62.<android.graphics.Path: void rewind()>();
+
+        $u-1#38 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mBarGap>;
+
+        arrowEdge = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        yOffset = virtualinvoke arrowEdge.<android.graphics.Paint: float getStrokeWidth()>();
+
+        $u-1#38 = $u-1#38 + yOffset;
+
+        yOffset = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mMaxCutForBarSize>;
+
+        yOffset = neg yOffset;
+
+        yOffset#70 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mProgress>;
+
+        $u-1#38 = staticinvoke <androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float lerp(float,float,float)>($u-1#38, yOffset, yOffset#70);
+
+        yOffset = neg arrowShaftLength#19;
+
+        yOffset = yOffset / 2.0F;
+
+        arrowHeadBarLength#62 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Path mPath>;
+
+        yOffset#70 = yOffset + arrowShaftCut;
+
+        virtualinvoke arrowHeadBarLength#62.<android.graphics.Path: void moveTo(float,float)>(yOffset#70, 0.0F);
+
+        arrowHeadBarLength#62 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Path mPath>;
+
+        arrowShaftCut = arrowShaftCut * 2.0F;
+
+        arrowShaftLength#19 = arrowShaftLength#19 - arrowShaftCut;
+
+        virtualinvoke arrowHeadBarLength#62.<android.graphics.Path: void rLineTo(float,float)>(arrowShaftLength#19, 0.0F);
+
+        arrowHeadBarLength#62 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Path mPath>;
+
+        virtualinvoke arrowHeadBarLength#62.<android.graphics.Path: void moveTo(float,float)>(yOffset, $u-1#38);
+
+        arrowHeadBarLength#62 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Path mPath>;
+
+        virtualinvoke arrowHeadBarLength#62.<android.graphics.Path: void rLineTo(float,float)>(canvasRotate, $u-1#21);
+
+        arrowHeadBarLength#62 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Path mPath>;
+
+        arrowShaftLength#19 = neg $u-1#38;
+
+        virtualinvoke arrowHeadBarLength#62.<android.graphics.Path: void moveTo(float,float)>(yOffset, arrowShaftLength#19);
+
+        arrowHeadBarLength#62 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Path mPath>;
+
+        arrowShaftLength#19 = neg $u-1#21;
+
+        virtualinvoke arrowHeadBarLength#62.<android.graphics.Path: void rLineTo(float,float)>(canvasRotate, arrowShaftLength#19);
+
+        arrowHeadBarLength#62 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Path mPath>;
+
+        virtualinvoke arrowHeadBarLength#62.<android.graphics.Path: void close()>();
+
+        virtualinvoke $u20.<android.graphics.Canvas: int save()>();
+
+        arrowEdge = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        arrowShaftLength#19 = virtualinvoke arrowEdge.<android.graphics.Paint: float getStrokeWidth()>();
+
+        flipToPointRight = virtualinvoke $u-1.<android.graphics.Rect: int height()>();
+
+        arrowShaftCut = (float) flipToPointRight;
+
+        canvasRotate = 3.0F * arrowShaftLength#19;
+
+        canvasRotate = arrowShaftCut - canvasRotate;
+
+        arrowShaftCut = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mBarGap>;
+
+        $u-1#21 = 2.0F * arrowShaftCut;
+
+        canvasRotate = canvasRotate - $u-1#21;
+
+        flipToPointRight = (int) canvasRotate;
+
+        flipToPointRight = flipToPointRight / 4;
+
+        flipToPointRight = flipToPointRight * 2;
+
+        canvasRotate = (float) flipToPointRight;
+
+        arrowShaftLength#19 = 1.5F * arrowShaftLength#19;
+
+        arrowShaftLength#19 = arrowShaftLength#19 + arrowShaftCut;
+
+        arrowShaftLength#19 = canvasRotate + arrowShaftLength#19;
+
+        flipToPointRight = virtualinvoke $u-1.<android.graphics.Rect: int centerX()>();
+
+        arrowShaftCut = (float) flipToPointRight;
+
+        virtualinvoke $u20.<android.graphics.Canvas: void translate(float,float)>(arrowShaftCut, arrowShaftLength#19);
+
+        $u15 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: boolean mSpin>;
+
+        if $u15 == 0 goto label13;
+
+        $u15 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: boolean mVerticalMirror>;
+
+        remainingSpace = $u15 ^ remainingSpace;
+
+        if remainingSpace == 0 goto label11;
+
+        $u12 = -1;
+
+        goto label12;
+
+     label11:
+        $u12 = 1;
+
+     label12:
+        arrowShaftLength#19 = (float) $u12;
+
+        arrowHeadBarLength = arrowShaftLength#19 * arrowHeadBarLength;
+
+        virtualinvoke $u20.<android.graphics.Canvas: void rotate(float)>(arrowHeadBarLength);
+
+        goto label14;
+
+     label13:
+        if remainingSpace == 0 goto label14;
+
+        virtualinvoke $u20.<android.graphics.Canvas: void rotate(float)>(180.0F);
+
+     label14:
+        arrowHeadBarLength#62 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Path mPath>;
+
+        arrowEdge = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u20.<android.graphics.Canvas: void drawPath(android.graphics.Path,android.graphics.Paint)>(arrowHeadBarLength#62, arrowEdge);
+
+        virtualinvoke $u20.<android.graphics.Canvas: void restore()>();
+
+        return;
+    }
+
+    public float getArrowHeadLength()
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        float ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mArrowHeadLength>;
+
+        return ret0;
+    }
+
+    public float getArrowShaftLength()
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        float ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mArrowShaftLength>;
+
+        return ret0;
+    }
+
+    public float getBarLength()
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        float ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mBarLength>;
+
+        return ret0;
+    }
+
+    public float getBarThickness()
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        float $u-1;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.Paint: float getStrokeWidth()>();
+
+        return $u-1;
+    }
+
+    public int getColor()
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        int $u-1;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.Paint: int getColor()>();
+
+        return $u-1;
+    }
+
+    public int getDirection()
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        int ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: int mDirection>;
+
+        return ret0;
+    }
+
+    public float getGapSize()
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        float ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mBarGap>;
+
+        return ret0;
+    }
+
+    public int getIntrinsicHeight()
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        int ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: int mSize>;
+
+        return ret0;
+    }
+
+    public int getIntrinsicWidth()
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        int ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: int mSize>;
+
+        return ret0;
+    }
+
+    public int getOpacity()
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        return -3;
+    }
+
+    public final android.graphics.Paint getPaint()
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        android.graphics.Paint ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        return ret0;
+    }
+
+    public float getProgress()
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        float ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mProgress>;
+
+        return ret0;
+    }
+
+    public boolean isSpinEnabled()
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        boolean ret0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        ret0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: boolean mSpin>;
+
+        return ret0;
+    }
+
+    public void setAlpha(int)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        int $u2, $u-1;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.Paint: int getAlpha()>();
+
+        if $u2 == $u-1 goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u0.<android.graphics.Paint: void setAlpha(int)>($u2);
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+
+    public void setArrowHeadLength(float)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        float $u2, $u0;
+        byte $u0#2;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u2 := @parameter0: float;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mArrowHeadLength>;
+
+        $u0#2 = $u0 cmpl $u2;
+
+        if $u0#2 == 0 goto label1;
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mArrowHeadLength> = $u2;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+
+    public void setArrowShaftLength(float)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        float $u2, $u0;
+        byte $u0#2;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u2 := @parameter0: float;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mArrowShaftLength>;
+
+        $u0#2 = $u0 cmpl $u2;
+
+        if $u0#2 == 0 goto label1;
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mArrowShaftLength> = $u2;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+
+    public void setBarLength(float)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        float $u2, $u0;
+        byte $u0#2;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u2 := @parameter0: float;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mBarLength>;
+
+        $u0#2 = $u0 cmpl $u2;
+
+        if $u0#2 == 0 goto label1;
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mBarLength> = $u2;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+
+    public void setBarThickness(float)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        float $u5, $u-1;
+        android.graphics.Paint $u0;
+        byte $u0#4;
+        double $u0#8, $u2;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u5 := @parameter0: float;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.Paint: float getStrokeWidth()>();
+
+        $u0#4 = $u-1 cmpl $u5;
+
+        if $u0#4 == 0 goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u0.<android.graphics.Paint: void setStrokeWidth(float)>($u5);
+
+        $u5 = $u5 / 2.0F;
+
+        $u0#8 = (double) $u5;
+
+        $u5 = <androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float ARROW_HEAD_ANGLE>;
+
+        $u2 = (double) $u5;
+
+        $u2 = staticinvoke <java.lang.Math: double cos(double)>($u2);
+
+        staticinvoke <java.lang.Double: boolean isNaN(double)>($u0#8);
+
+        $u0#8 = $u0#8 * $u2;
+
+        $u5 = (float) $u0#8;
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mMaxCutForBarSize> = $u5;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+
+    public void setColor(int)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        int $u2, $u-1;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        $u-1 = virtualinvoke $u0.<android.graphics.Paint: int getColor()>();
+
+        if $u2 == $u-1 goto label1;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u0.<android.graphics.Paint: void setColor(int)>($u2);
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+
+    public void setColorFilter(android.graphics.ColorFilter)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        android.graphics.ColorFilter $u2;
+        android.graphics.Paint $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u2 := @parameter0: android.graphics.ColorFilter;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: android.graphics.Paint mPaint>;
+
+        virtualinvoke $u0.<android.graphics.Paint: android.graphics.ColorFilter setColorFilter(android.graphics.ColorFilter)>($u2);
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void invalidateSelf()>();
+
+        return;
+    }
+
+    public void setDirection(int)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        int $u2, $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: int mDirection>;
+
+        if $u2 == $u0 goto label1;
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: int mDirection> = $u2;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+
+    public void setGapSize(float)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        float $u2, $u0;
+        byte $u0#2;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u2 := @parameter0: float;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mBarGap>;
+
+        $u0#2 = $u2 cmpl $u0;
+
+        if $u0#2 == 0 goto label1;
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mBarGap> = $u2;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+
+    public void setProgress(float)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        float $u2, $u0;
+        byte $u0#2;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u2 := @parameter0: float;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mProgress>;
+
+        $u0#2 = $u0 cmpl $u2;
+
+        if $u0#2 == 0 goto label1;
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: float mProgress> = $u2;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+
+    public void setSpinEnabled(boolean)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        boolean $u2, $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: boolean mSpin>;
+
+        if $u0 == $u2 goto label1;
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: boolean mSpin> = $u2;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+
+    public void setVerticalMirror(boolean)
+    {
+        androidx.appcompat.graphics.drawable.DrawerArrowDrawable this;
+        boolean $u2, $u0;
+
+        this := @this: androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: boolean mVerticalMirror>;
+
+        if $u0 == $u2 goto label1;
+
+        this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: boolean mVerticalMirror> = $u2;
+
+        virtualinvoke this.<androidx.appcompat.graphics.drawable.DrawerArrowDrawable: void invalidateSelf()>();
+
+     label1:
+        return;
+    }
+}

@@ -1,0 +1,34 @@
+class com.example.sardsyncmethodblock.SyncRunnable$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final com.example.sardsyncmethodblock.SyncRunnable this$0;
+
+    void <init>(com.example.sardsyncmethodblock.SyncRunnable)
+    {
+        com.example.sardsyncmethodblock.SyncRunnable$1 this;
+        com.example.sardsyncmethodblock.SyncRunnable $u1;
+
+        this := @this: com.example.sardsyncmethodblock.SyncRunnable$1;
+
+        $u1 := @parameter0: com.example.sardsyncmethodblock.SyncRunnable;
+
+        this.<com.example.sardsyncmethodblock.SyncRunnable$1: com.example.sardsyncmethodblock.SyncRunnable this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.example.sardsyncmethodblock.SyncRunnable$1 this;
+        com.example.sardsyncmethodblock.SyncRunnable $u0;
+
+        this := @this: com.example.sardsyncmethodblock.SyncRunnable$1;
+
+        $u0 = this.<com.example.sardsyncmethodblock.SyncRunnable$1: com.example.sardsyncmethodblock.SyncRunnable this$0>;
+
+        virtualinvoke $u0.<com.example.sardsyncmethodblock.SyncRunnable: void runa()>();
+
+        return;
+    }
+}

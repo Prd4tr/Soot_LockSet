@@ -1,0 +1,263 @@
+final class androidx.core.content.ContextCompat$LegacyServiceMapHolder extends java.lang.Object
+{
+    static final java.util.HashMap SERVICES;
+
+    static void <clinit>()
+    {
+        java.util.HashMap $u0;
+        int $u0#2;
+
+        $u0 = new java.util.HashMap;
+
+        specialinvoke $u0.<java.util.HashMap: void <init>()>();
+
+        <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES> = $u0;
+
+        $u0#2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0#2 < 22 goto label1;
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/telephony/SubscriptionManager;", "telephony_subscription_service");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/app/usage/UsageStatsManager;", "usagestats");
+
+     label1:
+        $u0#2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0#2 < 21 goto label2;
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/appwidget/AppWidgetManager;", "appwidget");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/os/BatteryManager;", "batterymanager");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/hardware/camera2/CameraManager;", "camera");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/app/job/JobScheduler;", "jobscheduler");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/content/pm/LauncherApps;", "launcherapps");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/media/projection/MediaProjectionManager;", "media_projection");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/media/session/MediaSessionManager;", "media_session");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/content/RestrictionsManager;", "restrictions");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/telecom/TelecomManager;", "telecom");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/media/tv/TvInputManager;", "tv_input");
+
+     label2:
+        $u0#2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0#2 < 19 goto label3;
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/app/AppOpsManager;", "appops");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/view/accessibility/CaptioningManager;", "captioning");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/hardware/ConsumerIrManager;", "consumer_ir");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/print/PrintManager;", "print");
+
+     label3:
+        $u0#2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0#2 < 18 goto label4;
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/bluetooth/BluetoothManager;", "bluetooth");
+
+     label4:
+        $u0#2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0#2 < 17 goto label5;
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/hardware/display/DisplayManager;", "display");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/os/UserManager;", "user");
+
+     label5:
+        $u0#2 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0#2 < 16 goto label6;
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/hardware/input/InputManager;", "input");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/media/MediaRouter;", "media_router");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/net/nsd/NsdManager;", "servicediscovery");
+
+     label6:
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/view/accessibility/AccessibilityManager;", "accessibility");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/accounts/AccountManager;", "account");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/app/ActivityManager;", "activity");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/app/AlarmManager;", "alarm");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/media/AudioManager;", "audio");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/content/ClipboardManager;", "clipboard");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/net/ConnectivityManager;", "connectivity");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/app/admin/DevicePolicyManager;", "device_policy");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/app/DownloadManager;", "download");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/os/DropBoxManager;", "dropbox");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/view/inputmethod/InputMethodManager;", "input_method");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/app/KeyguardManager;", "keyguard");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/view/LayoutInflater;", "layout_inflater");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/location/LocationManager;", "location");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/nfc/NfcManager;", "nfc");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/app/NotificationManager;", "notification");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/os/PowerManager;", "power");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/app/SearchManager;", "search");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/hardware/SensorManager;", "sensor");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/os/storage/StorageManager;", "storage");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/telephony/TelephonyManager;", "phone");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/view/textservice/TextServicesManager;", "textservices");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/app/UiModeManager;", "uimode");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/hardware/usb/UsbManager;", "usb");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/os/Vibrator;", "vibrator");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/app/WallpaperManager;", "wallpaper");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/net/wifi/p2p/WifiP2pManager;", "wifip2p");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/net/wifi/WifiManager;", "wifi");
+
+        $u0 = <androidx.core.content.ContextCompat$LegacyServiceMapHolder: java.util.HashMap SERVICES>;
+
+        virtualinvoke $u0.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Landroid/view/WindowManager;", "window");
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.core.content.ContextCompat$LegacyServiceMapHolder this;
+
+        this := @this: androidx.core.content.ContextCompat$LegacyServiceMapHolder;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

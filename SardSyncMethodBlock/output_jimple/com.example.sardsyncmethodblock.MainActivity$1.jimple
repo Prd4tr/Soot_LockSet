@@ -1,0 +1,62 @@
+class com.example.sardsyncmethodblock.MainActivity$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final com.example.sardsyncmethodblock.MainActivity this$0;
+
+    void <init>(com.example.sardsyncmethodblock.MainActivity)
+    {
+        com.example.sardsyncmethodblock.MainActivity$1 this;
+        com.example.sardsyncmethodblock.MainActivity $u1;
+
+        this := @this: com.example.sardsyncmethodblock.MainActivity$1;
+
+        $u1 := @parameter0: com.example.sardsyncmethodblock.MainActivity;
+
+        this.<com.example.sardsyncmethodblock.MainActivity$1: com.example.sardsyncmethodblock.MainActivity this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.example.sardsyncmethodblock.MainActivity$1 this;
+        java.lang.Integer $u-1;
+        com.example.sardsyncmethodblock.MainActivity $u0;
+        com.example.sardsyncmethodblock.SyncRunnable $u0#2, $u1;
+        java.lang.Throwable $u1#7;
+
+        this := @this: com.example.sardsyncmethodblock.MainActivity$1;
+
+        $u0 = this.<com.example.sardsyncmethodblock.MainActivity$1: com.example.sardsyncmethodblock.MainActivity this$0>;
+
+        $u0#2 = $u0.<com.example.sardsyncmethodblock.MainActivity: com.example.sardsyncmethodblock.SyncRunnable obj>;
+
+        entermonitor $u0#2;
+
+     label1:
+        $u0 = this.<com.example.sardsyncmethodblock.MainActivity$1: com.example.sardsyncmethodblock.MainActivity this$0>;
+
+        $u1 = $u0.<com.example.sardsyncmethodblock.MainActivity: com.example.sardsyncmethodblock.SyncRunnable obj>;
+
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(10);
+
+        $u1.<com.example.sardsyncmethodblock.SyncRunnable: java.lang.Integer p> = $u-1;
+
+        exitmonitor $u0#2;
+
+     label2:
+        return;
+
+     label3:
+        $u1#7 := @caughtexception;
+
+        exitmonitor $u0#2;
+
+     label4:
+        throw $u1#7;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+}

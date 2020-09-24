@@ -1,0 +1,56 @@
+class androidx.savedstate.SavedStateRegistry$1 extends java.lang.Object implements androidx.lifecycle.GenericLifecycleObserver
+{
+    final androidx.savedstate.SavedStateRegistry this$0;
+
+    void <init>(androidx.savedstate.SavedStateRegistry)
+    {
+        androidx.savedstate.SavedStateRegistry$1 this;
+        androidx.savedstate.SavedStateRegistry $u1;
+
+        this := @this: androidx.savedstate.SavedStateRegistry$1;
+
+        $u1 := @parameter0: androidx.savedstate.SavedStateRegistry;
+
+        this.<androidx.savedstate.SavedStateRegistry$1: androidx.savedstate.SavedStateRegistry this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onStateChanged(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Lifecycle$Event)
+    {
+        androidx.savedstate.SavedStateRegistry$1 this;
+        androidx.lifecycle.LifecycleOwner $u3;
+        androidx.lifecycle.Lifecycle$Event $u4, $u0;
+        androidx.savedstate.SavedStateRegistry $u0#2;
+
+        this := @this: androidx.savedstate.SavedStateRegistry$1;
+
+        $u3 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        $u4 := @parameter1: androidx.lifecycle.Lifecycle$Event;
+
+        $u0 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_START>;
+
+        if $u4 != $u0 goto label1;
+
+        $u0#2 = this.<androidx.savedstate.SavedStateRegistry$1: androidx.savedstate.SavedStateRegistry this$0>;
+
+        $u0#2.<androidx.savedstate.SavedStateRegistry: boolean mAllowingSavingState> = 1;
+
+        return;
+
+     label1:
+        $u0 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_STOP>;
+
+        if $u4 != $u0 goto label2;
+
+        $u0#2 = this.<androidx.savedstate.SavedStateRegistry$1: androidx.savedstate.SavedStateRegistry this$0>;
+
+        $u0#2.<androidx.savedstate.SavedStateRegistry: boolean mAllowingSavingState> = 0;
+
+     label2:
+        return;
+    }
+}

@@ -1,0 +1,539 @@
+public class androidx.loader.app.LoaderManagerImpl$LoaderInfo extends androidx.lifecycle.MutableLiveData implements androidx.loader.content.Loader$OnLoadCompleteListener
+{
+    private final android.os.Bundle mArgs;
+    private final int mId;
+    private androidx.lifecycle.LifecycleOwner mLifecycleOwner;
+    private final androidx.loader.content.Loader mLoader;
+    private androidx.loader.app.LoaderManagerImpl$LoaderObserver mObserver;
+    private androidx.loader.content.Loader mPriorLoader;
+
+    void <init>(int, android.os.Bundle, androidx.loader.content.Loader, androidx.loader.content.Loader)
+    {
+        androidx.loader.app.LoaderManagerImpl$LoaderInfo this;
+        int $u1;
+        android.os.Bundle $u2;
+        androidx.loader.content.Loader loader, priorLoader;
+
+        this := @this: androidx.loader.app.LoaderManagerImpl$LoaderInfo;
+
+        $u1 := @parameter0: int;
+
+        $u2 := @parameter1: android.os.Bundle;
+
+        loader := @parameter2: androidx.loader.content.Loader;
+
+        priorLoader := @parameter3: androidx.loader.content.Loader;
+
+        specialinvoke this.<androidx.lifecycle.MutableLiveData: void <init>()>();
+
+        this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: int mId> = $u1;
+
+        this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: android.os.Bundle mArgs> = $u2;
+
+        this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader> = loader;
+
+        this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mPriorLoader> = priorLoader;
+
+        virtualinvoke loader.<androidx.loader.content.Loader: void registerListener(int,androidx.loader.content.Loader$OnLoadCompleteListener)>($u1, this);
+
+        return;
+    }
+
+    androidx.loader.content.Loader destroy(boolean)
+    {
+        androidx.loader.app.LoaderManagerImpl$LoaderInfo this;
+        boolean $u3, observer;
+        java.lang.StringBuilder observer#2;
+        java.lang.String $u-1;
+        androidx.loader.content.Loader observer#7;
+        androidx.loader.app.LoaderManagerImpl$LoaderObserver observer#9;
+
+        this := @this: androidx.loader.app.LoaderManagerImpl$LoaderInfo;
+
+        $u3 := @parameter0: boolean;
+
+        observer = <androidx.loader.app.LoaderManagerImpl: boolean DEBUG>;
+
+        if observer == 0 goto label1;
+
+        observer#2 = new java.lang.StringBuilder;
+
+        specialinvoke observer#2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke observer#2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("  Destroying: ");
+
+        virtualinvoke observer#2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(this);
+
+        $u-1 = virtualinvoke observer#2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("LoaderManager", $u-1);
+
+     label1:
+        observer#7 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader>;
+
+        virtualinvoke observer#7.<androidx.loader.content.Loader: boolean cancelLoad()>();
+
+        observer#7 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader>;
+
+        virtualinvoke observer#7.<androidx.loader.content.Loader: void abandon()>();
+
+        observer#9 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.app.LoaderManagerImpl$LoaderObserver mObserver>;
+
+        if observer#9 == null goto label2;
+
+        virtualinvoke this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: void removeObserver(androidx.lifecycle.Observer)>(observer#9);
+
+        if $u3 == 0 goto label2;
+
+        virtualinvoke observer#9.<androidx.loader.app.LoaderManagerImpl$LoaderObserver: void reset()>();
+
+     label2:
+        observer#7 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader>;
+
+        virtualinvoke observer#7.<androidx.loader.content.Loader: void unregisterListener(androidx.loader.content.Loader$OnLoadCompleteListener)>(this);
+
+        if observer#9 == null goto label3;
+
+        observer = virtualinvoke observer#9.<androidx.loader.app.LoaderManagerImpl$LoaderObserver: boolean hasDeliveredData()>();
+
+        if observer == 0 goto label4;
+
+     label3:
+        if $u3 == 0 goto label5;
+
+     label4:
+        observer#7 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader>;
+
+        virtualinvoke observer#7.<androidx.loader.content.Loader: void reset()>();
+
+        observer#7 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mPriorLoader>;
+
+        return observer#7;
+
+     label5:
+        observer#7 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader>;
+
+        return observer#7;
+    }
+
+    public void dump(java.lang.String, java.io.FileDescriptor, java.io.PrintWriter, java.lang.String[])
+    {
+        androidx.loader.app.LoaderManagerImpl$LoaderInfo this;
+        java.lang.String $u4, $u-1;
+        java.io.FileDescriptor $u5;
+        java.io.PrintWriter $u6;
+        java.lang.String[] $u7;
+        int $u0;
+        android.os.Bundle $u0#4;
+        androidx.loader.content.Loader $u0#6;
+        java.lang.StringBuilder $u1;
+        androidx.loader.app.LoaderManagerImpl$LoaderObserver $u0#11;
+        java.lang.Object $u-1#21;
+        boolean $u-1#26;
+
+        this := @this: androidx.loader.app.LoaderManagerImpl$LoaderInfo;
+
+        $u4 := @parameter0: java.lang.String;
+
+        $u5 := @parameter1: java.io.FileDescriptor;
+
+        $u6 := @parameter2: java.io.PrintWriter;
+
+        $u7 := @parameter3: java.lang.String[];
+
+        virtualinvoke $u6.<java.io.PrintWriter: void print(java.lang.String)>($u4);
+
+        virtualinvoke $u6.<java.io.PrintWriter: void print(java.lang.String)>("mId=");
+
+        $u0 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: int mId>;
+
+        virtualinvoke $u6.<java.io.PrintWriter: void print(int)>($u0);
+
+        virtualinvoke $u6.<java.io.PrintWriter: void print(java.lang.String)>(" mArgs=");
+
+        $u0#4 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: android.os.Bundle mArgs>;
+
+        virtualinvoke $u6.<java.io.PrintWriter: void println(java.lang.Object)>($u0#4);
+
+        virtualinvoke $u6.<java.io.PrintWriter: void print(java.lang.String)>($u4);
+
+        virtualinvoke $u6.<java.io.PrintWriter: void print(java.lang.String)>("mLoader=");
+
+        $u0#6 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader>;
+
+        virtualinvoke $u6.<java.io.PrintWriter: void println(java.lang.Object)>($u0#6);
+
+        $u0#6 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader>;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u4);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("  ");
+
+        $u-1 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $u0#6.<androidx.loader.content.Loader: void dump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[])>($u-1, $u5, $u6, $u7);
+
+        $u0#11 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.app.LoaderManagerImpl$LoaderObserver mObserver>;
+
+        if $u0#11 == null goto label1;
+
+        virtualinvoke $u6.<java.io.PrintWriter: void print(java.lang.String)>($u4);
+
+        virtualinvoke $u6.<java.io.PrintWriter: void print(java.lang.String)>("mCallbacks=");
+
+        $u0#11 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.app.LoaderManagerImpl$LoaderObserver mObserver>;
+
+        virtualinvoke $u6.<java.io.PrintWriter: void println(java.lang.Object)>($u0#11);
+
+        $u0#11 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.app.LoaderManagerImpl$LoaderObserver mObserver>;
+
+        $u1 = new java.lang.StringBuilder;
+
+        specialinvoke $u1.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u4);
+
+        virtualinvoke $u1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("  ");
+
+        $u-1 = virtualinvoke $u1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $u0#11.<androidx.loader.app.LoaderManagerImpl$LoaderObserver: void dump(java.lang.String,java.io.PrintWriter)>($u-1, $u6);
+
+     label1:
+        virtualinvoke $u6.<java.io.PrintWriter: void print(java.lang.String)>($u4);
+
+        virtualinvoke $u6.<java.io.PrintWriter: void print(java.lang.String)>("mData=");
+
+        $u0#6 = virtualinvoke this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader getLoader()>();
+
+        $u-1#21 = virtualinvoke this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: java.lang.Object getValue()>();
+
+        $u-1 = virtualinvoke $u0#6.<androidx.loader.content.Loader: java.lang.String dataToString(java.lang.Object)>($u-1#21);
+
+        virtualinvoke $u6.<java.io.PrintWriter: void println(java.lang.String)>($u-1);
+
+        virtualinvoke $u6.<java.io.PrintWriter: void print(java.lang.String)>($u4);
+
+        virtualinvoke $u6.<java.io.PrintWriter: void print(java.lang.String)>("mStarted=");
+
+        $u-1#26 = virtualinvoke this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: boolean hasActiveObservers()>();
+
+        virtualinvoke $u6.<java.io.PrintWriter: void println(boolean)>($u-1#26);
+
+        return;
+    }
+
+    androidx.loader.content.Loader getLoader()
+    {
+        androidx.loader.app.LoaderManagerImpl$LoaderInfo this;
+        androidx.loader.content.Loader ret0;
+
+        this := @this: androidx.loader.app.LoaderManagerImpl$LoaderInfo;
+
+        ret0 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader>;
+
+        return ret0;
+    }
+
+    boolean isCallbackWaitingForData()
+    {
+        androidx.loader.app.LoaderManagerImpl$LoaderInfo this;
+        boolean $u-1;
+        androidx.loader.app.LoaderManagerImpl$LoaderObserver $u0;
+
+        this := @this: androidx.loader.app.LoaderManagerImpl$LoaderInfo;
+
+        $u-1 = virtualinvoke this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: boolean hasActiveObservers()>();
+
+        if $u-1 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        $u0 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.app.LoaderManagerImpl$LoaderObserver mObserver>;
+
+        if $u0 == null goto label2;
+
+        $u-1 = virtualinvoke $u0.<androidx.loader.app.LoaderManagerImpl$LoaderObserver: boolean hasDeliveredData()>();
+
+        if $u-1 != 0 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    void markForRedelivery()
+    {
+        androidx.loader.app.LoaderManagerImpl$LoaderInfo this;
+        androidx.lifecycle.LifecycleOwner lifecycleOwner;
+        androidx.loader.app.LoaderManagerImpl$LoaderObserver observer;
+
+        this := @this: androidx.loader.app.LoaderManagerImpl$LoaderInfo;
+
+        lifecycleOwner = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.lifecycle.LifecycleOwner mLifecycleOwner>;
+
+        observer = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.app.LoaderManagerImpl$LoaderObserver mObserver>;
+
+        if lifecycleOwner == null goto label1;
+
+        if observer == null goto label1;
+
+        specialinvoke this.<androidx.lifecycle.MutableLiveData: void removeObserver(androidx.lifecycle.Observer)>(observer);
+
+        virtualinvoke this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: void observe(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Observer)>(lifecycleOwner, observer);
+
+     label1:
+        return;
+    }
+
+    protected void onActive()
+    {
+        androidx.loader.app.LoaderManagerImpl$LoaderInfo this;
+        java.lang.String $u-1;
+        boolean $u0;
+        java.lang.StringBuilder $u0#2;
+        androidx.loader.content.Loader $u0#6;
+
+        this := @this: androidx.loader.app.LoaderManagerImpl$LoaderInfo;
+
+        $u0 = <androidx.loader.app.LoaderManagerImpl: boolean DEBUG>;
+
+        if $u0 == 0 goto label1;
+
+        $u0#2 = new java.lang.StringBuilder;
+
+        specialinvoke $u0#2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u0#2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("  Starting: ");
+
+        virtualinvoke $u0#2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(this);
+
+        $u-1 = virtualinvoke $u0#2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("LoaderManager", $u-1);
+
+     label1:
+        $u0#6 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader>;
+
+        virtualinvoke $u0#6.<androidx.loader.content.Loader: void startLoading()>();
+
+        return;
+    }
+
+    protected void onInactive()
+    {
+        androidx.loader.app.LoaderManagerImpl$LoaderInfo this;
+        java.lang.String $u-1;
+        boolean $u0;
+        java.lang.StringBuilder $u0#2;
+        androidx.loader.content.Loader $u0#6;
+
+        this := @this: androidx.loader.app.LoaderManagerImpl$LoaderInfo;
+
+        $u0 = <androidx.loader.app.LoaderManagerImpl: boolean DEBUG>;
+
+        if $u0 == 0 goto label1;
+
+        $u0#2 = new java.lang.StringBuilder;
+
+        specialinvoke $u0#2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u0#2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("  Stopping: ");
+
+        virtualinvoke $u0#2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(this);
+
+        $u-1 = virtualinvoke $u0#2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("LoaderManager", $u-1);
+
+     label1:
+        $u0#6 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader>;
+
+        virtualinvoke $u0#6.<androidx.loader.content.Loader: void stopLoading()>();
+
+        return;
+    }
+
+    public void onLoadComplete(androidx.loader.content.Loader, java.lang.Object)
+    {
+        androidx.loader.app.LoaderManagerImpl$LoaderInfo this;
+        androidx.loader.content.Loader loader;
+        java.lang.Object data;
+        boolean $u0;
+        java.lang.StringBuilder $u0#2;
+        java.lang.String $u-1;
+        android.os.Looper $u-1#6, $u-1#8;
+
+        this := @this: androidx.loader.app.LoaderManagerImpl$LoaderInfo;
+
+        loader := @parameter0: androidx.loader.content.Loader;
+
+        data := @parameter1: java.lang.Object;
+
+        $u0 = <androidx.loader.app.LoaderManagerImpl: boolean DEBUG>;
+
+        if $u0 == 0 goto label1;
+
+        $u0#2 = new java.lang.StringBuilder;
+
+        specialinvoke $u0#2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u0#2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("onLoadComplete: ");
+
+        virtualinvoke $u0#2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(this);
+
+        $u-1 = virtualinvoke $u0#2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("LoaderManager", $u-1);
+
+     label1:
+        $u-1#6 = staticinvoke <android.os.Looper: android.os.Looper myLooper()>();
+
+        $u-1#8 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        if $u-1#6 != $u-1#8 goto label2;
+
+        virtualinvoke this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: void setValue(java.lang.Object)>(data);
+
+        return;
+
+     label2:
+        $u0 = <androidx.loader.app.LoaderManagerImpl: boolean DEBUG>;
+
+        if $u0 == 0 goto label3;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>("LoaderManager", "onLoadComplete was incorrectly called on a background thread");
+
+     label3:
+        virtualinvoke this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: void postValue(java.lang.Object)>(data);
+
+        return;
+    }
+
+    public void removeObserver(androidx.lifecycle.Observer)
+    {
+        androidx.loader.app.LoaderManagerImpl$LoaderInfo this;
+        androidx.lifecycle.Observer observer;
+
+        this := @this: androidx.loader.app.LoaderManagerImpl$LoaderInfo;
+
+        observer := @parameter0: androidx.lifecycle.Observer;
+
+        specialinvoke this.<androidx.lifecycle.MutableLiveData: void removeObserver(androidx.lifecycle.Observer)>(observer);
+
+        this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.lifecycle.LifecycleOwner mLifecycleOwner> = null;
+
+        this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.app.LoaderManagerImpl$LoaderObserver mObserver> = null;
+
+        return;
+    }
+
+    androidx.loader.content.Loader setCallback(androidx.lifecycle.LifecycleOwner, androidx.loader.app.LoaderManager$LoaderCallbacks)
+    {
+        androidx.loader.app.LoaderManagerImpl$LoaderInfo this;
+        androidx.lifecycle.LifecycleOwner $u3;
+        androidx.loader.app.LoaderManager$LoaderCallbacks callback;
+        androidx.loader.app.LoaderManagerImpl$LoaderObserver observer, $u1#2;
+        androidx.loader.content.Loader $u1;
+
+        this := @this: androidx.loader.app.LoaderManagerImpl$LoaderInfo;
+
+        $u3 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        callback := @parameter1: androidx.loader.app.LoaderManager$LoaderCallbacks;
+
+        observer = new androidx.loader.app.LoaderManagerImpl$LoaderObserver;
+
+        $u1 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader>;
+
+        specialinvoke observer.<androidx.loader.app.LoaderManagerImpl$LoaderObserver: void <init>(androidx.loader.content.Loader,androidx.loader.app.LoaderManager$LoaderCallbacks)>($u1, callback);
+
+        virtualinvoke this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: void observe(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Observer)>($u3, observer);
+
+        $u1#2 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.app.LoaderManagerImpl$LoaderObserver mObserver>;
+
+        if $u1#2 == null goto label1;
+
+        virtualinvoke this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: void removeObserver(androidx.lifecycle.Observer)>($u1#2);
+
+     label1:
+        this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.lifecycle.LifecycleOwner mLifecycleOwner> = $u3;
+
+        this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.app.LoaderManagerImpl$LoaderObserver mObserver> = observer;
+
+        $u1 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader>;
+
+        return $u1;
+    }
+
+    public void setValue(java.lang.Object)
+    {
+        androidx.loader.app.LoaderManagerImpl$LoaderInfo this;
+        java.lang.Object value;
+        androidx.loader.content.Loader $u0;
+
+        this := @this: androidx.loader.app.LoaderManagerImpl$LoaderInfo;
+
+        value := @parameter0: java.lang.Object;
+
+        specialinvoke this.<androidx.lifecycle.MutableLiveData: void setValue(java.lang.Object)>(value);
+
+        $u0 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mPriorLoader>;
+
+        if $u0 == null goto label1;
+
+        virtualinvoke $u0.<androidx.loader.content.Loader: void reset()>();
+
+        this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mPriorLoader> = null;
+
+     label1:
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.loader.app.LoaderManagerImpl$LoaderInfo this;
+        java.lang.StringBuilder sb;
+        int $u-1;
+        java.lang.String $u-1#5;
+        androidx.loader.content.Loader $u1;
+
+        this := @this: androidx.loader.app.LoaderManagerImpl$LoaderInfo;
+
+        sb = new java.lang.StringBuilder;
+
+        specialinvoke sb.<java.lang.StringBuilder: void <init>(int)>(64);
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("LoaderInfo{");
+
+        $u-1 = staticinvoke <java.lang.System: int identityHashCode(java.lang.Object)>(this);
+
+        $u-1#5 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($u-1);
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#5);
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" #");
+
+        $u-1 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: int mId>;
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u-1);
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" : ");
+
+        $u1 = this.<androidx.loader.app.LoaderManagerImpl$LoaderInfo: androidx.loader.content.Loader mLoader>;
+
+        staticinvoke <androidx.core.util.DebugUtils: void buildShortClassTag(java.lang.Object,java.lang.StringBuilder)>($u1, sb);
+
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("}}");
+
+        $u-1#5 = virtualinvoke sb.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1#5;
+    }
+}

@@ -1,0 +1,1568 @@
+public final class androidx.collection.ArraySet extends java.lang.Object implements java.util.Collection, java.util.Set
+{
+    private static final int BASE_SIZE;
+    private static final int CACHE_SIZE;
+    private static final boolean DEBUG;
+    private static final int[] INT;
+    private static final java.lang.Object[] OBJECT;
+    private static final java.lang.String TAG;
+    private static java.lang.Object[] sBaseCache;
+    private static int sBaseCacheSize;
+    private static java.lang.Object[] sTwiceBaseCache;
+    private static int sTwiceBaseCacheSize;
+    java.lang.Object[] mArray;
+    private androidx.collection.MapCollections mCollections;
+    private int[] mHashes;
+    int mSize;
+
+    static void <clinit>()
+    {
+        int[] $u1;
+        java.lang.Object[] $u0;
+
+        <androidx.collection.ArraySet: java.lang.String TAG> = "ArraySet";
+
+        <androidx.collection.ArraySet: boolean DEBUG> = 0;
+
+        <androidx.collection.ArraySet: int CACHE_SIZE> = 10;
+
+        <androidx.collection.ArraySet: int BASE_SIZE> = 4;
+
+        $u1 = newarray (int)[0];
+
+        <androidx.collection.ArraySet: int[] INT> = $u1;
+
+        $u0 = newarray (java.lang.Object)[0];
+
+        <androidx.collection.ArraySet: java.lang.Object[] OBJECT> = $u0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        androidx.collection.ArraySet this;
+
+        this := @this: androidx.collection.ArraySet;
+
+        specialinvoke this.<androidx.collection.ArraySet: void <init>(int)>(0);
+
+        return;
+    }
+
+    public void <init>(int)
+    {
+        androidx.collection.ArraySet this;
+        int $u2;
+        int[] $u0;
+        java.lang.Object[] $u0#2;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u2 := @parameter0: int;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        if $u2 != 0 goto label1;
+
+        $u0 = <androidx.collection.ArraySet: int[] INT>;
+
+        this.<androidx.collection.ArraySet: int[] mHashes> = $u0;
+
+        $u0#2 = <androidx.collection.ArraySet: java.lang.Object[] OBJECT>;
+
+        this.<androidx.collection.ArraySet: java.lang.Object[] mArray> = $u0#2;
+
+        goto label2;
+
+     label1:
+        specialinvoke this.<androidx.collection.ArraySet: void allocArrays(int)>($u2);
+
+     label2:
+        this.<androidx.collection.ArraySet: int mSize> = 0;
+
+        return;
+    }
+
+    public void <init>(androidx.collection.ArraySet)
+    {
+        androidx.collection.ArraySet this, set;
+
+        this := @this: androidx.collection.ArraySet;
+
+        set := @parameter0: androidx.collection.ArraySet;
+
+        specialinvoke this.<androidx.collection.ArraySet: void <init>()>();
+
+        if set == null goto label1;
+
+        virtualinvoke this.<androidx.collection.ArraySet: void addAll(androidx.collection.ArraySet)>(set);
+
+     label1:
+        return;
+    }
+
+    public void <init>(java.util.Collection)
+    {
+        androidx.collection.ArraySet this;
+        java.util.Collection set;
+
+        this := @this: androidx.collection.ArraySet;
+
+        set := @parameter0: java.util.Collection;
+
+        specialinvoke this.<androidx.collection.ArraySet: void <init>()>();
+
+        if set == null goto label1;
+
+        virtualinvoke this.<androidx.collection.ArraySet: boolean addAll(java.util.Collection)>(set);
+
+     label1:
+        return;
+    }
+
+    private void allocArrays(int)
+    {
+        androidx.collection.ArraySet this;
+        int $u7;
+        java.lang.Object[] array, $u5#7;
+        java.lang.Object $u5;
+        int[] $u5#10;
+        java.lang.Throwable $u1, $u1#26;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u7 := @parameter0: int;
+
+        if $u7 != 8 goto label07;
+
+        entermonitor class "Landroidx/collection/ArraySet;";
+
+     label01:
+        array = <androidx.collection.ArraySet: java.lang.Object[] sTwiceBaseCache>;
+
+        if array == null goto label03;
+
+        array = <androidx.collection.ArraySet: java.lang.Object[] sTwiceBaseCache>;
+
+        this.<androidx.collection.ArraySet: java.lang.Object[] mArray> = array;
+
+        $u5 = array[0];
+
+        $u5#7 = (java.lang.Object[]) $u5;
+
+        <androidx.collection.ArraySet: java.lang.Object[] sTwiceBaseCache> = $u5#7;
+
+        $u5 = array[1];
+
+        $u5#10 = (int[]) $u5;
+
+        this.<androidx.collection.ArraySet: int[] mHashes> = $u5#10;
+
+        array[1] = null;
+
+        array[0] = null;
+
+        $u7 = <androidx.collection.ArraySet: int sTwiceBaseCacheSize>;
+
+        $u7 = $u7 - 1;
+
+        <androidx.collection.ArraySet: int sTwiceBaseCacheSize> = $u7;
+
+        exitmonitor class "Landroidx/collection/ArraySet;";
+
+     label02:
+        return;
+
+     label03:
+        exitmonitor class "Landroidx/collection/ArraySet;";
+
+     label04:
+        goto label14;
+
+     label05:
+        $u1 := @caughtexception;
+
+        exitmonitor class "Landroidx/collection/ArraySet;";
+
+     label06:
+        throw $u1;
+
+     label07:
+        if $u7 != 4 goto label14;
+
+        entermonitor class "Landroidx/collection/ArraySet;";
+
+     label08:
+        array = <androidx.collection.ArraySet: java.lang.Object[] sBaseCache>;
+
+        if array == null goto label10;
+
+        array = <androidx.collection.ArraySet: java.lang.Object[] sBaseCache>;
+
+        this.<androidx.collection.ArraySet: java.lang.Object[] mArray> = array;
+
+        $u5 = array[0];
+
+        $u5#7 = (java.lang.Object[]) $u5;
+
+        <androidx.collection.ArraySet: java.lang.Object[] sBaseCache> = $u5#7;
+
+        $u5 = array[1];
+
+        $u5#10 = (int[]) $u5;
+
+        this.<androidx.collection.ArraySet: int[] mHashes> = $u5#10;
+
+        array[1] = null;
+
+        array[0] = null;
+
+        $u7 = <androidx.collection.ArraySet: int sBaseCacheSize>;
+
+        $u7 = $u7 - 1;
+
+        <androidx.collection.ArraySet: int sBaseCacheSize> = $u7;
+
+        exitmonitor class "Landroidx/collection/ArraySet;";
+
+     label09:
+        return;
+
+     label10:
+        exitmonitor class "Landroidx/collection/ArraySet;";
+
+     label11:
+        goto label14;
+
+     label12:
+        $u1#26 := @caughtexception;
+
+        exitmonitor class "Landroidx/collection/ArraySet;";
+
+     label13:
+        throw $u1#26;
+
+     label14:
+        $u5#10 = newarray (int)[$u7];
+
+        this.<androidx.collection.ArraySet: int[] mHashes> = $u5#10;
+
+        array = newarray (java.lang.Object)[$u7];
+
+        this.<androidx.collection.ArraySet: java.lang.Object[] mArray> = array;
+
+        return;
+
+        catch java.lang.Throwable from label01 to label02 with label05;
+        catch java.lang.Throwable from label03 to label04 with label05;
+        catch java.lang.Throwable from label05 to label06 with label05;
+        catch java.lang.Throwable from label08 to label09 with label12;
+        catch java.lang.Throwable from label10 to label11 with label12;
+        catch java.lang.Throwable from label12 to label13 with label12;
+    }
+
+    private static void freeArrays(int[], java.lang.Object[], int)
+    {
+        int[] $u8;
+        java.lang.Object[] $u9, i#4;
+        int $u10, i;
+        java.lang.Throwable i#8, i#16;
+
+        $u8 := @parameter0: int[];
+
+        $u9 := @parameter1: java.lang.Object[];
+
+        $u10 := @parameter2: int;
+
+        i = lengthof $u8;
+
+        if i != 8 goto label08;
+
+        entermonitor class "Landroidx/collection/ArraySet;";
+
+     label01:
+        i = <androidx.collection.ArraySet: int sTwiceBaseCacheSize>;
+
+        if i >= 10 goto label04;
+
+        i#4 = <androidx.collection.ArraySet: java.lang.Object[] sTwiceBaseCache>;
+
+        $u9[0] = i#4;
+
+        $u9[1] = $u8;
+
+        $u10 = $u10 + -1;
+
+     label02:
+        if $u10 < 2 goto label03;
+
+        $u9[$u10] = null;
+
+        $u10 = $u10 + -1;
+
+        goto label02;
+
+     label03:
+        <androidx.collection.ArraySet: java.lang.Object[] sTwiceBaseCache> = $u9;
+
+        $u10 = <androidx.collection.ArraySet: int sTwiceBaseCacheSize>;
+
+        $u10 = $u10 + 1;
+
+        <androidx.collection.ArraySet: int sTwiceBaseCacheSize> = $u10;
+
+     label04:
+        exitmonitor class "Landroidx/collection/ArraySet;";
+
+     label05:
+        return;
+
+     label06:
+        i#8 := @caughtexception;
+
+        exitmonitor class "Landroidx/collection/ArraySet;";
+
+     label07:
+        throw i#8;
+
+     label08:
+        i = lengthof $u8;
+
+        if i != 4 goto label16;
+
+        entermonitor class "Landroidx/collection/ArraySet;";
+
+     label09:
+        i = <androidx.collection.ArraySet: int sBaseCacheSize>;
+
+        if i >= 10 goto label12;
+
+        i#4 = <androidx.collection.ArraySet: java.lang.Object[] sBaseCache>;
+
+        $u9[0] = i#4;
+
+        $u9[1] = $u8;
+
+        $u10 = $u10 + -1;
+
+     label10:
+        if $u10 < 2 goto label11;
+
+        $u9[$u10] = null;
+
+        $u10 = $u10 + -1;
+
+        goto label10;
+
+     label11:
+        <androidx.collection.ArraySet: java.lang.Object[] sBaseCache> = $u9;
+
+        $u10 = <androidx.collection.ArraySet: int sBaseCacheSize>;
+
+        $u10 = $u10 + 1;
+
+        <androidx.collection.ArraySet: int sBaseCacheSize> = $u10;
+
+     label12:
+        exitmonitor class "Landroidx/collection/ArraySet;";
+
+     label13:
+        return;
+
+     label14:
+        i#16 := @caughtexception;
+
+        exitmonitor class "Landroidx/collection/ArraySet;";
+
+     label15:
+        throw i#16;
+
+     label16:
+        return;
+
+        catch java.lang.Throwable from label01 to label05 with label06;
+        catch java.lang.Throwable from label06 to label07 with label06;
+        catch java.lang.Throwable from label09 to label13 with label14;
+        catch java.lang.Throwable from label14 to label15 with label14;
+    }
+
+    private androidx.collection.MapCollections getCollection()
+    {
+        androidx.collection.ArraySet this;
+        androidx.collection.MapCollections $u0;
+        androidx.collection.ArraySet$1 $u0#2;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u0 = this.<androidx.collection.ArraySet: androidx.collection.MapCollections mCollections>;
+
+        if $u0 != null goto label1;
+
+        $u0#2 = new androidx.collection.ArraySet$1;
+
+        specialinvoke $u0#2.<androidx.collection.ArraySet$1: void <init>(androidx.collection.ArraySet)>(this);
+
+        this.<androidx.collection.ArraySet: androidx.collection.MapCollections mCollections> = $u0#2;
+
+     label1:
+        $u0 = this.<androidx.collection.ArraySet: androidx.collection.MapCollections mCollections>;
+
+        return $u0;
+    }
+
+    private int indexOf(java.lang.Object, int)
+    {
+        androidx.collection.ArraySet this;
+        java.lang.Object $u6, end#6;
+        int $u7, N, $u-1, end#9, i;
+        int[] index;
+        java.lang.Object[] end;
+        boolean $u-1#7;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u6 := @parameter0: java.lang.Object;
+
+        $u7 := @parameter1: int;
+
+        N = this.<androidx.collection.ArraySet: int mSize>;
+
+        if N != 0 goto label1;
+
+        return -1;
+
+     label1:
+        index = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        $u-1 = staticinvoke <androidx.collection.ContainerHelpers: int binarySearch(int[],int,int)>(index, N, $u7);
+
+        if $u-1 >= 0 goto label2;
+
+        return $u-1;
+
+     label2:
+        end = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        end#6 = end[$u-1];
+
+        $u-1#7 = virtualinvoke $u6.<java.lang.Object: boolean equals(java.lang.Object)>(end#6);
+
+        if $u-1#7 == 0 goto label3;
+
+        return $u-1;
+
+     label3:
+        end#9 = $u-1 + 1;
+
+     label4:
+        if end#9 >= N goto label6;
+
+        index = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        i = index[end#9];
+
+        if i != $u7 goto label6;
+
+        end = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        end#6 = end[end#9];
+
+        $u-1#7 = virtualinvoke $u6.<java.lang.Object: boolean equals(java.lang.Object)>(end#6);
+
+        if $u-1#7 == 0 goto label5;
+
+        return end#9;
+
+     label5:
+        end#9 = end#9 + 1;
+
+        goto label4;
+
+     label6:
+        N = $u-1 + -1;
+
+     label7:
+        if N < 0 goto label9;
+
+        index = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        $u-1 = index[N];
+
+        if $u-1 != $u7 goto label9;
+
+        end = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        end#6 = end[N];
+
+        $u-1#7 = virtualinvoke $u6.<java.lang.Object: boolean equals(java.lang.Object)>(end#6);
+
+        if $u-1#7 == 0 goto label8;
+
+        return N;
+
+     label8:
+        N = N + -1;
+
+        goto label7;
+
+     label9:
+        $u7 = end#9 ^ -1;
+
+        return $u7;
+    }
+
+    private int indexOfNull()
+    {
+        androidx.collection.ArraySet this;
+        int N, $u-1, end#7, i;
+        int[] index;
+        java.lang.Object[] end;
+        java.lang.Object end#6;
+
+        this := @this: androidx.collection.ArraySet;
+
+        N = this.<androidx.collection.ArraySet: int mSize>;
+
+        if N != 0 goto label1;
+
+        return -1;
+
+     label1:
+        index = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        $u-1 = staticinvoke <androidx.collection.ContainerHelpers: int binarySearch(int[],int,int)>(index, N, 0);
+
+        if $u-1 >= 0 goto label2;
+
+        return $u-1;
+
+     label2:
+        end = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        end#6 = end[$u-1];
+
+        if end#6 != null goto label3;
+
+        return $u-1;
+
+     label3:
+        end#7 = $u-1 + 1;
+
+     label4:
+        if end#7 >= N goto label6;
+
+        index = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        i = index[end#7];
+
+        if i != 0 goto label6;
+
+        end = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        end#6 = end[end#7];
+
+        if end#6 != null goto label5;
+
+        return end#7;
+
+     label5:
+        end#7 = end#7 + 1;
+
+        goto label4;
+
+     label6:
+        N = $u-1 + -1;
+
+     label7:
+        if N < 0 goto label9;
+
+        index = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        $u-1 = index[N];
+
+        if $u-1 != 0 goto label9;
+
+        end = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        end#6 = end[N];
+
+        if end#6 != null goto label8;
+
+        return N;
+
+     label8:
+        N = N + -1;
+
+        goto label7;
+
+     label9:
+        end#7 = end#7 ^ -1;
+
+        return end#7;
+    }
+
+    public boolean add(java.lang.Object)
+    {
+        androidx.collection.ArraySet this;
+        java.lang.Object value;
+        int hash, $u-1, n, ohashes#10;
+        int[] ohashes, $u6;
+        java.lang.Object[] oarray, $u6#20;
+
+        this := @this: androidx.collection.ArraySet;
+
+        value := @parameter0: java.lang.Object;
+
+        if value != null goto label1;
+
+        hash = 0;
+
+        $u-1 = specialinvoke this.<androidx.collection.ArraySet: int indexOfNull()>();
+
+        goto label2;
+
+     label1:
+        $u-1 = virtualinvoke value.<java.lang.Object: int hashCode()>();
+
+        hash = $u-1;
+
+        $u-1 = specialinvoke this.<androidx.collection.ArraySet: int indexOf(java.lang.Object,int)>(value, $u-1);
+
+     label2:
+        if $u-1 < 0 goto label3;
+
+        return 0;
+
+     label3:
+        $u-1 = $u-1 ^ -1;
+
+        n = this.<androidx.collection.ArraySet: int mSize>;
+
+        ohashes = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        ohashes#10 = lengthof ohashes;
+
+        if n < ohashes#10 goto label7;
+
+        ohashes#10 = 4;
+
+        if n < 8 goto label4;
+
+        ohashes#10 = n >> 1;
+
+        ohashes#10 = ohashes#10 + n;
+
+        goto label5;
+
+     label4:
+        if n < 4 goto label5;
+
+        ohashes#10 = 8;
+
+     label5:
+        ohashes = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        oarray = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        specialinvoke this.<androidx.collection.ArraySet: void allocArrays(int)>(ohashes#10);
+
+        $u6 = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        n = lengthof $u6;
+
+        if n <= 0 goto label6;
+
+        n = lengthof ohashes;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(ohashes, 0, $u6, 0, n);
+
+        $u6#20 = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        n = lengthof oarray;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(oarray, 0, $u6#20, 0, n);
+
+     label6:
+        n = this.<androidx.collection.ArraySet: int mSize>;
+
+        staticinvoke <androidx.collection.ArraySet: void freeArrays(int[],java.lang.Object[],int)>(ohashes, oarray, n);
+
+     label7:
+        ohashes#10 = this.<androidx.collection.ArraySet: int mSize>;
+
+        if $u-1 >= ohashes#10 goto label8;
+
+        ohashes = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        n = $u-1 + 1;
+
+        ohashes#10 = ohashes#10 - $u-1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(ohashes, $u-1, ohashes, n, ohashes#10);
+
+        oarray = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        n = $u-1 + 1;
+
+        ohashes#10 = this.<androidx.collection.ArraySet: int mSize>;
+
+        ohashes#10 = ohashes#10 - $u-1;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(oarray, $u-1, oarray, n, ohashes#10);
+
+     label8:
+        ohashes = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        ohashes[$u-1] = hash;
+
+        oarray = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        oarray[$u-1] = value;
+
+        hash = this.<androidx.collection.ArraySet: int mSize>;
+
+        hash = hash + 1;
+
+        this.<androidx.collection.ArraySet: int mSize> = hash;
+
+        return 1;
+    }
+
+    public void addAll(androidx.collection.ArraySet)
+    {
+        androidx.collection.ArraySet this, array;
+        int N, i;
+        java.lang.Object $u-1;
+        int[] i#4, $u2;
+        java.lang.Object[] i#6, $u2#7;
+
+        this := @this: androidx.collection.ArraySet;
+
+        array := @parameter0: androidx.collection.ArraySet;
+
+        N = array.<androidx.collection.ArraySet: int mSize>;
+
+        i = this.<androidx.collection.ArraySet: int mSize>;
+
+        i = i + N;
+
+        virtualinvoke this.<androidx.collection.ArraySet: void ensureCapacity(int)>(i);
+
+        i = this.<androidx.collection.ArraySet: int mSize>;
+
+        if i != 0 goto label1;
+
+        if N <= 0 goto label3;
+
+        i#4 = array.<androidx.collection.ArraySet: int[] mHashes>;
+
+        $u2 = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(i#4, 0, $u2, 0, N);
+
+        i#6 = array.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        $u2#7 = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(i#6, 0, $u2#7, 0, N);
+
+        this.<androidx.collection.ArraySet: int mSize> = N;
+
+        return;
+
+     label1:
+        i = 0;
+
+     label2:
+        if i >= N goto label3;
+
+        $u-1 = virtualinvoke array.<androidx.collection.ArraySet: java.lang.Object valueAt(int)>(i);
+
+        virtualinvoke this.<androidx.collection.ArraySet: boolean add(java.lang.Object)>($u-1);
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    public boolean addAll(java.util.Collection)
+    {
+        androidx.collection.ArraySet this;
+        java.util.Collection collection;
+        int added, $u-1;
+        boolean added#5, $u-1#8;
+        java.util.Iterator $u-1#6;
+        java.lang.Object $u-1#10;
+
+        this := @this: androidx.collection.ArraySet;
+
+        collection := @parameter0: java.util.Collection;
+
+        added = this.<androidx.collection.ArraySet: int mSize>;
+
+        $u-1 = interfaceinvoke collection.<java.util.Collection: int size()>();
+
+        added = added + $u-1;
+
+        virtualinvoke this.<androidx.collection.ArraySet: void ensureCapacity(int)>(added);
+
+        added#5 = 0;
+
+        $u-1#6 = interfaceinvoke collection.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#8 = interfaceinvoke $u-1#6.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#8 == 0 goto label2;
+
+        $u-1#10 = interfaceinvoke $u-1#6.<java.util.Iterator: java.lang.Object next()>();
+
+        $u-1#8 = virtualinvoke this.<androidx.collection.ArraySet: boolean add(java.lang.Object)>($u-1#10);
+
+        added#5 = added#5 | $u-1#8;
+
+        goto label1;
+
+     label2:
+        return added#5;
+    }
+
+    public void clear()
+    {
+        androidx.collection.ArraySet this;
+        int[] $u1;
+        java.lang.Object[] $u2;
+        int $u0;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u0 = this.<androidx.collection.ArraySet: int mSize>;
+
+        if $u0 == 0 goto label1;
+
+        $u1 = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        $u2 = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        staticinvoke <androidx.collection.ArraySet: void freeArrays(int[],java.lang.Object[],int)>($u1, $u2, $u0);
+
+        $u1 = <androidx.collection.ArraySet: int[] INT>;
+
+        this.<androidx.collection.ArraySet: int[] mHashes> = $u1;
+
+        $u2 = <androidx.collection.ArraySet: java.lang.Object[] OBJECT>;
+
+        this.<androidx.collection.ArraySet: java.lang.Object[] mArray> = $u2;
+
+        this.<androidx.collection.ArraySet: int mSize> = 0;
+
+     label1:
+        return;
+    }
+
+    public boolean contains(java.lang.Object)
+    {
+        androidx.collection.ArraySet this;
+        java.lang.Object $u2;
+        int $u-1;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        $u-1 = virtualinvoke this.<androidx.collection.ArraySet: int indexOf(java.lang.Object)>($u2);
+
+        if $u-1 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean containsAll(java.util.Collection)
+    {
+        androidx.collection.ArraySet this;
+        java.util.Collection collection;
+        java.util.Iterator $u-1;
+        boolean $u-1#3;
+        java.lang.Object $u-1#5;
+
+        this := @this: androidx.collection.ArraySet;
+
+        collection := @parameter0: java.util.Collection;
+
+        $u-1 = interfaceinvoke collection.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#3 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#3 == 0 goto label2;
+
+        $u-1#5 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        $u-1#3 = virtualinvoke this.<androidx.collection.ArraySet: boolean contains(java.lang.Object)>($u-1#5);
+
+        if $u-1#3 != 0 goto label1;
+
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    public void ensureCapacity(int)
+    {
+        androidx.collection.ArraySet this;
+        int $u6, ohashes#2;
+        java.lang.Object[] oarray, $u2;
+        int[] ohashes, $u3;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u6 := @parameter0: int;
+
+        ohashes = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        ohashes#2 = lengthof ohashes;
+
+        if ohashes#2 >= $u6 goto label2;
+
+        ohashes = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        oarray = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        specialinvoke this.<androidx.collection.ArraySet: void allocArrays(int)>($u6);
+
+        $u6 = this.<androidx.collection.ArraySet: int mSize>;
+
+        if $u6 <= 0 goto label1;
+
+        $u3 = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(ohashes, 0, $u3, 0, $u6);
+
+        $u2 = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        $u6 = this.<androidx.collection.ArraySet: int mSize>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(oarray, 0, $u2, 0, $u6);
+
+     label1:
+        $u6 = this.<androidx.collection.ArraySet: int mSize>;
+
+        staticinvoke <androidx.collection.ArraySet: void freeArrays(int[],java.lang.Object[],int)>(ohashes, oarray, $u6);
+
+     label2:
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.collection.ArraySet this;
+        java.lang.Object $u7;
+        boolean set;
+        java.util.Set set#4;
+        int $u-1, $u-1#7;
+        java.lang.ClassCastException ignored;
+        java.lang.NullPointerException ignored#15;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u7 := @parameter0: java.lang.Object;
+
+        if this != $u7 goto label01;
+
+        return 1;
+
+     label01:
+        set = $u7 instanceof java.util.Set;
+
+        if set == 0 goto label11;
+
+        set#4 = (java.util.Set) $u7;
+
+        $u-1 = virtualinvoke this.<androidx.collection.ArraySet: int size()>();
+
+        $u-1#7 = interfaceinvoke set#4.<java.util.Set: int size()>();
+
+        if $u-1 == $u-1#7 goto label02;
+
+        return 0;
+
+     label02:
+        $u-1 = 0;
+
+     label03:
+        $u-1#7 = this.<androidx.collection.ArraySet: int mSize>;
+
+     label04:
+        if $u-1 >= $u-1#7 goto label08;
+
+     label05:
+        $u7 = virtualinvoke this.<androidx.collection.ArraySet: java.lang.Object valueAt(int)>($u-1);
+
+        set = interfaceinvoke set#4.<java.util.Set: boolean contains(java.lang.Object)>($u7);
+
+     label06:
+        if set != 0 goto label07;
+
+        return 0;
+
+     label07:
+        $u-1 = $u-1 + 1;
+
+        goto label03;
+
+     label08:
+        return 1;
+
+     label09:
+        ignored := @caughtexception;
+
+        return 0;
+
+     label10:
+        ignored#15 := @caughtexception;
+
+     label11:
+        return 0;
+
+        catch java.lang.NullPointerException from label03 to label04 with label10;
+        catch java.lang.NullPointerException from label05 to label06 with label10;
+        catch java.lang.ClassCastException from label05 to label06 with label09;
+    }
+
+    public int hashCode()
+    {
+        androidx.collection.ArraySet this;
+        int[] hashes;
+        int s, $u4, result, i;
+
+        this := @this: androidx.collection.ArraySet;
+
+        hashes = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        result = 0;
+
+        i = 0;
+
+        s = this.<androidx.collection.ArraySet: int mSize>;
+
+     label1:
+        if i >= s goto label2;
+
+        $u4 = hashes[i];
+
+        result = result + $u4;
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return result;
+    }
+
+    public int indexOf(java.lang.Object)
+    {
+        androidx.collection.ArraySet this;
+        java.lang.Object $u2;
+        int $u-1;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        if $u2 != null goto label1;
+
+        $u-1 = specialinvoke this.<androidx.collection.ArraySet: int indexOfNull()>();
+
+        return $u-1;
+
+     label1:
+        $u-1 = virtualinvoke $u2.<java.lang.Object: int hashCode()>();
+
+        $u-1 = specialinvoke this.<androidx.collection.ArraySet: int indexOf(java.lang.Object,int)>($u2, $u-1);
+
+        return $u-1;
+    }
+
+    public boolean isEmpty()
+    {
+        androidx.collection.ArraySet this;
+        int $u0;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u0 = this.<androidx.collection.ArraySet: int mSize>;
+
+        if $u0 > 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public java.util.Iterator iterator()
+    {
+        androidx.collection.ArraySet this;
+        androidx.collection.MapCollections $u-1;
+        java.util.Set $u-1#3;
+        java.util.Iterator $u-1#5;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u-1 = specialinvoke this.<androidx.collection.ArraySet: androidx.collection.MapCollections getCollection()>();
+
+        $u-1#3 = virtualinvoke $u-1.<androidx.collection.MapCollections: java.util.Set getKeySet()>();
+
+        $u-1#5 = interfaceinvoke $u-1#3.<java.util.Set: java.util.Iterator iterator()>();
+
+        return $u-1#5;
+    }
+
+    public boolean remove(java.lang.Object)
+    {
+        androidx.collection.ArraySet this;
+        java.lang.Object $u3;
+        int $u-1;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u3 := @parameter0: java.lang.Object;
+
+        $u-1 = virtualinvoke this.<androidx.collection.ArraySet: int indexOf(java.lang.Object)>($u3);
+
+        if $u-1 < 0 goto label1;
+
+        virtualinvoke this.<androidx.collection.ArraySet: java.lang.Object removeAt(int)>($u-1);
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean removeAll(androidx.collection.ArraySet)
+    {
+        androidx.collection.ArraySet this, array;
+        int N, originalSize, i;
+        java.lang.Object $u-1;
+
+        this := @this: androidx.collection.ArraySet;
+
+        array := @parameter0: androidx.collection.ArraySet;
+
+        N = array.<androidx.collection.ArraySet: int mSize>;
+
+        originalSize = this.<androidx.collection.ArraySet: int mSize>;
+
+        i = 0;
+
+     label1:
+        if i >= N goto label2;
+
+        $u-1 = virtualinvoke array.<androidx.collection.ArraySet: java.lang.Object valueAt(int)>(i);
+
+        virtualinvoke this.<androidx.collection.ArraySet: boolean remove(java.lang.Object)>($u-1);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        N = this.<androidx.collection.ArraySet: int mSize>;
+
+        if originalSize == N goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public boolean removeAll(java.util.Collection)
+    {
+        androidx.collection.ArraySet this;
+        java.util.Collection collection;
+        boolean removed, $u-1#3;
+        java.util.Iterator $u-1;
+        java.lang.Object $u-1#5;
+
+        this := @this: androidx.collection.ArraySet;
+
+        collection := @parameter0: java.util.Collection;
+
+        removed = 0;
+
+        $u-1 = interfaceinvoke collection.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#3 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#3 == 0 goto label2;
+
+        $u-1#5 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        $u-1#3 = virtualinvoke this.<androidx.collection.ArraySet: boolean remove(java.lang.Object)>($u-1#5);
+
+        removed = removed | $u-1#3;
+
+        goto label1;
+
+     label2:
+        return removed;
+    }
+
+    public java.lang.Object removeAt(int)
+    {
+        androidx.collection.ArraySet this;
+        int $u8, ohashes, oarray, $u6;
+        java.lang.Object old;
+        java.lang.Object[] n, $u4#20;
+        int[] $u4, $u4#19;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u8 := @parameter0: int;
+
+        n = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        old = n[$u8];
+
+        ohashes = this.<androidx.collection.ArraySet: int mSize>;
+
+        if ohashes > 1 goto label1;
+
+        $u4 = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        staticinvoke <androidx.collection.ArraySet: void freeArrays(int[],java.lang.Object[],int)>($u4, n, ohashes);
+
+        $u4 = <androidx.collection.ArraySet: int[] INT>;
+
+        this.<androidx.collection.ArraySet: int[] mHashes> = $u4;
+
+        n = <androidx.collection.ArraySet: java.lang.Object[] OBJECT>;
+
+        this.<androidx.collection.ArraySet: java.lang.Object[] mArray> = n;
+
+        this.<androidx.collection.ArraySet: int mSize> = 0;
+
+        return old;
+
+     label1:
+        $u4 = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        oarray = lengthof $u4;
+
+        $u6 = 8;
+
+        if oarray <= 8 goto label5;
+
+        oarray = lengthof $u4;
+
+        oarray = oarray / 3;
+
+        if ohashes >= oarray goto label5;
+
+        if ohashes <= 8 goto label2;
+
+        $u6 = ohashes >> 1;
+
+        $u6 = ohashes + $u6;
+
+     label2:
+        $u4 = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        n = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        specialinvoke this.<androidx.collection.ArraySet: void allocArrays(int)>($u6);
+
+        ohashes = this.<androidx.collection.ArraySet: int mSize>;
+
+        ohashes = ohashes - 1;
+
+        this.<androidx.collection.ArraySet: int mSize> = ohashes;
+
+        if $u8 <= 0 goto label3;
+
+        $u4#19 = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u4, 0, $u4#19, 0, $u8);
+
+        $u4#20 = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(n, 0, $u4#20, 0, $u8);
+
+     label3:
+        $u6 = this.<androidx.collection.ArraySet: int mSize>;
+
+        if $u8 >= $u6 goto label4;
+
+        ohashes = $u8 + 1;
+
+        $u4#19 = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        $u6 = $u6 - $u8;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u4, ohashes, $u4#19, $u8, $u6);
+
+        ohashes = $u8 + 1;
+
+        $u4#20 = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        $u6 = this.<androidx.collection.ArraySet: int mSize>;
+
+        $u6 = $u6 - $u8;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(n, ohashes, $u4#20, $u8, $u6);
+
+     label4:
+        return old;
+
+     label5:
+        ohashes = this.<androidx.collection.ArraySet: int mSize>;
+
+        $u6 = ohashes - 1;
+
+        this.<androidx.collection.ArraySet: int mSize> = $u6;
+
+        if $u8 >= $u6 goto label6;
+
+        $u4 = this.<androidx.collection.ArraySet: int[] mHashes>;
+
+        ohashes = $u8 + 1;
+
+        $u6 = $u6 - $u8;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u4, ohashes, $u4, $u8, $u6);
+
+        n = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        ohashes = $u8 + 1;
+
+        $u6 = this.<androidx.collection.ArraySet: int mSize>;
+
+        $u6 = $u6 - $u8;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(n, ohashes, n, $u8, $u6);
+
+     label6:
+        n = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        $u8 = this.<androidx.collection.ArraySet: int mSize>;
+
+        n[$u8] = null;
+
+        return old;
+    }
+
+    public boolean retainAll(java.util.Collection)
+    {
+        androidx.collection.ArraySet this;
+        java.util.Collection collection;
+        boolean $u-1, removed;
+        int i;
+        java.lang.Object[] $u2;
+        java.lang.Object $u2#5;
+
+        this := @this: androidx.collection.ArraySet;
+
+        collection := @parameter0: java.util.Collection;
+
+        removed = 0;
+
+        i = this.<androidx.collection.ArraySet: int mSize>;
+
+        i = i + -1;
+
+     label1:
+        if i < 0 goto label3;
+
+        $u2 = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        $u2#5 = $u2[i];
+
+        $u-1 = interfaceinvoke collection.<java.util.Collection: boolean contains(java.lang.Object)>($u2#5);
+
+        if $u-1 != 0 goto label2;
+
+        virtualinvoke this.<androidx.collection.ArraySet: java.lang.Object removeAt(int)>(i);
+
+        removed = 1;
+
+     label2:
+        i = i + -1;
+
+        goto label1;
+
+     label3:
+        return removed;
+    }
+
+    public int size()
+    {
+        androidx.collection.ArraySet this;
+        int ret0;
+
+        this := @this: androidx.collection.ArraySet;
+
+        ret0 = this.<androidx.collection.ArraySet: int mSize>;
+
+        return ret0;
+    }
+
+    public java.lang.Object[] toArray()
+    {
+        androidx.collection.ArraySet this;
+        int $u0;
+        java.lang.Object[] result, $u2;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u0 = this.<androidx.collection.ArraySet: int mSize>;
+
+        result = newarray (java.lang.Object)[$u0];
+
+        $u2 = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($u2, 0, result, 0, $u0);
+
+        return result;
+    }
+
+    public java.lang.Object[] toArray(java.lang.Object[])
+    {
+        androidx.collection.ArraySet this;
+        java.lang.Object[] array, newArray#13;
+        int newArray, $u1;
+        java.lang.Class $u-1;
+        java.lang.Object $u-1#9;
+
+        this := @this: androidx.collection.ArraySet;
+
+        array := @parameter0: java.lang.Object[];
+
+        newArray = lengthof array;
+
+        $u1 = this.<androidx.collection.ArraySet: int mSize>;
+
+        if newArray >= $u1 goto label1;
+
+        $u-1 = virtualinvoke array.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1 = virtualinvoke $u-1.<java.lang.Class: java.lang.Class getComponentType()>();
+
+        newArray = this.<androidx.collection.ArraySet: int mSize>;
+
+        $u-1#9 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int)>($u-1, newArray);
+
+        array = (java.lang.Object[]) $u-1#9;
+
+     label1:
+        newArray#13 = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        newArray = this.<androidx.collection.ArraySet: int mSize>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(newArray#13, 0, array, 0, newArray);
+
+        newArray = lengthof array;
+
+        $u1 = this.<androidx.collection.ArraySet: int mSize>;
+
+        if newArray <= $u1 goto label2;
+
+        array[$u1] = null;
+
+     label2:
+        return array;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.collection.ArraySet this;
+        boolean $u-1;
+        java.lang.StringBuilder buffer;
+        int i, value;
+        java.lang.Object $u-1#11;
+        java.lang.String $u-1#14;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u-1 = virtualinvoke this.<androidx.collection.ArraySet: boolean isEmpty()>();
+
+        if $u-1 == 0 goto label1;
+
+        return "{}";
+
+     label1:
+        buffer = new java.lang.StringBuilder;
+
+        i = this.<androidx.collection.ArraySet: int mSize>;
+
+        i = i * 14;
+
+        specialinvoke buffer.<java.lang.StringBuilder: void <init>(int)>(i);
+
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(123);
+
+        i = 0;
+
+     label2:
+        value = this.<androidx.collection.ArraySet: int mSize>;
+
+        if i >= value goto label6;
+
+        if i <= 0 goto label3;
+
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ");
+
+     label3:
+        $u-1#11 = virtualinvoke this.<androidx.collection.ArraySet: java.lang.Object valueAt(int)>(i);
+
+        if $u-1#11 == this goto label4;
+
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($u-1#11);
+
+        goto label5;
+
+     label4:
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(this Set)");
+
+     label5:
+        i = i + 1;
+
+        goto label2;
+
+     label6:
+        virtualinvoke buffer.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125);
+
+        $u-1#14 = virtualinvoke buffer.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1#14;
+    }
+
+    public java.lang.Object valueAt(int)
+    {
+        androidx.collection.ArraySet this;
+        int $u2;
+        java.lang.Object[] $u0;
+        java.lang.Object $u0#2;
+
+        this := @this: androidx.collection.ArraySet;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.collection.ArraySet: java.lang.Object[] mArray>;
+
+        $u0#2 = $u0[$u2];
+
+        return $u0#2;
+    }
+}

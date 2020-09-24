@@ -1,0 +1,42 @@
+class androidx.constraintlayout.motion.widget.TimeCycleSplineSet$AlphaSet extends androidx.constraintlayout.motion.widget.TimeCycleSplineSet
+{
+
+    void <init>()
+    {
+        androidx.constraintlayout.motion.widget.TimeCycleSplineSet$AlphaSet this;
+
+        this := @this: androidx.constraintlayout.motion.widget.TimeCycleSplineSet$AlphaSet;
+
+        specialinvoke this.<androidx.constraintlayout.motion.widget.TimeCycleSplineSet: void <init>()>();
+
+        return;
+    }
+
+    public boolean setProperty(android.view.View, float, long, androidx.constraintlayout.motion.widget.KeyCache)
+    {
+        androidx.constraintlayout.motion.widget.TimeCycleSplineSet$AlphaSet this;
+        android.view.View $u7;
+        float $u8;
+        long $u9;
+        androidx.constraintlayout.motion.widget.KeyCache $u11;
+        boolean ret0;
+
+        this := @this: androidx.constraintlayout.motion.widget.TimeCycleSplineSet$AlphaSet;
+
+        $u7 := @parameter0: android.view.View;
+
+        $u8 := @parameter1: float;
+
+        $u9 := @parameter2: long;
+
+        $u11 := @parameter3: androidx.constraintlayout.motion.widget.KeyCache;
+
+        $u8 = virtualinvoke this.<androidx.constraintlayout.motion.widget.TimeCycleSplineSet$AlphaSet: float get(float,long,android.view.View,androidx.constraintlayout.motion.widget.KeyCache)>($u8, $u9, $u7, $u11);
+
+        virtualinvoke $u7.<android.view.View: void setAlpha(float)>($u8);
+
+        ret0 = this.<androidx.constraintlayout.motion.widget.TimeCycleSplineSet$AlphaSet: boolean mContinue>;
+
+        return ret0;
+    }
+}

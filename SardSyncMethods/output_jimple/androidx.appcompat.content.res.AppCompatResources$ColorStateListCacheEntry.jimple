@@ -1,0 +1,26 @@
+class androidx.appcompat.content.res.AppCompatResources$ColorStateListCacheEntry extends java.lang.Object
+{
+    final android.content.res.Configuration configuration;
+    final android.content.res.ColorStateList value;
+
+    void <init>(android.content.res.ColorStateList, android.content.res.Configuration)
+    {
+        androidx.appcompat.content.res.AppCompatResources$ColorStateListCacheEntry this;
+        android.content.res.ColorStateList $u1;
+        android.content.res.Configuration $u2;
+
+        this := @this: androidx.appcompat.content.res.AppCompatResources$ColorStateListCacheEntry;
+
+        $u1 := @parameter0: android.content.res.ColorStateList;
+
+        $u2 := @parameter1: android.content.res.Configuration;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.appcompat.content.res.AppCompatResources$ColorStateListCacheEntry: android.content.res.ColorStateList value> = $u1;
+
+        this.<androidx.appcompat.content.res.AppCompatResources$ColorStateListCacheEntry: android.content.res.Configuration configuration> = $u2;
+
+        return;
+    }
+}

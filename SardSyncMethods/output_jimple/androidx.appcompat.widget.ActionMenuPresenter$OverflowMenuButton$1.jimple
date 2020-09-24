@@ -1,0 +1,107 @@
+class androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1 extends androidx.appcompat.widget.ForwardingListener
+{
+    final androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton this$1;
+    final androidx.appcompat.widget.ActionMenuPresenter val$this$0;
+
+    void <init>(androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton, android.view.View, androidx.appcompat.widget.ActionMenuPresenter)
+    {
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1 this;
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton $u1;
+        android.view.View $u2;
+        androidx.appcompat.widget.ActionMenuPresenter $u3;
+
+        this := @this: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1;
+
+        $u1 := @parameter0: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton;
+
+        $u2 := @parameter1: android.view.View;
+
+        $u3 := @parameter2: androidx.appcompat.widget.ActionMenuPresenter;
+
+        this.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton this$1> = $u1;
+
+        this.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1: androidx.appcompat.widget.ActionMenuPresenter val$this$0> = $u3;
+
+        specialinvoke this.<androidx.appcompat.widget.ForwardingListener: void <init>(android.view.View)>($u2);
+
+        return;
+    }
+
+    public androidx.appcompat.view.menu.ShowableListMenu getPopup()
+    {
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1 this;
+        androidx.appcompat.view.menu.MenuPopup $u-1;
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton $u0;
+        androidx.appcompat.widget.ActionMenuPresenter $u0#2;
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup $u0#3;
+
+        this := @this: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1;
+
+        $u0 = this.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton this$1>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        $u0#3 = $u0#2.<androidx.appcompat.widget.ActionMenuPresenter: androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup mOverflowPopup>;
+
+        if $u0#3 != null goto label1;
+
+        return null;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton this$1>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        $u0#3 = $u0#2.<androidx.appcompat.widget.ActionMenuPresenter: androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup mOverflowPopup>;
+
+        $u-1 = virtualinvoke $u0#3.<androidx.appcompat.widget.ActionMenuPresenter$OverflowPopup: androidx.appcompat.view.menu.MenuPopup getPopup()>();
+
+        return $u-1;
+    }
+
+    public boolean onForwardingStarted()
+    {
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1 this;
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton $u0;
+        androidx.appcompat.widget.ActionMenuPresenter $u0#2;
+
+        this := @this: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1;
+
+        $u0 = this.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton this$1>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        virtualinvoke $u0#2.<androidx.appcompat.widget.ActionMenuPresenter: boolean showOverflowMenu()>();
+
+        return 1;
+    }
+
+    public boolean onForwardingStopped()
+    {
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1 this;
+        androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton $u0;
+        androidx.appcompat.widget.ActionMenuPresenter $u0#2;
+        androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable $u0#3;
+
+        this := @this: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1;
+
+        $u0 = this.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton this$1>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        $u0#3 = $u0#2.<androidx.appcompat.widget.ActionMenuPresenter: androidx.appcompat.widget.ActionMenuPresenter$OpenOverflowRunnable mPostedOpenRunnable>;
+
+        if $u0#3 == null goto label1;
+
+        return 0;
+
+     label1:
+        $u0 = this.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton$1: androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton this$1>;
+
+        $u0#2 = $u0.<androidx.appcompat.widget.ActionMenuPresenter$OverflowMenuButton: androidx.appcompat.widget.ActionMenuPresenter this$0>;
+
+        virtualinvoke $u0#2.<androidx.appcompat.widget.ActionMenuPresenter: boolean hideOverflowMenu()>();
+
+        return 1;
+    }
+}

@@ -1,0 +1,832 @@
+public class androidx.constraintlayout.motion.utils.HyperSpline extends java.lang.Object
+{
+    double[][] mCtl;
+    androidx.constraintlayout.motion.utils.HyperSpline$Cubic[][] mCurve;
+    double[] mCurveLength;
+    int mDimensionality;
+    int mPoints;
+    double mTotalLength;
+
+    public void <init>()
+    {
+        androidx.constraintlayout.motion.utils.HyperSpline this;
+
+        this := @this: androidx.constraintlayout.motion.utils.HyperSpline;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void <init>(double[][])
+    {
+        androidx.constraintlayout.motion.utils.HyperSpline this;
+        double[][] $u1;
+
+        this := @this: androidx.constraintlayout.motion.utils.HyperSpline;
+
+        $u1 := @parameter0: double[][];
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        virtualinvoke this.<androidx.constraintlayout.motion.utils.HyperSpline: void setup(double[][])>($u1);
+
+        return;
+    }
+
+    static androidx.constraintlayout.motion.utils.HyperSpline$Cubic[] calcNaturalCubic(int, double[])
+    {
+        int $u22, i, i1;
+        double[] $u23, gamma, delta, D;
+        double $u12, $u14, $u13, $u18, $u20;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic[] i#55;
+        float $u11;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic $u0;
+
+        $u22 := @parameter0: int;
+
+        $u23 := @parameter1: double[];
+
+        gamma = newarray (double)[$u22];
+
+        delta = newarray (double)[$u22];
+
+        D = newarray (double)[$u22];
+
+        $u22 = $u22 + -1;
+
+        $u12 = (double) 4602678819172646912L;
+
+        gamma[0] = $u12;
+
+        i = 1;
+
+     label1:
+        if i >= $u22 goto label2;
+
+        i1 = i + -1;
+
+        $u12 = gamma[i1];
+
+        $u12 = 4.0 - $u12;
+
+        $u12 = 1.0 / $u12;
+
+        gamma[i] = $u12;
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        i = $u22 + -1;
+
+        $u12 = gamma[i];
+
+        $u12 = 2.0 - $u12;
+
+        $u12 = 1.0 / $u12;
+
+        gamma[$u22] = $u12;
+
+        $u12 = $u23[1];
+
+        $u14 = $u23[0];
+
+        $u12 = $u12 - $u14;
+
+        $u12 = $u12 * 3.0;
+
+        $u14 = gamma[0];
+
+        $u12 = $u12 * $u14;
+
+        delta[0] = $u12;
+
+        i = 1;
+
+     label3:
+        if i >= $u22 goto label4;
+
+        i1 = i + 1;
+
+        $u12 = $u23[i1];
+
+        i1 = i + -1;
+
+        $u14 = $u23[i1];
+
+        $u12 = $u12 - $u14;
+
+        $u12 = $u12 * 3.0;
+
+        i1 = i + -1;
+
+        $u14 = delta[i1];
+
+        $u12 = $u12 - $u14;
+
+        $u14 = gamma[i];
+
+        $u12 = $u12 * $u14;
+
+        delta[i] = $u12;
+
+        i = i + 1;
+
+        goto label3;
+
+     label4:
+        $u12 = $u23[$u22];
+
+        i = $u22 + -1;
+
+        $u14 = $u23[i];
+
+        $u12 = $u12 - $u14;
+
+        $u12 = $u12 * 3.0;
+
+        i = $u22 + -1;
+
+        $u14 = delta[i];
+
+        $u12 = $u12 - $u14;
+
+        $u14 = gamma[$u22];
+
+        $u12 = $u12 * $u14;
+
+        delta[$u22] = $u12;
+
+        $u12 = delta[$u22];
+
+        D[$u22] = $u12;
+
+        i = $u22 + -1;
+
+     label5:
+        if i < 0 goto label6;
+
+        $u12 = delta[i];
+
+        $u14 = gamma[i];
+
+        i1 = i + 1;
+
+        $u13 = D[i1];
+
+        $u14 = $u14 * $u13;
+
+        $u12 = $u12 - $u14;
+
+        D[i] = $u12;
+
+        i = i + -1;
+
+        goto label5;
+
+     label6:
+        i#55 = newarray (androidx.constraintlayout.motion.utils.HyperSpline$Cubic)[$u22];
+
+        i = 0;
+
+     label7:
+        if i >= $u22 goto label8;
+
+        $u0 = new androidx.constraintlayout.motion.utils.HyperSpline$Cubic;
+
+        $u12 = $u23[i];
+
+        $u11 = (float) $u12;
+
+        $u12 = (double) $u11;
+
+        $u14 = D[i];
+
+        i1 = i + 1;
+
+        $u13 = $u23[i1];
+
+        $u18 = $u23[i];
+
+        $u13 = $u13 - $u18;
+
+        $u13 = $u13 * 3.0;
+
+        $u18 = D[i];
+
+        $u18 = $u18 * 2.0;
+
+        $u13 = $u13 - $u18;
+
+        i1 = i + 1;
+
+        $u18 = D[i1];
+
+        $u13 = $u13 - $u18;
+
+        $u18 = $u23[i];
+
+        i1 = i + 1;
+
+        $u20 = $u23[i1];
+
+        $u18 = $u18 - $u20;
+
+        $u18 = $u18 * 2.0;
+
+        $u20 = D[i];
+
+        $u18 = $u18 + $u20;
+
+        i1 = i + 1;
+
+        $u20 = D[i1];
+
+        $u18 = $u18 + $u20;
+
+        specialinvoke $u0.<androidx.constraintlayout.motion.utils.HyperSpline$Cubic: void <init>(double,double,double,double)>($u12, $u14, $u13, $u18);
+
+        i#55[i] = $u0;
+
+        i = i + 1;
+
+        goto label7;
+
+     label8:
+        return i#55;
+    }
+
+    public double approxLength(androidx.constraintlayout.motion.utils.HyperSpline$Cubic[])
+    {
+        androidx.constraintlayout.motion.utils.HyperSpline this;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic[] $u14;
+        byte $u10;
+        double sum, i, s, tmp#10, $u-1;
+        int old, tmp;
+        double[] old#3;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic $u11;
+
+        this := @this: androidx.constraintlayout.motion.utils.HyperSpline;
+
+        $u14 := @parameter0: androidx.constraintlayout.motion.utils.HyperSpline$Cubic[];
+
+        sum = 0.0;
+
+        old = lengthof $u14;
+
+        old#3 = newarray (double)[old];
+
+        i = 0.0;
+
+     label1:
+        $u10 = i cmpg 1.0;
+
+        if $u10 >= 0 goto label5;
+
+        s = 0.0;
+
+        old = 0;
+
+     label2:
+        tmp = lengthof $u14;
+
+        if old >= tmp goto label3;
+
+        tmp#10 = old#3[old];
+
+        $u11 = $u14[old];
+
+        $u-1 = virtualinvoke $u11.<androidx.constraintlayout.motion.utils.HyperSpline$Cubic: double eval(double)>(i);
+
+        old#3[old] = $u-1;
+
+        tmp#10 = tmp#10 - $u-1;
+
+        tmp#10 = tmp#10 * tmp#10;
+
+        s = s + tmp#10;
+
+        old = old + 1;
+
+        goto label2;
+
+     label3:
+        $u10 = i cmpl 0.0;
+
+        if $u10 <= 0 goto label4;
+
+        s = staticinvoke <java.lang.Math: double sqrt(double)>(s);
+
+        sum = sum + s;
+
+     label4:
+        i = i + 0.1;
+
+        goto label1;
+
+     label5:
+        i = 0.0;
+
+        old = 0;
+
+     label6:
+        tmp = lengthof $u14;
+
+        if old >= tmp goto label7;
+
+        s = old#3[old];
+
+        $u11 = $u14[old];
+
+        tmp#10 = virtualinvoke $u11.<androidx.constraintlayout.motion.utils.HyperSpline$Cubic: double eval(double)>(1.0);
+
+        old#3[old] = tmp#10;
+
+        s = s - tmp#10;
+
+        s = s * s;
+
+        i = i + s;
+
+        old = old + 1;
+
+        goto label6;
+
+     label7:
+        i = staticinvoke <java.lang.Math: double sqrt(double)>(i);
+
+        sum = sum + i;
+
+        return sum;
+    }
+
+    public double getPos(double, int)
+    {
+        androidx.constraintlayout.motion.utils.HyperSpline this;
+        double $u10, $u7;
+        int $u12, k, $u6;
+        byte $u8;
+        double[] $u5;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic[][] $u5#9;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic[] $u5#10;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic $u5#11;
+
+        this := @this: androidx.constraintlayout.motion.utils.HyperSpline;
+
+        $u10 := @parameter0: double;
+
+        $u12 := @parameter1: int;
+
+        $u7 = this.<androidx.constraintlayout.motion.utils.HyperSpline: double mTotalLength>;
+
+        $u10 = $u7 * $u10;
+
+        k = 0;
+
+     label1:
+        $u5 = this.<androidx.constraintlayout.motion.utils.HyperSpline: double[] mCurveLength>;
+
+        $u6 = lengthof $u5;
+
+        $u6 = $u6 + -1;
+
+        if k >= $u6 goto label2;
+
+        $u7 = $u5[k];
+
+        $u8 = $u7 cmpg $u10;
+
+        if $u8 >= 0 goto label2;
+
+        $u7 = $u5[k];
+
+        $u10 = $u10 - $u7;
+
+        k = k + 1;
+
+        goto label1;
+
+     label2:
+        $u5#9 = this.<androidx.constraintlayout.motion.utils.HyperSpline: androidx.constraintlayout.motion.utils.HyperSpline$Cubic[][] mCurve>;
+
+        $u5#10 = $u5#9[$u12];
+
+        $u5#11 = $u5#10[k];
+
+        $u5 = this.<androidx.constraintlayout.motion.utils.HyperSpline: double[] mCurveLength>;
+
+        $u7 = $u5[k];
+
+        $u10 = $u10 / $u7;
+
+        $u10 = virtualinvoke $u5#11.<androidx.constraintlayout.motion.utils.HyperSpline$Cubic: double eval(double)>($u10);
+
+        return $u10;
+    }
+
+    public void getPos(double, double[])
+    {
+        androidx.constraintlayout.motion.utils.HyperSpline this;
+        double $u11, $u-1;
+        double[] $u13, i;
+        int k, $u6, $u6#11;
+        byte $u8;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic[][] $u6#12;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic[] $u6#13;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic $u6#14;
+
+        this := @this: androidx.constraintlayout.motion.utils.HyperSpline;
+
+        $u11 := @parameter0: double;
+
+        $u13 := @parameter1: double[];
+
+        $u-1 = this.<androidx.constraintlayout.motion.utils.HyperSpline: double mTotalLength>;
+
+        $u11 = $u-1 * $u11;
+
+        k = 0;
+
+     label1:
+        i = this.<androidx.constraintlayout.motion.utils.HyperSpline: double[] mCurveLength>;
+
+        $u6 = lengthof i;
+
+        $u6 = $u6 + -1;
+
+        if k >= $u6 goto label2;
+
+        $u-1 = i[k];
+
+        $u8 = $u-1 cmpg $u11;
+
+        if $u8 >= 0 goto label2;
+
+        $u-1 = i[k];
+
+        $u11 = $u11 - $u-1;
+
+        k = k + 1;
+
+        goto label1;
+
+     label2:
+        $u6 = 0;
+
+     label3:
+        $u6#11 = lengthof $u13;
+
+        if $u6 >= $u6#11 goto label4;
+
+        $u6#12 = this.<androidx.constraintlayout.motion.utils.HyperSpline: androidx.constraintlayout.motion.utils.HyperSpline$Cubic[][] mCurve>;
+
+        $u6#13 = $u6#12[$u6];
+
+        $u6#14 = $u6#13[k];
+
+        i = this.<androidx.constraintlayout.motion.utils.HyperSpline: double[] mCurveLength>;
+
+        $u-1 = i[k];
+
+        $u-1 = $u11 / $u-1;
+
+        $u-1 = virtualinvoke $u6#14.<androidx.constraintlayout.motion.utils.HyperSpline$Cubic: double eval(double)>($u-1);
+
+        $u13[$u6] = $u-1;
+
+        $u6 = $u6 + 1;
+
+        goto label3;
+
+     label4:
+        return;
+    }
+
+    public void getPos(double, float[])
+    {
+        androidx.constraintlayout.motion.utils.HyperSpline this;
+        double $u11, $u-1;
+        float[] $u13;
+        int k, $u6, $u6#11;
+        double[] i;
+        byte $u8;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic[][] $u6#12;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic[] $u6#13;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic $u6#14;
+        float $u6#19;
+
+        this := @this: androidx.constraintlayout.motion.utils.HyperSpline;
+
+        $u11 := @parameter0: double;
+
+        $u13 := @parameter1: float[];
+
+        $u-1 = this.<androidx.constraintlayout.motion.utils.HyperSpline: double mTotalLength>;
+
+        $u11 = $u-1 * $u11;
+
+        k = 0;
+
+     label1:
+        i = this.<androidx.constraintlayout.motion.utils.HyperSpline: double[] mCurveLength>;
+
+        $u6 = lengthof i;
+
+        $u6 = $u6 + -1;
+
+        if k >= $u6 goto label2;
+
+        $u-1 = i[k];
+
+        $u8 = $u-1 cmpg $u11;
+
+        if $u8 >= 0 goto label2;
+
+        $u-1 = i[k];
+
+        $u11 = $u11 - $u-1;
+
+        k = k + 1;
+
+        goto label1;
+
+     label2:
+        $u6 = 0;
+
+     label3:
+        $u6#11 = lengthof $u13;
+
+        if $u6 >= $u6#11 goto label4;
+
+        $u6#12 = this.<androidx.constraintlayout.motion.utils.HyperSpline: androidx.constraintlayout.motion.utils.HyperSpline$Cubic[][] mCurve>;
+
+        $u6#13 = $u6#12[$u6];
+
+        $u6#14 = $u6#13[k];
+
+        i = this.<androidx.constraintlayout.motion.utils.HyperSpline: double[] mCurveLength>;
+
+        $u-1 = i[k];
+
+        $u-1 = $u11 / $u-1;
+
+        $u-1 = virtualinvoke $u6#14.<androidx.constraintlayout.motion.utils.HyperSpline$Cubic: double eval(double)>($u-1);
+
+        $u6#19 = (float) $u-1;
+
+        $u13[$u6] = $u6#19;
+
+        $u6 = $u6 + 1;
+
+        goto label3;
+
+     label4:
+        return;
+    }
+
+    public void getVelocity(double, double[])
+    {
+        androidx.constraintlayout.motion.utils.HyperSpline this;
+        double $u11, $u-1;
+        double[] $u13, i;
+        int k, $u6, $u6#11;
+        byte $u8;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic[][] $u6#12;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic[] $u6#13;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic $u6#14;
+
+        this := @this: androidx.constraintlayout.motion.utils.HyperSpline;
+
+        $u11 := @parameter0: double;
+
+        $u13 := @parameter1: double[];
+
+        $u-1 = this.<androidx.constraintlayout.motion.utils.HyperSpline: double mTotalLength>;
+
+        $u11 = $u-1 * $u11;
+
+        k = 0;
+
+     label1:
+        i = this.<androidx.constraintlayout.motion.utils.HyperSpline: double[] mCurveLength>;
+
+        $u6 = lengthof i;
+
+        $u6 = $u6 + -1;
+
+        if k >= $u6 goto label2;
+
+        $u-1 = i[k];
+
+        $u8 = $u-1 cmpg $u11;
+
+        if $u8 >= 0 goto label2;
+
+        $u-1 = i[k];
+
+        $u11 = $u11 - $u-1;
+
+        k = k + 1;
+
+        goto label1;
+
+     label2:
+        $u6 = 0;
+
+     label3:
+        $u6#11 = lengthof $u13;
+
+        if $u6 >= $u6#11 goto label4;
+
+        $u6#12 = this.<androidx.constraintlayout.motion.utils.HyperSpline: androidx.constraintlayout.motion.utils.HyperSpline$Cubic[][] mCurve>;
+
+        $u6#13 = $u6#12[$u6];
+
+        $u6#14 = $u6#13[k];
+
+        i = this.<androidx.constraintlayout.motion.utils.HyperSpline: double[] mCurveLength>;
+
+        $u-1 = i[k];
+
+        $u-1 = $u11 / $u-1;
+
+        $u-1 = virtualinvoke $u6#14.<androidx.constraintlayout.motion.utils.HyperSpline$Cubic: double vel(double)>($u-1);
+
+        $u13[$u6] = $u-1;
+
+        $u6 = $u6 + 1;
+
+        goto label3;
+
+     label4:
+        return;
+    }
+
+    public void setup(double[][])
+    {
+        androidx.constraintlayout.motion.utils.HyperSpline this;
+        double[][] $u8, d;
+        double[] p, $u3#20;
+        int p#3, d1, d1#17;
+        int[] $u3;
+        java.lang.Object $u-1;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic[][] d#13;
+        double $u5, $u-1#46;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic[] $u-1#29, $u3#42;
+        androidx.constraintlayout.motion.utils.HyperSpline$Cubic $u3#43;
+
+        this := @this: androidx.constraintlayout.motion.utils.HyperSpline;
+
+        $u8 := @parameter0: double[][];
+
+        p = $u8[0];
+
+        p#3 = lengthof p;
+
+        this.<androidx.constraintlayout.motion.utils.HyperSpline: int mDimensionality> = p#3;
+
+        d1 = lengthof $u8;
+
+        this.<androidx.constraintlayout.motion.utils.HyperSpline: int mPoints> = d1;
+
+        $u3 = newarray (int)[2];
+
+        $u3[1] = d1;
+
+        $u3[0] = p#3;
+
+        $u-1 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int[])>(class "D", $u3);
+
+        d = (double[][]) $u-1;
+
+        this.<androidx.constraintlayout.motion.utils.HyperSpline: double[][] mCtl> = d;
+
+        p#3 = this.<androidx.constraintlayout.motion.utils.HyperSpline: int mDimensionality>;
+
+        d#13 = newarray (androidx.constraintlayout.motion.utils.HyperSpline$Cubic[])[p#3];
+
+        this.<androidx.constraintlayout.motion.utils.HyperSpline: androidx.constraintlayout.motion.utils.HyperSpline$Cubic[][] mCurve> = d#13;
+
+        p#3 = 0;
+
+     label01:
+        d1 = this.<androidx.constraintlayout.motion.utils.HyperSpline: int mDimensionality>;
+
+        if p#3 >= d1 goto label04;
+
+        d1 = 0;
+
+     label02:
+        d1#17 = this.<androidx.constraintlayout.motion.utils.HyperSpline: int mPoints>;
+
+        if d1 >= d1#17 goto label03;
+
+        d = this.<androidx.constraintlayout.motion.utils.HyperSpline: double[][] mCtl>;
+
+        p = d[p#3];
+
+        $u3#20 = $u8[d1];
+
+        $u5 = $u3#20[p#3];
+
+        p[d1] = $u5;
+
+        d1 = d1 + 1;
+
+        goto label02;
+
+     label03:
+        p#3 = p#3 + 1;
+
+        goto label01;
+
+     label04:
+        d1 = 0;
+
+     label05:
+        p#3 = this.<androidx.constraintlayout.motion.utils.HyperSpline: int mDimensionality>;
+
+        if d1 >= p#3 goto label06;
+
+        d#13 = this.<androidx.constraintlayout.motion.utils.HyperSpline: androidx.constraintlayout.motion.utils.HyperSpline$Cubic[][] mCurve>;
+
+        $u8 = this.<androidx.constraintlayout.motion.utils.HyperSpline: double[][] mCtl>;
+
+        p = $u8[d1];
+
+        p#3 = lengthof p;
+
+        p = $u8[d1];
+
+        $u-1#29 = staticinvoke <androidx.constraintlayout.motion.utils.HyperSpline: androidx.constraintlayout.motion.utils.HyperSpline$Cubic[] calcNaturalCubic(int,double[])>(p#3, p);
+
+        d#13[d1] = $u-1#29;
+
+        d1 = d1 + 1;
+
+        goto label05;
+
+     label06:
+        d1 = this.<androidx.constraintlayout.motion.utils.HyperSpline: int mPoints>;
+
+        d1 = d1 - 1;
+
+        p = newarray (double)[d1];
+
+        this.<androidx.constraintlayout.motion.utils.HyperSpline: double[] mCurveLength> = p;
+
+        this.<androidx.constraintlayout.motion.utils.HyperSpline: double mTotalLength> = 0.0;
+
+        $u-1#29 = newarray (androidx.constraintlayout.motion.utils.HyperSpline$Cubic)[p#3];
+
+        p#3 = 0;
+
+     label07:
+        p = this.<androidx.constraintlayout.motion.utils.HyperSpline: double[] mCurveLength>;
+
+        d1 = lengthof p;
+
+        if p#3 >= d1 goto label10;
+
+        d1 = 0;
+
+     label08:
+        d1#17 = this.<androidx.constraintlayout.motion.utils.HyperSpline: int mDimensionality>;
+
+        if d1 >= d1#17 goto label09;
+
+        d#13 = this.<androidx.constraintlayout.motion.utils.HyperSpline: androidx.constraintlayout.motion.utils.HyperSpline$Cubic[][] mCurve>;
+
+        $u3#42 = d#13[d1];
+
+        $u3#43 = $u3#42[p#3];
+
+        $u-1#29[d1] = $u3#43;
+
+        d1 = d1 + 1;
+
+        goto label08;
+
+     label09:
+        $u5 = this.<androidx.constraintlayout.motion.utils.HyperSpline: double mTotalLength>;
+
+        p = this.<androidx.constraintlayout.motion.utils.HyperSpline: double[] mCurveLength>;
+
+        $u-1#46 = virtualinvoke this.<androidx.constraintlayout.motion.utils.HyperSpline: double approxLength(androidx.constraintlayout.motion.utils.HyperSpline$Cubic[])>($u-1#29);
+
+        p[p#3] = $u-1#46;
+
+        $u5 = $u5 + $u-1#46;
+
+        this.<androidx.constraintlayout.motion.utils.HyperSpline: double mTotalLength> = $u5;
+
+        p#3 = p#3 + 1;
+
+        goto label07;
+
+     label10:
+        return;
+    }
+}

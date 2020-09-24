@@ -1,0 +1,55 @@
+class com.example.sardsyncmethods.MainActivity$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final com.example.sardsyncmethods.MainActivity this$0;
+
+    void <init>(com.example.sardsyncmethods.MainActivity)
+    {
+        com.example.sardsyncmethods.MainActivity$1 this;
+        com.example.sardsyncmethods.MainActivity $u1;
+
+        this := @this: com.example.sardsyncmethods.MainActivity$1;
+
+        $u1 := @parameter0: com.example.sardsyncmethods.MainActivity;
+
+        this.<com.example.sardsyncmethods.MainActivity$1: com.example.sardsyncmethods.MainActivity this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.example.sardsyncmethods.MainActivity$1 this;
+        android.os.HandlerThread child;
+        android.os.Looper $u-1;
+        android.os.Handler hb;
+        com.example.sardsyncmethods.MainActivity $u2;
+        com.example.sardsyncmethods.SyncRunnable $u2#5;
+        java.lang.Runnable $u2#6;
+
+        this := @this: com.example.sardsyncmethods.MainActivity$1;
+
+        child = new android.os.HandlerThread;
+
+        specialinvoke child.<android.os.HandlerThread: void <init>(java.lang.String)>("Runc");
+
+        virtualinvoke child.<android.os.HandlerThread: void start()>();
+
+        hb = new android.os.Handler;
+
+        $u-1 = virtualinvoke child.<android.os.HandlerThread: android.os.Looper getLooper()>();
+
+        specialinvoke hb.<android.os.Handler: void <init>(android.os.Looper)>($u-1);
+
+        $u2 = this.<com.example.sardsyncmethods.MainActivity$1: com.example.sardsyncmethods.MainActivity this$0>;
+
+        $u2#5 = $u2.<com.example.sardsyncmethods.MainActivity: com.example.sardsyncmethods.SyncRunnable obj>;
+
+        $u2#6 = $u2#5.<com.example.sardsyncmethods.SyncRunnable: java.lang.Runnable c>;
+
+        virtualinvoke hb.<android.os.Handler: boolean post(java.lang.Runnable)>($u2#6);
+
+        return;
+    }
+}

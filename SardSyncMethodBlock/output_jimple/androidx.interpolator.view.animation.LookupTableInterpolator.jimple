@@ -1,0 +1,106 @@
+abstract class androidx.interpolator.view.animation.LookupTableInterpolator extends java.lang.Object implements android.view.animation.Interpolator
+{
+    private final float mStepSize;
+    private final float[] mValues;
+
+    protected void <init>(float[])
+    {
+        androidx.interpolator.view.animation.LookupTableInterpolator this;
+        float[] $u3;
+        int $u0;
+        float $u0#3;
+
+        this := @this: androidx.interpolator.view.animation.LookupTableInterpolator;
+
+        $u3 := @parameter0: float[];
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.interpolator.view.animation.LookupTableInterpolator: float[] mValues> = $u3;
+
+        $u0 = lengthof $u3;
+
+        $u0 = $u0 + -1;
+
+        $u0#3 = (float) $u0;
+
+        $u0#3 = 1.0F / $u0#3;
+
+        this.<androidx.interpolator.view.animation.LookupTableInterpolator: float mStepSize> = $u0#3;
+
+        return;
+    }
+
+    public float getInterpolation(float)
+    {
+        androidx.interpolator.view.animation.LookupTableInterpolator this;
+        float $u8, quantized#8, quantized#14, $u4;
+        int $u-1, position#11;
+        byte quantized;
+        float[] position;
+
+        this := @this: androidx.interpolator.view.animation.LookupTableInterpolator;
+
+        $u8 := @parameter0: float;
+
+        quantized = $u8 cmpl 1.0F;
+
+        if quantized < 0 goto label1;
+
+        return 1.0F;
+
+     label1:
+        quantized = $u8 cmpg 0.0F;
+
+        if quantized > 0 goto label2;
+
+        return 0.0F;
+
+     label2:
+        position = this.<androidx.interpolator.view.animation.LookupTableInterpolator: float[] mValues>;
+
+        $u-1 = lengthof position;
+
+        $u-1 = $u-1 + -1;
+
+        quantized#8 = (float) $u-1;
+
+        quantized#8 = quantized#8 * $u8;
+
+        $u-1 = (int) quantized#8;
+
+        position#11 = lengthof position;
+
+        position#11 = position#11 + -2;
+
+        $u-1 = staticinvoke <java.lang.Math: int min(int,int)>($u-1, position#11);
+
+        quantized#14 = (float) $u-1;
+
+        quantized#8 = this.<androidx.interpolator.view.animation.LookupTableInterpolator: float mStepSize>;
+
+        quantized#14 = quantized#14 * quantized#8;
+
+        $u8 = $u8 - quantized#14;
+
+        quantized#8 = $u8 / quantized#8;
+
+        position = this.<androidx.interpolator.view.animation.LookupTableInterpolator: float[] mValues>;
+
+        $u8 = position[$u-1];
+
+        position#11 = $u-1 + 1;
+
+        quantized#14 = position[position#11];
+
+        $u4 = position[$u-1];
+
+        quantized#14 = quantized#14 - $u4;
+
+        quantized#8 = quantized#14 * quantized#8;
+
+        $u8 = $u8 + quantized#8;
+
+        return $u8;
+    }
+}

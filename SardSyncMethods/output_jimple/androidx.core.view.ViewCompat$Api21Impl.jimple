@@ -1,0 +1,43 @@
+class androidx.core.view.ViewCompat$Api21Impl extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        androidx.core.view.ViewCompat$Api21Impl this;
+
+        this := @this: androidx.core.view.ViewCompat$Api21Impl;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static androidx.core.view.WindowInsetsCompat computeSystemWindowInsets(android.view.View, androidx.core.view.WindowInsetsCompat, android.graphics.Rect)
+    {
+        android.view.View $u2;
+        androidx.core.view.WindowInsetsCompat $u3;
+        android.graphics.Rect $u4;
+        android.view.WindowInsets $u-1;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: androidx.core.view.WindowInsetsCompat;
+
+        $u4 := @parameter2: android.graphics.Rect;
+
+        $u-1 = virtualinvoke $u3.<androidx.core.view.WindowInsetsCompat: android.view.WindowInsets toWindowInsets()>();
+
+        if $u-1 == null goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.view.View: android.view.WindowInsets computeSystemWindowInsets(android.view.WindowInsets,android.graphics.Rect)>($u-1, $u4);
+
+        $u3 = staticinvoke <androidx.core.view.WindowInsetsCompat: androidx.core.view.WindowInsetsCompat toWindowInsetsCompat(android.view.WindowInsets)>($u-1);
+
+        return $u3;
+
+     label1:
+        virtualinvoke $u4.<android.graphics.Rect: void setEmpty()>();
+
+        return $u3;
+    }
+}

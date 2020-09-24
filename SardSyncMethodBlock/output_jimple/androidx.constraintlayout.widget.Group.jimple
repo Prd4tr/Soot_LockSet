@@ -1,0 +1,142 @@
+public class androidx.constraintlayout.widget.Group extends androidx.constraintlayout.widget.ConstraintHelper
+{
+
+    public void <init>(android.content.Context)
+    {
+        androidx.constraintlayout.widget.Group this;
+        android.content.Context $u1;
+
+        this := @this: androidx.constraintlayout.widget.Group;
+
+        $u1 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void <init>(android.content.Context)>($u1);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.constraintlayout.widget.Group this;
+        android.content.Context $u1;
+        android.util.AttributeSet $u2;
+
+        this := @this: androidx.constraintlayout.widget.Group;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void <init>(android.content.Context,android.util.AttributeSet)>($u1, $u2);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.constraintlayout.widget.Group this;
+        android.content.Context $u1;
+        android.util.AttributeSet $u2;
+        int $u3;
+
+        this := @this: androidx.constraintlayout.widget.Group;
+
+        $u1 := @parameter0: android.content.Context;
+
+        $u2 := @parameter1: android.util.AttributeSet;
+
+        $u3 := @parameter2: int;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void <init>(android.content.Context,android.util.AttributeSet,int)>($u1, $u2, $u3);
+
+        return;
+    }
+
+    protected void init(android.util.AttributeSet)
+    {
+        androidx.constraintlayout.widget.Group this;
+        android.util.AttributeSet $u2;
+
+        this := @this: androidx.constraintlayout.widget.Group;
+
+        $u2 := @parameter0: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void init(android.util.AttributeSet)>($u2);
+
+        this.<androidx.constraintlayout.widget.Group: boolean mUseViewMeasure> = 0;
+
+        return;
+    }
+
+    public void onAttachedToWindow()
+    {
+        androidx.constraintlayout.widget.Group this;
+
+        this := @this: androidx.constraintlayout.widget.Group;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void onAttachedToWindow()>();
+
+        virtualinvoke this.<androidx.constraintlayout.widget.Group: void applyLayoutFeatures()>();
+
+        return;
+    }
+
+    public void setElevation(float)
+    {
+        androidx.constraintlayout.widget.Group this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.widget.Group;
+
+        $u1 := @parameter0: float;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void setElevation(float)>($u1);
+
+        virtualinvoke this.<androidx.constraintlayout.widget.Group: void applyLayoutFeatures()>();
+
+        return;
+    }
+
+    public void setVisibility(int)
+    {
+        androidx.constraintlayout.widget.Group this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.widget.Group;
+
+        $u1 := @parameter0: int;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void setVisibility(int)>($u1);
+
+        virtualinvoke this.<androidx.constraintlayout.widget.Group: void applyLayoutFeatures()>();
+
+        return;
+    }
+
+    public void updatePostLayout(androidx.constraintlayout.widget.ConstraintLayout)
+    {
+        androidx.constraintlayout.widget.Group this;
+        androidx.constraintlayout.widget.ConstraintLayout $u4;
+        android.view.ViewGroup$LayoutParams $u-1;
+        androidx.constraintlayout.widget.ConstraintLayout$LayoutParams params;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u1;
+
+        this := @this: androidx.constraintlayout.widget.Group;
+
+        $u4 := @parameter0: androidx.constraintlayout.widget.ConstraintLayout;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.widget.Group: android.view.ViewGroup$LayoutParams getLayoutParams()>();
+
+        params = (androidx.constraintlayout.widget.ConstraintLayout$LayoutParams) $u-1;
+
+        $u1 = params.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        virtualinvoke $u1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setWidth(int)>(0);
+
+        $u1 = params.<androidx.constraintlayout.widget.ConstraintLayout$LayoutParams: androidx.constraintlayout.solver.widgets.ConstraintWidget widget>;
+
+        virtualinvoke $u1.<androidx.constraintlayout.solver.widgets.ConstraintWidget: void setHeight(int)>(0);
+
+        return;
+    }
+}

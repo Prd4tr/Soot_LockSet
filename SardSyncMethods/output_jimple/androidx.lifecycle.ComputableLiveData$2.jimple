@@ -1,0 +1,114 @@
+class androidx.lifecycle.ComputableLiveData$2 extends java.lang.Object implements java.lang.Runnable
+{
+    final androidx.lifecycle.ComputableLiveData this$0;
+
+    void <init>(androidx.lifecycle.ComputableLiveData)
+    {
+        androidx.lifecycle.ComputableLiveData$2 this;
+        androidx.lifecycle.ComputableLiveData $u1;
+
+        this := @this: androidx.lifecycle.ComputableLiveData$2;
+
+        $u1 := @parameter0: androidx.lifecycle.ComputableLiveData;
+
+        this.<androidx.lifecycle.ComputableLiveData$2: androidx.lifecycle.ComputableLiveData this$0> = $u1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.lifecycle.ComputableLiveData$2 this;
+        boolean computed, $u-1;
+        androidx.lifecycle.ComputableLiveData value;
+        java.util.concurrent.atomic.AtomicBoolean value#3;
+        java.lang.Object value#7;
+        androidx.lifecycle.LiveData $u3;
+        java.lang.Throwable value#19;
+
+        this := @this: androidx.lifecycle.ComputableLiveData$2;
+
+     label01:
+        computed = 0;
+
+        value = this.<androidx.lifecycle.ComputableLiveData$2: androidx.lifecycle.ComputableLiveData this$0>;
+
+        value#3 = value.<androidx.lifecycle.ComputableLiveData: java.util.concurrent.atomic.AtomicBoolean mComputing>;
+
+        $u-1 = virtualinvoke value#3.<java.util.concurrent.atomic.AtomicBoolean: boolean compareAndSet(boolean,boolean)>(0, 1);
+
+        if $u-1 == 0 goto label10;
+
+        value#7 = null;
+
+     label02:
+        value = this.<androidx.lifecycle.ComputableLiveData$2: androidx.lifecycle.ComputableLiveData this$0>;
+
+        value#3 = value.<androidx.lifecycle.ComputableLiveData: java.util.concurrent.atomic.AtomicBoolean mInvalid>;
+
+        $u-1 = virtualinvoke value#3.<java.util.concurrent.atomic.AtomicBoolean: boolean compareAndSet(boolean,boolean)>(1, 0);
+
+     label03:
+        if $u-1 == 0 goto label06;
+
+        computed = 1;
+
+     label04:
+        value = this.<androidx.lifecycle.ComputableLiveData$2: androidx.lifecycle.ComputableLiveData this$0>;
+
+        value#7 = virtualinvoke value.<androidx.lifecycle.ComputableLiveData: java.lang.Object compute()>();
+
+     label05:
+        goto label02;
+
+     label06:
+        if computed == 0 goto label08;
+
+     label07:
+        value = this.<androidx.lifecycle.ComputableLiveData$2: androidx.lifecycle.ComputableLiveData this$0>;
+
+        $u3 = value.<androidx.lifecycle.ComputableLiveData: androidx.lifecycle.LiveData mLiveData>;
+
+        virtualinvoke $u3.<androidx.lifecycle.LiveData: void postValue(java.lang.Object)>(value#7);
+
+     label08:
+        value = this.<androidx.lifecycle.ComputableLiveData$2: androidx.lifecycle.ComputableLiveData this$0>;
+
+        value#3 = value.<androidx.lifecycle.ComputableLiveData: java.util.concurrent.atomic.AtomicBoolean mComputing>;
+
+        virtualinvoke value#3.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>(0);
+
+        goto label10;
+
+     label09:
+        value#19 := @caughtexception;
+
+        value = this.<androidx.lifecycle.ComputableLiveData$2: androidx.lifecycle.ComputableLiveData this$0>;
+
+        value#3 = value.<androidx.lifecycle.ComputableLiveData: java.util.concurrent.atomic.AtomicBoolean mComputing>;
+
+        virtualinvoke value#3.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>(0);
+
+        throw value#19;
+
+     label10:
+        if computed == 0 goto label11;
+
+        value = this.<androidx.lifecycle.ComputableLiveData$2: androidx.lifecycle.ComputableLiveData this$0>;
+
+        value#3 = value.<androidx.lifecycle.ComputableLiveData: java.util.concurrent.atomic.AtomicBoolean mInvalid>;
+
+        computed = virtualinvoke value#3.<java.util.concurrent.atomic.AtomicBoolean: boolean get()>();
+
+        if computed != 0 goto label01;
+
+     label11:
+        return;
+
+        catch java.lang.Throwable from label02 to label03 with label09;
+        catch java.lang.Throwable from label04 to label05 with label09;
+        catch java.lang.Throwable from label07 to label08 with label09;
+    }
+}

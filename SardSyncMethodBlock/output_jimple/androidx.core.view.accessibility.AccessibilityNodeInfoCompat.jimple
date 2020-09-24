@@ -1,0 +1,4483 @@
+public class androidx.core.view.accessibility.AccessibilityNodeInfoCompat extends java.lang.Object
+{
+    public static final int ACTION_ACCESSIBILITY_FOCUS;
+    public static final java.lang.String ACTION_ARGUMENT_COLUMN_INT;
+    public static final java.lang.String ACTION_ARGUMENT_EXTEND_SELECTION_BOOLEAN;
+    public static final java.lang.String ACTION_ARGUMENT_HTML_ELEMENT_STRING;
+    public static final java.lang.String ACTION_ARGUMENT_MOVEMENT_GRANULARITY_INT;
+    public static final java.lang.String ACTION_ARGUMENT_MOVE_WINDOW_X;
+    public static final java.lang.String ACTION_ARGUMENT_MOVE_WINDOW_Y;
+    public static final java.lang.String ACTION_ARGUMENT_PROGRESS_VALUE;
+    public static final java.lang.String ACTION_ARGUMENT_ROW_INT;
+    public static final java.lang.String ACTION_ARGUMENT_SELECTION_END_INT;
+    public static final java.lang.String ACTION_ARGUMENT_SELECTION_START_INT;
+    public static final java.lang.String ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE;
+    public static final int ACTION_CLEAR_ACCESSIBILITY_FOCUS;
+    public static final int ACTION_CLEAR_FOCUS;
+    public static final int ACTION_CLEAR_SELECTION;
+    public static final int ACTION_CLICK;
+    public static final int ACTION_COLLAPSE;
+    public static final int ACTION_COPY;
+    public static final int ACTION_CUT;
+    public static final int ACTION_DISMISS;
+    public static final int ACTION_EXPAND;
+    public static final int ACTION_FOCUS;
+    public static final int ACTION_LONG_CLICK;
+    public static final int ACTION_NEXT_AT_MOVEMENT_GRANULARITY;
+    public static final int ACTION_NEXT_HTML_ELEMENT;
+    public static final int ACTION_PASTE;
+    public static final int ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY;
+    public static final int ACTION_PREVIOUS_HTML_ELEMENT;
+    public static final int ACTION_SCROLL_BACKWARD;
+    public static final int ACTION_SCROLL_FORWARD;
+    public static final int ACTION_SELECT;
+    public static final int ACTION_SET_SELECTION;
+    public static final int ACTION_SET_TEXT;
+    private static final int BOOLEAN_PROPERTY_IS_HEADING;
+    private static final int BOOLEAN_PROPERTY_IS_SHOWING_HINT;
+    private static final int BOOLEAN_PROPERTY_IS_TEXT_ENTRY_KEY;
+    private static final java.lang.String BOOLEAN_PROPERTY_KEY;
+    private static final int BOOLEAN_PROPERTY_SCREEN_READER_FOCUSABLE;
+    public static final int FOCUS_ACCESSIBILITY;
+    public static final int FOCUS_INPUT;
+    private static final java.lang.String HINT_TEXT_KEY;
+    public static final int MOVEMENT_GRANULARITY_CHARACTER;
+    public static final int MOVEMENT_GRANULARITY_LINE;
+    public static final int MOVEMENT_GRANULARITY_PAGE;
+    public static final int MOVEMENT_GRANULARITY_PARAGRAPH;
+    public static final int MOVEMENT_GRANULARITY_WORD;
+    private static final java.lang.String PANE_TITLE_KEY;
+    private static final java.lang.String ROLE_DESCRIPTION_KEY;
+    private static final java.lang.String SPANS_ACTION_ID_KEY;
+    private static final java.lang.String SPANS_END_KEY;
+    private static final java.lang.String SPANS_FLAGS_KEY;
+    private static final java.lang.String SPANS_ID_KEY;
+    private static final java.lang.String SPANS_START_KEY;
+    private static final java.lang.String TOOLTIP_TEXT_KEY;
+    private static int sClickableSpanId;
+    private final android.view.accessibility.AccessibilityNodeInfo mInfo;
+    public int mParentVirtualDescendantId;
+    private int mVirtualDescendantId;
+
+    static void <clinit>()
+    {
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String TOOLTIP_TEXT_KEY> = "androidx.view.accessibility.AccessibilityNodeInfoCompat.TOOLTIP_TEXT_KEY";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String SPANS_START_KEY> = "androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_START_KEY";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String SPANS_ID_KEY> = "androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ID_KEY";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String SPANS_FLAGS_KEY> = "androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_FLAGS_KEY";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String SPANS_END_KEY> = "androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_END_KEY";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String SPANS_ACTION_ID_KEY> = "androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ACTION_ID_KEY";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String ROLE_DESCRIPTION_KEY> = "AccessibilityNodeInfo.roleDescription";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String PANE_TITLE_KEY> = "androidx.view.accessibility.AccessibilityNodeInfoCompat.PANE_TITLE_KEY";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int MOVEMENT_GRANULARITY_WORD> = 2;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int MOVEMENT_GRANULARITY_PARAGRAPH> = 8;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int MOVEMENT_GRANULARITY_PAGE> = 16;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int MOVEMENT_GRANULARITY_LINE> = 4;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int MOVEMENT_GRANULARITY_CHARACTER> = 1;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String HINT_TEXT_KEY> = "androidx.view.accessibility.AccessibilityNodeInfoCompat.HINT_TEXT_KEY";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int FOCUS_INPUT> = 1;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int FOCUS_ACCESSIBILITY> = 2;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int BOOLEAN_PROPERTY_SCREEN_READER_FOCUSABLE> = 1;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String BOOLEAN_PROPERTY_KEY> = "androidx.view.accessibility.AccessibilityNodeInfoCompat.BOOLEAN_PROPERTY_KEY";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int BOOLEAN_PROPERTY_IS_TEXT_ENTRY_KEY> = 8;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int BOOLEAN_PROPERTY_IS_SHOWING_HINT> = 4;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int BOOLEAN_PROPERTY_IS_HEADING> = 2;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_SET_TEXT> = 2097152;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_SET_SELECTION> = 131072;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_SELECT> = 4;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_SCROLL_FORWARD> = 4096;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_SCROLL_BACKWARD> = 8192;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_PREVIOUS_HTML_ELEMENT> = 2048;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY> = 512;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_PASTE> = 32768;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_NEXT_HTML_ELEMENT> = 1024;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_NEXT_AT_MOVEMENT_GRANULARITY> = 256;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_LONG_CLICK> = 32;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_FOCUS> = 1;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_EXPAND> = 262144;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_DISMISS> = 1048576;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_CUT> = 65536;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_COPY> = 16384;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_COLLAPSE> = 524288;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_CLICK> = 16;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_CLEAR_SELECTION> = 8;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_CLEAR_FOCUS> = 2;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_CLEAR_ACCESSIBILITY_FOCUS> = 128;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE> = "ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String ACTION_ARGUMENT_SELECTION_START_INT> = "ACTION_ARGUMENT_SELECTION_START_INT";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String ACTION_ARGUMENT_SELECTION_END_INT> = "ACTION_ARGUMENT_SELECTION_END_INT";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String ACTION_ARGUMENT_ROW_INT> = "android.view.accessibility.action.ARGUMENT_ROW_INT";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String ACTION_ARGUMENT_PROGRESS_VALUE> = "android.view.accessibility.action.ARGUMENT_PROGRESS_VALUE";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String ACTION_ARGUMENT_MOVE_WINDOW_Y> = "ACTION_ARGUMENT_MOVE_WINDOW_Y";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String ACTION_ARGUMENT_MOVE_WINDOW_X> = "ACTION_ARGUMENT_MOVE_WINDOW_X";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String ACTION_ARGUMENT_MOVEMENT_GRANULARITY_INT> = "ACTION_ARGUMENT_MOVEMENT_GRANULARITY_INT";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String ACTION_ARGUMENT_HTML_ELEMENT_STRING> = "ACTION_ARGUMENT_HTML_ELEMENT_STRING";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String ACTION_ARGUMENT_EXTEND_SELECTION_BOOLEAN> = "ACTION_ARGUMENT_EXTEND_SELECTION_BOOLEAN";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String ACTION_ARGUMENT_COLUMN_INT> = "android.view.accessibility.action.ARGUMENT_COLUMN_INT";
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int ACTION_ACCESSIBILITY_FOCUS> = 64;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int sClickableSpanId> = 0;
+
+        return;
+    }
+
+    private void <init>(android.view.accessibility.AccessibilityNodeInfo)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.accessibility.AccessibilityNodeInfo $u2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: android.view.accessibility.AccessibilityNodeInfo;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mParentVirtualDescendantId> = -1;
+
+        this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mVirtualDescendantId> = -1;
+
+        this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo> = $u2;
+
+        return;
+    }
+
+    public void <init>(java.lang.Object)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.Object $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: java.lang.Object;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mParentVirtualDescendantId> = -1;
+
+        this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mVirtualDescendantId> = -1;
+
+        $u0 = (android.view.accessibility.AccessibilityNodeInfo) $u2;
+
+        this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo> = $u0;
+
+        return;
+    }
+
+    private void addSpanLocationToExtras(android.text.style.ClickableSpan, android.text.Spanned, int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.text.style.ClickableSpan $u3;
+        android.text.Spanned $u4;
+        int $u5, $u-1#4;
+        java.util.List $u-1;
+        java.lang.Integer $u-1#6;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.text.style.ClickableSpan;
+
+        $u4 := @parameter1: android.text.Spanned;
+
+        $u5 := @parameter2: int;
+
+        $u-1 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.util.List extrasIntList(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_START_KEY");
+
+        $u-1#4 = interfaceinvoke $u4.<android.text.Spanned: int getSpanStart(java.lang.Object)>($u3);
+
+        $u-1#6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1#4);
+
+        interfaceinvoke $u-1.<java.util.List: boolean add(java.lang.Object)>($u-1#6);
+
+        $u-1 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.util.List extrasIntList(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_END_KEY");
+
+        $u-1#4 = interfaceinvoke $u4.<android.text.Spanned: int getSpanEnd(java.lang.Object)>($u3);
+
+        $u-1#6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1#4);
+
+        interfaceinvoke $u-1.<java.util.List: boolean add(java.lang.Object)>($u-1#6);
+
+        $u-1 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.util.List extrasIntList(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_FLAGS_KEY");
+
+        $u-1#4 = interfaceinvoke $u4.<android.text.Spanned: int getSpanFlags(java.lang.Object)>($u3);
+
+        $u-1#6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1#4);
+
+        interfaceinvoke $u-1.<java.util.List: boolean add(java.lang.Object)>($u-1#6);
+
+        $u-1 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.util.List extrasIntList(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ID_KEY");
+
+        $u-1#6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u5);
+
+        interfaceinvoke $u-1.<java.util.List: boolean add(java.lang.Object)>($u-1#6);
+
+        return;
+    }
+
+    private void clearExtrasSpans()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+        android.os.Bundle $u-1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        virtualinvoke $u-1.<android.os.Bundle: void remove(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_START_KEY");
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        virtualinvoke $u-1.<android.os.Bundle: void remove(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_END_KEY");
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        virtualinvoke $u-1.<android.os.Bundle: void remove(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_FLAGS_KEY");
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        virtualinvoke $u-1.<android.os.Bundle: void remove(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ID_KEY");
+
+     label1:
+        return;
+    }
+
+    private java.util.List extrasIntList(java.lang.String)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.String $u3;
+        int list;
+        java.util.ArrayList list#3;
+        android.view.accessibility.AccessibilityNodeInfo list#4;
+        android.os.Bundle $u-1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: java.lang.String;
+
+        list = <android.os.Build$VERSION: int SDK_INT>;
+
+        if list >= 19 goto label1;
+
+        list#3 = new java.util.ArrayList;
+
+        specialinvoke list#3.<java.util.ArrayList: void <init>()>();
+
+        return list#3;
+
+     label1:
+        list#4 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke list#4.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        list#3 = virtualinvoke $u-1.<android.os.Bundle: java.util.ArrayList getIntegerArrayList(java.lang.String)>($u3);
+
+        if list#3 != null goto label2;
+
+        list#3 = new java.util.ArrayList;
+
+        specialinvoke list#3.<java.util.ArrayList: void <init>()>();
+
+        list#4 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke list#4.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        virtualinvoke $u-1.<android.os.Bundle: void putIntegerArrayList(java.lang.String,java.util.ArrayList)>($u3, list#3);
+
+     label2:
+        return list#3;
+    }
+
+    private static java.lang.String getActionSymbolicName(int)
+    {
+        int $u1;
+
+        $u1 := @parameter0: int;
+
+        if $u1 == 1 goto label39;
+
+        if $u1 == 2 goto label38;
+
+        lookupswitch($u1)
+        {
+            case 4: goto label37;
+            case 8: goto label36;
+            case 16: goto label35;
+            case 32: goto label34;
+            case 64: goto label33;
+            case 128: goto label32;
+            case 256: goto label31;
+            case 512: goto label30;
+            case 1024: goto label29;
+            case 2048: goto label28;
+            case 4096: goto label27;
+            case 8192: goto label26;
+            case 16384: goto label25;
+            case 32768: goto label24;
+            case 65536: goto label23;
+            case 131072: goto label22;
+            case 262144: goto label21;
+            case 524288: goto label20;
+            case 2097152: goto label19;
+            case 16908354: goto label18;
+            default: goto label01;
+        };
+
+     label01:
+        lookupswitch($u1)
+        {
+            case 16908342: goto label17;
+            case 16908343: goto label16;
+            case 16908344: goto label15;
+            case 16908345: goto label14;
+            case 16908346: goto label13;
+            case 16908347: goto label12;
+            case 16908348: goto label11;
+            case 16908349: goto label10;
+            default: goto label02;
+        };
+
+     label02:
+        lookupswitch($u1)
+        {
+            case 16908356: goto label09;
+            case 16908357: goto label08;
+            case 16908358: goto label07;
+            case 16908359: goto label06;
+            case 16908360: goto label05;
+            case 16908361: goto label04;
+            default: goto label03;
+        };
+
+     label03:
+        return "ACTION_UNKNOWN";
+
+     label04:
+        return "ACTION_PAGE_RIGHT";
+
+     label05:
+        return "ACTION_PAGE_LEFT";
+
+     label06:
+        return "ACTION_PAGE_DOWN";
+
+     label07:
+        return "ACTION_PAGE_UP";
+
+     label08:
+        return "ACTION_HIDE_TOOLTIP";
+
+     label09:
+        return "ACTION_SHOW_TOOLTIP";
+
+     label10:
+        return "ACTION_SET_PROGRESS";
+
+     label11:
+        return "ACTION_CONTEXT_CLICK";
+
+     label12:
+        return "ACTION_SCROLL_RIGHT";
+
+     label13:
+        return "ACTION_SCROLL_DOWN";
+
+     label14:
+        return "ACTION_SCROLL_LEFT";
+
+     label15:
+        return "ACTION_SCROLL_UP";
+
+     label16:
+        return "ACTION_SCROLL_TO_POSITION";
+
+     label17:
+        return "ACTION_SHOW_ON_SCREEN";
+
+     label18:
+        return "ACTION_MOVE_WINDOW";
+
+     label19:
+        return "ACTION_SET_TEXT";
+
+     label20:
+        return "ACTION_COLLAPSE";
+
+     label21:
+        return "ACTION_EXPAND";
+
+     label22:
+        return "ACTION_SET_SELECTION";
+
+     label23:
+        return "ACTION_CUT";
+
+     label24:
+        return "ACTION_PASTE";
+
+     label25:
+        return "ACTION_COPY";
+
+     label26:
+        return "ACTION_SCROLL_BACKWARD";
+
+     label27:
+        return "ACTION_SCROLL_FORWARD";
+
+     label28:
+        return "ACTION_PREVIOUS_HTML_ELEMENT";
+
+     label29:
+        return "ACTION_NEXT_HTML_ELEMENT";
+
+     label30:
+        return "ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY";
+
+     label31:
+        return "ACTION_NEXT_AT_MOVEMENT_GRANULARITY";
+
+     label32:
+        return "ACTION_CLEAR_ACCESSIBILITY_FOCUS";
+
+     label33:
+        return "ACTION_ACCESSIBILITY_FOCUS";
+
+     label34:
+        return "ACTION_LONG_CLICK";
+
+     label35:
+        return "ACTION_CLICK";
+
+     label36:
+        return "ACTION_CLEAR_SELECTION";
+
+     label37:
+        return "ACTION_SELECT";
+
+     label38:
+        return "ACTION_CLEAR_FOCUS";
+
+     label39:
+        return "ACTION_FOCUS";
+    }
+
+    private boolean getBooleanProperty(int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u4, $u-1#4;
+        android.os.Bundle $u-1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u4 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.os.Bundle getExtras()>();
+
+        if $u-1 != null goto label1;
+
+        return 0;
+
+     label1:
+        $u-1#4 = virtualinvoke $u-1.<android.os.Bundle: int getInt(java.lang.String,int)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.BOOLEAN_PROPERTY_KEY", 0);
+
+        $u-1#4 = $u-1#4 & $u4;
+
+        if $u-1#4 != $u4 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public static android.text.style.ClickableSpan[] getClickableSpans(java.lang.CharSequence)
+    {
+        java.lang.CharSequence $u4;
+        boolean spanned;
+        android.text.Spanned spanned#3;
+        int $u-1;
+        java.lang.Object[] $u-1#6;
+        android.text.style.ClickableSpan[] $u1;
+
+        $u4 := @parameter0: java.lang.CharSequence;
+
+        spanned = $u4 instanceof android.text.Spanned;
+
+        if spanned == 0 goto label1;
+
+        spanned#3 = (android.text.Spanned) $u4;
+
+        $u-1 = interfaceinvoke $u4.<java.lang.CharSequence: int length()>();
+
+        $u-1#6 = interfaceinvoke spanned#3.<android.text.Spanned: java.lang.Object[] getSpans(int,int,java.lang.Class)>(0, $u-1, class "Landroid/text/style/ClickableSpan;");
+
+        $u1 = (android.text.style.ClickableSpan[]) $u-1#6;
+
+        return $u1;
+
+     label1:
+        return null;
+    }
+
+    private android.util.SparseArray getOrCreateSpansFromViewTags(android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        android.util.SparseArray $u-1;
+        int $u1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u-1 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.util.SparseArray getSpansFromViewTags(android.view.View)>($u3);
+
+        if $u-1 != null goto label1;
+
+        $u-1 = new android.util.SparseArray;
+
+        specialinvoke $u-1.<android.util.SparseArray: void <init>()>();
+
+        $u1 = <androidx.core.R$id: int tag_accessibility_clickable_spans>;
+
+        virtualinvoke $u3.<android.view.View: void setTag(int,java.lang.Object)>($u1, $u-1);
+
+     label1:
+        return $u-1;
+    }
+
+    private android.util.SparseArray getSpansFromViewTags(android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u2;
+        java.lang.Object $u-1;
+        int $u0;
+        android.util.SparseArray $u0#3;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u0 = <androidx.core.R$id: int tag_accessibility_clickable_spans>;
+
+        $u-1 = virtualinvoke $u2.<android.view.View: java.lang.Object getTag(int)>($u0);
+
+        $u0#3 = (android.util.SparseArray) $u-1;
+
+        return $u0#3;
+    }
+
+    private boolean hasSpans()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.util.List $u-1;
+        boolean $u-1#4;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u-1 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.util.List extrasIntList(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_START_KEY");
+
+        $u-1#4 = interfaceinvoke $u-1.<java.util.List: boolean isEmpty()>();
+
+        $u-1#4 = $u-1#4 ^ 1;
+
+        return $u-1#4;
+    }
+
+    private int idForClickableSpan(android.text.style.ClickableSpan, android.util.SparseArray)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.text.style.ClickableSpan $u4, aSpan#9;
+        android.util.SparseArray spans;
+        int i, $u-1;
+        java.lang.Object $u-1#4;
+        java.lang.ref.WeakReference aSpan;
+        boolean $u-1#10;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u4 := @parameter0: android.text.style.ClickableSpan;
+
+        spans := @parameter1: android.util.SparseArray;
+
+        if spans == null goto label3;
+
+        i = 0;
+
+     label1:
+        $u-1 = virtualinvoke spans.<android.util.SparseArray: int size()>();
+
+        if i >= $u-1 goto label3;
+
+        $u-1#4 = virtualinvoke spans.<android.util.SparseArray: java.lang.Object valueAt(int)>(i);
+
+        aSpan = (java.lang.ref.WeakReference) $u-1#4;
+
+        $u-1#4 = virtualinvoke aSpan.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        aSpan#9 = (android.text.style.ClickableSpan) $u-1#4;
+
+        $u-1#10 = virtualinvoke $u4.<java.lang.Object: boolean equals(java.lang.Object)>(aSpan#9);
+
+        if $u-1#10 == 0 goto label2;
+
+        i = virtualinvoke spans.<android.util.SparseArray: int keyAt(int)>(i);
+
+        return i;
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        i = <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int sClickableSpanId>;
+
+        $u-1 = i + 1;
+
+        <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int sClickableSpanId> = $u-1;
+
+        return i;
+    }
+
+    public static androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtain()
+    {
+        android.view.accessibility.AccessibilityNodeInfo $u-1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u-1#3;
+
+        $u-1 = staticinvoke <android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo obtain()>();
+
+        $u-1#3 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrap(android.view.accessibility.AccessibilityNodeInfo)>($u-1);
+
+        return $u-1#3;
+    }
+
+    public static androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtain(android.view.View)
+    {
+        android.view.View $u1;
+        android.view.accessibility.AccessibilityNodeInfo $u-1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u-1#3;
+
+        $u1 := @parameter0: android.view.View;
+
+        $u-1 = staticinvoke <android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo obtain(android.view.View)>($u1);
+
+        $u-1#3 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrap(android.view.accessibility.AccessibilityNodeInfo)>($u-1);
+
+        return $u-1#3;
+    }
+
+    public static androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtain(android.view.View, int)
+    {
+        android.view.View $u2;
+        int $u3, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u-1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u-1#4;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u3 := @parameter1: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        $u-1 = staticinvoke <android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo obtain(android.view.View,int)>($u2, $u3);
+
+        $u-1#4 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrapNonNullInstance(java.lang.Object)>($u-1);
+
+        return $u-1#4;
+
+     label1:
+        return null;
+    }
+
+    public static androidx.core.view.accessibility.AccessibilityNodeInfoCompat obtain(androidx.core.view.accessibility.AccessibilityNodeInfoCompat)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        $u1 := @parameter0: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = $u1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u0 = staticinvoke <android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo obtain(android.view.accessibility.AccessibilityNodeInfo)>($u0);
+
+        $u1 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrap(android.view.accessibility.AccessibilityNodeInfo)>($u0);
+
+        return $u1;
+    }
+
+    private void removeCollectedSpans(android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u5;
+        java.util.ArrayList toBeRemovedIndices;
+        android.util.SparseArray $u-1;
+        int i, $u-1#3;
+        java.lang.Object $u-1#5;
+        java.lang.ref.WeakReference $u3;
+        java.lang.Integer $u-1#10;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u5 := @parameter0: android.view.View;
+
+        $u-1 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.util.SparseArray getSpansFromViewTags(android.view.View)>($u5);
+
+        if $u-1 == null goto label5;
+
+        toBeRemovedIndices = new java.util.ArrayList;
+
+        specialinvoke toBeRemovedIndices.<java.util.ArrayList: void <init>()>();
+
+        i = 0;
+
+     label1:
+        $u-1#3 = virtualinvoke $u-1.<android.util.SparseArray: int size()>();
+
+        if i >= $u-1#3 goto label3;
+
+        $u-1#5 = virtualinvoke $u-1.<android.util.SparseArray: java.lang.Object valueAt(int)>(i);
+
+        $u3 = (java.lang.ref.WeakReference) $u-1#5;
+
+        $u-1#5 = virtualinvoke $u3.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        if $u-1#5 != null goto label2;
+
+        $u-1#10 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i);
+
+        interfaceinvoke toBeRemovedIndices.<java.util.List: boolean add(java.lang.Object)>($u-1#10);
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        i = 0;
+
+     label4:
+        $u-1#3 = interfaceinvoke toBeRemovedIndices.<java.util.List: int size()>();
+
+        if i >= $u-1#3 goto label5;
+
+        $u-1#5 = interfaceinvoke toBeRemovedIndices.<java.util.List: java.lang.Object get(int)>(i);
+
+        $u-1#10 = (java.lang.Integer) $u-1#5;
+
+        $u-1#3 = virtualinvoke $u-1#10.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke $u-1.<android.util.SparseArray: void remove(int)>($u-1#3);
+
+        i = i + 1;
+
+        goto label4;
+
+     label5:
+        return;
+    }
+
+    private void setBooleanProperty(int, boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u6, $u4, booleanProperties, $u-1#3;
+        boolean $u7;
+        android.os.Bundle $u-1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u6 := @parameter0: int;
+
+        $u7 := @parameter1: boolean;
+
+        $u-1 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.os.Bundle getExtras()>();
+
+        if $u-1 == null goto label2;
+
+        booleanProperties = 0;
+
+        $u-1#3 = virtualinvoke $u-1.<android.os.Bundle: int getInt(java.lang.String,int)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.BOOLEAN_PROPERTY_KEY", 0);
+
+        $u4 = $u6 ^ -1;
+
+        $u4 = $u-1#3 & $u4;
+
+        if $u7 == 0 goto label1;
+
+        booleanProperties = $u6;
+
+     label1:
+        $u6 = booleanProperties | $u4;
+
+        virtualinvoke $u-1.<android.os.Bundle: void putInt(java.lang.String,int)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.BOOLEAN_PROPERTY_KEY", $u6);
+
+     label2:
+        return;
+    }
+
+    public static androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrap(android.view.accessibility.AccessibilityNodeInfo)
+    {
+        android.view.accessibility.AccessibilityNodeInfo $u1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u0;
+
+        $u1 := @parameter0: android.view.accessibility.AccessibilityNodeInfo;
+
+        $u0 = new androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        specialinvoke $u0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void <init>(android.view.accessibility.AccessibilityNodeInfo)>($u1);
+
+        return $u0;
+    }
+
+    static androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrapNonNullInstance(java.lang.Object)
+    {
+        java.lang.Object $u1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat $u0;
+
+        $u1 := @parameter0: java.lang.Object;
+
+        if $u1 == null goto label1;
+
+        $u0 = new androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        specialinvoke $u0.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void <init>(java.lang.Object)>($u1);
+
+        return $u0;
+
+     label1:
+        return null;
+    }
+
+    public void addAction(int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void addAction(int)>($u2);
+
+        return;
+    }
+
+    public void addAction(androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+        java.lang.Object $u1;
+        android.view.accessibility.AccessibilityNodeInfo$AccessibilityAction $u1#5;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label1;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u1 = $u3.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat: java.lang.Object mAction>;
+
+        $u1#5 = (android.view.accessibility.AccessibilityNodeInfo$AccessibilityAction) $u1;
+
+        virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: void addAction(android.view.accessibility.AccessibilityNodeInfo$AccessibilityAction)>($u1#5);
+
+     label1:
+        return;
+    }
+
+    public void addChild(android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: android.view.View;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void addChild(android.view.View)>($u2);
+
+        return;
+    }
+
+    public void addChild(android.view.View, int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        int $u4, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u4 := @parameter1: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void addChild(android.view.View,int)>($u3, $u4);
+
+     label1:
+        return;
+    }
+
+    public void addSpansToExtras(java.lang.CharSequence, android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u7;
+        android.view.View $u8;
+        int spans, id;
+        android.text.style.ClickableSpan[] $u-1;
+        android.os.Bundle $u-1#8;
+        android.util.SparseArray $u-1#12;
+        android.text.style.ClickableSpan id#16;
+        java.lang.ref.WeakReference $u4;
+        android.text.Spanned $u5;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u7 := @parameter0: java.lang.CharSequence;
+
+        $u8 := @parameter1: android.view.View;
+
+        spans = <android.os.Build$VERSION: int SDK_INT>;
+
+        if spans < 19 goto label2;
+
+        spans = <android.os.Build$VERSION: int SDK_INT>;
+
+        if spans >= 26 goto label2;
+
+        specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void clearExtrasSpans()>();
+
+        specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void removeCollectedSpans(android.view.View)>($u8);
+
+        $u-1 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.text.style.ClickableSpan[] getClickableSpans(java.lang.CharSequence)>($u7);
+
+        if $u-1 == null goto label2;
+
+        spans = lengthof $u-1;
+
+        if spans <= 0 goto label2;
+
+        $u-1#8 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.os.Bundle getExtras()>();
+
+        spans = <androidx.core.R$id: int accessibility_action_clickable_span>;
+
+        virtualinvoke $u-1#8.<android.os.Bundle: void putInt(java.lang.String,int)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ACTION_ID_KEY", spans);
+
+        $u-1#12 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.util.SparseArray getOrCreateSpansFromViewTags(android.view.View)>($u8);
+
+        spans = 0;
+
+     label1:
+        if $u-1 == null goto label2;
+
+        id = lengthof $u-1;
+
+        if spans >= id goto label2;
+
+        id#16 = $u-1[spans];
+
+        id = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int idForClickableSpan(android.text.style.ClickableSpan,android.util.SparseArray)>(id#16, $u-1#12);
+
+        $u4 = new java.lang.ref.WeakReference;
+
+        id#16 = $u-1[spans];
+
+        specialinvoke $u4.<java.lang.ref.WeakReference: void <init>(java.lang.Object)>(id#16);
+
+        virtualinvoke $u-1#12.<android.util.SparseArray: void put(int,java.lang.Object)>(id, $u4);
+
+        id#16 = $u-1[spans];
+
+        $u5 = (android.text.Spanned) $u7;
+
+        specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void addSpanLocationToExtras(android.text.style.ClickableSpan,android.text.Spanned,int)>(id#16, $u5, id);
+
+        spans = spans + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public boolean canOpenPopup()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean canOpenPopup()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this, other;
+        java.lang.Object $u6;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u3, $u4;
+        int $u3#8, $u4#9;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u6 := @parameter0: java.lang.Object;
+
+        if this != $u6 goto label1;
+
+        return 1;
+
+     label1:
+        if $u6 != null goto label2;
+
+        return 0;
+
+     label2:
+        $u-1 = $u6 instanceof androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        if $u-1 != 0 goto label3;
+
+        return 0;
+
+     label3:
+        other = (androidx.core.view.accessibility.AccessibilityNodeInfoCompat) $u6;
+
+        $u3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        if $u3 != null goto label4;
+
+        $u3 = other.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        if $u3 == null goto label5;
+
+        return 0;
+
+     label4:
+        $u4 = other.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u3.<android.view.accessibility.AccessibilityNodeInfo: boolean equals(java.lang.Object)>($u4);
+
+        if $u-1 != 0 goto label5;
+
+        return 0;
+
+     label5:
+        $u3#8 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mVirtualDescendantId>;
+
+        $u4#9 = other.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mVirtualDescendantId>;
+
+        if $u3#8 == $u4#9 goto label6;
+
+        return 0;
+
+     label6:
+        $u3#8 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mParentVirtualDescendantId>;
+
+        $u4#9 = other.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mParentVirtualDescendantId>;
+
+        if $u3#8 == $u4#9 goto label7;
+
+        return 0;
+
+     label7:
+        return 1;
+    }
+
+    public java.util.List findAccessibilityNodeInfosByText(java.lang.String)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.String $u7;
+        java.util.ArrayList result;
+        android.view.accessibility.AccessibilityNodeInfo infos;
+        java.util.List $u-1;
+        int $u-1#4, i;
+        java.lang.Object $u-1#6;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u7 := @parameter0: java.lang.String;
+
+        result = new java.util.ArrayList;
+
+        specialinvoke result.<java.util.ArrayList: void <init>()>();
+
+        infos = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke infos.<android.view.accessibility.AccessibilityNodeInfo: java.util.List findAccessibilityNodeInfosByText(java.lang.String)>($u7);
+
+        $u-1#4 = interfaceinvoke $u-1.<java.util.List: int size()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1#4 goto label2;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.List: java.lang.Object get(int)>(i);
+
+        infos = (android.view.accessibility.AccessibilityNodeInfo) $u-1#6;
+
+        this = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrap(android.view.accessibility.AccessibilityNodeInfo)>(infos);
+
+        interfaceinvoke result.<java.util.List: boolean add(java.lang.Object)>(this);
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        return result;
+    }
+
+    public java.util.List findAccessibilityNodeInfosByViewId(java.lang.String)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.String $u6;
+        int nodes;
+        android.view.accessibility.AccessibilityNodeInfo nodes#3;
+        java.util.List $u-1;
+        java.util.ArrayList result;
+        java.util.Iterator $u-1#7;
+        boolean $u-1#8;
+        java.lang.Object $u-1#10;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u6 := @parameter0: java.lang.String;
+
+        nodes = <android.os.Build$VERSION: int SDK_INT>;
+
+        if nodes < 18 goto label3;
+
+        nodes#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke nodes#3.<android.view.accessibility.AccessibilityNodeInfo: java.util.List findAccessibilityNodeInfosByViewId(java.lang.String)>($u6);
+
+        result = new java.util.ArrayList;
+
+        specialinvoke result.<java.util.ArrayList: void <init>()>();
+
+        $u-1#7 = interfaceinvoke $u-1.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $u-1#8 = interfaceinvoke $u-1#7.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#8 == 0 goto label2;
+
+        $u-1#10 = interfaceinvoke $u-1#7.<java.util.Iterator: java.lang.Object next()>();
+
+        nodes#3 = (android.view.accessibility.AccessibilityNodeInfo) $u-1#10;
+
+        this = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrap(android.view.accessibility.AccessibilityNodeInfo)>(nodes#3);
+
+        interfaceinvoke result.<java.util.List: boolean add(java.lang.Object)>(this);
+
+        goto label1;
+
+     label2:
+        return result;
+
+     label3:
+        $u-1 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        return $u-1;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat findFocus(int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u3, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u0#2 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo findFocus(int)>($u3);
+
+        this = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrapNonNullInstance(java.lang.Object)>($u0#2);
+
+        return this;
+
+     label1:
+        return null;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat focusSearch(int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u3, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u0#2 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo focusSearch(int)>($u3);
+
+        this = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrapNonNullInstance(java.lang.Object)>($u0#2);
+
+        return this;
+
+     label1:
+        return null;
+    }
+
+    public java.util.List getActionList()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat $u5;
+        java.util.List actions;
+        int result, i;
+        android.view.accessibility.AccessibilityNodeInfo result#4;
+        java.util.ArrayList result#6;
+        java.lang.Object $u-1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        actions = null;
+
+        result = <android.os.Build$VERSION: int SDK_INT>;
+
+        if result < 21 goto label1;
+
+        result#4 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        actions = virtualinvoke result#4.<android.view.accessibility.AccessibilityNodeInfo: java.util.List getActionList()>();
+
+     label1:
+        if actions == null goto label4;
+
+        result#6 = new java.util.ArrayList;
+
+        specialinvoke result#6.<java.util.ArrayList: void <init>()>();
+
+        result = interfaceinvoke actions.<java.util.List: int size()>();
+
+        i = 0;
+
+     label2:
+        if i >= result goto label3;
+
+        $u-1 = interfaceinvoke actions.<java.util.List: java.lang.Object get(int)>(i);
+
+        $u5 = new androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat;
+
+        specialinvoke $u5.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat: void <init>(java.lang.Object)>($u-1);
+
+        interfaceinvoke result#6.<java.util.List: boolean add(java.lang.Object)>($u5);
+
+        i = i + 1;
+
+        goto label2;
+
+     label3:
+        return result#6;
+
+     label4:
+        actions = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        return actions;
+    }
+
+    public int getActions()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: int getActions()>();
+
+        return $u-1;
+    }
+
+    public void getBoundsInParent(android.graphics.Rect)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.graphics.Rect $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: android.graphics.Rect;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void getBoundsInParent(android.graphics.Rect)>($u2);
+
+        return;
+    }
+
+    public void getBoundsInScreen(android.graphics.Rect)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.graphics.Rect $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: android.graphics.Rect;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void getBoundsInScreen(android.graphics.Rect)>($u2);
+
+        return;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat getChild(int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u0 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo getChild(int)>($u2);
+
+        this = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrapNonNullInstance(java.lang.Object)>($u0);
+
+        return this;
+    }
+
+    public int getChildCount()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: int getChildCount()>();
+
+        return $u-1;
+    }
+
+    public java.lang.CharSequence getClassName()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: java.lang.CharSequence getClassName()>();
+
+        return $u-1;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionInfoCompat getCollectionInfo()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.accessibility.AccessibilityNodeInfo$CollectionInfo $u-1;
+        int info;
+        android.view.accessibility.AccessibilityNodeInfo info#3;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionInfoCompat $u1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        info = <android.os.Build$VERSION: int SDK_INT>;
+
+        if info < 19 goto label1;
+
+        info#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke info#3.<android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo$CollectionInfo getCollectionInfo()>();
+
+        if $u-1 == null goto label1;
+
+        $u1 = new androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionInfoCompat;
+
+        specialinvoke $u1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionInfoCompat: void <init>(java.lang.Object)>($u-1);
+
+        return $u1;
+
+     label1:
+        return null;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat getCollectionItemInfo()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo $u-1;
+        int info;
+        android.view.accessibility.AccessibilityNodeInfo info#3;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat $u1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        info = <android.os.Build$VERSION: int SDK_INT>;
+
+        if info < 19 goto label1;
+
+        info#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke info#3.<android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo getCollectionItemInfo()>();
+
+        if $u-1 == null goto label1;
+
+        $u1 = new androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat;
+
+        specialinvoke $u1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: void <init>(java.lang.Object)>($u-1);
+
+        return $u1;
+
+     label1:
+        return null;
+    }
+
+    public java.lang.CharSequence getContentDescription()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: java.lang.CharSequence getContentDescription()>();
+
+        return $u-1;
+    }
+
+    public int getDrawingOrder()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 24 goto label1;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: int getDrawingOrder()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public java.lang.CharSequence getError()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: java.lang.CharSequence getError()>();
+
+        return $u-1;
+
+     label1:
+        return null;
+    }
+
+    public android.os.Bundle getExtras()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.os.Bundle $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        return $u-1;
+
+     label1:
+        $u-1 = new android.os.Bundle;
+
+        specialinvoke $u-1.<android.os.Bundle: void <init>()>();
+
+        return $u-1;
+    }
+
+    public java.lang.CharSequence getHintText()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+        java.lang.CharSequence $u-1;
+        android.os.Bundle $u-1#9;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 26 goto label1;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: java.lang.CharSequence getHintText()>();
+
+        return $u-1;
+
+     label1:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label2;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1#9 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        $u-1 = virtualinvoke $u-1#9.<android.os.Bundle: java.lang.CharSequence getCharSequence(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.HINT_TEXT_KEY");
+
+        return $u-1;
+
+     label2:
+        return null;
+    }
+
+    public java.lang.Object getInfo()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.accessibility.AccessibilityNodeInfo ret0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        ret0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        return ret0;
+    }
+
+    public int getInputType()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 19 goto label1;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: int getInputType()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat getLabelFor()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 17 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u0#2 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo getLabelFor()>();
+
+        this = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrapNonNullInstance(java.lang.Object)>($u0#2);
+
+        return this;
+
+     label1:
+        return null;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat getLabeledBy()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 17 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u0#2 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo getLabeledBy()>();
+
+        this = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrapNonNullInstance(java.lang.Object)>($u0#2);
+
+        return this;
+
+     label1:
+        return null;
+    }
+
+    public int getLiveRegion()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 19 goto label1;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: int getLiveRegion()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public int getMaxTextLength()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 21 goto label1;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: int getMaxTextLength()>();
+
+        return $u-1;
+
+     label1:
+        return -1;
+    }
+
+    public int getMovementGranularities()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 16 goto label1;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: int getMovementGranularities()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public java.lang.CharSequence getPackageName()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: java.lang.CharSequence getPackageName()>();
+
+        return $u-1;
+    }
+
+    public java.lang.CharSequence getPaneTitle()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+        java.lang.CharSequence $u-1;
+        android.os.Bundle $u-1#9;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 28 goto label1;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: java.lang.CharSequence getPaneTitle()>();
+
+        return $u-1;
+
+     label1:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label2;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1#9 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        $u-1 = virtualinvoke $u-1#9.<android.os.Bundle: java.lang.CharSequence getCharSequence(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.PANE_TITLE_KEY");
+
+        return $u-1;
+
+     label2:
+        return null;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat getParent()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u0 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo getParent()>();
+
+        this = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrapNonNullInstance(java.lang.Object)>($u0);
+
+        return this;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat$RangeInfoCompat getRangeInfo()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.accessibility.AccessibilityNodeInfo$RangeInfo $u-1;
+        int info;
+        android.view.accessibility.AccessibilityNodeInfo info#3;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$RangeInfoCompat $u1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        info = <android.os.Build$VERSION: int SDK_INT>;
+
+        if info < 19 goto label1;
+
+        info#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke info#3.<android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo$RangeInfo getRangeInfo()>();
+
+        if $u-1 == null goto label1;
+
+        $u1 = new androidx.core.view.accessibility.AccessibilityNodeInfoCompat$RangeInfoCompat;
+
+        specialinvoke $u1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$RangeInfoCompat: void <init>(java.lang.Object)>($u-1);
+
+        return $u1;
+
+     label1:
+        return null;
+    }
+
+    public java.lang.CharSequence getRoleDescription()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+        android.os.Bundle $u-1;
+        java.lang.CharSequence $u-1#7;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        $u-1#7 = virtualinvoke $u-1.<android.os.Bundle: java.lang.CharSequence getCharSequence(java.lang.String)>("AccessibilityNodeInfo.roleDescription");
+
+        return $u-1#7;
+
+     label1:
+        return null;
+    }
+
+    public java.lang.CharSequence getText()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.text.SpannableString spannable;
+        boolean $u-1;
+        java.util.List $u-1#4, $u-1#7, $u-1#10, $u-1#13;
+        android.view.accessibility.AccessibilityNodeInfo i;
+        java.lang.CharSequence $u-1#16, $u-1#20;
+        int $u-1#22, $u-1#27, $u-1#38, $u-1#53;
+        java.lang.String $u-1#24;
+        androidx.core.view.accessibility.AccessibilityClickableSpanCompat $u6;
+        java.lang.Object $u-1#30;
+        java.lang.Integer $u7;
+        android.os.Bundle $u-1#35;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u-1 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean hasSpans()>();
+
+        if $u-1 == 0 goto label3;
+
+        $u-1#4 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.util.List extrasIntList(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_START_KEY");
+
+        $u-1#7 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.util.List extrasIntList(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_END_KEY");
+
+        $u-1#10 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.util.List extrasIntList(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_FLAGS_KEY");
+
+        $u-1#13 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.util.List extrasIntList(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ID_KEY");
+
+        spannable = new android.text.SpannableString;
+
+        i = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1#16 = virtualinvoke i.<android.view.accessibility.AccessibilityNodeInfo: java.lang.CharSequence getText()>();
+
+        i = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1#20 = virtualinvoke i.<android.view.accessibility.AccessibilityNodeInfo: java.lang.CharSequence getText()>();
+
+        $u-1#22 = interfaceinvoke $u-1#20.<java.lang.CharSequence: int length()>();
+
+        $u-1#24 = staticinvoke <android.text.TextUtils: java.lang.String substring(java.lang.CharSequence,int,int)>($u-1#16, 0, $u-1#22);
+
+        specialinvoke spannable.<android.text.SpannableString: void <init>(java.lang.CharSequence)>($u-1#24);
+
+        $u-1#22 = 0;
+
+     label1:
+        $u-1#27 = interfaceinvoke $u-1#4.<java.util.List: int size()>();
+
+        if $u-1#22 >= $u-1#27 goto label2;
+
+        $u6 = new androidx.core.view.accessibility.AccessibilityClickableSpanCompat;
+
+        $u-1#30 = interfaceinvoke $u-1#13.<java.util.List: java.lang.Object get(int)>($u-1#22);
+
+        $u7 = (java.lang.Integer) $u-1#30;
+
+        $u-1#27 = virtualinvoke $u7.<java.lang.Integer: int intValue()>();
+
+        $u-1#35 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.os.Bundle getExtras()>();
+
+        $u-1#38 = virtualinvoke $u-1#35.<android.os.Bundle: int getInt(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ACTION_ID_KEY");
+
+        specialinvoke $u6.<androidx.core.view.accessibility.AccessibilityClickableSpanCompat: void <init>(int,androidx.core.view.accessibility.AccessibilityNodeInfoCompat,int)>($u-1#27, this, $u-1#38);
+
+        $u-1#30 = interfaceinvoke $u-1#4.<java.util.List: java.lang.Object get(int)>($u-1#22);
+
+        $u7 = (java.lang.Integer) $u-1#30;
+
+        $u-1#27 = virtualinvoke $u7.<java.lang.Integer: int intValue()>();
+
+        $u-1#30 = interfaceinvoke $u-1#7.<java.util.List: java.lang.Object get(int)>($u-1#22);
+
+        $u7 = (java.lang.Integer) $u-1#30;
+
+        $u-1#38 = virtualinvoke $u7.<java.lang.Integer: int intValue()>();
+
+        $u-1#30 = interfaceinvoke $u-1#10.<java.util.List: java.lang.Object get(int)>($u-1#22);
+
+        $u7 = (java.lang.Integer) $u-1#30;
+
+        $u-1#53 = virtualinvoke $u7.<java.lang.Integer: int intValue()>();
+
+        interfaceinvoke spannable.<android.text.Spannable: void setSpan(java.lang.Object,int,int,int)>($u6, $u-1#27, $u-1#38, $u-1#53);
+
+        $u-1#22 = $u-1#22 + 1;
+
+        goto label1;
+
+     label2:
+        return spannable;
+
+     label3:
+        i = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1#16 = virtualinvoke i.<android.view.accessibility.AccessibilityNodeInfo: java.lang.CharSequence getText()>();
+
+        return $u-1#16;
+    }
+
+    public int getTextSelectionEnd()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 18 goto label1;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: int getTextSelectionEnd()>();
+
+        return $u-1;
+
+     label1:
+        return -1;
+    }
+
+    public int getTextSelectionStart()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 18 goto label1;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: int getTextSelectionStart()>();
+
+        return $u-1;
+
+     label1:
+        return -1;
+    }
+
+    public java.lang.CharSequence getTooltipText()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+        java.lang.CharSequence $u-1;
+        android.os.Bundle $u-1#9;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 28 goto label1;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: java.lang.CharSequence getTooltipText()>();
+
+        return $u-1;
+
+     label1:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label2;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1#9 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        $u-1 = virtualinvoke $u-1#9.<android.os.Bundle: java.lang.CharSequence getCharSequence(java.lang.String)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.TOOLTIP_TEXT_KEY");
+
+        return $u-1;
+
+     label2:
+        return null;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat getTouchDelegateInfo()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo $u-1;
+        int delegateInfo;
+        android.view.accessibility.AccessibilityNodeInfo delegateInfo#3;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat $u1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        delegateInfo = <android.os.Build$VERSION: int SDK_INT>;
+
+        if delegateInfo < 29 goto label1;
+
+        delegateInfo#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke delegateInfo#3.<android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo getTouchDelegateInfo()>();
+
+        if $u-1 == null goto label1;
+
+        $u1 = new androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat;
+
+        specialinvoke $u1.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat: void <init>(android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo)>($u-1);
+
+        return $u1;
+
+     label1:
+        return null;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat getTraversalAfter()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 22 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u0#2 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo getTraversalAfter()>();
+
+        this = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrapNonNullInstance(java.lang.Object)>($u0#2);
+
+        return this;
+
+     label1:
+        return null;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityNodeInfoCompat getTraversalBefore()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 22 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u0#2 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityNodeInfo getTraversalBefore()>();
+
+        this = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrapNonNullInstance(java.lang.Object)>($u0#2);
+
+        return this;
+
+     label1:
+        return null;
+    }
+
+    public java.lang.String getViewIdResourceName()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.String $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 18 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: java.lang.String getViewIdResourceName()>();
+
+        return $u-1;
+
+     label1:
+        return null;
+    }
+
+    public androidx.core.view.accessibility.AccessibilityWindowInfoCompat getWindow()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+        android.view.accessibility.AccessibilityWindowInfo $u-1;
+        androidx.core.view.accessibility.AccessibilityWindowInfoCompat $u-1#5;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: android.view.accessibility.AccessibilityWindowInfo getWindow()>();
+
+        $u-1#5 = staticinvoke <androidx.core.view.accessibility.AccessibilityWindowInfoCompat: androidx.core.view.accessibility.AccessibilityWindowInfoCompat wrapNonNullInstance(java.lang.Object)>($u-1);
+
+        return $u-1#5;
+
+     label1:
+        return null;
+    }
+
+    public int getWindowId()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: int getWindowId()>();
+
+        return $u-1;
+    }
+
+    public int hashCode()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        if $u0 != null goto label1;
+
+        return 0;
+
+     label1:
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: int hashCode()>();
+
+        return $u-1;
+    }
+
+    public boolean isAccessibilityFocused()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean isAccessibilityFocused()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isCheckable()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: boolean isCheckable()>();
+
+        return $u-1;
+    }
+
+    public boolean isChecked()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: boolean isChecked()>();
+
+        return $u-1;
+    }
+
+    public boolean isClickable()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: boolean isClickable()>();
+
+        return $u-1;
+    }
+
+    public boolean isContentInvalid()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean isContentInvalid()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isContextClickable()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 23 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean isContextClickable()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isDismissable()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean isDismissable()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isEditable()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 18 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean isEditable()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isEnabled()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: boolean isEnabled()>();
+
+        return $u-1;
+    }
+
+    public boolean isFocusable()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: boolean isFocusable()>();
+
+        return $u-1;
+    }
+
+    public boolean isFocused()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: boolean isFocused()>();
+
+        return $u-1;
+    }
+
+    public boolean isHeading()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int collectionItemInfo;
+        android.view.accessibility.AccessibilityNodeInfo collectionItemInfo#3;
+        boolean $u-1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat $u-1#10;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        collectionItemInfo = <android.os.Build$VERSION: int SDK_INT>;
+
+        if collectionItemInfo < 28 goto label1;
+
+        collectionItemInfo#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke collectionItemInfo#3.<android.view.accessibility.AccessibilityNodeInfo: boolean isHeading()>();
+
+        return $u-1;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean getBooleanProperty(int)>(2);
+
+        if $u-1 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        $u-1#10 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat getCollectionItemInfo()>();
+
+        if $u-1#10 == null goto label3;
+
+        $u-1 = virtualinvoke $u-1#10.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: boolean isHeading()>();
+
+        if $u-1 == 0 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public boolean isImportantForAccessibility()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 24 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean isImportantForAccessibility()>();
+
+        return $u-1;
+
+     label1:
+        return 1;
+    }
+
+    public boolean isLongClickable()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: boolean isLongClickable()>();
+
+        return $u-1;
+    }
+
+    public boolean isMultiLine()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean isMultiLine()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isPassword()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: boolean isPassword()>();
+
+        return $u-1;
+    }
+
+    public boolean isScreenReaderFocusable()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+        boolean $u-1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 28 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean isScreenReaderFocusable()>();
+
+        return $u-1;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean getBooleanProperty(int)>(1);
+
+        return $u-1;
+    }
+
+    public boolean isScrollable()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: boolean isScrollable()>();
+
+        return $u-1;
+    }
+
+    public boolean isSelected()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: boolean isSelected()>();
+
+        return $u-1;
+    }
+
+    public boolean isShowingHintText()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+        boolean $u-1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 26 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean isShowingHintText()>();
+
+        return $u-1;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean getBooleanProperty(int)>(4);
+
+        return $u-1;
+    }
+
+    public boolean isTextEntryKey()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+        boolean $u-1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 29 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean isTextEntryKey()>();
+
+        return $u-1;
+
+     label1:
+        $u-1 = specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean getBooleanProperty(int)>(8);
+
+        return $u-1;
+    }
+
+    public boolean isVisibleToUser()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean isVisibleToUser()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean performAction(int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u2;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: boolean performAction(int)>($u2);
+
+        return $u-1;
+    }
+
+    public boolean performAction(int, android.os.Bundle)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u3, $u0;
+        android.os.Bundle $u4;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: int;
+
+        $u4 := @parameter1: android.os.Bundle;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean performAction(int,android.os.Bundle)>($u3, $u4);
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public void recycle()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void recycle()>();
+
+        return;
+    }
+
+    public boolean refresh()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 18 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean refresh()>();
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean removeAction(androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat $u3;
+        boolean $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+        java.lang.Object $u1;
+        android.view.accessibility.AccessibilityNodeInfo$AccessibilityAction $u1#5;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label1;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u1 = $u3.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat: java.lang.Object mAction>;
+
+        $u1#5 = (android.view.accessibility.AccessibilityNodeInfo$AccessibilityAction) $u1;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: boolean removeAction(android.view.accessibility.AccessibilityNodeInfo$AccessibilityAction)>($u1#5);
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean removeChild(android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        boolean $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean removeChild(android.view.View)>($u3);
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean removeChild(android.view.View, int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        int $u4, $u0;
+        boolean $u-1;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u4 := @parameter1: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: boolean removeChild(android.view.View,int)>($u3, $u4);
+
+        return $u-1;
+
+     label1:
+        return 0;
+    }
+
+    public void setAccessibilityFocused(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setAccessibilityFocused(boolean)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setBoundsInParent(android.graphics.Rect)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.graphics.Rect $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: android.graphics.Rect;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setBoundsInParent(android.graphics.Rect)>($u2);
+
+        return;
+    }
+
+    public void setBoundsInScreen(android.graphics.Rect)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.graphics.Rect $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: android.graphics.Rect;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setBoundsInScreen(android.graphics.Rect)>($u2);
+
+        return;
+    }
+
+    public void setCanOpenPopup(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setCanOpenPopup(boolean)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setCheckable(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setCheckable(boolean)>($u2);
+
+        return;
+    }
+
+    public void setChecked(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setChecked(boolean)>($u2);
+
+        return;
+    }
+
+    public void setClassName(java.lang.CharSequence)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setClassName(java.lang.CharSequence)>($u2);
+
+        return;
+    }
+
+    public void setClickable(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setClickable(boolean)>($u2);
+
+        return;
+    }
+
+    public void setCollectionInfo(java.lang.Object)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.Object $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+        android.view.accessibility.AccessibilityNodeInfo$CollectionInfo $u1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionInfoCompat $u1#6;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: java.lang.Object;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label3;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        if $u3 != null goto label1;
+
+        $u1 = null;
+
+        goto label2;
+
+     label1:
+        $u1#6 = (androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionInfoCompat) $u3;
+
+        $u3 = $u1#6.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionInfoCompat: java.lang.Object mInfo>;
+
+        $u1 = (android.view.accessibility.AccessibilityNodeInfo$CollectionInfo) $u3;
+
+     label2:
+        virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: void setCollectionInfo(android.view.accessibility.AccessibilityNodeInfo$CollectionInfo)>($u1);
+
+     label3:
+        return;
+    }
+
+    public void setCollectionItemInfo(java.lang.Object)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.Object $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+        android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo $u1;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat $u1#6;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: java.lang.Object;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label3;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        if $u3 != null goto label1;
+
+        $u1 = null;
+
+        goto label2;
+
+     label1:
+        $u1#6 = (androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat) $u3;
+
+        $u3 = $u1#6.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat: java.lang.Object mInfo>;
+
+        $u1 = (android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo) $u3;
+
+     label2:
+        virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: void setCollectionItemInfo(android.view.accessibility.AccessibilityNodeInfo$CollectionItemInfo)>($u1);
+
+     label3:
+        return;
+    }
+
+    public void setContentDescription(java.lang.CharSequence)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setContentDescription(java.lang.CharSequence)>($u2);
+
+        return;
+    }
+
+    public void setContentInvalid(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setContentInvalid(boolean)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setContextClickable(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 23 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setContextClickable(boolean)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setDismissable(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setDismissable(boolean)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setDrawingOrder(int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u3, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 24 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setDrawingOrder(int)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setEditable(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 18 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setEditable(boolean)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setEnabled(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setEnabled(boolean)>($u2);
+
+        return;
+    }
+
+    public void setError(java.lang.CharSequence)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: java.lang.CharSequence;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setError(java.lang.CharSequence)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setFocusable(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setFocusable(boolean)>($u2);
+
+        return;
+    }
+
+    public void setFocused(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setFocused(boolean)>($u2);
+
+        return;
+    }
+
+    public void setHeading(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 28 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setHeading(boolean)>($u3);
+
+        return;
+
+     label1:
+        specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setBooleanProperty(int,boolean)>(2, $u3);
+
+        return;
+    }
+
+    public void setHintText(java.lang.CharSequence)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u3;
+        android.os.Bundle $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: java.lang.CharSequence;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 26 goto label1;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: void setHintText(java.lang.CharSequence)>($u3);
+
+        return;
+
+     label1:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label2;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        virtualinvoke $u-1.<android.os.Bundle: void putCharSequence(java.lang.String,java.lang.CharSequence)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.HINT_TEXT_KEY", $u3);
+
+     label2:
+        return;
+    }
+
+    public void setImportantForAccessibility(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 24 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setImportantForAccessibility(boolean)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setInputType(int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u3, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setInputType(int)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setLabelFor(android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 17 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setLabelFor(android.view.View)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setLabelFor(android.view.View, int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        int $u4, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u4 := @parameter1: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 17 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setLabelFor(android.view.View,int)>($u3, $u4);
+
+     label1:
+        return;
+    }
+
+    public void setLabeledBy(android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 17 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setLabeledBy(android.view.View)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setLabeledBy(android.view.View, int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        int $u4, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u4 := @parameter1: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 17 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setLabeledBy(android.view.View,int)>($u3, $u4);
+
+     label1:
+        return;
+    }
+
+    public void setLiveRegion(int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u3, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setLiveRegion(int)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setLongClickable(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setLongClickable(boolean)>($u2);
+
+        return;
+    }
+
+    public void setMaxTextLength(int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u3, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 21 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setMaxTextLength(int)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setMovementGranularities(int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u3, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setMovementGranularities(int)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setMultiLine(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setMultiLine(boolean)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setPackageName(java.lang.CharSequence)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setPackageName(java.lang.CharSequence)>($u2);
+
+        return;
+    }
+
+    public void setPaneTitle(java.lang.CharSequence)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u3;
+        android.os.Bundle $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: java.lang.CharSequence;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 28 goto label1;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: void setPaneTitle(java.lang.CharSequence)>($u3);
+
+        return;
+
+     label1:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label2;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        virtualinvoke $u-1.<android.os.Bundle: void putCharSequence(java.lang.String,java.lang.CharSequence)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.PANE_TITLE_KEY", $u3);
+
+     label2:
+        return;
+    }
+
+    public void setParent(android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: android.view.View;
+
+        this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mParentVirtualDescendantId> = -1;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setParent(android.view.View)>($u2);
+
+        return;
+    }
+
+    public void setParent(android.view.View, int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        int $u4, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u4 := @parameter1: int;
+
+        this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mParentVirtualDescendantId> = $u4;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setParent(android.view.View,int)>($u3, $u4);
+
+     label1:
+        return;
+    }
+
+    public void setPassword(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setPassword(boolean)>($u2);
+
+        return;
+    }
+
+    public void setRangeInfo(androidx.core.view.accessibility.AccessibilityNodeInfoCompat$RangeInfoCompat)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$RangeInfoCompat $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+        java.lang.Object $u1;
+        android.view.accessibility.AccessibilityNodeInfo$RangeInfo $u1#5;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$RangeInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u1 = $u3.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$RangeInfoCompat: java.lang.Object mInfo>;
+
+        $u1#5 = (android.view.accessibility.AccessibilityNodeInfo$RangeInfo) $u1;
+
+        virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: void setRangeInfo(android.view.accessibility.AccessibilityNodeInfo$RangeInfo)>($u1#5);
+
+     label1:
+        return;
+    }
+
+    public void setRoleDescription(java.lang.CharSequence)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u3;
+        android.os.Bundle $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: java.lang.CharSequence;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label1;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        virtualinvoke $u-1.<android.os.Bundle: void putCharSequence(java.lang.String,java.lang.CharSequence)>("AccessibilityNodeInfo.roleDescription", $u3);
+
+     label1:
+        return;
+    }
+
+    public void setScreenReaderFocusable(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 28 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setScreenReaderFocusable(boolean)>($u3);
+
+        return;
+
+     label1:
+        specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setBooleanProperty(int,boolean)>(1, $u3);
+
+        return;
+    }
+
+    public void setScrollable(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setScrollable(boolean)>($u2);
+
+        return;
+    }
+
+    public void setSelected(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setSelected(boolean)>($u2);
+
+        return;
+    }
+
+    public void setShowingHintText(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 26 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setShowingHintText(boolean)>($u3);
+
+        return;
+
+     label1:
+        specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setBooleanProperty(int,boolean)>(4, $u3);
+
+        return;
+    }
+
+    public void setSource(android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: android.view.View;
+
+        this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mVirtualDescendantId> = -1;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setSource(android.view.View)>($u2);
+
+        return;
+    }
+
+    public void setSource(android.view.View, int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        int $u4, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u4 := @parameter1: int;
+
+        this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int mVirtualDescendantId> = $u4;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setSource(android.view.View,int)>($u3, $u4);
+
+     label1:
+        return;
+    }
+
+    public void setText(java.lang.CharSequence)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u2;
+        android.view.accessibility.AccessibilityNodeInfo $u0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u2 := @parameter0: java.lang.CharSequence;
+
+        $u0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0.<android.view.accessibility.AccessibilityNodeInfo: void setText(java.lang.CharSequence)>($u2);
+
+        return;
+    }
+
+    public void setTextEntryKey(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 29 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setTextEntryKey(boolean)>($u3);
+
+        return;
+
+     label1:
+        specialinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void setBooleanProperty(int,boolean)>(8, $u3);
+
+        return;
+    }
+
+    public void setTextSelection(int, int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        int $u3, $u4, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: int;
+
+        $u4 := @parameter1: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 18 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setTextSelection(int,int)>($u3, $u4);
+
+     label1:
+        return;
+    }
+
+    public void setTooltipText(java.lang.CharSequence)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.CharSequence $u3;
+        android.os.Bundle $u-1;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: java.lang.CharSequence;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 28 goto label1;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: void setTooltipText(java.lang.CharSequence)>($u3);
+
+        return;
+
+     label1:
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 19 goto label2;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u-1 = virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: android.os.Bundle getExtras()>();
+
+        virtualinvoke $u-1.<android.os.Bundle: void putCharSequence(java.lang.String,java.lang.CharSequence)>("androidx.view.accessibility.AccessibilityNodeInfoCompat.TOOLTIP_TEXT_KEY", $u3);
+
+     label2:
+        return;
+    }
+
+    public void setTouchDelegateInfo(androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#3;
+        android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo $u1;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 29 goto label1;
+
+        $u0#3 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        $u1 = $u3.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$TouchDelegateInfoCompat: android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo mInfo>;
+
+        virtualinvoke $u0#3.<android.view.accessibility.AccessibilityNodeInfo: void setTouchDelegateInfo(android.view.accessibility.AccessibilityNodeInfo$TouchDelegateInfo)>($u1);
+
+     label1:
+        return;
+    }
+
+    public void setTraversalAfter(android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 22 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setTraversalAfter(android.view.View)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setTraversalAfter(android.view.View, int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        int $u4, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u4 := @parameter1: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 22 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setTraversalAfter(android.view.View,int)>($u3, $u4);
+
+     label1:
+        return;
+    }
+
+    public void setTraversalBefore(android.view.View)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 22 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setTraversalBefore(android.view.View)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setTraversalBefore(android.view.View, int)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.View $u3;
+        int $u4, $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: android.view.View;
+
+        $u4 := @parameter1: int;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 22 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setTraversalBefore(android.view.View,int)>($u3, $u4);
+
+     label1:
+        return;
+    }
+
+    public void setViewIdResourceName(java.lang.String)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.String $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: java.lang.String;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 18 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setViewIdResourceName(java.lang.String)>($u3);
+
+     label1:
+        return;
+    }
+
+    public void setVisibleToUser(boolean)
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        boolean $u3;
+        int $u0;
+        android.view.accessibility.AccessibilityNodeInfo $u0#2;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        $u3 := @parameter0: boolean;
+
+        $u0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0 < 16 goto label1;
+
+        $u0#2 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        virtualinvoke $u0#2.<android.view.accessibility.AccessibilityNodeInfo: void setVisibleToUser(boolean)>($u3);
+
+     label1:
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        java.lang.StringBuilder builder, actions;
+        java.lang.String $u-1, actionName;
+        android.graphics.Rect bounds;
+        java.lang.CharSequence $u-1#13;
+        boolean $u-1#28;
+        int actions#61, $u-1#67, action#92;
+        java.util.List $u-1#64;
+        java.lang.Object $u-1#69;
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat action;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        builder = new java.lang.StringBuilder;
+
+        specialinvoke builder.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1 = specialinvoke this.<java.lang.Object: java.lang.String toString()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        bounds = new android.graphics.Rect;
+
+        specialinvoke bounds.<android.graphics.Rect: void <init>()>();
+
+        virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void getBoundsInParent(android.graphics.Rect)>(bounds);
+
+        actions = new java.lang.StringBuilder;
+
+        specialinvoke actions.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke actions.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; boundsInParent: ");
+
+        virtualinvoke actions.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(bounds);
+
+        $u-1 = virtualinvoke actions.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: void getBoundsInScreen(android.graphics.Rect)>(bounds);
+
+        actions = new java.lang.StringBuilder;
+
+        specialinvoke actions.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke actions.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; boundsInScreen: ");
+
+        virtualinvoke actions.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(bounds);
+
+        $u-1 = virtualinvoke actions.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; packageName: ");
+
+        $u-1#13 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.CharSequence getPackageName()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence)>($u-1#13);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; className: ");
+
+        $u-1#13 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.CharSequence getClassName()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence)>($u-1#13);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; text: ");
+
+        $u-1#13 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.CharSequence getText()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence)>($u-1#13);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; contentDescription: ");
+
+        $u-1#13 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.CharSequence getContentDescription()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence)>($u-1#13);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; viewId: ");
+
+        $u-1 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String getViewIdResourceName()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; checkable: ");
+
+        $u-1#28 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isCheckable()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($u-1#28);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; checked: ");
+
+        $u-1#28 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isChecked()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($u-1#28);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; focusable: ");
+
+        $u-1#28 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isFocusable()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($u-1#28);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; focused: ");
+
+        $u-1#28 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isFocused()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($u-1#28);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; selected: ");
+
+        $u-1#28 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isSelected()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($u-1#28);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; clickable: ");
+
+        $u-1#28 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isClickable()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($u-1#28);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; longClickable: ");
+
+        $u-1#28 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isLongClickable()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($u-1#28);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; enabled: ");
+
+        $u-1#28 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isEnabled()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($u-1#28);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; password: ");
+
+        $u-1#28 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isPassword()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($u-1#28);
+
+        actions = new java.lang.StringBuilder;
+
+        specialinvoke actions.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke actions.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; scrollable: ");
+
+        $u-1#28 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: boolean isScrollable()>();
+
+        virtualinvoke actions.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($u-1#28);
+
+        $u-1 = virtualinvoke actions.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; [");
+
+        actions#61 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if actions#61 < 21 goto label5;
+
+        $u-1#64 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.util.List getActionList()>();
+
+        actions#61 = 0;
+
+     label1:
+        $u-1#67 = interfaceinvoke $u-1#64.<java.util.List: int size()>();
+
+        if actions#61 >= $u-1#67 goto label4;
+
+        $u-1#69 = interfaceinvoke $u-1#64.<java.util.List: java.lang.Object get(int)>(actions#61);
+
+        action = (androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat) $u-1#69;
+
+        $u-1#67 = virtualinvoke action.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat: int getId()>();
+
+        $u-1 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String getActionSymbolicName(int)>($u-1#67);
+
+        actionName = $u-1;
+
+        $u-1#28 = virtualinvoke $u-1.<java.lang.String: boolean equals(java.lang.Object)>("ACTION_UNKNOWN");
+
+        if $u-1#28 == 0 goto label2;
+
+        $u-1#13 = virtualinvoke action.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat: java.lang.CharSequence getLabel()>();
+
+        if $u-1#13 == null goto label2;
+
+        $u-1#13 = virtualinvoke action.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat: java.lang.CharSequence getLabel()>();
+
+        actionName = interfaceinvoke $u-1#13.<java.lang.CharSequence: java.lang.String toString()>();
+
+     label2:
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(actionName);
+
+        $u-1#67 = interfaceinvoke $u-1#64.<java.util.List: int size()>();
+
+        $u-1#67 = $u-1#67 - 1;
+
+        if actions#61 == $u-1#67 goto label3;
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ");
+
+     label3:
+        actions#61 = actions#61 + 1;
+
+        goto label1;
+
+     label4:
+        goto label7;
+
+     label5:
+        actions#61 = virtualinvoke this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: int getActions()>();
+
+     label6:
+        if actions#61 == 0 goto label7;
+
+        $u-1#67 = staticinvoke <java.lang.Integer: int numberOfTrailingZeros(int)>(actions#61);
+
+        $u-1#67 = 1 << $u-1#67;
+
+        action#92 = $u-1#67 ^ -1;
+
+        actions#61 = actions#61 & action#92;
+
+        $u-1 = staticinvoke <androidx.core.view.accessibility.AccessibilityNodeInfoCompat: java.lang.String getActionSymbolicName(int)>($u-1#67);
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1);
+
+        if actions#61 == 0 goto label6;
+
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ");
+
+        goto label6;
+
+     label7:
+        virtualinvoke builder.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $u-1 = virtualinvoke builder.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1;
+    }
+
+    public android.view.accessibility.AccessibilityNodeInfo unwrap()
+    {
+        androidx.core.view.accessibility.AccessibilityNodeInfoCompat this;
+        android.view.accessibility.AccessibilityNodeInfo ret0;
+
+        this := @this: androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+        ret0 = this.<androidx.core.view.accessibility.AccessibilityNodeInfoCompat: android.view.accessibility.AccessibilityNodeInfo mInfo>;
+
+        return ret0;
+    }
+}

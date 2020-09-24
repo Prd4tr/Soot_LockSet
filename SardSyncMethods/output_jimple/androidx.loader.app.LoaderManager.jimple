@@ -1,0 +1,66 @@
+public abstract class androidx.loader.app.LoaderManager extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        androidx.loader.app.LoaderManager this;
+
+        this := @this: androidx.loader.app.LoaderManager;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void enableDebugLogging(boolean)
+    {
+        boolean $u0;
+
+        $u0 := @parameter0: boolean;
+
+        <androidx.loader.app.LoaderManagerImpl: boolean DEBUG> = $u0;
+
+        return;
+    }
+
+    public static androidx.loader.app.LoaderManager getInstance(androidx.lifecycle.LifecycleOwner)
+    {
+        androidx.lifecycle.LifecycleOwner owner;
+        androidx.loader.app.LoaderManagerImpl $u0;
+        androidx.lifecycle.ViewModelStore $u-1;
+        androidx.lifecycle.ViewModelStoreOwner $u1;
+
+        owner := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        $u0 = new androidx.loader.app.LoaderManagerImpl;
+
+        $u1 = (androidx.lifecycle.ViewModelStoreOwner) owner;
+
+        $u-1 = interfaceinvoke $u1.<androidx.lifecycle.ViewModelStoreOwner: androidx.lifecycle.ViewModelStore getViewModelStore()>();
+
+        specialinvoke $u0.<androidx.loader.app.LoaderManagerImpl: void <init>(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.ViewModelStore)>(owner, $u-1);
+
+        return $u0;
+    }
+
+    public abstract void destroyLoader(int);
+
+    public abstract void dump(java.lang.String, java.io.FileDescriptor, java.io.PrintWriter, java.lang.String[]);
+
+    public abstract androidx.loader.content.Loader getLoader(int);
+
+    public boolean hasRunningLoaders()
+    {
+        androidx.loader.app.LoaderManager this;
+
+        this := @this: androidx.loader.app.LoaderManager;
+
+        return 0;
+    }
+
+    public abstract androidx.loader.content.Loader initLoader(int, android.os.Bundle, androidx.loader.app.LoaderManager$LoaderCallbacks);
+
+    public abstract void markForRedelivery();
+
+    public abstract androidx.loader.content.Loader restartLoader(int, android.os.Bundle, androidx.loader.app.LoaderManager$LoaderCallbacks);
+}

@@ -1,0 +1,224 @@
+class androidx.lifecycle.LifecycleRegistry$1 extends java.lang.Object
+{
+    static final int[] $SwitchMap$androidx$lifecycle$Lifecycle$Event;
+    static final int[] $SwitchMap$androidx$lifecycle$Lifecycle$State;
+
+    static void <clinit>()
+    {
+        androidx.lifecycle.Lifecycle$State[] $u-1;
+        int $u0;
+        int[] $u0#4;
+        androidx.lifecycle.Lifecycle$State $u2;
+        java.lang.NoSuchFieldError $u0#9, $u2#15, $u3, $u4, $u5, $u1, $u0#46, $u0#51, $u0#56, $u0#61, $u0#67, $u0#73;
+        androidx.lifecycle.Lifecycle$Event[] $u-1#34;
+        androidx.lifecycle.Lifecycle$Event $u6;
+
+        $u-1 = staticinvoke <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State[] values()>();
+
+        $u0 = lengthof $u-1;
+
+        $u0#4 = newarray (int)[$u0];
+
+        <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$State> = $u0#4;
+
+     label01:
+        $u2 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State INITIALIZED>;
+
+        $u0 = virtualinvoke $u2.<androidx.lifecycle.Lifecycle$State: int ordinal()>();
+
+     label02:
+        $u0#4[$u0] = 1;
+
+        goto label04;
+
+     label03:
+        $u0#9 := @caughtexception;
+
+     label04:
+        $u0#4 = <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$State>;
+
+        $u2 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State CREATED>;
+
+        $u0 = virtualinvoke $u2.<androidx.lifecycle.Lifecycle$State: int ordinal()>();
+
+     label05:
+        $u0#4[$u0] = 2;
+
+        goto label07;
+
+     label06:
+        $u2#15 := @caughtexception;
+
+     label07:
+        $u0#4 = <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$State>;
+
+        $u2 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State STARTED>;
+
+        $u0 = virtualinvoke $u2.<androidx.lifecycle.Lifecycle$State: int ordinal()>();
+
+     label08:
+        $u0#4[$u0] = 3;
+
+        goto label10;
+
+     label09:
+        $u3 := @caughtexception;
+
+     label10:
+        $u0#4 = <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$State>;
+
+        $u2 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State RESUMED>;
+
+        $u0 = virtualinvoke $u2.<androidx.lifecycle.Lifecycle$State: int ordinal()>();
+
+     label11:
+        $u0#4[$u0] = 4;
+
+        goto label13;
+
+     label12:
+        $u4 := @caughtexception;
+
+     label13:
+        $u0#4 = <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$State>;
+
+        $u2 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State DESTROYED>;
+
+        $u0 = virtualinvoke $u2.<androidx.lifecycle.Lifecycle$State: int ordinal()>();
+
+     label14:
+        $u0#4[$u0] = 5;
+
+        goto label16;
+
+     label15:
+        $u5 := @caughtexception;
+
+     label16:
+        $u-1#34 = staticinvoke <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event[] values()>();
+
+        $u0 = lengthof $u-1#34;
+
+        $u0#4 = newarray (int)[$u0];
+
+        <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$Event> = $u0#4;
+
+     label17:
+        $u6 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_CREATE>;
+
+        $u0 = virtualinvoke $u6.<androidx.lifecycle.Lifecycle$Event: int ordinal()>();
+
+     label18:
+        $u0#4[$u0] = 1;
+
+        goto label20;
+
+     label19:
+        $u1 := @caughtexception;
+
+     label20:
+        $u0#4 = <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$Event>;
+
+        $u6 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_STOP>;
+
+        $u0 = virtualinvoke $u6.<androidx.lifecycle.Lifecycle$Event: int ordinal()>();
+
+     label21:
+        $u0#4[$u0] = 2;
+
+        goto label23;
+
+     label22:
+        $u0#46 := @caughtexception;
+
+     label23:
+        $u0#4 = <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$Event>;
+
+        $u6 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_START>;
+
+        $u0 = virtualinvoke $u6.<androidx.lifecycle.Lifecycle$Event: int ordinal()>();
+
+     label24:
+        $u0#4[$u0] = 3;
+
+        goto label26;
+
+     label25:
+        $u0#51 := @caughtexception;
+
+     label26:
+        $u0#4 = <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$Event>;
+
+        $u6 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_PAUSE>;
+
+        $u0 = virtualinvoke $u6.<androidx.lifecycle.Lifecycle$Event: int ordinal()>();
+
+     label27:
+        $u0#4[$u0] = 4;
+
+        goto label29;
+
+     label28:
+        $u0#56 := @caughtexception;
+
+     label29:
+        $u0#4 = <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$Event>;
+
+        $u6 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_RESUME>;
+
+        $u0 = virtualinvoke $u6.<androidx.lifecycle.Lifecycle$Event: int ordinal()>();
+
+     label30:
+        $u0#4[$u0] = 5;
+
+        goto label32;
+
+     label31:
+        $u0#61 := @caughtexception;
+
+     label32:
+        $u0#4 = <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$Event>;
+
+        $u6 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_DESTROY>;
+
+        $u0 = virtualinvoke $u6.<androidx.lifecycle.Lifecycle$Event: int ordinal()>();
+
+     label33:
+        $u0#4[$u0] = 6;
+
+        goto label35;
+
+     label34:
+        $u0#67 := @caughtexception;
+
+     label35:
+        $u0#4 = <androidx.lifecycle.LifecycleRegistry$1: int[] $SwitchMap$androidx$lifecycle$Lifecycle$Event>;
+
+        $u6 = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_ANY>;
+
+        $u0 = virtualinvoke $u6.<androidx.lifecycle.Lifecycle$Event: int ordinal()>();
+
+     label36:
+        $u0#4[$u0] = 7;
+
+        return;
+
+     label37:
+        $u0#73 := @caughtexception;
+
+        return;
+
+        catch java.lang.NoSuchFieldError from label01 to label02 with label03;
+        catch java.lang.NoSuchFieldError from label04 to label05 with label06;
+        catch java.lang.NoSuchFieldError from label07 to label08 with label09;
+        catch java.lang.NoSuchFieldError from label10 to label11 with label12;
+        catch java.lang.NoSuchFieldError from label13 to label14 with label15;
+        catch java.lang.NoSuchFieldError from label17 to label18 with label19;
+        catch java.lang.NoSuchFieldError from label20 to label21 with label22;
+        catch java.lang.NoSuchFieldError from label23 to label24 with label25;
+        catch java.lang.NoSuchFieldError from label26 to label27 with label28;
+        catch java.lang.NoSuchFieldError from label29 to label30 with label31;
+        catch java.lang.NoSuchFieldError from label32 to label33 with label34;
+        catch java.lang.NoSuchFieldError from label35 to label36 with label37;
+    }
+}

@@ -1,0 +1,463 @@
+public class androidx.constraintlayout.widget.Barrier extends androidx.constraintlayout.widget.ConstraintHelper
+{
+    public static final int BOTTOM;
+    public static final int END;
+    public static final int LEFT;
+    public static final int RIGHT;
+    public static final int START;
+    public static final int TOP;
+    private androidx.constraintlayout.solver.widgets.Barrier mBarrier;
+    private int mIndicatedType;
+    private int mResolvedType;
+
+    public void <init>(android.content.Context)
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        android.content.Context $u2;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        $u2 := @parameter0: android.content.Context;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void <init>(android.content.Context)>($u2);
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void setVisibility(int)>(8);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void <init>(android.content.Context,android.util.AttributeSet)>($u2, $u3);
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void setVisibility(int)>(8);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        android.content.Context $u2;
+        android.util.AttributeSet $u3;
+        int $u4;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        $u2 := @parameter0: android.content.Context;
+
+        $u3 := @parameter1: android.util.AttributeSet;
+
+        $u4 := @parameter2: int;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void <init>(android.content.Context,android.util.AttributeSet,int)>($u2, $u3, $u4);
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void setVisibility(int)>(8);
+
+        return;
+    }
+
+    private void updateType(androidx.constraintlayout.solver.widgets.ConstraintWidget, int, boolean)
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u7;
+        int $u8;
+        boolean $u9;
+        androidx.constraintlayout.solver.widgets.Barrier barrier;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        $u7 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $u8 := @parameter1: int;
+
+        $u9 := @parameter2: boolean;
+
+        this.<androidx.constraintlayout.widget.Barrier: int mResolvedType> = $u8;
+
+        $u8 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u8 >= 17 goto label2;
+
+        $u8 = this.<androidx.constraintlayout.widget.Barrier: int mIndicatedType>;
+
+        if $u8 != 5 goto label1;
+
+        this.<androidx.constraintlayout.widget.Barrier: int mResolvedType> = 0;
+
+        goto label6;
+
+     label1:
+        if $u8 != 6 goto label6;
+
+        this.<androidx.constraintlayout.widget.Barrier: int mResolvedType> = 1;
+
+        goto label6;
+
+     label2:
+        if $u9 == 0 goto label4;
+
+        $u8 = this.<androidx.constraintlayout.widget.Barrier: int mIndicatedType>;
+
+        if $u8 != 5 goto label3;
+
+        this.<androidx.constraintlayout.widget.Barrier: int mResolvedType> = 1;
+
+        goto label6;
+
+     label3:
+        if $u8 != 6 goto label6;
+
+        this.<androidx.constraintlayout.widget.Barrier: int mResolvedType> = 0;
+
+        goto label6;
+
+     label4:
+        $u8 = this.<androidx.constraintlayout.widget.Barrier: int mIndicatedType>;
+
+        if $u8 != 5 goto label5;
+
+        this.<androidx.constraintlayout.widget.Barrier: int mResolvedType> = 0;
+
+        goto label6;
+
+     label5:
+        if $u8 != 6 goto label6;
+
+        this.<androidx.constraintlayout.widget.Barrier: int mResolvedType> = 1;
+
+     label6:
+        $u9 = $u7 instanceof androidx.constraintlayout.solver.widgets.Barrier;
+
+        if $u9 == 0 goto label7;
+
+        barrier = (androidx.constraintlayout.solver.widgets.Barrier) $u7;
+
+        $u8 = this.<androidx.constraintlayout.widget.Barrier: int mResolvedType>;
+
+        virtualinvoke barrier.<androidx.constraintlayout.solver.widgets.Barrier: void setBarrierType(int)>($u8);
+
+     label7:
+        return;
+    }
+
+    public boolean allowsGoneWidget()
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        boolean $u-1;
+        androidx.constraintlayout.solver.widgets.Barrier $u0;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        $u0 = this.<androidx.constraintlayout.widget.Barrier: androidx.constraintlayout.solver.widgets.Barrier mBarrier>;
+
+        $u-1 = virtualinvoke $u0.<androidx.constraintlayout.solver.widgets.Barrier: boolean allowsGoneWidget()>();
+
+        return $u-1;
+    }
+
+    public int getMargin()
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        int $u-1;
+        androidx.constraintlayout.solver.widgets.Barrier $u0;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        $u0 = this.<androidx.constraintlayout.widget.Barrier: androidx.constraintlayout.solver.widgets.Barrier mBarrier>;
+
+        $u-1 = virtualinvoke $u0.<androidx.constraintlayout.solver.widgets.Barrier: int getMargin()>();
+
+        return $u-1;
+    }
+
+    public int getType()
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        int ret0;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        ret0 = this.<androidx.constraintlayout.widget.Barrier: int mIndicatedType>;
+
+        return ret0;
+    }
+
+    protected void init(android.util.AttributeSet)
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        android.util.AttributeSet $u7;
+        androidx.constraintlayout.solver.widgets.Barrier a;
+        android.content.Context $u-1;
+        int[] N;
+        android.content.res.TypedArray $u-1#5;
+        int $u-1#7, i, $u-1#10, margin;
+        boolean $u-1#18;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        $u7 := @parameter0: android.util.AttributeSet;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void init(android.util.AttributeSet)>($u7);
+
+        a = new androidx.constraintlayout.solver.widgets.Barrier;
+
+        specialinvoke a.<androidx.constraintlayout.solver.widgets.Barrier: void <init>()>();
+
+        this.<androidx.constraintlayout.widget.Barrier: androidx.constraintlayout.solver.widgets.Barrier mBarrier> = a;
+
+        if $u7 == null goto label5;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.widget.Barrier: android.content.Context getContext()>();
+
+        N = <androidx.constraintlayout.widget.R$styleable: int[] ConstraintLayout_Layout>;
+
+        $u-1#5 = virtualinvoke $u-1.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[])>($u7, N);
+
+        $u-1#7 = virtualinvoke $u-1#5.<android.content.res.TypedArray: int getIndexCount()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1#7 goto label5;
+
+        $u-1#10 = virtualinvoke $u-1#5.<android.content.res.TypedArray: int getIndex(int)>(i);
+
+        margin = <androidx.constraintlayout.widget.R$styleable: int ConstraintLayout_Layout_barrierDirection>;
+
+        if $u-1#10 != margin goto label2;
+
+        $u-1#10 = virtualinvoke $u-1#5.<android.content.res.TypedArray: int getInt(int,int)>($u-1#10, 0);
+
+        virtualinvoke this.<androidx.constraintlayout.widget.Barrier: void setType(int)>($u-1#10);
+
+        goto label4;
+
+     label2:
+        margin = <androidx.constraintlayout.widget.R$styleable: int ConstraintLayout_Layout_barrierAllowsGoneWidgets>;
+
+        if $u-1#10 != margin goto label3;
+
+        a = this.<androidx.constraintlayout.widget.Barrier: androidx.constraintlayout.solver.widgets.Barrier mBarrier>;
+
+        $u-1#18 = virtualinvoke $u-1#5.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($u-1#10, 1);
+
+        virtualinvoke a.<androidx.constraintlayout.solver.widgets.Barrier: void setAllowsGoneWidget(boolean)>($u-1#18);
+
+        goto label4;
+
+     label3:
+        margin = <androidx.constraintlayout.widget.R$styleable: int ConstraintLayout_Layout_barrierMargin>;
+
+        if $u-1#10 != margin goto label4;
+
+        $u-1#10 = virtualinvoke $u-1#5.<android.content.res.TypedArray: int getDimensionPixelSize(int,int)>($u-1#10, 0);
+
+        a = this.<androidx.constraintlayout.widget.Barrier: androidx.constraintlayout.solver.widgets.Barrier mBarrier>;
+
+        virtualinvoke a.<androidx.constraintlayout.solver.widgets.Barrier: void setMargin(int)>($u-1#10);
+
+     label4:
+        i = i + 1;
+
+        goto label1;
+
+     label5:
+        a = this.<androidx.constraintlayout.widget.Barrier: androidx.constraintlayout.solver.widgets.Barrier mBarrier>;
+
+        this.<androidx.constraintlayout.widget.Barrier: androidx.constraintlayout.solver.widgets.Helper mHelperWidget> = a;
+
+        virtualinvoke this.<androidx.constraintlayout.widget.Barrier: void validateParams()>();
+
+        return;
+    }
+
+    public void loadParameters(androidx.constraintlayout.widget.ConstraintSet$Constraint, androidx.constraintlayout.solver.widgets.HelperWidget, androidx.constraintlayout.widget.ConstraintLayout$LayoutParams, android.util.SparseArray)
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        androidx.constraintlayout.widget.ConstraintSet$Constraint $u5;
+        androidx.constraintlayout.solver.widgets.HelperWidget $u6;
+        androidx.constraintlayout.widget.ConstraintLayout$LayoutParams $u7;
+        android.util.SparseArray mapIdToWidget;
+        boolean barrier;
+        androidx.constraintlayout.solver.widgets.Barrier barrier#3;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u-1;
+        androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer container;
+        androidx.constraintlayout.widget.ConstraintSet$Layout $u3;
+        int $u3#9;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        $u5 := @parameter0: androidx.constraintlayout.widget.ConstraintSet$Constraint;
+
+        $u6 := @parameter1: androidx.constraintlayout.solver.widgets.HelperWidget;
+
+        $u7 := @parameter2: androidx.constraintlayout.widget.ConstraintLayout$LayoutParams;
+
+        mapIdToWidget := @parameter3: android.util.SparseArray;
+
+        specialinvoke this.<androidx.constraintlayout.widget.ConstraintHelper: void loadParameters(androidx.constraintlayout.widget.ConstraintSet$Constraint,androidx.constraintlayout.solver.widgets.HelperWidget,androidx.constraintlayout.widget.ConstraintLayout$LayoutParams,android.util.SparseArray)>($u5, $u6, $u7, mapIdToWidget);
+
+        barrier = $u6 instanceof androidx.constraintlayout.solver.widgets.Barrier;
+
+        if barrier == 0 goto label1;
+
+        barrier#3 = (androidx.constraintlayout.solver.widgets.Barrier) $u6;
+
+        $u-1 = virtualinvoke $u6.<androidx.constraintlayout.solver.widgets.HelperWidget: androidx.constraintlayout.solver.widgets.ConstraintWidget getParent()>();
+
+        container = (androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer) $u-1;
+
+        barrier = virtualinvoke container.<androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer: boolean isRtl()>();
+
+        $u3 = $u5.<androidx.constraintlayout.widget.ConstraintSet$Constraint: androidx.constraintlayout.widget.ConstraintSet$Layout layout>;
+
+        $u3#9 = $u3.<androidx.constraintlayout.widget.ConstraintSet$Layout: int mBarrierDirection>;
+
+        specialinvoke this.<androidx.constraintlayout.widget.Barrier: void updateType(androidx.constraintlayout.solver.widgets.ConstraintWidget,int,boolean)>(barrier#3, $u3#9, barrier);
+
+        $u3 = $u5.<androidx.constraintlayout.widget.ConstraintSet$Constraint: androidx.constraintlayout.widget.ConstraintSet$Layout layout>;
+
+        barrier = $u3.<androidx.constraintlayout.widget.ConstraintSet$Layout: boolean mBarrierAllowsGoneWidgets>;
+
+        virtualinvoke barrier#3.<androidx.constraintlayout.solver.widgets.Barrier: void setAllowsGoneWidget(boolean)>(barrier);
+
+        $u3 = $u5.<androidx.constraintlayout.widget.ConstraintSet$Constraint: androidx.constraintlayout.widget.ConstraintSet$Layout layout>;
+
+        $u3#9 = $u3.<androidx.constraintlayout.widget.ConstraintSet$Layout: int mBarrierMargin>;
+
+        virtualinvoke barrier#3.<androidx.constraintlayout.solver.widgets.Barrier: void setMargin(int)>($u3#9);
+
+     label1:
+        return;
+    }
+
+    public void resolveRtl(androidx.constraintlayout.solver.widgets.ConstraintWidget, boolean)
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        androidx.constraintlayout.solver.widgets.ConstraintWidget $u2;
+        boolean $u3;
+        int $u0;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        $u2 := @parameter0: androidx.constraintlayout.solver.widgets.ConstraintWidget;
+
+        $u3 := @parameter1: boolean;
+
+        $u0 = this.<androidx.constraintlayout.widget.Barrier: int mIndicatedType>;
+
+        specialinvoke this.<androidx.constraintlayout.widget.Barrier: void updateType(androidx.constraintlayout.solver.widgets.ConstraintWidget,int,boolean)>($u2, $u0, $u3);
+
+        return;
+    }
+
+    public void setAllowsGoneWidget(boolean)
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        boolean $u2;
+        androidx.constraintlayout.solver.widgets.Barrier $u0;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        $u2 := @parameter0: boolean;
+
+        $u0 = this.<androidx.constraintlayout.widget.Barrier: androidx.constraintlayout.solver.widgets.Barrier mBarrier>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.solver.widgets.Barrier: void setAllowsGoneWidget(boolean)>($u2);
+
+        return;
+    }
+
+    public void setDpMargin(int)
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        int $u4;
+        android.content.res.Resources $u-1;
+        android.util.DisplayMetrics $u-1#3;
+        float density, px;
+        androidx.constraintlayout.solver.widgets.Barrier $u2;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        $u4 := @parameter0: int;
+
+        $u-1 = virtualinvoke this.<androidx.constraintlayout.widget.Barrier: android.content.res.Resources getResources()>();
+
+        $u-1#3 = virtualinvoke $u-1.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        density = $u-1#3.<android.util.DisplayMetrics: float density>;
+
+        px = (float) $u4;
+
+        density = px * density;
+
+        density = density + 0.5F;
+
+        $u4 = (int) density;
+
+        $u2 = this.<androidx.constraintlayout.widget.Barrier: androidx.constraintlayout.solver.widgets.Barrier mBarrier>;
+
+        virtualinvoke $u2.<androidx.constraintlayout.solver.widgets.Barrier: void setMargin(int)>($u4);
+
+        return;
+    }
+
+    public void setMargin(int)
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        int $u2;
+        androidx.constraintlayout.solver.widgets.Barrier $u0;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        $u2 := @parameter0: int;
+
+        $u0 = this.<androidx.constraintlayout.widget.Barrier: androidx.constraintlayout.solver.widgets.Barrier mBarrier>;
+
+        virtualinvoke $u0.<androidx.constraintlayout.solver.widgets.Barrier: void setMargin(int)>($u2);
+
+        return;
+    }
+
+    public void setType(int)
+    {
+        androidx.constraintlayout.widget.Barrier this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.widget.Barrier;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.widget.Barrier: int mIndicatedType> = $u1;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.widget.Barrier: int TOP> = 2;
+
+        <androidx.constraintlayout.widget.Barrier: int START> = 5;
+
+        <androidx.constraintlayout.widget.Barrier: int RIGHT> = 1;
+
+        <androidx.constraintlayout.widget.Barrier: int LEFT> = 0;
+
+        <androidx.constraintlayout.widget.Barrier: int END> = 6;
+
+        <androidx.constraintlayout.widget.Barrier: int BOTTOM> = 3;
+
+        return;
+    }
+}

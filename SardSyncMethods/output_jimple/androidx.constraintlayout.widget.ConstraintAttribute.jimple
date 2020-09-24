@@ -1,0 +1,2149 @@
+public class androidx.constraintlayout.widget.ConstraintAttribute extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    boolean mBooleanValue;
+    private int mColorValue;
+    private float mFloatValue;
+    private int mIntegerValue;
+    java.lang.String mName;
+    private java.lang.String mStringValue;
+    private androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType;
+
+    public void <init>(androidx.constraintlayout.widget.ConstraintAttribute, java.lang.Object)
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this, $u2;
+        java.lang.Object $u3;
+        java.lang.String $u0;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType $u0#2;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u2 := @parameter0: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u3 := @parameter1: java.lang.Object;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = $u2.<androidx.constraintlayout.widget.ConstraintAttribute: java.lang.String mName>;
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: java.lang.String mName> = $u0;
+
+        $u0#2 = $u2.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType>;
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType> = $u0#2;
+
+        virtualinvoke this.<androidx.constraintlayout.widget.ConstraintAttribute: void setValue(java.lang.Object)>($u3);
+
+        return;
+    }
+
+    public void <init>(java.lang.String, androidx.constraintlayout.widget.ConstraintAttribute$AttributeType)
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this;
+        java.lang.String $u1;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType $u2;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u1 := @parameter0: java.lang.String;
+
+        $u2 := @parameter1: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: java.lang.String mName> = $u1;
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType> = $u2;
+
+        return;
+    }
+
+    public void <init>(java.lang.String, androidx.constraintlayout.widget.ConstraintAttribute$AttributeType, java.lang.Object)
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this;
+        java.lang.String $u1;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType $u2;
+        java.lang.Object $u3;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u1 := @parameter0: java.lang.String;
+
+        $u2 := @parameter1: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType;
+
+        $u3 := @parameter2: java.lang.Object;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: java.lang.String mName> = $u1;
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType> = $u2;
+
+        virtualinvoke this.<androidx.constraintlayout.widget.ConstraintAttribute: void setValue(java.lang.Object)>($u3);
+
+        return;
+    }
+
+    private static int clamp(int)
+    {
+        int $u2, $u1;
+
+        $u2 := @parameter0: int;
+
+        $u1 = $u2 >> 31;
+
+        $u1 = $u1 ^ -1;
+
+        $u2 = $u2 & $u1;
+
+        $u2 = $u2 - 255;
+
+        $u1 = $u2 >> 31;
+
+        $u2 = $u2 & $u1;
+
+        $u2 = $u2 + 255;
+
+        return $u2;
+    }
+
+    public static java.util.HashMap extractAttributes(java.util.HashMap, android.view.View)
+    {
+        java.util.HashMap base, 'ret';
+        android.view.View $u9;
+        java.lang.Class $u-1;
+        java.util.Set $u-1#2;
+        java.util.Iterator $u-1#4;
+        boolean $u-1#6;
+        java.lang.Object $u-1#8;
+        java.lang.String name, $u-1#27;
+        androidx.constraintlayout.widget.ConstraintAttribute constraintAttribute, $u7;
+        android.graphics.drawable.Drawable $u-1#17;
+        android.graphics.drawable.ColorDrawable viewColor;
+        int $u-1#20;
+        java.lang.Integer $u-1#22;
+        java.lang.StringBuilder viewColor#25;
+        java.lang.Class[] $u7#30;
+        java.lang.reflect.Method $u-1#31;
+        java.lang.Object[] val;
+        java.lang.reflect.InvocationTargetException viewColor#37;
+        java.lang.IllegalAccessException viewColor#38;
+        java.lang.NoSuchMethodException viewColor#39;
+
+        base := @parameter0: java.util.HashMap;
+
+        $u9 := @parameter1: android.view.View;
+
+        'ret' = new java.util.HashMap;
+
+        specialinvoke 'ret'.<java.util.HashMap: void <init>()>();
+
+        $u-1 = virtualinvoke $u9.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#2 = virtualinvoke base.<java.util.HashMap: java.util.Set keySet()>();
+
+        $u-1#4 = interfaceinvoke $u-1#2.<java.util.Set: java.util.Iterator iterator()>();
+
+     label01:
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#6 == 0 goto label23;
+
+        $u-1#8 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        name = (java.lang.String) $u-1#8;
+
+        $u-1#8 = virtualinvoke base.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(name);
+
+        constraintAttribute = (androidx.constraintlayout.widget.ConstraintAttribute) $u-1#8;
+
+     label02:
+        $u-1#6 = virtualinvoke name.<java.lang.String: boolean equals(java.lang.Object)>("BackgroundColor");
+
+     label03:
+        if $u-1#6 == 0 goto label10;
+
+     label04:
+        $u-1#17 = virtualinvoke $u9.<android.view.View: android.graphics.drawable.Drawable getBackground()>();
+
+     label05:
+        viewColor = (android.graphics.drawable.ColorDrawable) $u-1#17;
+
+     label06:
+        $u-1#20 = virtualinvoke viewColor.<android.graphics.drawable.ColorDrawable: int getColor()>();
+
+        $u-1#22 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1#20);
+
+     label07:
+        $u7 = new androidx.constraintlayout.widget.ConstraintAttribute;
+
+     label08:
+        specialinvoke $u7.<androidx.constraintlayout.widget.ConstraintAttribute: void <init>(androidx.constraintlayout.widget.ConstraintAttribute,java.lang.Object)>(constraintAttribute, $u-1#22);
+
+        virtualinvoke 'ret'.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(name, $u7);
+
+     label09:
+        goto label22;
+
+     label10:
+        viewColor#25 = new java.lang.StringBuilder;
+
+     label11:
+        specialinvoke viewColor#25.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke viewColor#25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("getMap");
+
+        virtualinvoke viewColor#25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(name);
+
+        $u-1#27 = virtualinvoke viewColor#25.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label12:
+        $u7#30 = newarray (java.lang.Class)[0];
+
+     label13:
+        $u-1#31 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>($u-1#27, $u7#30);
+
+     label14:
+        val = newarray (java.lang.Object)[0];
+
+     label15:
+        $u-1#8 = virtualinvoke $u-1#31.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u9, val);
+
+     label16:
+        $u7 = new androidx.constraintlayout.widget.ConstraintAttribute;
+
+     label17:
+        specialinvoke $u7.<androidx.constraintlayout.widget.ConstraintAttribute: void <init>(androidx.constraintlayout.widget.ConstraintAttribute,java.lang.Object)>(constraintAttribute, $u-1#8);
+
+        virtualinvoke 'ret'.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(name, $u7);
+
+     label18:
+        goto label22;
+
+     label19:
+        viewColor#37 := @caughtexception;
+
+        virtualinvoke viewColor#37.<java.lang.reflect.InvocationTargetException: void printStackTrace()>();
+
+        goto label01;
+
+     label20:
+        viewColor#38 := @caughtexception;
+
+        virtualinvoke viewColor#38.<java.lang.IllegalAccessException: void printStackTrace()>();
+
+        goto label22;
+
+     label21:
+        viewColor#39 := @caughtexception;
+
+        virtualinvoke viewColor#39.<java.lang.NoSuchMethodException: void printStackTrace()>();
+
+     label22:
+        goto label01;
+
+     label23:
+        return 'ret';
+
+        catch java.lang.NoSuchMethodException from label02 to label03 with label21;
+        catch java.lang.NoSuchMethodException from label04 to label05 with label21;
+        catch java.lang.NoSuchMethodException from label06 to label07 with label21;
+        catch java.lang.NoSuchMethodException from label08 to label09 with label21;
+        catch java.lang.NoSuchMethodException from label11 to label12 with label21;
+        catch java.lang.NoSuchMethodException from label13 to label14 with label21;
+        catch java.lang.NoSuchMethodException from label15 to label16 with label21;
+        catch java.lang.NoSuchMethodException from label17 to label18 with label21;
+        catch java.lang.IllegalAccessException from label02 to label03 with label20;
+        catch java.lang.IllegalAccessException from label04 to label05 with label20;
+        catch java.lang.IllegalAccessException from label06 to label07 with label20;
+        catch java.lang.IllegalAccessException from label08 to label09 with label20;
+        catch java.lang.IllegalAccessException from label11 to label12 with label20;
+        catch java.lang.IllegalAccessException from label13 to label14 with label20;
+        catch java.lang.IllegalAccessException from label15 to label16 with label20;
+        catch java.lang.IllegalAccessException from label17 to label18 with label20;
+        catch java.lang.reflect.InvocationTargetException from label02 to label03 with label19;
+        catch java.lang.reflect.InvocationTargetException from label04 to label05 with label19;
+        catch java.lang.reflect.InvocationTargetException from label06 to label07 with label19;
+        catch java.lang.reflect.InvocationTargetException from label08 to label09 with label19;
+        catch java.lang.reflect.InvocationTargetException from label11 to label12 with label19;
+        catch java.lang.reflect.InvocationTargetException from label13 to label14 with label19;
+        catch java.lang.reflect.InvocationTargetException from label15 to label16 with label19;
+        catch java.lang.reflect.InvocationTargetException from label17 to label18 with label19;
+    }
+
+    public static void parse(android.content.Context, org.xmlpull.v1.XmlPullParser, java.util.HashMap)
+    {
+        android.content.Context $u11;
+        org.xmlpull.v1.XmlPullParser $u12;
+        java.util.HashMap custom;
+        android.util.AttributeSet $u-1;
+        int[] a;
+        android.content.res.TypedArray $u-1#3;
+        java.lang.String name, $u-1#14;
+        java.io.Serializable value;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType type;
+        int $u-1#8, i, $u-1#10, $u8;
+        java.lang.StringBuilder $u8#17;
+        char $u-1#18;
+        boolean $u-1#26;
+        float $u-1#39;
+        android.content.res.Resources $u-1#41;
+        android.util.DisplayMetrics $u-1#43;
+        androidx.constraintlayout.widget.ConstraintAttribute i#64;
+
+        $u11 := @parameter0: android.content.Context;
+
+        $u12 := @parameter1: org.xmlpull.v1.XmlPullParser;
+
+        custom := @parameter2: java.util.HashMap;
+
+        $u-1 = staticinvoke <android.util.Xml: android.util.AttributeSet asAttributeSet(org.xmlpull.v1.XmlPullParser)>($u12);
+
+        a = <androidx.constraintlayout.widget.R$styleable: int[] CustomAttribute>;
+
+        $u-1#3 = virtualinvoke $u11.<android.content.Context: android.content.res.TypedArray obtainStyledAttributes(android.util.AttributeSet,int[])>($u-1, a);
+
+        name = null;
+
+        value = null;
+
+        type = null;
+
+        $u-1#8 = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getIndexCount()>();
+
+        i = 0;
+
+     label01:
+        if i >= $u-1#8 goto label11;
+
+        $u-1#10 = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getIndex(int)>(i);
+
+        $u8 = <androidx.constraintlayout.widget.R$styleable: int CustomAttribute_attributeName>;
+
+        if $u-1#10 != $u8 goto label02;
+
+        $u-1#14 = virtualinvoke $u-1#3.<android.content.res.TypedArray: java.lang.String getString(int)>($u-1#10);
+
+        name = $u-1#14;
+
+        if $u-1#14 == null goto label10;
+
+        $u-1#10 = virtualinvoke $u-1#14.<java.lang.String: int length()>();
+
+        if $u-1#10 <= 0 goto label10;
+
+        $u8#17 = new java.lang.StringBuilder;
+
+        specialinvoke $u8#17.<java.lang.StringBuilder: void <init>()>();
+
+        $u-1#18 = virtualinvoke $u-1#14.<java.lang.String: char charAt(int)>(0);
+
+        $u-1#18 = staticinvoke <java.lang.Character: char toUpperCase(char)>($u-1#18);
+
+        virtualinvoke $u8#17.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($u-1#18);
+
+        name = virtualinvoke $u-1#14.<java.lang.String: java.lang.String substring(int)>(1);
+
+        virtualinvoke $u8#17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(name);
+
+        name = virtualinvoke $u8#17.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        goto label10;
+
+     label02:
+        $u8 = <androidx.constraintlayout.widget.R$styleable: int CustomAttribute_customBoolean>;
+
+        if $u-1#10 != $u8 goto label03;
+
+        $u-1#26 = virtualinvoke $u-1#3.<android.content.res.TypedArray: boolean getBoolean(int,boolean)>($u-1#10, 0);
+
+        value = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($u-1#26);
+
+        type = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType BOOLEAN_TYPE>;
+
+        goto label10;
+
+     label03:
+        $u8 = <androidx.constraintlayout.widget.R$styleable: int CustomAttribute_customColorValue>;
+
+        if $u-1#10 != $u8 goto label04;
+
+        type = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType COLOR_TYPE>;
+
+        $u-1#10 = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getColor(int,int)>($u-1#10, 0);
+
+        value = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1#10);
+
+        goto label10;
+
+     label04:
+        $u8 = <androidx.constraintlayout.widget.R$styleable: int CustomAttribute_customColorDrawableValue>;
+
+        if $u-1#10 != $u8 goto label05;
+
+        type = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType COLOR_DRAWABLE_TYPE>;
+
+        $u-1#10 = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getColor(int,int)>($u-1#10, 0);
+
+        value = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1#10);
+
+        goto label10;
+
+     label05:
+        $u8 = <androidx.constraintlayout.widget.R$styleable: int CustomAttribute_customPixelDimension>;
+
+        if $u-1#10 != $u8 goto label06;
+
+        type = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType DIMENSION_TYPE>;
+
+        $u-1#39 = virtualinvoke $u-1#3.<android.content.res.TypedArray: float getDimension(int,float)>($u-1#10, 0.0F);
+
+        $u-1#41 = virtualinvoke $u11.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $u-1#43 = virtualinvoke $u-1#41.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $u-1#39 = staticinvoke <android.util.TypedValue: float applyDimension(int,float,android.util.DisplayMetrics)>(1, $u-1#39, $u-1#43);
+
+        value = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>($u-1#39);
+
+        goto label10;
+
+     label06:
+        $u8 = <androidx.constraintlayout.widget.R$styleable: int CustomAttribute_customDimension>;
+
+        if $u-1#10 != $u8 goto label07;
+
+        type = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType DIMENSION_TYPE>;
+
+        $u-1#39 = virtualinvoke $u-1#3.<android.content.res.TypedArray: float getDimension(int,float)>($u-1#10, 0.0F);
+
+        value = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>($u-1#39);
+
+        goto label10;
+
+     label07:
+        $u8 = <androidx.constraintlayout.widget.R$styleable: int CustomAttribute_customFloatValue>;
+
+        if $u-1#10 != $u8 goto label08;
+
+        type = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType FLOAT_TYPE>;
+
+        $u-1#39 = virtualinvoke $u-1#3.<android.content.res.TypedArray: float getFloat(int,float)>($u-1#10, #NaNF);
+
+        value = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>($u-1#39);
+
+        goto label10;
+
+     label08:
+        $u8 = <androidx.constraintlayout.widget.R$styleable: int CustomAttribute_customIntegerValue>;
+
+        if $u-1#10 != $u8 goto label09;
+
+        type = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType INT_TYPE>;
+
+        $u-1#10 = virtualinvoke $u-1#3.<android.content.res.TypedArray: int getInteger(int,int)>($u-1#10, -1);
+
+        value = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1#10);
+
+        goto label10;
+
+     label09:
+        $u8 = <androidx.constraintlayout.widget.R$styleable: int CustomAttribute_customStringValue>;
+
+        if $u-1#10 != $u8 goto label10;
+
+        type = <androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType STRING_TYPE>;
+
+        value = virtualinvoke $u-1#3.<android.content.res.TypedArray: java.lang.String getString(int)>($u-1#10);
+
+     label10:
+        i = i + 1;
+
+        goto label01;
+
+     label11:
+        if name == null goto label12;
+
+        if value == null goto label12;
+
+        i#64 = new androidx.constraintlayout.widget.ConstraintAttribute;
+
+        specialinvoke i#64.<androidx.constraintlayout.widget.ConstraintAttribute: void <init>(java.lang.String,androidx.constraintlayout.widget.ConstraintAttribute$AttributeType,java.lang.Object)>(name, type, value);
+
+        virtualinvoke custom.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(name, i#64);
+
+     label12:
+        virtualinvoke $u-1#3.<android.content.res.TypedArray: void recycle()>();
+
+        return;
+    }
+
+    public static void setAttributes(android.view.View, java.util.HashMap)
+    {
+        android.view.View $u13;
+        java.util.HashMap map;
+        int $u12;
+        java.lang.Class $u-1, drawable;
+        java.util.Set $u-1#2;
+        java.util.Iterator $u-1#4;
+        boolean $u-1#6;
+        java.lang.Object $u-1#8;
+        java.lang.String name, $u-1#16, drawable#46;
+        androidx.constraintlayout.widget.ConstraintAttribute constraintAttribute;
+        java.lang.StringBuilder methodName;
+        int[] method;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType $u9;
+        java.lang.Class[] method#25;
+        java.lang.reflect.Method $u-1#27;
+        java.lang.Object[] $u10;
+        float drawable#30;
+        java.lang.Float $u-1#31;
+        java.lang.Boolean $u-1#39;
+        java.lang.Integer $u-1#61;
+        android.graphics.drawable.ColorDrawable drawable#67;
+        java.lang.reflect.InvocationTargetException method#77;
+        java.lang.IllegalAccessException method#83;
+        java.lang.NoSuchMethodException method#89;
+
+        $u13 := @parameter0: android.view.View;
+
+        map := @parameter1: java.util.HashMap;
+
+        $u-1 = virtualinvoke $u13.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u-1#2 = virtualinvoke map.<java.util.HashMap: java.util.Set keySet()>();
+
+        $u-1#4 = interfaceinvoke $u-1#2.<java.util.Set: java.util.Iterator iterator()>();
+
+     label01:
+        $u-1#6 = interfaceinvoke $u-1#4.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#6 == 0 goto label58;
+
+        $u-1#8 = interfaceinvoke $u-1#4.<java.util.Iterator: java.lang.Object next()>();
+
+        name = (java.lang.String) $u-1#8;
+
+        $u-1#8 = virtualinvoke map.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(name);
+
+        constraintAttribute = (androidx.constraintlayout.widget.ConstraintAttribute) $u-1#8;
+
+        methodName = new java.lang.StringBuilder;
+
+        specialinvoke methodName.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("set");
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(name);
+
+        $u-1#16 = virtualinvoke methodName.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        method = <androidx.constraintlayout.widget.ConstraintAttribute$1: int[] $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType>;
+
+        $u9 = constraintAttribute.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType>;
+
+     label02:
+        $u12 = virtualinvoke $u9.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: int ordinal()>();
+
+     label03:
+        $u12 = method[$u12];
+
+        lookupswitch($u12)
+        {
+            case 1: goto label47;
+            case 2: goto label38;
+            case 3: goto label31;
+            case 4: goto label24;
+            case 5: goto label19;
+            case 6: goto label12;
+            case 7: goto label05;
+            default: goto label04;
+        };
+
+     label04:
+        goto label57;
+
+     label05:
+        method#25 = newarray (java.lang.Class)[1];
+
+        drawable = <java.lang.Float: java.lang.Class TYPE>;
+
+        method#25[0] = drawable;
+
+     label06:
+        $u-1#27 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>($u-1#16, method#25);
+
+     label07:
+        $u10 = newarray (java.lang.Object)[1];
+
+        drawable#30 = constraintAttribute.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue>;
+
+     label08:
+        $u-1#31 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>(drawable#30);
+
+     label09:
+        $u10[0] = $u-1#31;
+
+     label10:
+        virtualinvoke $u-1#27.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u13, $u10);
+
+     label11:
+        goto label57;
+
+     label12:
+        method#25 = newarray (java.lang.Class)[1];
+
+        drawable = <java.lang.Boolean: java.lang.Class TYPE>;
+
+        method#25[0] = drawable;
+
+     label13:
+        $u-1#27 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>($u-1#16, method#25);
+
+     label14:
+        $u10 = newarray (java.lang.Object)[1];
+
+        $u-1#6 = constraintAttribute.<androidx.constraintlayout.widget.ConstraintAttribute: boolean mBooleanValue>;
+
+     label15:
+        $u-1#39 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($u-1#6);
+
+     label16:
+        $u10[0] = $u-1#39;
+
+     label17:
+        virtualinvoke $u-1#27.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u13, $u10);
+
+     label18:
+        goto label57;
+
+     label19:
+        method#25 = newarray (java.lang.Class)[1];
+
+        method#25[0] = class "Ljava/lang/CharSequence;";
+
+     label20:
+        $u-1#27 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>($u-1#16, method#25);
+
+     label21:
+        $u10 = newarray (java.lang.Object)[1];
+
+        drawable#46 = constraintAttribute.<androidx.constraintlayout.widget.ConstraintAttribute: java.lang.String mStringValue>;
+
+        $u10[0] = drawable#46;
+
+     label22:
+        virtualinvoke $u-1#27.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u13, $u10);
+
+     label23:
+        goto label57;
+
+     label24:
+        method#25 = newarray (java.lang.Class)[1];
+
+        drawable = <java.lang.Float: java.lang.Class TYPE>;
+
+        method#25[0] = drawable;
+
+     label25:
+        $u-1#27 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>($u-1#16, method#25);
+
+     label26:
+        $u10 = newarray (java.lang.Object)[1];
+
+        drawable#30 = constraintAttribute.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue>;
+
+     label27:
+        $u-1#31 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>(drawable#30);
+
+     label28:
+        $u10[0] = $u-1#31;
+
+     label29:
+        virtualinvoke $u-1#27.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u13, $u10);
+
+     label30:
+        goto label57;
+
+     label31:
+        method#25 = newarray (java.lang.Class)[1];
+
+        drawable = <java.lang.Integer: java.lang.Class TYPE>;
+
+        method#25[0] = drawable;
+
+     label32:
+        $u-1#27 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>($u-1#16, method#25);
+
+     label33:
+        $u10 = newarray (java.lang.Object)[1];
+
+        $u12 = constraintAttribute.<androidx.constraintlayout.widget.ConstraintAttribute: int mIntegerValue>;
+
+     label34:
+        $u-1#61 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u12);
+
+     label35:
+        $u10[0] = $u-1#61;
+
+     label36:
+        virtualinvoke $u-1#27.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u13, $u10);
+
+     label37:
+        goto label57;
+
+     label38:
+        method#25 = newarray (java.lang.Class)[1];
+
+        method#25[0] = class "Landroid/graphics/drawable/Drawable;";
+
+     label39:
+        $u-1#27 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>($u-1#16, method#25);
+
+     label40:
+        drawable#67 = new android.graphics.drawable.ColorDrawable;
+
+     label41:
+        specialinvoke drawable#67.<android.graphics.drawable.ColorDrawable: void <init>()>();
+
+     label42:
+        $u12 = constraintAttribute.<androidx.constraintlayout.widget.ConstraintAttribute: int mColorValue>;
+
+     label43:
+        virtualinvoke drawable#67.<android.graphics.drawable.ColorDrawable: void setColor(int)>($u12);
+
+     label44:
+        $u10 = newarray (java.lang.Object)[1];
+
+        $u10[0] = drawable#67;
+
+     label45:
+        virtualinvoke $u-1#27.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u13, $u10);
+
+     label46:
+        goto label57;
+
+     label47:
+        method#25 = newarray (java.lang.Class)[1];
+
+        drawable = <java.lang.Integer: java.lang.Class TYPE>;
+
+        method#25[0] = drawable;
+
+     label48:
+        $u-1#27 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>($u-1#16, method#25);
+
+     label49:
+        $u10 = newarray (java.lang.Object)[1];
+
+        $u12 = constraintAttribute.<androidx.constraintlayout.widget.ConstraintAttribute: int mColorValue>;
+
+     label50:
+        $u-1#61 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u12);
+
+     label51:
+        $u10[0] = $u-1#61;
+
+     label52:
+        virtualinvoke $u-1#27.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u13, $u10);
+
+     label53:
+        goto label57;
+
+     label54:
+        method#77 := @caughtexception;
+
+        methodName = new java.lang.StringBuilder;
+
+        specialinvoke methodName.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" Custom Attribute \"");
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(name);
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\" not found on ");
+
+        $u-1#16 = virtualinvoke $u-1.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#16);
+
+        $u-1#16 = virtualinvoke methodName.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("TransitionLayout", $u-1#16);
+
+        virtualinvoke method#77.<java.lang.reflect.InvocationTargetException: void printStackTrace()>();
+
+        goto label01;
+
+     label55:
+        method#83 := @caughtexception;
+
+        methodName = new java.lang.StringBuilder;
+
+        specialinvoke methodName.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" Custom Attribute \"");
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(name);
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\" not found on ");
+
+        $u-1#16 = virtualinvoke $u-1.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#16);
+
+        $u-1#16 = virtualinvoke methodName.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("TransitionLayout", $u-1#16);
+
+        virtualinvoke method#83.<java.lang.IllegalAccessException: void printStackTrace()>();
+
+        goto label57;
+
+     label56:
+        method#89 := @caughtexception;
+
+        drawable#46 = virtualinvoke method#89.<java.lang.NoSuchMethodException: java.lang.String getMessage()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("TransitionLayout", drawable#46);
+
+        methodName = new java.lang.StringBuilder;
+
+        specialinvoke methodName.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" Custom Attribute \"");
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(name);
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\" not found on ");
+
+        name = virtualinvoke $u-1.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(name);
+
+        name = virtualinvoke methodName.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("TransitionLayout", name);
+
+        methodName = new java.lang.StringBuilder;
+
+        specialinvoke methodName.<java.lang.StringBuilder: void <init>()>();
+
+        name = virtualinvoke $u-1.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(name);
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" must have a method ");
+
+        virtualinvoke methodName.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#16);
+
+        $u-1#16 = virtualinvoke methodName.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("TransitionLayout", $u-1#16);
+
+     label57:
+        goto label01;
+
+     label58:
+        return;
+
+        catch java.lang.NoSuchMethodException from label02 to label03 with label56;
+        catch java.lang.NoSuchMethodException from label06 to label07 with label56;
+        catch java.lang.NoSuchMethodException from label08 to label09 with label56;
+        catch java.lang.NoSuchMethodException from label10 to label11 with label56;
+        catch java.lang.NoSuchMethodException from label13 to label14 with label56;
+        catch java.lang.NoSuchMethodException from label15 to label16 with label56;
+        catch java.lang.NoSuchMethodException from label17 to label18 with label56;
+        catch java.lang.NoSuchMethodException from label20 to label21 with label56;
+        catch java.lang.NoSuchMethodException from label22 to label23 with label56;
+        catch java.lang.NoSuchMethodException from label25 to label26 with label56;
+        catch java.lang.NoSuchMethodException from label27 to label28 with label56;
+        catch java.lang.NoSuchMethodException from label29 to label30 with label56;
+        catch java.lang.NoSuchMethodException from label32 to label33 with label56;
+        catch java.lang.NoSuchMethodException from label34 to label35 with label56;
+        catch java.lang.NoSuchMethodException from label36 to label37 with label56;
+        catch java.lang.NoSuchMethodException from label39 to label40 with label56;
+        catch java.lang.NoSuchMethodException from label41 to label42 with label56;
+        catch java.lang.NoSuchMethodException from label43 to label44 with label56;
+        catch java.lang.NoSuchMethodException from label45 to label46 with label56;
+        catch java.lang.NoSuchMethodException from label48 to label49 with label56;
+        catch java.lang.NoSuchMethodException from label50 to label51 with label56;
+        catch java.lang.NoSuchMethodException from label52 to label53 with label56;
+        catch java.lang.IllegalAccessException from label02 to label03 with label55;
+        catch java.lang.IllegalAccessException from label06 to label07 with label55;
+        catch java.lang.IllegalAccessException from label08 to label09 with label55;
+        catch java.lang.IllegalAccessException from label10 to label11 with label55;
+        catch java.lang.IllegalAccessException from label13 to label14 with label55;
+        catch java.lang.IllegalAccessException from label15 to label16 with label55;
+        catch java.lang.IllegalAccessException from label17 to label18 with label55;
+        catch java.lang.IllegalAccessException from label20 to label21 with label55;
+        catch java.lang.IllegalAccessException from label22 to label23 with label55;
+        catch java.lang.IllegalAccessException from label25 to label26 with label55;
+        catch java.lang.IllegalAccessException from label27 to label28 with label55;
+        catch java.lang.IllegalAccessException from label29 to label30 with label55;
+        catch java.lang.IllegalAccessException from label32 to label33 with label55;
+        catch java.lang.IllegalAccessException from label34 to label35 with label55;
+        catch java.lang.IllegalAccessException from label36 to label37 with label55;
+        catch java.lang.IllegalAccessException from label39 to label40 with label55;
+        catch java.lang.IllegalAccessException from label41 to label42 with label55;
+        catch java.lang.IllegalAccessException from label43 to label44 with label55;
+        catch java.lang.IllegalAccessException from label45 to label46 with label55;
+        catch java.lang.IllegalAccessException from label48 to label49 with label55;
+        catch java.lang.IllegalAccessException from label50 to label51 with label55;
+        catch java.lang.IllegalAccessException from label52 to label53 with label55;
+        catch java.lang.reflect.InvocationTargetException from label02 to label03 with label54;
+        catch java.lang.reflect.InvocationTargetException from label06 to label07 with label54;
+        catch java.lang.reflect.InvocationTargetException from label08 to label09 with label54;
+        catch java.lang.reflect.InvocationTargetException from label10 to label11 with label54;
+        catch java.lang.reflect.InvocationTargetException from label13 to label14 with label54;
+        catch java.lang.reflect.InvocationTargetException from label15 to label16 with label54;
+        catch java.lang.reflect.InvocationTargetException from label17 to label18 with label54;
+        catch java.lang.reflect.InvocationTargetException from label20 to label21 with label54;
+        catch java.lang.reflect.InvocationTargetException from label22 to label23 with label54;
+        catch java.lang.reflect.InvocationTargetException from label25 to label26 with label54;
+        catch java.lang.reflect.InvocationTargetException from label27 to label28 with label54;
+        catch java.lang.reflect.InvocationTargetException from label29 to label30 with label54;
+        catch java.lang.reflect.InvocationTargetException from label32 to label33 with label54;
+        catch java.lang.reflect.InvocationTargetException from label34 to label35 with label54;
+        catch java.lang.reflect.InvocationTargetException from label36 to label37 with label54;
+        catch java.lang.reflect.InvocationTargetException from label39 to label40 with label54;
+        catch java.lang.reflect.InvocationTargetException from label41 to label42 with label54;
+        catch java.lang.reflect.InvocationTargetException from label43 to label44 with label54;
+        catch java.lang.reflect.InvocationTargetException from label45 to label46 with label54;
+        catch java.lang.reflect.InvocationTargetException from label48 to label49 with label54;
+        catch java.lang.reflect.InvocationTargetException from label50 to label51 with label54;
+        catch java.lang.reflect.InvocationTargetException from label52 to label53 with label54;
+    }
+
+    public boolean diff(androidx.constraintlayout.widget.ConstraintAttribute)
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this, $u5;
+        int $u-1, $u3#17;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType $u1, $u2;
+        int[] $u1#4;
+        float $u1#9, $u3;
+        byte $u1#11;
+        boolean $u1#13, $u3#14;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u5 := @parameter0: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        if $u5 == null goto label9;
+
+        $u1 = this.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType>;
+
+        $u2 = $u5.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType>;
+
+        if $u1 == $u2 goto label1;
+
+        return 0;
+
+     label1:
+        $u1#4 = <androidx.constraintlayout.widget.ConstraintAttribute$1: int[] $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType>;
+
+        $u1 = this.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType>;
+
+        $u-1 = virtualinvoke $u1.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: int ordinal()>();
+
+        $u-1 = $u1#4[$u-1];
+
+        lookupswitch($u-1)
+        {
+            case 1: goto label8;
+            case 2: goto label8;
+            case 3: goto label7;
+            case 4: goto label6;
+            case 5: goto label5;
+            case 6: goto label4;
+            case 7: goto label3;
+            default: goto label2;
+        };
+
+     label2:
+        return 0;
+
+     label3:
+        $u1#9 = this.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue>;
+
+        $u3 = $u5.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue>;
+
+        $u1#11 = $u1#9 cmpl $u3;
+
+        if $u1#11 != 0 goto label9;
+
+        return 1;
+
+     label4:
+        $u1#13 = this.<androidx.constraintlayout.widget.ConstraintAttribute: boolean mBooleanValue>;
+
+        $u3#14 = $u5.<androidx.constraintlayout.widget.ConstraintAttribute: boolean mBooleanValue>;
+
+        if $u1#13 != $u3#14 goto label9;
+
+        return 1;
+
+     label5:
+        $u-1 = this.<androidx.constraintlayout.widget.ConstraintAttribute: int mIntegerValue>;
+
+        $u3#17 = $u5.<androidx.constraintlayout.widget.ConstraintAttribute: int mIntegerValue>;
+
+        if $u-1 != $u3#17 goto label9;
+
+        return 1;
+
+     label6:
+        $u1#9 = this.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue>;
+
+        $u3 = $u5.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue>;
+
+        $u1#11 = $u1#9 cmpl $u3;
+
+        if $u1#11 != 0 goto label9;
+
+        return 1;
+
+     label7:
+        $u-1 = this.<androidx.constraintlayout.widget.ConstraintAttribute: int mIntegerValue>;
+
+        $u3#17 = $u5.<androidx.constraintlayout.widget.ConstraintAttribute: int mIntegerValue>;
+
+        if $u-1 != $u3#17 goto label9;
+
+        return 1;
+
+     label8:
+        $u-1 = this.<androidx.constraintlayout.widget.ConstraintAttribute: int mColorValue>;
+
+        $u3#17 = $u5.<androidx.constraintlayout.widget.ConstraintAttribute: int mColorValue>;
+
+        if $u-1 != $u3#17 goto label9;
+
+        return 1;
+
+     label9:
+        return 0;
+    }
+
+    public androidx.constraintlayout.widget.ConstraintAttribute$AttributeType getType()
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType ret0;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        ret0 = this.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType>;
+
+        return ret0;
+    }
+
+    public float getValueToInterpolate()
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this;
+        int $u-1;
+        int[] $u0;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType $u1;
+        boolean $u0#7;
+        java.lang.RuntimeException $u0#10;
+        float $u0#14;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u0 = <androidx.constraintlayout.widget.ConstraintAttribute$1: int[] $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType>;
+
+        $u1 = this.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType>;
+
+        $u-1 = virtualinvoke $u1.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: int ordinal()>();
+
+        $u-1 = $u0[$u-1];
+
+        lookupswitch($u-1)
+        {
+            case 1: goto label8;
+            case 2: goto label8;
+            case 3: goto label7;
+            case 4: goto label6;
+            case 5: goto label5;
+            case 6: goto label3;
+            case 7: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return #NaNF;
+
+     label2:
+        $u0#14 = this.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue>;
+
+        return $u0#14;
+
+     label3:
+        $u0#7 = this.<androidx.constraintlayout.widget.ConstraintAttribute: boolean mBooleanValue>;
+
+        if $u0#7 == 0 goto label4;
+
+        return 0.0F;
+
+     label4:
+        return 1.0F;
+
+     label5:
+        $u0#10 = new java.lang.RuntimeException;
+
+        specialinvoke $u0#10.<java.lang.RuntimeException: void <init>(java.lang.String)>("Cannot interpolate String");
+
+        throw $u0#10;
+
+     label6:
+        $u0#14 = this.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue>;
+
+        return $u0#14;
+
+     label7:
+        $u-1 = this.<androidx.constraintlayout.widget.ConstraintAttribute: int mIntegerValue>;
+
+        $u0#14 = (float) $u-1;
+
+        return $u0#14;
+
+     label8:
+        $u0#10 = new java.lang.RuntimeException;
+
+        specialinvoke $u0#10.<java.lang.RuntimeException: void <init>(java.lang.String)>("Color does not have a single color to interpolate");
+
+        throw $u0#10;
+    }
+
+    public void getValuesToInterpolate(float[])
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this;
+        float[] $u14;
+        double $u11;
+        int[] b;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType $u1;
+        int $u-1, a, r, g;
+        float b#7, f_g, f_b;
+        boolean b#8;
+        java.lang.RuntimeException b#10;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u14 := @parameter0: float[];
+
+        b = <androidx.constraintlayout.widget.ConstraintAttribute$1: int[] $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType>;
+
+        $u1 = this.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType>;
+
+        $u-1 = virtualinvoke $u1.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: int ordinal()>();
+
+        $u-1 = b[$u-1];
+
+        lookupswitch($u-1)
+        {
+            case 1: goto label9;
+            case 2: goto label9;
+            case 3: goto label8;
+            case 4: goto label7;
+            case 5: goto label6;
+            case 6: goto label3;
+            case 7: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        b#7 = this.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue>;
+
+        $u14[0] = b#7;
+
+        return;
+
+     label3:
+        b#8 = this.<androidx.constraintlayout.widget.ConstraintAttribute: boolean mBooleanValue>;
+
+        if b#8 == 0 goto label4;
+
+        b#7 = 0.0F;
+
+        goto label5;
+
+     label4:
+        b#7 = 1.0F;
+
+     label5:
+        $u14[0] = b#7;
+
+        return;
+
+     label6:
+        b#10 = new java.lang.RuntimeException;
+
+        specialinvoke b#10.<java.lang.RuntimeException: void <init>(java.lang.String)>("Color does not have a single color to interpolate");
+
+        throw b#10;
+
+     label7:
+        b#7 = this.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue>;
+
+        $u14[0] = b#7;
+
+        return;
+
+     label8:
+        $u-1 = this.<androidx.constraintlayout.widget.ConstraintAttribute: int mIntegerValue>;
+
+        b#7 = (float) $u-1;
+
+        $u14[0] = b#7;
+
+        return;
+
+     label9:
+        $u-1 = this.<androidx.constraintlayout.widget.ConstraintAttribute: int mColorValue>;
+
+        a = $u-1 >> 24;
+
+        a = a & 255;
+
+        r = $u-1 >> 16;
+
+        r = r & 255;
+
+        g = $u-1 >> 8;
+
+        g = g & 255;
+
+        $u-1 = $u-1 & 255;
+
+        b#7 = (float) r;
+
+        b#7 = b#7 / 255.0F;
+
+        $u11 = (double) b#7;
+
+        $u11 = staticinvoke <java.lang.Math: double pow(double,double)>($u11, 2.2);
+
+        b#7 = (float) $u11;
+
+        f_g = (float) g;
+
+        f_g = f_g / 255.0F;
+
+        $u11 = (double) f_g;
+
+        $u11 = staticinvoke <java.lang.Math: double pow(double,double)>($u11, 2.2);
+
+        f_g = (float) $u11;
+
+        f_b = (float) $u-1;
+
+        f_b = f_b / 255.0F;
+
+        $u11 = (double) f_b;
+
+        $u11 = staticinvoke <java.lang.Math: double pow(double,double)>($u11, 2.2);
+
+        f_b = (float) $u11;
+
+        $u14[0] = b#7;
+
+        $u14[1] = f_g;
+
+        $u14[2] = f_b;
+
+        b#7 = (float) a;
+
+        b#7 = b#7 / 255.0F;
+
+        $u14[3] = b#7;
+
+        return;
+    }
+
+    public int noOfInterpValues()
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this;
+        int $u-1;
+        int[] $u0;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType $u1;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u0 = <androidx.constraintlayout.widget.ConstraintAttribute$1: int[] $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType>;
+
+        $u1 = this.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType>;
+
+        $u-1 = virtualinvoke $u1.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: int ordinal()>();
+
+        $u-1 = $u0[$u-1];
+
+        if $u-1 == 1 goto label1;
+
+        if $u-1 == 2 goto label1;
+
+        return 1;
+
+     label1:
+        return 4;
+    }
+
+    public void setColorValue(int)
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: int mColorValue> = $u1;
+
+        return;
+    }
+
+    public void setFloatValue(float)
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this;
+        float $u1;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u1 := @parameter0: float;
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue> = $u1;
+
+        return;
+    }
+
+    public void setIntValue(int)
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this;
+        int $u1;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u1 := @parameter0: int;
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: int mIntegerValue> = $u1;
+
+        return;
+    }
+
+    public void setInterpolatedValue(android.view.View, float[])
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this;
+        android.view.View $u18;
+        float[] $u19;
+        java.lang.Class $u-1, a#21;
+        java.lang.StringBuilder method;
+        java.lang.String methodName, b#41;
+        int[] method#9;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType a;
+        int $u-1#11, $u-1#72, $u-1#81, a#94;
+        boolean g;
+        java.lang.Class[] method#20;
+        java.lang.reflect.Method $u-1#22;
+        java.lang.Object[] a#24;
+        float b;
+        java.lang.Float $u-1#26;
+        byte b#35;
+        java.lang.Boolean $u-1#36;
+        java.lang.RuntimeException method#38;
+        java.lang.Integer $u-1#59;
+        double r;
+        android.graphics.drawable.ColorDrawable drawable;
+        java.lang.reflect.InvocationTargetException method#158;
+        java.lang.IllegalAccessException method#159;
+        java.lang.NoSuchMethodException method#166;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u18 := @parameter0: android.view.View;
+
+        $u19 := @parameter1: float[];
+
+        $u-1 = virtualinvoke $u18.<java.lang.Object: java.lang.Class getClass()>();
+
+        method = new java.lang.StringBuilder;
+
+        specialinvoke method.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("set");
+
+        methodName = this.<androidx.constraintlayout.widget.ConstraintAttribute: java.lang.String mName>;
+
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(methodName);
+
+        methodName = virtualinvoke method.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        method#9 = <androidx.constraintlayout.widget.ConstraintAttribute$1: int[] $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType>;
+
+        a = this.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType>;
+
+     label01:
+        $u-1#11 = virtualinvoke a.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: int ordinal()>();
+
+     label02:
+        $u-1#11 = method#9[$u-1#11];
+
+        g = 1;
+
+        lookupswitch($u-1#11)
+        {
+            case 1: goto label59;
+            case 2: goto label38;
+            case 3: goto label31;
+            case 4: goto label24;
+            case 5: goto label19;
+            case 6: goto label11;
+            case 7: goto label04;
+            default: goto label03;
+        };
+
+     label03:
+        goto label83;
+
+     label04:
+        method#20 = newarray (java.lang.Class)[1];
+
+        a#21 = <java.lang.Float: java.lang.Class TYPE>;
+
+        method#20[0] = a#21;
+
+     label05:
+        $u-1#22 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>(methodName, method#20);
+
+     label06:
+        a#24 = newarray (java.lang.Object)[1];
+
+        b = $u19[0];
+
+     label07:
+        $u-1#26 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>(b);
+
+     label08:
+        a#24[0] = $u-1#26;
+
+     label09:
+        virtualinvoke $u-1#22.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u18, a#24);
+
+     label10:
+        goto label83;
+
+     label11:
+        method#20 = newarray (java.lang.Class)[1];
+
+        a#21 = <java.lang.Boolean: java.lang.Class TYPE>;
+
+        method#20[0] = a#21;
+
+     label12:
+        $u-1#22 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>(methodName, method#20);
+
+     label13:
+        a#24 = newarray (java.lang.Object)[1];
+
+        b = $u19[0];
+
+        b#35 = b cmpl 0.5F;
+
+        if b#35 <= 0 goto label14;
+
+        goto label15;
+
+     label14:
+        g = 0;
+
+     label15:
+        $u-1#36 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(g);
+
+     label16:
+        a#24[0] = $u-1#36;
+
+     label17:
+        virtualinvoke $u-1#22.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u18, a#24);
+
+     label18:
+        goto label83;
+
+     label19:
+        method#38 = new java.lang.RuntimeException;
+
+        method = new java.lang.StringBuilder;
+
+     label20:
+        specialinvoke method.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("unable to interpolate strings ");
+
+     label21:
+        b#41 = this.<androidx.constraintlayout.widget.ConstraintAttribute: java.lang.String mName>;
+
+     label22:
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(b#41);
+
+        b#41 = virtualinvoke method.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke method#38.<java.lang.RuntimeException: void <init>(java.lang.String)>(b#41);
+
+     label23:
+        throw method#38;
+
+     label24:
+        method#20 = newarray (java.lang.Class)[1];
+
+        a#21 = <java.lang.Float: java.lang.Class TYPE>;
+
+        method#20[0] = a#21;
+
+     label25:
+        $u-1#22 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>(methodName, method#20);
+
+     label26:
+        a#24 = newarray (java.lang.Object)[1];
+
+        b = $u19[0];
+
+     label27:
+        $u-1#26 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>(b);
+
+     label28:
+        a#24[0] = $u-1#26;
+
+     label29:
+        virtualinvoke $u-1#22.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u18, a#24);
+
+     label30:
+        goto label83;
+
+     label31:
+        method#20 = newarray (java.lang.Class)[1];
+
+        a#21 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        method#20[0] = a#21;
+
+     label32:
+        $u-1#22 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>(methodName, method#20);
+
+     label33:
+        a#24 = newarray (java.lang.Object)[1];
+
+        b = $u19[0];
+
+        $u-1#11 = (int) b;
+
+     label34:
+        $u-1#59 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1#11);
+
+     label35:
+        a#24[0] = $u-1#59;
+
+     label36:
+        virtualinvoke $u-1#22.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u18, a#24);
+
+     label37:
+        goto label83;
+
+     label38:
+        method#20 = newarray (java.lang.Class)[1];
+
+        method#20[0] = class "Landroid/graphics/drawable/Drawable;";
+
+     label39:
+        $u-1#22 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>(methodName, method#20);
+
+     label40:
+        b = $u19[0];
+
+        r = (double) b;
+
+     label41:
+        r = staticinvoke <java.lang.Math: double pow(double,double)>(r, 0.45454545454545453);
+
+     label42:
+        b = (float) r;
+
+        b = b * 255.0F;
+
+        $u-1#11 = (int) b;
+
+     label43:
+        $u-1#72 = staticinvoke <androidx.constraintlayout.widget.ConstraintAttribute: int clamp(int)>($u-1#11);
+
+     label44:
+        b = $u19[1];
+
+        r = (double) b;
+
+     label45:
+        r = staticinvoke <java.lang.Math: double pow(double,double)>(r, 0.45454545454545453);
+
+     label46:
+        b = (float) r;
+
+        b = b * 255.0F;
+
+        $u-1#11 = (int) b;
+
+     label47:
+        $u-1#81 = staticinvoke <androidx.constraintlayout.widget.ConstraintAttribute: int clamp(int)>($u-1#11);
+
+     label48:
+        b = $u19[2];
+
+        r = (double) b;
+
+     label49:
+        r = staticinvoke <java.lang.Math: double pow(double,double)>(r, 0.45454545454545453);
+
+     label50:
+        b = (float) r;
+
+        b = b * 255.0F;
+
+        $u-1#11 = (int) b;
+
+     label51:
+        $u-1#11 = staticinvoke <androidx.constraintlayout.widget.ConstraintAttribute: int clamp(int)>($u-1#11);
+
+     label52:
+        b = $u19[3];
+
+        b = b * 255.0F;
+
+        a#94 = (int) b;
+
+     label53:
+        a#94 = staticinvoke <androidx.constraintlayout.widget.ConstraintAttribute: int clamp(int)>(a#94);
+
+     label54:
+        a#94 = a#94 << 24;
+
+        $u-1#72 = $u-1#72 << 16;
+
+        $u-1#72 = a#94 | $u-1#72;
+
+        $u-1#81 = $u-1#81 << 8;
+
+        $u-1#81 = $u-1#72 | $u-1#81;
+
+        $u-1#11 = $u-1#81 | $u-1#11;
+
+        drawable = new android.graphics.drawable.ColorDrawable;
+
+     label55:
+        specialinvoke drawable.<android.graphics.drawable.ColorDrawable: void <init>()>();
+
+        virtualinvoke drawable.<android.graphics.drawable.ColorDrawable: void setColor(int)>($u-1#11);
+
+     label56:
+        a#24 = newarray (java.lang.Object)[1];
+
+        a#24[0] = drawable;
+
+     label57:
+        virtualinvoke $u-1#22.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u18, a#24);
+
+     label58:
+        goto label83;
+
+     label59:
+        method#20 = newarray (java.lang.Class)[1];
+
+        a#21 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        method#20[0] = a#21;
+
+     label60:
+        $u-1#22 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>(methodName, method#20);
+
+     label61:
+        b = $u19[0];
+
+        r = (double) b;
+
+     label62:
+        r = staticinvoke <java.lang.Math: double pow(double,double)>(r, 0.45454545454545453);
+
+     label63:
+        b = (float) r;
+
+        b = b * 255.0F;
+
+        $u-1#11 = (int) b;
+
+     label64:
+        $u-1#72 = staticinvoke <androidx.constraintlayout.widget.ConstraintAttribute: int clamp(int)>($u-1#11);
+
+     label65:
+        b = $u19[1];
+
+        r = (double) b;
+
+     label66:
+        r = staticinvoke <java.lang.Math: double pow(double,double)>(r, 0.45454545454545453);
+
+     label67:
+        b = (float) r;
+
+        b = b * 255.0F;
+
+        $u-1#11 = (int) b;
+
+     label68:
+        $u-1#81 = staticinvoke <androidx.constraintlayout.widget.ConstraintAttribute: int clamp(int)>($u-1#11);
+
+     label69:
+        b = $u19[2];
+
+        r = (double) b;
+
+     label70:
+        r = staticinvoke <java.lang.Math: double pow(double,double)>(r, 0.45454545454545453);
+
+     label71:
+        b = (float) r;
+
+        b = b * 255.0F;
+
+        $u-1#11 = (int) b;
+
+     label72:
+        $u-1#11 = staticinvoke <androidx.constraintlayout.widget.ConstraintAttribute: int clamp(int)>($u-1#11);
+
+     label73:
+        b = $u19[3];
+
+        b = b * 255.0F;
+
+        a#94 = (int) b;
+
+     label74:
+        a#94 = staticinvoke <androidx.constraintlayout.widget.ConstraintAttribute: int clamp(int)>(a#94);
+
+     label75:
+        a#94 = a#94 << 24;
+
+        $u-1#72 = $u-1#72 << 16;
+
+        $u-1#72 = a#94 | $u-1#72;
+
+        $u-1#81 = $u-1#81 << 8;
+
+        $u-1#81 = $u-1#72 | $u-1#81;
+
+        $u-1#11 = $u-1#81 | $u-1#11;
+
+        a#24 = newarray (java.lang.Object)[1];
+
+     label76:
+        $u-1#59 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1#11);
+
+     label77:
+        a#24[0] = $u-1#59;
+
+     label78:
+        virtualinvoke $u-1#22.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($u18, a#24);
+
+     label79:
+        goto label83;
+
+     label80:
+        method#158 := @caughtexception;
+
+        virtualinvoke method#158.<java.lang.reflect.InvocationTargetException: void printStackTrace()>();
+
+        return;
+
+     label81:
+        method#159 := @caughtexception;
+
+        method = new java.lang.StringBuilder;
+
+        specialinvoke method.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("cannot access method ");
+
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(methodName);
+
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("on View \"");
+
+        methodName = staticinvoke <androidx.constraintlayout.motion.widget.Debug: java.lang.String getName(android.view.View)>($u18);
+
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(methodName);
+
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\"");
+
+        methodName = virtualinvoke method.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("TransitionLayout", methodName);
+
+        virtualinvoke method#159.<java.lang.IllegalAccessException: void printStackTrace()>();
+
+        goto label83;
+
+     label82:
+        method#166 := @caughtexception;
+
+        method = new java.lang.StringBuilder;
+
+        specialinvoke method.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("no method ");
+
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(methodName);
+
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("on View \"");
+
+        methodName = staticinvoke <androidx.constraintlayout.motion.widget.Debug: java.lang.String getName(android.view.View)>($u18);
+
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(methodName);
+
+        virtualinvoke method.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\"");
+
+        methodName = virtualinvoke method.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("TransitionLayout", methodName);
+
+        virtualinvoke method#166.<java.lang.NoSuchMethodException: void printStackTrace()>();
+
+     label83:
+        return;
+
+        catch java.lang.NoSuchMethodException from label01 to label02 with label82;
+        catch java.lang.NoSuchMethodException from label05 to label06 with label82;
+        catch java.lang.NoSuchMethodException from label07 to label08 with label82;
+        catch java.lang.NoSuchMethodException from label09 to label10 with label82;
+        catch java.lang.NoSuchMethodException from label12 to label13 with label82;
+        catch java.lang.NoSuchMethodException from label15 to label16 with label82;
+        catch java.lang.NoSuchMethodException from label17 to label18 with label82;
+        catch java.lang.NoSuchMethodException from label20 to label21 with label82;
+        catch java.lang.NoSuchMethodException from label22 to label23 with label82;
+        catch java.lang.NoSuchMethodException from label25 to label26 with label82;
+        catch java.lang.NoSuchMethodException from label27 to label28 with label82;
+        catch java.lang.NoSuchMethodException from label29 to label30 with label82;
+        catch java.lang.NoSuchMethodException from label32 to label33 with label82;
+        catch java.lang.NoSuchMethodException from label34 to label35 with label82;
+        catch java.lang.NoSuchMethodException from label36 to label37 with label82;
+        catch java.lang.NoSuchMethodException from label39 to label40 with label82;
+        catch java.lang.NoSuchMethodException from label41 to label42 with label82;
+        catch java.lang.NoSuchMethodException from label43 to label44 with label82;
+        catch java.lang.NoSuchMethodException from label45 to label46 with label82;
+        catch java.lang.NoSuchMethodException from label47 to label48 with label82;
+        catch java.lang.NoSuchMethodException from label49 to label50 with label82;
+        catch java.lang.NoSuchMethodException from label51 to label52 with label82;
+        catch java.lang.NoSuchMethodException from label53 to label54 with label82;
+        catch java.lang.NoSuchMethodException from label55 to label56 with label82;
+        catch java.lang.NoSuchMethodException from label57 to label58 with label82;
+        catch java.lang.NoSuchMethodException from label60 to label61 with label82;
+        catch java.lang.NoSuchMethodException from label62 to label63 with label82;
+        catch java.lang.NoSuchMethodException from label64 to label65 with label82;
+        catch java.lang.NoSuchMethodException from label66 to label67 with label82;
+        catch java.lang.NoSuchMethodException from label68 to label69 with label82;
+        catch java.lang.NoSuchMethodException from label70 to label71 with label82;
+        catch java.lang.NoSuchMethodException from label72 to label73 with label82;
+        catch java.lang.NoSuchMethodException from label74 to label75 with label82;
+        catch java.lang.NoSuchMethodException from label76 to label77 with label82;
+        catch java.lang.NoSuchMethodException from label78 to label79 with label82;
+        catch java.lang.IllegalAccessException from label01 to label02 with label81;
+        catch java.lang.IllegalAccessException from label05 to label06 with label81;
+        catch java.lang.IllegalAccessException from label07 to label08 with label81;
+        catch java.lang.IllegalAccessException from label09 to label10 with label81;
+        catch java.lang.IllegalAccessException from label12 to label13 with label81;
+        catch java.lang.IllegalAccessException from label15 to label16 with label81;
+        catch java.lang.IllegalAccessException from label17 to label18 with label81;
+        catch java.lang.IllegalAccessException from label20 to label21 with label81;
+        catch java.lang.IllegalAccessException from label22 to label23 with label81;
+        catch java.lang.IllegalAccessException from label25 to label26 with label81;
+        catch java.lang.IllegalAccessException from label27 to label28 with label81;
+        catch java.lang.IllegalAccessException from label29 to label30 with label81;
+        catch java.lang.IllegalAccessException from label32 to label33 with label81;
+        catch java.lang.IllegalAccessException from label34 to label35 with label81;
+        catch java.lang.IllegalAccessException from label36 to label37 with label81;
+        catch java.lang.IllegalAccessException from label39 to label40 with label81;
+        catch java.lang.IllegalAccessException from label41 to label42 with label81;
+        catch java.lang.IllegalAccessException from label43 to label44 with label81;
+        catch java.lang.IllegalAccessException from label45 to label46 with label81;
+        catch java.lang.IllegalAccessException from label47 to label48 with label81;
+        catch java.lang.IllegalAccessException from label49 to label50 with label81;
+        catch java.lang.IllegalAccessException from label51 to label52 with label81;
+        catch java.lang.IllegalAccessException from label53 to label54 with label81;
+        catch java.lang.IllegalAccessException from label55 to label56 with label81;
+        catch java.lang.IllegalAccessException from label57 to label58 with label81;
+        catch java.lang.IllegalAccessException from label60 to label61 with label81;
+        catch java.lang.IllegalAccessException from label62 to label63 with label81;
+        catch java.lang.IllegalAccessException from label64 to label65 with label81;
+        catch java.lang.IllegalAccessException from label66 to label67 with label81;
+        catch java.lang.IllegalAccessException from label68 to label69 with label81;
+        catch java.lang.IllegalAccessException from label70 to label71 with label81;
+        catch java.lang.IllegalAccessException from label72 to label73 with label81;
+        catch java.lang.IllegalAccessException from label74 to label75 with label81;
+        catch java.lang.IllegalAccessException from label76 to label77 with label81;
+        catch java.lang.IllegalAccessException from label78 to label79 with label81;
+        catch java.lang.reflect.InvocationTargetException from label01 to label02 with label80;
+        catch java.lang.reflect.InvocationTargetException from label05 to label06 with label80;
+        catch java.lang.reflect.InvocationTargetException from label07 to label08 with label80;
+        catch java.lang.reflect.InvocationTargetException from label09 to label10 with label80;
+        catch java.lang.reflect.InvocationTargetException from label12 to label13 with label80;
+        catch java.lang.reflect.InvocationTargetException from label15 to label16 with label80;
+        catch java.lang.reflect.InvocationTargetException from label17 to label18 with label80;
+        catch java.lang.reflect.InvocationTargetException from label20 to label21 with label80;
+        catch java.lang.reflect.InvocationTargetException from label22 to label23 with label80;
+        catch java.lang.reflect.InvocationTargetException from label25 to label26 with label80;
+        catch java.lang.reflect.InvocationTargetException from label27 to label28 with label80;
+        catch java.lang.reflect.InvocationTargetException from label29 to label30 with label80;
+        catch java.lang.reflect.InvocationTargetException from label32 to label33 with label80;
+        catch java.lang.reflect.InvocationTargetException from label34 to label35 with label80;
+        catch java.lang.reflect.InvocationTargetException from label36 to label37 with label80;
+        catch java.lang.reflect.InvocationTargetException from label39 to label40 with label80;
+        catch java.lang.reflect.InvocationTargetException from label41 to label42 with label80;
+        catch java.lang.reflect.InvocationTargetException from label43 to label44 with label80;
+        catch java.lang.reflect.InvocationTargetException from label45 to label46 with label80;
+        catch java.lang.reflect.InvocationTargetException from label47 to label48 with label80;
+        catch java.lang.reflect.InvocationTargetException from label49 to label50 with label80;
+        catch java.lang.reflect.InvocationTargetException from label51 to label52 with label80;
+        catch java.lang.reflect.InvocationTargetException from label53 to label54 with label80;
+        catch java.lang.reflect.InvocationTargetException from label55 to label56 with label80;
+        catch java.lang.reflect.InvocationTargetException from label57 to label58 with label80;
+        catch java.lang.reflect.InvocationTargetException from label60 to label61 with label80;
+        catch java.lang.reflect.InvocationTargetException from label62 to label63 with label80;
+        catch java.lang.reflect.InvocationTargetException from label64 to label65 with label80;
+        catch java.lang.reflect.InvocationTargetException from label66 to label67 with label80;
+        catch java.lang.reflect.InvocationTargetException from label68 to label69 with label80;
+        catch java.lang.reflect.InvocationTargetException from label70 to label71 with label80;
+        catch java.lang.reflect.InvocationTargetException from label72 to label73 with label80;
+        catch java.lang.reflect.InvocationTargetException from label74 to label75 with label80;
+        catch java.lang.reflect.InvocationTargetException from label76 to label77 with label80;
+        catch java.lang.reflect.InvocationTargetException from label78 to label79 with label80;
+    }
+
+    public void setStringValue(java.lang.String)
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this;
+        java.lang.String $u1;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u1 := @parameter0: java.lang.String;
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: java.lang.String mStringValue> = $u1;
+
+        return;
+    }
+
+    public void setValue(java.lang.Object)
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this;
+        java.lang.Object $u3;
+        int[] $u0;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType $u1;
+        int $u-1;
+        java.lang.Float $u0#7;
+        float $u-1#8;
+        java.lang.Boolean $u0#11;
+        boolean $u-1#12;
+        java.lang.String $u0#15;
+        java.lang.Integer $u0#21;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u3 := @parameter0: java.lang.Object;
+
+        $u0 = <androidx.constraintlayout.widget.ConstraintAttribute$1: int[] $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType>;
+
+        $u1 = this.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType>;
+
+        $u-1 = virtualinvoke $u1.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: int ordinal()>();
+
+        $u-1 = $u0[$u-1];
+
+        lookupswitch($u-1)
+        {
+            case 1: goto label7;
+            case 2: goto label7;
+            case 3: goto label6;
+            case 4: goto label5;
+            case 5: goto label4;
+            case 6: goto label3;
+            case 7: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        $u0#7 = (java.lang.Float) $u3;
+
+        $u-1#8 = virtualinvoke $u0#7.<java.lang.Float: float floatValue()>();
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue> = $u-1#8;
+
+        return;
+
+     label3:
+        $u0#11 = (java.lang.Boolean) $u3;
+
+        $u-1#12 = virtualinvoke $u0#11.<java.lang.Boolean: boolean booleanValue()>();
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: boolean mBooleanValue> = $u-1#12;
+
+        return;
+
+     label4:
+        $u0#15 = (java.lang.String) $u3;
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: java.lang.String mStringValue> = $u0#15;
+
+        return;
+
+     label5:
+        $u0#7 = (java.lang.Float) $u3;
+
+        $u-1#8 = virtualinvoke $u0#7.<java.lang.Float: float floatValue()>();
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue> = $u-1#8;
+
+        return;
+
+     label6:
+        $u0#21 = (java.lang.Integer) $u3;
+
+        $u-1 = virtualinvoke $u0#21.<java.lang.Integer: int intValue()>();
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: int mIntegerValue> = $u-1;
+
+        return;
+
+     label7:
+        $u0#21 = (java.lang.Integer) $u3;
+
+        $u-1 = virtualinvoke $u0#21.<java.lang.Integer: int intValue()>();
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: int mColorValue> = $u-1;
+
+        return;
+    }
+
+    public void setValue(float[])
+    {
+        androidx.constraintlayout.widget.ConstraintAttribute this;
+        float[] $u7;
+        int[] $u0;
+        androidx.constraintlayout.widget.ConstraintAttribute$AttributeType $u1;
+        int $u-1, $u1#24;
+        boolean $u1#6;
+        float $u0#7;
+        double $u2;
+        byte $u0#10;
+        java.lang.RuntimeException $u0#11;
+
+        this := @this: androidx.constraintlayout.widget.ConstraintAttribute;
+
+        $u7 := @parameter0: float[];
+
+        $u0 = <androidx.constraintlayout.widget.ConstraintAttribute$1: int[] $SwitchMap$androidx$constraintlayout$widget$ConstraintAttribute$AttributeType>;
+
+        $u1 = this.<androidx.constraintlayout.widget.ConstraintAttribute: androidx.constraintlayout.widget.ConstraintAttribute$AttributeType mType>;
+
+        $u-1 = virtualinvoke $u1.<androidx.constraintlayout.widget.ConstraintAttribute$AttributeType: int ordinal()>();
+
+        $u-1 = $u0[$u-1];
+
+        $u1#6 = 0;
+
+        lookupswitch($u-1)
+        {
+            case 1: goto label8;
+            case 2: goto label8;
+            case 3: goto label7;
+            case 4: goto label6;
+            case 5: goto label5;
+            case 6: goto label3;
+            case 7: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        $u0#7 = $u7[0];
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue> = $u0#7;
+
+        return;
+
+     label3:
+        $u0#7 = $u7[0];
+
+        $u2 = (double) $u0#7;
+
+        $u0#10 = $u2 cmpl 0.5;
+
+        if $u0#10 <= 0 goto label4;
+
+        $u1#6 = 1;
+
+     label4:
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: boolean mBooleanValue> = $u1#6;
+
+        return;
+
+     label5:
+        $u0#11 = new java.lang.RuntimeException;
+
+        specialinvoke $u0#11.<java.lang.RuntimeException: void <init>(java.lang.String)>("Color does not have a single color to interpolate");
+
+        throw $u0#11;
+
+     label6:
+        $u0#7 = $u7[0];
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: float mFloatValue> = $u0#7;
+
+        return;
+
+     label7:
+        $u0#7 = $u7[0];
+
+        $u-1 = (int) $u0#7;
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: int mIntegerValue> = $u-1;
+
+        return;
+
+     label8:
+        $u-1 = staticinvoke <android.graphics.Color: int HSVToColor(float[])>($u7);
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: int mColorValue> = $u-1;
+
+        $u-1 = $u-1 & 16777215;
+
+        $u0#7 = $u7[3];
+
+        $u0#7 = $u0#7 * 255.0F;
+
+        $u1#24 = (int) $u0#7;
+
+        $u1#24 = staticinvoke <androidx.constraintlayout.widget.ConstraintAttribute: int clamp(int)>($u1#24);
+
+        $u1#24 = $u1#24 << 24;
+
+        $u-1 = $u-1 | $u1#24;
+
+        this.<androidx.constraintlayout.widget.ConstraintAttribute: int mColorValue> = $u-1;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.constraintlayout.widget.ConstraintAttribute: java.lang.String TAG> = "TransitionLayout";
+
+        return;
+    }
+}

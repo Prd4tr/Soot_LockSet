@@ -1,0 +1,2430 @@
+class androidx.fragment.app.FragmentTransition extends java.lang.Object
+{
+    private static final int[] INVERSE_OPS;
+    private static final androidx.fragment.app.FragmentTransitionImpl PLATFORM_IMPL;
+    private static final androidx.fragment.app.FragmentTransitionImpl SUPPORT_IMPL;
+
+    static void <clinit>()
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u-1;
+        int[] $u0;
+        int $u0#3;
+        androidx.fragment.app.FragmentTransitionCompat21 $u0#4;
+
+        $u0 = newarray (int)[11];
+
+        $u0[0] = 0;
+
+        $u0[1] = 3;
+
+        $u0[2] = 0;
+
+        $u0[3] = 1;
+
+        $u0[4] = 5;
+
+        $u0[5] = 4;
+
+        $u0[6] = 7;
+
+        $u0[7] = 6;
+
+        $u0[8] = 9;
+
+        $u0[9] = 8;
+
+        $u0[10] = 10;
+
+        <androidx.fragment.app.FragmentTransition: int[] INVERSE_OPS> = $u0;
+
+        $u0#3 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u0#3 < 21 goto label1;
+
+        $u0#4 = new androidx.fragment.app.FragmentTransitionCompat21;
+
+        specialinvoke $u0#4.<androidx.fragment.app.FragmentTransitionCompat21: void <init>()>();
+
+        goto label2;
+
+     label1:
+        $u0#4 = null;
+
+     label2:
+        <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransitionImpl PLATFORM_IMPL> = $u0#4;
+
+        $u-1 = staticinvoke <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransitionImpl resolveSupportImpl()>();
+
+        <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransitionImpl SUPPORT_IMPL> = $u-1;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        androidx.fragment.app.FragmentTransition this;
+
+        this := @this: androidx.fragment.app.FragmentTransition;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static void addSharedElementsWithMatchingNames(java.util.ArrayList, androidx.collection.ArrayMap, java.util.Collection)
+    {
+        java.util.ArrayList views;
+        androidx.collection.ArrayMap sharedElements;
+        java.util.Collection nameOverridesSet;
+        int $u-1;
+        java.lang.Object $u-1#4;
+        android.view.View view;
+        java.lang.String $u-1#7;
+        boolean $u-1#9;
+
+        views := @parameter0: java.util.ArrayList;
+
+        sharedElements := @parameter1: androidx.collection.ArrayMap;
+
+        nameOverridesSet := @parameter2: java.util.Collection;
+
+        $u-1 = virtualinvoke sharedElements.<androidx.collection.ArrayMap: int size()>();
+
+        $u-1 = $u-1 + -1;
+
+     label1:
+        if $u-1 < 0 goto label3;
+
+        $u-1#4 = virtualinvoke sharedElements.<androidx.collection.ArrayMap: java.lang.Object valueAt(int)>($u-1);
+
+        view = (android.view.View) $u-1#4;
+
+        $u-1#7 = staticinvoke <androidx.core.view.ViewCompat: java.lang.String getTransitionName(android.view.View)>(view);
+
+        $u-1#9 = interfaceinvoke nameOverridesSet.<java.util.Collection: boolean contains(java.lang.Object)>($u-1#7);
+
+        if $u-1#9 == 0 goto label2;
+
+        virtualinvoke views.<java.util.ArrayList: boolean add(java.lang.Object)>(view);
+
+     label2:
+        $u-1 = $u-1 + -1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    private static void addToFirstInLastOut(androidx.fragment.app.BackStackRecord, androidx.fragment.app.FragmentTransaction$Op, android.util.SparseArray, boolean, boolean)
+    {
+        androidx.fragment.app.BackStackRecord $u22;
+        androidx.fragment.app.FragmentTransaction$Op $u23;
+        android.util.SparseArray transitioningFragments;
+        boolean $u25, $u26, containerTransition, setLastIn1, setFirstOut1, wasAdded1;
+        androidx.fragment.app.Fragment fragment, setLastIn#55;
+        int containerId, wasRemoved;
+        int[] setLastIn;
+        android.view.View setLastIn1#33;
+        float setLastIn1#37;
+        byte setLastIn1#39;
+        java.lang.Object $u-1;
+        androidx.fragment.app.FragmentTransition$FragmentContainerTransition setLastIn#50, setLastIn#72;
+        androidx.fragment.app.FragmentManagerImpl setFirstOut;
+
+        $u22 := @parameter0: androidx.fragment.app.BackStackRecord;
+
+        $u23 := @parameter1: androidx.fragment.app.FragmentTransaction$Op;
+
+        transitioningFragments := @parameter2: android.util.SparseArray;
+
+        $u25 := @parameter3: boolean;
+
+        $u26 := @parameter4: boolean;
+
+        fragment = $u23.<androidx.fragment.app.FragmentTransaction$Op: androidx.fragment.app.Fragment mFragment>;
+
+        if fragment != null goto label01;
+
+        return;
+
+     label01:
+        containerId = fragment.<androidx.fragment.app.Fragment: int mContainerId>;
+
+        if containerId != 0 goto label02;
+
+        return;
+
+     label02:
+        if $u25 == 0 goto label03;
+
+        setLastIn = <androidx.fragment.app.FragmentTransition: int[] INVERSE_OPS>;
+
+        wasRemoved = $u23.<androidx.fragment.app.FragmentTransaction$Op: int mCmd>;
+
+        wasRemoved = setLastIn[wasRemoved];
+
+        goto label04;
+
+     label03:
+        wasRemoved = $u23.<androidx.fragment.app.FragmentTransaction$Op: int mCmd>;
+
+     label04:
+        containerTransition = 0;
+
+        if wasRemoved == 1 goto label19;
+
+        if wasRemoved == 3 goto label14;
+
+        if wasRemoved == 4 goto label09;
+
+        if wasRemoved == 5 goto label05;
+
+        if wasRemoved == 6 goto label14;
+
+        if wasRemoved == 7 goto label19;
+
+        setLastIn1 = 0;
+
+        containerTransition = 0;
+
+        setFirstOut1 = 0;
+
+        wasAdded1 = 0;
+
+        goto label22;
+
+     label05:
+        if $u26 == 0 goto label07;
+
+        setLastIn1 = fragment.<androidx.fragment.app.Fragment: boolean mHiddenChanged>;
+
+        if setLastIn1 == 0 goto label06;
+
+        setLastIn1 = fragment.<androidx.fragment.app.Fragment: boolean mHidden>;
+
+        if setLastIn1 != 0 goto label06;
+
+        setLastIn1 = fragment.<androidx.fragment.app.Fragment: boolean mAdded>;
+
+        if setLastIn1 == 0 goto label06;
+
+        containerTransition = 1;
+
+     label06:
+        goto label08;
+
+     label07:
+        containerTransition = fragment.<androidx.fragment.app.Fragment: boolean mHidden>;
+
+     label08:
+        setLastIn1 = containerTransition;
+
+        containerTransition = 0;
+
+        setFirstOut1 = 0;
+
+        wasAdded1 = 1;
+
+        goto label22;
+
+     label09:
+        if $u26 == 0 goto label11;
+
+        setLastIn1 = fragment.<androidx.fragment.app.Fragment: boolean mHiddenChanged>;
+
+        if setLastIn1 == 0 goto label10;
+
+        setLastIn1 = fragment.<androidx.fragment.app.Fragment: boolean mAdded>;
+
+        if setLastIn1 == 0 goto label10;
+
+        setLastIn1 = fragment.<androidx.fragment.app.Fragment: boolean mHidden>;
+
+        if setLastIn1 == 0 goto label10;
+
+        containerTransition = 1;
+
+     label10:
+        setFirstOut1 = containerTransition;
+
+        goto label13;
+
+     label11:
+        setLastIn1 = fragment.<androidx.fragment.app.Fragment: boolean mAdded>;
+
+        if setLastIn1 == 0 goto label12;
+
+        setLastIn1 = fragment.<androidx.fragment.app.Fragment: boolean mHidden>;
+
+        if setLastIn1 != 0 goto label12;
+
+        containerTransition = 1;
+
+     label12:
+        setFirstOut1 = containerTransition;
+
+     label13:
+        setLastIn1 = 0;
+
+        containerTransition = 1;
+
+        wasAdded1 = 0;
+
+        goto label22;
+
+     label14:
+        if $u26 == 0 goto label16;
+
+        setLastIn1 = fragment.<androidx.fragment.app.Fragment: boolean mAdded>;
+
+        if setLastIn1 != 0 goto label15;
+
+        setLastIn1#33 = fragment.<androidx.fragment.app.Fragment: android.view.View mView>;
+
+        if setLastIn1#33 == null goto label15;
+
+        setLastIn1#33 = fragment.<androidx.fragment.app.Fragment: android.view.View mView>;
+
+        wasRemoved = virtualinvoke setLastIn1#33.<android.view.View: int getVisibility()>();
+
+        if wasRemoved != 0 goto label15;
+
+        setLastIn1#37 = fragment.<androidx.fragment.app.Fragment: float mPostponedAlpha>;
+
+        setLastIn1#39 = setLastIn1#37 cmpl 0.0F;
+
+        if setLastIn1#39 < 0 goto label15;
+
+        containerTransition = 1;
+
+        goto label15;
+
+     label15:
+        setFirstOut1 = containerTransition;
+
+        goto label18;
+
+     label16:
+        setLastIn1 = fragment.<androidx.fragment.app.Fragment: boolean mAdded>;
+
+        if setLastIn1 == 0 goto label17;
+
+        setLastIn1 = fragment.<androidx.fragment.app.Fragment: boolean mHidden>;
+
+        if setLastIn1 != 0 goto label17;
+
+        containerTransition = 1;
+
+     label17:
+        setFirstOut1 = containerTransition;
+
+     label18:
+        setLastIn1 = 0;
+
+        containerTransition = 1;
+
+        wasAdded1 = 0;
+
+        goto label22;
+
+     label19:
+        if $u26 == 0 goto label20;
+
+        containerTransition = fragment.<androidx.fragment.app.Fragment: boolean mIsNewlyAdded>;
+
+        goto label21;
+
+     label20:
+        setLastIn1 = fragment.<androidx.fragment.app.Fragment: boolean mAdded>;
+
+        if setLastIn1 != 0 goto label21;
+
+        setLastIn1 = fragment.<androidx.fragment.app.Fragment: boolean mHidden>;
+
+        if setLastIn1 != 0 goto label21;
+
+        containerTransition = 1;
+
+     label21:
+        setLastIn1 = containerTransition;
+
+        containerTransition = 0;
+
+        setFirstOut1 = 0;
+
+        wasAdded1 = 1;
+
+     label22:
+        $u-1 = virtualinvoke transitioningFragments.<android.util.SparseArray: java.lang.Object get(int)>(containerId);
+
+        setLastIn#50 = (androidx.fragment.app.FragmentTransition$FragmentContainerTransition) $u-1;
+
+        if setLastIn1 == 0 goto label23;
+
+        setLastIn#50 = staticinvoke <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransition$FragmentContainerTransition ensureContainer(androidx.fragment.app.FragmentTransition$FragmentContainerTransition,android.util.SparseArray,int)>(setLastIn#50, transitioningFragments, containerId);
+
+        setLastIn#50.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment lastIn> = fragment;
+
+        setLastIn#50.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: boolean lastInIsPop> = $u25;
+
+        setLastIn#50.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.BackStackRecord lastInTransaction> = $u22;
+
+        goto label23;
+
+     label23:
+        if $u26 != 0 goto label26;
+
+        if wasAdded1 == 0 goto label26;
+
+        if setLastIn#50 == null goto label24;
+
+        setLastIn#55 = setLastIn#50.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment firstOut>;
+
+        if setLastIn#55 != fragment goto label24;
+
+        setLastIn#50.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment firstOut> = null;
+
+     label24:
+        setFirstOut = $u22.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        wasRemoved = fragment.<androidx.fragment.app.Fragment: int mState>;
+
+        if wasRemoved >= 1 goto label25;
+
+        wasRemoved = setFirstOut.<androidx.fragment.app.FragmentManagerImpl: int mCurState>;
+
+        if wasRemoved < 1 goto label25;
+
+        setLastIn1 = $u22.<androidx.fragment.app.BackStackRecord: boolean mReorderingAllowed>;
+
+        if setLastIn1 != 0 goto label25;
+
+        virtualinvoke setFirstOut.<androidx.fragment.app.FragmentManagerImpl: void makeActive(androidx.fragment.app.Fragment)>(fragment);
+
+        virtualinvoke setFirstOut.<androidx.fragment.app.FragmentManagerImpl: void moveToState(androidx.fragment.app.Fragment,int,int,int,boolean)>(fragment, 1, 0, 0, 0);
+
+        goto label26;
+
+     label25:
+        goto label26;
+
+     label26:
+        if setFirstOut1 == 0 goto label28;
+
+        setLastIn#72 = setLastIn#50;
+
+        if setLastIn#50 == null goto label27;
+
+        setLastIn#55 = setLastIn#50.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment firstOut>;
+
+        if setLastIn#55 != null goto label29;
+
+     label27:
+        setLastIn#50 = staticinvoke <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransition$FragmentContainerTransition ensureContainer(androidx.fragment.app.FragmentTransition$FragmentContainerTransition,android.util.SparseArray,int)>(setLastIn#72, transitioningFragments, containerId);
+
+        setLastIn#72 = setLastIn#50;
+
+        setLastIn#50.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment firstOut> = fragment;
+
+        setLastIn#50.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: boolean firstOutIsPop> = $u25;
+
+        setLastIn#50.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.BackStackRecord firstOutTransaction> = $u22;
+
+        goto label29;
+
+     label28:
+        setLastIn#72 = setLastIn#50;
+
+     label29:
+        if $u26 != 0 goto label30;
+
+        if containerTransition == 0 goto label30;
+
+        if setLastIn#72 == null goto label30;
+
+        setLastIn#55 = setLastIn#72.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment lastIn>;
+
+        if setLastIn#55 != fragment goto label30;
+
+        setLastIn#72.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment lastIn> = null;
+
+     label30:
+        return;
+    }
+
+    public static void calculateFragments(androidx.fragment.app.BackStackRecord, android.util.SparseArray, boolean)
+    {
+        androidx.fragment.app.BackStackRecord $u4;
+        android.util.SparseArray transitioningFragments;
+        boolean $u6;
+        java.util.ArrayList numOps;
+        int $u-1, opNum;
+        java.lang.Object $u-1#6;
+        androidx.fragment.app.FragmentTransaction$Op op;
+
+        $u4 := @parameter0: androidx.fragment.app.BackStackRecord;
+
+        transitioningFragments := @parameter1: android.util.SparseArray;
+
+        $u6 := @parameter2: boolean;
+
+        numOps = $u4.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $u-1 = virtualinvoke numOps.<java.util.ArrayList: int size()>();
+
+        opNum = 0;
+
+     label1:
+        if opNum >= $u-1 goto label2;
+
+        numOps = $u4.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $u-1#6 = virtualinvoke numOps.<java.util.ArrayList: java.lang.Object get(int)>(opNum);
+
+        op = (androidx.fragment.app.FragmentTransaction$Op) $u-1#6;
+
+        staticinvoke <androidx.fragment.app.FragmentTransition: void addToFirstInLastOut(androidx.fragment.app.BackStackRecord,androidx.fragment.app.FragmentTransaction$Op,android.util.SparseArray,boolean,boolean)>($u4, op, transitioningFragments, 0, $u6);
+
+        opNum = opNum + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    private static androidx.collection.ArrayMap calculateNameOverrides(int, java.util.ArrayList, java.util.ArrayList, int, int)
+    {
+        int $u11, $u14, $u15, $u-1#14, i;
+        java.util.ArrayList records, isRecordPop, numSharedElements, sources;
+        androidx.collection.ArrayMap nameOverrides;
+        java.lang.Object $u-1;
+        androidx.fragment.app.BackStackRecord record;
+        boolean $u-1#5;
+        java.lang.Boolean isPop;
+        java.lang.String sourceName, targetName, previousTarget;
+
+        $u11 := @parameter0: int;
+
+        records := @parameter1: java.util.ArrayList;
+
+        isRecordPop := @parameter2: java.util.ArrayList;
+
+        $u14 := @parameter3: int;
+
+        $u15 := @parameter4: int;
+
+        nameOverrides = new androidx.collection.ArrayMap;
+
+        specialinvoke nameOverrides.<androidx.collection.ArrayMap: void <init>()>();
+
+        $u15 = $u15 + -1;
+
+     label1:
+        if $u15 < $u14 goto label9;
+
+        $u-1 = virtualinvoke records.<java.util.ArrayList: java.lang.Object get(int)>($u15);
+
+        record = (androidx.fragment.app.BackStackRecord) $u-1;
+
+        $u-1#5 = virtualinvoke record.<androidx.fragment.app.BackStackRecord: boolean interactsWith(int)>($u11);
+
+        if $u-1#5 != 0 goto label2;
+
+        goto label8;
+
+     label2:
+        $u-1 = virtualinvoke isRecordPop.<java.util.ArrayList: java.lang.Object get(int)>($u15);
+
+        isPop = (java.lang.Boolean) $u-1;
+
+        $u-1#5 = virtualinvoke isPop.<java.lang.Boolean: boolean booleanValue()>();
+
+        numSharedElements = record.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        if numSharedElements == null goto label8;
+
+        numSharedElements = record.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        $u-1#14 = virtualinvoke numSharedElements.<java.util.ArrayList: int size()>();
+
+        if $u-1#5 == 0 goto label3;
+
+        numSharedElements = record.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        sources = record.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementTargetNames>;
+
+        goto label4;
+
+     label3:
+        sources = record.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        numSharedElements = record.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementTargetNames>;
+
+     label4:
+        i = 0;
+
+     label5:
+        if i >= $u-1#14 goto label8;
+
+        $u-1 = virtualinvoke sources.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        sourceName = (java.lang.String) $u-1;
+
+        $u-1 = virtualinvoke numSharedElements.<java.util.ArrayList: java.lang.Object get(int)>(i);
+
+        targetName = (java.lang.String) $u-1;
+
+        $u-1 = virtualinvoke nameOverrides.<androidx.collection.ArrayMap: java.lang.Object remove(java.lang.Object)>(targetName);
+
+        previousTarget = (java.lang.String) $u-1;
+
+        if previousTarget == null goto label6;
+
+        virtualinvoke nameOverrides.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(sourceName, previousTarget);
+
+        goto label7;
+
+     label6:
+        virtualinvoke nameOverrides.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(sourceName, targetName);
+
+     label7:
+        i = i + 1;
+
+        goto label5;
+
+     label8:
+        $u15 = $u15 + -1;
+
+        goto label1;
+
+     label9:
+        return nameOverrides;
+    }
+
+    public static void calculatePopFragments(androidx.fragment.app.BackStackRecord, android.util.SparseArray, boolean)
+    {
+        androidx.fragment.app.BackStackRecord $u4;
+        android.util.SparseArray transitioningFragments;
+        boolean $u6, $u-1;
+        androidx.fragment.app.FragmentManagerImpl numOps;
+        androidx.fragment.app.FragmentContainer numOps#2;
+        java.util.ArrayList numOps#5;
+        int $u-1#6;
+        java.lang.Object $u-1#10;
+        androidx.fragment.app.FragmentTransaction$Op op;
+
+        $u4 := @parameter0: androidx.fragment.app.BackStackRecord;
+
+        transitioningFragments := @parameter1: android.util.SparseArray;
+
+        $u6 := @parameter2: boolean;
+
+        numOps = $u4.<androidx.fragment.app.BackStackRecord: androidx.fragment.app.FragmentManagerImpl mManager>;
+
+        numOps#2 = numOps.<androidx.fragment.app.FragmentManagerImpl: androidx.fragment.app.FragmentContainer mContainer>;
+
+        $u-1 = virtualinvoke numOps#2.<androidx.fragment.app.FragmentContainer: boolean onHasView()>();
+
+        if $u-1 != 0 goto label1;
+
+        return;
+
+     label1:
+        numOps#5 = $u4.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $u-1#6 = virtualinvoke numOps#5.<java.util.ArrayList: int size()>();
+
+        $u-1#6 = $u-1#6 + -1;
+
+     label2:
+        if $u-1#6 < 0 goto label3;
+
+        numOps#5 = $u4.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mOps>;
+
+        $u-1#10 = virtualinvoke numOps#5.<java.util.ArrayList: java.lang.Object get(int)>($u-1#6);
+
+        op = (androidx.fragment.app.FragmentTransaction$Op) $u-1#10;
+
+        staticinvoke <androidx.fragment.app.FragmentTransition: void addToFirstInLastOut(androidx.fragment.app.BackStackRecord,androidx.fragment.app.FragmentTransaction$Op,android.util.SparseArray,boolean,boolean)>($u4, op, transitioningFragments, 1, $u6);
+
+        $u-1#6 = $u-1#6 + -1;
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    static void callSharedElementStartEnd(androidx.fragment.app.Fragment, androidx.fragment.app.Fragment, boolean, androidx.collection.ArrayMap, boolean)
+    {
+        androidx.fragment.app.Fragment $u6, $u7;
+        boolean $u8, $u10;
+        androidx.collection.ArrayMap sharedElements;
+        java.util.ArrayList views, names;
+        androidx.core.app.SharedElementCallback $u-1;
+        int count, i;
+        java.lang.Object $u-1#7;
+
+        $u6 := @parameter0: androidx.fragment.app.Fragment;
+
+        $u7 := @parameter1: androidx.fragment.app.Fragment;
+
+        $u8 := @parameter2: boolean;
+
+        sharedElements := @parameter3: androidx.collection.ArrayMap;
+
+        $u10 := @parameter4: boolean;
+
+        if $u8 == 0 goto label1;
+
+        $u-1 = virtualinvoke $u7.<androidx.fragment.app.Fragment: androidx.core.app.SharedElementCallback getEnterTransitionCallback()>();
+
+        goto label2;
+
+     label1:
+        $u-1 = virtualinvoke $u6.<androidx.fragment.app.Fragment: androidx.core.app.SharedElementCallback getEnterTransitionCallback()>();
+
+     label2:
+        if $u-1 == null goto label8;
+
+        views = new java.util.ArrayList;
+
+        specialinvoke views.<java.util.ArrayList: void <init>()>();
+
+        names = new java.util.ArrayList;
+
+        specialinvoke names.<java.util.ArrayList: void <init>()>();
+
+        if sharedElements != null goto label3;
+
+        count = 0;
+
+        goto label4;
+
+     label3:
+        count = virtualinvoke sharedElements.<androidx.collection.ArrayMap: int size()>();
+
+     label4:
+        i = 0;
+
+     label5:
+        if i >= count goto label6;
+
+        $u-1#7 = virtualinvoke sharedElements.<androidx.collection.ArrayMap: java.lang.Object keyAt(int)>(i);
+
+        virtualinvoke names.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1#7);
+
+        $u-1#7 = virtualinvoke sharedElements.<androidx.collection.ArrayMap: java.lang.Object valueAt(int)>(i);
+
+        virtualinvoke views.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1#7);
+
+        i = i + 1;
+
+        goto label5;
+
+     label6:
+        if $u10 == 0 goto label7;
+
+        virtualinvoke $u-1.<androidx.core.app.SharedElementCallback: void onSharedElementStart(java.util.List,java.util.List,java.util.List)>(names, views, null);
+
+        return;
+
+     label7:
+        virtualinvoke $u-1.<androidx.core.app.SharedElementCallback: void onSharedElementEnd(java.util.List,java.util.List,java.util.List)>(names, views, null);
+
+     label8:
+        return;
+    }
+
+    private static boolean canHandleAll(androidx.fragment.app.FragmentTransitionImpl, java.util.List)
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u3;
+        java.util.List transitions;
+        int i, $u-1;
+        java.lang.Object $u-1#3;
+        boolean $u-1#5;
+
+        $u3 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        transitions := @parameter1: java.util.List;
+
+        i = 0;
+
+        $u-1 = interfaceinvoke transitions.<java.util.List: int size()>();
+
+     label1:
+        if i >= $u-1 goto label3;
+
+        $u-1#3 = interfaceinvoke transitions.<java.util.List: java.lang.Object get(int)>(i);
+
+        $u-1#5 = virtualinvoke $u3.<androidx.fragment.app.FragmentTransitionImpl: boolean canHandle(java.lang.Object)>($u-1#3);
+
+        if $u-1#5 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        return 1;
+    }
+
+    static androidx.collection.ArrayMap captureInSharedElements(androidx.fragment.app.FragmentTransitionImpl, androidx.collection.ArrayMap, java.lang.Object, androidx.fragment.app.FragmentTransition$FragmentContainerTransition)
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u11;
+        androidx.collection.ArrayMap nameOverrides, inSharedElements;
+        java.lang.Object $u13;
+        androidx.fragment.app.FragmentTransition$FragmentContainerTransition $u14;
+        androidx.fragment.app.Fragment inFragment;
+        androidx.fragment.app.BackStackRecord inTransaction;
+        android.view.View $u-1;
+        boolean $u-1#2;
+        androidx.core.app.SharedElementCallback $u-1#6;
+        java.util.ArrayList names;
+        java.util.Collection $u-1#10;
+        int $u-1#12;
+        java.lang.String name, $u-1#23;
+
+        $u11 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        nameOverrides := @parameter1: androidx.collection.ArrayMap;
+
+        $u13 := @parameter2: java.lang.Object;
+
+        $u14 := @parameter3: androidx.fragment.app.FragmentTransition$FragmentContainerTransition;
+
+        inFragment = $u14.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment lastIn>;
+
+        $u-1 = virtualinvoke inFragment.<androidx.fragment.app.Fragment: android.view.View getView()>();
+
+        $u-1#2 = virtualinvoke nameOverrides.<androidx.collection.ArrayMap: boolean isEmpty()>();
+
+        if $u-1#2 != 0 goto label10;
+
+        if $u13 == null goto label10;
+
+        if $u-1 != null goto label01;
+
+        goto label10;
+
+     label01:
+        inSharedElements = new androidx.collection.ArrayMap;
+
+        specialinvoke inSharedElements.<androidx.collection.ArrayMap: void <init>()>();
+
+        virtualinvoke $u11.<androidx.fragment.app.FragmentTransitionImpl: void findNamedViews(java.util.Map,android.view.View)>(inSharedElements, $u-1);
+
+        inTransaction = $u14.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.BackStackRecord lastInTransaction>;
+
+        $u-1#2 = $u14.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: boolean lastInIsPop>;
+
+        if $u-1#2 == 0 goto label02;
+
+        $u-1#6 = virtualinvoke inFragment.<androidx.fragment.app.Fragment: androidx.core.app.SharedElementCallback getExitTransitionCallback()>();
+
+        names = inTransaction.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        goto label03;
+
+     label02:
+        $u-1#6 = virtualinvoke inFragment.<androidx.fragment.app.Fragment: androidx.core.app.SharedElementCallback getEnterTransitionCallback()>();
+
+        names = inTransaction.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementTargetNames>;
+
+     label03:
+        if names == null goto label04;
+
+        virtualinvoke inSharedElements.<androidx.collection.ArrayMap: boolean retainAll(java.util.Collection)>(names);
+
+        $u-1#10 = virtualinvoke nameOverrides.<androidx.collection.ArrayMap: java.util.Collection values()>();
+
+        virtualinvoke inSharedElements.<androidx.collection.ArrayMap: boolean retainAll(java.util.Collection)>($u-1#10);
+
+     label04:
+        if $u-1#6 == null goto label09;
+
+        virtualinvoke $u-1#6.<androidx.core.app.SharedElementCallback: void onMapSharedElements(java.util.List,java.util.Map)>(names, inSharedElements);
+
+        $u-1#12 = virtualinvoke names.<java.util.ArrayList: int size()>();
+
+        $u-1#12 = $u-1#12 + -1;
+
+     label05:
+        if $u-1#12 < 0 goto label08;
+
+        $u13 = virtualinvoke names.<java.util.ArrayList: java.lang.Object get(int)>($u-1#12);
+
+        name = (java.lang.String) $u13;
+
+        $u13 = virtualinvoke inSharedElements.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>(name);
+
+        $u-1 = (android.view.View) $u13;
+
+        if $u-1 != null goto label06;
+
+        name = staticinvoke <androidx.fragment.app.FragmentTransition: java.lang.String findKeyForValue(androidx.collection.ArrayMap,java.lang.String)>(nameOverrides, name);
+
+        if name == null goto label07;
+
+        virtualinvoke nameOverrides.<androidx.collection.ArrayMap: java.lang.Object remove(java.lang.Object)>(name);
+
+        goto label07;
+
+     label06:
+        $u-1#23 = staticinvoke <androidx.core.view.ViewCompat: java.lang.String getTransitionName(android.view.View)>($u-1);
+
+        $u-1#2 = virtualinvoke name.<java.lang.String: boolean equals(java.lang.Object)>($u-1#23);
+
+        if $u-1#2 != 0 goto label07;
+
+        name = staticinvoke <androidx.fragment.app.FragmentTransition: java.lang.String findKeyForValue(androidx.collection.ArrayMap,java.lang.String)>(nameOverrides, name);
+
+        if name == null goto label07;
+
+        $u-1#23 = staticinvoke <androidx.core.view.ViewCompat: java.lang.String getTransitionName(android.view.View)>($u-1);
+
+        virtualinvoke nameOverrides.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(name, $u-1#23);
+
+        goto label07;
+
+     label07:
+        $u-1#12 = $u-1#12 + -1;
+
+        goto label05;
+
+     label08:
+        return inSharedElements;
+
+     label09:
+        staticinvoke <androidx.fragment.app.FragmentTransition: void retainValues(androidx.collection.ArrayMap,androidx.collection.ArrayMap)>(nameOverrides, inSharedElements);
+
+        return inSharedElements;
+
+     label10:
+        virtualinvoke nameOverrides.<androidx.collection.ArrayMap: void clear()>();
+
+        return null;
+    }
+
+    private static androidx.collection.ArrayMap captureOutSharedElements(androidx.fragment.app.FragmentTransitionImpl, androidx.collection.ArrayMap, java.lang.Object, androidx.fragment.app.FragmentTransition$FragmentContainerTransition)
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u10;
+        androidx.collection.ArrayMap nameOverrides, outSharedElements;
+        java.lang.Object $u12;
+        androidx.fragment.app.FragmentTransition$FragmentContainerTransition $u13;
+        boolean $u-1;
+        androidx.fragment.app.Fragment outFragment;
+        android.view.View $u-1#4;
+        androidx.fragment.app.BackStackRecord outTransaction;
+        androidx.core.app.SharedElementCallback $u-1#8;
+        java.util.ArrayList names;
+        int $u-1#12;
+        java.lang.String name, $u-1#21;
+        java.util.Set $u-1#29;
+
+        $u10 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        nameOverrides := @parameter1: androidx.collection.ArrayMap;
+
+        $u12 := @parameter2: java.lang.Object;
+
+        $u13 := @parameter3: androidx.fragment.app.FragmentTransition$FragmentContainerTransition;
+
+        $u-1 = virtualinvoke nameOverrides.<androidx.collection.ArrayMap: boolean isEmpty()>();
+
+        if $u-1 != 0 goto label9;
+
+        if $u12 != null goto label1;
+
+        goto label9;
+
+     label1:
+        outFragment = $u13.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment firstOut>;
+
+        outSharedElements = new androidx.collection.ArrayMap;
+
+        specialinvoke outSharedElements.<androidx.collection.ArrayMap: void <init>()>();
+
+        $u-1#4 = virtualinvoke outFragment.<androidx.fragment.app.Fragment: android.view.View requireView()>();
+
+        virtualinvoke $u10.<androidx.fragment.app.FragmentTransitionImpl: void findNamedViews(java.util.Map,android.view.View)>(outSharedElements, $u-1#4);
+
+        outTransaction = $u13.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.BackStackRecord firstOutTransaction>;
+
+        $u-1 = $u13.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: boolean firstOutIsPop>;
+
+        if $u-1 == 0 goto label2;
+
+        $u-1#8 = virtualinvoke outFragment.<androidx.fragment.app.Fragment: androidx.core.app.SharedElementCallback getEnterTransitionCallback()>();
+
+        names = outTransaction.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementTargetNames>;
+
+        goto label3;
+
+     label2:
+        $u-1#8 = virtualinvoke outFragment.<androidx.fragment.app.Fragment: androidx.core.app.SharedElementCallback getExitTransitionCallback()>();
+
+        names = outTransaction.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+     label3:
+        virtualinvoke outSharedElements.<androidx.collection.ArrayMap: boolean retainAll(java.util.Collection)>(names);
+
+        if $u-1#8 == null goto label8;
+
+        virtualinvoke $u-1#8.<androidx.core.app.SharedElementCallback: void onMapSharedElements(java.util.List,java.util.Map)>(names, outSharedElements);
+
+        $u-1#12 = virtualinvoke names.<java.util.ArrayList: int size()>();
+
+        $u-1#12 = $u-1#12 + -1;
+
+     label4:
+        if $u-1#12 < 0 goto label7;
+
+        $u12 = virtualinvoke names.<java.util.ArrayList: java.lang.Object get(int)>($u-1#12);
+
+        name = (java.lang.String) $u12;
+
+        $u12 = virtualinvoke outSharedElements.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>(name);
+
+        $u-1#4 = (android.view.View) $u12;
+
+        if $u-1#4 != null goto label5;
+
+        virtualinvoke nameOverrides.<androidx.collection.ArrayMap: java.lang.Object remove(java.lang.Object)>(name);
+
+        goto label6;
+
+     label5:
+        $u-1#21 = staticinvoke <androidx.core.view.ViewCompat: java.lang.String getTransitionName(android.view.View)>($u-1#4);
+
+        $u-1 = virtualinvoke name.<java.lang.String: boolean equals(java.lang.Object)>($u-1#21);
+
+        if $u-1 != 0 goto label6;
+
+        $u12 = virtualinvoke nameOverrides.<androidx.collection.ArrayMap: java.lang.Object remove(java.lang.Object)>(name);
+
+        name = (java.lang.String) $u12;
+
+        $u-1#21 = staticinvoke <androidx.core.view.ViewCompat: java.lang.String getTransitionName(android.view.View)>($u-1#4);
+
+        virtualinvoke nameOverrides.<androidx.collection.ArrayMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($u-1#21, name);
+
+     label6:
+        $u-1#12 = $u-1#12 + -1;
+
+        goto label4;
+
+     label7:
+        return outSharedElements;
+
+     label8:
+        $u-1#29 = virtualinvoke outSharedElements.<androidx.collection.ArrayMap: java.util.Set keySet()>();
+
+        virtualinvoke nameOverrides.<androidx.collection.ArrayMap: boolean retainAll(java.util.Collection)>($u-1#29);
+
+        return outSharedElements;
+
+     label9:
+        virtualinvoke nameOverrides.<androidx.collection.ArrayMap: void clear()>();
+
+        return null;
+    }
+
+    private static androidx.fragment.app.FragmentTransitionImpl chooseImpl(androidx.fragment.app.Fragment, androidx.fragment.app.Fragment)
+    {
+        androidx.fragment.app.Fragment $u4, $u5;
+        java.util.ArrayList transitions;
+        java.lang.Object $u-1;
+        boolean $u-1#13;
+        androidx.fragment.app.FragmentTransitionImpl exitTransition;
+        java.lang.IllegalArgumentException exitTransition#26;
+
+        $u4 := @parameter0: androidx.fragment.app.Fragment;
+
+        $u5 := @parameter1: androidx.fragment.app.Fragment;
+
+        transitions = new java.util.ArrayList;
+
+        specialinvoke transitions.<java.util.ArrayList: void <init>()>();
+
+        if $u4 == null goto label03;
+
+        $u-1 = virtualinvoke $u4.<androidx.fragment.app.Fragment: java.lang.Object getExitTransition()>();
+
+        if $u-1 == null goto label01;
+
+        virtualinvoke transitions.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1);
+
+     label01:
+        $u-1 = virtualinvoke $u4.<androidx.fragment.app.Fragment: java.lang.Object getReturnTransition()>();
+
+        if $u-1 == null goto label02;
+
+        virtualinvoke transitions.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1);
+
+     label02:
+        $u-1 = virtualinvoke $u4.<androidx.fragment.app.Fragment: java.lang.Object getSharedElementReturnTransition()>();
+
+        if $u-1 == null goto label03;
+
+        virtualinvoke transitions.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1);
+
+     label03:
+        if $u5 == null goto label06;
+
+        $u-1 = virtualinvoke $u5.<androidx.fragment.app.Fragment: java.lang.Object getEnterTransition()>();
+
+        if $u-1 == null goto label04;
+
+        virtualinvoke transitions.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1);
+
+     label04:
+        $u-1 = virtualinvoke $u5.<androidx.fragment.app.Fragment: java.lang.Object getReenterTransition()>();
+
+        if $u-1 == null goto label05;
+
+        virtualinvoke transitions.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1);
+
+     label05:
+        $u-1 = virtualinvoke $u5.<androidx.fragment.app.Fragment: java.lang.Object getSharedElementEnterTransition()>();
+
+        if $u-1 == null goto label06;
+
+        virtualinvoke transitions.<java.util.ArrayList: boolean add(java.lang.Object)>($u-1);
+
+     label06:
+        $u-1#13 = virtualinvoke transitions.<java.util.ArrayList: boolean isEmpty()>();
+
+        if $u-1#13 == 0 goto label07;
+
+        return null;
+
+     label07:
+        exitTransition = <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransitionImpl PLATFORM_IMPL>;
+
+        if exitTransition == null goto label08;
+
+        $u-1#13 = staticinvoke <androidx.fragment.app.FragmentTransition: boolean canHandleAll(androidx.fragment.app.FragmentTransitionImpl,java.util.List)>(exitTransition, transitions);
+
+        if $u-1#13 == 0 goto label08;
+
+        exitTransition = <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransitionImpl PLATFORM_IMPL>;
+
+        return exitTransition;
+
+     label08:
+        exitTransition = <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransitionImpl SUPPORT_IMPL>;
+
+        if exitTransition == null goto label09;
+
+        $u-1#13 = staticinvoke <androidx.fragment.app.FragmentTransition: boolean canHandleAll(androidx.fragment.app.FragmentTransitionImpl,java.util.List)>(exitTransition, transitions);
+
+        if $u-1#13 == 0 goto label09;
+
+        exitTransition = <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransitionImpl SUPPORT_IMPL>;
+
+        return exitTransition;
+
+     label09:
+        exitTransition = <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransitionImpl PLATFORM_IMPL>;
+
+        if exitTransition != null goto label10;
+
+        exitTransition = <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransitionImpl SUPPORT_IMPL>;
+
+        if exitTransition != null goto label10;
+
+        return null;
+
+     label10:
+        exitTransition#26 = new java.lang.IllegalArgumentException;
+
+        specialinvoke exitTransition#26.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Invalid Transition types");
+
+        throw exitTransition#26;
+    }
+
+    static java.util.ArrayList configureEnteringExitingViews(androidx.fragment.app.FragmentTransitionImpl, java.lang.Object, androidx.fragment.app.Fragment, java.util.ArrayList, android.view.View)
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u3;
+        java.lang.Object $u4;
+        androidx.fragment.app.Fragment $u5;
+        java.util.ArrayList sharedElements, root;
+        android.view.View $u7, $u-1;
+        boolean $u-1#6;
+
+        $u3 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        $u4 := @parameter1: java.lang.Object;
+
+        $u5 := @parameter2: androidx.fragment.app.Fragment;
+
+        sharedElements := @parameter3: java.util.ArrayList;
+
+        $u7 := @parameter4: android.view.View;
+
+        if $u4 == null goto label3;
+
+        root = new java.util.ArrayList;
+
+        specialinvoke root.<java.util.ArrayList: void <init>()>();
+
+        $u-1 = virtualinvoke $u5.<androidx.fragment.app.Fragment: android.view.View getView()>();
+
+        if $u-1 == null goto label1;
+
+        virtualinvoke $u3.<androidx.fragment.app.FragmentTransitionImpl: void captureTransitioningViews(java.util.ArrayList,android.view.View)>(root, $u-1);
+
+     label1:
+        if sharedElements == null goto label2;
+
+        virtualinvoke root.<java.util.ArrayList: boolean removeAll(java.util.Collection)>(sharedElements);
+
+     label2:
+        $u-1#6 = virtualinvoke root.<java.util.ArrayList: boolean isEmpty()>();
+
+        if $u-1#6 != 0 goto label4;
+
+        virtualinvoke root.<java.util.ArrayList: boolean add(java.lang.Object)>($u7);
+
+        virtualinvoke $u3.<androidx.fragment.app.FragmentTransitionImpl: void addTargets(java.lang.Object,java.util.ArrayList)>($u4, root);
+
+        return root;
+
+     label3:
+        return null;
+
+     label4:
+        return root;
+    }
+
+    private static java.lang.Object configureSharedElementsOrdered(androidx.fragment.app.FragmentTransitionImpl, android.view.ViewGroup, android.view.View, androidx.collection.ArrayMap, androidx.fragment.app.FragmentTransition$FragmentContainerTransition, java.util.ArrayList, java.util.ArrayList, java.lang.Object, java.lang.Object)
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u22;
+        android.view.ViewGroup $u23;
+        android.view.View $u24;
+        androidx.collection.ArrayMap nameOverrides, $u-1#14;
+        androidx.fragment.app.FragmentTransition$FragmentContainerTransition $u26;
+        java.util.ArrayList sharedElementsOut, sharedElementsIn;
+        java.lang.Object $u29, $u30, sharedElementTransition;
+        boolean inIsPop, $u-1;
+        androidx.fragment.app.Fragment inFragment, outFragment;
+        java.util.Collection $u-1#20;
+        android.graphics.Rect $u0;
+        androidx.fragment.app.BackStackRecord outTransaction;
+        androidx.fragment.app.FragmentTransition$4 outSharedElements;
+
+        $u22 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        $u23 := @parameter1: android.view.ViewGroup;
+
+        $u24 := @parameter2: android.view.View;
+
+        nameOverrides := @parameter3: androidx.collection.ArrayMap;
+
+        $u26 := @parameter4: androidx.fragment.app.FragmentTransition$FragmentContainerTransition;
+
+        sharedElementsOut := @parameter5: java.util.ArrayList;
+
+        sharedElementsIn := @parameter6: java.util.ArrayList;
+
+        $u29 := @parameter7: java.lang.Object;
+
+        $u30 := @parameter8: java.lang.Object;
+
+        inFragment = $u26.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment lastIn>;
+
+        outFragment = $u26.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment firstOut>;
+
+        if inFragment == null goto label10;
+
+        if outFragment != null goto label01;
+
+        return null;
+
+     label01:
+        inIsPop = $u26.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: boolean lastInIsPop>;
+
+        $u-1 = virtualinvoke nameOverrides.<androidx.collection.ArrayMap: boolean isEmpty()>();
+
+        if $u-1 == 0 goto label02;
+
+        sharedElementTransition = null;
+
+        goto label03;
+
+     label02:
+        sharedElementTransition = staticinvoke <androidx.fragment.app.FragmentTransition: java.lang.Object getSharedElementTransition(androidx.fragment.app.FragmentTransitionImpl,androidx.fragment.app.Fragment,androidx.fragment.app.Fragment,boolean)>($u22, inFragment, outFragment, inIsPop);
+
+     label03:
+        $u-1#14 = staticinvoke <androidx.fragment.app.FragmentTransition: androidx.collection.ArrayMap captureOutSharedElements(androidx.fragment.app.FragmentTransitionImpl,androidx.collection.ArrayMap,java.lang.Object,androidx.fragment.app.FragmentTransition$FragmentContainerTransition)>($u22, nameOverrides, sharedElementTransition, $u26);
+
+        $u-1 = virtualinvoke nameOverrides.<androidx.collection.ArrayMap: boolean isEmpty()>();
+
+        if $u-1 == 0 goto label04;
+
+        sharedElementTransition = null;
+
+        goto label05;
+
+     label04:
+        $u-1#20 = virtualinvoke $u-1#14.<androidx.collection.ArrayMap: java.util.Collection values()>();
+
+        virtualinvoke sharedElementsOut.<java.util.ArrayList: boolean addAll(java.util.Collection)>($u-1#20);
+
+     label05:
+        if $u29 != null goto label06;
+
+        if $u30 != null goto label06;
+
+        if sharedElementTransition != null goto label06;
+
+        return null;
+
+     label06:
+        staticinvoke <androidx.fragment.app.FragmentTransition: void callSharedElementStartEnd(androidx.fragment.app.Fragment,androidx.fragment.app.Fragment,boolean,androidx.collection.ArrayMap,boolean)>(inFragment, outFragment, inIsPop, $u-1#14, 1);
+
+        if sharedElementTransition == null goto label08;
+
+        $u0 = new android.graphics.Rect;
+
+        specialinvoke $u0.<android.graphics.Rect: void <init>()>();
+
+        virtualinvoke $u22.<androidx.fragment.app.FragmentTransitionImpl: void setSharedElementTargets(java.lang.Object,android.view.View,java.util.ArrayList)>(sharedElementTransition, $u24, sharedElementsOut);
+
+        $u-1 = $u26.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: boolean firstOutIsPop>;
+
+        outTransaction = $u26.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.BackStackRecord firstOutTransaction>;
+
+        staticinvoke <androidx.fragment.app.FragmentTransition: void setOutEpicenter(androidx.fragment.app.FragmentTransitionImpl,java.lang.Object,java.lang.Object,androidx.collection.ArrayMap,boolean,androidx.fragment.app.BackStackRecord)>($u22, sharedElementTransition, $u30, $u-1#14, $u-1, outTransaction);
+
+        if $u29 == null goto label07;
+
+        virtualinvoke $u22.<androidx.fragment.app.FragmentTransitionImpl: void setEpicenter(java.lang.Object,android.graphics.Rect)>($u29, $u0);
+
+     label07:
+        goto label09;
+
+     label08:
+        $u0 = null;
+
+     label09:
+        outSharedElements = new androidx.fragment.app.FragmentTransition$4;
+
+        specialinvoke outSharedElements.<androidx.fragment.app.FragmentTransition$4: void <init>(androidx.fragment.app.FragmentTransitionImpl,androidx.collection.ArrayMap,java.lang.Object,androidx.fragment.app.FragmentTransition$FragmentContainerTransition,java.util.ArrayList,android.view.View,androidx.fragment.app.Fragment,androidx.fragment.app.Fragment,boolean,java.util.ArrayList,java.lang.Object,android.graphics.Rect)>($u22, nameOverrides, sharedElementTransition, $u26, sharedElementsIn, $u24, inFragment, outFragment, inIsPop, sharedElementsOut, $u29, $u0);
+
+        staticinvoke <androidx.core.view.OneShotPreDrawListener: androidx.core.view.OneShotPreDrawListener add(android.view.View,java.lang.Runnable)>($u23, outSharedElements);
+
+        return sharedElementTransition;
+
+     label10:
+        return null;
+    }
+
+    private static java.lang.Object configureSharedElementsReordered(androidx.fragment.app.FragmentTransitionImpl, android.view.ViewGroup, android.view.View, androidx.collection.ArrayMap, androidx.fragment.app.FragmentTransition$FragmentContainerTransition, java.util.ArrayList, java.util.ArrayList, java.lang.Object, java.lang.Object)
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u22;
+        android.view.ViewGroup $u23;
+        android.view.View $u24, $u-1;
+        androidx.collection.ArrayMap nameOverrides, $u-1#15, $u-1#17;
+        androidx.fragment.app.FragmentTransition$FragmentContainerTransition $u26;
+        java.util.ArrayList sharedElementsOut, sharedElementsIn;
+        java.lang.Object $u29, $u30, sharedElementTransition, sharedElementTransition2;
+        androidx.fragment.app.Fragment inFragment, outFragment;
+        boolean inIsPop, $u-1#11;
+        java.util.Set $u-1#23;
+        java.util.Collection $u-1#25;
+        androidx.fragment.app.BackStackRecord sharedElementTransition#29;
+        android.graphics.Rect epicenter;
+        androidx.fragment.app.FragmentTransition$3 outSharedElements;
+
+        $u22 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        $u23 := @parameter1: android.view.ViewGroup;
+
+        $u24 := @parameter2: android.view.View;
+
+        nameOverrides := @parameter3: androidx.collection.ArrayMap;
+
+        $u26 := @parameter4: androidx.fragment.app.FragmentTransition$FragmentContainerTransition;
+
+        sharedElementsOut := @parameter5: java.util.ArrayList;
+
+        sharedElementsIn := @parameter6: java.util.ArrayList;
+
+        $u29 := @parameter7: java.lang.Object;
+
+        $u30 := @parameter8: java.lang.Object;
+
+        inFragment = $u26.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment lastIn>;
+
+        outFragment = $u26.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment firstOut>;
+
+        if inFragment == null goto label01;
+
+        $u-1 = virtualinvoke inFragment.<androidx.fragment.app.Fragment: android.view.View requireView()>();
+
+        virtualinvoke $u-1.<android.view.View: void setVisibility(int)>(0);
+
+     label01:
+        if inFragment == null goto label13;
+
+        if outFragment != null goto label02;
+
+        return null;
+
+     label02:
+        inIsPop = $u26.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: boolean lastInIsPop>;
+
+        $u-1#11 = virtualinvoke nameOverrides.<androidx.collection.ArrayMap: boolean isEmpty()>();
+
+        if $u-1#11 == 0 goto label03;
+
+        sharedElementTransition = null;
+
+        goto label04;
+
+     label03:
+        sharedElementTransition = staticinvoke <androidx.fragment.app.FragmentTransition: java.lang.Object getSharedElementTransition(androidx.fragment.app.FragmentTransitionImpl,androidx.fragment.app.Fragment,androidx.fragment.app.Fragment,boolean)>($u22, inFragment, outFragment, inIsPop);
+
+     label04:
+        $u-1#15 = staticinvoke <androidx.fragment.app.FragmentTransition: androidx.collection.ArrayMap captureOutSharedElements(androidx.fragment.app.FragmentTransitionImpl,androidx.collection.ArrayMap,java.lang.Object,androidx.fragment.app.FragmentTransition$FragmentContainerTransition)>($u22, nameOverrides, sharedElementTransition, $u26);
+
+        $u-1#17 = staticinvoke <androidx.fragment.app.FragmentTransition: androidx.collection.ArrayMap captureInSharedElements(androidx.fragment.app.FragmentTransitionImpl,androidx.collection.ArrayMap,java.lang.Object,androidx.fragment.app.FragmentTransition$FragmentContainerTransition)>($u22, nameOverrides, sharedElementTransition, $u26);
+
+        $u-1#11 = virtualinvoke nameOverrides.<androidx.collection.ArrayMap: boolean isEmpty()>();
+
+        if $u-1#11 == 0 goto label07;
+
+        if $u-1#15 == null goto label05;
+
+        virtualinvoke $u-1#15.<androidx.collection.ArrayMap: void clear()>();
+
+     label05:
+        if $u-1#17 == null goto label06;
+
+        virtualinvoke $u-1#17.<androidx.collection.ArrayMap: void clear()>();
+
+     label06:
+        sharedElementTransition = null;
+
+        goto label08;
+
+     label07:
+        $u-1#23 = virtualinvoke nameOverrides.<androidx.collection.ArrayMap: java.util.Set keySet()>();
+
+        staticinvoke <androidx.fragment.app.FragmentTransition: void addSharedElementsWithMatchingNames(java.util.ArrayList,androidx.collection.ArrayMap,java.util.Collection)>(sharedElementsOut, $u-1#15, $u-1#23);
+
+        $u-1#25 = virtualinvoke nameOverrides.<androidx.collection.ArrayMap: java.util.Collection values()>();
+
+        staticinvoke <androidx.fragment.app.FragmentTransition: void addSharedElementsWithMatchingNames(java.util.ArrayList,androidx.collection.ArrayMap,java.util.Collection)>(sharedElementsIn, $u-1#17, $u-1#25);
+
+     label08:
+        if $u29 != null goto label09;
+
+        if $u30 != null goto label09;
+
+        if sharedElementTransition != null goto label09;
+
+        return null;
+
+     label09:
+        staticinvoke <androidx.fragment.app.FragmentTransition: void callSharedElementStartEnd(androidx.fragment.app.Fragment,androidx.fragment.app.Fragment,boolean,androidx.collection.ArrayMap,boolean)>(inFragment, outFragment, inIsPop, $u-1#15, 1);
+
+        if sharedElementTransition == null goto label11;
+
+        virtualinvoke sharedElementsIn.<java.util.ArrayList: boolean add(java.lang.Object)>($u24);
+
+        virtualinvoke $u22.<androidx.fragment.app.FragmentTransitionImpl: void setSharedElementTargets(java.lang.Object,android.view.View,java.util.ArrayList)>(sharedElementTransition, $u24, sharedElementsOut);
+
+        $u-1#11 = $u26.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: boolean firstOutIsPop>;
+
+        sharedElementTransition#29 = $u26.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.BackStackRecord firstOutTransaction>;
+
+        sharedElementTransition2 = sharedElementTransition;
+
+        nameOverrides = $u-1#17;
+
+        staticinvoke <androidx.fragment.app.FragmentTransition: void setOutEpicenter(androidx.fragment.app.FragmentTransitionImpl,java.lang.Object,java.lang.Object,androidx.collection.ArrayMap,boolean,androidx.fragment.app.BackStackRecord)>($u22, sharedElementTransition, $u30, $u-1#15, $u-1#11, sharedElementTransition#29);
+
+        epicenter = new android.graphics.Rect;
+
+        specialinvoke epicenter.<android.graphics.Rect: void <init>()>();
+
+        $u24 = staticinvoke <androidx.fragment.app.FragmentTransition: android.view.View getInEpicenterView(androidx.collection.ArrayMap,androidx.fragment.app.FragmentTransition$FragmentContainerTransition,java.lang.Object,boolean)>($u-1#17, $u26, $u29, inIsPop);
+
+        if $u24 == null goto label10;
+
+        virtualinvoke $u22.<androidx.fragment.app.FragmentTransitionImpl: void setEpicenter(java.lang.Object,android.graphics.Rect)>($u29, epicenter);
+
+     label10:
+        goto label12;
+
+     label11:
+        sharedElementTransition2 = sharedElementTransition;
+
+        nameOverrides = $u-1#17;
+
+        epicenter = null;
+
+        $u24 = null;
+
+     label12:
+        outSharedElements = new androidx.fragment.app.FragmentTransition$3;
+
+        specialinvoke outSharedElements.<androidx.fragment.app.FragmentTransition$3: void <init>(androidx.fragment.app.Fragment,androidx.fragment.app.Fragment,boolean,androidx.collection.ArrayMap,android.view.View,androidx.fragment.app.FragmentTransitionImpl,android.graphics.Rect)>(inFragment, outFragment, inIsPop, nameOverrides, $u24, $u22, epicenter);
+
+        staticinvoke <androidx.core.view.OneShotPreDrawListener: androidx.core.view.OneShotPreDrawListener add(android.view.View,java.lang.Runnable)>($u23, outSharedElements);
+
+        return sharedElementTransition2;
+
+     label13:
+        return null;
+    }
+
+    private static void configureTransitionsOrdered(androidx.fragment.app.FragmentManagerImpl, int, androidx.fragment.app.FragmentTransition$FragmentContainerTransition, android.view.View, androidx.collection.ArrayMap)
+    {
+        androidx.fragment.app.FragmentManagerImpl $u30;
+        int $u31;
+        androidx.fragment.app.FragmentTransition$FragmentContainerTransition $u32;
+        android.view.View $u33, $u-1#9;
+        androidx.collection.ArrayMap nameOverrides;
+        androidx.fragment.app.Fragment inFragment, outFragment;
+        java.util.ArrayList enteringViews, sceneRoot#26, $u-1#46;
+        androidx.fragment.app.FragmentContainer sharedElementsIn;
+        boolean $u-1, outIsPop;
+        android.view.ViewGroup sceneRoot;
+        androidx.fragment.app.FragmentTransitionImpl $u-1#16;
+        java.lang.Object $u-1#20, $u-1#22, $u-1#42, sceneRoot#44;
+
+        $u30 := @parameter0: androidx.fragment.app.FragmentManagerImpl;
+
+        $u31 := @parameter1: int;
+
+        $u32 := @parameter2: androidx.fragment.app.FragmentTransition$FragmentContainerTransition;
+
+        $u33 := @parameter3: android.view.View;
+
+        nameOverrides := @parameter4: androidx.collection.ArrayMap;
+
+        sharedElementsIn = $u30.<androidx.fragment.app.FragmentManagerImpl: androidx.fragment.app.FragmentContainer mContainer>;
+
+        $u-1 = virtualinvoke sharedElementsIn.<androidx.fragment.app.FragmentContainer: boolean onHasView()>();
+
+        if $u-1 == 0 goto label01;
+
+        sharedElementsIn = $u30.<androidx.fragment.app.FragmentManagerImpl: androidx.fragment.app.FragmentContainer mContainer>;
+
+        $u-1#9 = virtualinvoke sharedElementsIn.<androidx.fragment.app.FragmentContainer: android.view.View onFindViewById(int)>($u31);
+
+        sceneRoot = (android.view.ViewGroup) $u-1#9;
+
+        goto label02;
+
+     label01:
+        sceneRoot = null;
+
+     label02:
+        if sceneRoot != null goto label03;
+
+        return;
+
+     label03:
+        inFragment = $u32.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment lastIn>;
+
+        outFragment = $u32.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment firstOut>;
+
+        $u-1#16 = staticinvoke <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransitionImpl chooseImpl(androidx.fragment.app.Fragment,androidx.fragment.app.Fragment)>(outFragment, inFragment);
+
+        if $u-1#16 != null goto label04;
+
+        return;
+
+     label04:
+        $u-1 = $u32.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: boolean lastInIsPop>;
+
+        outIsPop = $u32.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: boolean firstOutIsPop>;
+
+        $u-1#20 = staticinvoke <androidx.fragment.app.FragmentTransition: java.lang.Object getEnterTransition(androidx.fragment.app.FragmentTransitionImpl,androidx.fragment.app.Fragment,boolean)>($u-1#16, inFragment, $u-1);
+
+        $u-1#22 = staticinvoke <androidx.fragment.app.FragmentTransition: java.lang.Object getExitTransition(androidx.fragment.app.FragmentTransitionImpl,androidx.fragment.app.Fragment,boolean)>($u-1#16, outFragment, outIsPop);
+
+        enteringViews = new java.util.ArrayList;
+
+        specialinvoke enteringViews.<java.util.ArrayList: void <init>()>();
+
+        sceneRoot#26 = new java.util.ArrayList;
+
+        specialinvoke sceneRoot#26.<java.util.ArrayList: void <init>()>();
+
+        $u-1#42 = staticinvoke <androidx.fragment.app.FragmentTransition: java.lang.Object configureSharedElementsOrdered(androidx.fragment.app.FragmentTransitionImpl,android.view.ViewGroup,android.view.View,androidx.collection.ArrayMap,androidx.fragment.app.FragmentTransition$FragmentContainerTransition,java.util.ArrayList,java.util.ArrayList,java.lang.Object,java.lang.Object)>($u-1#16, sceneRoot, $u33, nameOverrides, $u32, enteringViews, sceneRoot#26, $u-1#20, $u-1#22);
+
+        if $u-1#20 != null goto label05;
+
+        if $u-1#42 != null goto label05;
+
+        sceneRoot#44 = $u-1#22;
+
+        if $u-1#22 != null goto label06;
+
+        return;
+
+     label05:
+        sceneRoot#44 = $u-1#22;
+
+     label06:
+        $u-1#46 = staticinvoke <androidx.fragment.app.FragmentTransition: java.util.ArrayList configureEnteringExitingViews(androidx.fragment.app.FragmentTransitionImpl,java.lang.Object,androidx.fragment.app.Fragment,java.util.ArrayList,android.view.View)>($u-1#16, sceneRoot#44, outFragment, enteringViews, $u33);
+
+        if $u-1#46 == null goto label08;
+
+        $u-1 = virtualinvoke $u-1#46.<java.util.ArrayList: boolean isEmpty()>();
+
+        if $u-1 == 0 goto label07;
+
+        goto label08;
+
+     label07:
+        $u-1#22 = sceneRoot#44;
+
+        goto label09;
+
+     label08:
+        $u-1#22 = null;
+
+     label09:
+        virtualinvoke $u-1#16.<androidx.fragment.app.FragmentTransitionImpl: void addTarget(java.lang.Object,android.view.View)>($u-1#20, $u33);
+
+        $u-1 = $u32.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: boolean lastInIsPop>;
+
+        sceneRoot#44 = staticinvoke <androidx.fragment.app.FragmentTransition: java.lang.Object mergeTransitions(androidx.fragment.app.FragmentTransitionImpl,java.lang.Object,java.lang.Object,java.lang.Object,androidx.fragment.app.Fragment,boolean)>($u-1#16, $u-1#20, $u-1#22, $u-1#42, inFragment, $u-1);
+
+        if sceneRoot#44 == null goto label10;
+
+        enteringViews = new java.util.ArrayList;
+
+        specialinvoke enteringViews.<java.util.ArrayList: void <init>()>();
+
+        virtualinvoke $u-1#16.<androidx.fragment.app.FragmentTransitionImpl: void scheduleRemoveTargets(java.lang.Object,java.lang.Object,java.util.ArrayList,java.lang.Object,java.util.ArrayList,java.lang.Object,java.util.ArrayList)>(sceneRoot#44, $u-1#20, enteringViews, $u-1#22, $u-1#46, $u-1#42, sceneRoot#26);
+
+        staticinvoke <androidx.fragment.app.FragmentTransition: void scheduleTargetChange(androidx.fragment.app.FragmentTransitionImpl,android.view.ViewGroup,androidx.fragment.app.Fragment,android.view.View,java.util.ArrayList,java.lang.Object,java.util.ArrayList,java.lang.Object,java.util.ArrayList)>($u-1#16, sceneRoot, inFragment, $u33, sceneRoot#26, $u-1#20, enteringViews, $u-1#22, $u-1#46);
+
+        virtualinvoke $u-1#16.<androidx.fragment.app.FragmentTransitionImpl: void setNameOverridesOrdered(android.view.View,java.util.ArrayList,java.util.Map)>(sceneRoot, sceneRoot#26, nameOverrides);
+
+        virtualinvoke $u-1#16.<androidx.fragment.app.FragmentTransitionImpl: void beginDelayedTransition(android.view.ViewGroup,java.lang.Object)>(sceneRoot, sceneRoot#44);
+
+        virtualinvoke $u-1#16.<androidx.fragment.app.FragmentTransitionImpl: void scheduleNameReset(android.view.ViewGroup,java.util.ArrayList,java.util.Map)>(sceneRoot, sceneRoot#26, nameOverrides);
+
+     label10:
+        return;
+    }
+
+    private static void configureTransitionsReordered(androidx.fragment.app.FragmentManagerImpl, int, androidx.fragment.app.FragmentTransition$FragmentContainerTransition, android.view.View, androidx.collection.ArrayMap)
+    {
+        androidx.fragment.app.FragmentManagerImpl $u23;
+        int $u24;
+        androidx.fragment.app.FragmentTransition$FragmentContainerTransition $u25;
+        android.view.View $u26, $u-1#10;
+        androidx.collection.ArrayMap nameOverrides;
+        androidx.fragment.app.Fragment inFragment, outFragment;
+        androidx.fragment.app.FragmentContainer enteringViews;
+        boolean $u-1, outIsPop;
+        android.view.ViewGroup sceneRoot;
+        androidx.fragment.app.FragmentTransitionImpl $u-1#16;
+        java.util.ArrayList sceneRoot#20, sceneRoot#22, $u-1#45, $u-1#48, $u-1#62;
+        java.lang.Object $u-1#24, $u-1#26, $u-1#41, outIsPop#43;
+
+        $u23 := @parameter0: androidx.fragment.app.FragmentManagerImpl;
+
+        $u24 := @parameter1: int;
+
+        $u25 := @parameter2: androidx.fragment.app.FragmentTransition$FragmentContainerTransition;
+
+        $u26 := @parameter3: android.view.View;
+
+        nameOverrides := @parameter4: androidx.collection.ArrayMap;
+
+        enteringViews = $u23.<androidx.fragment.app.FragmentManagerImpl: androidx.fragment.app.FragmentContainer mContainer>;
+
+        $u-1 = virtualinvoke enteringViews.<androidx.fragment.app.FragmentContainer: boolean onHasView()>();
+
+        if $u-1 == 0 goto label1;
+
+        enteringViews = $u23.<androidx.fragment.app.FragmentManagerImpl: androidx.fragment.app.FragmentContainer mContainer>;
+
+        $u-1#10 = virtualinvoke enteringViews.<androidx.fragment.app.FragmentContainer: android.view.View onFindViewById(int)>($u24);
+
+        sceneRoot = (android.view.ViewGroup) $u-1#10;
+
+        goto label2;
+
+     label1:
+        sceneRoot = null;
+
+     label2:
+        if sceneRoot != null goto label3;
+
+        return;
+
+     label3:
+        inFragment = $u25.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment lastIn>;
+
+        outFragment = $u25.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.Fragment firstOut>;
+
+        $u-1#16 = staticinvoke <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransitionImpl chooseImpl(androidx.fragment.app.Fragment,androidx.fragment.app.Fragment)>(outFragment, inFragment);
+
+        if $u-1#16 != null goto label4;
+
+        return;
+
+     label4:
+        $u-1 = $u25.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: boolean lastInIsPop>;
+
+        outIsPop = $u25.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: boolean firstOutIsPop>;
+
+        sceneRoot#20 = new java.util.ArrayList;
+
+        specialinvoke sceneRoot#20.<java.util.ArrayList: void <init>()>();
+
+        sceneRoot#22 = new java.util.ArrayList;
+
+        specialinvoke sceneRoot#22.<java.util.ArrayList: void <init>()>();
+
+        $u-1#24 = staticinvoke <androidx.fragment.app.FragmentTransition: java.lang.Object getEnterTransition(androidx.fragment.app.FragmentTransitionImpl,androidx.fragment.app.Fragment,boolean)>($u-1#16, inFragment, $u-1);
+
+        $u-1#26 = staticinvoke <androidx.fragment.app.FragmentTransition: java.lang.Object getExitTransition(androidx.fragment.app.FragmentTransitionImpl,androidx.fragment.app.Fragment,boolean)>($u-1#16, outFragment, outIsPop);
+
+        $u-1#41 = staticinvoke <androidx.fragment.app.FragmentTransition: java.lang.Object configureSharedElementsReordered(androidx.fragment.app.FragmentTransitionImpl,android.view.ViewGroup,android.view.View,androidx.collection.ArrayMap,androidx.fragment.app.FragmentTransition$FragmentContainerTransition,java.util.ArrayList,java.util.ArrayList,java.lang.Object,java.lang.Object)>($u-1#16, sceneRoot, $u26, nameOverrides, $u25, sceneRoot#22, sceneRoot#20, $u-1#24, $u-1#26);
+
+        if $u-1#24 != null goto label5;
+
+        if $u-1#41 != null goto label5;
+
+        outIsPop#43 = $u-1#26;
+
+        if $u-1#26 != null goto label6;
+
+        return;
+
+     label5:
+        outIsPop#43 = $u-1#26;
+
+     label6:
+        $u-1#45 = staticinvoke <androidx.fragment.app.FragmentTransition: java.util.ArrayList configureEnteringExitingViews(androidx.fragment.app.FragmentTransitionImpl,java.lang.Object,androidx.fragment.app.Fragment,java.util.ArrayList,android.view.View)>($u-1#16, outIsPop#43, outFragment, sceneRoot#22, $u26);
+
+        $u-1#48 = staticinvoke <androidx.fragment.app.FragmentTransition: java.util.ArrayList configureEnteringExitingViews(androidx.fragment.app.FragmentTransitionImpl,java.lang.Object,androidx.fragment.app.Fragment,java.util.ArrayList,android.view.View)>($u-1#16, $u-1#24, inFragment, sceneRoot#20, $u26);
+
+        staticinvoke <androidx.fragment.app.FragmentTransition: void setViewVisibility(java.util.ArrayList,int)>($u-1#48, 4);
+
+        $u-1#26 = staticinvoke <androidx.fragment.app.FragmentTransition: java.lang.Object mergeTransitions(androidx.fragment.app.FragmentTransitionImpl,java.lang.Object,java.lang.Object,java.lang.Object,androidx.fragment.app.Fragment,boolean)>($u-1#16, $u-1#24, outIsPop#43, $u-1#41, inFragment, $u-1);
+
+        if $u-1#26 == null goto label7;
+
+        staticinvoke <androidx.fragment.app.FragmentTransition: void replaceHide(androidx.fragment.app.FragmentTransitionImpl,java.lang.Object,androidx.fragment.app.Fragment,java.util.ArrayList)>($u-1#16, outIsPop#43, outFragment, $u-1#45);
+
+        $u-1#62 = virtualinvoke $u-1#16.<androidx.fragment.app.FragmentTransitionImpl: java.util.ArrayList prepareSetNameOverridesReordered(java.util.ArrayList)>(sceneRoot#20);
+
+        virtualinvoke $u-1#16.<androidx.fragment.app.FragmentTransitionImpl: void scheduleRemoveTargets(java.lang.Object,java.lang.Object,java.util.ArrayList,java.lang.Object,java.util.ArrayList,java.lang.Object,java.util.ArrayList)>($u-1#26, $u-1#24, $u-1#48, outIsPop#43, $u-1#45, $u-1#41, sceneRoot#20);
+
+        virtualinvoke $u-1#16.<androidx.fragment.app.FragmentTransitionImpl: void beginDelayedTransition(android.view.ViewGroup,java.lang.Object)>(sceneRoot, $u-1#26);
+
+        virtualinvoke $u-1#16.<androidx.fragment.app.FragmentTransitionImpl: void setNameOverridesReordered(android.view.View,java.util.ArrayList,java.util.ArrayList,java.util.ArrayList,java.util.Map)>(sceneRoot, sceneRoot#22, sceneRoot#20, $u-1#62, nameOverrides);
+
+        staticinvoke <androidx.fragment.app.FragmentTransition: void setViewVisibility(java.util.ArrayList,int)>($u-1#48, 0);
+
+        virtualinvoke $u-1#16.<androidx.fragment.app.FragmentTransitionImpl: void swapSharedElementTargets(java.lang.Object,java.util.ArrayList,java.util.ArrayList)>($u-1#41, sceneRoot#22, sceneRoot#20);
+
+     label7:
+        return;
+    }
+
+    private static androidx.fragment.app.FragmentTransition$FragmentContainerTransition ensureContainer(androidx.fragment.app.FragmentTransition$FragmentContainerTransition, android.util.SparseArray, int)
+    {
+        android.util.SparseArray transitioningFragments;
+        int $u3;
+        androidx.fragment.app.FragmentTransition$FragmentContainerTransition $u0;
+
+        $u0 := @parameter0: androidx.fragment.app.FragmentTransition$FragmentContainerTransition;
+
+        transitioningFragments := @parameter1: android.util.SparseArray;
+
+        $u3 := @parameter2: int;
+
+        if $u0 != null goto label1;
+
+        $u0 = new androidx.fragment.app.FragmentTransition$FragmentContainerTransition;
+
+        specialinvoke $u0.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: void <init>()>();
+
+        virtualinvoke transitioningFragments.<android.util.SparseArray: void put(int,java.lang.Object)>($u3, $u0);
+
+     label1:
+        return $u0;
+    }
+
+    private static java.lang.String findKeyForValue(androidx.collection.ArrayMap, java.lang.String)
+    {
+        androidx.collection.ArrayMap map;
+        java.lang.String $u4;
+        int $u-1, i;
+        java.lang.Object $u-1#3;
+        boolean $u-1#5;
+
+        map := @parameter0: androidx.collection.ArrayMap;
+
+        $u4 := @parameter1: java.lang.String;
+
+        $u-1 = virtualinvoke map.<androidx.collection.ArrayMap: int size()>();
+
+        i = 0;
+
+     label1:
+        if i >= $u-1 goto label3;
+
+        $u-1#3 = virtualinvoke map.<androidx.collection.ArrayMap: java.lang.Object valueAt(int)>(i);
+
+        $u-1#5 = virtualinvoke $u4.<java.lang.String: boolean equals(java.lang.Object)>($u-1#3);
+
+        if $u-1#5 == 0 goto label2;
+
+        $u-1#3 = virtualinvoke map.<androidx.collection.ArrayMap: java.lang.Object keyAt(int)>(i);
+
+        $u4 = (java.lang.String) $u-1#3;
+
+        return $u4;
+
+     label2:
+        i = i + 1;
+
+        goto label1;
+
+     label3:
+        return null;
+    }
+
+    private static java.lang.Object getEnterTransition(androidx.fragment.app.FragmentTransitionImpl, androidx.fragment.app.Fragment, boolean)
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u1;
+        androidx.fragment.app.Fragment $u2;
+        boolean $u3;
+        java.lang.Object $u-1;
+
+        $u1 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        $u2 := @parameter1: androidx.fragment.app.Fragment;
+
+        $u3 := @parameter2: boolean;
+
+        if $u2 != null goto label1;
+
+        return null;
+
+     label1:
+        if $u3 == 0 goto label2;
+
+        $u-1 = virtualinvoke $u2.<androidx.fragment.app.Fragment: java.lang.Object getReenterTransition()>();
+
+        goto label3;
+
+     label2:
+        $u-1 = virtualinvoke $u2.<androidx.fragment.app.Fragment: java.lang.Object getEnterTransition()>();
+
+     label3:
+        $u-1 = virtualinvoke $u1.<androidx.fragment.app.FragmentTransitionImpl: java.lang.Object cloneTransition(java.lang.Object)>($u-1);
+
+        return $u-1;
+    }
+
+    private static java.lang.Object getExitTransition(androidx.fragment.app.FragmentTransitionImpl, androidx.fragment.app.Fragment, boolean)
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u1;
+        androidx.fragment.app.Fragment $u2;
+        boolean $u3;
+        java.lang.Object $u-1;
+
+        $u1 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        $u2 := @parameter1: androidx.fragment.app.Fragment;
+
+        $u3 := @parameter2: boolean;
+
+        if $u2 != null goto label1;
+
+        return null;
+
+     label1:
+        if $u3 == 0 goto label2;
+
+        $u-1 = virtualinvoke $u2.<androidx.fragment.app.Fragment: java.lang.Object getReturnTransition()>();
+
+        goto label3;
+
+     label2:
+        $u-1 = virtualinvoke $u2.<androidx.fragment.app.Fragment: java.lang.Object getExitTransition()>();
+
+     label3:
+        $u-1 = virtualinvoke $u1.<androidx.fragment.app.FragmentTransitionImpl: java.lang.Object cloneTransition(java.lang.Object)>($u-1);
+
+        return $u-1;
+    }
+
+    static android.view.View getInEpicenterView(androidx.collection.ArrayMap, androidx.fragment.app.FragmentTransition$FragmentContainerTransition, java.lang.Object, boolean)
+    {
+        androidx.collection.ArrayMap inSharedElements;
+        androidx.fragment.app.FragmentTransition$FragmentContainerTransition $u4;
+        java.lang.Object $u5;
+        boolean $u6, $u-1;
+        androidx.fragment.app.BackStackRecord inTransaction;
+        java.util.ArrayList targetName;
+        java.lang.String targetName#9;
+        android.view.View $u2;
+
+        inSharedElements := @parameter0: androidx.collection.ArrayMap;
+
+        $u4 := @parameter1: androidx.fragment.app.FragmentTransition$FragmentContainerTransition;
+
+        $u5 := @parameter2: java.lang.Object;
+
+        $u6 := @parameter3: boolean;
+
+        inTransaction = $u4.<androidx.fragment.app.FragmentTransition$FragmentContainerTransition: androidx.fragment.app.BackStackRecord lastInTransaction>;
+
+        if $u5 == null goto label3;
+
+        if inSharedElements == null goto label3;
+
+        targetName = inTransaction.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        if targetName == null goto label3;
+
+        targetName = inTransaction.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        $u-1 = virtualinvoke targetName.<java.util.ArrayList: boolean isEmpty()>();
+
+        if $u-1 != 0 goto label3;
+
+        if $u6 == 0 goto label1;
+
+        targetName = inTransaction.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        $u5 = virtualinvoke targetName.<java.util.ArrayList: java.lang.Object get(int)>(0);
+
+        targetName#9 = (java.lang.String) $u5;
+
+        goto label2;
+
+     label1:
+        targetName = inTransaction.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementTargetNames>;
+
+        $u5 = virtualinvoke targetName.<java.util.ArrayList: java.lang.Object get(int)>(0);
+
+        targetName#9 = (java.lang.String) $u5;
+
+     label2:
+        $u5 = virtualinvoke inSharedElements.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>(targetName#9);
+
+        $u2 = (android.view.View) $u5;
+
+        return $u2;
+
+     label3:
+        return null;
+    }
+
+    private static java.lang.Object getSharedElementTransition(androidx.fragment.app.FragmentTransitionImpl, androidx.fragment.app.Fragment, androidx.fragment.app.Fragment, boolean)
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u2;
+        androidx.fragment.app.Fragment $u3, $u4;
+        boolean $u5;
+        java.lang.Object $u-1;
+
+        $u2 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        $u3 := @parameter1: androidx.fragment.app.Fragment;
+
+        $u4 := @parameter2: androidx.fragment.app.Fragment;
+
+        $u5 := @parameter3: boolean;
+
+        if $u3 == null goto label4;
+
+        if $u4 != null goto label1;
+
+        goto label4;
+
+     label1:
+        if $u5 == 0 goto label2;
+
+        $u-1 = virtualinvoke $u4.<androidx.fragment.app.Fragment: java.lang.Object getSharedElementReturnTransition()>();
+
+        goto label3;
+
+     label2:
+        $u-1 = virtualinvoke $u3.<androidx.fragment.app.Fragment: java.lang.Object getSharedElementEnterTransition()>();
+
+     label3:
+        $u-1 = virtualinvoke $u2.<androidx.fragment.app.FragmentTransitionImpl: java.lang.Object cloneTransition(java.lang.Object)>($u-1);
+
+        $u-1 = virtualinvoke $u2.<androidx.fragment.app.FragmentTransitionImpl: java.lang.Object wrapTransitionInSet(java.lang.Object)>($u-1);
+
+        return $u-1;
+
+     label4:
+        return null;
+    }
+
+    private static java.lang.Object mergeTransitions(androidx.fragment.app.FragmentTransitionImpl, java.lang.Object, java.lang.Object, java.lang.Object, androidx.fragment.app.Fragment, boolean)
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u2;
+        java.lang.Object $u3, $u4, $u5;
+        androidx.fragment.app.Fragment $u6;
+        boolean $u7, overlap;
+
+        $u2 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        $u3 := @parameter1: java.lang.Object;
+
+        $u4 := @parameter2: java.lang.Object;
+
+        $u5 := @parameter3: java.lang.Object;
+
+        $u6 := @parameter4: androidx.fragment.app.Fragment;
+
+        $u7 := @parameter5: boolean;
+
+        overlap = 1;
+
+        if $u3 == null goto label3;
+
+        if $u4 == null goto label3;
+
+        if $u6 == null goto label3;
+
+        if $u7 == 0 goto label1;
+
+        $u7 = virtualinvoke $u6.<androidx.fragment.app.Fragment: boolean getAllowReturnTransitionOverlap()>();
+
+        goto label2;
+
+     label1:
+        $u7 = virtualinvoke $u6.<androidx.fragment.app.Fragment: boolean getAllowEnterTransitionOverlap()>();
+
+     label2:
+        overlap = $u7;
+
+     label3:
+        if overlap == 0 goto label4;
+
+        $u3 = virtualinvoke $u2.<androidx.fragment.app.FragmentTransitionImpl: java.lang.Object mergeTransitionsTogether(java.lang.Object,java.lang.Object,java.lang.Object)>($u4, $u3, $u5);
+
+        return $u3;
+
+     label4:
+        $u3 = virtualinvoke $u2.<androidx.fragment.app.FragmentTransitionImpl: java.lang.Object mergeTransitionsInSequence(java.lang.Object,java.lang.Object,java.lang.Object)>($u4, $u3, $u5);
+
+        return $u3;
+    }
+
+    private static void replaceHide(androidx.fragment.app.FragmentTransitionImpl, java.lang.Object, androidx.fragment.app.Fragment, java.util.ArrayList)
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u2;
+        java.lang.Object $u3;
+        androidx.fragment.app.Fragment $u4;
+        java.util.ArrayList exitingViews;
+        androidx.fragment.app.FragmentTransition$1 $u1;
+        android.view.View $u-1;
+        boolean container;
+        android.view.ViewGroup container#6;
+
+        $u2 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        $u3 := @parameter1: java.lang.Object;
+
+        $u4 := @parameter2: androidx.fragment.app.Fragment;
+
+        exitingViews := @parameter3: java.util.ArrayList;
+
+        if $u4 == null goto label1;
+
+        if $u3 == null goto label1;
+
+        container = $u4.<androidx.fragment.app.Fragment: boolean mAdded>;
+
+        if container == 0 goto label1;
+
+        container = $u4.<androidx.fragment.app.Fragment: boolean mHidden>;
+
+        if container == 0 goto label1;
+
+        container = $u4.<androidx.fragment.app.Fragment: boolean mHiddenChanged>;
+
+        if container == 0 goto label1;
+
+        virtualinvoke $u4.<androidx.fragment.app.Fragment: void setHideReplaced(boolean)>(1);
+
+        $u-1 = virtualinvoke $u4.<androidx.fragment.app.Fragment: android.view.View getView()>();
+
+        virtualinvoke $u2.<androidx.fragment.app.FragmentTransitionImpl: void scheduleHideFragmentView(java.lang.Object,android.view.View,java.util.ArrayList)>($u3, $u-1, exitingViews);
+
+        container#6 = $u4.<androidx.fragment.app.Fragment: android.view.ViewGroup mContainer>;
+
+        $u1 = new androidx.fragment.app.FragmentTransition$1;
+
+        specialinvoke $u1.<androidx.fragment.app.FragmentTransition$1: void <init>(java.util.ArrayList)>(exitingViews);
+
+        staticinvoke <androidx.core.view.OneShotPreDrawListener: androidx.core.view.OneShotPreDrawListener add(android.view.View,java.lang.Runnable)>(container#6, $u1);
+
+     label1:
+        return;
+    }
+
+    private static androidx.fragment.app.FragmentTransitionImpl resolveSupportImpl()
+    {
+        java.lang.Class $u-1;
+        java.lang.Class[] $u2;
+        java.lang.reflect.Constructor $u-1#6;
+        java.lang.Object[] $u1;
+        java.lang.Object $u-1#9;
+        androidx.fragment.app.FragmentTransitionImpl $u1#11;
+        java.lang.Exception impl;
+
+     label1:
+        $u-1 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("androidx.transition.FragmentTransitionSupport");
+
+        $u2 = newarray (java.lang.Class)[0];
+
+        $u-1#6 = virtualinvoke $u-1.<java.lang.Class: java.lang.reflect.Constructor getDeclaredConstructor(java.lang.Class[])>($u2);
+
+        $u1 = newarray (java.lang.Object)[0];
+
+        $u-1#9 = virtualinvoke $u-1#6.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($u1);
+
+        $u1#11 = (androidx.fragment.app.FragmentTransitionImpl) $u-1#9;
+
+     label2:
+        return $u1#11;
+
+     label3:
+        impl := @caughtexception;
+
+        return null;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    private static void retainValues(androidx.collection.ArrayMap, androidx.collection.ArrayMap)
+    {
+        androidx.collection.ArrayMap nameOverrides, namedViews;
+        int $u-1;
+        java.lang.Object $u-1#4;
+        java.lang.String targetName;
+        boolean $u-1#7;
+
+        nameOverrides := @parameter0: androidx.collection.ArrayMap;
+
+        namedViews := @parameter1: androidx.collection.ArrayMap;
+
+        $u-1 = virtualinvoke nameOverrides.<androidx.collection.ArrayMap: int size()>();
+
+        $u-1 = $u-1 + -1;
+
+     label1:
+        if $u-1 < 0 goto label3;
+
+        $u-1#4 = virtualinvoke nameOverrides.<androidx.collection.ArrayMap: java.lang.Object valueAt(int)>($u-1);
+
+        targetName = (java.lang.String) $u-1#4;
+
+        $u-1#7 = virtualinvoke namedViews.<androidx.collection.ArrayMap: boolean containsKey(java.lang.Object)>(targetName);
+
+        if $u-1#7 != 0 goto label2;
+
+        virtualinvoke nameOverrides.<androidx.collection.ArrayMap: java.lang.Object removeAt(int)>($u-1);
+
+     label2:
+        $u-1 = $u-1 + -1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    private static void scheduleTargetChange(androidx.fragment.app.FragmentTransitionImpl, android.view.ViewGroup, androidx.fragment.app.Fragment, android.view.View, java.util.ArrayList, java.lang.Object, java.util.ArrayList, java.lang.Object, java.util.ArrayList)
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u10;
+        android.view.ViewGroup $u11;
+        androidx.fragment.app.Fragment $u12;
+        android.view.View $u13;
+        java.util.ArrayList sharedElementsIn, enteringViews, exitingViews;
+        java.lang.Object $u15, $u17;
+        androidx.fragment.app.FragmentTransition$2 $u9;
+
+        $u10 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        $u11 := @parameter1: android.view.ViewGroup;
+
+        $u12 := @parameter2: androidx.fragment.app.Fragment;
+
+        $u13 := @parameter3: android.view.View;
+
+        sharedElementsIn := @parameter4: java.util.ArrayList;
+
+        $u15 := @parameter5: java.lang.Object;
+
+        enteringViews := @parameter6: java.util.ArrayList;
+
+        $u17 := @parameter7: java.lang.Object;
+
+        exitingViews := @parameter8: java.util.ArrayList;
+
+        $u9 = new androidx.fragment.app.FragmentTransition$2;
+
+        specialinvoke $u9.<androidx.fragment.app.FragmentTransition$2: void <init>(java.lang.Object,androidx.fragment.app.FragmentTransitionImpl,android.view.View,androidx.fragment.app.Fragment,java.util.ArrayList,java.util.ArrayList,java.util.ArrayList,java.lang.Object)>($u15, $u10, $u13, $u12, sharedElementsIn, enteringViews, exitingViews, $u17);
+
+        staticinvoke <androidx.core.view.OneShotPreDrawListener: androidx.core.view.OneShotPreDrawListener add(android.view.View,java.lang.Runnable)>($u11, $u9);
+
+        return;
+    }
+
+    private static void setOutEpicenter(androidx.fragment.app.FragmentTransitionImpl, java.lang.Object, java.lang.Object, androidx.collection.ArrayMap, boolean, androidx.fragment.app.BackStackRecord)
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u2;
+        java.lang.Object $u3, $u4, $u-1#7;
+        androidx.collection.ArrayMap outSharedElements;
+        boolean $u6, $u-1;
+        androidx.fragment.app.BackStackRecord $u7;
+        java.util.ArrayList sourceName;
+        java.lang.String sourceName#9;
+        android.view.View outEpicenterView;
+
+        $u2 := @parameter0: androidx.fragment.app.FragmentTransitionImpl;
+
+        $u3 := @parameter1: java.lang.Object;
+
+        $u4 := @parameter2: java.lang.Object;
+
+        outSharedElements := @parameter3: androidx.collection.ArrayMap;
+
+        $u6 := @parameter4: boolean;
+
+        $u7 := @parameter5: androidx.fragment.app.BackStackRecord;
+
+        sourceName = $u7.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        if sourceName == null goto label3;
+
+        sourceName = $u7.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        $u-1 = virtualinvoke sourceName.<java.util.ArrayList: boolean isEmpty()>();
+
+        if $u-1 != 0 goto label3;
+
+        if $u6 == 0 goto label1;
+
+        sourceName = $u7.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementTargetNames>;
+
+        $u-1#7 = virtualinvoke sourceName.<java.util.ArrayList: java.lang.Object get(int)>(0);
+
+        sourceName#9 = (java.lang.String) $u-1#7;
+
+        goto label2;
+
+     label1:
+        sourceName = $u7.<androidx.fragment.app.BackStackRecord: java.util.ArrayList mSharedElementSourceNames>;
+
+        $u-1#7 = virtualinvoke sourceName.<java.util.ArrayList: java.lang.Object get(int)>(0);
+
+        sourceName#9 = (java.lang.String) $u-1#7;
+
+     label2:
+        $u-1#7 = virtualinvoke outSharedElements.<androidx.collection.ArrayMap: java.lang.Object get(java.lang.Object)>(sourceName#9);
+
+        outEpicenterView = (android.view.View) $u-1#7;
+
+        virtualinvoke $u2.<androidx.fragment.app.FragmentTransitionImpl: void setEpicenter(java.lang.Object,android.view.View)>($u3, outEpicenterView);
+
+        if $u4 == null goto label3;
+
+        virtualinvoke $u2.<androidx.fragment.app.FragmentTransitionImpl: void setEpicenter(java.lang.Object,android.view.View)>($u4, outEpicenterView);
+
+     label3:
+        return;
+    }
+
+    static void setViewVisibility(java.util.ArrayList, int)
+    {
+        java.util.ArrayList views;
+        int $u3, $u-1;
+        java.lang.Object $u-1#4;
+        android.view.View view;
+
+        views := @parameter0: java.util.ArrayList;
+
+        $u3 := @parameter1: int;
+
+        if views != null goto label1;
+
+        return;
+
+     label1:
+        $u-1 = virtualinvoke views.<java.util.ArrayList: int size()>();
+
+        $u-1 = $u-1 + -1;
+
+     label2:
+        if $u-1 < 0 goto label3;
+
+        $u-1#4 = virtualinvoke views.<java.util.ArrayList: java.lang.Object get(int)>($u-1);
+
+        view = (android.view.View) $u-1#4;
+
+        virtualinvoke view.<android.view.View: void setVisibility(int)>($u3);
+
+        $u-1 = $u-1 + -1;
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    static void startTransitions(androidx.fragment.app.FragmentManagerImpl, java.util.ArrayList, java.util.ArrayList, int, int, boolean)
+    {
+        androidx.fragment.app.FragmentManagerImpl $u7;
+        java.util.ArrayList records, isRecordPop;
+        int $u10, $u11, transitioningFragments, isPop#21, $u-1#22;
+        boolean $u12, $u-1#11;
+        android.util.SparseArray transitioningFragments#3;
+        java.lang.Object $u-1;
+        androidx.fragment.app.BackStackRecord record;
+        java.lang.Boolean isPop;
+        android.view.View i;
+        androidx.fragment.app.FragmentHostCallback record#16;
+        android.content.Context $u-1#17;
+        androidx.collection.ArrayMap $u-1#23;
+        androidx.fragment.app.FragmentTransition$FragmentContainerTransition containerTransition;
+
+        $u7 := @parameter0: androidx.fragment.app.FragmentManagerImpl;
+
+        records := @parameter1: java.util.ArrayList;
+
+        isRecordPop := @parameter2: java.util.ArrayList;
+
+        $u10 := @parameter3: int;
+
+        $u11 := @parameter4: int;
+
+        $u12 := @parameter5: boolean;
+
+        transitioningFragments = $u7.<androidx.fragment.app.FragmentManagerImpl: int mCurState>;
+
+        if transitioningFragments >= 1 goto label1;
+
+        return;
+
+     label1:
+        transitioningFragments#3 = new android.util.SparseArray;
+
+        specialinvoke transitioningFragments#3.<android.util.SparseArray: void <init>()>();
+
+        transitioningFragments = $u10;
+
+     label2:
+        if transitioningFragments >= $u11 goto label5;
+
+        $u-1 = virtualinvoke records.<java.util.ArrayList: java.lang.Object get(int)>(transitioningFragments);
+
+        record = (androidx.fragment.app.BackStackRecord) $u-1;
+
+        $u-1 = virtualinvoke isRecordPop.<java.util.ArrayList: java.lang.Object get(int)>(transitioningFragments);
+
+        isPop = (java.lang.Boolean) $u-1;
+
+        $u-1#11 = virtualinvoke isPop.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $u-1#11 == 0 goto label3;
+
+        staticinvoke <androidx.fragment.app.FragmentTransition: void calculatePopFragments(androidx.fragment.app.BackStackRecord,android.util.SparseArray,boolean)>(record, transitioningFragments#3, $u12);
+
+        goto label4;
+
+     label3:
+        staticinvoke <androidx.fragment.app.FragmentTransition: void calculateFragments(androidx.fragment.app.BackStackRecord,android.util.SparseArray,boolean)>(record, transitioningFragments#3, $u12);
+
+     label4:
+        transitioningFragments = transitioningFragments + 1;
+
+        goto label2;
+
+     label5:
+        transitioningFragments = virtualinvoke transitioningFragments#3.<android.util.SparseArray: int size()>();
+
+        if transitioningFragments == 0 goto label9;
+
+        i = new android.view.View;
+
+        record#16 = $u7.<androidx.fragment.app.FragmentManagerImpl: androidx.fragment.app.FragmentHostCallback mHost>;
+
+        $u-1#17 = virtualinvoke record#16.<androidx.fragment.app.FragmentHostCallback: android.content.Context getContext()>();
+
+        specialinvoke i.<android.view.View: void <init>(android.content.Context)>($u-1#17);
+
+        transitioningFragments = virtualinvoke transitioningFragments#3.<android.util.SparseArray: int size()>();
+
+        isPop#21 = 0;
+
+     label6:
+        if isPop#21 >= transitioningFragments goto label9;
+
+        $u-1#22 = virtualinvoke transitioningFragments#3.<android.util.SparseArray: int keyAt(int)>(isPop#21);
+
+        $u-1#23 = staticinvoke <androidx.fragment.app.FragmentTransition: androidx.collection.ArrayMap calculateNameOverrides(int,java.util.ArrayList,java.util.ArrayList,int,int)>($u-1#22, records, isRecordPop, $u10, $u11);
+
+        $u-1 = virtualinvoke transitioningFragments#3.<android.util.SparseArray: java.lang.Object valueAt(int)>(isPop#21);
+
+        containerTransition = (androidx.fragment.app.FragmentTransition$FragmentContainerTransition) $u-1;
+
+        if $u12 == 0 goto label7;
+
+        staticinvoke <androidx.fragment.app.FragmentTransition: void configureTransitionsReordered(androidx.fragment.app.FragmentManagerImpl,int,androidx.fragment.app.FragmentTransition$FragmentContainerTransition,android.view.View,androidx.collection.ArrayMap)>($u7, $u-1#22, containerTransition, i, $u-1#23);
+
+        goto label8;
+
+     label7:
+        staticinvoke <androidx.fragment.app.FragmentTransition: void configureTransitionsOrdered(androidx.fragment.app.FragmentManagerImpl,int,androidx.fragment.app.FragmentTransition$FragmentContainerTransition,android.view.View,androidx.collection.ArrayMap)>($u7, $u-1#22, containerTransition, i, $u-1#23);
+
+     label8:
+        isPop#21 = isPop#21 + 1;
+
+        goto label6;
+
+     label9:
+        return;
+    }
+
+    static boolean supportsTransition()
+    {
+        androidx.fragment.app.FragmentTransitionImpl $u0;
+
+        $u0 = <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransitionImpl PLATFORM_IMPL>;
+
+        if $u0 != null goto label2;
+
+        $u0 = <androidx.fragment.app.FragmentTransition: androidx.fragment.app.FragmentTransitionImpl SUPPORT_IMPL>;
+
+        if $u0 == null goto label1;
+
+        goto label2;
+
+     label1:
+        return 0;
+
+     label2:
+        return 1;
+    }
+}

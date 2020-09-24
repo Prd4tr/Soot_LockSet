@@ -1,0 +1,114 @@
+public final class androidx.core.net.ConnectivityManagerCompat extends java.lang.Object
+{
+    public static final int RESTRICT_BACKGROUND_STATUS_DISABLED;
+    public static final int RESTRICT_BACKGROUND_STATUS_ENABLED;
+    public static final int RESTRICT_BACKGROUND_STATUS_WHITELISTED;
+
+    private void <init>()
+    {
+        androidx.core.net.ConnectivityManagerCompat this;
+
+        this := @this: androidx.core.net.ConnectivityManagerCompat;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static android.net.NetworkInfo getNetworkInfoFromBroadcast(android.net.ConnectivityManager, android.content.Intent)
+    {
+        android.net.ConnectivityManager $u2;
+        android.content.Intent $u3;
+        android.os.Parcelable $u-1;
+        android.net.NetworkInfo info;
+        int $u-1#5;
+
+        $u2 := @parameter0: android.net.ConnectivityManager;
+
+        $u3 := @parameter1: android.content.Intent;
+
+        $u-1 = virtualinvoke $u3.<android.content.Intent: android.os.Parcelable getParcelableExtra(java.lang.String)>("networkInfo");
+
+        info = (android.net.NetworkInfo) $u-1;
+
+        if info == null goto label1;
+
+        $u-1#5 = virtualinvoke info.<android.net.NetworkInfo: int getType()>();
+
+        info = virtualinvoke $u2.<android.net.ConnectivityManager: android.net.NetworkInfo getNetworkInfo(int)>($u-1#5);
+
+        return info;
+
+     label1:
+        return null;
+    }
+
+    public static int getRestrictBackgroundStatus(android.net.ConnectivityManager)
+    {
+        android.net.ConnectivityManager $u2;
+        int $u-1;
+
+        $u2 := @parameter0: android.net.ConnectivityManager;
+
+        $u-1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $u-1 < 24 goto label1;
+
+        $u-1 = virtualinvoke $u2.<android.net.ConnectivityManager: int getRestrictBackgroundStatus()>();
+
+        return $u-1;
+
+     label1:
+        return 3;
+    }
+
+    public static boolean isActiveNetworkMetered(android.net.ConnectivityManager)
+    {
+        android.net.ConnectivityManager $u4;
+        int info;
+        boolean $u-1;
+        android.net.NetworkInfo $u-1#5;
+
+        $u4 := @parameter0: android.net.ConnectivityManager;
+
+        info = <android.os.Build$VERSION: int SDK_INT>;
+
+        if info < 16 goto label1;
+
+        $u-1 = virtualinvoke $u4.<android.net.ConnectivityManager: boolean isActiveNetworkMetered()>();
+
+        return $u-1;
+
+     label1:
+        $u-1#5 = virtualinvoke $u4.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+
+        if $u-1#5 != null goto label2;
+
+        return 1;
+
+     label2:
+        info = virtualinvoke $u-1#5.<android.net.NetworkInfo: int getType()>();
+
+        if info == 1 goto label3;
+
+        if info == 7 goto label3;
+
+        if info == 9 goto label3;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.core.net.ConnectivityManagerCompat: int RESTRICT_BACKGROUND_STATUS_WHITELISTED> = 2;
+
+        <androidx.core.net.ConnectivityManagerCompat: int RESTRICT_BACKGROUND_STATUS_ENABLED> = 3;
+
+        <androidx.core.net.ConnectivityManagerCompat: int RESTRICT_BACKGROUND_STATUS_DISABLED> = 1;
+
+        return;
+    }
+}

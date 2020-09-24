@@ -1,0 +1,75 @@
+class androidx.appcompat.app.AlertController$AlertParams$3 extends java.lang.Object implements android.widget.AdapterView$OnItemClickListener
+{
+    final androidx.appcompat.app.AlertController$AlertParams this$0;
+    final androidx.appcompat.app.AlertController val$dialog;
+
+    void <init>(androidx.appcompat.app.AlertController$AlertParams, androidx.appcompat.app.AlertController)
+    {
+        androidx.appcompat.app.AlertController$AlertParams$3 this;
+        androidx.appcompat.app.AlertController$AlertParams $u1;
+        androidx.appcompat.app.AlertController $u2;
+
+        this := @this: androidx.appcompat.app.AlertController$AlertParams$3;
+
+        $u1 := @parameter0: androidx.appcompat.app.AlertController$AlertParams;
+
+        $u2 := @parameter1: androidx.appcompat.app.AlertController;
+
+        this.<androidx.appcompat.app.AlertController$AlertParams$3: androidx.appcompat.app.AlertController$AlertParams this$0> = $u1;
+
+        this.<androidx.appcompat.app.AlertController$AlertParams$3: androidx.appcompat.app.AlertController val$dialog> = $u2;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onItemClick(android.widget.AdapterView, android.view.View, int, long)
+    {
+        androidx.appcompat.app.AlertController$AlertParams$3 this;
+        android.widget.AdapterView parent;
+        android.view.View $u4;
+        int $u5;
+        long $u6;
+        androidx.appcompat.app.AlertController$AlertParams $u0;
+        android.content.DialogInterface$OnClickListener $u0#2;
+        androidx.appcompat.app.AlertController $u1;
+        androidx.appcompat.app.AppCompatDialog $u1#4;
+        boolean $u0#6;
+
+        this := @this: androidx.appcompat.app.AlertController$AlertParams$3;
+
+        parent := @parameter0: android.widget.AdapterView;
+
+        $u4 := @parameter1: android.view.View;
+
+        $u5 := @parameter2: int;
+
+        $u6 := @parameter3: long;
+
+        $u0 = this.<androidx.appcompat.app.AlertController$AlertParams$3: androidx.appcompat.app.AlertController$AlertParams this$0>;
+
+        $u0#2 = $u0.<androidx.appcompat.app.AlertController$AlertParams: android.content.DialogInterface$OnClickListener mOnClickListener>;
+
+        $u1 = this.<androidx.appcompat.app.AlertController$AlertParams$3: androidx.appcompat.app.AlertController val$dialog>;
+
+        $u1#4 = $u1.<androidx.appcompat.app.AlertController: androidx.appcompat.app.AppCompatDialog mDialog>;
+
+        interfaceinvoke $u0#2.<android.content.DialogInterface$OnClickListener: void onClick(android.content.DialogInterface,int)>($u1#4, $u5);
+
+        $u0 = this.<androidx.appcompat.app.AlertController$AlertParams$3: androidx.appcompat.app.AlertController$AlertParams this$0>;
+
+        $u0#6 = $u0.<androidx.appcompat.app.AlertController$AlertParams: boolean mIsSingleChoice>;
+
+        if $u0#6 != 0 goto label1;
+
+        $u1 = this.<androidx.appcompat.app.AlertController$AlertParams$3: androidx.appcompat.app.AlertController val$dialog>;
+
+        $u1#4 = $u1.<androidx.appcompat.app.AlertController: androidx.appcompat.app.AppCompatDialog mDialog>;
+
+        virtualinvoke $u1#4.<androidx.appcompat.app.AppCompatDialog: void dismiss()>();
+
+     label1:
+        return;
+    }
+}

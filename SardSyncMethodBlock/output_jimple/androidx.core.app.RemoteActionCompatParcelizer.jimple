@@ -1,0 +1,116 @@
+public class androidx.core.app.RemoteActionCompatParcelizer extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        androidx.core.app.RemoteActionCompatParcelizer this;
+
+        this := @this: androidx.core.app.RemoteActionCompatParcelizer;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static androidx.core.app.RemoteActionCompat read(androidx.versionedparcelable.VersionedParcel)
+    {
+        androidx.versionedparcelable.VersionedParcel $u3;
+        androidx.core.app.RemoteActionCompat obj;
+        androidx.core.graphics.drawable.IconCompat $u1;
+        androidx.versionedparcelable.VersionedParcelable $u-1;
+        java.lang.CharSequence $u1#6;
+        android.app.PendingIntent $u1#14;
+        android.os.Parcelable $u-1#16;
+        boolean $u1#19;
+
+        $u3 := @parameter0: androidx.versionedparcelable.VersionedParcel;
+
+        obj = new androidx.core.app.RemoteActionCompat;
+
+        specialinvoke obj.<androidx.core.app.RemoteActionCompat: void <init>()>();
+
+        $u1 = obj.<androidx.core.app.RemoteActionCompat: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        $u-1 = virtualinvoke $u3.<androidx.versionedparcelable.VersionedParcel: androidx.versionedparcelable.VersionedParcelable readVersionedParcelable(androidx.versionedparcelable.VersionedParcelable,int)>($u1, 1);
+
+        $u1 = (androidx.core.graphics.drawable.IconCompat) $u-1;
+
+        obj.<androidx.core.app.RemoteActionCompat: androidx.core.graphics.drawable.IconCompat mIcon> = $u1;
+
+        $u1#6 = obj.<androidx.core.app.RemoteActionCompat: java.lang.CharSequence mTitle>;
+
+        $u1#6 = virtualinvoke $u3.<androidx.versionedparcelable.VersionedParcel: java.lang.CharSequence readCharSequence(java.lang.CharSequence,int)>($u1#6, 2);
+
+        obj.<androidx.core.app.RemoteActionCompat: java.lang.CharSequence mTitle> = $u1#6;
+
+        $u1#6 = obj.<androidx.core.app.RemoteActionCompat: java.lang.CharSequence mContentDescription>;
+
+        $u1#6 = virtualinvoke $u3.<androidx.versionedparcelable.VersionedParcel: java.lang.CharSequence readCharSequence(java.lang.CharSequence,int)>($u1#6, 3);
+
+        obj.<androidx.core.app.RemoteActionCompat: java.lang.CharSequence mContentDescription> = $u1#6;
+
+        $u1#14 = obj.<androidx.core.app.RemoteActionCompat: android.app.PendingIntent mActionIntent>;
+
+        $u-1#16 = virtualinvoke $u3.<androidx.versionedparcelable.VersionedParcel: android.os.Parcelable readParcelable(android.os.Parcelable,int)>($u1#14, 4);
+
+        $u1#14 = (android.app.PendingIntent) $u-1#16;
+
+        obj.<androidx.core.app.RemoteActionCompat: android.app.PendingIntent mActionIntent> = $u1#14;
+
+        $u1#19 = obj.<androidx.core.app.RemoteActionCompat: boolean mEnabled>;
+
+        $u1#19 = virtualinvoke $u3.<androidx.versionedparcelable.VersionedParcel: boolean readBoolean(boolean,int)>($u1#19, 5);
+
+        obj.<androidx.core.app.RemoteActionCompat: boolean mEnabled> = $u1#19;
+
+        $u1#19 = obj.<androidx.core.app.RemoteActionCompat: boolean mShouldShowIcon>;
+
+        $u1#19 = virtualinvoke $u3.<androidx.versionedparcelable.VersionedParcel: boolean readBoolean(boolean,int)>($u1#19, 6);
+
+        obj.<androidx.core.app.RemoteActionCompat: boolean mShouldShowIcon> = $u1#19;
+
+        return obj;
+    }
+
+    public static void write(androidx.core.app.RemoteActionCompat, androidx.versionedparcelable.VersionedParcel)
+    {
+        androidx.core.app.RemoteActionCompat $u2;
+        androidx.versionedparcelable.VersionedParcel $u3;
+        androidx.core.graphics.drawable.IconCompat $u0;
+        java.lang.CharSequence $u0#4;
+        android.app.PendingIntent $u0#8;
+        boolean $u0#10;
+
+        $u2 := @parameter0: androidx.core.app.RemoteActionCompat;
+
+        $u3 := @parameter1: androidx.versionedparcelable.VersionedParcel;
+
+        virtualinvoke $u3.<androidx.versionedparcelable.VersionedParcel: void setSerializationFlags(boolean,boolean)>(0, 0);
+
+        $u0 = $u2.<androidx.core.app.RemoteActionCompat: androidx.core.graphics.drawable.IconCompat mIcon>;
+
+        virtualinvoke $u3.<androidx.versionedparcelable.VersionedParcel: void writeVersionedParcelable(androidx.versionedparcelable.VersionedParcelable,int)>($u0, 1);
+
+        $u0#4 = $u2.<androidx.core.app.RemoteActionCompat: java.lang.CharSequence mTitle>;
+
+        virtualinvoke $u3.<androidx.versionedparcelable.VersionedParcel: void writeCharSequence(java.lang.CharSequence,int)>($u0#4, 2);
+
+        $u0#4 = $u2.<androidx.core.app.RemoteActionCompat: java.lang.CharSequence mContentDescription>;
+
+        virtualinvoke $u3.<androidx.versionedparcelable.VersionedParcel: void writeCharSequence(java.lang.CharSequence,int)>($u0#4, 3);
+
+        $u0#8 = $u2.<androidx.core.app.RemoteActionCompat: android.app.PendingIntent mActionIntent>;
+
+        virtualinvoke $u3.<androidx.versionedparcelable.VersionedParcel: void writeParcelable(android.os.Parcelable,int)>($u0#8, 4);
+
+        $u0#10 = $u2.<androidx.core.app.RemoteActionCompat: boolean mEnabled>;
+
+        virtualinvoke $u3.<androidx.versionedparcelable.VersionedParcel: void writeBoolean(boolean,int)>($u0#10, 5);
+
+        $u0#10 = $u2.<androidx.core.app.RemoteActionCompat: boolean mShouldShowIcon>;
+
+        virtualinvoke $u3.<androidx.versionedparcelable.VersionedParcel: void writeBoolean(boolean,int)>($u0#10, 6);
+
+        return;
+    }
+}

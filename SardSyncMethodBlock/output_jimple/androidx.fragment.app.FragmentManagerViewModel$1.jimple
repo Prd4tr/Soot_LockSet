@@ -1,0 +1,31 @@
+final class androidx.fragment.app.FragmentManagerViewModel$1 extends java.lang.Object implements androidx.lifecycle.ViewModelProvider$Factory
+{
+
+    void <init>()
+    {
+        androidx.fragment.app.FragmentManagerViewModel$1 this;
+
+        this := @this: androidx.fragment.app.FragmentManagerViewModel$1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public androidx.lifecycle.ViewModel create(java.lang.Class)
+    {
+        androidx.fragment.app.FragmentManagerViewModel$1 this;
+        java.lang.Class modelClass;
+        androidx.fragment.app.FragmentManagerViewModel viewModel;
+
+        this := @this: androidx.fragment.app.FragmentManagerViewModel$1;
+
+        modelClass := @parameter0: java.lang.Class;
+
+        viewModel = new androidx.fragment.app.FragmentManagerViewModel;
+
+        specialinvoke viewModel.<androidx.fragment.app.FragmentManagerViewModel: void <init>(boolean)>(1);
+
+        return viewModel;
+    }
+}

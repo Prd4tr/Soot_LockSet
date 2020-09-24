@@ -1,0 +1,60 @@
+public class com.example.sardsyncmethodblock.SyncRunnable extends java.lang.Object
+{
+    public java.lang.Runnable a;
+    public java.lang.Integer p;
+
+    public void <init>()
+    {
+        com.example.sardsyncmethodblock.SyncRunnable this;
+        java.lang.Integer $u0;
+        com.example.sardsyncmethodblock.SyncRunnable$1 $u0#2;
+
+        this := @this: com.example.sardsyncmethodblock.SyncRunnable;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new java.lang.Integer;
+
+        specialinvoke $u0.<java.lang.Integer: void <init>(int)>(1);
+
+        this.<com.example.sardsyncmethodblock.SyncRunnable: java.lang.Integer p> = $u0;
+
+        $u0#2 = new com.example.sardsyncmethodblock.SyncRunnable$1;
+
+        specialinvoke $u0#2.<com.example.sardsyncmethodblock.SyncRunnable$1: void <init>(com.example.sardsyncmethodblock.SyncRunnable)>(this);
+
+        this.<com.example.sardsyncmethodblock.SyncRunnable: java.lang.Runnable a> = $u0#2;
+
+        return;
+    }
+
+    public void runa()
+    {
+        com.example.sardsyncmethodblock.SyncRunnable this;
+        java.lang.Integer $u-1;
+        java.lang.Throwable $u0;
+
+        this := @this: com.example.sardsyncmethodblock.SyncRunnable;
+
+        entermonitor this;
+
+     label1:
+        $u-1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+
+        this.<com.example.sardsyncmethodblock.SyncRunnable: java.lang.Integer p> = $u-1;
+
+     label2:
+        exitmonitor this;
+
+        return;
+
+     label3:
+        $u0 := @caughtexception;
+
+        exitmonitor this;
+
+        throw $u0;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

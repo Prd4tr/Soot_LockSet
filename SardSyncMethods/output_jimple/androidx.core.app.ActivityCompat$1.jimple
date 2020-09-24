@@ -1,0 +1,94 @@
+class androidx.core.app.ActivityCompat$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final android.app.Activity val$activity;
+    final java.lang.String[] val$permissions;
+    final int val$requestCode;
+
+    void <init>(java.lang.String[], android.app.Activity, int)
+    {
+        androidx.core.app.ActivityCompat$1 this;
+        java.lang.String[] $u1;
+        android.app.Activity $u2;
+        int $u3;
+
+        this := @this: androidx.core.app.ActivityCompat$1;
+
+        $u1 := @parameter0: java.lang.String[];
+
+        $u2 := @parameter1: android.app.Activity;
+
+        $u3 := @parameter2: int;
+
+        this.<androidx.core.app.ActivityCompat$1: java.lang.String[] val$permissions> = $u1;
+
+        this.<androidx.core.app.ActivityCompat$1: android.app.Activity val$activity> = $u2;
+
+        this.<androidx.core.app.ActivityCompat$1: int val$requestCode> = $u3;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        androidx.core.app.ActivityCompat$1 this;
+        java.lang.String[] $u6;
+        int grantResults, i, $u-1#15;
+        int[] grantResults#3;
+        android.app.Activity packageManager;
+        android.content.pm.PackageManager $u-1;
+        java.lang.String $u-1#8, $u5;
+        androidx.core.app.ActivityCompat$OnRequestPermissionsResultCallback i#18;
+
+        this := @this: androidx.core.app.ActivityCompat$1;
+
+        $u6 = this.<androidx.core.app.ActivityCompat$1: java.lang.String[] val$permissions>;
+
+        grantResults = lengthof $u6;
+
+        grantResults#3 = newarray (int)[grantResults];
+
+        packageManager = this.<androidx.core.app.ActivityCompat$1: android.app.Activity val$activity>;
+
+        $u-1 = virtualinvoke packageManager.<android.app.Activity: android.content.pm.PackageManager getPackageManager()>();
+
+        packageManager = this.<androidx.core.app.ActivityCompat$1: android.app.Activity val$activity>;
+
+        $u-1#8 = virtualinvoke packageManager.<android.app.Activity: java.lang.String getPackageName()>();
+
+        $u6 = this.<androidx.core.app.ActivityCompat$1: java.lang.String[] val$permissions>;
+
+        grantResults = lengthof $u6;
+
+        i = 0;
+
+     label1:
+        if i >= grantResults goto label2;
+
+        $u6 = this.<androidx.core.app.ActivityCompat$1: java.lang.String[] val$permissions>;
+
+        $u5 = $u6[i];
+
+        $u-1#15 = virtualinvoke $u-1.<android.content.pm.PackageManager: int checkPermission(java.lang.String,java.lang.String)>($u5, $u-1#8);
+
+        grantResults#3[i] = $u-1#15;
+
+        i = i + 1;
+
+        goto label1;
+
+     label2:
+        packageManager = this.<androidx.core.app.ActivityCompat$1: android.app.Activity val$activity>;
+
+        i#18 = (androidx.core.app.ActivityCompat$OnRequestPermissionsResultCallback) packageManager;
+
+        grantResults = this.<androidx.core.app.ActivityCompat$1: int val$requestCode>;
+
+        $u6 = this.<androidx.core.app.ActivityCompat$1: java.lang.String[] val$permissions>;
+
+        interfaceinvoke i#18.<androidx.core.app.ActivityCompat$OnRequestPermissionsResultCallback: void onRequestPermissionsResult(int,java.lang.String[],int[])>(grantResults, $u6, grantResults#3);
+
+        return;
+    }
+}

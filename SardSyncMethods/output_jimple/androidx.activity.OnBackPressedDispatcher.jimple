@@ -1,0 +1,190 @@
+public final class androidx.activity.OnBackPressedDispatcher extends java.lang.Object
+{
+    private final java.lang.Runnable mFallbackOnBackPressed;
+    final java.util.ArrayDeque mOnBackPressedCallbacks;
+
+    public void <init>()
+    {
+        androidx.activity.OnBackPressedDispatcher this;
+
+        this := @this: androidx.activity.OnBackPressedDispatcher;
+
+        specialinvoke this.<androidx.activity.OnBackPressedDispatcher: void <init>(java.lang.Runnable)>(null);
+
+        return;
+    }
+
+    public void <init>(java.lang.Runnable)
+    {
+        androidx.activity.OnBackPressedDispatcher this;
+        java.lang.Runnable $u2;
+        java.util.ArrayDeque $u0;
+
+        this := @this: androidx.activity.OnBackPressedDispatcher;
+
+        $u2 := @parameter0: java.lang.Runnable;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        $u0 = new java.util.ArrayDeque;
+
+        specialinvoke $u0.<java.util.ArrayDeque: void <init>()>();
+
+        this.<androidx.activity.OnBackPressedDispatcher: java.util.ArrayDeque mOnBackPressedCallbacks> = $u0;
+
+        this.<androidx.activity.OnBackPressedDispatcher: java.lang.Runnable mFallbackOnBackPressed> = $u2;
+
+        return;
+    }
+
+    public void addCallback(androidx.activity.OnBackPressedCallback)
+    {
+        androidx.activity.OnBackPressedDispatcher this;
+        androidx.activity.OnBackPressedCallback $u1;
+
+        this := @this: androidx.activity.OnBackPressedDispatcher;
+
+        $u1 := @parameter0: androidx.activity.OnBackPressedCallback;
+
+        virtualinvoke this.<androidx.activity.OnBackPressedDispatcher: androidx.activity.Cancellable addCancellableCallback(androidx.activity.OnBackPressedCallback)>($u1);
+
+        return;
+    }
+
+    public void addCallback(androidx.lifecycle.LifecycleOwner, androidx.activity.OnBackPressedCallback)
+    {
+        androidx.activity.OnBackPressedDispatcher this;
+        androidx.lifecycle.LifecycleOwner $u4;
+        androidx.activity.OnBackPressedCallback $u5;
+        androidx.lifecycle.Lifecycle$State $u2, $u-1#2;
+        androidx.lifecycle.Lifecycle $u-1;
+        androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable $u1;
+
+        this := @this: androidx.activity.OnBackPressedDispatcher;
+
+        $u4 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        $u5 := @parameter1: androidx.activity.OnBackPressedCallback;
+
+        $u-1 = interfaceinvoke $u4.<androidx.lifecycle.LifecycleOwner: androidx.lifecycle.Lifecycle getLifecycle()>();
+
+        $u-1#2 = virtualinvoke $u-1.<androidx.lifecycle.Lifecycle: androidx.lifecycle.Lifecycle$State getCurrentState()>();
+
+        $u2 = <androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State DESTROYED>;
+
+        if $u-1#2 != $u2 goto label1;
+
+        return;
+
+     label1:
+        $u1 = new androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable;
+
+        specialinvoke $u1.<androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable: void <init>(androidx.activity.OnBackPressedDispatcher,androidx.lifecycle.Lifecycle,androidx.activity.OnBackPressedCallback)>(this, $u-1, $u5);
+
+        virtualinvoke $u5.<androidx.activity.OnBackPressedCallback: void addCancellable(androidx.activity.Cancellable)>($u1);
+
+        return;
+    }
+
+    androidx.activity.Cancellable addCancellableCallback(androidx.activity.OnBackPressedCallback)
+    {
+        androidx.activity.OnBackPressedDispatcher this;
+        androidx.activity.OnBackPressedCallback $u2;
+        java.util.ArrayDeque cancellable;
+        androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable cancellable#2;
+
+        this := @this: androidx.activity.OnBackPressedDispatcher;
+
+        $u2 := @parameter0: androidx.activity.OnBackPressedCallback;
+
+        cancellable = this.<androidx.activity.OnBackPressedDispatcher: java.util.ArrayDeque mOnBackPressedCallbacks>;
+
+        virtualinvoke cancellable.<java.util.ArrayDeque: boolean add(java.lang.Object)>($u2);
+
+        cancellable#2 = new androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable;
+
+        specialinvoke cancellable#2.<androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable: void <init>(androidx.activity.OnBackPressedDispatcher,androidx.activity.OnBackPressedCallback)>(this, $u2);
+
+        virtualinvoke $u2.<androidx.activity.OnBackPressedCallback: void addCancellable(androidx.activity.Cancellable)>(cancellable#2);
+
+        return cancellable#2;
+    }
+
+    public boolean hasEnabledCallbacks()
+    {
+        androidx.activity.OnBackPressedDispatcher this;
+        java.util.ArrayDeque iterator;
+        java.util.Iterator $u-1;
+        boolean $u-1#4;
+        java.lang.Object $u-1#6;
+        androidx.activity.OnBackPressedCallback $u1;
+
+        this := @this: androidx.activity.OnBackPressedDispatcher;
+
+        iterator = this.<androidx.activity.OnBackPressedDispatcher: java.util.ArrayDeque mOnBackPressedCallbacks>;
+
+        $u-1 = virtualinvoke iterator.<java.util.ArrayDeque: java.util.Iterator descendingIterator()>();
+
+     label1:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label2;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        $u1 = (androidx.activity.OnBackPressedCallback) $u-1#6;
+
+        $u-1#4 = virtualinvoke $u1.<androidx.activity.OnBackPressedCallback: boolean isEnabled()>();
+
+        if $u-1#4 == 0 goto label1;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public void onBackPressed()
+    {
+        androidx.activity.OnBackPressedDispatcher this;
+        java.util.ArrayDeque iterator;
+        java.util.Iterator $u-1;
+        boolean $u-1#4;
+        java.lang.Object $u-1#6;
+        androidx.activity.OnBackPressedCallback callback;
+        java.lang.Runnable callback#10;
+
+        this := @this: androidx.activity.OnBackPressedDispatcher;
+
+        iterator = this.<androidx.activity.OnBackPressedDispatcher: java.util.ArrayDeque mOnBackPressedCallbacks>;
+
+        $u-1 = virtualinvoke iterator.<java.util.ArrayDeque: java.util.Iterator descendingIterator()>();
+
+     label1:
+        $u-1#4 = interfaceinvoke $u-1.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#4 == 0 goto label2;
+
+        $u-1#6 = interfaceinvoke $u-1.<java.util.Iterator: java.lang.Object next()>();
+
+        callback = (androidx.activity.OnBackPressedCallback) $u-1#6;
+
+        $u-1#4 = virtualinvoke callback.<androidx.activity.OnBackPressedCallback: boolean isEnabled()>();
+
+        if $u-1#4 == 0 goto label1;
+
+        virtualinvoke callback.<androidx.activity.OnBackPressedCallback: void handleOnBackPressed()>();
+
+        return;
+
+     label2:
+        callback#10 = this.<androidx.activity.OnBackPressedDispatcher: java.lang.Runnable mFallbackOnBackPressed>;
+
+        if callback#10 == null goto label3;
+
+        interfaceinvoke callback#10.<java.lang.Runnable: void run()>();
+
+     label3:
+        return;
+    }
+}

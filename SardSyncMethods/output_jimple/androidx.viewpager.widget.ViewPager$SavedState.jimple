@@ -1,0 +1,131 @@
+public class androidx.viewpager.widget.ViewPager$SavedState extends androidx.customview.view.AbsSavedState
+{
+    public static final android.os.Parcelable$Creator CREATOR;
+    android.os.Parcelable adapterState;
+    java.lang.ClassLoader loader;
+    int position;
+
+    static void <clinit>()
+    {
+        androidx.viewpager.widget.ViewPager$SavedState$1 $u0;
+
+        $u0 = new androidx.viewpager.widget.ViewPager$SavedState$1;
+
+        specialinvoke $u0.<androidx.viewpager.widget.ViewPager$SavedState$1: void <init>()>();
+
+        <androidx.viewpager.widget.ViewPager$SavedState: android.os.Parcelable$Creator CREATOR> = $u0;
+
+        return;
+    }
+
+    void <init>(android.os.Parcel, java.lang.ClassLoader)
+    {
+        androidx.viewpager.widget.ViewPager$SavedState this;
+        android.os.Parcel $u2;
+        java.lang.ClassLoader $u3;
+        java.lang.Class $u-1;
+        int $u-1#5;
+        android.os.Parcelable $u-1#7;
+
+        this := @this: androidx.viewpager.widget.ViewPager$SavedState;
+
+        $u2 := @parameter0: android.os.Parcel;
+
+        $u3 := @parameter1: java.lang.ClassLoader;
+
+        specialinvoke this.<androidx.customview.view.AbsSavedState: void <init>(android.os.Parcel,java.lang.ClassLoader)>($u2, $u3);
+
+        if $u3 != null goto label1;
+
+        $u-1 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+
+        $u3 = virtualinvoke $u-1.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+     label1:
+        $u-1#5 = virtualinvoke $u2.<android.os.Parcel: int readInt()>();
+
+        this.<androidx.viewpager.widget.ViewPager$SavedState: int position> = $u-1#5;
+
+        $u-1#7 = virtualinvoke $u2.<android.os.Parcel: android.os.Parcelable readParcelable(java.lang.ClassLoader)>($u3);
+
+        this.<androidx.viewpager.widget.ViewPager$SavedState: android.os.Parcelable adapterState> = $u-1#7;
+
+        this.<androidx.viewpager.widget.ViewPager$SavedState: java.lang.ClassLoader loader> = $u3;
+
+        return;
+    }
+
+    public void <init>(android.os.Parcelable)
+    {
+        androidx.viewpager.widget.ViewPager$SavedState this;
+        android.os.Parcelable $u1;
+
+        this := @this: androidx.viewpager.widget.ViewPager$SavedState;
+
+        $u1 := @parameter0: android.os.Parcelable;
+
+        specialinvoke this.<androidx.customview.view.AbsSavedState: void <init>(android.os.Parcelable)>($u1);
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        androidx.viewpager.widget.ViewPager$SavedState this;
+        java.lang.StringBuilder $u0;
+        int $u-1;
+        java.lang.String $u-1#5;
+
+        this := @this: androidx.viewpager.widget.ViewPager$SavedState;
+
+        $u0 = new java.lang.StringBuilder;
+
+        specialinvoke $u0.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("FragmentPager.SavedState{");
+
+        $u-1 = staticinvoke <java.lang.System: int identityHashCode(java.lang.Object)>(this);
+
+        $u-1#5 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($u-1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u-1#5);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" position=");
+
+        $u-1 = this.<androidx.viewpager.widget.ViewPager$SavedState: int position>;
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($u-1);
+
+        virtualinvoke $u0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("}");
+
+        $u-1#5 = virtualinvoke $u0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $u-1#5;
+    }
+
+    public void writeToParcel(android.os.Parcel, int)
+    {
+        androidx.viewpager.widget.ViewPager$SavedState this;
+        android.os.Parcel $u2;
+        int $u3, $u0;
+        android.os.Parcelable $u0#2;
+
+        this := @this: androidx.viewpager.widget.ViewPager$SavedState;
+
+        $u2 := @parameter0: android.os.Parcel;
+
+        $u3 := @parameter1: int;
+
+        specialinvoke this.<androidx.customview.view.AbsSavedState: void writeToParcel(android.os.Parcel,int)>($u2, $u3);
+
+        $u0 = this.<androidx.viewpager.widget.ViewPager$SavedState: int position>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeInt(int)>($u0);
+
+        $u0#2 = this.<androidx.viewpager.widget.ViewPager$SavedState: android.os.Parcelable adapterState>;
+
+        virtualinvoke $u2.<android.os.Parcel: void writeParcelable(android.os.Parcelable,int)>($u0#2, $u3);
+
+        return;
+    }
+}

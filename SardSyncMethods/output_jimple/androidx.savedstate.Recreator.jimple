@@ -1,0 +1,236 @@
+final class androidx.savedstate.Recreator extends java.lang.Object implements androidx.lifecycle.GenericLifecycleObserver
+{
+    static final java.lang.String CLASSES_KEY;
+    static final java.lang.String COMPONENT_KEY;
+    private final androidx.savedstate.SavedStateRegistryOwner mOwner;
+
+    void <init>(androidx.savedstate.SavedStateRegistryOwner)
+    {
+        androidx.savedstate.Recreator this;
+        androidx.savedstate.SavedStateRegistryOwner $u1;
+
+        this := @this: androidx.savedstate.Recreator;
+
+        $u1 := @parameter0: androidx.savedstate.SavedStateRegistryOwner;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        this.<androidx.savedstate.Recreator: androidx.savedstate.SavedStateRegistryOwner mOwner> = $u1;
+
+        return;
+    }
+
+    private void reflectiveNew(java.lang.String)
+    {
+        androidx.savedstate.Recreator this;
+        java.lang.String $u7;
+        java.lang.Class clazz;
+        java.lang.ClassLoader $u-1;
+        java.lang.Class[] constructor;
+        java.lang.reflect.Constructor $u-1#11;
+        java.lang.Object[] newInstance;
+        java.lang.Object $u-1#15;
+        androidx.savedstate.SavedStateRegistry$AutoRecreated newInstance#17;
+        androidx.savedstate.SavedStateRegistryOwner $u3;
+        java.lang.Exception newInstance#19;
+        java.lang.RuntimeException $u3#20;
+        java.lang.StringBuilder $u4;
+        java.lang.NoSuchMethodException newInstance#24;
+        java.lang.IllegalStateException constructor#25;
+        java.lang.ClassNotFoundException clazz#33;
+
+        this := @this: androidx.savedstate.Recreator;
+
+        $u7 := @parameter0: java.lang.String;
+
+        clazz = class "Landroidx/savedstate/Recreator;";
+
+     label1:
+        $u-1 = virtualinvoke clazz.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+
+        clazz = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String,boolean,java.lang.ClassLoader)>($u7, 0, $u-1);
+
+        clazz = virtualinvoke clazz.<java.lang.Class: java.lang.Class asSubclass(java.lang.Class)>(class "Landroidx/savedstate/SavedStateRegistry$AutoRecreated;");
+
+     label2:
+        constructor = newarray (java.lang.Class)[0];
+
+     label3:
+        $u-1#11 = virtualinvoke clazz.<java.lang.Class: java.lang.reflect.Constructor getDeclaredConstructor(java.lang.Class[])>(constructor);
+
+     label4:
+        virtualinvoke $u-1#11.<java.lang.reflect.Constructor: void setAccessible(boolean)>(1);
+
+     label5:
+        newInstance = newarray (java.lang.Object)[0];
+
+        $u-1#15 = virtualinvoke $u-1#11.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>(newInstance);
+
+        newInstance#17 = (androidx.savedstate.SavedStateRegistry$AutoRecreated) $u-1#15;
+
+     label6:
+        $u3 = this.<androidx.savedstate.Recreator: androidx.savedstate.SavedStateRegistryOwner mOwner>;
+
+        interfaceinvoke newInstance#17.<androidx.savedstate.SavedStateRegistry$AutoRecreated: void onRecreated(androidx.savedstate.SavedStateRegistryOwner)>($u3);
+
+        return;
+
+     label7:
+        newInstance#19 := @caughtexception;
+
+        $u3#20 = new java.lang.RuntimeException;
+
+        $u4 = new java.lang.StringBuilder;
+
+        specialinvoke $u4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to instantiate ");
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u7);
+
+        $u7 = virtualinvoke $u4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u3#20.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($u7, newInstance#19);
+
+        throw $u3#20;
+
+     label8:
+        newInstance#24 := @caughtexception;
+
+        constructor#25 = new java.lang.IllegalStateException;
+
+        $u4 = new java.lang.StringBuilder;
+
+        specialinvoke $u4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Class");
+
+        $u7 = virtualinvoke clazz.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u7);
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" must have default constructor in order to be automatically recreated");
+
+        $u7 = virtualinvoke $u4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke constructor#25.<java.lang.IllegalStateException: void <init>(java.lang.String,java.lang.Throwable)>($u7, newInstance#24);
+
+        throw constructor#25;
+
+     label9:
+        clazz#33 := @caughtexception;
+
+        $u3#20 = new java.lang.RuntimeException;
+
+        $u4 = new java.lang.StringBuilder;
+
+        specialinvoke $u4.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Class ");
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($u7);
+
+        virtualinvoke $u4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" wasn\'t found");
+
+        $u7 = virtualinvoke $u4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $u3#20.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($u7, clazz#33);
+
+        throw $u3#20;
+
+        catch java.lang.ClassNotFoundException from label1 to label2 with label9;
+        catch java.lang.NoSuchMethodException from label3 to label4 with label8;
+        catch java.lang.Exception from label5 to label6 with label7;
+    }
+
+    public void onStateChanged(androidx.lifecycle.LifecycleOwner, androidx.lifecycle.Lifecycle$Event)
+    {
+        androidx.savedstate.Recreator this;
+        androidx.lifecycle.LifecycleOwner $u5;
+        androidx.lifecycle.Lifecycle$Event $u6, bundle;
+        androidx.lifecycle.Lifecycle $u-1;
+        androidx.savedstate.SavedStateRegistryOwner bundle#4;
+        androidx.savedstate.SavedStateRegistry $u-1#5;
+        android.os.Bundle $u-1#8;
+        java.util.ArrayList $u-1#11;
+        java.util.Iterator $u-1#13;
+        boolean $u-1#15;
+        java.lang.Object $u-1#17;
+        java.lang.String className;
+        java.lang.IllegalStateException $u2;
+        java.lang.AssertionError bundle#22;
+
+        this := @this: androidx.savedstate.Recreator;
+
+        $u5 := @parameter0: androidx.lifecycle.LifecycleOwner;
+
+        $u6 := @parameter1: androidx.lifecycle.Lifecycle$Event;
+
+        bundle = <androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_CREATE>;
+
+        if $u6 != bundle goto label5;
+
+        $u-1 = interfaceinvoke $u5.<androidx.lifecycle.LifecycleOwner: androidx.lifecycle.Lifecycle getLifecycle()>();
+
+        virtualinvoke $u-1.<androidx.lifecycle.Lifecycle: void removeObserver(androidx.lifecycle.LifecycleObserver)>(this);
+
+        bundle#4 = this.<androidx.savedstate.Recreator: androidx.savedstate.SavedStateRegistryOwner mOwner>;
+
+        $u-1#5 = interfaceinvoke bundle#4.<androidx.savedstate.SavedStateRegistryOwner: androidx.savedstate.SavedStateRegistry getSavedStateRegistry()>();
+
+        $u-1#8 = virtualinvoke $u-1#5.<androidx.savedstate.SavedStateRegistry: android.os.Bundle consumeRestoredStateForKey(java.lang.String)>("androidx.savedstate.Restarter");
+
+        if $u-1#8 != null goto label1;
+
+        return;
+
+     label1:
+        $u-1#11 = virtualinvoke $u-1#8.<android.os.Bundle: java.util.ArrayList getStringArrayList(java.lang.String)>("classes_to_restore");
+
+        if $u-1#11 == null goto label4;
+
+        $u-1#13 = virtualinvoke $u-1#11.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label2:
+        $u-1#15 = interfaceinvoke $u-1#13.<java.util.Iterator: boolean hasNext()>();
+
+        if $u-1#15 == 0 goto label3;
+
+        $u-1#17 = interfaceinvoke $u-1#13.<java.util.Iterator: java.lang.Object next()>();
+
+        className = (java.lang.String) $u-1#17;
+
+        specialinvoke this.<androidx.savedstate.Recreator: void reflectiveNew(java.lang.String)>(className);
+
+        goto label2;
+
+     label3:
+        return;
+
+     label4:
+        $u2 = new java.lang.IllegalStateException;
+
+        specialinvoke $u2.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Bundle with restored state for the component \"androidx.savedstate.Restarter\" must contain list of strings by the key \"classes_to_restore\"");
+
+        throw $u2;
+
+     label5:
+        bundle#22 = new java.lang.AssertionError;
+
+        specialinvoke bundle#22.<java.lang.AssertionError: void <init>(java.lang.Object)>("Next event must be ON_CREATE");
+
+        goto label6;
+
+     label6:
+        throw bundle#22;
+    }
+
+    public static void <clinit>()
+    {
+        <androidx.savedstate.Recreator: java.lang.String COMPONENT_KEY> = "androidx.savedstate.Restarter";
+
+        <androidx.savedstate.Recreator: java.lang.String CLASSES_KEY> = "classes_to_restore";
+
+        return;
+    }
+}
