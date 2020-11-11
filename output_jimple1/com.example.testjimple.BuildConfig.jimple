@@ -1,0 +1,38 @@
+public final class com.example.testjimple.BuildConfig extends java.lang.Object
+{
+    public static final java.lang.String APPLICATION_ID;
+    public static final java.lang.String BUILD_TYPE;
+    public static final boolean DEBUG;
+    public static final int VERSION_CODE;
+    public static final java.lang.String VERSION_NAME;
+
+    static void <clinit>()
+    {
+        boolean $u-1;
+
+        <com.example.testjimple.BuildConfig: java.lang.String VERSION_NAME> = "1.0";
+
+        <com.example.testjimple.BuildConfig: int VERSION_CODE> = 1;
+
+        <com.example.testjimple.BuildConfig: java.lang.String BUILD_TYPE> = "debug";
+
+        <com.example.testjimple.BuildConfig: java.lang.String APPLICATION_ID> = "com.example.testjimple";
+
+        $u-1 = staticinvoke <java.lang.Boolean: boolean parseBoolean(java.lang.String)>("true");
+
+        <com.example.testjimple.BuildConfig: boolean DEBUG> = $u-1;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.example.testjimple.BuildConfig this;
+
+        this := @this: com.example.testjimple.BuildConfig;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

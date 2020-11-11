@@ -1,0 +1,137 @@
+public class com.example.testjimple.MainActivity extends androidx.appcompat.app.AppCompatActivity
+{
+
+    public void <init>()
+    {
+        com.example.testjimple.MainActivity this;
+
+        this := @this: com.example.testjimple.MainActivity;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatActivity: void <init>()>();
+
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.example.testjimple.MainActivity this;
+        android.os.Bundle $u6;
+        java.lang.Integer obj1, obj11, $u-1#18;
+        int $u-1;
+        java.lang.Throwable $u1, $u1#26, $u1#28;
+
+        this := @this: com.example.testjimple.MainActivity;
+
+        $u6 := @parameter0: android.os.Bundle;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatActivity: void onCreate(android.os.Bundle)>($u6);
+
+        virtualinvoke this.<com.example.testjimple.MainActivity: void setContentView(int)>(2131361820);
+
+        obj1 = new java.lang.Integer;
+
+        specialinvoke obj1.<java.lang.Integer: void <init>(int)>(1);
+
+        obj1 = new java.lang.Integer;
+
+        specialinvoke obj1.<java.lang.Integer: void <init>(int)>(4);
+
+        entermonitor obj1;
+
+     label01:
+        obj11 = new java.lang.Integer;
+
+        specialinvoke obj11.<java.lang.Integer: void <init>(int)>(2);
+
+        obj11 = new java.lang.Integer;
+
+        specialinvoke obj11.<java.lang.Integer: void <init>(int)>(12);
+
+        exitmonitor obj1;
+
+     label02:
+        $u-1 = virtualinvoke obj11.<java.lang.Integer: int intValue()>();
+
+        $u-1 = $u-1 + 1;
+
+        obj11 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1);
+
+        entermonitor obj11;
+
+     label03:
+        entermonitor obj1;
+
+     label04:
+        $u-1#18 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(20);
+
+     label05:
+        exitmonitor obj1;
+
+     label06:
+        exitmonitor obj11;
+
+     label07:
+        $u-1 = virtualinvoke $u-1#18.<java.lang.Integer: int intValue()>();
+
+        $u-1 = $u-1 + 1;
+
+        staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1);
+
+        return;
+
+     label08:
+        $u1 := @caughtexception;
+
+        goto label10;
+
+     label09:
+        $u1 := @caughtexception;
+
+     label10:
+        exitmonitor obj1;
+
+     label11:
+        throw $u1;
+
+     label12:
+        $u1#26 := @caughtexception;
+
+        goto label14;
+
+     label13:
+        $u1#26 := @caughtexception;
+
+     label14:
+        exitmonitor obj11;
+
+     label15:
+        throw $u1#26;
+
+     label16:
+        $u1#26 := @caughtexception;
+
+        goto label14;
+
+     label17:
+        $u1#28 := @caughtexception;
+
+     label18:
+        exitmonitor obj1;
+
+     label19:
+        goto label20;
+
+     label20:
+        throw $u1#28;
+
+        catch java.lang.Throwable from label01 to label02 with label17;
+        catch java.lang.Throwable from label03 to label04 with label13;
+        catch java.lang.Throwable from label04 to label05 with label09;
+        catch java.lang.Throwable from label05 to label06 with label08;
+        catch java.lang.Throwable from label06 to label07 with label12;
+        catch java.lang.Throwable from label10 to label11 with label08;
+        catch java.lang.Throwable from label11 to label12 with label12;
+        catch java.lang.Throwable from label14 to label15 with label16;
+        catch java.lang.Throwable from label18 to label19 with label17;
+    }
+}

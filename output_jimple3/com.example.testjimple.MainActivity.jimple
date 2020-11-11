@@ -1,0 +1,103 @@
+public class com.example.testjimple.MainActivity extends androidx.appcompat.app.AppCompatActivity
+{
+
+    public void <init>()
+    {
+        com.example.testjimple.MainActivity this;
+
+        this := @this: com.example.testjimple.MainActivity;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatActivity: void <init>()>();
+
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.example.testjimple.MainActivity this;
+        android.os.Bundle $u5;
+        java.lang.Integer obj1, obj21;
+        int $u-1;
+        java.lang.Throwable obj2, obj2#16;
+
+        this := @this: com.example.testjimple.MainActivity;
+
+        $u5 := @parameter0: android.os.Bundle;
+
+        specialinvoke this.<androidx.appcompat.app.AppCompatActivity: void onCreate(android.os.Bundle)>($u5);
+
+        virtualinvoke this.<com.example.testjimple.MainActivity: void setContentView(int)>(2131361820);
+
+        obj1 = new java.lang.Integer;
+
+        specialinvoke obj1.<java.lang.Integer: void <init>(int)>(1);
+
+        obj21 = new java.lang.Integer;
+
+        specialinvoke obj21.<java.lang.Integer: void <init>(int)>(4);
+
+        entermonitor obj1;
+
+     label01:
+        entermonitor obj1;
+
+     label02:
+        obj21 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(20);
+
+     label03:
+        exitmonitor obj1;
+
+     label04:
+        exitmonitor obj1;
+
+     label05:
+        $u-1 = virtualinvoke obj21.<java.lang.Integer: int intValue()>();
+
+        $u-1 = $u-1 + 1;
+
+        staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($u-1);
+
+        return;
+
+     label06:
+        obj2 := @caughtexception;
+
+        goto label08;
+
+     label07:
+        obj2 := @caughtexception;
+
+     label08:
+        exitmonitor obj1;
+
+     label09:
+        throw obj2;
+
+     label10:
+        obj2#16 := @caughtexception;
+
+        goto label12;
+
+     label11:
+        obj2#16 := @caughtexception;
+
+     label12:
+        exitmonitor obj1;
+
+     label13:
+        throw obj2#16;
+
+     label14:
+        obj2#16 := @caughtexception;
+
+        goto label12;
+
+        catch java.lang.Throwable from label01 to label02 with label11;
+        catch java.lang.Throwable from label02 to label03 with label07;
+        catch java.lang.Throwable from label03 to label04 with label06;
+        catch java.lang.Throwable from label04 to label05 with label10;
+        catch java.lang.Throwable from label08 to label09 with label06;
+        catch java.lang.Throwable from label09 to label10 with label10;
+        catch java.lang.Throwable from label12 to label13 with label14;
+    }
+}
